@@ -14,6 +14,10 @@ export const metadata: Metadata = {
   description:
     "Modern financial technology platform providing multi-currency accounts, global payments, digital wallets, and crypto integration for individuals and businesses.",
   keywords: ["fintech", "digital banking", "crypto", "global payments", "multi-currency", "digital wallet"],
+  icons: {
+    icon: "/favicon.png",
+    apple: "/favicon.png",
+  },
 };
 
 export default function RootLayout({
