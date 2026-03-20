@@ -55,7 +55,7 @@ export function About() {
                 {/* Stats */}
                 <div className="grid grid-cols-3 gap-4 text-center">
                   {[
-                    { value: "150+", label: "Countries" },
+                    { value: "50+", label: "Countries" },
                     { value: "24/7", label: "Support" },
                     { value: "100%", label: "Digital" },
                   ].map((stat, i) => (
