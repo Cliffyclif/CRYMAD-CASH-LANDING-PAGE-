@@ -63,7 +63,7 @@ const milestones = [
   },
   {
     year: "Multi-Currency",
-    title: "100+ Currencies",
+    title: "10+ Currencies",
     description:
       "Expanded support to over 100 fiat and crypto currencies, enabling users to hold, convert, and transact across borders with competitive exchange rates.",
   },
@@ -71,7 +71,7 @@ const milestones = [
     year: "Global Expansion",
     title: "150+ Countries",
     description:
-      "Extended our services to over 150 countries worldwide, partnering with licensed financial institutions to ensure local compliance and seamless operations.",
+      "Extended our services to over 50 countries worldwide, partnering with licensed financial institutions to ensure local compliance and seamless operations.",
   },
   {
     year: "Enterprise",
@@ -365,7 +365,7 @@ export default function AboutPage() {
                 Ready to experience the future of finance?
               </h2>
               <p className="mt-4 text-lg text-[var(--text-secondary)]">
-                Join thousands of individuals and businesses across 150+ countries.
+                Join thousands of individuals and businesses across 50+ countries.
               </p>
               <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
                 <a

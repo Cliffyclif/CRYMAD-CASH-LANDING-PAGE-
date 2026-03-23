@@ -3,22 +3,17 @@
 import { motion } from "framer-motion";
 import { Check } from "lucide-react";
 import { AnimatedSection } from "./AnimatedSection";
-
-
-const securityItems = [
-  "Bank-Grade Encryption (AES-256)",
-  "Multi-Factor Authentication",
-  "Real-Time Transaction Monitoring",
-  "Advanced Fraud Detection Systems",
-  "International Financial Standards Compliance",
-];
+import { useLanguage, useTranslatedArray } from "@/i18n/LanguageContext";
 
 export function Security() {
+  const { t } = useLanguage();
+  const securityItems = useTranslatedArray("security.items");
+
   return (
     <section id="security" className="relative py-24 md:py-32 overflow-hidden">
       {/* Background glow */}
       <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-[#36D399]/5 rounded-full blur-3xl" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full blur-3xl" style={{ background: "radial-gradient(circle, rgba(0,232,157,0.06), rgba(0,240,255,0.03), transparent 60%)" }} />
       </div>
 
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -43,23 +38,23 @@ export function Security() {
           <div>
             <AnimatedSection>
               <span className="inline-flex items-center gap-2 rounded-full border border-amber-400/30 bg-amber-400/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.15em] text-amber-400 mb-5">
-                Security
+                {t("security.badge")}
               </span>
               <h2 className="text-3xl sm:text-4xl md:text-[2.75rem] font-bold tracking-tight text-[var(--text-primary)] leading-[1.1] mb-5">
-                Your Money,{" "}
+                {t("security.title")}{" "}
                 <span className="bg-gradient-to-r from-amber-400 to-amber-300 bg-clip-text text-transparent">
-                  Protected
+                  {t("security.titleHighlight")}
                 </span>
               </h2>
               <p className="text-base text-[var(--text-secondary)] leading-relaxed mb-8 max-w-lg">
-                We use advanced financial technology and industry-standard security practices to protect our users and their funds at all times.
+                {t("security.description")}
               </p>
             </AnimatedSection>
 
             <div className="flex flex-col gap-3">
               {securityItems.map((item, index) => (
                 <motion.div
-                  key={item}
+                  key={index}
                   initial={{ opacity: 0, x: -20 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true, margin: "-40px" }}

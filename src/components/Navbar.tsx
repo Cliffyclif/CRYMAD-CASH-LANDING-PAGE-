@@ -6,20 +6,23 @@ import { Menu, X } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { ThemeToggle } from "./ThemeToggle";
+import { LanguageSwitcher } from "./LanguageSwitcher";
+import { useLanguage } from "@/i18n/LanguageContext";
 
-const navLinks = [
-  { label: "Home", href: "/" },
-  { label: "Personal Accounts", href: "https://production-crmdx.web.app/login" },
-  { label: "Business Accounts", href: "https://production-crmdx.web.app/login" },
-  { label: "Security", href: "/security" },
-  { label: "FAQ", href: "/faq" },
-  { label: "Contact", href: "#contact" },
-  { label: "About", href: "/about" },
+const NAV_KEYS = [
+  { key: "nav.home", href: "/" },
+  { key: "nav.personalAccounts", href: "https://production-crmdx.web.app/login" },
+  { key: "nav.businessAccounts", href: "https://production-crmdx.web.app/login" },
+  { key: "nav.security", href: "/security" },
+  { key: "nav.faq", href: "/faq" },
+  { key: "nav.contact", href: "#contact" },
+  { key: "nav.about", href: "/about" },
 ];
 
 export function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const { t } = useLanguage();
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50);
@@ -31,9 +34,13 @@ export function Navbar() {
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         scrolled
-          ? "bg-[var(--nav-scrolled)] backdrop-blur-xl border-b border-[var(--glass-border)] shadow-sm"
+          ? "bg-[var(--nav-scrolled)] backdrop-blur-xl shadow-[0_1px_0_var(--glass-border),0_4px_30px_rgba(0,0,0,0.3)]"
           : "bg-transparent"
       }`}
+      style={scrolled ? {
+        borderBottom: "1px solid transparent",
+        borderImage: "linear-gradient(90deg, transparent, var(--neon-cyan), var(--primary), var(--neon-purple), transparent) 1",
+      } : undefined}
       role="navigation"
       aria-label="Main navigation"
     >
@@ -60,21 +67,23 @@ export function Navbar() {
 
           {/* Desktop Nav */}
           <div className="hidden lg:flex items-center gap-0.5">
-            {navLinks.map((link) => {
+            {NAV_KEYS.map((link) => {
+              const label = t(link.key);
               const cls = "px-3.5 py-2 text-[13px] font-medium text-[var(--text-secondary)] hover:text-[var(--primary)] hover:bg-[var(--glass-bg)] transition-colors duration-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[var(--primary)]";
               const isExternal = link.href.startsWith("http");
               if (isExternal) {
-                return <a key={link.label} href={link.href} target="_blank" rel="noopener noreferrer" className={cls}>{link.label}</a>;
+                return <a key={link.key} href={link.href} target="_blank" rel="noopener noreferrer" className={cls}>{label}</a>;
               }
               if (link.href.startsWith("/")) {
-                return <Link key={link.label} href={link.href} className={cls}>{link.label}</Link>;
+                return <Link key={link.key} href={link.href} className={cls}>{label}</Link>;
               }
-              return <a key={link.label} href={link.href} className={cls}>{link.label}</a>;
+              return <a key={link.key} href={link.href} className={cls}>{label}</a>;
             })}
           </div>
 
           {/* Desktop Actions */}
           <div className="hidden lg:flex items-center gap-3">
+            <LanguageSwitcher />
             <ThemeToggle />
             <a
               href="https://production-crmdx.web.app/login"
@@ -82,20 +91,21 @@ export function Navbar() {
               rel="noopener noreferrer"
               className="inline-flex min-h-[40px] items-center justify-center rounded-lg border border-[var(--glass-border)] bg-[var(--glass-bg)] px-5 py-2 text-[13px] font-semibold text-[var(--text-secondary)] hover:bg-[var(--primary)]/10 hover:border-[var(--primary)]/30 backdrop-blur-sm focus:outline-none focus:ring-2 focus:ring-[var(--primary)] transition-all duration-200"
             >
-              Sign In
+              {t("nav.signIn")}
             </a>
             <a
               href="https://production-crmdx.web.app/sign-up"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex min-h-[40px] items-center justify-center rounded-lg bg-[var(--primary)] px-5 py-2 text-[13px] font-bold text-white hover:brightness-110 active:brightness-90 focus:outline-none focus:ring-2 focus:ring-[var(--primary)] transition-all duration-200"
+              className="inline-flex min-h-[40px] items-center justify-center rounded-lg bg-[var(--primary)] px-5 py-2 text-[13px] font-bold text-white hover:brightness-110 active:brightness-90 focus:outline-none focus:ring-2 focus:ring-[var(--primary)] transition-all duration-300 shadow-[0_0_15px_rgba(0,232,157,0.2)]"
             >
-              Open an Account
+              {t("nav.openAccount")}
             </a>
           </div>
 
           {/* Mobile actions */}
           <div className="flex lg:hidden items-center gap-2">
+            <LanguageSwitcher />
             <ThemeToggle />
             <button
               type="button"
@@ -124,16 +134,17 @@ export function Navbar() {
             className="lg:hidden border-t border-[var(--glass-border)] bg-[var(--background)]/98 backdrop-blur-xl overflow-hidden"
           >
             <div className="px-4 py-3 space-y-0.5">
-              {navLinks.map((link) => {
+              {NAV_KEYS.map((link) => {
+                const label = t(link.key);
                 const cls = "block min-h-[44px] px-3 py-3 text-[15px] font-medium text-[var(--text-secondary)] hover:text-[var(--primary)] hover:bg-[var(--glass-bg)] rounded-lg transition-colors focus:outline-none focus:ring-2 focus:ring-[var(--primary)]";
                 const isExternal = link.href.startsWith("http");
                 if (isExternal) {
-                  return <a key={link.label} href={link.href} target="_blank" rel="noopener noreferrer" role="menuitem" onClick={() => setMobileOpen(false)} className={cls}>{link.label}</a>;
+                  return <a key={link.key} href={link.href} target="_blank" rel="noopener noreferrer" role="menuitem" onClick={() => setMobileOpen(false)} className={cls}>{label}</a>;
                 }
                 if (link.href.startsWith("/")) {
-                  return <Link key={link.label} href={link.href} role="menuitem" onClick={() => setMobileOpen(false)} className={cls}>{link.label}</Link>;
+                  return <Link key={link.key} href={link.href} role="menuitem" onClick={() => setMobileOpen(false)} className={cls}>{label}</Link>;
                 }
-                return <a key={link.label} href={link.href} role="menuitem" onClick={() => setMobileOpen(false)} className={cls}>{link.label}</a>;
+                return <a key={link.key} href={link.href} role="menuitem" onClick={() => setMobileOpen(false)} className={cls}>{label}</a>;
               })}
               <div className="pt-3 mt-2 border-t border-[var(--glass-border)] flex flex-col gap-2">
                 <a
@@ -143,7 +154,7 @@ export function Navbar() {
                   onClick={() => setMobileOpen(false)}
                   className="block min-h-[44px] text-center px-4 py-3 border border-[var(--glass-border)] text-[var(--text-secondary)] font-semibold rounded-lg hover:bg-[var(--glass-bg)] transition-colors focus:outline-none focus:ring-2 focus:ring-[var(--primary)]"
                 >
-                  Sign In
+                  {t("nav.signIn")}
                 </a>
                 <a
                   href="https://production-crmdx.web.app/sign-up"
@@ -152,7 +163,7 @@ export function Navbar() {
                   onClick={() => setMobileOpen(false)}
                   className="block min-h-[44px] text-center px-4 py-3 bg-[var(--primary)] text-white font-bold rounded-lg hover:brightness-110 transition-colors focus:outline-none focus:ring-2 focus:ring-[var(--primary)]"
                 >
-                  Open an Account
+                  {t("nav.openAccount")}
                 </a>
               </div>
             </div>

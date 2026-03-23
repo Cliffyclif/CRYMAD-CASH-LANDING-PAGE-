@@ -9,6 +9,7 @@ import { GlassFeatures } from "@/components/GlassFeatures";
 import { Security } from "@/components/Security";
 import { About } from "@/components/About";
 import { FAQ } from "@/components/FAQ";
+import { MobileApp } from "@/components/MobileApp";
 import { CTA } from "@/components/CTA";
 import { TickerBar } from "@/components/TickerBar";
 import { Footer } from "@/components/Footer";
@@ -85,6 +86,7 @@ export default function Home() {
         <Security />
         <About />
         <FAQ />
+        <MobileApp />
         <CTA />
       </main>
       <Footer />

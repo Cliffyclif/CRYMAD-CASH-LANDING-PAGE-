@@ -15,6 +15,7 @@ import {
 import { AnimatedSection } from "./AnimatedSection";
 import { WalletCards } from "./WalletCards";
 import Image from "next/image";
+import { useLanguage } from "@/i18n/LanguageContext";
 
 /* ── Showcase Section Component ─────────────────────────── */
 function ShowcaseSection({
@@ -106,8 +107,8 @@ function ShowcaseSection({
                 <span
                   className={`bg-clip-text text-transparent ${
                     titleHighlightGold
-                      ? "bg-gradient-to-r from-amber-400 to-amber-300"
-                      : "bg-gradient-to-r from-[#36D399] to-[#4AE8AC]"
+                      ? "bg-gradient-to-r from-amber-400 via-amber-300 to-[var(--neon-purple)]"
+                      : "web3-gradient-text"
                   }`}
                 >
                   {titleHighlight}
@@ -156,6 +157,8 @@ function ShowcaseSection({
 const LOGO_URL = "https://res.cloudinary.com/dxvi5d6dr/image/upload/v1766762874/photo_2025-12-24_18.04.43-removebg-preview_ck9wyx.png";
 
 function CardsDisplay() {
+  const { t } = useLanguage();
+
   return (
     <div className="relative w-full min-h-[400px] flex items-center justify-center">
       {/* Main flip card */}
@@ -200,11 +203,11 @@ function CardsDisplay() {
             {/* Holder + Expiry */}
             <div className="fc-details">
               <div>
-                <span className="fc-label">VALID THRU</span>
+                <span className="fc-label">{t("features.validThru")}</span>
                 <span className="fc-value">12/28</span>
               </div>
               <div>
-                <span className="fc-label">CARD HOLDER</span>
+                <span className="fc-label">{t("features.cardHolder")}</span>
                 <span className="fc-value">ALEX MORGAN</span>
               </div>
             </div>
@@ -239,8 +242,8 @@ function CardsDisplay() {
             <div className="fc-back-info">
               <img src={LOGO_URL} alt="" className="fc-back-logo" />
               <p className="fc-back-text">
-                This card is property of Crymad Cash Ltd.<br />
-                Use is subject to the cardholder agreement.
+                {t("features.cardProperty")}<br />
+                {t("features.cardAgreement")}
               </p>
               <p className="fc-back-support">support@crymadcash.com</p>
             </div>
@@ -257,7 +260,7 @@ function CardsDisplay() {
         <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#00C853" strokeWidth="2.5" strokeLinecap="round">
           <polyline points="20 6 9 17 4 12" />
         </svg>
-        <span className="text-xs font-medium text-[var(--text-primary)]">Hover to flip</span>
+        <span className="text-xs font-medium text-[var(--text-primary)]">{t("features.hoverToFlip")}</span>
       </motion.div>
 
       {/* styles in globals.css */}
@@ -267,6 +270,8 @@ function CardsDisplay() {
 
 /* ── Main Features Component ─────────────────────────────── */
 export function Features() {
+  const { t } = useLanguage();
+
   return (
     <>
       {/* Why Choose Us — Animated Banner */}
@@ -276,36 +281,36 @@ export function Features() {
           {/* ── Animated Banner ── */}
           <AnimatedSection className="mb-16 md:mb-20">
             <div className="features-banner relative overflow-hidden rounded-3xl border border-[var(--glass-border)] bg-[var(--surface)] p-8 md:p-12 lg:p-16">
-              {/* Animated gradient border glow */}
+              {/* Animated gradient mesh glow */}
               <div className="absolute inset-0 rounded-3xl opacity-40" style={{
-                background: "linear-gradient(135deg, transparent 30%, rgba(54,211,153,0.15) 50%, transparent 70%)",
+                background: "linear-gradient(135deg, transparent 20%, rgba(0,232,157,0.12) 40%, rgba(0,240,255,0.08) 60%, transparent 80%)",
                 backgroundSize: "200% 200%",
                 animation: "bannerShimmer 6s ease-in-out infinite",
               }} />
 
-              {/* Floating orbs */}
+              {/* Floating orbs — Web3 neon colors */}
               <motion.div
                 animate={{ x: [0, 40, 0], y: [0, -20, 0], scale: [1, 1.2, 1] }}
                 transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
                 className="absolute top-8 right-[15%] w-32 h-32 rounded-full opacity-20"
-                style={{ background: "radial-gradient(circle, #36D399, transparent 70%)", filter: "blur(40px)" }}
+                style={{ background: "radial-gradient(circle, var(--primary), transparent 70%)", filter: "blur(40px)" }}
               />
               <motion.div
                 animate={{ x: [0, -30, 0], y: [0, 25, 0], scale: [1, 1.15, 1] }}
                 transition={{ duration: 10, repeat: Infinity, ease: "easeInOut", delay: 2 }}
                 className="absolute bottom-4 left-[10%] w-40 h-40 rounded-full opacity-15"
-                style={{ background: "radial-gradient(circle, #C9A84C, transparent 70%)", filter: "blur(50px)" }}
+                style={{ background: "radial-gradient(circle, var(--neon-purple), transparent 70%)", filter: "blur(50px)" }}
               />
               <motion.div
                 animate={{ x: [0, 20, 0], y: [0, -15, 0] }}
                 transition={{ duration: 7, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-                className="absolute top-1/2 left-[60%] w-24 h-24 rounded-full opacity-10"
-                style={{ background: "radial-gradient(circle, #4AE8AC, transparent 70%)", filter: "blur(30px)" }}
+                className="absolute top-1/2 left-[60%] w-24 h-24 rounded-full opacity-15"
+                style={{ background: "radial-gradient(circle, var(--neon-cyan), transparent 70%)", filter: "blur(30px)" }}
               />
 
-              {/* Grid pattern */}
-              <div className="absolute inset-0 opacity-[0.03]" style={{
-                backgroundImage: "linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)",
+              {/* Cyber grid pattern */}
+              <div className="absolute inset-0 opacity-[0.04]" style={{
+                backgroundImage: "linear-gradient(var(--neon-cyan) 1px, transparent 1px), linear-gradient(90deg, var(--neon-cyan) 1px, transparent 1px)",
                 backgroundSize: "40px 40px",
               }} />
 
@@ -319,7 +324,7 @@ export function Features() {
                 >
                   <span className="inline-flex items-center gap-2 rounded-full border border-[#36D399]/30 bg-[#36D399]/10 text-[#36D399] px-4 py-1.5 mb-6 text-xs font-semibold uppercase tracking-[0.15em]">
                     <ShieldCheck className="h-3.5 w-3.5" />
-                    Why Choose Us
+                    {t("features.whyChooseUs")}
                   </span>
                 </motion.div>
 
@@ -330,9 +335,9 @@ export function Features() {
                   transition={{ duration: 0.6, delay: 0.1 }}
                   className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-[var(--text-primary)]"
                 >
-                  All-in-One Financial{" "}
-                  <span className="bg-gradient-to-r from-[#36D399] to-[#4AE8AC] bg-clip-text text-transparent">
-                    Platform
+                  {t("features.allInOneTitle")}{" "}
+                  <span className="web3-gradient-text">
+                    {t("features.allInOneTitleHighlight")}
                   </span>
                 </motion.h2>
 
@@ -343,8 +348,7 @@ export function Features() {
                   transition={{ duration: 0.6, delay: 0.2 }}
                   className="mt-5 text-lg text-[var(--text-secondary)] leading-relaxed"
                 >
-                  Crymad Cash brings together essential financial services into a single platform.
-                  Manage payments, digital wallets, and global transfers without the complexity.
+                  {t("features.allInOneDesc")}
                 </motion.p>
 
                 {/* Animated keyword ticker */}
@@ -355,16 +359,23 @@ export function Features() {
                   transition={{ duration: 0.6, delay: 0.4 }}
                   className="mt-8 flex justify-center gap-3 flex-wrap"
                 >
-                  {["Multi-Currency", "Instant Transfers", "Crypto Ready", "Bank-Grade Security", "Global Reach", "API Powered"].map((tag, i) => (
+                  {[
+                    t("features.multiCurrency"),
+                    t("features.instantTransfers"),
+                    t("features.cryptoReady"),
+                    t("features.bankGradeSecurity"),
+                    t("features.globalReach"),
+                    t("features.apiPowered"),
+                  ].map((tag, i) => (
                     <motion.span
-                      key={tag}
+                      key={i}
                       initial={{ opacity: 0, scale: 0.8 }}
                       whileInView={{ opacity: 1, scale: 1 }}
                       viewport={{ once: true }}
                       transition={{ duration: 0.4, delay: 0.5 + i * 0.08 }}
-                      className="inline-flex items-center gap-1.5 rounded-full border border-[var(--glass-border)] bg-[var(--glass-bg)] px-3.5 py-1.5 text-xs text-[var(--text-secondary)] font-medium"
+                      className="inline-flex items-center gap-1.5 rounded-full border border-[var(--glass-border)] bg-[var(--glass-bg)] backdrop-blur-sm px-3.5 py-1.5 text-xs text-[var(--text-secondary)] font-medium hover:border-[var(--primary)]/20 transition-colors duration-300"
                     >
-                      <span className="w-1.5 h-1.5 rounded-full bg-[#36D399]/60" />
+                      <span className="w-1.5 h-1.5 rounded-full bg-[var(--primary)]" style={{ boxShadow: "0 0 6px var(--primary)" }} />
                       {tag}
                     </motion.span>
                   ))}
@@ -375,12 +386,12 @@ export function Features() {
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {[
-              { icon: Globe, title: "Global Payments", desc: "Send and receive money worldwide with support for multiple currencies.", bottom: "Worldwide", variant: "" },
-              { icon: Wallet, title: "Crypto Integration", desc: "Access digital asset functionality directly from your wallet.", bottom: "Digital Assets", variant: "lux-card-gold" },
-              { icon: Building2, title: "Built for Business", desc: "Scalable financial solutions for businesses with API connectivity.", bottom: "Enterprise", variant: "" },
-              { icon: ShieldCheck, title: "Secure by Design", desc: "Advanced security including encryption and multi-factor auth.", bottom: "Protected", variant: "lux-card-gold" },
+              { icon: Globe, titleKey: "features.globalPayments", descKey: "features.globalPaymentsDesc", bottomKey: "features.worldwide", variant: "" },
+              { icon: Wallet, titleKey: "features.cryptoIntegration", descKey: "features.cryptoIntegrationDesc", bottomKey: "features.digitalAssets", variant: "lux-card-gold" },
+              { icon: Building2, titleKey: "features.builtForBusiness", descKey: "features.builtForBusinessDesc", bottomKey: "features.enterprise", variant: "" },
+              { icon: ShieldCheck, titleKey: "features.secureByDesign", descKey: "features.secureByDesignDesc", bottomKey: "features.protected", variant: "lux-card-gold" },
             ].map((feat, i) => (
-              <AnimatedSection key={feat.title} delay={i * 0.1}>
+              <AnimatedSection key={feat.titleKey} delay={i * 0.1}>
                 <div className={`lux-card ${feat.variant}`}>
                   <div className="lux-border" />
                   <div className="lux-content">
@@ -388,10 +399,10 @@ export function Features() {
                       <feat.icon className="w-full h-full" strokeWidth={1.5} />
                       <div className="lux-trail" />
                     </div>
-                    <span className="lux-title">{feat.title}</span>
+                    <span className="lux-title">{t(feat.titleKey)}</span>
                   </div>
-                  <p className="lux-desc">{feat.desc}</p>
-                  <span className="lux-bottom-text">{feat.bottom}</span>
+                  <p className="lux-desc">{t(feat.descKey)}</p>
+                  <span className="lux-bottom-text">{t(feat.bottomKey)}</span>
                 </div>
               </AnimatedSection>
             ))}
@@ -407,32 +418,35 @@ export function Features() {
       {/* Showcase 1: Global Payments */}
       <ShowcaseSection
         id="global-payments"
-        label="Global Payments"
+        label={t("features.globalPayments")}
         labelIcon={Globe}
-        title="Send Money"
-        titleHighlight="Anywhere in the World"
-        description="Send and receive money worldwide with support for multiple currencies, helping reduce unnecessary exchange costs and simplifying international transactions."
+        title={t("features.sendMoney")}
+        titleHighlight={t("features.anywhereInTheWorld")}
+        description={t("features.globalPaymentsFullDesc")}
         features={[
-          { icon: Send, title: "Instant Cross-Border Transfers" },
-          { icon: Wallet, title: "Multi-Currency Accounts" },
-          { icon: BarChart3, title: "Competitive Exchange Rates" },
+          { icon: Send, title: t("features.instantCrossBorder") },
+          { icon: Wallet, title: t("features.multiCurrencyAccounts") },
+          { icon: BarChart3, title: t("features.competitiveRates") },
         ]}
       >
-        <div className="relative rounded-3xl overflow-hidden border border-[var(--glass-border)] shadow-2xl shadow-black/40 group">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src="/global-payments.gif"
-            alt="Global payments virtual card"
-            className="w-full h-[360px] md:h-[420px] object-cover transition-transform duration-700 group-hover:scale-[1.03]"
-          />
-          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[var(--background)]/60" />
-          <div className="absolute bottom-5 left-5 right-5 flex items-center gap-3 rounded-2xl bg-[var(--background)]/80 backdrop-blur-xl border border-[var(--glass-border)] px-5 py-4">
+        <div>
+          <div className="rounded-3xl overflow-hidden border border-[var(--glass-border)] shadow-2xl shadow-black/40 group">
+            <video
+              src="/global-payments.mp4"
+              autoPlay
+              loop
+              muted
+              playsInline
+              className="w-full h-[360px] md:h-[420px] object-cover scale-[1.12] transition-transform duration-700 group-hover:scale-[1.15]"
+            />
+          </div>
+          <div className="mt-4 flex items-center gap-3 rounded-2xl bg-[var(--glass-bg)] border border-[var(--glass-border)] px-5 py-4">
             <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[#36D399]/15">
               <Globe className="h-5 w-5 text-[#36D399]" />
             </div>
             <div>
-              <p className="text-sm font-semibold text-[var(--text-primary)]">150+ Countries</p>
-              <p className="text-xs text-[var(--text-secondary)]">Send money worldwide instantly</p>
+              <p className="text-sm font-semibold text-[var(--text-primary)]">{t("features.fiftyPlusCountries")}</p>
+              <p className="text-xs text-[var(--text-secondary)]">{t("features.sendMoneyWorldwide")}</p>
             </div>
           </div>
         </div>
@@ -440,34 +454,37 @@ export function Features() {
 
       {/* Showcase 2: Crypto Integration */}
       <ShowcaseSection
-        label="Crypto Integration"
+        label={t("features.cryptoIntegration")}
         labelIcon={Bitcoin}
-        title="Traditional & Digital Assets,"
-        titleHighlight="One Wallet"
+        title={t("features.traditionalDigital")}
+        titleHighlight={t("features.oneWallet")}
         titleHighlightGold
-        description="Access digital asset functionality directly from your wallet. Manage both traditional currencies and cryptocurrencies including Bitcoin, Ethereum, USDT, and USDC."
+        description={t("features.cryptoFullDesc")}
         reverse
         features={[
-          { icon: BarChart3, title: "Real-Time Crypto Portfolio", gold: true },
-          { icon: ArrowRight, title: "Buy, Sell & Hold Digital Assets", gold: true },
-          { icon: ShieldCheck, title: "Secure Cold Storage", gold: true },
+          { icon: BarChart3, title: t("features.realTimeCryptoPortfolio"), gold: true },
+          { icon: ArrowRight, title: t("features.buySellHold"), gold: true },
+          { icon: ShieldCheck, title: t("features.secureColdStorage"), gold: true },
         ]}
       >
-        <div className="relative rounded-3xl overflow-hidden border border-[var(--glass-border)] shadow-2xl shadow-black/40 group">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src="/crypto-integration.gif"
-            alt="Crypto integration virtual card"
-            className="w-full h-[360px] md:h-[420px] object-cover transition-transform duration-700 group-hover:scale-[1.03]"
-          />
-          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[var(--background)]/60" />
-          <div className="absolute bottom-5 left-5 right-5 flex items-center gap-3 rounded-2xl bg-[var(--background)]/80 backdrop-blur-xl border border-[var(--glass-border)] px-5 py-4">
+        <div>
+          <div className="rounded-3xl overflow-hidden border border-[var(--glass-border)] shadow-2xl shadow-black/40 group">
+            <video
+              src="/crypto-integration.mp4"
+              autoPlay
+              loop
+              muted
+              playsInline
+              className="w-full h-[360px] md:h-[420px] object-cover scale-[1.12] transition-transform duration-700 group-hover:scale-[1.15]"
+            />
+          </div>
+          <div className="mt-4 flex items-center gap-3 rounded-2xl bg-[var(--glass-bg)] border border-[var(--glass-border)] px-5 py-4">
             <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-amber-500/15">
               <Bitcoin className="h-5 w-5 text-amber-400" />
             </div>
             <div>
-              <p className="text-sm font-semibold text-[var(--text-primary)]">Crypto Enabled</p>
-              <p className="text-xs text-[var(--text-secondary)]">BTC, ETH, USDT & more</p>
+              <p className="text-sm font-semibold text-[var(--text-primary)]">{t("features.cryptoEnabled")}</p>
+              <p className="text-xs text-[var(--text-secondary)]">{t("features.btcEthMore")}</p>
             </div>
           </div>
         </div>
@@ -481,17 +498,16 @@ export function Features() {
             <div className="text-center max-w-3xl mx-auto pt-20 md:pt-28 mb-16">
               <div className="inline-flex items-center gap-2 rounded-full border border-[#36D399]/30 bg-[#36D399]/10 text-[#36D399] px-4 py-1.5 mb-5 text-xs font-semibold uppercase tracking-[0.15em]">
                 <CreditCard className="h-3.5 w-3.5" />
-                Cards & Wallet
+                {t("features.cardsWallet")}
               </div>
               <h2 className="text-3xl sm:text-4xl md:text-[2.75rem] font-bold tracking-tight text-[var(--text-primary)] leading-[1.1] mb-5">
-                Virtual & Physical{" "}
-                <span className="bg-gradient-to-r from-[#36D399] to-[#4AE8AC] bg-clip-text text-transparent">
-                  Cards for Every Need
+                {t("features.virtualPhysical")}{" "}
+                <span className="web3-gradient-text">
+                  {t("features.cardsForEveryNeed")}
                 </span>
               </h2>
               <p className="text-base text-[var(--text-secondary)] leading-relaxed max-w-2xl mx-auto">
-                Get instant virtual cards for online spending and physical cards for in-store purchases.
-                All your cards organized in one secure digital wallet.
+                {t("features.cardsDesc")}
               </p>
             </div>
 
@@ -500,7 +516,7 @@ export function Features() {
               {/* Flip Card */}
               <div className="flex flex-col items-center">
                 <CardsDisplay />
-                <p className="text-xs text-[var(--text-tertiary)] mt-4 italic">Hover card to flip</p>
+                <p className="text-xs text-[var(--text-tertiary)] mt-4 italic">{t("features.hoverToFlip")}</p>
               </div>
 
               {/* Wallet */}
@@ -512,12 +528,12 @@ export function Features() {
             {/* Features row below */}
             <div className="grid sm:grid-cols-3 gap-4 pb-20 md:pb-28">
               {[
-                { icon: ArrowRight, title: "Instant Virtual Card Creation", desc: "Generate a new virtual card in seconds" },
-                { icon: Globe, title: "Spend in Any Currency", desc: "Automatic conversion at competitive rates" },
-                { icon: ShieldCheck, title: "Freeze & Unfreeze Instantly", desc: "Full control from your app at any time" },
+                { icon: ArrowRight, titleKey: "features.instantVirtualCard", descKey: "features.generateNewCard" },
+                { icon: Globe, titleKey: "features.spendAnyCurrency", descKey: "features.automaticConversion" },
+                { icon: ShieldCheck, titleKey: "features.freezeUnfreeze", descKey: "features.fullControl" },
               ].map((feat) => (
                 <motion.div
-                  key={feat.title}
+                  key={feat.titleKey}
                   whileHover={{ y: -3 }}
                   className="flex items-center gap-3.5 p-4 rounded-xl bg-[var(--glass-bg)] border border-[var(--glass-border)] hover:border-[#36D399]/15 hover:bg-[#36D399]/[0.03] transition-all duration-300"
                 >
@@ -525,8 +541,8 @@ export function Features() {
                     <feat.icon className="h-[18px] w-[18px] text-[#36D399]" />
                   </div>
                   <div>
-                    <p className="text-sm font-semibold text-[var(--text-primary)]">{feat.title}</p>
-                    <p className="text-xs text-[var(--text-tertiary)] mt-0.5">{feat.desc}</p>
+                    <p className="text-sm font-semibold text-[var(--text-primary)]">{t(feat.titleKey)}</p>
+                    <p className="text-xs text-[var(--text-tertiary)] mt-0.5">{t(feat.descKey)}</p>
                   </div>
                 </motion.div>
               ))}
@@ -541,29 +557,41 @@ export function Features() {
       {/* Showcase 4: Business */}
       <ShowcaseSection
         id="business"
-        label="For Business"
+        label={t("features.forBusiness")}
         labelIcon={Building2}
-        title="Financial Infrastructure for"
-        titleHighlight="Modern Business"
+        title={t("features.financialInfrastructure")}
+        titleHighlight={t("features.modernBusiness")}
         titleHighlightGold
-        description="Crymad Cash business accounts provide powerful financial tools designed for global operations. Enable payouts, integrate payments, and manage multi-currency accounts at scale."
+        description={t("features.businessFullDesc")}
         reverse
-        image={{
-          src: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80",
-          alt: "Business financial dashboard and analytics",
-        }}
-        imageBadge={{
-          icon: Building2,
-          title: "API Ready",
-          description: "Seamless business integration",
-          gold: true,
-        }}
         features={[
-          { icon: ArrowRight, title: "Global Payouts to Teams & Partners", gold: true },
-          { icon: Building2, title: "Secure API & Payment Integration", gold: true },
-          { icon: Bitcoin, title: "Accept Crypto Payments", gold: true },
+          { icon: ArrowRight, title: t("features.globalPayouts"), gold: true },
+          { icon: Building2, title: t("features.secureApi"), gold: true },
+          { icon: Bitcoin, title: t("features.acceptCrypto"), gold: true },
         ]}
-      />
+      >
+        <div>
+          <div className="rounded-3xl overflow-hidden border border-[var(--glass-border)] shadow-2xl shadow-black/40 group">
+            <video
+              src="/business-infrastructure.mp4"
+              autoPlay
+              loop
+              muted
+              playsInline
+              className="w-full h-[360px] md:h-[420px] object-cover scale-[1.12] transition-transform duration-700 group-hover:scale-[1.15]"
+            />
+          </div>
+          <div className="mt-4 flex items-center gap-3 rounded-2xl bg-[var(--glass-bg)] border border-[var(--glass-border)] px-5 py-4">
+            <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-amber-500/15">
+              <Building2 className="h-5 w-5 text-amber-400" />
+            </div>
+            <div>
+              <p className="text-sm font-semibold text-[var(--text-primary)]">{t("features.apiReady")}</p>
+              <p className="text-xs text-[var(--text-secondary)]">{t("features.seamlessIntegration")}</p>
+            </div>
+          </div>
+        </div>
+      </ShowcaseSection>
     </>
   );
 }

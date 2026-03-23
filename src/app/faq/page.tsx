@@ -31,7 +31,7 @@ const faqCategories: FAQCategory[] = [
       {
         question: "Who can open an account?",
         answer:
-          "Both individuals and businesses can open Crymad Cash accounts subject to identity verification and compliance checks. We support customers from over 150 countries worldwide.",
+          "Both individuals and businesses can open Crymad Cash accounts subject to identity verification and compliance checks. We support customers from over 50 countries worldwide.",
       },
       {
         question: "How do I get started?",
@@ -81,7 +81,7 @@ const faqCategories: FAQCategory[] = [
       {
         question: "Can I send international payments?",
         answer:
-          "Absolutely. Crymad Cash enables global transfers and cross-border payments to 150+ countries with competitive exchange rates and fast processing times across all supported currencies.",
+          "Absolutely. Crymad Cash enables global transfers and cross-border payments to 50+ countries with competitive exchange rates and fast processing times across all supported currencies.",
       },
       {
         question: "What are the fees for currency conversion?",

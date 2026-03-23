@@ -5,34 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Plus } from "lucide-react";
 import { AnimatedSection } from "./AnimatedSection";
 import Image from "next/image";
-
-const faqs = [
-  {
-    question: "Is Crymad Cash a bank?",
-    answer:
-      "Crymad Cash is a financial technology platform that provides access to digital financial services through licensed financial partners. We are not a bank, but we work with regulated financial institutions to provide secure and compliant banking-like services.",
-  },
-  {
-    question: "Who can open an account?",
-    answer:
-      "Both individuals and businesses can open Crymad Cash accounts subject to identity verification and compliance checks. We support customers from over 150 countries worldwide.",
-  },
-  {
-    question: "What currencies are supported?",
-    answer:
-      "Crymad Cash supports 100+ fiat currencies including USD, EUR, GBP, and more, as well as popular cryptocurrencies like Bitcoin (BTC), Ethereum (ETH), Tether (USDT), and USD Coin (USDC).",
-  },
-  {
-    question: "Are my funds secure?",
-    answer:
-      "Yes. Crymad Cash uses AES-256 encryption, multi-factor authentication, and real-time transaction monitoring to protect your account. We comply with international financial standards and employ advanced fraud detection systems.",
-  },
-  {
-    question: "Can I send international payments?",
-    answer:
-      "Absolutely. Crymad Cash enables global transfers and cross-border payments to 150+ countries with competitive exchange rates and fast processing times across all supported currencies.",
-  },
-];
+import { useLanguage, useTranslatedItems } from "@/i18n/LanguageContext";
 
 function FAQItem({ question, answer, index }: { question: string; answer: string; index: number }) {
   const [isOpen, setIsOpen] = useState(false);
@@ -82,17 +55,20 @@ function FAQItem({ question, answer, index }: { question: string; answer: string
 }
 
 export function FAQ() {
+  const { t } = useLanguage();
+  const faqItems = useTranslatedItems<{ question: string; answer: string }>("faq.items");
+
   return (
     <section id="faq" className="relative py-24 md:py-32 bg-gradient-to-b from-[var(--background)] to-[var(--section-alt)]">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <AnimatedSection className="text-center mb-16">
           <span className="inline-block text-sm font-semibold text-[#36D399] uppercase tracking-widest mb-4">
-            FAQ
+            {t("faq.badge")}
           </span>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-[var(--text-primary)]">
-            Frequently Asked{" "}
+            {t("faq.title")}{" "}
             <span className="bg-gradient-to-r from-[#36D399] to-[#4AE8AC] bg-clip-text text-transparent">
-              Questions
+              {t("faq.titleHighlight")}
             </span>
           </h2>
         </AnimatedSection>
@@ -102,7 +78,7 @@ export function FAQ() {
           <AnimatedSection className="hidden lg:block sticky top-24">
             <div className="rounded-3xl overflow-hidden border border-[var(--glass-border)] shadow-2xl shadow-black/40">
               <Image
-                src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=600&q=80"
+                src="/faq-image.jpg"
                 alt="Customer support"
                 width={600}
                 height={500}
@@ -113,8 +89,8 @@ export function FAQ() {
 
           {/* FAQ List */}
           <div className="flex flex-col gap-3">
-            {faqs.map((faq, index) => (
-              <FAQItem key={faq.question} {...faq} index={index} />
+            {faqItems.map((faq, index) => (
+              <FAQItem key={index} question={faq.question} answer={faq.answer} index={index} />
             ))}
           </div>
         </div>

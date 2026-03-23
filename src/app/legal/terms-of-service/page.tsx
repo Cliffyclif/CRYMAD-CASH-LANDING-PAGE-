@@ -57,7 +57,7 @@ export default function TermsOfService() {
       <ul>
         <li><strong>Multi-Currency Wallets:</strong> Hold balances in 100+ fiat currencies and select cryptocurrencies;</li>
         <li><strong>Currency Conversion:</strong> Convert between supported fiat and cryptocurrency pairs at market-based exchange rates;</li>
-        <li><strong>Domestic and International Transfers:</strong> Send and receive funds to and from bank accounts, cards, and other Crymad Cash users in 150+ countries;</li>
+        <li><strong>Domestic and International Transfers:</strong> Send and receive funds to and from bank accounts, cards, and other Crymad Cash users in 50+ countries;</li>
         <li><strong>Debit Cards:</strong> Virtual and physical debit cards for online and in-store purchases, and ATM withdrawals;</li>
         <li><strong>Cryptocurrency Services:</strong> Buy, sell, and hold supported cryptocurrencies;</li>
         <li><strong>Business Tools:</strong> Multi-user access, role-based permissions, bulk payments, and API integrations (Business Accounts only).</li>

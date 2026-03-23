@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, Send, CheckCircle, AlertCircle, Loader2, Building2, Globe, Wallet, Shield, Zap } from "lucide-react";
+import { useLanguage, useTranslatedArray } from "@/i18n/LanguageContext";
 
 type ContactChannel = "support" | "business" | "compliance";
 
@@ -14,53 +15,10 @@ interface ContactModalProps {
 
 type FormStatus = "idle" | "sending" | "success" | "error";
 
-const CHANNEL_CONFIG: Record<ContactChannel, {
-  title: string;
-  description: string;
-  subjects: string[];
-}> = {
-  support: {
-    title: "Get in Touch",
-    description: "We'd love to hear from you",
-    subjects: [
-      "Personal Account Inquiry",
-      "Card Services",
-      "Technical Support",
-      "General Question",
-      "Other",
-    ],
-  },
-  business: {
-    title: "Business Inquiries",
-    description: "Let's explore how Crymad Cash can power your business",
-    subjects: [
-      "Business Solutions",
-      "Business Account Setup",
-      "Global Payments",
-      "Crypto Integration",
-      "Partnership Opportunity",
-      "API & Developer Access",
-      "Other",
-    ],
-  },
-  compliance: {
-    title: "Compliance & Legal",
-    description: "Questions about our policies and regulatory compliance",
-    subjects: [
-      "AML Policy",
-      "Terms of Service",
-      "Privacy Policy",
-      "Risk Disclosure",
-      "Partner Disclosures",
-      "KYC / Identity Verification",
-      "Regulatory Inquiry",
-      "Other",
-    ],
-  },
-};
-
 export function ContactModal({ isOpen, onClose, channel = "support" }: ContactModalProps) {
-  const config = CHANNEL_CONFIG[channel];
+  const { t } = useLanguage();
+  const subjects = useTranslatedArray(`contact.${channel}.subjects`);
+
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [subject, setSubject] = useState("");
@@ -126,11 +84,11 @@ export function ContactModal({ isOpen, onClose, channel = "support" }: ContactMo
         setStatus("success");
       } else {
         setStatus("error");
-        setErrorMsg(data.error || "Something went wrong. Please try again.");
+        setErrorMsg(data.error || t("contact.genericError"));
       }
     } catch {
       setStatus("error");
-      setErrorMsg("Network error. Please check your connection and try again.");
+      setErrorMsg(t("contact.networkError"));
     }
   };
 
@@ -172,10 +130,10 @@ export function ContactModal({ isOpen, onClose, channel = "support" }: ContactMo
                   )}
                   <div>
                     <h2 className="text-lg font-bold text-[var(--text-primary)]">
-                      {config.title}
+                      {t(`contact.${channel}.title`)}
                     </h2>
                     <p className="text-sm text-[var(--text-secondary)] mt-0.5">
-                      {config.description}
+                      {t(`contact.${channel}.description`)}
                     </p>
                   </div>
                 </div>
@@ -195,29 +153,29 @@ export function ContactModal({ isOpen, onClose, channel = "support" }: ContactMo
                 {channel === "business" && status !== "success" && (
                   <div className="md:w-[280px] shrink-0 border-b md:border-b-0 md:border-r border-[var(--glass-border)] bg-[var(--glass-bg)] px-6 py-6">
                     <p className="text-xs font-semibold text-[#36D399] uppercase tracking-widest mb-5">
-                      Why Crymad Cash for Business
+                      {t("contact.whyBusiness")}
                     </p>
                     <div className="flex flex-col gap-4">
                       {[
-                        { icon: Globe, title: "150+ Countries", desc: "Send and receive payments globally with competitive FX rates" },
-                        { icon: Wallet, title: "Multi-Currency Accounts", desc: "Hold, convert, and manage 100+ fiat & crypto currencies" },
-                        { icon: Shield, title: "Enterprise Security", desc: "AES-256 encryption, MFA, and real-time fraud monitoring" },
-                        { icon: Zap, title: "Instant Settlement", desc: "Near-instant cross-border transfers with transparent fees" },
+                        { icon: Globe, titleKey: "contact.countriesLabel", descKey: "contact.countriesDesc" },
+                        { icon: Wallet, titleKey: "contact.multiCurrencyTitle", descKey: "contact.multiCurrencyDesc" },
+                        { icon: Shield, titleKey: "contact.enterpriseSecurity", descKey: "contact.enterpriseSecurityDesc" },
+                        { icon: Zap, titleKey: "contact.instantSettlement", descKey: "contact.instantSettlementDesc" },
                       ].map((item) => (
-                        <div key={item.title} className="flex gap-3">
+                        <div key={item.titleKey} className="flex gap-3">
                           <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-[#36D399]/10">
                             <item.icon className="h-4 w-4 text-[#36D399]" />
                           </div>
                           <div>
-                            <p className="text-sm font-semibold text-[var(--text-primary)]">{item.title}</p>
-                            <p className="text-xs text-[var(--text-secondary)] leading-relaxed mt-0.5">{item.desc}</p>
+                            <p className="text-sm font-semibold text-[var(--text-primary)]">{t(item.titleKey)}</p>
+                            <p className="text-xs text-[var(--text-secondary)] leading-relaxed mt-0.5">{t(item.descKey)}</p>
                           </div>
                         </div>
                       ))}
                     </div>
                     <div className="mt-6 rounded-xl bg-[#36D399]/5 border border-[#36D399]/10 p-4">
                       <p className="text-xs text-[var(--text-secondary)] leading-relaxed">
-                        Trusted by businesses across <strong className="text-[var(--text-primary)]">150+ countries</strong>. Our dedicated sales team will help you find the right solution for your needs.
+                        {t("contact.trustedBy")} <strong className="text-[var(--text-primary)]">{t("contact.fiftyPlusCountries")}</strong>{t("contact.salesTeamHelp")}
                       </p>
                     </div>
                   </div>
@@ -232,19 +190,19 @@ export function ContactModal({ isOpen, onClose, channel = "support" }: ContactMo
                     >
                       <CheckCircle className="h-14 w-14 text-[var(--primary)] mx-auto mb-4" />
                       <h3 className="text-xl font-bold text-[var(--text-primary)] mb-2">
-                        {channel === "business" ? "We'll Be in Touch!" : "Message Sent!"}
+                        {channel === "business" ? t("contact.wellBeInTouch") : t("contact.messageSent")}
                       </h3>
                       <p className="text-sm text-[var(--text-secondary)] mb-6">
                         {channel === "business"
-                          ? "A member of our sales team will reach out within 24 hours to discuss your business needs."
-                          : "Thank you for reaching out. We\u2019ll get back to you within 24 hours."}
+                          ? t("contact.businessSuccessMsg")
+                          : t("contact.supportSuccessMsg")}
                       </p>
                       <button
                         type="button"
                         onClick={handleClose}
                         className="inline-flex items-center justify-center rounded-lg bg-[var(--primary)] px-6 py-2.5 text-sm font-semibold text-white hover:brightness-110 transition-all"
                       >
-                        Done
+                        {t("contact.done")}
                       </button>
                     </motion.div>
                   ) : (
@@ -256,7 +214,7 @@ export function ContactModal({ isOpen, onClose, channel = "support" }: ContactMo
                             htmlFor="contact-name"
                             className="block text-xs font-semibold text-[var(--text-secondary)] uppercase tracking-wider mb-1.5"
                           >
-                            {channel === "business" ? "Full Name" : "Name"}
+                            {channel === "business" ? t("contact.fullName") : t("contact.name")}
                           </label>
                           <input
                             id="contact-name"
@@ -264,7 +222,7 @@ export function ContactModal({ isOpen, onClose, channel = "support" }: ContactMo
                             required
                             value={name}
                             onChange={(e) => setName(e.target.value)}
-                            placeholder={channel === "business" ? "John Doe" : "Your name"}
+                            placeholder={channel === "business" ? t("contact.businessPlaceholderName") : t("contact.supportPlaceholderName")}
                             className="w-full rounded-lg border border-[var(--glass-border)] bg-[var(--glass-bg)] px-4 py-2.5 text-sm text-[var(--text-primary)] placeholder:text-[var(--text-tertiary)] focus:outline-none focus:ring-2 focus:ring-[var(--primary)] focus:border-transparent transition-all"
                           />
                         </div>
@@ -273,7 +231,7 @@ export function ContactModal({ isOpen, onClose, channel = "support" }: ContactMo
                             htmlFor="contact-email"
                             className="block text-xs font-semibold text-[var(--text-secondary)] uppercase tracking-wider mb-1.5"
                           >
-                            {channel === "business" ? "Work Email" : "Email"}
+                            {channel === "business" ? t("contact.workEmail") : t("contact.email")}
                           </label>
                           <input
                             id="contact-email"
@@ -281,7 +239,7 @@ export function ContactModal({ isOpen, onClose, channel = "support" }: ContactMo
                             required
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
-                            placeholder={channel === "business" ? "you@company.com" : "you@example.com"}
+                            placeholder={channel === "business" ? t("contact.businessPlaceholderEmail") : t("contact.supportPlaceholderEmail")}
                             className="w-full rounded-lg border border-[var(--glass-border)] bg-[var(--glass-bg)] px-4 py-2.5 text-sm text-[var(--text-primary)] placeholder:text-[var(--text-tertiary)] focus:outline-none focus:ring-2 focus:ring-[var(--primary)] focus:border-transparent transition-all"
                           />
                         </div>
@@ -293,7 +251,7 @@ export function ContactModal({ isOpen, onClose, channel = "support" }: ContactMo
                           htmlFor="contact-subject"
                           className="block text-xs font-semibold text-[var(--text-secondary)] uppercase tracking-wider mb-1.5"
                         >
-                          {channel === "business" ? "I'm interested in" : "Subject"}
+                          {channel === "business" ? t("contact.interestedIn") : t("contact.subject")}
                         </label>
                         <select
                           id="contact-subject"
@@ -302,9 +260,9 @@ export function ContactModal({ isOpen, onClose, channel = "support" }: ContactMo
                           onChange={(e) => setSubject(e.target.value)}
                           className="w-full rounded-lg border border-[var(--glass-border)] bg-[var(--glass-bg)] px-4 py-2.5 text-sm text-[var(--text-primary)] focus:outline-none focus:ring-2 focus:ring-[var(--primary)] focus:border-transparent transition-all"
                         >
-                          <option value="">Select a topic</option>
-                          {config.subjects.map((s) => (
-                            <option key={s} value={s}>{s}</option>
+                          <option value="">{t("contact.selectTopic")}</option>
+                          {subjects.map((s, i) => (
+                            <option key={i} value={s}>{s}</option>
                           ))}
                         </select>
                       </div>
@@ -315,7 +273,7 @@ export function ContactModal({ isOpen, onClose, channel = "support" }: ContactMo
                           htmlFor="contact-message"
                           className="block text-xs font-semibold text-[var(--text-secondary)] uppercase tracking-wider mb-1.5"
                         >
-                          Message
+                          {t("contact.message")}
                         </label>
                         <textarea
                           id="contact-message"
@@ -323,7 +281,7 @@ export function ContactModal({ isOpen, onClose, channel = "support" }: ContactMo
                           rows={4}
                           value={message}
                           onChange={(e) => setMessage(e.target.value)}
-                          placeholder={channel === "business" ? "Tell us about your business and what you're looking for..." : "How can we help you?"}
+                          placeholder={channel === "business" ? t("contact.businessPlaceholderMsg") : t("contact.supportPlaceholderMsg")}
                           className="w-full rounded-lg border border-[var(--glass-border)] bg-[var(--glass-bg)] px-4 py-2.5 text-sm text-[var(--text-primary)] placeholder:text-[var(--text-tertiary)] focus:outline-none focus:ring-2 focus:ring-[var(--primary)] focus:border-transparent transition-all resize-none"
                         />
                       </div>
@@ -349,17 +307,17 @@ export function ContactModal({ isOpen, onClose, channel = "support" }: ContactMo
                         {status === "sending" ? (
                           <>
                             <Loader2 className="h-4 w-4 animate-spin" />
-                            Sending...
+                            {t("contact.sending")}
                           </>
                         ) : channel === "business" ? (
                           <>
                             <Send className="h-4 w-4" />
-                            Talk to Sales
+                            {t("contact.talkToSales")}
                           </>
                         ) : (
                           <>
                             <Send className="h-4 w-4" />
-                            Send Message
+                            {t("contact.sendMessage")}
                           </>
                         )}
                       </button>

@@ -421,7 +421,7 @@ export default function SecurityPage() {
                 Ready to bank with confidence?
               </h2>
               <p className="mt-4 text-lg text-[var(--text-secondary)]">
-                Join thousands of users who trust Crymad Cash with their finances across 150+ countries.
+                Join thousands of users who trust Crymad Cash with their finances across 50+ countries.
               </p>
               <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
                 <a

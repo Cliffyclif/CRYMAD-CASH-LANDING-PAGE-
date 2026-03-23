@@ -2,32 +2,44 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { useLanguage } from "@/i18n/LanguageContext";
 
-const footerLinks = {
-  Products: [
-    { label: "Personal Accounts", href: "https://production-crmdx.web.app/login" },
-    { label: "Business Accounts", href: "https://production-crmdx.web.app/login" },
-    { label: "Global Payments", href: "#contact-business" },
-    { label: "Crypto Integration", href: "#contact-business" },
-  ],
-  Company: [
-    { label: "About", href: "/about" },
-    { label: "Security", href: "/security" },
-    { label: "FAQ", href: "/faq" },
-    { label: "Support", href: "#contact" },
-  ],
-  Legal: [
-    { label: "Terms of Service", href: "/legal/terms-of-service" },
-    { label: "Privacy Policy", href: "/legal/privacy-policy" },
-    { label: "AML Policy", href: "/legal/aml-policy" },
-    { label: "Risk Disclosure", href: "/legal/risk-disclosure" },
-    { label: "Partner Disclosures", href: "/legal/partner-disclosures" },
-  ],
-};
+const footerSections = [
+  {
+    titleKey: "footer.products",
+    links: [
+      { labelKey: "footer.personalAccounts", href: "https://production-crmdx.web.app/login" },
+      { labelKey: "footer.businessAccounts", href: "https://production-crmdx.web.app/login" },
+      { labelKey: "footer.globalPayments", href: "#contact-business" },
+      { labelKey: "footer.cryptoIntegration", href: "#contact-business" },
+    ],
+  },
+  {
+    titleKey: "footer.company",
+    links: [
+      { labelKey: "footer.about", href: "/about" },
+      { labelKey: "footer.security", href: "/security" },
+      { labelKey: "footer.faq", href: "/faq" },
+      { labelKey: "footer.support", href: "#contact" },
+    ],
+  },
+  {
+    titleKey: "footer.legal",
+    links: [
+      { labelKey: "footer.termsOfService", href: "/legal/terms-of-service" },
+      { labelKey: "footer.privacyPolicy", href: "/legal/privacy-policy" },
+      { labelKey: "footer.amlPolicy", href: "/legal/aml-policy" },
+      { labelKey: "footer.riskDisclosure", href: "/legal/risk-disclosure" },
+      { labelKey: "footer.partnerDisclosures", href: "/legal/partner-disclosures" },
+    ],
+  },
+];
 
 export function Footer() {
+  const { t } = useLanguage();
+
   return (
-    <footer className="border-t border-border bg-background" role="contentinfo">
+    <footer className="relative bg-background" role="contentinfo" style={{ borderTop: "1px solid transparent", borderImage: "linear-gradient(90deg, transparent 5%, var(--neon-cyan), var(--primary), var(--neon-purple), transparent 95%) 1" }}>
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Main footer */}
         <div className="py-12 md:py-16 grid grid-cols-2 md:grid-cols-4 gap-8 lg:gap-12">
@@ -47,8 +59,7 @@ export function Footer() {
               </span>
             </a>
             <p className="mt-4 text-sm text-muted-foreground leading-relaxed max-w-xs">
-              Modern financial technology platform providing banking solutions for individuals and
-              businesses worldwide.
+              {t("footer.brandDesc")}
             </p>
 
             {/* Social Icons - Isometric Style */}
@@ -102,23 +113,24 @@ export function Footer() {
           </div>
 
           {/* Links */}
-          {Object.entries(footerLinks).map(([title, links]) => (
-            <div key={title}>
+          {footerSections.map((section) => (
+            <div key={section.titleKey}>
               <h3 className="text-sm font-semibold text-foreground uppercase tracking-wider mb-4">
-                {title}
+                {t(section.titleKey)}
               </h3>
               <ul className="space-y-3" role="list">
-                {links.map((link) => {
+                {section.links.map((link) => {
+                  const label = t(link.labelKey);
                   const cls = "text-sm text-muted-foreground hover:text-primary transition-colors duration-200 focus:outline-none focus:underline";
                   const isExternal = link.href.startsWith("http");
                   return (
-                    <li key={link.label}>
+                    <li key={link.labelKey}>
                       {isExternal ? (
-                        <a href={link.href} target="_blank" rel="noopener noreferrer" className={cls}>{link.label}</a>
+                        <a href={link.href} target="_blank" rel="noopener noreferrer" className={cls}>{label}</a>
                       ) : link.href.startsWith("/") ? (
-                        <Link href={link.href} className={cls}>{link.label}</Link>
+                        <Link href={link.href} className={cls}>{label}</Link>
                       ) : (
-                        <a href={link.href} className={cls}>{link.label}</a>
+                        <a href={link.href} className={cls}>{label}</a>
                       )}
                     </li>
                   );
@@ -131,12 +143,10 @@ export function Footer() {
         {/* Bottom bar */}
         <div className="border-t border-border py-6 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-xs text-muted-foreground text-center sm:text-left">
-            &copy; {new Date().getFullYear()} Crymad Cash. All rights reserved.
+            &copy; {new Date().getFullYear()} {t("footer.copyright")}
           </p>
           <p className="text-xs text-muted-foreground text-center sm:text-right max-w-md">
-            Crymad Cash is a financial technology platform. Banking and payment services are
-            provided by licensed financial institutions and regulated partners. Crymad Cash does
-            not directly hold customer deposits.
+            {t("footer.disclaimer")}
           </p>
         </div>
       </div>
