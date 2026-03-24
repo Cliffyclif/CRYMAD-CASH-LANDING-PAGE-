@@ -11,8 +11,6 @@ import { useLanguage } from "@/i18n/LanguageContext";
 
 const NAV_KEYS = [
   { key: "nav.home", href: "/" },
-  { key: "nav.personalAccounts", href: "https://production-crmdx.web.app/login" },
-  { key: "nav.businessAccounts", href: "https://production-crmdx.web.app/login" },
   { key: "nav.security", href: "/security" },
   { key: "nav.faq", href: "/faq" },
   { key: "nav.contact", href: "#contact" },
