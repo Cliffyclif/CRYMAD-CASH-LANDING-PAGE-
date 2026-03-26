@@ -7,6 +7,7 @@ interface TickerData {
   rate: string;
   change?: string;
   negative?: boolean;
+  isCrypto?: boolean;
 }
 
 /* ── Currency labels for readability ── */
@@ -64,10 +65,10 @@ function formatRate(rate: number): string {
   return rate.toFixed(4);
 }
 
-function TickerItem({ pair, rate, change, negative }: TickerData) {
+function TickerItem({ pair, rate, change, negative, isCrypto }: TickerData) {
   return (
     <span className="inline-flex items-center gap-2 whitespace-nowrap px-5 text-[12px]">
-      <span className="font-semibold text-[var(--text-primary)]">{pair}</span>
+      <span className={`font-semibold ${isCrypto ? "text-amber-400" : "text-[#36D399]"}`}>{pair}</span>
       <span className="tabular-nums text-[var(--text-secondary)]">{rate}</span>
       {change && (
         <span className={`tabular-nums font-medium ${negative ? "text-red-400" : "text-[#36D399]"}`}>
@@ -110,6 +111,7 @@ export function TickerBar() {
                 rate: formatRate(price),
                 change: `${ch >= 0 ? "+" : ""}${ch.toFixed(2)}%`,
                 negative: ch < 0,
+                isCrypto: true,
               });
             }
           }

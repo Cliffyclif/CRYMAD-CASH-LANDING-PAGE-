@@ -13,7 +13,7 @@ const NAV_KEYS = [
   { key: "nav.home", href: "/" },
   { key: "nav.security", href: "/security" },
   { key: "nav.faq", href: "/faq" },
-  { key: "nav.contact", href: "#contact" },
+  { key: "nav.contact", href: "/contact" },
   { key: "nav.about", href: "/about" },
 ];
 

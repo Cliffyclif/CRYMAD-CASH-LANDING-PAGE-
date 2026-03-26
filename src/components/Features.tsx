@@ -512,7 +512,7 @@ export function Features() {
             </div>
 
             {/* Two cards side by side */}
-            <div className="grid lg:grid-cols-2 gap-12 lg:gap-8 items-center pb-12">
+            <div className="relative grid lg:grid-cols-2 gap-12 lg:gap-8 items-center pb-12">
               {/* Flip Card */}
               <div className="flex flex-col items-center">
                 <CardsDisplay />
@@ -522,6 +522,17 @@ export function Features() {
               {/* Wallet */}
               <div className="flex flex-col items-center">
                 <WalletCards />
+              </div>
+
+              {/* Coming Soon Overlay */}
+              <div className="absolute inset-0 z-40 flex items-center justify-center bg-[var(--background)]/60 backdrop-blur-[2px] rounded-2xl">
+                <div className="text-center">
+                  <div className="inline-flex items-center gap-2 rounded-full border-2 border-[#36D399]/40 bg-[var(--background)]/90 px-6 py-3 shadow-lg shadow-[#36D399]/10">
+                    <CreditCard className="h-5 w-5 text-[#36D399]" />
+                    <span className="text-lg font-bold text-[var(--text-primary)] tracking-wide">Coming Soon</span>
+                  </div>
+                  <p className="mt-3 text-sm text-[var(--text-secondary)]">Virtual & physical cards launching soon</p>
+                </div>
               </div>
             </div>
 
@@ -573,7 +584,7 @@ export function Features() {
         <div>
           <div className="rounded-3xl overflow-hidden border border-[var(--glass-border)] shadow-2xl shadow-black/40 group">
             <video
-              src="/business-infrastructure.mp4"
+              src="/business-infrastructure-v2.mp4"
               autoPlay
               loop
               muted

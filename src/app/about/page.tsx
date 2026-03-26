@@ -65,11 +65,11 @@ const milestones = [
     year: "Multi-Currency",
     title: "10+ Currencies",
     description:
-      "Expanded support to over 100 fiat and crypto currencies, enabling users to hold, convert, and transact across borders with competitive exchange rates.",
+      "Expanded support to over 10 fiat and crypto currencies, enabling users to hold, convert, and transact across borders with competitive exchange rates.",
   },
   {
     year: "Global Expansion",
-    title: "150+ Countries",
+    title: "50+ Countries",
     description:
       "Extended our services to over 50 countries worldwide, partnering with licensed financial institutions to ensure local compliance and seamless operations.",
   },
@@ -82,8 +82,8 @@ const milestones = [
 ];
 
 const stats = [
-  { value: "150+", label: "Countries Served", icon: Globe },
-  { value: "100+", label: "Currencies Supported", icon: Wallet },
+  { value: "50+", label: "Countries Served", icon: Globe },
+  { value: "10+", label: "Currencies Supported", icon: Wallet },
   { value: "24/7", label: "Customer Support", icon: HeadphonesIcon },
   { value: "100%", label: "Digital-First", icon: Zap },
 ];
@@ -178,7 +178,7 @@ export default function AboutPage() {
                     </div>
                     <div className="grid grid-cols-3 gap-4 text-center">
                       {[
-                        { value: "150+", label: "Countries" },
+                        { value: "50+", label: "Countries" },
                         { value: "24/7", label: "Support" },
                         { value: "100%", label: "Digital" },
                       ].map((stat, i) => (

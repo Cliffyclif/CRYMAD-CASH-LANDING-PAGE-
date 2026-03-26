@@ -20,7 +20,7 @@ const footerSections = [
       { labelKey: "footer.about", href: "/about" },
       { labelKey: "footer.security", href: "/security" },
       { labelKey: "footer.faq", href: "/faq" },
-      { labelKey: "footer.support", href: "#contact" },
+      { labelKey: "footer.contact", href: "/contact" },
     ],
   },
   {
