@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=JetBrains+Mono:wght@400;700&amp;family=Space+Grotesk:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "on-error": "#690005",
+            "surface-bright": "#313b38",
+            "surface-container": "#17221e",
+            "surface-dim": "#0b1512",
+            "error": "#ffb4ab",
+            "primary-fixed": "#6ffbbe",
+            "on-surface": "#d9e5df",
+            "inverse-primary": "#006c49",
+            "on-tertiary": "#472a00",
+            "on-tertiary-fixed-variant": "#653e00",
+            "on-surface-variant": "#bbcabf",
+            "on-secondary-fixed-variant": "#005137",
+            "on-error-container": "#ffdad6",
+            "surface": "#0b1512",
+            "primary-container": "#10b981",
+            "secondary-container": "#00bd85",
+            "inverse-surface": "#d9e5df",
+            "on-tertiary-fixed": "#2a1700",
+            "on-primary-fixed-variant": "#005236",
+            "surface-variant": "#2c3733",
+            "on-primary-container": "#00422b",
+            "tertiary-container": "#e29100",
+            "on-secondary": "#003825",
+            "on-tertiary-container": "#523200",
+            "surface-container-lowest": "#06100d",
+            "inverse-on-surface": "#28332f",
+            "on-primary-fixed": "#002113",
+            "on-secondary-fixed": "#002114",
+            "tertiary-fixed-dim": "#ffb95f",
+            "tertiary-fixed": "#ffddb8",
+            "surface-container-highest": "#2c3733",
+            "secondary": "#45dfa4",
+            "on-background": "#d9e5df",
+            "surface-tint": "#4edea3",
+            "outline": "#86948a",
+            "surface-container-low": "#131e1a",
+            "on-secondary-container": "#00452e",
+            "error-container": "#93000a",
+            "primary-fixed-dim": "#4edea3",
+            "secondary-fixed": "#68fcbf",
+            "surface-container-high": "#222c29",
+            "secondary-fixed-dim": "#45dfa4",
+            "primary": "#4edea3",
+            "tertiary": "#ffb95f",
+            "on-primary": "#003824",
+            "background": "#0b1512",
+            "outline-variant": "#3c4a42"
+          },
+          "borderRadius": {
+            "DEFAULT": "1rem",
+            "lg": "2rem",
+            "xl": "3rem",
+            "full": "9999px"
+          },
+          "fontFamily": {
+            "headline": ["Inter"],
+            "body": ["Inter"],
+            "label": ["Space Grotesk"],
+            "mono": ["JetBrains Mono"]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+    .glass-panel {
+      background: rgba(44, 55, 51, 0.4);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(16, 185, 129, 0.08);
+    }
+    .institutional-grid {
+      background-image: linear-gradient(45deg, rgba(187, 202, 191, 0.02) 25%, transparent 25%, transparent 50%, rgba(187, 202, 191, 0.02) 50%, rgba(187, 202, 191, 0.02) 75%, transparent 75%, transparent);
+      background-size: 4px 4px;
+    }
+    input[type=range]::-webkit-slider-runnable-track {
+      background: #17221e;
+      height: 4px;
+      border-radius: 2px;
+    }
+    input[type=range]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      height: 16px;
+      width: 16px;
+      border-radius: 50%;
+      background: #4edea3;
+      margin-top: -6px;
+      box-shadow: 0 0 10px rgba(78, 222, 163, 0.4);
+    }
+  </style>
+</head>
+<body class="bg-surface text-on-surface font-body selection:bg-primary-container selection:text-on-primary-container min-h-screen relative overflow-hidden">
+<!-- Background Bioluminescence -->
+<div class="fixed inset-0 z-0 pointer-events-none">
+<div class="absolute top-1/4 -left-20 w-96 h-96 bg-primary/5 rounded-full blur-[120px]"></div>
+<div class="absolute bottom-1/4 -right-20 w-[500px] h-[500px] bg-primary/10 rounded-full blur-[160px]"></div>
+</div>
+<!-- Shared Component: TopNavBar -->
+<nav class="fixed top-0 w-full h-[64px] border-b border-[#10b981]/10 bg-[#0b1512]/40 backdrop-blur-xl flex justify-between items-center px-8 z-50 shadow-[0_0_64px_rgba(16,185,129,0.06)]">
+<div class="flex items-center gap-3 text-xl font-bold text-white after:content-['AMBER_STATUS'] after:text-[10px] after:font-mono after:bg-amber-500/20 after:text-amber-500 after:px-2 after:py-0.5 after:rounded-full after:border after:border-amber-500/50">
+      INSTITUTIONAL PORTAL
+    </div>
+<div class="flex items-center gap-6">
+<div class="flex items-center gap-4 text-emerald-900/60 font-['Inter'] font-medium text-sm tracking-tight">
+<span class="hover:bg-[#2c3733]/50 transition-all duration-300 px-3 py-2 rounded cursor-pointer">MARKETS</span>
+<span class="text-[#4edea3] border-b-2 border-[#10b981] px-3 py-2 rounded cursor-pointer">TREASURY</span>
+<span class="hover:bg-[#2c3733]/50 transition-all duration-300 px-3 py-2 rounded cursor-pointer">ANALYTICS</span>
+</div>
+<div class="flex gap-2 text-[#10b981]">
+<span class="material-symbols-outlined p-2 hover:bg-[#2c3733]/50 rounded-full transition-all cursor-pointer">palette</span>
+<span class="material-symbols-outlined p-2 hover:bg-[#2c3733]/50 rounded-full transition-all cursor-pointer">settings</span>
+<span class="material-symbols-outlined p-2 hover:bg-[#2c3733]/50 rounded-full transition-all cursor-pointer">account_circle</span>
+</div>
+</div>
+</nav>
+<!-- Sidebar Overlay Concept -->
+<div class="fixed left-0 top-16 h-[calc(100vh-64px-32px)] w-64 border-r border-[#10b981]/5 bg-[#131e1a] flex flex-col py-8 gap-4 z-40 opacity-20 pointer-events-none">
+<div class="px-6 mb-4">
+<div class="text-xs uppercase tracking-widest font-mono text-[#10b981]">OPERATOR_01</div>
+<div class="text-[10px] text-emerald-900/40 font-mono">LEVEL_4_CLEARANCE</div>
+</div>
+<div class="flex flex-col gap-1">
+<div class="bg-[#2c3733] text-[#4edea3] rounded-r-full mr-4 flex items-center gap-4 py-3 px-6 font-mono text-xs uppercase tracking-widest">
+<span class="material-symbols-outlined">terminal</span> TERMINAL
+      </div>
+<div class="text-emerald-900/40 flex items-center gap-4 py-3 px-6 font-mono text-xs uppercase tracking-widest">
+<span class="material-symbols-outlined">account_balance_wallet</span> LEDGER
+      </div>
+<div class="text-emerald-900/40 flex items-center gap-4 py-3 px-6 font-mono text-xs uppercase tracking-widest">
+<span class="material-symbols-outlined">swap_horiz</span> EXCHANGE
+      </div>
+</div>
+</div>
+<!-- Background Dashboard Parent (Blurred) -->
+<main class="pt-24 px-8 ml-64 grid grid-cols-12 gap-8 institutional-grid min-h-screen opacity-20">
+<div class="col-span-12 lg:col-span-8 space-y-8">
+<div class="h-64 bg-surface-container-low rounded-xl"></div>
+<div class="grid grid-cols-3 gap-6">
+<div class="h-32 bg-surface-container-high rounded-xl"></div>
+<div class="h-32 bg-surface-container-high rounded-xl"></div>
+<div class="h-32 bg-surface-container-high rounded-xl"></div>
+</div>
+</div>
+<div class="col-span-12 lg:col-span-4 h-full bg-surface-container-low rounded-xl"></div>
+</main>
+<!-- MODAL OVERLAY -->
+<div class="fixed inset-0 z-[100] flex items-center justify-center p-4">
+<!-- Dimmed Background -->
+<div class="absolute inset-0 bg-surface/80 backdrop-blur-sm"></div>
+<!-- Main Modal Container -->
+<div class="relative w-full max-w-[680px] glass-panel rounded-xl shadow-[0_0_64px_rgba(16,185,129,0.1)] overflow-hidden">
+<!-- Header -->
+<div class="flex justify-between items-center px-8 py-6 border-b border-outline-variant/15">
+<div class="space-y-1">
+<h1 class="text-3xl font-bold bg-gradient-to-r from-primary-container to-secondary bg-clip-text text-transparent">Configure FX Hedge</h1>
+<p class="font-mono text-[10px] text-outline tracking-[0.2em] uppercase">PROTECT TREASURY POSITIONS</p>
+</div>
+<button class="text-outline hover:text-on-surface transition-colors">
+<span class="material-symbols-outlined text-2xl">close</span>
+</button>
+</div>
+<!-- Content Container -->
+<div class="p-8 space-y-8 max-h-[768px] overflow-y-auto custom-scrollbar">
+<!-- Pair Selection -->
+<section class="space-y-3">
+<label class="text-[10px] font-mono uppercase tracking-widest text-outline">SELECT CURRENCY PAIR</label>
+<div class="flex flex-wrap gap-2">
+<button class="px-4 py-2 rounded-full glass-panel border-primary text-primary shadow-[0_0_12px_rgba(16,185,129,0.2)] font-mono text-sm">EUR/USD</button>
+<button class="px-4 py-2 rounded-full bg-surface-container-highest text-on-surface-variant hover:text-on-surface transition-all font-mono text-sm">GBP/USD</button>
+<button class="px-4 py-2 rounded-full bg-surface-container-highest text-on-surface-variant hover:text-on-surface transition-all font-mono text-sm">JPY/USD</button>
+<button class="px-4 py-2 rounded-full bg-surface-container-highest text-on-surface-variant hover:text-on-surface transition-all font-mono text-sm">CHF/USD</button>
+</div>
+</section>
+<!-- Exposure Summary Card -->
+<section class="glass-panel p-6 rounded-lg relative overflow-hidden">
+<div class="absolute top-4 right-4 bg-amber-500/10 border border-amber-500/30 text-amber-500 px-3 py-1 rounded-full font-mono text-[10px] font-bold tracking-tighter">UNHEDGED</div>
+<div class="space-y-4">
+<p class="text-[10px] font-mono text-outline uppercase tracking-widest">Current Long Position</p>
+<div>
+<h2 class="text-4xl font-mono font-bold text-on-surface">€38,500,000.00</h2>
+<p class="font-mono text-sm text-outline-variant mt-1">~$41,745,000.00 USD</p>
+</div>
+</div>
+</section>
+<!-- Hedge Target & Params -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<div class="space-y-4">
+<div class="flex justify-between items-end">
+<label class="text-[10px] font-mono uppercase tracking-widest text-outline">HEDGE RATIO</label>
+<span class="text-primary font-mono text-xl font-bold">80%</span>
+</div>
+<input class="w-full h-1 appearance-none bg-surface-container-highest rounded-lg cursor-pointer accent-primary" max="100" min="0" type="range" value="80"/>
+<div class="flex justify-between font-mono text-[10px] text-outline-variant">
+<span>0% CURRENT</span>
+<span>100% MAX</span>
+</div>
+</div>
+<div class="space-y-4">
+<label class="text-[10px] font-mono uppercase tracking-widest text-outline block">TENOR DURATION</label>
+<div class="flex gap-2">
+<button class="flex-1 py-2 rounded-lg bg-surface-container-highest text-xs font-mono">1W</button>
+<button class="flex-1 py-2 rounded-lg bg-surface-container-highest text-xs font-mono">2W</button>
+<button class="flex-1 py-2 rounded-lg glass-panel border-primary text-primary text-xs font-mono">1M</button>
+<button class="flex-1 py-2 rounded-lg bg-surface-container-highest text-xs font-mono">3M</button>
+<button class="flex-1 py-2 rounded-lg bg-surface-container-highest text-xs font-mono">6M</button>
+</div>
+</div>
+</div>
+<!-- Instrument Selection -->
+<section class="space-y-3">
+<label class="text-[10px] font-mono uppercase tracking-widest text-outline">INSTRUMENT TYPE</label>
+<div class="flex gap-3">
+<button class="flex-1 py-3 px-4 rounded-lg glass-panel border-primary-container text-primary-container flex items-center justify-center gap-2 font-bold tracking-tight">
+<span class="material-symbols-outlined text-sm">check_circle</span> FORWARD
+            </button>
+<button class="flex-1 py-3 px-4 rounded-lg bg-surface-container-highest text-outline-variant flex items-center justify-center gap-2 font-medium tracking-tight">
+              NDF
+            </button>
+<button class="flex-1 py-3 px-4 rounded-lg bg-surface-container-highest text-outline-variant flex items-center justify-center gap-2 font-medium tracking-tight">
+              SWAP
+            </button>
+</div>
+</section>
+<!-- Quote Card -->
+<section class="p-6 rounded-lg bg-gradient-to-br from-[#2c3733] to-[#131e1a] border border-[#10b981]/20 shadow-[inset_0_1px_1px_rgba(255,255,255,0.05)] space-y-6">
+<div class="flex justify-between border-b border-outline-variant/10 pb-4">
+<div>
+<p class="text-[9px] font-mono text-outline uppercase">Execution Rate</p>
+<p class="text-2xl font-mono font-bold text-on-surface">1.0842</p>
+</div>
+<div class="text-right">
+<p class="text-[9px] font-mono text-outline uppercase">Settlement Date</p>
+<p class="text-sm font-mono text-on-surface">OCT 24, 2024</p>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div>
+<p class="text-[9px] font-mono text-outline uppercase">Monthly Cost</p>
+<p class="text-lg font-mono text-primary">€82,400</p>
+</div>
+<div class="text-right">
+<p class="text-[9px] font-mono text-secondary uppercase">Expected Savings</p>
+<p class="text-lg font-mono text-secondary">€186,200</p>
+</div>
+</div>
+</section>
+<!-- Authorization -->
+<section class="space-y-3">
+<label class="text-[10px] font-mono uppercase tracking-widest text-outline">AUTHORIZED SIGNERS</label>
+<div class="flex items-center gap-3 bg-surface-container-low p-4 rounded-lg border border-outline-variant/10">
+<div class="flex -space-x-3">
+<img class="w-8 h-8 rounded-full border-2 border-surface-container" data-alt="professional portrait of financial fund manager male neutral lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuADMuStFz5X2B8764Lqf1UgI-3dTgaB6V8OFUVIgAq-CeDZp0sg_w0OB4j6zehusZT42hzEuyKBjdwnrHGqfX_cA-bkANvmHPupd1ypZ2pJXDqzpZk_erKXwkbviHkRpDS3WiR4m4rtSTkgjXasgrt01L0ONykUT_Vs-wrMucpjg872mOlOGSB0xGoOLI0xpHq8vVXRwv9-AJxxq1UiXlmo2cJUgPjBIBEGW-uIbMBJYDFx9_1k4QHF4kTkb4lH90vQ5ue9JDb_o9E"/>
+<img class="w-8 h-8 rounded-full border-2 border-surface-container" data-alt="professional portrait of business leader woman confident gaze clean background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA_4oszinSfIa5hyTSyVs8CGVp3Cu0JurakTYdS61Ot7ZUn7kJrZl-noVph7lDhTnYTrIuREJtXAQeooQH1a95zVKQb39Vtfj9tiEH9DqxSk0yFIc3f1XtWGPnfIyIljsdwcNBsXqnn5viVU2C3A0O18ULZwFROJDvRZfKZOfoEFK4mdRgRtcLWS6F5OgexAhUFd3rI7yIdiQ9JCUy2spSRTOqG2Z5OnU5-7y6A1QT3YVVc429MVRFHq9Hg99qA5ct-ua6QrWWz06w"/>
+</div>
+<div class="flex-1">
+<p class="text-xs font-semibold">Aurora Capital Management, Nebula Fund I</p>
+<p class="text-[10px] text-outline font-mono">DUAL_SIGNATURE_REQUIRED</p>
+</div>
+<span class="material-symbols-outlined text-outline">expand_more</span>
+</div>
+</section>
+</div>
+<!-- Footer Action -->
+<div class="p-8 bg-surface-container-low/50 border-t border-outline-variant/10 flex gap-4">
+<button class="flex-1 bg-surface-container-highest text-on-surface py-4 rounded-full font-bold uppercase tracking-widest text-xs hover:bg-surface-bright transition-all">
+          Discard
+        </button>
+<button class="flex-[2] bg-primary-container text-on-primary-container py-4 rounded-full font-bold uppercase tracking-widest text-xs shadow-[0_0_32px_rgba(16,185,129,0.3)] hover:brightness-110 active:scale-95 transition-all flex items-center justify-center gap-2">
+          EXECUTE HEDGE <span class="material-symbols-outlined">trending_flat</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Shared Component: Footer -->
+<footer class="fixed bottom-0 w-full h-8 border-t border-[#10b981]/10 bg-[#040d0a] flex justify-between items-center px-6 z-50 overflow-hidden">
+<div class="font-['JetBrains_Mono'] text-[10px] uppercase font-bold text-[#10b981]">
+      SYS_HEALTH: OPTIMAL // NET_STRENGTH: 98.4%
+    </div>
+<div class="flex gap-6 font-['JetBrains_Mono'] text-[10px] uppercase font-bold text-emerald-900">
+<span class="hover:text-emerald-200 cursor-pointer">latency: 14ms</span>
+<span class="hover:text-emerald-200 cursor-pointer">uptime: 99.99%</span>
+<span class="hover:text-emerald-200 cursor-pointer">v2.4.0-stable</span>
+</div>
+</footer>
+</body></html>

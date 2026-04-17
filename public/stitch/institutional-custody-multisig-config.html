@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Multi-Sig Configuration | Institutional Portal</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800&amp;family=JetBrains+Mono:wght@400;700&amp;family=Space+Grotesk:wght@300;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary-fixed": "#6ffbbe",
+                        "on-surface-variant": "#bbcabf",
+                        "surface-container-low": "#131e1a",
+                        "on-tertiary": "#472a00",
+                        "tertiary-fixed-dim": "#ffb95f",
+                        "primary": "#4edea3",
+                        "surface-dim": "#0b1512",
+                        "surface-container-high": "#222c29",
+                        "on-background": "#d9e5df",
+                        "outline-variant": "#3c4a42",
+                        "on-surface": "#d9e5df",
+                        "tertiary-container": "#e29100",
+                        "on-secondary-fixed": "#002114",
+                        "primary-fixed-dim": "#4edea3",
+                        "secondary-container": "#00bd85",
+                        "surface-tint": "#4edea3",
+                        "tertiary": "#ffb95f",
+                        "on-secondary-fixed-variant": "#005137",
+                        "on-tertiary-fixed": "#2a1700",
+                        "on-primary-fixed": "#002113",
+                        "on-tertiary-fixed-variant": "#653e00",
+                        "surface-container": "#17221e",
+                        "on-secondary": "#003825",
+                        "inverse-primary": "#006c49",
+                        "error-container": "#93000a",
+                        "on-secondary-container": "#00452e",
+                        "surface-bright": "#313b38",
+                        "surface": "#0b1512",
+                        "outline": "#86948a",
+                        "background": "#0b1512",
+                        "primary-container": "#10b981",
+                        "secondary-fixed-dim": "#45dfa4",
+                        "tertiary-fixed": "#ffddb8",
+                        "on-primary-container": "#00422b",
+                        "surface-container-highest": "#2c3733",
+                        "inverse-on-surface": "#28332f",
+                        "surface-container-lowest": "#06100d",
+                        "on-error": "#690005",
+                        "error": "#ffb4ab",
+                        "on-primary-fixed-variant": "#005236",
+                        "on-tertiary-container": "#523200",
+                        "on-primary": "#003824",
+                        "inverse-surface": "#d9e5df",
+                        "surface-variant": "#2c3733",
+                        "secondary": "#45dfa4",
+                        "secondary-fixed": "#68fcbf",
+                        "on-error-container": "#ffdad6"
+                    },
+                    borderRadius: {
+                        "DEFAULT": "1rem",
+                        "lg": "2rem",
+                        "xl": "3rem",
+                        "full": "9999px"
+                    },
+                    fontFamily: {
+                        "headline": ["Inter", "sans-serif"],
+                        "body": ["Inter", "sans-serif"],
+                        "label": ["JetBrains Mono", "monospace"],
+                        "mono": ["JetBrains Mono", "monospace"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .bg-glass {
+            background: rgba(44, 55, 51, 0.4);
+            backdrop-filter: blur(20px);
+        }
+        .bioluminescent-glow {
+            box-shadow: 0 0 15px rgba(16, 185, 129, 0.4);
+        }
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body min-h-screen overflow-hidden">
+<!-- Parent Page Content (Dimmed) -->
+<div class="fixed inset-0 opacity-20 pointer-events-none overflow-hidden">
+<!-- TopAppBar (Shared Component Placeholder Style) -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-8 h-[64px] bg-[#2c3733]/40 backdrop-blur-[20px] shadow-[0_40px_40px_-10px_rgba(16,185,129,0.06)]">
+<div class="text-xl font-bold tracking-tighter bg-gradient-to-r from-[#10b981] to-[#34d399] bg-clip-text text-transparent">INSTITUTIONAL PORTAL</div>
+<div class="flex items-center gap-6">
+<span class="material-symbols-outlined text-emerald-500">settings</span>
+<span class="material-symbols-outlined text-emerald-500">notifications</span>
+<div class="w-8 h-8 rounded-full bg-tertiary-container"></div>
+</div>
+</header>
+<!-- Mock Dashboard Background -->
+<main class="pt-24 px-12 max-w-7xl mx-auto grid grid-cols-12 gap-8">
+<div class="col-span-12 h-64 bg-surface-container-high rounded-lg"></div>
+<div class="col-span-4 h-96 bg-surface-container-low rounded-lg"></div>
+<div class="col-span-8 h-96 bg-surface-container-high rounded-lg"></div>
+</main>
+<!-- Background Blobs -->
+<div class="absolute top-1/4 -left-20 w-96 h-96 bg-primary/10 blur-[120px] rounded-full"></div>
+<div class="absolute bottom-1/4 -right-20 w-96 h-96 bg-secondary/10 blur-[120px] rounded-full"></div>
+</div>
+<!-- Centered Modal Overlay -->
+<div class="fixed inset-0 z-[60] flex items-center justify-center p-4">
+<div class="w-full max-w-[720px] max-h-[921px] bg-glass border border-primary/20 rounded-xl flex flex-col shadow-[0_40px_40px_-10px_rgba(16,185,129,0.2)] overflow-hidden">
+<!-- Modal Header -->
+<div class="p-8 pb-4">
+<h1 class="text-4xl font-headline font-extrabold tracking-tight bg-gradient-to-r from-[#10b981] to-[#34d399] bg-clip-text text-transparent">
+                    Multi-Sig Configuration
+                </h1>
+<p class="font-mono text-xs tracking-widest text-primary/60 mt-2">DEFINE SIGNER THRESHOLDS</p>
+</div>
+<!-- Modal Content Scrollable Area -->
+<div class="flex-1 overflow-y-auto no-scrollbar px-8 pb-8 space-y-6">
+<!-- Threshold Card -->
+<section class="bg-surface-container-high/60 border border-white/5 rounded-lg p-6">
+<div class="flex justify-between items-center mb-6">
+<div>
+<h3 class="text-3xl font-headline font-bold text-on-surface">3 OF 5</h3>
+<p class="font-mono text-[10px] text-on-surface-variant uppercase tracking-tighter">Current Operational Model</p>
+</div>
+<div class="text-right space-y-1">
+<div class="font-mono text-xs text-primary">Required M: 3</div>
+<div class="font-mono text-xs text-on-surface-variant">Total N: 5</div>
+</div>
+</div>
+<!-- Visual Indicator -->
+<div class="flex items-center gap-4">
+<div class="w-4 h-4 rounded-full bg-primary bioluminescent-glow"></div>
+<div class="w-4 h-4 rounded-full bg-primary bioluminescent-glow"></div>
+<div class="w-4 h-4 rounded-full bg-primary bioluminescent-glow"></div>
+<div class="w-4 h-4 rounded-full bg-surface-container-highest border border-outline-variant"></div>
+<div class="w-4 h-4 rounded-full bg-surface-container-highest border border-outline-variant"></div>
+<div class="ml-auto">
+<span class="material-symbols-outlined text-primary text-sm">edit</span>
+</div>
+</div>
+</section>
+<!-- Signers Section -->
+<section class="space-y-3">
+<div class="flex justify-between items-end mb-2">
+<h4 class="font-mono text-[10px] tracking-widest text-on-surface-variant uppercase">Authorized Signers</h4>
+<button class="text-xs font-bold text-primary hover:text-secondary transition-colors uppercase tracking-widest">ADD SIGNER</button>
+</div>
+<!-- Signer Row 1 -->
+<div class="flex items-center gap-4 p-4 bg-surface-container-low border border-white/5 rounded-lg hover:bg-surface-container-highest transition-colors">
+<img class="w-10 h-10 rounded-full object-cover grayscale opacity-80" data-alt="Professional portrait of Joseph Obasi, CEO, sharp lighting, minimalist business attire, dark background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC-yt8Y3rGnp2ZzVYGnIAzyRWPFGzqxBxm7GSFFNqH09odbNM-piwax8DaG0-OprQgt4lZQyizpN0Rrsip3kGNnz1JajPne988isYa4Aavy6XJDRiPqDO-JSvnNmHj0M58SRWYkQhU2Woe7ZE766mTZdQ7ysBZwu8efnxC7jeb_MApvl6Pzo-C3ojOgzDMn8k8V0k2w1p26Eg4UJ3N6w_OPHWtO8YadKB3pPSDAlLNPI6t_A-9AK_ymD3PzH8bvFmJouS4ZQjjzdrc"/>
+<div class="flex-1">
+<div class="font-headline font-bold text-on-surface text-sm">Joseph Obasi</div>
+<div class="flex items-center gap-2">
+<span class="font-mono text-[10px] text-on-surface-variant">CEO / ADMIN</span>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary/60 text-lg" title="HSM">security</span>
+<div class="flex items-center gap-2 px-2 py-1 bg-primary/10 rounded-full">
+<div class="w-1.5 h-1.5 rounded-full bg-primary bioluminescent-glow"></div>
+<span class="font-mono text-[9px] text-primary">Active</span>
+</div>
+</div>
+</div>
+<!-- Signer Row 2 -->
+<div class="flex items-center gap-4 p-4 bg-surface-container-low border border-white/5 rounded-lg hover:bg-surface-container-highest transition-colors">
+<img class="w-10 h-10 rounded-full object-cover grayscale opacity-80" data-alt="Professional portrait of Sarah Chen, CFO, elegant lighting, modern corporate aesthetic, dark background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAwQYhLEPnejZH6wFluMnTETm5GUp85Vq7DkyGkDr9hcWySFk2OmCLloDpNf0yf6tn5qenXAFP4oTLSVPHs0wveI8u08zZ7Mbl7dDEob3126S0QfMM0hrqqXV0LemAenT6lVGxLIAn1mJlBK-y0NockfaYbybg_Ck47rwujQ6MC9I0qrlzJ-oq44WkPhWTQ3MwSWOViFO-nXg7NuQj6HiwbUFE2gJi59MjzUPGhcL5Xv70j9ZSh5mgg2baEPBCMskwFeG1_12NCrcQ"/>
+<div class="flex-1">
+<div class="font-headline font-bold text-on-surface text-sm">Sarah Chen</div>
+<div class="flex items-center gap-2">
+<span class="font-mono text-[10px] text-on-surface-variant">CFO / APPROVER</span>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary/60 text-lg" title="Mobile">smartphone</span>
+<div class="flex items-center gap-2 px-2 py-1 bg-primary/10 rounded-full">
+<div class="w-1.5 h-1.5 rounded-full bg-primary bioluminescent-glow"></div>
+<span class="font-mono text-[9px] text-primary">Active</span>
+</div>
+</div>
+</div>
+<!-- Signer Row 3 -->
+<div class="flex items-center gap-4 p-4 bg-surface-container-low border border-white/5 rounded-lg hover:bg-surface-container-highest transition-colors">
+<img class="w-10 h-10 rounded-full object-cover grayscale opacity-80" data-alt="Professional portrait of Marcus Klein, CTO, tech-focused editorial style, dramatic shadow, dark environment" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCveZfHotMk1KbcbbvZk4cJJHVkY5cp0XDSaPI82S2Yhk5jdAaSre6FDnEQlSRxPZy1sMqym-BfVD0szWvgnF2EW5KMCcWYjwPy9VO5zwI1SYusG_kqaM-quZr88IvgRvuIwzYDaLLtj5nOpwI5n8FMvXRNCJzTNuZugZRzrXrPXBjy3p48NfiECevmoNq1uS0M0L2gM2DQBvVCqCjWkz7r6r_y3AUgq0Xo7pqqBC3BGHyjqyksxC5wgtXrQLM1_yjcJ7C-QYCNARg"/>
+<div class="flex-1">
+<div class="font-headline font-bold text-on-surface text-sm">Marcus Klein</div>
+<div class="flex items-center gap-2">
+<span class="font-mono text-[10px] text-on-surface-variant">CTO / APPROVER</span>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary/60 text-lg" title="Ledger">vpn_key</span>
+<div class="flex items-center gap-2 px-2 py-1 bg-primary/10 rounded-full">
+<div class="w-1.5 h-1.5 rounded-full bg-primary bioluminescent-glow"></div>
+<span class="font-mono text-[9px] text-primary">Active</span>
+</div>
+</div>
+</div>
+<!-- Signer Row 4 -->
+<div class="flex items-center gap-4 p-4 bg-surface-container-low border border-white/5 rounded-lg hover:bg-surface-container-highest transition-colors">
+<img class="w-10 h-10 rounded-full object-cover grayscale opacity-80" data-alt="Professional portrait of Elena Rossi, Compliance, focused neutral expression, high-end office lighting, dark background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAwJZphgmG-MoqBsi8y8QnMwpmq6X37ByE80kwYMRY0yorC6iE6BRFOk5As4cvPAm8owiSLTEFkgPLZS3AzVIyrbRQLkOOvd1v4mu4FFBaIR0HXQaVGNa_p2_Nnrre-FxWH454nQHJ7rm9YRDJ1YY8WpEuwFmy4BkNMRWBy3mqdzHZoM8AO0YiEw3gtAGoCZ_pCmJnPDihmQ2cjl5o0Lq5X-MIuyvSCbxmAP2cYH4xSxGfImczu_RCWvAmlvLAgMO50tEvn-r-QwuA"/>
+<div class="flex-1">
+<div class="font-headline font-bold text-on-surface text-sm">Elena Rossi</div>
+<div class="flex items-center gap-2">
+<span class="font-mono text-[10px] text-on-surface-variant">Compliance / AUDITOR</span>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary/60 text-lg" title="Web">language</span>
+<div class="flex items-center gap-2 px-2 py-1 bg-primary/10 rounded-full">
+<div class="w-1.5 h-1.5 rounded-full bg-primary bioluminescent-glow"></div>
+<span class="font-mono text-[9px] text-primary">Active</span>
+</div>
+</div>
+</div>
+<!-- Signer Row 5 -->
+<div class="flex items-center gap-4 p-4 bg-surface-container-low border border-white/5 rounded-lg hover:bg-surface-container-highest transition-colors">
+<img class="w-10 h-10 rounded-full object-cover grayscale opacity-40" data-alt="Professional portrait of David Osei, Operations, experienced professional, atmospheric side lighting, dark studio setting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDalSKP5IIBiu0Z0hSRz-4_sr80CnqHsvEQrnJcYB1DUi9Fif1qoX9oP7cBQq7bGgSiECZqBqLTPpS6FZ9vcjS5TRwhpClvAwXB3vvtvXAFzw0QiTkhzU-y-df76rzzR9qh9lQJ8vohAmFRZ1BKcR7k3P_BZ72zkxTt0s0ZoUH6Fr968Luhl_Omhij0TnoWvjmaQSmhihA9qd3leJExC_8omjiStLCkd3AR3yNsOyR332ivXzJJu6wTIvMyyi8H-hUjzzE1YEN6zto"/>
+<div class="flex-1">
+<div class="font-headline font-bold text-on-surface/50 text-sm">David Osei</div>
+<div class="flex items-center gap-2">
+<span class="font-mono text-[10px] text-on-surface-variant/50">Operations / BACKUP</span>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-on-surface-variant/30 text-lg" title="Cold Storage">ac_unit</span>
+<div class="flex items-center gap-2 px-2 py-1 bg-surface-container-highest rounded-full">
+<div class="w-1.5 h-1.5 rounded-full bg-outline-variant"></div>
+<span class="font-mono text-[9px] text-on-surface-variant/50">Inactive</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Policy Rules Card -->
+<section class="bg-surface-container-high/60 border border-white/5 rounded-lg p-6">
+<h4 class="font-mono text-[10px] tracking-widest text-on-surface-variant uppercase mb-4">Vault Policy Matrix</h4>
+<div class="grid grid-cols-2 gap-x-8 gap-y-3 mb-6">
+<div class="flex justify-between items-center border-b border-outline-variant/30 pb-2">
+<span class="font-mono text-xs text-on-surface-variant">Cold Asset Access</span>
+<span class="font-mono text-xs text-primary">3/5</span>
+</div>
+<div class="flex justify-between items-center border-b border-outline-variant/30 pb-2">
+<span class="font-mono text-xs text-on-surface-variant">Hot Wallet Sweeps</span>
+<span class="font-mono text-xs text-primary">2/5</span>
+</div>
+<div class="flex justify-between items-center border-b border-outline-variant/30 pb-2">
+<span class="font-mono text-xs text-on-surface-variant">Treasury Trades</span>
+<span class="font-mono text-xs text-primary">2/5</span>
+</div>
+<div class="flex justify-between items-center border-b border-outline-variant/30 pb-2">
+<span class="font-mono text-xs text-on-surface-variant">Daily Limits Change</span>
+<span class="font-mono text-xs text-primary">4/5</span>
+</div>
+</div>
+<!-- Timelock Toggle -->
+<div class="flex items-center justify-between p-3 bg-primary/5 rounded-lg border border-primary/10">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-tertiary">history</span>
+<span class="font-mono text-[11px] text-on-surface">4h Mandatory Timelock</span>
+</div>
+<div class="w-10 h-5 bg-primary/20 rounded-full relative p-0.5 flex items-center justify-end">
+<div class="w-4 h-4 bg-primary rounded-full bioluminescent-glow"></div>
+</div>
+</div>
+</section>
+</div>
+<!-- Modal Action Footer -->
+<div class="p-8 pt-4 bg-surface-container-lowest/80 border-t border-primary/10">
+<button class="w-full h-14 bg-gradient-to-r from-[#10b981] to-[#34d399] rounded-xl font-headline font-bold text-on-primary tracking-wide hover:opacity-90 active:scale-[0.98] transition-all shadow-[0_20px_40px_-10px_rgba(16,185,129,0.3)]">
+                    SAVE CONFIGURATION
+                </button>
+<div class="mt-4 text-center">
+<p class="font-mono text-[9px] text-on-surface-variant/60 uppercase tracking-[0.2em]">NETWORK TELEMETRY: 256ms LATENCY | STATUS: BIOLUMINESCENT_STABLE</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Technical Data Lines (Background Decoration) -->
+<div class="fixed inset-0 pointer-events-none opacity-5">
+<div class="absolute left-0 top-1/2 w-full h-[1px] bg-primary"></div>
+<div class="absolute left-1/4 top-0 w-[1px] h-full bg-primary"></div>
+<div class="absolute right-1/4 top-0 w-[1px] h-full bg-primary"></div>
+</div>
+</body></html>

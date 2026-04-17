@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Emerald Pulse | Sign Approval</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&amp;family=JetBrains+Mono:wght@400;700&amp;family=Space+Grotesk:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "inverse-surface": "#d9e5df",
+                        "secondary-container": "#00bd85",
+                        "tertiary": "#ffb95f",
+                        "primary-container": "#10b981",
+                        "on-error": "#690005",
+                        "surface-container-low": "#131e1a",
+                        "on-secondary-fixed": "#002114",
+                        "on-secondary-container": "#00452e",
+                        "secondary": "#45dfa4",
+                        "on-primary-container": "#00422b",
+                        "on-surface-variant": "#bbcabf",
+                        "surface-tint": "#4edea3",
+                        "surface-bright": "#313b38",
+                        "on-tertiary": "#472a00",
+                        "secondary-fixed-dim": "#45dfa4",
+                        "on-tertiary-container": "#523200",
+                        "tertiary-fixed": "#ffddb8",
+                        "on-surface": "#d9e5df",
+                        "on-background": "#d9e5df",
+                        "on-tertiary-fixed-variant": "#653e00",
+                        "secondary-fixed": "#68fcbf",
+                        "surface-container-highest": "#2c3733",
+                        "surface-variant": "#2c3733",
+                        "outline": "#86948a",
+                        "on-primary-fixed-variant": "#005236",
+                        "on-tertiary-fixed": "#2a1700",
+                        "primary": "#4edea3",
+                        "on-primary-fixed": "#002113",
+                        "on-error-container": "#ffdad6",
+                        "surface-dim": "#0b1512",
+                        "surface-container": "#17221e",
+                        "surface": "#0b1512",
+                        "outline-variant": "#3c4a42",
+                        "error-container": "#93000a",
+                        "background": "#0b1512",
+                        "inverse-primary": "#006c49",
+                        "tertiary-fixed-dim": "#ffb95f",
+                        "tertiary-container": "#e29100",
+                        "inverse-on-surface": "#28332f",
+                        "error": "#ffb4ab",
+                        "primary-fixed": "#6ffbbe",
+                        "surface-container-lowest": "#06100d",
+                        "on-primary": "#003824",
+                        "primary-fixed-dim": "#4edea3",
+                        "on-secondary": "#003825",
+                        "on-secondary-fixed-variant": "#005137",
+                        "surface-container-high": "#222c29"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "1rem",
+                        "lg": "2rem",
+                        "xl": "3rem",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Inter"],
+                        "body": ["Inter"],
+                        "label": ["Space Grotesk"],
+                        "mono": ["JetBrains Mono"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .bg-mesh {
+            background-image: radial-gradient(at 0% 0%, rgba(16, 185, 129, 0.1) 0px, transparent 50%),
+                              radial-gradient(at 100% 100%, rgba(69, 223, 164, 0.05) 0px, transparent 50%);
+        }
+        .glass-panel {
+            background: rgba(44, 55, 51, 0.4);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(16, 185, 129, 0.08);
+        }
+        .signature-pulse {
+            box-shadow: 0 0 12px rgba(16, 185, 129, 0.4);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body min-h-screen overflow-hidden selection:bg-primary/30 selection:text-primary">
+<!-- Parent Background (Simulated Institutional Approvals Dashboard) -->
+<main class="fixed inset-0 bg-mesh opacity-20 pointer-events-none p-10 grid grid-cols-12 gap-8">
+<div class="col-span-12 h-16 bg-surface-container rounded-lg"></div>
+<div class="col-span-3 h-96 bg-surface-container rounded-lg"></div>
+<div class="col-span-9 h-96 bg-surface-container rounded-lg"></div>
+<div class="col-span-12 h-64 bg-surface-container rounded-lg"></div>
+</main>
+<!-- TopNavBar Implementation from JSON -->
+<header class="fixed top-0 w-full h-16 z-50 bg-emerald-950/40 backdrop-blur-xl border-b border-emerald-500/10 shadow-[0_0_15px_rgba(16,185,129,0.05)]">
+<div class="flex justify-between items-center px-8 max-w-[1280px] mx-auto w-full h-full">
+<div class="flex items-center gap-8">
+<span class="text-xl font-black bg-clip-text text-transparent bg-gradient-to-r from-emerald-400 to-emerald-300 font-headline tracking-tight uppercase">Emerald Pulse</span>
+<nav class="hidden md:flex gap-6 items-center">
+<a class="text-emerald-700/70 hover:text-emerald-300 transition-all duration-300 font-headline font-extrabold tracking-tight uppercase text-sm" href="#">Dashboard</a>
+<a class="text-emerald-700/70 hover:text-emerald-300 transition-all duration-300 font-headline font-extrabold tracking-tight uppercase text-sm" href="#">Analytics</a>
+<a class="text-emerald-700/70 hover:text-emerald-300 transition-all duration-300 font-headline font-extrabold tracking-tight uppercase text-sm" href="#">Assets</a>
+<a class="text-emerald-400 border-b-2 border-emerald-400 pb-1 font-headline font-extrabold tracking-tight uppercase text-sm" href="#">Governance</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-emerald-400 hover:opacity-100 opacity-80 cursor-pointer">settings</span>
+<span class="material-symbols-outlined text-emerald-400 hover:opacity-100 opacity-80 cursor-pointer">notifications</span>
+<img alt="Institutional user avatar" class="w-8 h-8 rounded-full border border-emerald-500/20" data-alt="close-up portrait of a professional institutional trader user avatar with subtle emerald lighting highlights" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAM1GUhBaSDqeK_usFMbpOs2jKAKt5X3Co8Z6beV-Wp8j3-XVJXk-FwkjXKd-eE0RoKgzQI05hd4j12MzKJErzi43PWOr2RykhJWZOA0UU3IP31uFBLEVuO0NW6cLNrOPBaJQ0fUMmNuE-v9_IJDAfKnaHnHI4jVBBHp2wSidKW-D0vCCHE5GzosHs9azZ3PdLBths-5_hTouWVwdNGrqrpY6jTEMC5o6HK6NuqboLEkKQNfFas-mJYN3f7hdh6A5lP-5sbzPWogyc"/>
+</div>
+</div>
+</header>
+<!-- Modal Overlay -->
+<div class="fixed inset-0 z-[100] flex items-center justify-center bg-background/60 backdrop-blur-sm px-4">
+<!-- WEB MODAL: 640px centered glass dialog -->
+<div class="w-full max-w-[640px] glass-panel rounded-xl shadow-[0_20px_40px_rgba(4,13,10,0.5),0_0_20px_rgba(16,185,129,0.1)] p-8 relative overflow-hidden">
+<!-- Header Section -->
+<div class="flex justify-between items-start mb-8">
+<div>
+<h2 class="text-3xl font-black bg-clip-text text-transparent bg-gradient-to-r from-[#10b981] to-[#34d399] font-headline tracking-tight">Sign Approval</h2>
+<p class="font-mono text-xs text-primary/60 mt-1 tracking-widest uppercase">Reference: APR-8821</p>
+</div>
+<button class="text-on-surface-variant hover:text-on-surface transition-colors">
+<span class="material-symbols-outlined">close</span>
+</button>
+</div>
+<!-- Transaction Summary Card -->
+<div class="glass-panel bg-surface-container-low/40 rounded-lg p-5 border-l-4 border-l-primary flex items-start gap-4 mb-6">
+<div class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">account_balance_wallet</span>
+</div>
+<div class="flex-1 overflow-hidden">
+<h3 class="font-bold text-lg text-on-surface leading-tight">Cold Storage Withdrawal</h3>
+<p class="font-mono text-primary text-sm mt-1">50.0000 BTC <span class="text-on-surface-variant opacity-60">approx $3,362,050</span></p>
+<p class="font-mono text-[10px] text-on-surface-variant mt-2 truncate bg-surface-container-highest/30 px-2 py-1 rounded">DEST: 3J98t1WpEZ73CNmQviecrnyiWrnqRhWNLy</p>
+</div>
+</div>
+<!-- Initiator & Risk Checks Row -->
+<div class="grid grid-cols-2 gap-4 mb-6">
+<!-- Initiator Card -->
+<div class="bg-surface-container-lowest/50 rounded-lg p-4 border border-outline-variant/10">
+<div class="flex items-center gap-3 mb-3">
+<img alt="Sarah Chen" class="w-8 h-8 rounded-full border border-primary/20" data-alt="professional headshot of an executive woman in a dark business suit with soft studio lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuANwJIYRRLYcTc7DW-EumVG1ncnCfL0R9yiCdvY2KO0Rq-QzrSRMj08OEbUJK8Rh4rTKX9iPlE3MBk6Bdb3wiXNB8iuEr6qCNW9Ddq7ChU3eZnjN2bpOVvrMovdAIPrWPmgRtxgtL8JBkO_THsTqTsqLRRNGKMmRrb_gb0WxBJipqd27hv_S9hIr7EQfnOVtmWVvaaWpY8Xtekb8JP_r4aEmplWlRq2W9y-oWyn2hzoO1W0VepIjBgr0Gd7kMoUYhI4GDBODD3S_Wg"/>
+<div>
+<p class="text-sm font-semibold text-on-surface">Sarah Chen, CFO</p>
+<p class="font-mono text-[9px] text-on-surface-variant">2024-05-12 10:42:01 UTC</p>
+</div>
+</div>
+<p class="text-xs text-on-surface-variant italic">Purpose: Trading Desk Funding</p>
+</div>
+<!-- Risk checks glass strip -->
+<div class="bg-surface-container-highest/20 rounded-lg p-4 border border-outline-variant/10 flex flex-col justify-center gap-2">
+<div class="flex items-center gap-2 text-[10px] text-on-surface-variant">
+<span class="material-symbols-outlined text-[14px] text-primary" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+                        Whitelisted Destination Check
+                    </div>
+<div class="flex items-center gap-2 text-[10px] text-on-surface-variant">
+<span class="material-symbols-outlined text-[14px] text-primary" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+                        Within Daily Limit Check
+                    </div>
+<div class="flex items-center gap-2 text-[10px] text-tertiary">
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">schedule</span>
+                        Timelock Applied (4h)
+                    </div>
+</div>
+</div>
+<!-- SIGNATURES visual -->
+<div class="mb-8">
+<div class="flex items-center justify-between mb-3">
+<span class="font-mono text-[10px] uppercase tracking-widest text-on-surface-variant">Multi-sig Quorum</span>
+<span class="font-mono text-[10px] text-primary tracking-tighter">2/5 to 3/5 required</span>
+</div>
+<div class="flex items-center gap-4">
+<!-- 2 filled jade -->
+<div class="w-8 h-8 rounded-full bg-secondary-container flex items-center justify-center">
+<span class="material-symbols-outlined text-on-secondary-container text-sm" style="font-variation-settings: 'FILL' 1;">check</span>
+</div>
+<div class="w-8 h-8 rounded-full bg-secondary-container flex items-center justify-center">
+<span class="material-symbols-outlined text-on-secondary-container text-sm" style="font-variation-settings: 'FILL' 1;">check</span>
+</div>
+<!-- 1 pulsing emerald (current) -->
+<div class="w-8 h-8 rounded-full border-2 border-primary bg-primary/20 flex items-center justify-center signature-pulse">
+<div class="w-3 h-3 rounded-full bg-primary animate-pulse"></div>
+</div>
+<!-- 2 outline -->
+<div class="w-8 h-8 rounded-full border border-outline-variant flex items-center justify-center opacity-40"></div>
+<div class="w-8 h-8 rounded-full border border-outline-variant flex items-center justify-center opacity-40"></div>
+<div class="h-[1px] flex-1 bg-outline-variant/30"></div>
+</div>
+</div>
+<!-- 2FA Section -->
+<div class="space-y-4 mb-8">
+<div class="flex items-center justify-between">
+<label class="font-mono text-[10px] tracking-[0.2em] text-on-surface-variant uppercase">ENTER CODE FROM HARDWARE KEY</label>
+<span class="material-symbols-outlined text-tertiary text-lg">vibration</span>
+</div>
+<div class="flex justify-between gap-3">
+<input class="w-full h-14 bg-transparent border-b-2 border-surface-container-highest focus:border-primary text-center font-mono text-2xl text-primary focus:ring-0 transition-all outline-none" maxlength="1" type="text" value="8"/>
+<input class="w-full h-14 bg-transparent border-b-2 border-surface-container-highest focus:border-primary text-center font-mono text-2xl text-primary focus:ring-0 transition-all outline-none" maxlength="1" type="text" value="4"/>
+<input class="w-full h-14 bg-transparent border-b-2 border-surface-container-highest focus:border-primary text-center font-mono text-2xl text-primary focus:ring-0 transition-all outline-none" maxlength="1" type="text"/>
+<input class="w-full h-14 bg-transparent border-b-2 border-surface-container-highest focus:border-primary text-center font-mono text-2xl text-primary focus:ring-0 transition-all outline-none" maxlength="1" type="text"/>
+<input class="w-full h-14 bg-transparent border-b-2 border-surface-container-highest focus:border-primary text-center font-mono text-2xl text-primary focus:ring-0 transition-all outline-none" maxlength="1" type="text"/>
+<input class="w-full h-14 bg-transparent border-b-2 border-surface-container-highest focus:border-primary text-center font-mono text-2xl text-primary focus:ring-0 transition-all outline-none" maxlength="1" type="text"/>
+</div>
+</div>
+<!-- ACTIONS (Bottom) -->
+<div class="flex items-center justify-between pt-4 border-t border-outline-variant/10">
+<button class="font-mono text-xs text-on-surface-variant hover:text-on-surface transition-all flex items-center gap-2 group">
+                    VIEW DETAILS
+                    <span class="material-symbols-outlined text-sm group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</button>
+<div class="flex gap-4">
+<button class="px-6 py-3 rounded-lg border border-error/30 text-error hover:bg-error/10 font-bold transition-all uppercase text-xs tracking-widest">
+                        REJECT
+                    </button>
+<button class="px-10 py-3 rounded-lg bg-primary text-on-primary font-bold shadow-[0_0_20px_rgba(16,185,129,0.3)] hover:shadow-[0_0_30px_rgba(16,185,129,0.5)] hover:scale-[1.02] transition-all uppercase text-xs tracking-widest">
+                        SIGN
+                    </button>
+</div>
+</div>
+</div>
+</div>
+<!-- Footer Implementation from JSON -->
+<footer class="fixed bottom-0 w-full h-8 flex items-center bg-[#06100d] border-t border-emerald-500/5 transition-colors duration-500">
+<div class="flex justify-between px-10 max-w-[1280px] mx-auto w-full font-mono text-[10px] uppercase tracking-[0.2em]">
+<span class="text-emerald-900">© 2024 Emerald Pulse - SECURED BY BIOLUMINESCENT SOVEREIGNTY</span>
+<div class="flex gap-6">
+<a class="text-emerald-900 hover:text-emerald-300" href="#">Network Status</a>
+<a class="text-emerald-900 hover:text-emerald-300" href="#">Terms</a>
+<a class="text-emerald-900 hover:text-emerald-300" href="#">Security Policy</a>
+</div>
+</div>
+</footer>
+</body></html>

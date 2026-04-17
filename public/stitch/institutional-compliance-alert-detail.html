@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800;900&amp;family=JetBrains+Mono:wght@400;700&amp;family=Space+Grotesk:wght@500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-surface": "#d9e5df",
+                        "primary-container": "#10b981",
+                        "on-primary-container": "#00422b",
+                        "on-tertiary-fixed-variant": "#653e00",
+                        "on-tertiary-fixed": "#2a1700",
+                        "surface-container-highest": "#2c3733",
+                        "on-error-container": "#ffdad6",
+                        "surface-container-low": "#131e1a",
+                        "tertiary-fixed-dim": "#ffb95f",
+                        "on-secondary-container": "#00452e",
+                        "outline": "#86948a",
+                        "on-surface-variant": "#bbcabf",
+                        "surface-container-lowest": "#06100d",
+                        "secondary-container": "#00bd85",
+                        "error": "#ffb4ab",
+                        "surface-dim": "#0b1512",
+                        "on-primary-fixed-variant": "#005236",
+                        "primary-fixed-dim": "#4edea3",
+                        "surface-tint": "#4edea3",
+                        "on-background": "#d9e5df",
+                        "inverse-primary": "#006c49",
+                        "on-secondary-fixed": "#002114",
+                        "on-error": "#690005",
+                        "surface-container": "#17221e",
+                        "surface-bright": "#313b38",
+                        "tertiary": "#ffb95f",
+                        "on-tertiary-container": "#523200",
+                        "surface-variant": "#2c3733",
+                        "surface": "#0b1512",
+                        "on-primary": "#003824",
+                        "tertiary-fixed": "#ffddb8",
+                        "inverse-on-surface": "#28332f",
+                        "error-container": "#93000a",
+                        "tertiary-container": "#e29100",
+                        "on-secondary": "#003825",
+                        "surface-container-high": "#222c29",
+                        "on-primary-fixed": "#002113",
+                        "on-secondary-fixed-variant": "#005137",
+                        "on-tertiary": "#472a00",
+                        "background": "#0b1512",
+                        "secondary-fixed": "#68fcbf",
+                        "outline-variant": "#3c4a42",
+                        "secondary-fixed-dim": "#45dfa4",
+                        "secondary": "#45dfa4"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "1rem",
+                        "lg": "2rem",
+                        "xl": "3rem",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Inter"],
+                        "body": ["Inter"],
+                        "label": ["Space Grotesk"],
+                        "mono": ["JetBrains Mono"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .coral-glow {
+            box-shadow: 0 0 20px rgba(226, 145, 0, 0.15);
+        }
+        .jade-gradient-text {
+            background: linear-gradient(135deg, #10b981 0%, #34d399 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body overflow-hidden">
+<!-- BACKGROUND PORTAL LAYER (Dimmed 20%) -->
+<div class="fixed inset-0 z-0 opacity-20 pointer-events-none bg-[#0b1512]">
+<header class="fixed top-0 w-full z-50 border-b border-[#3c4a42]/20 h-20 px-8 flex justify-between items-center bg-[#0b1512]/40 backdrop-blur-xl">
+<div class="text-xl font-black tracking-tighter bg-gradient-to-br from-[#10b981] to-[#34d399] bg-clip-text text-transparent">INSTITUTIONAL PORTAL</div>
+<div class="flex gap-8">
+<span class="text-[#d9e5df]/60 font-['Inter'] tracking-tight">Dashboard</span>
+<span class="text-[#d9e5df]/60 font-['Inter'] tracking-tight">Audit Logs</span>
+<span class="text-[#d9e5df]/60 font-['Inter'] tracking-tight">Vault</span>
+<span class="text-[#4edea3] border-b-2 border-[#4edea3] pb-1 font-['Inter'] tracking-tight">Compliance</span>
+</div>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-[#4edea3]">notifications</span>
+<div class="px-3 py-1 rounded-full bg-primary-container/10 text-primary border border-primary/20 text-xs">Amber Status</div>
+</div>
+</header>
+<main class="pt-32 px-12 grid grid-cols-12 gap-8">
+<div class="col-span-8 space-y-8">
+<div class="h-64 rounded-lg bg-surface-container-low border border-outline-variant/20"></div>
+<div class="h-96 rounded-lg bg-surface-container-low border border-outline-variant/20"></div>
+</div>
+<div class="col-span-4 space-y-8">
+<div class="h-full rounded-lg bg-surface-container-low border border-outline-variant/20"></div>
+</div>
+</main>
+</div>
+<!-- MODAL OVERLAY -->
+<div class="fixed inset-0 z-[100] flex items-center justify-center bg-surface/60 backdrop-blur-sm p-6">
+<!-- COMPLIANCE MODAL -->
+<div class="w-full max-w-[720px] bg-[#2c3733]/40 backdrop-blur-[20px] rounded-lg border border-outline-variant/20 shadow-[0px_20px_40px_rgba(0,0,0,0.4)] overflow-hidden flex flex-col max-h-[921px]">
+<!-- Modal Header -->
+<div class="p-8 pb-4 flex justify-between items-start">
+<div>
+<div class="flex items-center gap-3 mb-1">
+<span class="font-mono text-xs tracking-widest text-primary/60">AML-8821</span>
+<div class="px-2 py-0.5 bg-tertiary/10 text-tertiary border border-tertiary/30 rounded text-[10px] font-bold tracking-widest animate-pulse">HIGH SEVERITY</div>
+</div>
+<h1 class="text-3xl font-black jade-gradient-text tracking-tight uppercase">Sanctions Hit Alert</h1>
+</div>
+<button class="p-2 hover:bg-white/5 rounded-full transition-colors">
+<span class="material-symbols-outlined text-on-surface-variant">close</span>
+</button>
+</div>
+<!-- Modal Content -->
+<div class="px-8 pb-8 overflow-y-auto space-y-6 custom-scrollbar">
+<!-- Hero Section: Hit Details -->
+<div class="relative bg-surface-container-lowest/50 rounded-lg p-6 border-l-4 border-tertiary overflow-hidden">
+<div class="absolute top-0 right-0 p-4 opacity-10">
+<span class="material-symbols-outlined text-6xl" style="font-variation-settings: 'FILL' 1;">shield</span>
+</div>
+<p class="text-on-surface-variant text-sm font-medium mb-1">OFAC SDN list match on counterparty</p>
+<h2 class="font-mono text-xl text-on-surface font-bold mb-2">ABC Corp LLC</h2>
+<p class="text-on-surface-variant/70 text-sm">matched against Specially Designated Nationals list, entry #94321</p>
+<!-- Confidence Bar -->
+<div class="mt-6">
+<div class="flex justify-between text-[10px] font-mono tracking-widest text-on-surface-variant mb-2">
+<span>MATCH CONFIDENCE</span>
+<span class="text-tertiary">87%</span>
+</div>
+<div class="h-1.5 w-full bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full bg-tertiary rounded-full coral-glow" style="width: 87%"></div>
+</div>
+</div>
+</div>
+<!-- Transaction Context -->
+<div class="bg-surface-container-high/40 rounded-lg p-5 border border-outline-variant/10 flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary" data-icon="receipt_long">receipt_long</span>
+</div>
+<div>
+<p class="text-on-surface text-sm font-medium">Triggered by <span class="font-mono text-primary">TX-9921</span> · $5M Wire Transfer</p>
+<p class="text-on-surface-variant/60 text-xs mt-0.5">2h ago by Trading Desk</p>
+</div>
+</div>
+<!-- Match Reasons Grid -->
+<div class="grid grid-cols-2 gap-4">
+<div class="flex items-center gap-3 p-3 rounded-lg bg-surface-container-lowest/30 border border-outline-variant/5">
+<span class="material-symbols-outlined text-primary text-sm" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span class="text-xs text-on-surface-variant font-mono">Entity name exact</span>
+</div>
+<div class="flex items-center gap-3 p-3 rounded-lg bg-surface-container-lowest/30 border border-outline-variant/5">
+<span class="material-symbols-outlined text-primary text-sm" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span class="text-xs text-on-surface-variant font-mono">Jurisdiction match UAE</span>
+</div>
+<div class="flex items-center gap-3 p-3 rounded-lg bg-surface-container-lowest/30 border border-outline-variant/5">
+<span class="material-symbols-outlined text-on-surface-variant/30 text-sm">radio_button_unchecked</span>
+<span class="text-xs text-on-surface-variant/60 font-mono">Reg number partial</span>
+</div>
+<div class="flex items-center gap-3 p-3 rounded-lg bg-surface-container-lowest/30 border border-outline-variant/5">
+<span class="material-symbols-outlined text-on-surface-variant/30 text-sm">radio_button_unchecked</span>
+<span class="text-xs text-on-surface-variant/60 font-mono">PEP via UBO</span>
+</div>
+</div>
+<!-- Action Selection -->
+<div>
+<h3 class="text-[10px] font-mono tracking-widest text-on-surface-variant mb-3 uppercase">Decision Matrix</h3>
+<div class="flex flex-wrap gap-2">
+<button class="px-4 py-2 rounded-full bg-tertiary/20 text-tertiary border border-tertiary/50 text-xs font-bold tracking-tight transition-all scale-100 hover:bg-tertiary/30">FREEZE TRANSACTION</button>
+<button class="px-4 py-2 rounded-full bg-surface-container-highest text-on-surface-variant/60 border border-outline-variant/20 text-xs font-bold tracking-tight hover:text-on-surface hover:border-outline-variant transition-all">RELEASE+FLAG</button>
+<button class="px-4 py-2 rounded-full bg-surface-container-highest text-on-surface-variant/60 border border-outline-variant/20 text-xs font-bold tracking-tight hover:text-on-surface hover:border-outline-variant transition-all">ESCALATE TO CCO</button>
+<button class="px-4 py-2 rounded-full bg-surface-container-highest text-on-surface-variant/60 border border-outline-variant/20 text-xs font-bold tracking-tight hover:text-on-surface hover:border-outline-variant transition-all">FALSE POSITIVE</button>
+</div>
+</div>
+<!-- Assignment & Notes -->
+<div class="space-y-4">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-3">
+<img alt="Elena Rossi" class="w-8 h-8 rounded-full border border-primary/20 object-cover" data-alt="professional headshot of a female executive with a confident expression, soft office lighting, neutral background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB1pj5AiP8oWGMpytcnX9AmwuLzda4mq0Ze-GRT-G1grhE_ryVNCEpcdQ-inUltFPCtolC54lbzmf9UC14fk_fEKPXW_L_ZUKTb_6d0CUxi_kqWHPJh3gUywPjcbBfCHlyy-5bcKCroVJiil6VkLWmVcLmjb0jiXxFeBiu8gGFGACi0HF59Ki_2Cj7woUxdGqIXzVnzEqy7M8ixUS5l31fbZKc6tDxxiHA-CQAW9KxFPVmGxB3MA-Hd9-E3fAMMsfkLke8u0ADONm4"/>
+<div>
+<p class="text-xs font-bold text-on-surface">Elena Rossi, CCO</p>
+<p class="text-[10px] font-mono text-on-surface-variant/60">Compliance Officer Assigned</p>
+</div>
+</div>
+</div>
+<div class="space-y-2">
+<label class="text-[10px] font-mono tracking-widest text-on-surface-variant uppercase">Notes</label>
+<textarea class="w-full bg-surface-container-lowest/50 border border-outline-variant/20 rounded-lg p-4 text-sm font-mono text-on-surface placeholder:text-on-surface-variant/30 focus:border-primary/50 focus:ring-0 transition-all outline-none min-h-[100px]" placeholder="Enter institutional audit trail notes..."></textarea>
+</div>
+</div>
+</div>
+<!-- Footer -->
+<div class="p-8 pt-4 border-t border-outline-variant/10 flex justify-end gap-4">
+<button class="px-6 py-3 rounded-full text-xs font-bold text-on-surface-variant hover:text-on-surface transition-colors tracking-tight">SAVE DRAFT</button>
+<button class="px-8 py-3 rounded-full bg-tertiary-container text-on-tertiary-container text-xs font-black tracking-widest flex items-center gap-2 hover:brightness-110 active:scale-95 transition-all shadow-lg shadow-tertiary/10 uppercase">
+                    APPLY DECISION
+                    <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Status Bar (BottomNavBar) -->
+<footer class="fixed bottom-0 left-0 w-full z-50 flex justify-between items-center px-8 bg-[#0b1512] h-8 border-t border-[#3c4a42]/20 font-['JetBrains_Mono'] text-[10px]">
+<div class="flex items-center gap-6">
+<div class="flex items-center gap-1.5 text-[#4edea3]">
+<span class="material-symbols-outlined text-[14px]">sensors</span>
+<span>System: Online</span>
+</div>
+<div class="flex items-center gap-1.5 text-[#d9e5df]/40">
+<span class="material-symbols-outlined text-[14px]">speed</span>
+<span>Latency: 12ms</span>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<div class="flex items-center gap-1.5 text-[#d9e5df]/40">
+<span class="material-symbols-outlined text-[14px]">timer</span>
+<span>Uptime: 99.9%</span>
+</div>
+<div class="flex items-center gap-1.5 text-[#d9e5df]/40">
+<span class="material-symbols-outlined text-[14px]">verified_user</span>
+<span>Secure Boot</span>
+</div>
+</div>
+</footer>
+<!-- Side Navigation Shell (Hidden or for Desktop view) -->
+<nav class="fixed right-0 top-20 h-[calc(100vh-112px)] w-64 bg-[#0b1512]/60 backdrop-blur-2xl rounded-l-lg border-l border-[#3c4a42]/20 shadow-[-10px_0px_30px_rgba(0,0,0,0.3)] flex flex-col p-6 space-y-4 z-40 hidden md:flex">
+<div class="mb-4">
+<p class="font-['JetBrains_Mono'] uppercase text-[10px] tracking-widest text-[#4edea3]">THEME CONTROL</p>
+<p class="font-['JetBrains_Mono'] uppercase text-[8px] tracking-widest text-[#d9e5df]/40">Appearance Panel</p>
+</div>
+<div class="space-y-1">
+<div class="flex items-center gap-3 p-3 text-[#d9e5df]/40 hover:bg-[#3c4a42]/20 hover:text-[#4edea3] rounded-l-full transition-all cursor-pointer">
+<span class="material-symbols-outlined">palette</span>
+<span class="font-['JetBrains_Mono'] uppercase text-[10px] tracking-widest">Appearance</span>
+</div>
+<div class="flex items-center gap-3 p-3 bg-[#4edea3]/10 text-[#4edea3] rounded-l-full border-r-2 border-[#4edea3]">
+<span class="material-symbols-outlined">shield_lock</span>
+<span class="font-['JetBrains_Mono'] uppercase text-[10px] tracking-widest">Security</span>
+</div>
+<div class="flex items-center gap-3 p-3 text-[#d9e5df]/40 hover:bg-[#3c4a42]/20 hover:text-[#4edea3] rounded-l-full transition-all cursor-pointer">
+<span class="material-symbols-outlined">memory</span>
+<span class="font-['JetBrains_Mono'] uppercase text-[10px] tracking-widest">Hardware</span>
+</div>
+<div class="flex items-center gap-3 p-3 text-[#d9e5df]/40 hover:bg-[#3c4a42]/20 hover:text-[#4edea3] rounded-l-full transition-all cursor-pointer">
+<span class="material-symbols-outlined">lan</span>
+<span class="font-['JetBrains_Mono'] uppercase text-[10px] tracking-widest">Connectivity</span>
+</div>
+<div class="flex items-center gap-3 p-3 text-[#d9e5df]/40 hover:bg-[#3c4a42]/20 hover:text-[#4edea3] rounded-l-full transition-all cursor-pointer">
+<span class="material-symbols-outlined">terminal</span>
+<span class="font-['JetBrains_Mono'] uppercase text-[10px] tracking-widest">Logs</span>
+</div>
+</div>
+</nav>
+</body></html>

@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Institutional Portal | SAR Filing</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Inter:wght@300;400;500;600&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-primary": "#003824",
+                    "on-surface": "#d9e5df",
+                    "inverse-primary": "#006c49",
+                    "tertiary": "#ffb95f",
+                    "on-secondary": "#003825",
+                    "tertiary-fixed": "#ffddb8",
+                    "secondary-container": "#00bd85",
+                    "on-background": "#d9e5df",
+                    "tertiary-fixed-dim": "#ffb95f",
+                    "secondary-fixed": "#68fcbf",
+                    "on-secondary-fixed-variant": "#005137",
+                    "on-tertiary-fixed": "#2a1700",
+                    "surface-container-low": "#131e1a",
+                    "secondary-fixed-dim": "#45dfa4",
+                    "on-tertiary-fixed-variant": "#653e00",
+                    "error-container": "#93000a",
+                    "surface-tint": "#4edea3",
+                    "surface-container": "#17221e",
+                    "tertiary-container": "#e29100",
+                    "primary-fixed-dim": "#4edea3",
+                    "inverse-on-surface": "#28332f",
+                    "outline-variant": "#3c4a42",
+                    "on-tertiary-container": "#523200",
+                    "surface": "#0b1512",
+                    "on-error-container": "#ffdad6",
+                    "on-primary-fixed-variant": "#005236",
+                    "on-primary-container": "#00422b",
+                    "on-secondary-container": "#00452e",
+                    "outline": "#86948a",
+                    "primary": "#4edea3",
+                    "surface-bright": "#313b38",
+                    "on-secondary-fixed": "#002114",
+                    "surface-variant": "#2c3733",
+                    "primary-container": "#10b981",
+                    "on-primary-fixed": "#002113",
+                    "secondary": "#45dfa4",
+                    "background": "#0b1512",
+                    "surface-container-high": "#222c29",
+                    "on-error": "#690005",
+                    "surface-dim": "#0b1512",
+                    "surface-container-lowest": "#06100d",
+                    "error": "#ffb4ab",
+                    "on-tertiary": "#472a00",
+                    "on-surface-variant": "#bbcabf",
+                    "primary-fixed": "#6ffbbe",
+                    "inverse-surface": "#d9e5df",
+                    "surface-container-highest": "#2c3733"
+            },
+            "borderRadius": {
+                    "DEFAULT": "1rem",
+                    "lg": "2rem",
+                    "xl": "3rem",
+                    "full": "9999px"
+            },
+            "fontFamily": {
+                    "headline": ["Space Grotesk"],
+                    "body": ["Inter"],
+                    "label": ["Inter"],
+                    "mono": ["JetBrains Mono"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; background-color: #0b1512; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .glass-panel { background: rgba(44, 55, 51, 0.4); backdrop-filter: blur(20px); border: 1px solid rgba(16, 185, 129, 0.08); }
+        .gradient-text { background: linear-gradient(to right, #10b981, #34d399); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+    </style>
+</head>
+<body class="text-on-surface antialiased overflow-hidden">
+<!-- Background Layer (Compliance Portal Dashboard Context) -->
+<main class="fixed inset-0 z-0 flex flex-col opacity-20 filter blur-sm">
+<!-- TopNavBar Execution -->
+<nav class="h-16 w-full fixed top-0 z-50 bg-emerald-950/40 backdrop-blur-xl border-b border-emerald-500/10 shadow-[0_24px_48px_rgba(16,185,129,0.06)]">
+<div class="flex justify-between items-center px-8 w-full max-w-[1280px] mx-auto h-full">
+<div class="text-xl font-bold bg-gradient-to-r from-emerald-500 to-emerald-400 bg-clip-text text-transparent font-['Space_Grotesk'] tracking-tight">INSTITUTIONAL PORTAL</div>
+<div class="flex gap-8 items-center">
+<span class="font-['Space_Grotesk'] tracking-tight text-emerald-100/60 cursor-pointer transition-colors duration-300">Dashboard</span>
+<span class="font-['Space_Grotesk'] tracking-tight text-emerald-100/60 cursor-pointer transition-colors duration-300">Ledger</span>
+<span class="font-['Space_Grotesk'] tracking-tight text-emerald-400 border-b-2 border-emerald-500 pb-1 cursor-pointer transition-colors duration-300">Audits</span>
+<span class="font-['Space_Grotesk'] tracking-tight text-emerald-100/60 cursor-pointer transition-colors duration-300">Flow</span>
+<div class="px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-500 text-xs font-bold tracking-widest">AMBER STATUS</div>
+</div>
+</div>
+</nav>
+<div class="mt-20 px-8 max-w-[1280px] mx-auto w-full grid grid-cols-12 gap-6">
+<div class="col-span-8 space-y-6">
+<div class="h-64 w-full bg-surface-container rounded-xl"></div>
+<div class="h-96 w-full bg-surface-container rounded-xl"></div>
+</div>
+<div class="col-span-4 space-y-6">
+<div class="h-40 w-full bg-surface-container rounded-xl"></div>
+<div class="h-80 w-full bg-surface-container-low rounded-xl border border-outline-variant/10"></div>
+</div>
+</div>
+</main>
+<!-- Modal Overlay -->
+<div class="fixed inset-0 z-[100] flex items-center justify-center bg-background/60 backdrop-blur-md">
+<!-- SAR Modal Container -->
+<section class="glass-panel w-[760px] max-h-[921px] rounded-xl flex flex-col overflow-hidden shadow-2xl relative">
+<!-- Header Section -->
+<header class="px-8 pt-8 pb-6 border-b border-outline-variant/10">
+<div class="flex justify-between items-start">
+<div>
+<h1 class="font-headline text-2xl font-bold gradient-text tracking-tight uppercase">File Suspicious Activity Report</h1>
+<p class="font-mono text-[10px] text-primary/60 mt-1 tracking-widest">FinCEN FORM 111</p>
+</div>
+<button class="text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined">close</span>
+</button>
+</div>
+</header>
+<!-- Scrollable Content -->
+<div class="flex-1 overflow-y-auto px-8 py-6 space-y-8 no-scrollbar">
+<!-- 1. SUBJECT SECTION -->
+<div class="space-y-4">
+<div class="flex items-center gap-2">
+<div class="w-1 h-4 bg-primary rounded-full"></div>
+<h2 class="font-headline text-xs font-bold text-on-surface/50 tracking-widest uppercase">Subject Information</h2>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div class="space-y-1.5">
+<label class="text-[10px] font-bold text-outline uppercase tracking-wider px-1">Entity Name</label>
+<div class="bg-surface-container-low p-3 rounded-lg border border-outline-variant/10 focus-within:border-primary/40 transition-all">
+<input class="w-full bg-transparent border-none p-0 text-sm font-mono text-on-surface focus:ring-0" type="text" value="QUANTUM TRADING GMBH"/>
+</div>
+</div>
+<div class="space-y-1.5">
+<label class="text-[10px] font-bold text-outline uppercase tracking-wider px-1">Legal ID</label>
+<div class="bg-surface-container-low p-3 rounded-lg border border-outline-variant/10">
+<input class="w-full bg-transparent border-none p-0 text-sm font-mono text-on-surface focus:ring-0" type="text" value="LEI-549300V9K6M8"/>
+</div>
+</div>
+<div class="space-y-1.5">
+<label class="text-[10px] font-bold text-outline uppercase tracking-wider px-1">Jurisdiction</label>
+<div class="relative bg-surface-container-low p-3 rounded-lg border border-outline-variant/10">
+<select class="w-full bg-transparent border-none p-0 text-sm appearance-none focus:ring-0 text-on-surface pr-8">
+<option>Germany (DE)</option>
+<option>United States (US)</option>
+</select>
+<span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 text-outline pointer-events-none">expand_more</span>
+</div>
+</div>
+<div class="space-y-1.5">
+<label class="text-[10px] font-bold text-outline uppercase tracking-wider px-1">Relationship Status</label>
+<div class="relative bg-surface-container-low p-3 rounded-lg border border-outline-variant/10">
+<select class="w-full bg-transparent border-none p-0 text-sm appearance-none focus:ring-0 text-on-surface pr-8">
+<option>Active Institutional</option>
+<option>Terminated</option>
+</select>
+<span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 text-outline pointer-events-none">expand_more</span>
+</div>
+</div>
+</div>
+</div>
+<!-- 2. SUSPICIOUS ACTIVITY -->
+<div class="space-y-4">
+<div class="flex items-center gap-2">
+<div class="w-1 h-4 bg-primary rounded-full"></div>
+<h2 class="font-headline text-xs font-bold text-on-surface/50 tracking-widest uppercase">Suspicious Activity</h2>
+</div>
+<div class="bg-surface-container-low p-5 rounded-lg border border-outline-variant/10 space-y-6">
+<div class="grid grid-cols-2 gap-6">
+<div class="space-y-1.5">
+<label class="text-[10px] font-bold text-outline uppercase tracking-wider">Activity Type</label>
+<div class="relative">
+<select class="w-full bg-surface-container-highest/30 border border-outline-variant/10 p-2.5 rounded-md text-sm appearance-none focus:ring-0 text-primary">
+<option>Structurally Complex Transfers</option>
+<option>Unusual Wire Patterns</option>
+</select>
+<span class="material-symbols-outlined absolute right-2 top-1/2 -translate-y-1/2 text-primary text-sm pointer-events-none">expand_more</span>
+</div>
+</div>
+<div class="space-y-1.5">
+<label class="text-[10px] font-bold text-outline uppercase tracking-wider">Date Range</label>
+<div class="flex items-center gap-2 text-sm text-on-surface font-mono">
+<span class="bg-surface-container-highest/30 px-3 py-2 rounded border border-outline-variant/10">2023-11-01</span>
+<span class="text-outline">→</span>
+<span class="bg-surface-container-highest/30 px-3 py-2 rounded border border-outline-variant/10">2023-11-28</span>
+</div>
+</div>
+</div>
+<div class="pt-4 border-t border-outline-variant/10 flex justify-between items-center">
+<span class="text-[10px] font-bold text-outline uppercase tracking-wider">Total Aggregate Amount</span>
+<div class="text-3xl font-mono font-medium text-primary tracking-tighter">
+                                $4,822,900.<span class="text-lg opacity-60">00</span>
+</div>
+</div>
+</div>
+</div>
+<!-- 3. NARRATIVE -->
+<div class="space-y-4">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<div class="w-1 h-4 bg-primary rounded-full"></div>
+<h2 class="font-headline text-xs font-bold text-on-surface/50 tracking-widest uppercase">Narrative Description</h2>
+</div>
+<span class="font-mono text-[10px] text-outline tracking-widest">CHAR COUNT: 1420 / 4000</span>
+</div>
+<div class="relative">
+<textarea class="w-full h-40 bg-surface-container-low rounded-lg border border-outline-variant/10 p-4 text-sm text-on-surface focus:ring-1 focus:ring-primary/20 focus:border-primary/30 leading-relaxed resize-none font-body" placeholder="Describe the nature of the suspicious activity in technical detail...">Entity initiated multiple cross-border transfers below threshold within 24-hour windows. Source of funds remains unverified through secondary KYC checks. Patterns suggest deliberate avoidance of reporting requirements...</textarea>
+<div class="absolute bottom-3 right-3 flex gap-2">
+<div class="w-2 h-2 rounded-full bg-primary/40"></div>
+<div class="w-2 h-2 rounded-full bg-primary/20"></div>
+<div class="w-2 h-2 rounded-full bg-primary/10"></div>
+</div>
+</div>
+</div>
+<!-- 4. RELATED TRANSACTIONS -->
+<div class="space-y-4">
+<div class="flex items-center gap-2">
+<div class="w-1 h-4 bg-primary rounded-full"></div>
+<h2 class="font-headline text-xs font-bold text-on-surface/50 tracking-widest uppercase">Related Transactions</h2>
+</div>
+<div class="space-y-2">
+<!-- Transaction Row -->
+<div class="flex items-center justify-between px-5 py-3 rounded-full bg-emerald-500/5 border border-emerald-500/10 group hover:bg-emerald-500/10 transition-all">
+<div class="flex items-center gap-8">
+<span class="font-mono text-xs text-primary">TX-99210-XC</span>
+<span class="font-mono text-xs text-on-surface">$1,400,000.00</span>
+<span class="font-mono text-xs text-outline">NOV 14, 2023</span>
+</div>
+<button class="text-outline hover:text-error transition-colors">
+<span class="material-symbols-outlined text-sm">close</span>
+</button>
+</div>
+<!-- Transaction Row -->
+<div class="flex items-center justify-between px-5 py-3 rounded-full bg-emerald-500/5 border border-emerald-500/10 group hover:bg-emerald-500/10 transition-all">
+<div class="flex items-center gap-8">
+<span class="font-mono text-xs text-primary">TX-99245-WA</span>
+<span class="font-mono text-xs text-on-surface">$2,222,900.00</span>
+<span class="font-mono text-xs text-outline">NOV 18, 2023</span>
+</div>
+<button class="text-outline hover:text-error transition-colors">
+<span class="material-symbols-outlined text-sm">close</span>
+</button>
+</div>
+<!-- Transaction Row -->
+<div class="flex items-center justify-between px-5 py-3 rounded-full bg-emerald-500/5 border border-emerald-500/10 group hover:bg-emerald-500/10 transition-all">
+<div class="flex items-center gap-8">
+<span class="font-mono text-xs text-primary">TX-99288-QA</span>
+<span class="font-mono text-xs text-on-surface">$1,200,000.00</span>
+<span class="font-mono text-xs text-outline">NOV 25, 2023</span>
+</div>
+<button class="text-outline hover:text-error transition-colors">
+<span class="material-symbols-outlined text-sm">close</span>
+</button>
+</div>
+</div>
+</div>
+<!-- 5. FILER INFORMATION -->
+<div class="pt-4 space-y-4">
+<div class="flex items-center gap-2">
+<div class="w-1 h-4 bg-primary rounded-full"></div>
+<h2 class="font-headline text-xs font-bold text-on-surface/50 tracking-widest uppercase">Filer Information</h2>
+</div>
+<div class="bg-surface-container-low p-5 rounded-lg border border-outline-variant/10 grid grid-cols-3 gap-6 relative overflow-hidden">
+<!-- Branding Watermark -->
+<div class="absolute -right-4 -bottom-4 opacity-[0.03] rotate-[-12deg] pointer-events-none select-none">
+<span class="font-headline text-8xl font-black">AURORA</span>
+</div>
+<div class="space-y-1">
+<p class="text-[9px] font-bold text-outline uppercase tracking-tighter">Compliance Officer</p>
+<p class="text-sm font-medium">Marcus V. Sterling</p>
+</div>
+<div class="space-y-1">
+<p class="text-[9px] font-bold text-outline uppercase tracking-tighter">Institutional Role</p>
+<p class="text-sm font-medium">Head of AML</p>
+</div>
+<div class="space-y-1">
+<p class="text-[9px] font-bold text-outline uppercase tracking-tighter">Firm Affiliate</p>
+<p class="text-sm font-bold text-primary">Aurora Capital</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Footer Area -->
+<footer class="mt-auto">
+<!-- Confidentiality Strip -->
+<div class="bg-tertiary-container/10 border-y border-tertiary/20 px-8 py-2.5 flex items-center gap-3">
+<span class="material-symbols-outlined text-tertiary text-sm" style="font-variation-settings: 'FILL' 1;">security</span>
+<span class="font-mono text-[10px] text-tertiary font-bold tracking-widest uppercase">31 USC 5318(g) PROTECTED - STRICTLY CONFIDENTIAL</span>
+</div>
+<!-- Actions -->
+<div class="px-8 py-6 flex justify-between items-center bg-surface-container-highest/20">
+<button class="flex items-center gap-2 px-6 py-2.5 rounded-full border border-outline-variant/30 text-xs font-bold tracking-widest hover:bg-surface-variant transition-colors">
+<span class="material-symbols-outlined text-sm">drafts</span>
+                        SAVE DRAFT
+                    </button>
+<div class="flex items-center gap-4">
+<div class="hidden md:flex flex-col items-end">
+<p class="text-[9px] text-outline font-bold uppercase tracking-tighter">Institutional Seal</p>
+<div class="flex gap-1">
+<div class="w-1.5 h-1.5 rounded-full bg-primary animate-pulse"></div>
+<div class="w-1.5 h-1.5 rounded-full bg-primary/40"></div>
+</div>
+</div>
+<button class="flex items-center gap-3 px-8 py-3 rounded-full bg-gradient-to-r from-primary-container to-secondary-container text-on-primary text-xs font-bold tracking-widest shadow-lg shadow-primary/10 hover:brightness-110 active:scale-95 transition-all">
+                            SUBMIT TO FinCEN
+                            <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</button>
+</div>
+</div>
+</footer>
+</section>
+</div>
+<!-- Bottom Status Rail Execution -->
+<footer class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 max-w-[1280px] mx-auto h-10 bg-emerald-950 border-t border-emerald-500/15 opacity-40">
+<div class="flex items-center gap-2 text-emerald-400 font-mono text-[10px] uppercase">
+<span class="material-symbols-outlined text-xs">check_circle</span> SYSTEM OK
+        </div>
+<div class="flex items-center gap-2 text-emerald-100/50 font-mono text-[10px] uppercase">
+<span class="material-symbols-outlined text-xs">currency_bitcoin</span> BTC/USD
+        </div>
+<div class="flex items-center gap-2 text-emerald-100/50 font-mono text-[10px] uppercase">
+<span class="material-symbols-outlined text-xs">eco</span> ETH/USD
+        </div>
+<div class="flex items-center gap-2 text-emerald-100/50 font-mono text-[10px] uppercase">
+<span class="material-symbols-outlined text-xs">local_gas_station</span> GAS: 12
+        </div>
+<div class="flex items-center gap-2 text-emerald-100/50 font-mono text-[10px] uppercase">
+<span class="material-symbols-outlined text-xs">sync</span> SYNC: 100%
+        </div>
+</footer>
+</body></html>

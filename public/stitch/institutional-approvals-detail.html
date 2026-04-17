@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container-lowest": "#06100d",
+                        "primary-container": "#10b981",
+                        "on-tertiary-container": "#523200",
+                        "on-surface": "#d9e5df",
+                        "surface-dim": "#0b1512",
+                        "on-secondary-fixed-variant": "#005137",
+                        "secondary-fixed-dim": "#45dfa4",
+                        "on-tertiary-fixed": "#2a1700",
+                        "on-primary-container": "#00422b",
+                        "tertiary-fixed-dim": "#ffb95f",
+                        "tertiary-container": "#e29100",
+                        "error": "#ffb4ab",
+                        "on-secondary-container": "#00452e",
+                        "outline": "#86948a",
+                        "on-error-container": "#ffdad6",
+                        "surface-container-highest": "#2c3733",
+                        "primary-fixed-dim": "#4edea3",
+                        "surface-container-high": "#222c29",
+                        "outline-variant": "#3c4a42",
+                        "surface-tint": "#4edea3",
+                        "primary": "#4edea3",
+                        "secondary-container": "#00bd85",
+                        "on-tertiary-fixed-variant": "#653e00",
+                        "on-primary-fixed": "#002113",
+                        "tertiary": "#ffb95f",
+                        "inverse-surface": "#d9e5df",
+                        "inverse-on-surface": "#28332f",
+                        "on-primary": "#003824",
+                        "surface-variant": "#2c3733",
+                        "surface-bright": "#313b38",
+                        "on-surface-variant": "#bbcabf",
+                        "on-primary-fixed-variant": "#005236",
+                        "secondary-fixed": "#68fcbf",
+                        "on-error": "#690005",
+                        "on-secondary-fixed": "#002114",
+                        "inverse-primary": "#006c49",
+                        "on-background": "#d9e5df",
+                        "error-container": "#93000a",
+                        "secondary": "#45dfa4",
+                        "surface-container": "#17221e",
+                        "tertiary-fixed": "#ffddb8",
+                        "surface": "#0b1512",
+                        "primary-fixed": "#6ffbbe",
+                        "background": "#0b1512",
+                        "surface-container-low": "#131e1a",
+                        "on-tertiary": "#472a00",
+                        "on-secondary": "#003825"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "1rem",
+                        "lg": "2rem",
+                        "xl": "3rem",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Inter"],
+                        "body": ["Inter"],
+                        "label": ["JetBrains Mono"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-panel {
+            background: rgba(44, 55, 51, 0.4);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(16, 185, 129, 0.08);
+        }
+        .diagonal-pattern {
+            background-image: repeating-linear-gradient(45deg, rgba(16, 185, 129, 0.05) 0, rgba(16, 185, 129, 0.05) 1px, transparent 0, transparent 50%);
+            background-size: 10px 10px;
+        }
+        .pulse-glow {
+            box-shadow: 0 0 12px rgba(78, 222, 163, 0.4);
+            animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: .5; transform: scale(1.2); }
+        }
+    </style>
+</head>
+<body class="bg-[#0b1512] text-on-surface font-body selection:bg-primary/30 min-h-screen overflow-hidden">
+<!-- Parent Page Content (Dimmed) -->
+<div class="fixed inset-0 z-0 opacity-20 pointer-events-none overflow-hidden diagonal-pattern">
+<!-- TopNavBar Mockup -->
+<header class="fixed top-0 w-full z-50 flex justify-between items-center px-8 h-16 bg-[#0b1512] border-b border-[#10b981]/10">
+<div class="text-xl font-bold tracking-tighter text-[#4edea3]">Institutional Bioluminescence</div>
+<div class="flex gap-8">
+<span class="text-[#4edea3] border-b-2 border-[#4edea3] pb-1 text-sm font-medium">Approvals</span>
+<span class="text-[#86948a] text-sm font-medium">Dashboard</span>
+<span class="text-[#86948a] text-sm font-medium">Audit Logs</span>
+</div>
+<div class="w-8 h-8 rounded-full bg-surface-container-high"></div>
+</header>
+<!-- Background Blobs -->
+<div class="absolute top-1/4 -left-20 w-96 h-96 bg-primary/10 rounded-full blur-[120px]"></div>
+<div class="absolute bottom-1/4 -right-20 w-96 h-96 bg-tertiary/10 rounded-full blur-[120px]"></div>
+<!-- Main Content Skeleton -->
+<main class="pt-24 px-12 grid grid-cols-12 gap-8">
+<div class="col-span-12 h-16 bg-surface-container rounded-xl"></div>
+<div class="col-span-4 h-96 bg-surface-container-low rounded-xl"></div>
+<div class="col-span-8 h-96 bg-surface-container-low rounded-xl"></div>
+</main>
+</div>
+<!-- Modal Overlay -->
+<div class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-[#040d0a]/60 backdrop-blur-sm">
+<!-- Detail Modal -->
+<div class="relative w-full max-w-[720px] glass-panel rounded-xl shadow-[0px_20px_40px_rgba(16,185,129,0.04)] flex flex-col max-h-[921px] overflow-hidden">
+<!-- Close Button -->
+<button class="absolute top-6 right-6 text-outline hover:text-primary transition-colors z-10">
+<span class="material-symbols-outlined">close</span>
+</button>
+<!-- Header -->
+<div class="p-8 pb-4">
+<h2 class="text-2xl font-bold tracking-tight bg-gradient-to-r from-[#10b981] to-[#34d399] bg-clip-text text-transparent">
+                    Approval APR-8821
+                </h2>
+<div class="mt-6 space-y-4">
+<div class="flex flex-col">
+<span class="font-label text-3xl font-bold tracking-tighter text-on-surface">
+                            50.0000 BTC <span class="text-outline text-lg font-normal">· $3,362,050.00</span>
+</span>
+</div>
+<div class="flex items-center gap-3">
+<span class="px-3 py-1 bg-tertiary/10 text-tertiary text-[10px] font-bold tracking-widest uppercase rounded-full border border-tertiary/20">
+                            COLD STORAGE WITHDRAWAL
+                        </span>
+</div>
+</div>
+</div>
+<!-- Scrollable Content Area -->
+<div class="flex-1 overflow-y-auto px-8 pb-8 space-y-6">
+<!-- Entity Info Cards -->
+<div class="grid grid-cols-2 gap-4">
+<!-- Initiator Card -->
+<div class="glass-panel p-5 rounded-lg">
+<div class="flex items-center gap-3 mb-4">
+<span class="material-symbols-outlined text-outline text-sm">person</span>
+<span class="text-[10px] font-bold uppercase tracking-widest text-outline">Initiator</span>
+</div>
+<div class="space-y-1">
+<div class="font-semibold text-on-surface">Sarah Chen</div>
+<div class="text-xs text-outline">Trading Desk · Aurora Capital</div>
+</div>
+</div>
+<!-- Destination Card -->
+<div class="glass-panel p-5 rounded-lg">
+<div class="flex items-center gap-3 mb-4">
+<span class="material-symbols-outlined text-outline text-sm">account_balance_wallet</span>
+<span class="text-[10px] font-bold uppercase tracking-widest text-outline">Destination</span>
+</div>
+<div class="space-y-1">
+<div class="font-semibold text-on-surface">Cold Vault</div>
+<div class="flex items-center gap-2">
+<span class="font-label text-[10px] text-outline">0x7a2e...94f1</span>
+<span class="flex items-center gap-1 text-[10px] font-bold text-primary">
+<span class="material-symbols-outlined text-[12px]" style="font-variation-settings: 'FILL' 1;">verified</span>
+                                    Whitelisted
+                                </span>
+</div>
+</div>
+</div>
+</div>
+<!-- Signature Chain -->
+<div class="glass-panel p-6 rounded-lg">
+<div class="flex justify-between items-center mb-6">
+<span class="text-[10px] font-bold uppercase tracking-widest text-outline">SIGNATURE CHAIN</span>
+<span class="font-label text-xs text-primary">2/5 SIGNED</span>
+</div>
+<div class="flex items-center gap-4">
+<div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center border-2 border-primary/20">
+<span class="material-symbols-outlined text-on-primary text-sm" style="font-variation-settings: 'FILL' 1;">check</span>
+</div>
+<div class="h-[1px] w-4 bg-primary/30"></div>
+<div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center border-2 border-primary/20">
+<span class="material-symbols-outlined text-on-primary text-sm" style="font-variation-settings: 'FILL' 1;">check</span>
+</div>
+<div class="h-[1px] w-4 bg-outline/20"></div>
+<div class="w-8 h-8 rounded-full border-2 border-outline/30 flex items-center justify-center"></div>
+<div class="h-[1px] w-4 bg-outline/20"></div>
+<div class="w-8 h-8 rounded-full border-2 border-outline/30 flex items-center justify-center"></div>
+<div class="h-[1px] w-4 bg-outline/20"></div>
+<div class="w-8 h-8 rounded-full border-2 border-outline/30 flex items-center justify-center"></div>
+</div>
+</div>
+<!-- Two-Column Section -->
+<div class="grid grid-cols-12 gap-6">
+<!-- Audit Trail (Vertical Rail) -->
+<div class="col-span-7 glass-panel p-6 rounded-lg relative overflow-hidden">
+<div class="absolute inset-0 diagonal-pattern opacity-[0.03]"></div>
+<div class="flex items-center gap-3 mb-6 relative">
+<span class="material-symbols-outlined text-outline text-sm">history</span>
+<span class="text-[10px] font-bold uppercase tracking-widest text-outline">Audit Trail</span>
+</div>
+<div class="space-y-6 relative ml-3 border-l border-outline/10 pl-6">
+<!-- Entry 1 -->
+<div class="relative">
+<div class="absolute -left-[29px] top-1 w-2.5 h-2.5 rounded-full bg-primary"></div>
+<div class="text-[10px] font-label text-outline mb-1 uppercase">10:42 · Sarah Chen</div>
+<div class="text-xs text-on-surface font-medium">INITIATED Transaction</div>
+</div>
+<!-- Entry 2 -->
+<div class="relative">
+<div class="absolute -left-[29px] top-1 w-2.5 h-2.5 rounded-full bg-primary"></div>
+<div class="text-[10px] font-label text-outline mb-1 uppercase">10:48 · Sarah Chen</div>
+<div class="text-xs text-on-surface font-medium">SIGNED Approval</div>
+</div>
+<!-- Entry 3 -->
+<div class="relative">
+<div class="absolute -left-[29px] top-1 w-2.5 h-2.5 rounded-full bg-outline/40"></div>
+<div class="text-[10px] font-label text-outline mb-1 uppercase">10:48 · Ledger Node</div>
+<div class="text-xs text-on-surface font-medium">NOTIFIED all signers</div>
+</div>
+<!-- Entry 4 -->
+<div class="relative">
+<div class="absolute -left-[29px] top-1 w-2.5 h-2.5 rounded-full bg-primary"></div>
+<div class="text-[10px] font-label text-outline mb-1 uppercase">11:15 · Marcus Vale</div>
+<div class="text-xs text-on-surface font-medium">SIGNED Approval</div>
+</div>
+<!-- Entry 5 -->
+<div class="relative">
+<div class="absolute -left-[29px] top-1 w-2.5 h-2.5 rounded-full bg-tertiary"></div>
+<div class="text-[10px] font-label text-outline mb-1 uppercase">11:15 · Automated Node</div>
+<div class="text-xs text-on-surface font-medium">TIMELOCK STARTED (4h)</div>
+</div>
+<!-- Entry 6 (Active) -->
+<div class="relative">
+<div class="absolute -left-[30px] top-1 w-3 h-3 rounded-full bg-primary pulse-glow"></div>
+<div class="text-[10px] font-label text-primary mb-1 uppercase tracking-wider">AWAITING ACTION</div>
+<div class="text-xs text-on-surface font-semibold italic">Waiting for 3rd Signer</div>
+</div>
+</div>
+</div>
+<div class="col-span-5 space-y-6">
+<!-- Signers Status -->
+<div class="glass-panel p-5 rounded-lg">
+<span class="text-[10px] font-bold uppercase tracking-widest text-outline block mb-4">Signers</span>
+<div class="space-y-4">
+<div class="flex justify-between items-center">
+<span class="text-xs font-medium">Sarah Chen</span>
+<span class="text-[10px] font-bold text-primary uppercase">SIGNED</span>
+</div>
+<div class="flex justify-between items-center">
+<span class="text-xs font-medium">Marcus Vale</span>
+<span class="text-[10px] font-bold text-primary uppercase">SIGNED</span>
+</div>
+<div class="flex justify-between items-center">
+<span class="text-xs font-medium text-tertiary">Elena Rossi</span>
+<span class="text-[10px] font-bold text-tertiary uppercase animate-pulse">MY TURN</span>
+</div>
+<div class="flex justify-between items-center opacity-50">
+<span class="text-xs font-medium">David Park</span>
+<span class="text-[10px] font-bold text-outline uppercase">PENDING</span>
+</div>
+<div class="flex justify-between items-center opacity-50">
+<span class="text-xs font-medium">S. Al-Fayed</span>
+<span class="text-[10px] font-bold text-outline uppercase">PENDING</span>
+</div>
+</div>
+</div>
+<!-- Risk Assessment -->
+<div class="glass-panel p-5 rounded-lg border-tertiary/20">
+<span class="text-[10px] font-bold uppercase tracking-widest text-tertiary block mb-4">Risk Assessment</span>
+<div class="space-y-3">
+<div class="flex items-center gap-2 text-xs font-label text-on-surface">
+<span class="material-symbols-outlined text-primary text-sm" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+                                    Whitelisted
+                                </div>
+<div class="flex items-center gap-2 text-xs font-label text-on-surface">
+<span class="material-symbols-outlined text-primary text-sm" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+                                    Within Limits
+                                </div>
+<div class="flex flex-col gap-1 p-2 bg-tertiary/5 rounded border border-tertiary/10">
+<div class="flex items-center gap-2 text-xs font-label text-tertiary">
+<span class="material-symbols-outlined text-sm">schedule</span>
+                                        4h Timelock Active
+                                    </div>
+<div class="text-[10px] font-label text-tertiary pl-6">
+                                        2h 44m remaining
+                                    </div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Footer Actions -->
+<div class="p-8 pt-4 flex justify-between items-center border-t border-[#10b981]/10">
+<button class="flex items-center gap-2 text-outline hover:text-primary transition-colors group">
+<span class="text-[10px] font-bold uppercase tracking-widest">FULL AUDIT LOG</span>
+<span class="material-symbols-outlined text-sm transition-transform group-hover:translate-x-1">arrow_right_alt</span>
+</button>
+<div class="flex items-center gap-4">
+<button class="px-8 py-3 bg-primary-container text-on-primary-container rounded-sm font-semibold text-sm flex items-center gap-2 hover:brightness-110 transition-all active:scale-95">
+                        SIGN 
+                        <span class="material-symbols-outlined text-sm">trending_flat</span>
+</button>
+</div>
+</div>
+<!-- Background Gradient Blob inside modal -->
+<div class="absolute -bottom-20 -left-20 w-64 h-64 bg-primary/5 rounded-full blur-3xl pointer-events-none"></div>
+</div>
+</div>
+</body></html>

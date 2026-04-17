@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>CRYMAD CA$H | Onboarding Phase</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&amp;family=JetBrains+Mono:wght@400;700&amp;family=Space+Grotesk:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "outline": "#86948a",
+                    "surface": "#0b1512",
+                    "primary-container": "#10b981",
+                    "background": "#0b1512",
+                    "tertiary-fixed": "#ffddb8",
+                    "secondary-fixed-dim": "#45dfa4",
+                    "surface-container-highest": "#2c3733",
+                    "on-primary-container": "#00422b",
+                    "inverse-on-surface": "#28332f",
+                    "on-tertiary-container": "#523200",
+                    "on-primary-fixed-variant": "#005236",
+                    "error": "#ffb4ab",
+                    "surface-container-lowest": "#06100d",
+                    "on-error": "#690005",
+                    "surface-variant": "#2c3733",
+                    "inverse-surface": "#d9e5df",
+                    "on-primary": "#003824",
+                    "on-error-container": "#ffdad6",
+                    "secondary-fixed": "#68fcbf",
+                    "secondary": "#45dfa4",
+                    "surface-container-low": "#131e1a",
+                    "primary-fixed": "#6ffbbe",
+                    "on-surface-variant": "#bbcabf",
+                    "surface-dim": "#0b1512",
+                    "tertiary-fixed-dim": "#ffb95f",
+                    "primary": "#4edea3",
+                    "on-tertiary": "#472a00",
+                    "on-surface": "#d9e5df",
+                    "outline-variant": "#3c4a42",
+                    "surface-container-high": "#222c29",
+                    "on-background": "#d9e5df",
+                    "secondary-container": "#00bd85",
+                    "primary-fixed-dim": "#4edea3",
+                    "on-secondary-fixed": "#002114",
+                    "tertiary-container": "#e29100",
+                    "on-secondary-fixed-variant": "#005137",
+                    "tertiary": "#ffb95f",
+                    "surface-tint": "#4edea3",
+                    "on-primary-fixed": "#002113",
+                    "on-tertiary-fixed": "#2a1700",
+                    "surface-container": "#17221e",
+                    "on-secondary": "#003825",
+                    "on-tertiary-fixed-variant": "#653e00",
+                    "surface-bright": "#313b38",
+                    "on-secondary-container": "#00452e",
+                    "inverse-primary": "#006c49",
+                    "error-container": "#93000a"
+            },
+            "borderRadius": {
+                    "DEFAULT": "1rem",
+                    "lg": "2rem",
+                    "xl": "3rem",
+                    "full": "9999px"
+            },
+            "fontFamily": {
+                    "headline": ["Inter"],
+                    "body": ["Inter"],
+                    "label": ["JetBrains Mono"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .bg-pulse-blobs {
+            background: radial-gradient(circle at 10% 20%, rgba(16, 185, 129, 0.05) 0%, transparent 40%),
+                        radial-gradient(circle at 90% 80%, rgba(52, 211, 153, 0.05) 0%, transparent 40%),
+                        radial-gradient(circle at 50% 50%, rgba(6, 16, 13, 1) 0%, rgba(4, 13, 10, 1) 100%);
+        }
+        .energy-lines {
+            background-image: repeating-linear-gradient(45deg, transparent, transparent 100px, rgba(16, 185, 129, 0.02) 100px, rgba(16, 185, 129, 0.02) 101px);
+        }
+        .glass-card {
+            background: rgba(44, 55, 51, 0.4);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(16, 185, 129, 0.08);
+        }
+        .text-gradient {
+            background: linear-gradient(to right, #10b981, #34d399);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .input-pulse:focus {
+            border-image: linear-gradient(to right, #10b981, #34d399) 1;
+            border-bottom-width: 2px;
+        }
+        @keyframes breathing {
+            0%, 100% { transform: scale(1); opacity: 0.8; }
+            50% { transform: scale(1.1); opacity: 1; }
+        }
+        .animate-breathing {
+            animation: breathing 3s ease-in-out infinite;
+        }
+    </style>
+</head>
+<body class="bg-[#040d0a] text-on-surface font-body min-h-screen overflow-x-hidden selection:bg-primary-container selection:text-on-primary-container">
+<!-- Background Layer -->
+<div class="fixed inset-0 z-[-1] bg-pulse-blobs energy-lines"></div>
+<!-- Side Navigation (Predicted Component) -->
+<aside class="hidden md:flex flex-col h-full w-64 fixed left-0 top-0 z-40 bg-[#06100d]/80 backdrop-blur-xl rounded-r-3xl border-r border-emerald-500/10 shadow-emerald-900/20">
+<div class="p-8">
+<h1 class="text-2xl font-black tracking-tighter bg-gradient-to-r from-emerald-400 to-teal-400 bg-clip-text text-transparent">CRYMAD CA$H</h1>
+<p class="font-label text-[10px] text-on-surface-variant opacity-50 mt-1 uppercase tracking-widest">Onboarding Phase</p>
+</div>
+<nav class="mt-8 flex-1">
+<div class="space-y-6">
+<div class="flex items-center gap-4 text-[#bbcabf] font-label opacity-50 pl-4 hover:bg-emerald-500/5 hover:text-emerald-200 transition-all duration-300">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="text-xs">Identity</span>
+</div>
+<div class="flex items-center gap-4 text-emerald-400 font-bold border-l-2 border-emerald-400 pl-4 transition-all duration-300 animate-pulse">
+<span class="material-symbols-outlined" data-icon="contact_page">contact_page</span>
+<span class="text-xs">Contact</span>
+</div>
+<div class="flex items-center gap-4 text-[#bbcabf] font-label opacity-50 pl-4 hover:bg-emerald-500/5 hover:text-emerald-200 transition-all duration-300">
+<span class="material-symbols-outlined" data-icon="shield">shield</span>
+<span class="text-xs">Security</span>
+</div>
+</div>
+</nav>
+<div class="p-8 mt-auto">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-surface-container-highest flex items-center justify-center overflow-hidden border border-outline-variant/30">
+<img alt="User profile skeleton" data-alt="minimalist abstract profile avatar placeholder in dark emerald aesthetic" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAAC6PpVB2H_WnBErpycF6au64j7BPbLz3aJ0LlZxQxH822E-uHMMdyKkRP36c0Yg0diMOmEES0jk5HEYOB4Oaz84AC7RmgCNOFnHzXiu2s2jFHqf6Xq5ZwJ40I0i35auHx5wwzmprKYvEksk4BMCiA-fyeawsndIcUxvZEqUmItrOfHTi1MaeahC8owkx0cq-RwmsUXVc6dx9c6g3AmouPUZoZmQ2ID9IJiqhRDa6lx0u873MyNbafV6LOLvB0Xl-ymr9PYn2RaJQ"/>
+</div>
+<div>
+<p class="text-xs font-bold">ANONYMOUS</p>
+<p class="text-[10px] font-label opacity-40">Phase 02/03</p>
+</div>
+</div>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="md:ml-64 min-h-screen flex flex-col items-center justify-center p-6 lg:p-12">
+<!-- Onboarding Card -->
+<div class="glass-card w-full max-w-[600px] rounded-[32px] overflow-hidden shadow-[0_20px_40px_rgba(4,13,10,0.5),0_0_20px_rgba(16,185,129,0.1)] transition-all duration-500">
+<!-- Step Indicator -->
+<div class="px-12 pt-12 pb-8">
+<div class="flex justify-between items-center relative">
+<!-- Dashed Line Background -->
+<div class="absolute top-1/2 left-0 w-full h-[1px] border-t border-dashed border-outline-variant/30 z-0"></div>
+<!-- Step 1: Complete -->
+<div class="z-10 flex flex-col items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center text-on-primary">
+<span class="material-symbols-outlined text-sm font-bold" data-icon="check">check</span>
+</div>
+<span class="font-label text-[10px] tracking-widest text-on-surface-variant opacity-60">IDENTITY</span>
+</div>
+<!-- Step 2: Active -->
+<div class="z-10 flex flex-col items-center gap-3">
+<div class="relative flex items-center justify-center">
+<div class="absolute inset-0 rounded-full border border-primary animate-breathing opacity-50"></div>
+<div class="w-10 h-10 rounded-full bg-surface-container-highest border-2 border-primary flex items-center justify-center text-primary font-bold">
+                                2
+                            </div>
+</div>
+<span class="font-label text-[10px] tracking-widest text-primary font-bold">CONTACT</span>
+</div>
+<!-- Step 3: Inactive -->
+<div class="z-10 flex flex-col items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-surface-container border border-outline-variant/50 flex items-center justify-center"></div>
+<span class="font-label text-[10px] tracking-widest text-on-surface-variant opacity-40">PREFERENCES</span>
+</div>
+</div>
+</div>
+<!-- Card Content -->
+<div class="px-12 py-6 space-y-10">
+<header>
+<h2 class="text-3xl font-black text-gradient tracking-tight">Contact &amp; Address</h2>
+<p class="text-xs text-on-surface-variant/60 font-body mt-2">Tell us where to reach you. Required for localized ledger verification.</p>
+</header>
+<!-- Form Sections -->
+<div class="space-y-12">
+<!-- Phone Section -->
+<div class="space-y-4">
+<label class="font-label text-[10px] text-on-surface-variant/40 tracking-[0.2em]">PHONE NUMBER</label>
+<div class="flex gap-4 items-center">
+<div class="glass-card rounded-full px-4 py-3 flex items-center gap-2 border-outline-variant/20 hover:border-primary/30 transition-colors cursor-pointer group">
+<span class="text-xs font-label">+1 US</span>
+<span class="material-symbols-outlined text-xs opacity-40 group-hover:text-primary transition-colors" data-icon="expand_more">expand_more</span>
+</div>
+<input class="flex-1 bg-transparent border-0 border-b border-surface-container-highest focus:ring-0 input-pulse font-label text-on-surface py-3 transition-all duration-300 placeholder:text-surface-container-highest" placeholder="(555) 000-0000" type="tel"/>
+</div>
+</div>
+<!-- Address Sub-Card -->
+<div class="bg-surface-container-lowest/40 rounded-2xl p-8 border border-outline-variant/10 space-y-10">
+<!-- Street Address -->
+<div class="space-y-4">
+<label class="font-label text-[10px] text-on-surface-variant/40 tracking-[0.2em]">STREET ADDRESS</label>
+<input class="w-full bg-transparent border-0 border-b border-surface-container-highest focus:ring-0 input-pulse font-label text-on-surface py-2 transition-all duration-300 placeholder:text-surface-container-highest" placeholder="123 Pulse Blvd" type="text"/>
+</div>
+<!-- Grid 1 -->
+<div class="grid grid-cols-2 gap-8">
+<div class="space-y-4">
+<label class="font-label text-[10px] text-on-surface-variant/40 tracking-[0.2em]">CITY</label>
+<input class="w-full bg-transparent border-0 border-b border-surface-container-highest focus:ring-0 input-pulse font-label text-on-surface py-2 transition-all duration-300 placeholder:text-surface-container-highest" placeholder="Neo Tokyo" type="text"/>
+</div>
+<div class="space-y-4">
+<label class="font-label text-[10px] text-on-surface-variant/40 tracking-[0.2em]">STATE/PROVINCE</label>
+<input class="w-full bg-transparent border-0 border-b border-surface-container-highest focus:ring-0 input-pulse font-label text-on-surface py-2 transition-all duration-300 placeholder:text-surface-container-highest" placeholder="Kanto" type="text"/>
+</div>
+</div>
+<!-- Grid 2 -->
+<div class="grid grid-cols-2 gap-8">
+<div class="space-y-4">
+<label class="font-label text-[10px] text-on-surface-variant/40 tracking-[0.2em]">POSTAL CODE</label>
+<input class="w-full bg-transparent border-0 border-b border-surface-container-highest focus:ring-0 input-pulse font-label text-on-surface py-2 transition-all duration-300 placeholder:text-surface-container-highest" placeholder="100-0001" type="text"/>
+</div>
+<div class="space-y-4">
+<label class="font-label text-[10px] text-on-surface-variant/40 tracking-[0.2em]">COUNTRY</label>
+<div class="relative group">
+<input class="w-full bg-transparent border-0 border-b border-surface-container-highest focus:ring-0 input-pulse font-label text-on-surface py-2 cursor-pointer" readonly="" type="text" value="Japan"/>
+<span class="absolute right-0 top-2 material-symbols-outlined text-xs opacity-40 group-hover:text-primary" data-icon="keyboard_arrow_down">keyboard_arrow_down</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Footer Controls (Mapped from JSON) -->
+<footer class="px-12 py-10 mt-6 flex justify-between items-center border-t border-outline-variant/5">
+<button class="flex items-center gap-2 px-8 py-4 text-[#bbcabf] opacity-60 font-label uppercase tracking-widest text-[10px] hover:opacity-100 transition-all">
+<span class="material-symbols-outlined text-sm" data-icon="arrow_back">arrow_back</span>
+<span>Back</span>
+</button>
+<button class="flex items-center gap-3 px-10 py-4 bg-emerald-500/10 border border-emerald-500/30 rounded-full shadow-[0_0_15px_rgba(16,185,129,0.1)] text-primary font-label uppercase tracking-widest text-[10px] hover:bg-emerald-500/20 hover:scale-105 transition-all duration-300">
+<span>Continue</span>
+<span class="material-symbols-outlined text-sm" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</footer>
+</div>
+<!-- System Caption -->
+<p class="mt-8 font-label text-[10px] text-on-surface-variant/30 uppercase tracking-[0.3em]">
+            Your data is encrypted with hardware-grade pulse monitoring.
+        </p>
+</main>
+<!-- Bottom Navigation (Mobile Only Shell) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full z-50 flex justify-between items-center px-10 py-8 bg-surface-container-low/90 backdrop-blur-xl border-t border-outline-variant/10">
+<div class="flex items-center gap-2 opacity-60">
+<span class="material-symbols-outlined text-sm" data-icon="arrow_back">arrow_back</span>
+<span class="font-label text-[10px] uppercase">Back</span>
+</div>
+<div class="flex items-center gap-2 text-primary">
+<span class="font-label text-[10px] uppercase">Continue</span>
+<span class="material-symbols-outlined text-sm" data-icon="arrow_forward">arrow_forward</span>
+</div>
+</nav>
+<!-- Responsive Tonal Blobs (Decorative) -->
+<div class="fixed top-[-10%] right-[-10%] w-[40vw] h-[40vw] bg-primary/5 blur-[120px] rounded-full pointer-events-none"></div>
+<div class="fixed bottom-[-5%] left-[-5%] w-[30vw] h-[30vw] bg-secondary/5 blur-[100px] rounded-full pointer-events-none"></div>
+</body></html>

@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>CRYMAD CA$H | Send Money</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;family=JetBrains+Mono:wght@400;700&amp;family=Space+Grotesk:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "tertiary": "#ffc7c0",
+                    "surface-container-high": "#15221e",
+                    "primary-fixed-dim": "#58e7ab",
+                    "primary": "#69f6b8",
+                    "secondary-fixed-dim": "#55e4a9",
+                    "surface-bright": "#1f2f2a",
+                    "tertiary-container": "#ffb4ab",
+                    "on-tertiary-fixed-variant": "#6f3a34",
+                    "tertiary-fixed": "#ffb4ab",
+                    "on-error-container": "#ffa8a3",
+                    "error-container": "#9f0519",
+                    "surface-container-lowest": "#000000",
+                    "surface-dim": "#06100d",
+                    "surface-tint": "#69f6b8",
+                    "secondary-dim": "#55e4a9",
+                    "error-dim": "#d7383b",
+                    "primary-dim": "#58e7ab",
+                    "surface-variant": "#1a2924",
+                    "outline-variant": "#3f4a46",
+                    "on-primary-fixed-variant": "#006544",
+                    "on-primary-fixed": "#00452d",
+                    "on-surface-variant": "#a2aea8",
+                    "on-tertiary": "#6f3a34",
+                    "inverse-on-surface": "#4c5753",
+                    "on-surface": "#f0fcf6",
+                    "surface-container-low": "#0a1612",
+                    "on-secondary-fixed": "#00432c",
+                    "secondary": "#65f3b6",
+                    "on-primary-container": "#002919",
+                    "surface": "#06100d",
+                    "error": "#ff716c",
+                    "on-secondary-fixed-variant": "#006343",
+                    "inverse-surface": "#f0fcf6",
+                    "tertiary-dim": "#efa69e",
+                    "background": "#06100d",
+                    "on-tertiary-fixed": "#4c1e19",
+                    "primary-container": "#06b77f",
+                    "primary-fixed": "#69f6b8",
+                    "inverse-primary": "#006d4a",
+                    "on-secondary-container": "#e1ffec",
+                    "on-secondary": "#00583b",
+                    "on-background": "#f0fcf6",
+                    "on-error": "#490006",
+                    "surface-container-highest": "#1a2924",
+                    "secondary-fixed": "#65f3b6",
+                    "secondary-container": "#006c4a",
+                    "on-primary": "#005a3c",
+                    "tertiary-fixed-dim": "#efa69e",
+                    "on-tertiary-container": "#64312c",
+                    "outline": "#6c7873",
+                    "surface-container": "#0f1c18"
+            },
+            "borderRadius": {
+                    "DEFAULT": "1rem",
+                    "lg": "2rem",
+                    "xl": "3rem",
+                    "full": "9999px"
+            },
+            "fontFamily": {
+                    "headline": ["Inter"],
+                    "body": ["Inter"],
+                    "mono": ["JetBrains Mono"],
+                    "label": ["Space Grotesk"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .glass-modal {
+            background: rgba(44, 55, 51, 0.4);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(16, 185, 129, 0.08);
+            box-shadow: 0 20px 60px rgba(4, 13, 10, 0.5), 0 0 40px rgba(16, 185, 129, 0.15);
+        }
+        .text-gradient-emerald {
+            background: linear-gradient(to bottom, #10b981, #34d399);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+        .breathing-glow {
+            box-shadow: 0 0 15px rgba(105, 246, 184, 0.2);
+        }
+        body {
+            background-color: #06100d;
+        }
+    </style>
+</head>
+<body class="font-body text-on-surface antialiased overflow-hidden">
+<!-- Living Background Layer -->
+<div class="fixed inset-0 pointer-events-none z-0">
+<div class="absolute top-[-10%] left-[-10%] w-[60%] h-[60%] rounded-full bg-primary/10 blur-[120px]"></div>
+<div class="absolute bottom-[-10%] right-[-10%] w-[50%] h-[50%] rounded-full bg-secondary/5 blur-[100px]"></div>
+<div class="absolute inset-0 opacity-[0.03]" style="background-image: linear-gradient(45deg, transparent 49%, #10b981 50%, transparent 51%); background-size: 60px 60px;"></div>
+</div>
+<!-- Background Content: E-Wallet Dashboard (Faint & Blurred) -->
+<div class="fixed inset-0 z-10 opacity-20 blur-sm pointer-events-none select-none">
+<!-- TopNavBar Mock -->
+<header class="flex justify-between items-center px-8 py-4 w-full bg-[#06100d]/60 backdrop-blur-2xl fixed top-0 z-50">
+<div class="text-2xl font-black italic tracking-tighter text-emerald-500 uppercase">CRYMAD CA$H</div>
+<div class="flex gap-6 items-center">
+<span class="material-symbols-outlined text-emerald-400">notifications</span>
+<span class="material-symbols-outlined text-emerald-400">account_balance_wallet</span>
+<div class="w-10 h-10 rounded-full bg-surface-container-highest flex items-center justify-center">
+<span class="material-symbols-outlined">person</span>
+</div>
+</div>
+</header>
+<!-- Main Dashboard Content -->
+<main class="pt-24 px-12 grid grid-cols-12 gap-8">
+<!-- Portfolio Balance -->
+<section class="col-span-8 p-12 bg-surface-container-low rounded-xl">
+<p class="text-on-surface-variant font-mono uppercase tracking-widest text-xs">Total Liquidity</p>
+<h1 class="text-6xl font-bold font-mono mt-2">$12,458.32</h1>
+<div class="mt-8 flex gap-4">
+<div class="px-6 py-3 border border-primary/20 rounded-full font-mono text-primary text-xs">DEPOSIT</div>
+<div class="px-6 py-3 border border-primary/20 rounded-full font-mono text-primary text-xs">WITHDRAW</div>
+</div>
+</section>
+<!-- Quick Stats -->
+<section class="col-span-4 p-8 bg-surface-container-low rounded-xl flex flex-col justify-between">
+<div>
+<p class="text-on-surface-variant text-sm">24h Change</p>
+<p class="text-primary text-2xl font-mono">+12.4%</p>
+</div>
+<div class="h-16 w-full bg-primary/5 rounded-lg flex items-center justify-center">
+<span class="text-xs font-mono text-primary/40">ANALYTIC_VISUAL_LAYER</span>
+</div>
+</section>
+<!-- Activity List -->
+<section class="col-span-12 mt-4">
+<h2 class="text-xl font-bold mb-6">Recent Activity</h2>
+<div class="space-y-4">
+<div class="p-6 bg-surface-container-highest/50 rounded-xl flex justify-between items-center">
+<div class="flex items-center gap-4">
+<div class="p-3 bg-surface-container-high rounded-full"><span class="material-symbols-outlined text-primary">arrow_downward</span></div>
+<div>
+<p class="font-bold">Salary Deposit</p>
+<p class="text-xs text-on-surface-variant">May 24, 2024</p>
+</div>
+</div>
+<p class="font-mono text-primary font-bold">+$4,200.00</p>
+</div>
+</div>
+</section>
+</main>
+</div>
+<!-- Modal Overlay Backdrop -->
+<div class="fixed inset-0 z-[100] bg-surface/60 backdrop-blur-md flex items-center justify-center p-6">
+<!-- GLASS MODAL DIALOG -->
+<div class="glass-modal w-full max-w-[560px] rounded-xl relative overflow-hidden flex flex-col">
+<!-- Close Button -->
+<button class="absolute top-6 right-8 text-on-surface-variant hover:text-primary transition-colors z-10">
+<span class="material-symbols-outlined text-[28px]">close</span>
+</button>
+<!-- Modal Content Padding -->
+<div class="px-10 pt-12 pb-10">
+<!-- Header -->
+<header class="mb-10 text-center">
+<h2 class="text-4xl font-bold tracking-tight text-gradient-emerald mb-1">Send Money</h2>
+<p class="font-mono text-[10px] tracking-[0.2em] text-on-surface-variant uppercase">PEER-TO-PEER TRANSFER</p>
+</header>
+<!-- Form Fields -->
+<div class="space-y-8">
+<!-- Search Input -->
+<div class="relative group">
+<div class="absolute inset-y-0 left-5 flex items-center pointer-events-none">
+<span class="material-symbols-outlined text-primary/60 group-focus-within:text-primary transition-colors">search</span>
+</div>
+<input class="w-full bg-surface-container-high/40 border-none rounded-2xl py-4 pl-14 pr-6 font-mono text-on-surface placeholder:text-outline focus:ring-1 focus:ring-primary/40 transition-all outline-none" placeholder="@username or email" type="text"/>
+</div>
+<!-- Amount Section -->
+<div class="text-center">
+<div class="flex flex-col items-center gap-2">
+<div class="flex items-baseline gap-2">
+<span class="text-5xl font-mono font-bold text-on-surface tracking-tighter">$100.00</span>
+<span class="text-lg font-mono text-on-surface-variant">USD</span>
+</div>
+<div class="mt-4 px-4 py-1.5 bg-primary/10 rounded-full border border-primary/20">
+<span class="text-[11px] font-mono text-primary uppercase font-bold tracking-wider">Available: $12,458.32</span>
+</div>
+</div>
+</div>
+<!-- Memo Textarea -->
+<div>
+<textarea class="w-full bg-surface-container-high/40 border-none rounded-2xl p-6 font-body text-sm text-on-surface placeholder:text-outline focus:ring-1 focus:ring-primary/40 transition-all outline-none resize-none" placeholder="Add a note (optional)" rows="3"></textarea>
+</div>
+<!-- Fee Card (Mini Glass) -->
+<div class="bg-surface-container-highest/30 backdrop-blur-sm rounded-2xl p-6 border border-white/5">
+<div class="space-y-3">
+<div class="flex justify-between items-center font-mono text-[11px]">
+<span class="text-on-surface-variant uppercase tracking-widest">Fee</span>
+<span class="text-on-surface">$0.50</span>
+</div>
+<div class="flex justify-between items-center font-mono text-[11px]">
+<span class="text-on-surface-variant uppercase tracking-widest">You send</span>
+<span class="text-on-surface">$100.00</span>
+</div>
+<div class="pt-2 mt-2 border-t border-white/5 flex justify-between items-center font-mono text-[13px]">
+<span class="text-on-surface-variant uppercase tracking-widest font-bold">Recipient gets</span>
+<span class="text-[#4edea3] font-bold">$99.50</span>
+</div>
+</div>
+</div>
+<!-- Actions -->
+<div class="flex gap-4 items-center pt-4">
+<button class="flex-1 py-4 font-mono text-[12px] uppercase tracking-widest text-on-surface-variant hover:text-on-surface transition-colors">
+                            CANCEL
+                        </button>
+<button class="flex-[2] py-4 bg-primary/5 border border-primary text-primary font-mono text-[12px] uppercase tracking-widest rounded-full flex items-center justify-center gap-2 hover:bg-primary/20 transition-all group breathing-glow">
+                            SEND
+                            <span class="material-symbols-outlined text-[18px] group-hover:translate-x-1 transition-transform">arrow_right_alt</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Footer Operational Status (from JSON Footer) -->
+<footer class="h-8 flex items-center justify-between px-10 w-full bg-[#06100d]/90 backdrop-blur-md border-t border-emerald-500/10 font-mono text-[10px] tracking-tight text-emerald-700">
+<span class="text-emerald-500">SYSTEM: OPERATIONAL • SYNC: 100%</span>
+<span class="hover:text-emerald-300 transition-colors cursor-default">LATENCY: 14MS</span>
+</footer>
+</div>
+</div>
+</body></html>

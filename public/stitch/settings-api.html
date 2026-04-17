@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>CRYMAD CA$H | API Settings</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&amp;family=JetBrains+Mono:wght@400;700&amp;family=Space+Grotesk:wght@500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        body {
+            background-color: #040d0a;
+            color: #d9e5df;
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+        }
+        .font-mono { font-family: 'JetBrains Mono', monospace; }
+        .font-label { font-family: 'Space Grotesk', sans-serif; }
+        .glass-panel {
+            background: rgba(44, 55, 51, 0.4);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(16, 185, 129, 0.08);
+        }
+        .bioluminescent-glow {
+            box-shadow: 0 0 40px rgba(16, 185, 129, 0.08);
+        }
+        .ghost-border {
+            border: 1px solid rgba(16, 185, 129, 0.2);
+        }
+        .diagonal-lines {
+            background-image: repeating-linear-gradient(45deg, rgba(16, 185, 129, 0.05) 0px, rgba(16, 185, 129, 0.05) 1px, transparent 1px, transparent 10px);
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-primary-fixed": "#002113",
+                      "surface-container-low": "#131e1a",
+                      "error": "#ffb4ab",
+                      "secondary-fixed-dim": "#45dfa4",
+                      "surface-bright": "#313b38",
+                      "primary": "#4edea3",
+                      "surface-container-lowest": "#06100d",
+                      "on-tertiary": "#472a00",
+                      "on-primary-fixed-variant": "#005236",
+                      "tertiary-fixed": "#ffddb8",
+                      "outline": "#86948a",
+                      "primary-fixed-dim": "#4edea3",
+                      "surface-dim": "#0b1512",
+                      "outline-variant": "#3c4a42",
+                      "on-error-container": "#ffdad6",
+                      "error-container": "#93000a",
+                      "surface-container-highest": "#2c3733",
+                      "on-tertiary-fixed": "#2a1700",
+                      "on-tertiary-fixed-variant": "#653e00",
+                      "on-tertiary-container": "#523200",
+                      "tertiary": "#ffb95f",
+                      "secondary-fixed": "#68fcbf",
+                      "on-secondary": "#003825",
+                      "on-surface-variant": "#bbcabf",
+                      "surface-variant": "#2c3733",
+                      "on-error": "#690005",
+                      "inverse-surface": "#d9e5df",
+                      "inverse-primary": "#006c49",
+                      "on-primary-container": "#00422b",
+                      "tertiary-fixed-dim": "#ffb95f",
+                      "on-background": "#d9e5df",
+                      "surface": "#0b1512",
+                      "surface-container": "#17221e",
+                      "secondary": "#45dfa4",
+                      "surface-tint": "#4edea3",
+                      "on-primary": "#003824",
+                      "primary-fixed": "#6ffbbe",
+                      "secondary-container": "#00bd85",
+                      "inverse-on-surface": "#28332f",
+                      "on-surface": "#d9e5df",
+                      "on-secondary-container": "#00452e",
+                      "background": "#0b1512",
+                      "surface-container-high": "#222c29",
+                      "primary-container": "#10b981",
+                      "on-secondary-fixed-variant": "#005137",
+                      "tertiary-container": "#e29100",
+                      "on-secondary-fixed": "#002114"
+              },
+              "borderRadius": {
+                      "DEFAULT": "1rem",
+                      "lg": "2rem",
+                      "xl": "3rem",
+                      "full": "9999px"
+              },
+              "fontFamily": {
+                      "headline": ["Inter"],
+                      "body": ["Inter"],
+                      "label": ["Space Grotesk"]
+              }
+            },
+          },
+        }
+      </script>
+</head>
+<body class="min-h-screen pb-24 selection:bg-primary/30 selection:text-primary">
+<!-- Background Decoration -->
+<div class="fixed inset-0 overflow-hidden pointer-events-none z-0">
+<div class="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] bg-primary/5 rounded-full blur-[120px]"></div>
+<div class="absolute bottom-[-5%] right-[-5%] w-[40%] h-[40%] bg-tertiary/5 rounded-full blur-[100px]"></div>
+<div class="absolute inset-0 diagonal-lines opacity-20"></div>
+</div>
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full h-16 rounded-b-[32px] bg-emerald-950/40 backdrop-blur-xl border-b border-emerald-500/10 shadow-[0_0_40px_rgba(16,185,129,0.08)] flex justify-between items-center px-8 z-50">
+<div class="flex items-center gap-8">
+<span class="text-xl font-black tracking-tighter bg-gradient-to-r from-emerald-400 to-amber-400 bg-clip-text text-transparent">CRYMAD CA$H</span>
+<div class="hidden md:flex items-center gap-6">
+<a class="text-emerald-100/60 hover:text-emerald-300 transition-colors" href="#">Dashboard</a>
+<a class="text-emerald-100/60 hover:text-emerald-300 transition-colors" href="#">Wallets</a>
+<a class="text-emerald-100/60 hover:text-emerald-300 transition-colors" href="#">Cards</a>
+<a class="text-emerald-100/60 hover:text-emerald-300 transition-colors" href="#">Transactions</a>
+<a class="text-emerald-100/60 hover:text-emerald-300 transition-colors" href="#">Banking</a>
+<a class="text-emerald-100/60 hover:text-emerald-300 transition-colors" href="#">Help</a>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 rounded-full hover:bg-emerald-500/10 hover:backdrop-blur-2xl transition-all scale-95 active:scale-90">
+<span class="material-symbols-outlined text-emerald-400">notifications</span>
+</button>
+<img alt="User profile avatar" class="w-8 h-8 rounded-full border border-emerald-500/20" data-alt="Professional headshot of a developer with short dark hair, wearing a dark hoodie, cinematic dramatic lighting, dark background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAO72wenmmy6vGfycnHE5vO9nNfE8NBk3098ftN9Y33QOlkCUMtZEyaCndFwI-L1u1YYCsOBf2hDX8CyvGZP9FStXSrg1EPmNo-4r6GX6yzCfAtLxXmEDAKu5FOl2ayIlL1NVyUZclFYLNJy2Sm6H-MEohIr3K7caNLuoLhga7DY3zLJX8_zht7QPPaa_UTlV6JBj9hhYvUY0165U9E8T_Yk8khKHY5q_y8kH0__rnAtUh1ONpkrpAWqf-_rBXGud0hTW8t8U2uIr8"/>
+</div>
+</nav>
+<!-- Side Theme Selector (SideNavBar) -->
+<aside class="fixed right-0 top-1/2 -translate-y-1/2 w-16 rounded-l-[32px] bg-emerald-950/40 backdrop-blur-xl border-l border-emerald-500/10 shadow-[0_0_40px_rgba(16,185,129,0.05)] flex flex-col items-center py-6 gap-4 z-40">
+<div class="flex flex-col items-center mb-4">
+<span class="text-emerald-400 font-mono text-[10px] origin-center -rotate-90 mb-4 whitespace-nowrap">SELECT THEME</span>
+</div>
+<div class="w-6 h-6 rounded-full bg-primary ring-2 ring-emerald-500 ring-offset-2 ring-offset-emerald-950 cursor-pointer active:scale-90 transition-transform"></div>
+<div class="w-6 h-6 rounded-full bg-amber-500 opacity-50 hover:opacity-100 hover:scale-110 cursor-pointer active:scale-90 transition-transform"></div>
+<div class="w-6 h-6 rounded-full bg-teal-500 opacity-50 hover:opacity-100 hover:scale-110 cursor-pointer active:scale-90 transition-transform"></div>
+<div class="w-6 h-6 rounded-full bg-zinc-900 opacity-50 hover:opacity-100 hover:scale-110 cursor-pointer active:scale-90 transition-transform"></div>
+<div class="w-6 h-6 rounded-full bg-emerald-700 opacity-50 hover:opacity-100 hover:scale-110 cursor-pointer active:scale-90 transition-transform"></div>
+</aside>
+<!-- Main Canvas -->
+<main class="relative z-10 pt-32 px-8 max-w-7xl mx-auto">
+<!-- Header -->
+<header class="mb-12">
+<h1 class="text-5xl md:text-6xl font-extrabold tracking-tighter mb-2 bg-gradient-to-r from-emerald-400 via-teal-300 to-emerald-500 bg-clip-text text-transparent">
+                API &amp; Webhooks
+            </h1>
+<p class="font-mono text-emerald-400/80 tracking-widest text-sm uppercase">DEVELOPER INTEGRATION HUB</p>
+</header>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+<!-- Left Column: Settings -->
+<div class="lg:col-span-7 space-y-8">
+<!-- API KEY Section -->
+<section>
+<h2 class="text-lg font-bold mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">key</span>
+                        API KEY
+                    </h2>
+<div class="glass-panel p-8 rounded-xl bioluminescent-glow relative overflow-hidden group">
+<div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+<span class="material-symbols-outlined text-6xl">security</span>
+</div>
+<div class="flex flex-col gap-6">
+<div class="bg-surface-container-highest/50 p-4 rounded-lg ghost-border flex items-center justify-between">
+<span class="font-mono text-lg text-primary tracking-tight">cmad_sk_live_••••••••••••••••••••••q82xF</span>
+<div class="flex gap-2">
+<button class="p-2 hover:bg-emerald-500/10 rounded-lg text-primary transition-colors active:scale-95">
+<span class="material-symbols-outlined">content_copy</span>
+</button>
+<button class="p-2 hover:bg-emerald-500/10 rounded-lg text-primary transition-colors active:scale-95">
+<span class="material-symbols-outlined">visibility</span>
+</button>
+</div>
+</div>
+<div class="flex flex-wrap items-center justify-between gap-4">
+<p class="font-mono text-xs text-on-surface-variant">Created 2026-01-14 • Last used 2 min ago</p>
+<button class="px-6 py-2 bg-emerald-500/10 ghost-border rounded-full text-primary font-bold text-sm hover:bg-emerald-500/20 transition-all active:scale-95">
+                                    REGENERATE
+                                </button>
+</div>
+</div>
+</div>
+</section>
+<!-- WEBHOOK CONFIGURATION Section -->
+<section>
+<h2 class="text-lg font-bold mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">webhook</span>
+                        WEBHOOK CONFIGURATION
+                    </h2>
+<div class="glass-panel p-8 rounded-xl space-y-8">
+<div>
+<label class="font-mono text-[10px] text-emerald-400 font-bold tracking-widest mb-2 block">ENDPOINT URL</label>
+<input class="w-full bg-surface-container-lowest border-emerald-500/10 rounded-lg font-mono text-secondary px-4 py-3 focus:ring-0 focus:border-emerald-500/40" readonly="" type="text" value="https://yourapp.com/webhooks/crymad"/>
+</div>
+<div>
+<label class="font-mono text-[10px] text-emerald-400 font-bold tracking-widest mb-4 block">ACTIVE EVENTS</label>
+<div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+<!-- Checked Pills -->
+<div class="px-3 py-2 bg-primary/20 border border-primary/40 rounded-full flex items-center justify-between">
+<span class="text-[11px] font-mono text-primary">payment.succeeded</span>
+<span class="material-symbols-outlined text-xs text-primary">check_circle</span>
+</div>
+<div class="px-3 py-2 bg-primary/20 border border-primary/40 rounded-full flex items-center justify-between">
+<span class="text-[11px] font-mono text-primary">payment.failed</span>
+<span class="material-symbols-outlined text-xs text-primary">check_circle</span>
+</div>
+<div class="px-3 py-2 bg-primary/20 border border-primary/40 rounded-full flex items-center justify-between">
+<span class="text-[11px] font-mono text-primary">payout.created</span>
+<span class="material-symbols-outlined text-xs text-primary">check_circle</span>
+</div>
+<div class="px-3 py-2 bg-primary/20 border border-primary/40 rounded-full flex items-center justify-between">
+<span class="text-[11px] font-mono text-primary">payout.completed</span>
+<span class="material-symbols-outlined text-xs text-primary">check_circle</span>
+</div>
+<div class="px-3 py-2 bg-primary/20 border border-primary/40 rounded-full flex items-center justify-between">
+<span class="text-[11px] font-mono text-primary">kyc.approved</span>
+<span class="material-symbols-outlined text-xs text-primary">check_circle</span>
+</div>
+<!-- Unchecked Pills -->
+<div class="px-3 py-2 bg-white/5 border border-white/10 rounded-full flex items-center justify-between opacity-60">
+<span class="text-[11px] font-mono">card.issued</span>
+</div>
+<div class="px-3 py-2 bg-white/5 border border-white/10 rounded-full flex items-center justify-between opacity-60">
+<span class="text-[11px] font-mono">transaction.created</span>
+</div>
+<div class="px-3 py-2 bg-white/5 border border-white/10 rounded-full flex items-center justify-between opacity-60">
+<span class="text-[11px] font-mono">webhook.test</span>
+</div>
+</div>
+</div>
+<div class="flex justify-end pt-4">
+<button class="text-tertiary font-mono text-sm tracking-tighter hover:text-tertiary-fixed transition-colors">
+                                TEST WEBHOOK →
+                            </button>
+</div>
+</div>
+</section>
+</div>
+<!-- Right Column: Integration Guide -->
+<div class="lg:col-span-5">
+<section class="h-full">
+<h2 class="text-lg font-bold mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">terminal</span>
+                        INTEGRATION GUIDE
+                    </h2>
+<div class="space-y-4">
+<!-- Node.js Expanded -->
+<div class="glass-panel rounded-xl overflow-hidden ghost-border">
+<div class="bg-surface-container-highest px-6 py-3 flex justify-between items-center border-b border-emerald-500/10">
+<span class="font-mono text-xs font-bold text-emerald-400">NODE.JS SDK</span>
+<span class="material-symbols-outlined text-emerald-400">expand_more</span>
+</div>
+<div class="p-6 font-mono text-[13px] leading-relaxed text-secondary-fixed-dim bg-surface-container-lowest/50">
+<div class="flex gap-4">
+<div class="text-white/20 select-none">
+                                        1<br/>2<br/>3<br/>4<br/>5<br/>6<br/>7<br/>8
+                                    </div>
+<div class="text-emerald-100/80">
+<span class="text-tertiary">const</span> <span class="text-secondary">crymad</span> = require(<span class="text-amber-300">'crymad-sdk'</span>);<br/>
+<span class="text-tertiary">const</span> client = <span class="text-tertiary">new</span> crymad.Client(<span class="text-amber-300">'cmad_sk_live_...'</span>);<br/><br/>
+<span class="text-white/40">// Initialize wallet balance retrieval</span><br/>
+<span class="text-tertiary">const</span> balance = <span class="text-tertiary">await</span> client.wallets.retrieve({<br/>
+                                          currency: <span class="text-amber-300">'BTC'</span>,<br/>
+                                          include_pending: <span class="text-primary">true</span><br/>
+                                        });
+                                    </div>
+</div>
+</div>
+</div>
+<!-- Python Stub -->
+<div class="glass-panel rounded-xl overflow-hidden opacity-60 hover:opacity-100 transition-opacity cursor-pointer">
+<div class="px-6 py-4 flex justify-between items-center">
+<span class="font-mono text-xs font-bold">PYTHON</span>
+<span class="material-symbols-outlined text-sm">chevron_right</span>
+</div>
+</div>
+<!-- PHP Stub -->
+<div class="glass-panel rounded-xl overflow-hidden opacity-60 hover:opacity-100 transition-opacity cursor-pointer">
+<div class="px-6 py-4 flex justify-between items-center">
+<span class="font-mono text-xs font-bold">PHP</span>
+<span class="material-symbols-outlined text-sm">chevron_right</span>
+</div>
+</div>
+</div>
+</section>
+</div>
+</div>
+<!-- Full Width: Webhook Logs -->
+<section class="mt-12">
+<h2 class="text-lg font-bold mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">list_alt</span>
+                WEBHOOK LOGS
+            </h2>
+<div class="glass-panel rounded-xl overflow-hidden bioluminescent-glow">
+<div class="overflow-x-auto">
+<table class="w-full text-left font-mono text-sm">
+<thead class="bg-surface-container-highest/50 border-b border-emerald-500/10">
+<tr>
+<th class="px-6 py-4 text-emerald-400 uppercase tracking-widest text-xs">TIMESTAMP</th>
+<th class="px-6 py-4 text-emerald-400 uppercase tracking-widest text-xs">EVENT</th>
+<th class="px-6 py-4 text-emerald-400 uppercase tracking-widest text-xs">STATUS</th>
+<th class="px-6 py-4 text-emerald-400 uppercase tracking-widest text-xs">RESPONSE TIME</th>
+<th class="px-6 py-4 text-emerald-400 uppercase tracking-widest text-xs">RETRY</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-emerald-500/5">
+<tr class="hover:bg-emerald-500/5 transition-colors">
+<td class="px-6 py-4 text-on-surface-variant">2026-01-14 12:04:11</td>
+<td class="px-6 py-4 text-secondary font-bold">payment.succeeded</td>
+<td class="px-6 py-4"><span class="px-2 py-1 bg-primary/20 text-[#4edea3] rounded text-xs border border-primary/20">200 OK</span></td>
+<td class="px-6 py-4 text-on-surface-variant">142ms</td>
+<td class="px-6 py-4 text-on-surface-variant">—</td>
+</tr>
+<tr class="hover:bg-emerald-500/5 transition-colors">
+<td class="px-6 py-4 text-on-surface-variant">2026-01-14 11:58:02</td>
+<td class="px-6 py-4 text-secondary font-bold">kyc.approved</td>
+<td class="px-6 py-4"><span class="px-2 py-1 bg-error/20 text-[#ffb4ab] rounded text-xs border border-error/20">500 ERR</span></td>
+<td class="px-6 py-4 text-on-surface-variant">2104ms</td>
+<td class="px-6 py-4 text-amber-400">1 of 3</td>
+</tr>
+<tr class="hover:bg-emerald-500/5 transition-colors">
+<td class="px-6 py-4 text-on-surface-variant">2026-01-14 11:45:30</td>
+<td class="px-6 py-4 text-secondary font-bold">payout.created</td>
+<td class="px-6 py-4"><span class="px-2 py-1 bg-tertiary/20 text-[#ffb95f] rounded text-xs border border-tertiary/20">408 TIMEOUT</span></td>
+<td class="px-6 py-4 text-on-surface-variant">5000ms</td>
+<td class="px-6 py-4 text-amber-400">3 of 3</td>
+</tr>
+<tr class="hover:bg-emerald-500/5 transition-colors">
+<td class="px-6 py-4 text-on-surface-variant">2026-01-14 11:30:15</td>
+<td class="px-6 py-4 text-secondary font-bold">payment.succeeded</td>
+<td class="px-6 py-4"><span class="px-2 py-1 bg-primary/20 text-[#4edea3] rounded text-xs border border-primary/20">200 OK</span></td>
+<td class="px-6 py-4 text-on-surface-variant">98ms</td>
+<td class="px-6 py-4 text-on-surface-variant">—</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="fixed bottom-0 w-full h-10 bg-emerald-950/40 backdrop-blur-xl border-t border-emerald-500/10 flex justify-between items-center px-8 z-50">
+<div class="flex items-center gap-2">
+<div class="w-1.5 h-1.5 bg-emerald-400 rounded-full animate-pulse"></div>
+<span class="font-mono font-bold uppercase tracking-widest text-[10px] text-emerald-400">SYSTEM OPERATIONAL</span>
+</div>
+<div class="flex gap-8">
+<span class="font-mono text-[10px] text-emerald-100/40 hover:text-emerald-200 transition-colors cursor-default">BTC: $64,231.00</span>
+<span class="font-mono text-[10px] text-emerald-100/40 hover:text-emerald-200 transition-colors cursor-default">ETH: $3,421.50</span>
+<span class="font-mono text-[10px] text-emerald-100/40 hover:text-emerald-200 transition-colors cursor-default">LAST SYNC: 12:04:11</span>
+</div>
+</footer>
+</body></html>

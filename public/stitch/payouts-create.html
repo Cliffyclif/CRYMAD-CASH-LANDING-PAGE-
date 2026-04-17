@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>CRYMAD CA$H — Create Payout</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&amp;family=JetBrains+Mono:wght@400;700&amp;family=Space+Grotesk:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0b1512;
+            color: #d9e5df;
+        }
+        .mono {
+            font-family: 'JetBrains+Mono', monospace;
+        }
+        .glass-modal {
+            background: rgba(44, 55, 51, 0.4);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(16, 185, 129, 0.08);
+            box-shadow: 0 20px 60px rgba(4, 13, 10, 0.5), 0 0 40px rgba(16, 185, 129, 0.15);
+        }
+        .glass-inner {
+            background: rgba(19, 30, 26, 0.4);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(78, 222, 163, 0.05);
+        }
+        .bioluminescent-pulse {
+            box-shadow: 0 0 15px rgba(78, 222, 163, 0.2);
+        }
+        .gradient-text {
+            background: linear-gradient(135deg, #10b981, #34d399);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "outline": "#86948a",
+                        "surface": "#0b1512",
+                        "primary-container": "#10b981",
+                        "background": "#0b1512",
+                        "tertiary-fixed": "#ffdad5",
+                        "secondary-fixed-dim": "#4edea3",
+                        "surface-container-highest": "#2c3733",
+                        "on-primary-container": "#00422b",
+                        "inverse-on-surface": "#28332f",
+                        "on-tertiary-container": "#5c2b25",
+                        "error": "#ffb4ab",
+                        "on-primary-fixed-variant": "#005236",
+                        "on-error": "#690005",
+                        "surface-container-lowest": "#06100d",
+                        "surface-variant": "#2c3733",
+                        "inverse-surface": "#d9e5df",
+                        "on-primary": "#003824",
+                        "on-error-container": "#ffdad6",
+                        "secondary-fixed": "#6ffbbe",
+                        "secondary": "#4edea3",
+                        "surface-container-low": "#131e1a",
+                        "primary-fixed": "#6ffbbe",
+                        "on-surface-variant": "#bbcabf",
+                        "surface-dim": "#0b1512",
+                        "primary": "#4edea3",
+                        "tertiary-fixed-dim": "#ffb4ab",
+                        "on-tertiary": "#51221d",
+                        "on-surface": "#d9e5df",
+                        "outline-variant": "#3c4a42",
+                        "surface-container-high": "#222c29",
+                        "on-background": "#d9e5df",
+                        "secondary-container": "#00b47d",
+                        "primary-fixed-dim": "#4edea3",
+                        "on-secondary-fixed": "#002114",
+                        "tertiary-container": "#d79189",
+                        "on-secondary-fixed-variant": "#005236",
+                        "tertiary": "#ffb4ab",
+                        "surface-tint": "#4edea3",
+                        "on-primary-fixed": "#002113",
+                        "on-tertiary-fixed": "#360e0a",
+                        "on-secondary": "#003824",
+                        "surface-container": "#17221e",
+                        "on-tertiary-fixed-variant": "#6c3832",
+                        "surface-bright": "#313b38",
+                        "on-secondary-container": "#003e28",
+                        "inverse-primary": "#006c49",
+                        "error-container": "#93000a"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem",
+                        "32": "2rem"
+                    }
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background min-h-screen relative overflow-hidden">
+<!-- BACKGROUND BLURRED LAYER (Parent /payouts screen) -->
+<div class="fixed inset-0 opacity-20 blur-xl pointer-events-none select-none">
+<!-- TopNavBar Mockup -->
+<nav class="flex justify-between items-center w-full px-8 h-16 border-b border-emerald-400/15 bg-[#0b1512]/40">
+<span class="text-2xl font-black tracking-tighter text-emerald-400">CRYMAD CA$H</span>
+<div class="flex gap-8">
+<span class="text-emerald-400 font-bold border-b-2 border-emerald-400 pb-1">Transactions</span>
+<span class="text-emerald-700">Banking</span>
+</div>
+<div class="flex gap-4">
+<span class="material-symbols-outlined text-emerald-700">notifications</span>
+<span class="material-symbols-outlined text-emerald-700">settings</span>
+</div>
+</nav>
+<!-- Payouts Table Mockup -->
+<div class="p-12 space-y-8">
+<div class="h-12 w-48 bg-surface-container-highest rounded-xl"></div>
+<div class="grid grid-cols-5 gap-4">
+<div class="h-8 bg-surface-container-highest rounded"></div>
+<div class="h-8 bg-surface-container-highest rounded"></div>
+<div class="h-8 bg-surface-container-highest rounded"></div>
+<div class="h-8 bg-surface-container-highest rounded"></div>
+<div class="h-8 bg-surface-container-highest rounded"></div>
+</div>
+<div class="space-y-4">
+<div class="h-16 w-full bg-surface-container-low rounded-xl"></div>
+<div class="h-16 w-full bg-surface-container-low rounded-xl"></div>
+<div class="h-16 w-full bg-surface-container-low rounded-xl"></div>
+<div class="h-16 w-full bg-surface-container-low rounded-xl"></div>
+<div class="h-16 w-full bg-surface-container-low rounded-xl"></div>
+</div>
+</div>
+<!-- Organic Energy Line Decoration -->
+<div class="absolute top-1/4 left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-primary/10 to-transparent rotate-12"></div>
+</div>
+<!-- MODAL OVERLAY -->
+<div class="fixed inset-0 flex items-center justify-center z-50 bg-background/40 backdrop-blur-sm p-4">
+<!-- MAIN DIALOG -->
+<div class="glass-modal w-full max-w-[600px] rounded-32 flex flex-col overflow-hidden animate-in fade-in zoom-in duration-300">
+<!-- HEADER -->
+<div class="px-10 pt-10 pb-6 flex justify-between items-start">
+<div>
+<h1 class="text-4xl font-black tracking-tighter gradient-text uppercase">Create Payout</h1>
+<p class="mono text-[10px] tracking-[0.2em] text-emerald-500/60 mt-1">SEND MONEY TO A RECIPIENT</p>
+</div>
+<button class="w-10 h-10 rounded-full flex items-center justify-center hover:bg-white/10 transition-colors">
+<span class="material-symbols-outlined text-on-surface-variant">close</span>
+</button>
+</div>
+<!-- FORM BODY -->
+<div class="px-10 pb-10 space-y-6 overflow-y-auto max-h-[716px]">
+<!-- 1. RECIPIENT SEARCH -->
+<div class="relative group">
+<div class="absolute inset-y-0 left-4 flex items-center pointer-events-none">
+<span class="material-symbols-outlined text-primary/50 group-focus-within:text-primary">search</span>
+</div>
+<input class="w-full bg-surface-container-highest/30 border border-primary/10 rounded-xl pl-12 pr-4 py-4 focus:ring-2 focus:ring-primary/20 focus:border-primary/40 outline-none transition-all" placeholder="Search recipient or paste address..." type="text"/>
+<!-- Dropdown Preview Open -->
+<div class="absolute top-full left-0 right-0 mt-2 glass-inner rounded-xl overflow-hidden z-10 shadow-2xl">
+<div class="p-3 hover:bg-primary/5 cursor-pointer flex items-center gap-3 transition-colors border-b border-white/5">
+<img alt="Acme Co" class="w-8 h-8 rounded-full bg-emerald-900/40" data-alt="minimalist company logo avatar for Acme Co with deep emerald corporate colors" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDoQ7hJko-wLZFbiOMsLyxBWPISTYd5uJhYLXGWGMDngyG5t8K5xkFKpNG3ik9lyEXBIDsh1Ucxc82ObhCziktEUirFXAyz5nicF0zP4WVzRGyoOubj1Dg_jHR74gri2Tc8_I0AcMLhCj_vz6Kw0KudFOv6fb8ugqSzjrPNklcq_BEYstRw2rIyddIsfdIrjbsH2PNBpZL71mZZPFqpWfw8jNnUxjP2a16QXvqLYtim52A52go0COm4VYN1PuDbwoBZ7X-JSN1S2-E"/>
+<div>
+<p class="text-sm font-bold">Acme Co</p>
+<p class="mono text-[10px] text-emerald-500/60 uppercase">CHASE •••4421</p>
+</div>
+</div>
+<div class="p-3 hover:bg-primary/5 cursor-pointer flex items-center gap-3 transition-colors border-b border-white/5">
+<img alt="John Doe" class="w-8 h-8 rounded-full bg-emerald-900/40" data-alt="modern professional male avatar with stylish hair and glasses on a dark background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDPXPx0QK6gyjDrHBwbXXbKru-1YVjdohS9y51aV5znSOFVFM3RBNMPKaM59om3LIPNdQcreJKAitmqERrxxK5Fz5yUuENJlDtnx3garQANhEnwcf4LoI4bw5Potmogr3jU8S7EUBdJkcOTOIgeOdl2eIgkqad8zPqPQSQXYl58d4DVHhPuisCdZABTqXBsqF2BqiSLVVgv9jViDJVLOkFN4Nv_WYm3KogPwPMo-wzOPEknNxKEaVstjBstGfDVZ_t_ZVdrz5FJxbo"/>
+<div>
+<p class="text-sm font-bold">John Doe</p>
+<p class="mono text-[10px] text-emerald-500/60 uppercase">WELLS •••9102</p>
+</div>
+</div>
+<div class="p-3 hover:bg-primary/5 cursor-pointer flex items-center gap-3 transition-colors">
+<img alt="Supplier Ltd" class="w-8 h-8 rounded-full bg-emerald-900/40" data-alt="clean initials avatar for Supplier Ltd using bold geometric typography in mint green" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBVaR7PU-pJMMrxXLUR6HFTGm6twXgcZa8qRTlsYmF1j1QsppHV1qZqq6gvGZpwsY_9wjM0pgebSK4bYKlXOFTqe5niJsTJlB3F0al1loMYLYcKDC9aFYAdi9M8Bz38CgQhcINtU9EmteivqoPnocLz2BjuryDqr5iSmM71dWzJo7XnCP_v-04cOqO6eL8C2uh9heQsFxtVt4mDMRPjwtlQJ30TUBGkgxDkPA9yRrqDmAghXNjWUSimtS1J_CCNjLezth2Hl8Yw6DE"/>
+<div>
+<p class="text-sm font-bold">Supplier Ltd</p>
+<p class="mono text-[10px] text-emerald-500/60 uppercase">BOA •••7788</p>
+</div>
+</div>
+</div>
+</div>
+<!-- 2. AMOUNT -->
+<div class="pt-2">
+<label class="mono text-[10px] tracking-widest text-primary/50 block mb-2 px-1">SPECIFY AMOUNT</label>
+<div class="relative">
+<input class="mono w-full bg-transparent border-none text-5xl font-black text-primary p-0 focus:ring-0 selection:bg-primary/20" type="text" value="$1,200.00"/>
+<div class="absolute -bottom-2 left-0 w-full h-[1px] bg-gradient-to-r from-primary/40 to-transparent"></div>
+</div>
+</div>
+<!-- 3. METHOD PILLS -->
+<div class="grid grid-cols-4 gap-3">
+<button class="bg-gradient-to-br from-primary-container to-secondary-container text-on-primary-container py-3 rounded-xl font-bold text-[11px] mono tracking-tighter text-center">BANK ACH</button>
+<button class="glass-inner hover:bg-primary/5 text-primary/70 py-3 rounded-xl font-bold text-[11px] mono tracking-tighter text-center border border-white/5">WIRE</button>
+<button class="glass-inner hover:bg-primary/5 text-primary/70 py-3 rounded-xl font-bold text-[11px] mono tracking-tighter text-center border border-white/5">CRYPTO</button>
+<button class="glass-inner hover:bg-primary/5 text-primary/70 py-3 rounded-xl font-bold text-[11px] mono tracking-tighter text-center border border-white/5">CARD</button>
+</div>
+<!-- 4. MEMO -->
+<div>
+<label class="mono text-[10px] tracking-widest text-primary/50 block mb-2 px-1">PAYMENT MEMO</label>
+<textarea class="w-full bg-surface-container-highest/30 border border-primary/10 rounded-xl px-4 py-3 focus:ring-2 focus:ring-primary/20 focus:border-primary/40 outline-none transition-all text-sm resize-none" placeholder="Add a note..." rows="2"></textarea>
+</div>
+<!-- 5. DATE PICKER -->
+<div class="flex items-center justify-between glass-inner p-4 rounded-xl border border-white/5">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary-container">calendar_today</span>
+<span class="mono text-sm font-bold text-primary">SCHEDULE: <span class="bg-primary/10 px-2 py-1 rounded">NOW</span></span>
+</div>
+<div class="w-10 h-5 bg-primary/20 rounded-full relative p-1 cursor-pointer">
+<div class="absolute right-1 top-1 w-3 h-3 bg-primary rounded-full"></div>
+</div>
+</div>
+<!-- 6. FEES CARD -->
+<div class="glass-inner rounded-2xl p-5 border border-white/5">
+<div class="flex justify-between items-center mb-4">
+<span class="mono text-[10px] tracking-[0.2em] text-on-surface-variant/60">FEES CALCULATION</span>
+<span class="material-symbols-outlined text-sm text-on-surface-variant/60">info</span>
+</div>
+<div class="space-y-2">
+<div class="flex justify-between items-center">
+<span class="text-sm text-on-surface-variant">Amount</span>
+<span class="mono text-sm">$1,200.00</span>
+</div>
+<div class="flex justify-between items-center">
+<span class="text-sm text-on-surface-variant">ACH Fee</span>
+<span class="mono text-sm text-error/80">-$0.50</span>
+</div>
+<div class="h-[1px] bg-white/5 my-2"></div>
+<div class="flex justify-between items-center">
+<span class="text-base font-bold">Total Payout</span>
+<span class="mono text-lg font-black text-primary">$1,200.50</span>
+</div>
+</div>
+</div>
+<!-- 7. NOTICE -->
+<div class="flex items-center gap-2 bg-tertiary-container/10 border border-tertiary-container/20 rounded-full px-4 py-2 w-fit">
+<span class="material-symbols-outlined text-tertiary-container text-[18px]" style="font-variation-settings: 'FILL' 1;">shield_lock</span>
+<span class="mono text-[10px] font-bold text-tertiary-container tracking-widest uppercase">2FA REQUIRED</span>
+</div>
+</div>
+<!-- BOTTOM ACTIONS -->
+<div class="px-10 py-8 bg-surface-container-lowest/50 border-t border-white/5 flex gap-4 items-center">
+<button class="flex-1 mono text-[11px] font-bold tracking-widest text-on-surface-variant/60 hover:text-on-surface transition-colors uppercase">
+                    CANCEL
+                </button>
+<button class="flex-[2] bg-primary text-on-primary py-4 rounded-xl font-bold tracking-tight hover:bg-primary-container transition-all flex items-center justify-center gap-2 bioluminescent-pulse group">
+                    CREATE PAYOUT
+                    <span class="material-symbols-outlined text-[18px] group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+<!-- FOOTER (Persistent Shell) -->
+<footer class="fixed bottom-0 left-0 w-full px-6 flex justify-between items-center z-50 h-8 bg-gradient-to-t from-[#040d0a] to-transparent border-t border-emerald-400/10">
+<span class="font-mono text-[10px] tracking-widest uppercase text-emerald-500">System Status: Operational • BTC: $64,231.50 • ETH: $3,452.10 • Last Sync: 12:44:02</span>
+<div class="flex gap-4">
+<span class="font-mono text-[10px] tracking-widest uppercase text-emerald-900 hover:text-emerald-300 cursor-pointer">Terminal v2.4.0</span>
+<span class="font-mono text-[10px] tracking-widest uppercase text-emerald-900 hover:text-emerald-300 cursor-pointer">Privacy</span>
+<span class="font-mono text-[10px] tracking-widest uppercase text-emerald-900 hover:text-emerald-300 cursor-pointer">Terms</span>
+</div>
+</footer>
+</body></html>

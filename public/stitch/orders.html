@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>CRYMAD CA$H | Orders</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800&amp;family=JetBrains+Mono:wght@400;700&amp;family=Space+Grotesk:wght@500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-secondary-container": "#e0ffec",
+                        "on-surface-variant": "#a2aea8",
+                        "on-tertiary": "#573500",
+                        "surface-container-low": "#0a1612",
+                        "surface-container": "#0f1c18",
+                        "tertiary-fixed-dim": "#e79400",
+                        "on-secondary-fixed-variant": "#006948",
+                        "on-primary-fixed": "#00452d",
+                        "secondary-fixed-dim": "#57edb1",
+                        "on-primary-container": "#002919",
+                        "inverse-on-surface": "#4c5753",
+                        "tertiary-container": "#f8a010",
+                        "secondary-fixed": "#68fcbf",
+                        "primary-dim": "#58e7ab",
+                        "secondary": "#68fcbf",
+                        "primary": "#69f6b8",
+                        "on-error": "#490006",
+                        "on-surface": "#f0fcf6",
+                        "on-tertiary-fixed-variant": "#563400",
+                        "secondary-dim": "#57edb1",
+                        "on-tertiary-fixed": "#2a1700",
+                        "inverse-surface": "#f0fcf6",
+                        "secondary-container": "#006c4b",
+                        "outline-variant": "#3f4a46",
+                        "error-container": "#9f0519",
+                        "tertiary-dim": "#e79400",
+                        "outline": "#6c7873",
+                        "surface": "#06100d",
+                        "surface-container-highest": "#1a2924",
+                        "error": "#ff716c",
+                        "background": "#06100d",
+                        "surface-dim": "#06100d",
+                        "tertiary": "#ffb148",
+                        "on-secondary-fixed": "#004931",
+                        "on-secondary": "#005e40",
+                        "on-background": "#f0fcf6",
+                        "surface-tint": "#69f6b8",
+                        "surface-container-high": "#15221e",
+                        "surface-variant": "#1a2924",
+                        "on-tertiary-container": "#4a2c00",
+                        "on-primary-fixed-variant": "#006544",
+                        "primary-fixed-dim": "#58e7ab",
+                        "surface-container-lowest": "#000000",
+                        "primary-fixed": "#69f6b8",
+                        "primary-container": "#06b77f",
+                        "on-error-container": "#ffa8a3",
+                        "error-dim": "#d7383b",
+                        "surface-bright": "#1f2f2a",
+                        "on-primary": "#005a3c",
+                        "tertiary-fixed": "#f8a010",
+                        "inverse-primary": "#006d4a"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "1rem",
+                        "lg": "2rem",
+                        "xl": "3rem",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Inter"],
+                        "body": ["Inter"],
+                        "label": ["Space Grotesk"],
+                        "mono": ["JetBrains Mono"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 200, 'GRAD' 0, 'opsz' 24;
+        }
+        .bg-living {
+            background: radial-gradient(circle at 20% 30%, rgba(105, 246, 184, 0.08) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 70%, rgba(52, 211, 153, 0.08) 0%, transparent 50%);
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+        }
+        .energy-lines {
+            background-image: repeating-linear-gradient(45deg, rgba(63, 74, 70, 0.05) 0px, rgba(63, 74, 70, 0.05) 1px, transparent 1px, transparent 50px);
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+        }
+        .glass-panel {
+            background: rgba(44, 55, 51, 0.4);
+            backdrop-filter: blur(20px);
+        }
+        .text-gradient {
+            background: linear-gradient(to bottom, #10b981, #34d399);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .pulse-dot {
+            animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: .5; transform: scale(1.2); }
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body selection:bg-primary selection:text-on-primary">
+<div class="bg-living"></div>
+<div class="energy-lines"></div>
+<!-- Top Navigation -->
+<nav class="fixed top-0 w-full h-16 bg-emerald-950/40 backdrop-blur-xl flex justify-between items-center px-8 z-50 shadow-[0_0_40px_rgba(16,185,129,0.08)]">
+<div class="text-xl font-black tracking-tighter bg-gradient-to-r from-emerald-400 to-teal-300 bg-clip-text text-transparent font-headline">
+            CRYMAD CA$H
+        </div>
+<div class="hidden md:flex gap-8 font-['Inter'] leading-tight">
+<a class="text-emerald-100/60 hover:text-emerald-100 transition-all duration-300" href="#">Dashboard</a>
+<a class="text-emerald-100/60 hover:text-emerald-100 transition-all duration-300" href="#">Wallets</a>
+<a class="text-emerald-100/60 hover:text-emerald-100 transition-all duration-300" href="#">Cards</a>
+<a class="text-emerald-400 font-bold border-b-2 border-emerald-400 pb-1" href="#">Transactions</a>
+<a class="text-emerald-100/60 hover:text-emerald-100 transition-all duration-300" href="#">Banking</a>
+<a class="text-emerald-100/60 hover:text-emerald-100 transition-all duration-300" href="#">Help</a>
+</div>
+<div class="flex items-center gap-6">
+<button class="material-symbols-outlined text-emerald-400 hover:bg-emerald-400/10 p-2 rounded-full transition-all">notifications</button>
+<div class="w-8 h-8 rounded-full overflow-hidden border border-emerald-500/30">
+<img alt="User Profile Avatar" data-alt="Close-up portrait of a professional male user with short hair and neutral expression, soft cinematic studio lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAGaXf_HxUSE8n6ZTj8NhsApS80ANV-hT-Zbgfw5Ka3fMJ8Lf1IAEU3_1EuixoLeNHf-ciYc60Pt5E1TS0Ia_CbVl44YiAIlxOOy5khq2uNWNXlxcfvnD5yBWiEqu6oJoWLjxVoqMS8fVLAnHg3bgZnRybXKQ4sriYL5T88FkkpqJBejgRemr5fjn-BIRG8h2PhWqbsAt2ZaoqTE8ZSBYVfWp66HmXRqfQafmPzVXgGmUYokY5o2s4PU-V_8yEPldMYHyPWwOfZkrg"/>
+</div>
+</div>
+</nav>
+<!-- Side Theme Selector -->
+<aside class="fixed right-0 top-1/2 -translate-y-1/2 rounded-l-full py-6 bg-emerald-950/40 backdrop-blur-xl border-l border-emerald-500/15 shadow-2xl flex flex-col items-center gap-6 px-3 z-40">
+<div class="rotate-90 text-vertical font-mono uppercase tracking-widest text-[10px] text-emerald-400 mb-4">SYSTEM_CORE</div>
+<div class="ring-2 ring-emerald-400 ring-offset-2 ring-offset-emerald-950 bg-emerald-400 w-4 h-4 rounded-full hover:scale-110 transition-transform cursor-pointer"></div>
+<div class="bg-emerald-800 w-4 h-4 rounded-full opacity-40 hover:scale-110 transition-transform cursor-pointer"></div>
+<div class="bg-emerald-800 w-4 h-4 rounded-full opacity-40 hover:scale-110 transition-transform cursor-pointer"></div>
+<div class="bg-emerald-800 w-4 h-4 rounded-full opacity-40 hover:scale-110 transition-transform cursor-pointer"></div>
+</aside>
+<!-- Main Content -->
+<main class="pt-24 pb-20 px-8 max-w-[1280px] mx-auto relative min-h-screen">
+<!-- Header Section -->
+<header class="mb-12">
+<h1 class="text-[3.5rem] font-extrabold tracking-tight text-gradient leading-none mb-2">Orders</h1>
+<p class="font-mono text-on-surface-variant tracking-[0.2em] text-sm">ECOMMERCE CHECKOUT HISTORY</p>
+</header>
+<!-- Tab Controls & Actions -->
+<div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-6 mb-10">
+<div class="flex p-1.5 glass-panel rounded-full border border-outline-variant/15">
+<button class="px-6 py-2 rounded-full font-mono text-xs text-on-surface-variant hover:text-primary transition-colors flex items-center gap-2">
+                    PENDING <span class="bg-tertiary/20 text-tertiary px-1.5 rounded text-[10px]">3</span>
+</button>
+<button class="px-6 py-2 rounded-full font-mono text-xs bg-primary text-on-primary shadow-lg shadow-primary/20">
+                    COMPLETED
+                </button>
+<button class="px-6 py-2 rounded-full font-mono text-xs text-on-surface-variant hover:text-primary transition-colors">
+                    CANCELLED
+                </button>
+</div>
+<div class="flex items-center gap-4 w-full md:w-auto">
+<div class="relative flex-grow md:w-64">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline text-sm">search</span>
+<input class="w-full bg-surface-container-lowest border-none ring-1 ring-outline-variant/30 rounded-full pl-10 pr-4 py-2.5 text-sm font-mono focus:ring-primary/50 transition-all" placeholder="Search orders..." type="text"/>
+</div>
+<button class="bg-primary text-on-primary px-6 py-2.5 rounded-full font-bold text-sm flex items-center gap-2 hover:shadow-[0_0_20px_rgba(105,246,184,0.3)] transition-all active:scale-95">
+<span class="material-symbols-outlined text-lg">add</span> NEW ORDER
+                </button>
+</div>
+</div>
+<!-- Orders Table -->
+<div class="glass-panel rounded-xl overflow-hidden border border-outline-variant/10 shadow-2xl">
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="border-b border-outline-variant/10 bg-surface-container-high/40">
+<th class="px-8 py-5 font-mono text-[10px] tracking-widest text-on-surface-variant uppercase">Order #</th>
+<th class="px-6 py-5 font-mono text-[10px] tracking-widest text-on-surface-variant uppercase">Status</th>
+<th class="px-6 py-5 font-mono text-[10px] tracking-widest text-on-surface-variant uppercase">Merchant</th>
+<th class="px-6 py-5 font-mono text-[10px] tracking-widest text-on-surface-variant uppercase text-right">Amount</th>
+<th class="px-6 py-5 font-mono text-[10px] tracking-widest text-on-surface-variant uppercase">Payment</th>
+<th class="px-8 py-5 font-mono text-[10px] tracking-widest text-on-surface-variant uppercase">Date</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant/5">
+<!-- Row 1 -->
+<tr class="hover:bg-primary/5 transition-colors group cursor-pointer">
+<td class="px-8 py-5 font-mono text-sm text-on-surface">ORD-9821</td>
+<td class="px-6 py-5">
+<span class="flex items-center gap-2 bg-secondary/10 text-secondary border border-secondary/20 px-3 py-1 rounded-full text-[10px] font-bold">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span> COMPLETED
+                                </span>
+</td>
+<td class="px-6 py-5">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-lg bg-surface-container-highest flex items-center justify-center p-1.5 border border-outline-variant/20">
+<img alt="Amazon" data-alt="Minimalist clean corporate logo of Amazon on a white background, retail tech aesthetic" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBWAj7a6mjD-0ENDzCZsZFKeX2j2EES6qA8HUmaFWh6L8Vqn7TWUOWB42OK8Wy0liMt-YcIXfIOyDd_s8w45WPklLTHFSWJ2fXKtVRop-RCb17KC2Ymnn-zchdPASpSJFHEuMtJxb_nSMHDneyj_YJEICw9r4IqtAfMCPxjceKh3NfgdtwldE0Wk9wEDDxXHf0lJra6zqzrxAaOoqe00_nsQqzZqBqETuRoYZC4yrw8zhEeTtNnn_iBkGkW8YsksIT5E16j87oDhAk"/>
+</div>
+<span class="text-sm font-bold">Amazon.com</span>
+</div>
+</td>
+<td class="px-6 py-5 text-right font-mono text-sm text-secondary font-bold">$1,240.50</td>
+<td class="px-6 py-5">
+<div class="flex items-center gap-2 text-xs font-mono text-on-surface-variant">
+<span class="material-symbols-outlined text-sm">credit_card</span> **** 4242
+                                </div>
+</td>
+<td class="px-8 py-5 font-mono text-xs text-outline">24 OCT 2023</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-primary/5 transition-colors group cursor-pointer">
+<td class="px-8 py-5 font-mono text-sm text-on-surface">ORD-9754</td>
+<td class="px-6 py-5">
+<span class="flex items-center gap-2 bg-tertiary/10 text-tertiary border border-tertiary/20 px-3 py-1 rounded-full text-[10px] font-bold">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary pulse-dot"></span> PROCESSING
+                                </span>
+</td>
+<td class="px-6 py-5">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-lg bg-surface-container-highest flex items-center justify-center p-1.5 border border-outline-variant/20">
+<img alt="Spotify" data-alt="Minimalist circular Spotify logo in green on black background, digital music service iconography" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDNqVp7jfmRNhcBZDVvaivR4qn_oHth9-Cdr1GwhnK2Au_iKOuHYtSolmmusaTi9y5x9MWG5JA3kT3CaHOy7vwiUEnHAZdNezD95k9EzYQnB-kYMYNS4jTjaa35HUvEcfSxPd-HQFa4ht1p-6uqi91AbCFqirfIcfIOCXz24j027J0AV-K4Ffr8b8uVbWhZ5csZqvsfh8IFwfw8AXhO6Y6CDVmqyWn8UUhRvDxJtfdACdsRF53TX4EhKcpjfrcvmz9OY97tFNQjs8I"/>
+</div>
+<span class="text-sm font-bold">Spotify Premium</span>
+</div>
+</td>
+<td class="px-6 py-5 text-right font-mono text-sm text-tertiary font-bold">$14.99</td>
+<td class="px-6 py-5">
+<div class="flex items-center gap-2 text-xs font-mono text-on-surface-variant">
+<span class="material-symbols-outlined text-sm">account_balance_wallet</span> CRYPTOWALLET
+                                </div>
+</td>
+<td class="px-8 py-5 font-mono text-xs text-outline">23 OCT 2023</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-primary/5 transition-colors group cursor-pointer">
+<td class="px-8 py-5 font-mono text-sm text-on-surface">ORD-9632</td>
+<td class="px-6 py-5">
+<span class="flex items-center gap-2 bg-error/10 text-error border border-error/20 px-3 py-1 rounded-full text-[10px] font-bold">
+<span class="w-1.5 h-1.5 rounded-full bg-error"></span> REFUNDED
+                                </span>
+</td>
+<td class="px-6 py-5">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-lg bg-surface-container-highest flex items-center justify-center p-1.5 border border-outline-variant/20">
+<img alt="Apple Store" data-alt="Sleek Apple logo silhouette on clean gray background, premium tech brand aesthetic" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAyBjiRLEpZauq3oDCRwXlfIxIMkPW2x9BcHbtxEeGR72ch7blZyzOvvFTB4WzTXp8BB63VnCay9UK2paVULDgXrOclXm2x5J7Lsqhqhgu86B09zTx04uZdTxm_rfoWdrER3fPcPxtPEMHm0bp54ix9QnsN7LN_57MJEiO3sjnAzV4zJncnFKziG9EQKn6jcJ4ObR7c6WCBZjc4eaGEZX0xF3zpFcRrBIMHe0PEEpbCu5JmeGtPW1wsRVfQfFHPoBBoHiUtGRTRAxk"/>
+</div>
+<span class="text-sm font-bold">Apple Store</span>
+</div>
+</td>
+<td class="px-6 py-5 text-right font-mono text-sm text-error font-bold">$3,499.00</td>
+<td class="px-6 py-5">
+<div class="flex items-center gap-2 text-xs font-mono text-on-surface-variant">
+<span class="material-symbols-outlined text-sm">credit_card</span> **** 8812
+                                </div>
+</td>
+<td class="px-8 py-5 font-mono text-xs text-outline">21 OCT 2023</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<!-- Order Detail Modal (Upper Right Overlay) -->
+<div class="absolute top-0 right-0 w-[380px] glass-panel border border-primary/20 rounded-xl mt-12 p-8 shadow-[0_0_50px_rgba(16,185,129,0.15)] z-50">
+<div class="flex justify-between items-start mb-8">
+<div>
+<h3 class="font-mono text-xs tracking-widest text-primary mb-1 uppercase">Order Details</h3>
+<div class="text-xl font-bold font-mono">ORD-9821</div>
+</div>
+<button class="material-symbols-outlined text-outline hover:text-on-surface transition-colors">close</button>
+</div>
+<div class="space-y-8">
+<!-- Timeline -->
+<div class="relative pl-6 space-y-8 before:content-[''] before:absolute before:left-[7px] before:top-2 before:bottom-2 before:w-[1px] before:bg-outline-variant/30">
+<div class="relative">
+<div class="absolute -left-[23px] top-1.5 w-2.5 h-2.5 rounded-full bg-secondary shadow-[0_0_10px_#4ede3a]"></div>
+<p class="text-[10px] font-mono text-on-surface-variant uppercase tracking-wider">Ordered</p>
+<p class="text-xs font-bold">24 OCT • 09:12 AM</p>
+</div>
+<div class="relative">
+<div class="absolute -left-[23px] top-1.5 w-2.5 h-2.5 rounded-full bg-secondary shadow-[0_0_10px_#4ede3a]"></div>
+<p class="text-[10px] font-mono text-on-surface-variant uppercase tracking-wider">Paid</p>
+<p class="text-xs font-bold">24 OCT • 09:15 AM</p>
+</div>
+<div class="relative">
+<div class="absolute -left-[23px] top-1.5 w-2.5 h-2.5 rounded-full bg-tertiary pulse-dot"></div>
+<p class="text-[10px] font-mono text-on-surface-variant uppercase tracking-wider">Shipped</p>
+<p class="text-xs font-bold">Transit in progress</p>
+</div>
+<div class="relative opacity-30">
+<div class="absolute -left-[23px] top-1.5 w-2.5 h-2.5 rounded-full bg-outline-variant"></div>
+<p class="text-[10px] font-mono text-on-surface-variant uppercase tracking-wider">Delivered</p>
+<p class="text-xs font-bold">Estimated 27 OCT</p>
+</div>
+</div>
+<div class="h-px bg-outline-variant/15"></div>
+<!-- Items -->
+<div class="space-y-4">
+<div class="flex justify-between items-center">
+<span class="text-xs text-on-surface-variant">MacBook Pro M3 Max</span>
+<span class="font-mono text-xs">$3,299.00</span>
+</div>
+<div class="flex justify-between items-center">
+<span class="text-xs text-on-surface-variant">Shipping (Express)</span>
+<span class="font-mono text-xs">$25.00</span>
+</div>
+<div class="flex justify-between items-center pt-2">
+<span class="font-bold text-sm">TOTAL</span>
+<span class="font-mono text-lg text-primary font-black">$3,324.00</span>
+</div>
+</div>
+<button class="w-full py-3 rounded-full border border-error/30 text-error font-mono text-[10px] tracking-widest uppercase hover:bg-error/10 transition-colors">
+                    REQUEST REFUND
+                </button>
+</div>
+</div>
+</main>
+<!-- Bottom Status Strip -->
+<footer class="fixed bottom-0 w-full h-10 bg-emerald-950/20 backdrop-blur-md border-t border-emerald-500/10 flex justify-center items-center gap-12 z-50">
+<div class="flex items-center gap-2 text-emerald-100/50 font-mono text-[11px] uppercase">
+<span class="material-symbols-outlined text-sm">orbit</span> BTC $64,231
+        </div>
+<div class="flex items-center gap-2 text-emerald-100/50 font-mono text-[11px] uppercase">
+<span class="material-symbols-outlined text-sm">show_chart</span> ETH $3,452
+        </div>
+<div class="flex items-center gap-2 text-emerald-400 animate-pulse font-mono text-[11px] uppercase">
+<span class="material-symbols-outlined text-sm">sync</span> SYNCED 12:04:01
+        </div>
+</footer>
+</body></html>

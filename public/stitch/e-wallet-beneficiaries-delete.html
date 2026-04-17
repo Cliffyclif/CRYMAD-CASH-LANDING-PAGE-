@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&amp;family=JetBrains+Mono:wght@400;700&amp;family=Space+Grotesk:wght@400;500;600&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "surface-bright": "#313b38",
+            "on-error": "#690005",
+            "on-tertiary-fixed-variant": "#653e00",
+            "on-tertiary": "#472a00",
+            "inverse-primary": "#006c49",
+            "primary-fixed": "#6ffbbe",
+            "on-surface": "#d9e5df",
+            "error": "#ffb4ab",
+            "surface-dim": "#0b1512",
+            "surface-container": "#17221e",
+            "on-tertiary-fixed": "#2a1700",
+            "inverse-surface": "#d9e5df",
+            "secondary-container": "#00bd85",
+            "surface": "#0b1512",
+            "primary-container": "#10b981",
+            "on-secondary-fixed-variant": "#005137",
+            "on-error-container": "#ffdad6",
+            "on-surface-variant": "#bbcabf",
+            "on-primary-container": "#00422b",
+            "surface-variant": "#2c3733",
+            "on-primary-fixed-variant": "#005236",
+            "tertiary-fixed": "#ffddb8",
+            "tertiary-fixed-dim": "#ffb95f",
+            "on-secondary-fixed": "#002114",
+            "on-primary-fixed": "#002113",
+            "inverse-on-surface": "#28332f",
+            "surface-container-lowest": "#06100d",
+            "on-tertiary-container": "#523200",
+            "tertiary-container": "#e29100",
+            "on-secondary": "#003825",
+            "surface-container-low": "#131e1a",
+            "outline": "#86948a",
+            "surface-tint": "#4edea3",
+            "secondary": "#45dfa4",
+            "on-background": "#d9e5df",
+            "surface-container-highest": "#2c3733",
+            "surface-container-high": "#222c29",
+            "secondary-fixed": "#68fcbf",
+            "primary-fixed-dim": "#4edea3",
+            "on-secondary-container": "#00452e",
+            "error-container": "#93000a",
+            "outline-variant": "#3c4a42",
+            "on-primary": "#003824",
+            "background": "#0b1512",
+            "tertiary": "#ffb95f",
+            "primary": "#4edea3",
+            "secondary-fixed-dim": "#45dfa4"
+          },
+          "borderRadius": {
+            "DEFAULT": "1rem",
+            "lg": "2rem",
+            "xl": "3rem",
+            "full": "9999px"
+          },
+          "fontFamily": {
+            "headline": ["Inter"],
+            "body": ["Inter"],
+            "label": ["Space Grotesk"],
+            "mono": ["JetBrains Mono"]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+    }
+    .gradient-heading {
+      background: linear-gradient(to bottom, #10b981, #34d399);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .energy-lines {
+      background-image: repeating-linear-gradient(45deg, transparent, transparent 40px, rgba(16, 185, 129, 0.05) 40px, rgba(16, 185, 129, 0.05) 41px);
+    }
+    .glass-panel {
+      background: rgba(44, 55, 51, 0.4);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(16, 185, 129, 0.08);
+    }
+    .pulse-glow {
+      animation: pulse-aura 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    }
+    @keyframes pulse-aura {
+      0%, 100% { opacity: 0.3; }
+      50% { opacity: 0.5; }
+    }
+  </style>
+</head>
+<body class="bg-surface-container-lowest text-on-surface font-body selection:bg-primary/30 min-h-screen overflow-hidden">
+<!-- Background Living Elements -->
+<div class="fixed inset-0 z-0 overflow-hidden pointer-events-none">
+<div class="energy-lines absolute inset-0"></div>
+<div class="absolute top-[-10%] left-[-5%] w-[400px] h-[400px] rounded-full bg-primary/20 blur-[80px] pulse-glow"></div>
+<div class="absolute bottom-[-15%] right-[5%] w-[500px] h-[500px] rounded-full bg-secondary/20 blur-[80px] pulse-glow" style="animation-delay: 1s;"></div>
+<div class="absolute top-[30%] right-[-10%] w-[350px] h-[350px] rounded-full bg-primary-container/10 blur-[80px] pulse-glow" style="animation-delay: 2s;"></div>
+<div class="absolute bottom-[20%] left-[10%] w-[450px] h-[450px] rounded-full bg-teal-900/30 blur-[80px] pulse-glow" style="animation-delay: 3s;"></div>
+</div>
+<!-- Background Shell (Dimmed) -->
+<div class="relative z-10 w-full opacity-20 blur-[2px] select-none pointer-events-none">
+<header class="bg-emerald-950/40 backdrop-blur-xl fixed top-0 w-full z-50 border-b border-emerald-500/10 shadow-[0_0_20px_rgba(16,185,129,0.05)] flex justify-between items-center px-8 h-20 w-full">
+<div class="text-2xl font-black bg-gradient-to-r from-emerald-400 to-teal-400 bg-clip-text text-transparent">Crymad Cash</div>
+<nav class="hidden md:flex gap-8 font-['Inter'] font-extrabold uppercase tracking-wider">
+<span class="text-emerald-700/70">Dashboard</span>
+<span class="text-emerald-400 border-b-2 border-emerald-400 pb-1">Wallets</span>
+<span class="text-emerald-700/70">Cards</span>
+<span class="text-emerald-700/70">Transactions</span>
+</nav>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-emerald-400">notifications</span>
+<div class="w-10 h-10 rounded-full bg-surface-variant overflow-hidden">
+<img alt="User profile" data-alt="close-up profile portrait of a professional trader in a neon lit environment" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBrEB8c8EiM3TezqLUHWRPFEl-m6Ced5VtY5k7fokPt7CRBw5LZUHt2ZLCuf7pulGQRLenOFOxkROuJkvMkpTr0ZEPCXpXP1JOB0c_S1zUKebp7vQpGqjn5o4Z5VhbzKkhqP6Yub_gyqZqbR3iquIs5dev1tumjzjQWTXhr9pv0zzYgfJ-Mnof8aoPGVZOTo1xZd7nh2MzM_b9YBRg39hklYLWmq1Jp55XRynoYVXsy4WltNG8oh49rEV5b1FGCp_WOjdxtZ91QJfA"/>
+</div>
+</div>
+</header>
+<main class="pt-32 px-12 max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
+<div class="col-span-3">
+<h1 class="text-4xl font-extrabold gradient-heading mb-8">Beneficiaries</h1>
+<div class="space-y-6">
+<div class="glass-panel p-6 rounded-lg flex items-center justify-between">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center text-primary font-bold">JD</div>
+<div>
+<p class="font-semibold">Jordan Doe</p>
+<p class="font-mono text-xs text-on-surface-variant">Bank of America •••• 8812</p>
+</div>
+</div>
+</div>
+<!-- Highlighted Row -->
+<div class="glass-panel p-6 rounded-lg flex items-center justify-between border-primary/40 bg-primary/5 opacity-100 blur-none">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full bg-gradient-to-br from-primary to-secondary flex items-center justify-center text-on-primary font-bold">AM</div>
+<div>
+<p class="font-semibold">Alex Morgan</p>
+<p class="font-mono text-xs text-on-surface-variant">Chase Bank •••• 4421</p>
+</div>
+</div>
+<span class="text-xs font-mono px-3 py-1 bg-primary/20 text-primary rounded-full uppercase tracking-widest">VERIFIED</span>
+</div>
+<div class="glass-panel p-6 rounded-lg flex items-center justify-between">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center text-primary font-bold">SK</div>
+<div>
+<p class="font-semibold">Sarah Kohi</p>
+<p class="font-mono text-xs text-on-surface-variant">Wells Fargo •••• 1109</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<footer class="fixed bottom-0 w-full h-10 z-50 bg-[#06100d] border-t border-emerald-500/20 flex justify-between items-center px-6 font-['JetBrains_Mono'] text-[10px] tracking-tighter">
+<span>© 2024 Crymad Cash | Emerald Pulse Protocol</span>
+<div class="flex gap-4">
+<span class="text-emerald-400">BTC: $64,231</span>
+<span class="text-emerald-400">ETH: $3,452</span>
+<span class="text-emerald-400">System: Operational</span>
+</div>
+</footer>
+</div>
+<!-- DELETE BENEFICIARY MODAL OVERLAY -->
+<div class="fixed inset-0 z-[100] flex items-center justify-center bg-black/40 backdrop-blur-sm">
+<div class="glass-panel w-full max-w-[420px] rounded-lg p-8 relative shadow-[0_20px_60px_rgba(4,13,10,0.5),0_0_40px_rgba(16,185,129,0.15)] flex flex-col items-center text-center">
+<!-- Close 'X' -->
+<button class="absolute top-6 right-6 text-on-surface-variant hover:text-on-surface transition-colors">
+<span class="material-symbols-outlined">close</span>
+</button>
+<!-- Trash Icon -->
+<div class="mt-4 mb-6 relative group">
+<div class="absolute inset-0 bg-error/20 blur-xl rounded-full scale-150 opacity-50 group-hover:opacity-80 transition-opacity"></div>
+<span class="material-symbols-outlined text-[80px] text-error relative z-10" style="font-variation-settings: 'wght' 200, 'FILL' 0;">delete</span>
+</div>
+<!-- Title & Body -->
+<h2 class="text-2xl font-extrabold gradient-heading mb-4">Delete Beneficiary?</h2>
+<p class="text-on-surface leading-relaxed mb-8">
+        Are you sure you want to remove <span class="font-semibold">Alex Morgan</span> from your beneficiaries? This action cannot be undone.
+      </p>
+<!-- Recipient Preview Glass Card -->
+<div class="w-full bg-surface-container-highest/30 border border-outline-variant/20 rounded-xl p-4 flex items-center gap-4 mb-10 text-left">
+<div class="w-12 h-12 rounded-full bg-gradient-to-tr from-primary to-secondary flex items-center justify-center font-bold text-on-primary">
+          AM
+        </div>
+<div class="flex-1">
+<p class="font-semibold text-on-surface text-sm">Alex Morgan</p>
+<p class="font-mono text-[10px] text-on-surface-variant uppercase tracking-wider">Chase Bank •••• 4421</p>
+</div>
+<div class="px-2 py-1 bg-primary/10 border border-primary/20 rounded-full">
+<span class="text-[9px] font-mono text-primary font-bold uppercase tracking-tighter">VERIFIED</span>
+</div>
+</div>
+<!-- Bottom Row Buttons -->
+<div class="w-full flex items-center justify-between gap-4">
+<button class="flex-1 h-12 flex items-center justify-center font-mono text-xs font-bold tracking-widest text-on-surface-variant hover:text-on-surface transition-all">
+          CANCEL
+        </button>
+<button class="flex-1 h-12 border border-error bg-transparent hover:bg-error/10 text-error rounded-lg font-mono text-xs font-bold tracking-widest transition-all flex items-center justify-center gap-2 group">
+          DELETE <span class="material-symbols-outlined text-sm group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+</body></html>

@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>CRYMAD CA$H | Secure Authentication</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&amp;family=JetBrains+Mono:wght@400;700&amp;family=Space+Grotesk:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "on-primary": "#003824",
+                        "surface-container-high": "#222c29",
+                        "on-tertiary": "#472a00",
+                        "on-background": "#d9e5df",
+                        "tertiary-fixed-dim": "#ffb95f",
+                        "tertiary-container": "#e29100",
+                        "on-secondary-fixed-variant": "#005137",
+                        "error-container": "#93000a",
+                        "secondary": "#45dfa4",
+                        "primary-fixed": "#6ffbbe",
+                        "on-surface": "#d9e5df",
+                        "on-secondary": "#003825",
+                        "on-primary-fixed-variant": "#005236",
+                        "on-tertiary-fixed": "#2a1700",
+                        "on-tertiary-container": "#523200",
+                        "on-surface-variant": "#bbcabf",
+                        "inverse-surface": "#d9e5df",
+                        "surface-variant": "#2c3733",
+                        "outline-variant": "#3c4a42",
+                        "on-error-container": "#ffdad6",
+                        "on-primary-fixed": "#002113",
+                        "outline": "#86948a",
+                        "surface-tint": "#4edea3",
+                        "surface": "#0b1512",
+                        "secondary-fixed-dim": "#45dfa4",
+                        "on-secondary-fixed": "#002114",
+                        "inverse-primary": "#006c49",
+                        "primary-fixed-dim": "#4edea3",
+                        "surface-container-highest": "#2c3733",
+                        "surface-bright": "#313b38",
+                        "secondary-container": "#00bd85",
+                        "surface-container-low": "#131e1a",
+                        "on-tertiary-fixed-variant": "#653e00",
+                        "surface-container-lowest": "#06100d",
+                        "on-error": "#690005",
+                        "inverse-on-surface": "#28332f",
+                        "secondary-fixed": "#68fcbf",
+                        "background": "#0b1512",
+                        "surface-dim": "#0b1512",
+                        "primary-container": "#10b981",
+                        "tertiary-fixed": "#ffddb8",
+                        "tertiary": "#ffb95f",
+                        "error": "#ffb4ab",
+                        "surface-container": "#17221e",
+                        "primary": "#4edea3",
+                        "on-secondary-container": "#00452e",
+                        "on-primary-container": "#00422b"
+                    },
+                    borderRadius: {
+                        "DEFAULT": "1rem",
+                        "lg": "2rem",
+                        "xl": "3rem",
+                        "full": "9999px"
+                    },
+                    fontFamily: {
+                        "headline": ["Inter"],
+                        "body": ["Inter"],
+                        "mono": ["JetBrains Mono"],
+                        "label": ["Space Grotesk"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            background-color: #040d0a;
+            overflow: hidden;
+        }
+        .blob {
+            filter: blur(80px);
+            opacity: 0.4;
+        }
+        .energy-line {
+            background: repeating-linear-gradient(45deg, transparent, transparent 100px, rgba(16, 185, 129, 0.03) 100px, rgba(16, 185, 129, 0.03) 101px);
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .pulse-border {
+            box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.4);
+        }
+        .glass-card {
+            background: rgba(44, 55, 51, 0.4);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(16, 185, 129, 0.08);
+        }
+        .breathing-ring {
+            border: 2px solid transparent;
+            background: linear-gradient(#040d0a, #040d0a) padding-box,
+                        conic-gradient(from 0deg, #10b981, transparent, #34d399, transparent) border-box;
+        }
+        .cursor-pulse {
+            width: 2px;
+            height: 60%;
+            background-color: #4edea3;
+        }
+    </style>
+</head>
+<body class="font-body text-on-surface min-h-screen relative flex items-center justify-center p-4">
+<!-- Atmospheric Background Layers -->
+<div class="fixed inset-0 z-0">
+<div class="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] rounded-full bg-primary blob"></div>
+<div class="absolute bottom-[-20%] right-[-10%] w-[60%] h-[60%] rounded-full bg-secondary blob"></div>
+<div class="absolute top-[20%] right-[5%] w-[30%] h-[40%] rounded-full bg-primary-container blob"></div>
+<div class="absolute bottom-[10%] left-[10%] w-[40%] h-[30%] rounded-full bg-secondary-container blob"></div>
+<div class="absolute inset-0 energy-line"></div>
+</div>
+<!-- Auth Shell Content -->
+<main class="relative z-10 w-full max-w-[480px]">
+<div class="glass-card rounded-lg p-8 md:p-12 shadow-2xl flex flex-col items-center text-center">
+<!-- Identity Header Group -->
+<div class="relative mb-8">
+<div class="w-32 h-32 rounded-full breathing-ring flex items-center justify-center mb-6">
+<svg class="w-16 h-16 text-primary" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1" viewbox="0 0 24 24">
+<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+<circle cx="12" cy="11" r="3"></circle>
+<path d="M12 14v4"></path>
+</svg>
+</div>
+<h1 class="text-3xl font-extrabold tracking-tight bg-gradient-to-r from-primary-container to-secondary bg-clip-text text-transparent mb-3">
+                    Verify Your Identity
+                </h1>
+<p class="text-on-surface-variant text-xs font-normal max-w-xs mx-auto opacity-70">
+                    Enter the 6-digit code sent to your authenticator app
+                </p>
+</div>
+<!-- Device Metadata Pill -->
+<div class="bg-surface-container-low border border-outline-variant/30 px-3 py-1.5 rounded-full flex items-center gap-2 mb-10">
+<span class="material-symbols-outlined text-[14px] text-primary">smartphone</span>
+<span class="font-mono text-[10px] tracking-wider text-on-surface-variant">AUTHENTICATOR • Google Auth</span>
+</div>
+<!-- Code Input Row -->
+<div class="grid grid-cols-6 gap-3 mb-8 w-full">
+<!-- Box 1 -->
+<div class="w-full aspect-square glass-card rounded-md flex items-center justify-center border border-primary/40">
+<span class="font-mono text-2xl font-bold text-primary">4</span>
+</div>
+<!-- Box 2 -->
+<div class="w-full aspect-square glass-card rounded-md flex items-center justify-center border border-primary/40">
+<span class="font-mono text-2xl font-bold text-primary">9</span>
+</div>
+<!-- Box 3 -->
+<div class="w-full aspect-square glass-card rounded-md flex items-center justify-center border border-primary/40">
+<span class="font-mono text-2xl font-bold text-primary">2</span>
+</div>
+<!-- Box 4 (Active) -->
+<div class="w-full aspect-square glass-card rounded-md flex items-center justify-center ring-2 ring-primary relative overflow-hidden">
+<div class="cursor-pulse"></div>
+</div>
+<!-- Box 5 -->
+<div class="w-full aspect-square glass-card rounded-md flex items-center justify-center border border-outline-variant/20">
+</div>
+<!-- Box 6 -->
+<div class="w-full aspect-square glass-card rounded-md flex items-center justify-center border border-outline-variant/20">
+</div>
+</div>
+<!-- Resend Countdown -->
+<div class="bg-surface-container-highest/30 px-4 py-2 rounded-full flex items-center gap-2 mb-10">
+<div class="w-1.5 h-1.5 rounded-full bg-tertiary shadow-[0_0_8px_rgba(255,185,95,0.6)]"></div>
+<span class="font-mono text-[11px] text-on-surface-variant tracking-widest">RESEND CODE IN 00:24</span>
+</div>
+<!-- Actions -->
+<div class="w-full space-y-6">
+<button class="w-full py-4 border border-primary-container text-primary-container font-mono text-sm font-bold rounded-lg tracking-widest hover:bg-gradient-to-r hover:from-primary-container hover:to-secondary hover:text-on-primary transition-all duration-300">
+                    VERIFY -&gt;
+                </button>
+<div class="flex flex-col items-center gap-4">
+<a class="text-primary font-mono text-xs tracking-tight hover:text-secondary transition-colors inline-flex items-center gap-1 group" href="#">
+                        Use Backup Code <span class="group-hover:translate-x-1 transition-transform">-&gt;</span>
+</a>
+<a class="text-on-surface-variant/60 font-mono text-[10px] tracking-tight hover:text-on-surface transition-colors inline-flex items-center gap-1 group mt-4" href="#">
+<span class="group-hover:-translate-x-1 transition-transform">&lt;-</span> Back to Sign In
+                    </a>
+</div>
+</div>
+</div>
+<!-- System Branding Anchor (As per TopAppBar guidance but modified for Shell Suppressed) -->
+<div class="mt-8 flex justify-center opacity-30 grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-700">
+<span class="text-xl font-black bg-gradient-to-r from-emerald-400 to-teal-400 bg-clip-text text-transparent font-headline">CRYMAD CA$H</span>
+</div>
+</main>
+<!-- Visual Texture Element -->
+<div class="fixed inset-0 pointer-events-none opacity-20" data-alt="subtle dark technical carbon fiber grid texture for background depth" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBcqGfn3o9kLM07q923qbf9igk_lZQn-PqnJ1EmH1m3fS9CnIyRFq0inn7HpeYz5B2WF5xPhj4ES-o04hjki3YuaTvMzmU7whwilhx-d-eFZ9uQVtvT-q0LxWyqdLPxCCRqum-zOLbdeoDQ0zFV9Sty2OIXGmJ91XhVFDEddtzzvgPev9vsHvz3B86Bsp4v39LjhAhQnqUbITLX7ttNNh3089FGpefUDttxkR-NcK1L9qiHYeRUsLWvyOHMEWch78qwmJCk6XezaDg');">
+</div>
+</body></html>

@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Emerald Pulse | Approval Queue</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&amp;family=JetBrains+Mono:wght@400;700&amp;family=Space+Grotesk:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-secondary": "#003825",
+                        "secondary-fixed": "#68fcbf",
+                        "surface-container-high": "#222c29",
+                        "surface-variant": "#2c3733",
+                        "primary-fixed": "#6ffbbe",
+                        "surface-tint": "#4edea3",
+                        "on-secondary-fixed": "#002114",
+                        "on-error-container": "#ffdad6",
+                        "outline-variant": "#3c4a42",
+                        "surface-container-highest": "#2c3733",
+                        "on-primary-container": "#00422b",
+                        "background": "#0b1512",
+                        "outline": "#86948a",
+                        "secondary-fixed-dim": "#45dfa4",
+                        "on-primary": "#003824",
+                        "inverse-primary": "#006c49",
+                        "on-primary-fixed": "#002113",
+                        "on-secondary-container": "#00452e",
+                        "tertiary-fixed": "#ffddb8",
+                        "surface-container-lowest": "#06100d",
+                        "surface-container-low": "#131e1a",
+                        "primary-fixed-dim": "#4edea3",
+                        "error": "#ffb4ab",
+                        "on-surface": "#d9e5df",
+                        "on-primary-fixed-variant": "#005236",
+                        "primary": "#4edea3",
+                        "on-tertiary": "#472a00",
+                        "on-surface-variant": "#bbcabf",
+                        "surface-container": "#17221e",
+                        "inverse-on-surface": "#28332f",
+                        "on-background": "#d9e5df",
+                        "on-tertiary-fixed": "#2a1700",
+                        "tertiary-container": "#e29100",
+                        "on-tertiary-container": "#523200",
+                        "secondary-container": "#00bd85",
+                        "surface-dim": "#0b1512",
+                        "error-container": "#93000a",
+                        "on-secondary-fixed-variant": "#005137",
+                        "secondary": "#45dfa4",
+                        "primary-container": "#10b981",
+                        "surface": "#0b1512",
+                        "inverse-surface": "#d9e5df",
+                        "tertiary-fixed-dim": "#ffb95f",
+                        "tertiary": "#ffb95f",
+                        "on-error": "#690005",
+                        "on-tertiary-fixed-variant": "#653e00",
+                        "surface-bright": "#313b38"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "1rem",
+                        "lg": "2rem",
+                        "xl": "3rem",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Inter"],
+                        "body": ["Inter"],
+                        "label": ["Space Grotesk"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .glass-panel {
+            background: rgba(44, 55, 51, 0.4);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(16, 185, 129, 0.08);
+        }
+        .technical-grid {
+            background-image: 
+                linear-gradient(rgba(60, 74, 66, 0.1) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(60, 74, 66, 0.1) 1px, transparent 1px);
+            background-size: 24px 24px;
+        }
+        .bioluminescent-blob {
+            background: radial-gradient(circle, rgba(78, 222, 163, 0.08) 0%, rgba(11, 21, 18, 0) 70%);
+        }
+        .signature-gradient {
+            background: linear-gradient(to right, #10b981, #34d399);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body min-h-screen selection:bg-primary/30 relative overflow-x-hidden">
+<!-- Global Background Elements -->
+<div class="fixed inset-0 technical-grid pointer-events-none opacity-40"></div>
+<div class="fixed top-[-10%] left-[-5%] w-[40%] h-[60%] bioluminescent-blob pointer-events-none"></div>
+<div class="fixed bottom-[-10%] right-[-5%] w-[50%] h-[70%] bioluminescent-blob pointer-events-none"></div>
+<!-- TopNavBar Shell -->
+<nav class="h-[64px] w-full sticky top-0 z-50 bg-emerald-950/40 backdrop-blur-xl border-b border-emerald-500/10 shadow-[0_0_20px_rgba(16,185,129,0.04)]">
+<div class="flex items-center justify-between px-8 max-w-[1280px] mx-auto w-full h-full">
+<div class="text-xl font-black tracking-tighter bg-gradient-to-r from-emerald-500 to-emerald-300 bg-clip-text text-transparent font-['Inter'] uppercase">
+                INSTITUTIONAL PORTAL
+            </div>
+<div class="hidden md:flex items-center gap-6">
+<a class="text-emerald-700/70 hover:bg-emerald-500/5 transition-colors font-['Inter'] font-bold uppercase tracking-tight text-sm px-3 py-1" href="#">Dashboard</a>
+<a class="text-emerald-400 border-b-2 border-emerald-400 font-['Inter'] font-bold uppercase tracking-tight text-sm px-3 py-1" href="#">Audit</a>
+<a class="text-emerald-700/70 hover:bg-emerald-500/5 transition-colors font-['Inter'] font-bold uppercase tracking-tight text-sm px-3 py-1" href="#">Protocol</a>
+</div>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-emerald-400 cursor-pointer hover:bg-emerald-500/5 p-2 rounded-full transition-transform active:scale-90" data-icon="notifications">notifications</span>
+<span class="material-symbols-outlined text-emerald-400 cursor-pointer hover:bg-emerald-500/5 p-2 rounded-full transition-transform active:scale-90" data-icon="settings">settings</span>
+<div class="bg-primary/10 px-4 py-1.5 rounded-full border border-primary/20">
+<span class="text-primary font-['JetBrains_Mono'] text-xs font-bold tracking-widest uppercase">AMBER STATUS</span>
+</div>
+</div>
+</div>
+</nav>
+<!-- SideNavBar Shell -->
+<aside class="h-screen w-64 border-l border-emerald-500/10 fixed right-0 top-0 hidden lg:flex flex-col bg-emerald-950/20 backdrop-blur-lg z-40 p-4 shadow-2xl shadow-emerald-900/20">
+<div class="mt-20 mb-8 px-4">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-surface-container-highest border border-primary/20 overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="professional male portrait for user profile avatar with soft lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDIjKrdUDbFmPmM4wJIjH3OXjzQvHiXnpstf5ZB3h9fwfTivwJrJVVJ-SwkWLZMSJFwbK_WKn3K0i3exjRVEUm5oVolW207yHs4cPyFCm-Ec0LchCDUz11sPB4UmqoqTO7iVxVFtND90_WyxeqUCn3p64IIPPoPyFYUUf8OULoyrTubb90B3eKJeI5qn4iyMeYGzULDXZqeNC0BO1YtDVYt6G17tRALfniFv2lrNz3TjFjP88aigMDAfjkDYNfQIyRkr7GUK4XEhbM"/>
+</div>
+<div>
+<div class="text-emerald-400 font-bold font-['Space_Grotesk'] text-sm">System Admin</div>
+<div class="text-emerald-600 text-[10px] font-['Space_Grotesk'] uppercase tracking-widest">Level 4 Clearance</div>
+</div>
+</div>
+</div>
+<div class="space-y-2">
+<div class="flex items-center gap-3 px-4 py-3 text-emerald-600 hover:text-emerald-300 hover:bg-emerald-500/5 rounded-full transition-all duration-300 font-['Space_Grotesk'] font-medium text-sm">
+<span class="material-symbols-outlined" data-icon="grid_view">grid_view</span>
+<span>Dashboard</span>
+</div>
+<div class="flex items-center gap-3 px-4 py-3 text-emerald-400 font-bold bg-emerald-500/10 rounded-full transition-all duration-300 font-['Space_Grotesk'] text-sm">
+<span class="material-symbols-outlined" data-icon="insights">insights</span>
+<span>Analytics</span>
+</div>
+<div class="flex items-center gap-3 px-4 py-3 text-emerald-600 hover:text-emerald-300 hover:bg-emerald-500/5 rounded-full transition-all duration-300 font-['Space_Grotesk'] font-medium text-sm">
+<span class="material-symbols-outlined" data-icon="terminal">terminal</span>
+<span>Protocol</span>
+</div>
+<div class="flex items-center gap-3 px-4 py-3 text-emerald-600 hover:text-emerald-300 hover:bg-emerald-500/5 rounded-full transition-all duration-300 font-['Space_Grotesk'] font-medium text-sm">
+<span class="material-symbols-outlined" data-icon="receipt_long">receipt_long</span>
+<span>Audit</span>
+</div>
+</div>
+<div class="mt-auto pt-4 border-t border-emerald-500/10 space-y-2">
+<div class="flex items-center gap-3 px-4 py-2 text-emerald-600 font-['Space_Grotesk'] text-sm">
+<span class="material-symbols-outlined" data-icon="dark_mode">dark_mode</span>
+<span>Dark Mode</span>
+</div>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="max-w-[1280px] mx-auto px-8 pt-12 pb-32 relative z-10 lg:pr-[280px]">
+<!-- Header Section -->
+<header class="mb-12">
+<h1 class="text-5xl md:text-6xl font-black tracking-tighter signature-gradient uppercase mb-2">Approval Queue</h1>
+<p class="font-['JetBrains_Mono'] text-on-surface-variant text-sm tracking-[0.2em] uppercase flex items-center gap-3">
+<span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+                PENDING YOUR SIGNATURE
+            </p>
+</header>
+<!-- Filter & Urgency Section -->
+<div class="flex flex-wrap items-center justify-between gap-6 mb-10">
+<div class="flex p-1.5 glass-panel rounded-full">
+<button class="px-6 py-2 rounded-full bg-primary text-on-primary text-xs font-bold font-label tracking-widest transition-all">PENDING (12)</button>
+<button class="px-6 py-2 rounded-full text-on-surface-variant hover:text-primary text-xs font-bold font-label tracking-widest transition-all">AWAITING OTHERS</button>
+<button class="px-6 py-2 rounded-full text-on-surface-variant hover:text-primary text-xs font-bold font-label tracking-widest transition-all">HISTORY</button>
+</div>
+<div class="flex items-center gap-4 bg-tertiary/10 border border-tertiary/20 px-5 py-2.5 rounded-full shadow-[0_0_20px_rgba(245,158,11,0.08)]">
+<div class="relative w-3 h-3">
+<div class="absolute inset-0 bg-tertiary rounded-full animate-ping opacity-50"></div>
+<div class="relative w-3 h-3 bg-tertiary rounded-full shadow-[0_0_8px_#f59e0b]"></div>
+</div>
+<span class="font-['JetBrains_Mono'] text-tertiary text-xs font-bold tracking-widest uppercase">4 ITEMS NEED YOUR SIGNATURE</span>
+</div>
+</div>
+<!-- Approval Grid/Stack -->
+<div class="space-y-4">
+<!-- Card 1 -->
+<div class="glass-panel p-6 rounded-xl group transition-all hover:bg-surface-container-high/60 relative overflow-hidden">
+<div class="absolute top-0 right-0 p-4 font-['JetBrains_Mono'] text-[10px] text-primary/40 tracking-tighter">
+                    REF#ID-8821
+                </div>
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-6">
+<div class="flex-1">
+<div class="flex items-center gap-3 mb-2">
+<span class="font-['JetBrains_Mono'] text-primary text-lg font-bold">APR-8821</span>
+<span class="h-1 w-1 bg-outline-variant rounded-full"></span>
+<span class="text-on-surface font-bold text-xl">Cold Storage Withdrawal 50 BTC</span>
+</div>
+<div class="flex flex-wrap items-center gap-4 text-sm text-on-surface-variant font-['Space_Grotesk']">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-sm" data-icon="person">person</span>
+                                Sarah Chen
+                            </div>
+<div class="px-3 py-0.5 rounded-md bg-surface-container-lowest font-['JetBrains_Mono'] text-secondary border border-secondary/10">
+                                $3.36M
+                            </div>
+</div>
+</div>
+<div class="flex items-center gap-8">
+<div class="flex flex-col items-center gap-2">
+<div class="flex gap-1.5">
+<div class="w-2 h-8 bg-primary rounded-full"></div>
+<div class="w-2 h-8 bg-primary rounded-full"></div>
+<div class="w-2 h-8 bg-outline-variant/30 rounded-full"></div>
+<div class="w-2 h-8 bg-outline-variant/30 rounded-full"></div>
+<div class="w-2 h-8 bg-outline-variant/30 rounded-full"></div>
+</div>
+<span class="text-[10px] font-['JetBrains_Mono'] text-on-surface-variant uppercase tracking-widest">2 of 5 SIGNED</span>
+</div>
+<button class="px-8 py-3 rounded-full bg-gradient-to-r from-primary to-secondary text-on-primary font-bold font-label tracking-widest shadow-[0_0_15px_rgba(16,185,129,0.3)] hover:scale-105 active:scale-95 transition-transform uppercase">SIGN</button>
+</div>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="glass-panel p-6 rounded-xl group transition-all hover:bg-surface-container-high/60 relative overflow-hidden">
+<div class="absolute top-0 right-0 p-4 font-['JetBrains_Mono'] text-[10px] text-primary/40 tracking-tighter">
+                    REF#ID-8820
+                </div>
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-6">
+<div class="flex-1">
+<div class="flex items-center gap-3 mb-2">
+<span class="font-['JetBrains_Mono'] text-primary text-lg font-bold">APR-8820</span>
+<span class="h-1 w-1 bg-outline-variant rounded-full"></span>
+<span class="text-on-surface font-bold text-xl">Treasury Allocation $25M T-Bills</span>
+</div>
+<div class="flex flex-wrap items-center gap-4 text-sm text-on-surface-variant font-['Space_Grotesk']">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-sm" data-icon="account_balance">account_balance</span>
+                                Initiated by Marcus
+                            </div>
+</div>
+</div>
+<div class="flex items-center gap-8">
+<div class="flex flex-col items-center gap-2">
+<div class="flex gap-1.5">
+<div class="w-2 h-8 bg-primary rounded-full"></div>
+<div class="w-2 h-8 bg-outline-variant/30 rounded-full"></div>
+<div class="w-2 h-8 bg-outline-variant/30 rounded-full"></div>
+</div>
+<span class="text-[10px] font-['JetBrains_Mono'] text-on-surface-variant uppercase tracking-widest">1 of 3 SIGNED</span>
+</div>
+<button class="px-8 py-3 rounded-full bg-gradient-to-r from-primary to-secondary text-on-primary font-bold font-label tracking-widest shadow-[0_0_15px_rgba(16,185,129,0.3)] hover:scale-105 active:scale-95 transition-transform uppercase">SIGN</button>
+</div>
+</div>
+</div>
+<!-- Card 3 (Complete) -->
+<div class="glass-panel p-6 rounded-xl opacity-60 relative overflow-hidden grayscale-[0.5]">
+<div class="absolute top-0 right-0 p-4 font-['JetBrains_Mono'] text-[10px] text-primary/40 tracking-tighter">
+                    REF#ID-8819
+                </div>
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-6">
+<div class="flex-1">
+<div class="flex items-center gap-3 mb-2">
+<span class="font-['JetBrains_Mono'] text-on-surface-variant text-lg font-bold">APR-8819</span>
+<span class="h-1 w-1 bg-outline-variant rounded-full"></span>
+<span class="text-on-surface font-bold text-xl line-through decoration-primary/30">Wire Out SWIFT $12M Chase</span>
+</div>
+<div class="flex flex-wrap items-center gap-4 text-sm font-['Space_Grotesk']">
+<div class="flex items-center gap-2 text-primary font-bold">
+<span class="material-symbols-outlined text-sm" data-icon="check_circle">check_circle</span>
+                                STATUS: COMPLETE
+                            </div>
+</div>
+</div>
+<div class="flex items-center gap-8">
+<div class="flex flex-col items-center gap-2">
+<div class="flex gap-1.5">
+<div class="w-2 h-8 bg-primary rounded-full"></div>
+<div class="w-2 h-8 bg-primary rounded-full"></div>
+</div>
+<span class="text-[10px] font-['JetBrains_Mono'] text-on-surface-variant uppercase tracking-widest">2 of 2 SIGNED</span>
+</div>
+<div class="px-8 py-3 rounded-full border border-outline-variant/30 text-on-surface-variant text-xs font-bold font-label tracking-widest uppercase">ARCHIVED</div>
+</div>
+</div>
+</div>
+<!-- Card 4 -->
+<div class="glass-panel p-6 rounded-xl group transition-all hover:bg-surface-container-high/60 relative overflow-hidden">
+<div class="absolute top-0 right-0 p-4 font-['JetBrains_Mono'] text-[10px] text-primary/40 tracking-tighter">
+                    REF#ID-8818
+                </div>
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-6">
+<div class="flex-1">
+<div class="flex items-center gap-3 mb-2">
+<span class="font-['JetBrains_Mono'] text-primary text-lg font-bold">APR-8818</span>
+<span class="h-1 w-1 bg-outline-variant rounded-full"></span>
+<span class="text-on-surface font-bold text-xl">Limit Increase Galaxy $50M to $100M</span>
+</div>
+<div class="flex flex-wrap items-center gap-4 text-sm text-on-surface-variant font-['Space_Grotesk']">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-sm" data-icon="shield">shield</span>
+                                Initiated by CRO
+                            </div>
+</div>
+</div>
+<div class="flex items-center gap-8">
+<div class="flex flex-col items-center gap-2">
+<div class="flex gap-1.5">
+<div class="w-2 h-8 bg-primary rounded-full"></div>
+<div class="w-2 h-8 bg-primary rounded-full"></div>
+<div class="w-2 h-8 bg-primary rounded-full"></div>
+<div class="w-2 h-8 bg-outline-variant/30 rounded-full"></div>
+</div>
+<span class="text-[10px] font-['JetBrains_Mono'] text-on-surface-variant uppercase tracking-widest">3 of 4 SIGNED</span>
+</div>
+<button class="px-8 py-3 rounded-full bg-gradient-to-r from-primary to-secondary text-on-primary font-bold font-label tracking-widest shadow-[0_0_15px_rgba(16,185,129,0.3)] hover:scale-105 active:scale-95 transition-transform uppercase">SIGN</button>
+</div>
+</div>
+</div>
+<!-- Card 5 -->
+<div class="glass-panel p-6 rounded-xl group transition-all hover:bg-surface-container-high/60 relative overflow-hidden">
+<div class="absolute top-0 right-0 p-4 font-['JetBrains_Mono'] text-[10px] text-primary/40 tracking-tighter">
+                    REF#ID-8817
+                </div>
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-6">
+<div class="flex-1">
+<div class="flex items-center gap-3 mb-2">
+<span class="font-['JetBrains_Mono'] text-primary text-lg font-bold">APR-8817</span>
+<span class="h-1 w-1 bg-outline-variant rounded-full"></span>
+<span class="text-on-surface font-bold text-xl">OTC Trade 74 BTC</span>
+</div>
+<div class="flex flex-wrap items-center gap-4 text-sm text-on-surface-variant font-['Space_Grotesk']">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-sm" data-icon="swap_horiz">swap_horiz</span>
+                                High Volume Transaction
+                            </div>
+</div>
+</div>
+<div class="flex items-center gap-8">
+<div class="flex flex-col items-center gap-2">
+<div class="flex gap-1.5">
+<div class="w-2 h-8 bg-primary rounded-full"></div>
+<div class="w-2 h-8 bg-outline-variant/30 rounded-full"></div>
+</div>
+<span class="text-[10px] font-['JetBrains_Mono'] text-on-surface-variant uppercase tracking-widest">1 of 2 SIGNED</span>
+</div>
+<button class="px-8 py-3 rounded-full bg-gradient-to-r from-primary to-secondary text-on-primary font-bold font-label tracking-widest shadow-[0_0_15px_rgba(16,185,129,0.3)] hover:scale-105 active:scale-95 transition-transform uppercase">SIGN</button>
+</div>
+</div>
+</div>
+<!-- Card 6 -->
+<div class="glass-panel p-6 rounded-xl group transition-all hover:bg-surface-container-high/60 relative overflow-hidden">
+<div class="absolute top-0 right-0 p-4 font-['JetBrains_Mono'] text-[10px] text-primary/40 tracking-tighter">
+                    REF#ID-8816
+                </div>
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-6">
+<div class="flex-1">
+<div class="flex items-center gap-3 mb-2">
+<span class="font-['JetBrains_Mono'] text-primary text-lg font-bold">APR-8816</span>
+<span class="h-1 w-1 bg-outline-variant rounded-full"></span>
+<span class="text-on-surface font-bold text-xl">New Signer Add</span>
+</div>
+<div class="flex flex-wrap items-center gap-4 text-sm text-tertiary font-['Space_Grotesk'] font-bold">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-sm" data-icon="person_add">person_add</span>
+                                Administrative Action
+                            </div>
+</div>
+</div>
+<div class="flex items-center gap-8">
+<div class="flex flex-col items-center gap-2">
+<div class="flex gap-1.5">
+<div class="w-2 h-8 bg-outline-variant/30 rounded-full"></div>
+<div class="w-2 h-8 bg-outline-variant/30 rounded-full"></div>
+<div class="w-2 h-8 bg-outline-variant/30 rounded-full"></div>
+<div class="w-2 h-8 bg-outline-variant/30 rounded-full"></div>
+</div>
+<span class="text-[10px] font-['JetBrains_Mono'] text-tertiary uppercase tracking-widest font-bold">0 of 4 SIGNED</span>
+</div>
+<button class="px-8 py-3 rounded-full bg-gradient-to-r from-primary to-secondary text-on-primary font-bold font-label tracking-widest shadow-[0_0_15px_rgba(16,185,129,0.3)] hover:scale-105 active:scale-95 transition-transform uppercase">SIGN</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Footer Action Bar -->
+<div class="fixed bottom-12 left-1/2 -translate-x-1/2 w-full max-w-2xl px-6 z-50">
+<div class="glass-panel p-4 rounded-full flex items-center justify-between shadow-[0_12px_40px_rgba(0,0,0,0.4)] border-primary/20">
+<button class="px-6 py-3 rounded-full text-error font-bold font-label text-xs tracking-widest hover:bg-error/10 transition-colors uppercase">REJECT SELECTED</button>
+<div class="flex items-center gap-3">
+<div class="text-on-surface-variant font-['JetBrains_Mono'] text-[10px] uppercase tracking-tighter">
+                        4 ITEMS SELECTED
+                    </div>
+<button class="px-10 py-3 rounded-full bg-gradient-to-r from-primary to-secondary text-on-primary font-black font-label text-sm tracking-widest shadow-[0_0_25px_rgba(16,185,129,0.4)] hover:scale-105 active:scale-95 transition-transform uppercase">SIGN ALL URGENT (4)</button>
+</div>
+</div>
+</div>
+</main>
+<!-- BottomNavBar Shell -->
+<footer class="h-8 fixed bottom-0 left-0 w-full z-40 flex justify-center items-center gap-8 px-4 bg-emerald-950/80 backdrop-blur-md border-t border-emerald-500/10 font-['JetBrains_Mono'] text-xs uppercase tracking-widest">
+<div class="flex items-center gap-2 text-emerald-500/60 hover:text-emerald-200 transition-colors cursor-default">
+<span class="material-symbols-outlined text-sm" data-icon="currency_bitcoin">currency_bitcoin</span>
+            BTC: $64,210
+        </div>
+<div class="flex items-center gap-2 text-emerald-300 hover:text-emerald-200 transition-colors cursor-default">
+<span class="material-symbols-outlined text-sm" data-icon="sync">sync</span>
+            Sync: 99.9%
+        </div>
+<div class="flex items-center gap-2 text-emerald-500/60 hover:text-emerald-200 transition-colors cursor-default">
+<span class="material-symbols-outlined text-sm" data-icon="speed">speed</span>
+            Latency: 12ms
+        </div>
+</footer>
+</body></html>

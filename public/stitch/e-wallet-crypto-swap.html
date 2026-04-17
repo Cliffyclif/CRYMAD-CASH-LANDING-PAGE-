@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&amp;family=JetBrains+Mono:wght@400;700&amp;family=Space+Grotesk:wght@500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "primary-fixed-dim": "#4edea3",
+                    "on-primary-fixed-variant": "#005236",
+                    "secondary-fixed": "#6ffbbe",
+                    "primary": "#4edea3",
+                    "primary-fixed": "#6ffbbe",
+                    "surface-container-lowest": "#06100d",
+                    "secondary": "#4edea3",
+                    "on-error-container": "#ffdad6",
+                    "primary-container": "#10b981",
+                    "on-error": "#690005",
+                    "inverse-primary": "#006c49",
+                    "on-tertiary-fixed-variant": "#6c3832",
+                    "on-tertiary-fixed": "#360e0a",
+                    "inverse-surface": "#d9e5df",
+                    "on-primary": "#003824",
+                    "surface-bright": "#313b38",
+                    "tertiary-fixed": "#ffdad5",
+                    "on-surface": "#d9e5df",
+                    "error-container": "#93000a",
+                    "on-surface-variant": "#bbcabf",
+                    "outline-variant": "#3c4a42",
+                    "on-tertiary": "#51221d",
+                    "surface": "#0b1512",
+                    "outline": "#86948a",
+                    "secondary-container": "#00b47d",
+                    "on-secondary-container": "#003e28",
+                    "surface-container-low": "#131e1a",
+                    "surface-dim": "#0b1512",
+                    "surface-container": "#17221e",
+                    "surface-container-highest": "#2c3733",
+                    "error": "#ffb4ab",
+                    "background": "#0b1512",
+                    "on-background": "#d9e5df",
+                    "surface-container-high": "#222c29",
+                    "surface-tint": "#4edea3",
+                    "tertiary": "#ffb4ab",
+                    "tertiary-fixed-dim": "#ffb4ab",
+                    "on-secondary": "#003824",
+                    "on-secondary-fixed": "#002114",
+                    "on-secondary-fixed-variant": "#005236",
+                    "on-tertiary-container": "#5c2b25",
+                    "surface-variant": "#2c3733",
+                    "inverse-on-surface": "#28332f",
+                    "tertiary-container": "#d79189",
+                    "on-primary-container": "#00422b",
+                    "secondary-fixed-dim": "#4edea3",
+                    "on-primary-fixed": "#002113"
+            },
+            "borderRadius": {
+                    "DEFAULT": "1rem",
+                    "lg": "2rem",
+                    "xl": "3rem",
+                    "full": "9999px"
+            },
+            "fontFamily": {
+                    "headline": ["Inter"],
+                    "body": ["Inter"],
+                    "mono": ["JetBrains Mono"],
+                    "label": ["Space Grotesk"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .glass-panel {
+            background: rgba(44, 55, 51, 0.4);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(16, 185, 129, 0.08);
+        }
+        .gradient-text {
+            background: linear-gradient(to bottom, #10b981, #34d399);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .living-bg-blob {
+            position: fixed;
+            width: 400px;
+            height: 400px;
+            filter: blur(80px);
+            opacity: 0.2;
+            z-index: -1;
+            border-radius: 50%;
+        }
+        .breathing-ring {
+            animation: breathe 3s infinite ease-in-out;
+        }
+        @keyframes breathe {
+            0%, 100% { transform: scale(1); opacity: 0.3; }
+            50% { transform: scale(1.4); opacity: 0.1; }
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body overflow-hidden">
+<!-- Living Background -->
+<div class="living-bg-blob bg-[#10b981] top-[-100px] left-[-50px]"></div>
+<div class="living-bg-blob bg-[#34d399] bottom-[-100px] right-[-50px]"></div>
+<div class="living-bg-blob bg-[#005236] top-[20%] right-[10%]"></div>
+<div class="living-bg-blob bg-[#4edea3] bottom-[20%] left-[10%]"></div>
+<!-- BACKGROUND PAGE (DASHBOARD) - Dimmed and Blurred -->
+<div class="fixed inset-0 opacity-20 blur-sm pointer-events-none">
+<!-- TopNavBar from JSON -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-8 h-20 bg-[#131e1a]/40 backdrop-blur-xl border-b border-[#10b981]/10 shadow-[0_20px_40px_rgba(0,0,0,0.4)]">
+<div class="text-2xl font-black bg-clip-text text-transparent bg-gradient-to-b from-[#10b981] to-[#34d399] tracking-tighter">CRYMAD CA$H</div>
+<nav class="hidden md:flex gap-8">
+<a class="text-[#4edea3] border-b-2 border-[#4edea3] pb-1 font-['Inter'] font-extrabold uppercase tracking-tight" href="#">Dashboard</a>
+<a class="text-[#d9e5df]/60 font-medium font-['Inter'] font-extrabold uppercase tracking-tight hover:text-[#4edea3] transition-colors duration-300" href="#">Wallets</a>
+<a class="text-[#d9e5df]/60 font-medium font-['Inter'] font-extrabold uppercase tracking-tight hover:text-[#4edea3] transition-colors duration-300" href="#">Cards</a>
+<a class="text-[#d9e5df]/60 font-medium font-['Inter'] font-extrabold uppercase tracking-tight hover:text-[#4edea3] transition-colors duration-300" href="#">Transactions</a>
+</nav>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-[#4edea3]">notifications</span>
+</div>
+</header>
+<!-- Main Content Skeleton -->
+<main class="pt-32 px-12 grid grid-cols-12 gap-8 max-w-7xl mx-auto">
+<div class="col-span-8 space-y-8">
+<div class="h-64 bg-surface-container-low rounded-xl"></div>
+<div class="h-96 bg-surface-container-low rounded-xl"></div>
+</div>
+<div class="col-span-4 space-y-8">
+<div class="h-48 bg-surface-container-low rounded-xl"></div>
+<div class="h-48 bg-surface-container-low rounded-xl"></div>
+<div class="h-48 bg-surface-container-low rounded-xl"></div>
+</div>
+</main>
+<!-- Footer from JSON -->
+<footer class="fixed bottom-0 left-0 w-full py-4 px-8 flex justify-between items-center bg-[#06100d] border-t border-[#10b981]/10">
+<div class="font-['JetBrains_Mono'] text-xs tracking-widest text-[#d9e5df]/40">SYSTEM STATUS: OPERATIONAL // BTC: $64,231.40 ETH: $3,452.12</div>
+<div class="flex gap-4">
+<span class="font-['JetBrains_Mono'] text-xs tracking-widest text-[#d9e5df]/40">API</span>
+<span class="font-['JetBrains_Mono'] text-xs tracking-widest text-[#d9e5df]/40">Terms</span>
+</div>
+</footer>
+</div>
+<!-- MODAL OVERLAY -->
+<div class="fixed inset-0 z-[100] flex items-center justify-center bg-black/40 backdrop-blur-md">
+<!-- SWAP MODAL -->
+<div class="relative w-full max-w-[560px] glass-panel rounded-xl shadow-[0_40px_80px_rgba(0,0,0,0.6),0_0_50px_rgba(78,222,163,0.05)] p-8 border border-white/5 overflow-visible">
+<!-- Close Button -->
+<button class="absolute top-6 right-6 text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-3xl">close</span>
+</button>
+<!-- Header -->
+<div class="mb-10 text-center">
+<h1 class="text-4xl font-black gradient-text tracking-tighter mb-2 italic">Swap to Crypto</h1>
+<p class="font-mono text-[10px] tracking-[0.3em] text-primary/80">INSTANT USD → CRYPTO CONVERSION</p>
+</div>
+<!-- Swap Form -->
+<div class="space-y-4 relative">
+<!-- FROM Row -->
+<div class="bg-surface-container-lowest/60 p-6 rounded-lg border border-white/5">
+<div class="flex justify-between items-center mb-4">
+<span class="font-mono text-xs text-on-surface-variant tracking-widest uppercase">FROM</span>
+<span class="font-mono text-[11px] text-on-surface-variant/60">Balance: <span class="text-on-surface">$12,458.32</span></span>
+</div>
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-3 bg-surface-container-highest px-4 py-2 rounded-full border border-white/10">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">monetization_on</span>
+<span class="font-bold tracking-tight">USD</span>
+</div>
+<input class="bg-transparent border-none text-right font-mono text-3xl font-bold text-on-surface focus:ring-0 p-0 w-full" readonly="" type="text" value="$500.00"/>
+</div>
+</div>
+<!-- Swap Divider Button -->
+<div class="absolute left-1/2 -translate-x-1/2 top-[44%] z-10">
+<div class="relative group">
+<!-- Breathing Ring -->
+<div class="absolute inset-0 bg-[#ffb95f] breathing-ring rounded-full blur-sm"></div>
+<button class="relative bg-surface-container-highest w-14 h-14 rounded-full flex items-center justify-center border-2 border-[#ffb95f] text-[#ffb95f] hover:scale-110 transition-transform shadow-[0_0_20px_rgba(255,185,95,0.3)]">
+<span class="material-symbols-outlined text-2xl font-bold">swap_vert</span>
+</button>
+</div>
+</div>
+<!-- TO Row -->
+<div class="bg-surface-container-lowest/60 p-6 rounded-lg border border-white/5 pt-10">
+<div class="flex justify-between items-center mb-4">
+<span class="font-mono text-xs text-on-surface-variant tracking-widest uppercase">TO</span>
+</div>
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-3 bg-surface-container-highest px-4 py-2 rounded-full border border-white/10 hover:border-primary/40 cursor-pointer transition-colors">
+<span class="material-symbols-outlined text-amber-500" style="font-variation-settings: 'FILL' 1;">currency_bitcoin</span>
+<span class="font-bold tracking-tight">BTC</span>
+<span class="material-symbols-outlined text-xs">expand_more</span>
+</div>
+<div class="text-right">
+<div class="font-mono text-2xl font-bold text-primary">0.00745 BTC</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Details Section -->
+<div class="mt-8 space-y-6">
+<!-- Exchange Rate Pill -->
+<div class="flex justify-center">
+<div class="bg-surface-container-low px-4 py-1.5 rounded-full border border-primary/10">
+<span class="font-mono text-xs text-on-surface-variant tracking-wider">1 BTC ≈ $67,241.30</span>
+</div>
+</div>
+<!-- Slippage -->
+<div class="flex items-center justify-between px-2">
+<span class="font-mono text-[10px] tracking-widest text-on-surface-variant uppercase">SLIPPAGE</span>
+<div class="flex gap-2">
+<button class="px-4 py-1 rounded-full border border-outline-variant font-mono text-[10px] hover:bg-surface-container transition-colors">0.1%</button>
+<button class="px-4 py-1 rounded-full bg-primary text-on-primary font-mono text-[10px] font-bold">0.5%</button>
+<button class="px-4 py-1 rounded-full border border-outline-variant font-mono text-[10px] hover:bg-surface-container transition-colors">1.0%</button>
+</div>
+</div>
+<!-- Network Fee -->
+<div class="flex justify-between items-center px-2 border-t border-white/5 pt-4">
+<span class="font-mono text-[10px] tracking-widest text-on-surface-variant uppercase">Network fee</span>
+<span class="font-mono text-xs text-on-surface">$1.20</span>
+</div>
+</div>
+<!-- Footer Actions -->
+<div class="mt-10 flex gap-4">
+<button class="flex-1 py-4 font-mono text-xs tracking-widest text-on-surface-variant hover:text-error transition-all font-bold uppercase">
+                    CANCEL
+                </button>
+<button class="flex-[2] py-4 rounded-lg bg-transparent border border-primary font-mono text-xs tracking-widest text-primary hover:bg-primary hover:text-on-primary transition-all duration-300 font-bold uppercase flex items-center justify-center gap-2 group">
+                    CONFIRM SWAP
+                    <span class="material-symbols-outlined text-sm transition-transform group-hover:translate-x-1">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+</body></html>

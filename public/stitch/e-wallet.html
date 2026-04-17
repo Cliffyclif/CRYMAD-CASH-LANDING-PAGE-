@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&amp;family=JetBrains+Mono:wght@400;700&amp;family=Space+Grotesk:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "primary": "#4edea3",
+                    "on-tertiary-container": "#523200",
+                    "secondary-container": "#00bd85",
+                    "tertiary": "#ffb95f",
+                    "surface-container-lowest": "#06100d",
+                    "primary-fixed-dim": "#4edea3",
+                    "surface-tint": "#4edea3",
+                    "on-background": "#d9e5df",
+                    "outline": "#86948a",
+                    "on-primary-container": "#00422b",
+                    "surface-container-high": "#222c29",
+                    "surface-container-highest": "#2c3733",
+                    "on-secondary-container": "#00452e",
+                    "secondary-fixed-dim": "#45dfa4",
+                    "inverse-primary": "#006c49",
+                    "on-error": "#690005",
+                    "surface-dim": "#0b1512",
+                    "on-tertiary-fixed-variant": "#653e00",
+                    "on-secondary-fixed-variant": "#005137",
+                    "on-secondary": "#003825",
+                    "tertiary-fixed-dim": "#ffb95f",
+                    "error-container": "#93000a",
+                    "error": "#ffb4ab",
+                    "surface-bright": "#313b38",
+                    "surface": "#0b1512",
+                    "on-primary-fixed": "#002113",
+                    "tertiary-container": "#e29100",
+                    "surface-container-low": "#131e1a",
+                    "on-tertiary": "#472a00",
+                    "on-secondary-fixed": "#002114",
+                    "secondary": "#45dfa4",
+                    "on-tertiary-fixed": "#2a1700",
+                    "on-surface": "#d9e5df",
+                    "inverse-on-surface": "#28332f",
+                    "secondary-fixed": "#68fcbf",
+                    "inverse-surface": "#d9e5df",
+                    "tertiary-fixed": "#ffddb8",
+                    "surface-container": "#17221e",
+                    "surface-variant": "#2c3733",
+                    "outline-variant": "#3c4a42",
+                    "on-primary-fixed-variant": "#005236",
+                    "on-primary": "#003824",
+                    "primary-container": "#10b981",
+                    "on-error-container": "#ffdad6",
+                    "background": "#0b1512",
+                    "primary-fixed": "#6ffbbe",
+                    "on-surface-variant": "#bbcabf"
+            },
+            "borderRadius": {
+                    "DEFAULT": "1rem",
+                    "lg": "2rem",
+                    "xl": "3rem",
+                    "full": "9999px"
+            },
+            "fontFamily": {
+                    "headline": ["Inter"],
+                    "body": ["Inter"],
+                    "label": ["Space Grotesk"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .bg-mesh {
+            background-color: #040d0a;
+            background-image: 
+                radial-gradient(at 10% 20%, rgba(16, 185, 129, 0.15) 0px, transparent 50%),
+                radial-gradient(at 90% 10%, rgba(20, 184, 166, 0.15) 0px, transparent 50%),
+                radial-gradient(at 80% 90%, rgba(5, 150, 105, 0.15) 0px, transparent 50%),
+                radial-gradient(at 20% 80%, rgba(45, 212, 191, 0.15) 0px, transparent 50%),
+                linear-gradient(45deg, transparent 48%, rgba(16, 185, 129, 0.03) 50%, transparent 52%);
+            background-size: 100% 100%, 100% 100%, 100% 100%, 100% 100%, 40px 40px;
+        }
+        .glass-panel {
+            background: rgba(44, 55, 51, 0.4);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(16, 185, 129, 0.08);
+        }
+        .text-gradient {
+            background: linear-gradient(to right, #10b981, #34d399);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        @keyframes orbit {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        .animate-orbit {
+            animation: orbit 10s linear infinite;
+        }
+        .glow-hover:hover {
+            box-shadow: 0 0 20px rgba(78, 222, 163, 0.15);
+            border-color: rgba(78, 222, 163, 0.3);
+        }
+    </style>
+</head>
+<body class="bg-mesh text-on-surface font-body min-h-screen selection:bg-primary/30">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full h-[64px] z-50 bg-emerald-950/40 backdrop-blur-xl border-b border-emerald-500/10 flex justify-between items-center px-8 shadow-[0_0_20px_rgba(16,185,129,0.1)]">
+<div class="text-2xl font-black bg-clip-text text-transparent bg-gradient-to-r from-emerald-400 to-teal-400 font-['Inter'] tracking-tight">CRYMAD CA$H</div>
+<div class="hidden md:flex items-center space-x-8">
+<a class="text-emerald-100/60 font-medium hover:text-emerald-300 transition-colors duration-300" href="#">Dashboard</a>
+<a class="text-emerald-400 border-b-2 border-emerald-400 pb-1 hover:text-emerald-300 transition-colors duration-300" href="#">Wallets</a>
+<a class="text-emerald-100/60 font-medium hover:text-emerald-300 transition-colors duration-300" href="#">Cards</a>
+<a class="text-emerald-100/60 font-medium hover:text-emerald-300 transition-colors duration-300" href="#">Transactions</a>
+<a class="text-emerald-100/60 font-medium hover:text-emerald-300 transition-colors duration-300" href="#">Banking</a>
+<a class="text-emerald-100/60 font-medium hover:text-emerald-300 transition-colors duration-300" href="#">Help</a>
+</div>
+<div class="flex items-center space-x-4">
+<button class="text-emerald-400 scale-95 active:scale-90 transition-transform">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<div class="w-8 h-8 rounded-full overflow-hidden border border-emerald-500/20">
+<img alt="User profile avatar" class="w-full h-full object-cover" data-alt="Close up portrait of a digital artist with cool studio lighting and soft teal rim light" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD0IgfU1scm5Nu-H5grLiqilRpIRqIyqbjFY4VQSNCgER8q5SZM0agTA4R7O1VEzmTg0QzZKNwny0RsrvVB3AI2p6a3LOrpzR-7F97lcMTUQHnW4UfViGJFpCw9HFaodOZnTYeRImhY5MAeIbq7yRMY9-v8x4HBKHaKv1OmwNmG128AoDkMKu1JHRtXdk1nf9Ny2i9nM5b3RSU8tJVUPjuYcN-YKwkmbPcFa6Efmxp3haisKlAY0zK9oevyc3snlrw6OprPBL-LRHs"/>
+</div>
+</div>
+</nav>
+<!-- SideNavBar (Theme Selector) -->
+<aside class="fixed right-0 top-1/2 -translate-y-1/2 w-16 rounded-l-3xl py-8 z-40 bg-emerald-950/60 backdrop-blur-2xl border-l border-emerald-500/20 shadow-[-10px_0_30px_rgba(4,13,10,0.5)] flex flex-col items-center space-y-6">
+<div class="rotate-90 origin-center text-emerald-500/50 font-['JetBrains_Mono'] text-xs tracking-widest mb-4">THEME</div>
+<div class="cursor-pointer active:glow-emerald hover:scale-110 transition-all bg-emerald-400 ring-2 ring-emerald-400/50 rounded-full w-8 h-8 mx-auto flex items-center justify-center">
+<span class="material-symbols-outlined text-[16px] text-on-primary">palette</span>
+</div>
+<div class="cursor-pointer active:glow-emerald hover:scale-110 transition-all bg-emerald-900/40 rounded-full w-6 h-6 mx-auto flex items-center justify-center">
+<span class="material-symbols-outlined text-[14px] text-emerald-400">water_drop</span>
+</div>
+<div class="cursor-pointer active:glow-emerald hover:scale-110 transition-all bg-emerald-900/40 rounded-full w-6 h-6 mx-auto flex items-center justify-center">
+<span class="material-symbols-outlined text-[14px] text-emerald-400">light_mode</span>
+</div>
+<div class="cursor-pointer active:glow-emerald hover:scale-110 transition-all bg-emerald-900/40 rounded-full w-6 h-6 mx-auto flex items-center justify-center">
+<span class="material-symbols-outlined text-[14px] text-emerald-400">brightness_3</span>
+</div>
+<div class="cursor-pointer active:glow-emerald hover:scale-110 transition-all bg-emerald-900/40 rounded-full w-6 h-6 mx-auto flex items-center justify-center">
+<span class="material-symbols-outlined text-[14px] text-emerald-400">filter_vintage</span>
+</div>
+</aside>
+<!-- Main Content -->
+<main class="max-w-[1280px] mx-auto pt-24 pb-12 px-6 space-y-10 relative">
+<!-- 1. WALLET HEADER CARD -->
+<section class="glass-panel rounded-lg p-10 flex flex-col md:flex-row justify-between items-center relative overflow-hidden group">
+<!-- Decorative gradient pulse -->
+<div class="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent pointer-events-none"></div>
+<div class="relative z-10 space-y-4 text-center md:text-left">
+<div class="flex flex-col md:flex-row md:items-center gap-4">
+<span class="font-['JetBrains_Mono'] text-xs text-on-surface-variant tracking-[0.2em]">E-WALLET BALANCE</span>
+<div class="bg-primary/10 text-primary px-3 py-1 rounded-full text-[10px] font-bold inline-flex items-center gap-1 self-center md:self-auto border border-primary/20">
+<span class="material-symbols-outlined text-[12px]">trending_up</span>
+                        +$240.15 TODAY
+                    </div>
+</div>
+<div class="flex items-baseline gap-2 justify-center md:justify-start">
+<span class="text-5xl md:text-6xl font-['JetBrains_Mono'] font-bold text-on-surface">$12,458.32</span>
+<span class="text-xl font-bold text-gradient">USD</span>
+</div>
+<div class="bg-surface-container-highest/50 px-4 py-2 rounded-full border border-outline-variant/30 inline-flex items-center gap-3">
+<span class="font-['JetBrains_Mono'] text-[11px] text-on-surface-variant">ACCOUNT ID: EW-0284-991X</span>
+<span class="material-symbols-outlined text-primary text-[16px] cursor-pointer hover:scale-110 transition-transform">content_copy</span>
+</div>
+</div>
+<div class="mt-8 md:mt-0 relative w-40 h-40 flex items-center justify-center">
+<!-- Breathing SVG Ring -->
+<svg class="absolute inset-0 w-full h-full animate-orbit" viewbox="0 0 100 100">
+<defs>
+<lineargradient id="ring-grad" x1="0%" x2="100%" y1="0%" y2="100%">
+<stop offset="0%" style="stop-color:#4edea3;stop-opacity:1"></stop>
+<stop offset="100%" style="stop-color:transparent;stop-opacity:0"></stop>
+</lineargradient>
+</defs>
+<circle cx="50" cy="50" fill="none" r="45" stroke="url(#ring-grad)" stroke-dasharray="15 10" stroke-width="2"></circle>
+</svg>
+<div class="w-24 h-24 rounded-full bg-primary/20 flex items-center justify-center border border-primary/40 shadow-[0_0_40px_rgba(78,222,163,0.2)] backdrop-blur-md">
+<span class="material-symbols-outlined text-[48px] text-primary" data-weight="fill">account_balance_wallet</span>
+</div>
+</div>
+</section>
+<!-- 2. ACTION BUTTONS ROW -->
+<section class="grid grid-cols-2 md:grid-cols-4 gap-6">
+<button class="glass-panel py-6 rounded-lg glow-hover transition-all flex flex-col items-center gap-3 group">
+<span class="material-symbols-outlined text-3xl text-primary transition-transform group-hover:-translate-y-1">send</span>
+<span class="font-['JetBrains_Mono'] text-xs font-bold tracking-widest text-on-surface-variant group-hover:text-primary">TRANSFER</span>
+</button>
+<button class="glass-panel py-6 rounded-lg glow-hover transition-all flex flex-col items-center gap-3 group">
+<span class="material-symbols-outlined text-3xl text-primary transition-transform group-hover:-translate-y-1">account_balance</span>
+<span class="font-['JetBrains_Mono'] text-xs font-bold tracking-widest text-on-surface-variant group-hover:text-primary">BANK WITHDRAW</span>
+</button>
+<button class="glass-panel py-6 rounded-lg glow-hover transition-all flex flex-col items-center gap-3 group">
+<span class="material-symbols-outlined text-3xl text-primary transition-transform group-hover:-translate-y-1">currency_exchange</span>
+<span class="font-['JetBrains_Mono'] text-xs font-bold tracking-widest text-on-surface-variant group-hover:text-primary">CRYPTO SWAP</span>
+</button>
+<button class="glass-panel py-6 rounded-lg glow-hover transition-all flex flex-col items-center gap-3 group">
+<span class="material-symbols-outlined text-3xl text-primary transition-transform group-hover:-translate-y-1">credit_card</span>
+<span class="font-['JetBrains_Mono'] text-xs font-bold tracking-widest text-on-surface-variant group-hover:text-primary">CARD LOAD</span>
+</button>
+</section>
+<!-- 3. FILTER BAR -->
+<section class="flex flex-col md:flex-row items-center gap-4">
+<div class="flex-1 w-full bg-surface-container-low border border-outline-variant/30 rounded-full px-6 py-3 flex items-center gap-3">
+<span class="material-symbols-outlined text-on-surface-variant">search</span>
+<input class="bg-transparent border-none focus:ring-0 w-full font-['JetBrains_Mono'] text-sm text-on-surface placeholder:text-on-surface-variant/40" placeholder="SEARCH REFERENCE..." type="text"/>
+</div>
+<div class="flex items-center gap-2 overflow-x-auto w-full md:w-auto no-scrollbar">
+<div class="bg-surface-container-low border border-outline-variant/30 px-4 py-2 rounded-full flex items-center gap-2 cursor-pointer hover:bg-surface-variant transition-colors">
+<span class="font-['JetBrains_Mono'] text-[10px] text-on-surface-variant uppercase">STATUS</span>
+<span class="material-symbols-outlined text-[16px] text-on-surface-variant">expand_more</span>
+</div>
+<div class="bg-surface-container-low border border-outline-variant/30 px-4 py-2 rounded-full flex items-center gap-2 cursor-pointer hover:bg-surface-variant transition-colors">
+<span class="font-['JetBrains_Mono'] text-[10px] text-on-surface-variant uppercase">DATE RANGE</span>
+<span class="material-symbols-outlined text-[16px] text-on-surface-variant">expand_more</span>
+</div>
+<div class="bg-surface-container-low border border-outline-variant/30 px-4 py-2 rounded-full flex items-center gap-2 cursor-pointer hover:bg-surface-variant transition-colors">
+<span class="font-['JetBrains_Mono'] text-[10px] text-on-surface-variant uppercase">AMOUNT</span>
+<span class="material-symbols-outlined text-[16px] text-on-surface-variant">expand_more</span>
+</div>
+</div>
+<button class="w-full md:w-auto bg-tertiary-container/10 border border-tertiary-container/40 text-tertiary px-6 py-3 rounded-full font-['JetBrains_Mono'] text-xs font-bold hover:bg-tertiary-container/20 transition-all flex items-center justify-center gap-2">
+                EXPORT CSV
+                <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</button>
+</section>
+<!-- 4. TRANSACTIONS TABLE -->
+<section class="glass-panel rounded-lg overflow-hidden">
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="border-b border-outline-variant/10">
+<th class="px-8 py-5 font-['JetBrains_Mono'] text-[10px] text-on-surface-variant tracking-widest uppercase">ID</th>
+<th class="px-6 py-5 font-['JetBrains_Mono'] text-[10px] text-on-surface-variant tracking-widest uppercase">REFERENCE</th>
+<th class="px-6 py-5 font-['JetBrains_Mono'] text-[10px] text-on-surface-variant tracking-widest uppercase">AMOUNT</th>
+<th class="px-6 py-5 font-['JetBrains_Mono'] text-[10px] text-on-surface-variant tracking-widest uppercase">FEE</th>
+<th class="px-6 py-5 font-['JetBrains_Mono'] text-[10px] text-on-surface-variant tracking-widest uppercase">COUNTERPARTY</th>
+<th class="px-6 py-5 font-['JetBrains_Mono'] text-[10px] text-on-surface-variant tracking-widest uppercase text-center">STATUS</th>
+<th class="px-8 py-5 font-['JetBrains_Mono'] text-[10px] text-on-surface-variant tracking-widest uppercase text-right">DATE</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant/5">
+<!-- Row 1 -->
+<tr class="hover:bg-primary/5 transition-colors group">
+<td class="px-8 py-6 font-['JetBrains_Mono'] text-xs text-on-surface-variant">EW-8821</td>
+<td class="px-6 py-6 font-semibold">Transfer to @alex.crypto</td>
+<td class="px-6 py-6 font-['JetBrains_Mono'] font-bold text-error">-$420.00</td>
+<td class="px-6 py-6 font-['JetBrains_Mono'] text-xs text-on-surface-variant">-$0.50</td>
+<td class="px-6 py-6 font-['JetBrains_Mono'] text-xs">alex@mail.io</td>
+<td class="px-6 py-6 text-center">
+<span class="bg-tertiary/10 text-tertiary px-3 py-1 rounded-full text-[9px] font-black tracking-tighter border border-tertiary/20">PROCESSING</span>
+</td>
+<td class="px-8 py-6 font-['JetBrains_Mono'] text-xs text-on-surface-variant text-right">12:04 PM</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-primary/5 transition-colors group">
+<td class="px-8 py-6 font-['JetBrains_Mono'] text-xs text-on-surface-variant">EW-8820</td>
+<td class="px-6 py-6 font-semibold">Bank Deposit</td>
+<td class="px-6 py-6 font-['JetBrains_Mono'] font-bold text-primary">+$1,500.00</td>
+<td class="px-6 py-6 font-['JetBrains_Mono'] text-xs text-on-surface-variant">-$2.00</td>
+<td class="px-6 py-6 font-['JetBrains_Mono'] text-xs">Chase Bank •••4421</td>
+<td class="px-6 py-6 text-center">
+<span class="bg-primary/10 text-primary px-3 py-1 rounded-full text-[9px] font-black tracking-tighter border border-primary/20">COMPLETED</span>
+</td>
+<td class="px-8 py-6 font-['JetBrains_Mono'] text-xs text-on-surface-variant text-right">Yesterday</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-primary/5 transition-colors group">
+<td class="px-8 py-6 font-['JetBrains_Mono'] text-xs text-on-surface-variant">EW-8819</td>
+<td class="px-6 py-6 font-semibold">Card Load • Physical</td>
+<td class="px-6 py-6 font-['JetBrains_Mono'] font-bold text-on-surface">-$500.00</td>
+<td class="px-6 py-6 font-['JetBrains_Mono'] text-xs text-on-surface-variant">-$1.25</td>
+<td class="px-6 py-6 font-['JetBrains_Mono'] text-xs">Card •••2049</td>
+<td class="px-6 py-6 text-center">
+<span class="bg-primary/10 text-primary px-3 py-1 rounded-full text-[9px] font-black tracking-tighter border border-primary/20">COMPLETED</span>
+</td>
+<td class="px-8 py-6 font-['JetBrains_Mono'] text-xs text-on-surface-variant text-right">Yesterday</td>
+</tr>
+<!-- Row 4 -->
+<tr class="hover:bg-primary/5 transition-colors group">
+<td class="px-8 py-6 font-['JetBrains_Mono'] text-xs text-on-surface-variant">EW-8818</td>
+<td class="px-6 py-6 font-semibold">Received from Sarah</td>
+<td class="px-6 py-6 font-['JetBrains_Mono'] font-bold text-primary">+$75.00</td>
+<td class="px-6 py-6 font-['JetBrains_Mono'] text-xs text-on-surface-variant">$0.00</td>
+<td class="px-6 py-6 font-['JetBrains_Mono'] text-xs">sarah@crymad</td>
+<td class="px-6 py-6 text-center">
+<span class="bg-primary/10 text-primary px-3 py-1 rounded-full text-[9px] font-black tracking-tighter border border-primary/20">COMPLETED</span>
+</td>
+<td class="px-8 py-6 font-['JetBrains_Mono'] text-xs text-on-surface-variant text-right">2 days ago</td>
+</tr>
+<!-- Row 5 -->
+<tr class="hover:bg-primary/5 transition-colors group">
+<td class="px-8 py-6 font-['JetBrains_Mono'] text-xs text-on-surface-variant">EW-8817</td>
+<td class="px-6 py-6 font-semibold">Crypto Swap USDT</td>
+<td class="px-6 py-6 font-['JetBrains_Mono'] font-bold text-on-surface">-$250.00</td>
+<td class="px-6 py-6 font-['JetBrains_Mono'] text-xs text-on-surface-variant">-$0.80</td>
+<td class="px-6 py-6 font-['JetBrains_Mono'] text-xs">BTC Wallet</td>
+<td class="px-6 py-6 text-center">
+<span class="bg-primary/10 text-primary px-3 py-1 rounded-full text-[9px] font-black tracking-tighter border border-primary/20">COMPLETED</span>
+</td>
+<td class="px-8 py-6 font-['JetBrains_Mono'] text-xs text-on-surface-variant text-right">3 days ago</td>
+</tr>
+<!-- Row 6 -->
+<tr class="hover:bg-primary/5 transition-colors group">
+<td class="px-8 py-6 font-['JetBrains_Mono'] text-xs text-on-surface-variant">EW-8816</td>
+<td class="px-6 py-6 font-semibold">Failed Transfer</td>
+<td class="px-6 py-6 font-['JetBrains_Mono'] font-bold text-error">-$30.00</td>
+<td class="px-6 py-6 font-['JetBrains_Mono'] text-xs text-on-surface-variant">$0.00</td>
+<td class="px-6 py-6 font-['JetBrains_Mono'] text-xs">unknown@spam</td>
+<td class="px-6 py-6 text-center">
+<span class="bg-error/10 text-error px-3 py-1 rounded-full text-[9px] font-black tracking-tighter border border-error/20">FAILED</span>
+</td>
+<td class="px-8 py-6 font-['JetBrains_Mono'] text-xs text-on-surface-variant text-right">4 days ago</td>
+</tr>
+<!-- Row 7 -->
+<tr class="hover:bg-primary/5 transition-colors group">
+<td class="px-8 py-6 font-['JetBrains_Mono'] text-xs text-on-surface-variant">EW-8815</td>
+<td class="px-6 py-6 font-semibold">Interest Earned</td>
+<td class="px-6 py-6 font-['JetBrains_Mono'] font-bold text-primary">+$4.20</td>
+<td class="px-6 py-6 font-['JetBrains_Mono'] text-xs text-on-surface-variant">$0.00</td>
+<td class="px-6 py-6 font-['JetBrains_Mono'] text-xs">Yield Multiplier</td>
+<td class="px-6 py-6 text-center">
+<span class="bg-primary/10 text-primary px-3 py-1 rounded-full text-[9px] font-black tracking-tighter border border-primary/20">COMPLETED</span>
+</td>
+<td class="px-8 py-6 font-['JetBrains_Mono'] text-xs text-on-surface-variant text-right">5 days ago</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Pagination -->
+<div class="px-8 py-6 flex flex-col md:flex-row justify-between items-center gap-4 border-t border-outline-variant/10">
+<span class="font-['JetBrains_Mono'] text-[11px] text-on-surface-variant">Showing 1-7 of 142</span>
+<div class="flex items-center gap-4">
+<button class="bg-surface-container-high px-4 py-2 rounded-full font-['JetBrains_Mono'] text-[10px] font-bold text-on-surface-variant hover:text-primary transition-colors flex items-center gap-2 group">
+<span class="material-symbols-outlined text-[14px]">chevron_left</span>
+                        PREV
+                    </button>
+<button class="bg-surface-container-high px-4 py-2 rounded-full font-['JetBrains_Mono'] text-[10px] font-bold text-on-surface-variant hover:text-primary transition-colors flex items-center gap-2 group">
+                        NEXT
+                        <span class="material-symbols-outlined text-[14px]">chevron_right</span>
+</button>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="fixed bottom-0 w-full h-8 z-50 bg-emerald-950/30 backdrop-blur-md border-t border-emerald-500/10 flex justify-between items-center px-6 font-['JetBrains_Mono'] text-[10px] uppercase font-bold text-emerald-400">
+<div class="flex items-center gap-4">
+<span class="animate-pulse text-emerald-500">●</span>
+            SYSTEM OPERATIONAL
+        </div>
+<div class="flex items-center space-x-6">
+<span class="text-emerald-700 hover:text-emerald-200 transition-colors cursor-default">BTC: $64,201</span>
+<span class="text-emerald-700 hover:text-emerald-200 transition-colors cursor-default">ETH: $3,450</span>
+<span class="text-emerald-700 hover:text-emerald-200 transition-colors cursor-default">LAST SYNC: 12S AGO</span>
+</div>
+</footer>
+</body></html>

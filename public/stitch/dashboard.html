@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>CRYMAD CA$H | Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&amp;family=JetBrains+Mono:wght@400;700&amp;family=Space+Grotesk:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "primary-fixed-dim": "#4edea3",
+                      "outline": "#86948a",
+                      "outline-variant": "#3c4a42",
+                      "surface-dim": "#0b1512",
+                      "tertiary-fixed": "#ffddb8",
+                      "on-tertiary-fixed-variant": "#653e00",
+                      "surface-container-highest": "#2c3733",
+                      "on-error-container": "#ffdad6",
+                      "error-container": "#93000a",
+                      "on-tertiary-fixed": "#2a1700",
+                      "surface-container-low": "#131e1a",
+                      "error": "#ffb4ab",
+                      "on-primary-fixed": "#002113",
+                      "secondary-fixed-dim": "#45dfa4",
+                      "surface-bright": "#313b38",
+                      "primary": "#4edea3",
+                      "on-primary-fixed-variant": "#005236",
+                      "on-tertiary": "#472a00",
+                      "surface-container-lowest": "#06100d",
+                      "inverse-on-surface": "#28332f",
+                      "background": "#0b1512",
+                      "on-secondary-container": "#00452e",
+                      "on-surface": "#d9e5df",
+                      "on-primary": "#003824",
+                      "primary-fixed": "#6ffbbe",
+                      "surface-tint": "#4edea3",
+                      "secondary-container": "#00bd85",
+                      "on-secondary-fixed": "#002114",
+                      "surface-container-high": "#222c29",
+                      "tertiary-container": "#e29100",
+                      "primary-container": "#10b981",
+                      "on-secondary-fixed-variant": "#005137",
+                      "on-error": "#690005",
+                      "inverse-surface": "#d9e5df",
+                      "on-secondary": "#003825",
+                      "secondary-fixed": "#68fcbf",
+                      "tertiary": "#ffb95f",
+                      "on-tertiary-container": "#523200",
+                      "on-surface-variant": "#bbcabf",
+                      "surface-variant": "#2c3733",
+                      "surface-container": "#17221e",
+                      "secondary": "#45dfa4",
+                      "tertiary-fixed-dim": "#ffb95f",
+                      "inverse-primary": "#006c49",
+                      "on-primary-container": "#00422b",
+                      "surface": "#0b1512",
+                      "on-background": "#d9e5df"
+              },
+              "borderRadius": {
+                      "DEFAULT": "1rem",
+                      "lg": "2rem",
+                      "xl": "3rem",
+                      "full": "9999px"
+              },
+              "fontFamily": {
+                      "headline": ["Inter"],
+                      "body": ["Inter"],
+                      "label": ["Space Grotesk"],
+                      "mono": ["JetBrains Mono"]
+              }
+            },
+          },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            vertical-align: middle;
+        }
+        .gradient-heading {
+            background: linear-gradient(to right, #10b981, #34d399);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .glass-panel {
+            background: rgba(44, 55, 51, 0.4);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(16, 185, 129, 0.08);
+        }
+        .organic-blob {
+            position: absolute;
+            filter: blur(80px);
+            opacity: 0.3;
+            z-index: -1;
+            border-radius: 50%;
+        }
+        .data-mono {
+            font-family: 'JetBrains Mono', monospace;
+        }
+        .diagonal-line {
+            background: linear-gradient(45deg, transparent 48%, rgba(16, 185, 129, 0.05) 50%, transparent 52%);
+            background-size: 40px 40px;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body min-h-screen overflow-x-hidden selection:bg-primary-container selection:text-on-primary-container">
+<!-- Living Background -->
+<div class="fixed inset-0 pointer-events-none z-[-2] overflow-hidden">
+<div class="organic-blob w-[500px] h-[500px] bg-primary top-[-10%] left-[-10%]"></div>
+<div class="organic-blob w-[400px] h-[400px] bg-secondary bottom-[-5%] right-[-5%]"></div>
+<div class="organic-blob w-[300px] h-[300px] bg-primary-container top-[20%] right-[10%]"></div>
+<div class="organic-blob w-[600px] h-[600px] bg-surface-container-highest bottom-[10%] left-[20%]"></div>
+<div class="absolute inset-0 diagonal-line"></div>
+</div>
+<!-- TopNavBar -->
+<header class="fixed top-0 w-full h-[64px] z-50 bg-emerald-950/40 backdrop-blur-xl border-b border-emerald-500/10 flex justify-between items-center px-8 shadow-[0_0_20px_rgba(16,185,129,0.05)]">
+<div class="text-2xl font-black tracking-tighter bg-clip-text text-transparent bg-gradient-to-r from-emerald-400 to-teal-400">
+            CRYMAD CA$H
+        </div>
+<nav class="hidden md:flex items-center space-x-8">
+<a class="text-emerald-400 font-bold border-b-2 border-emerald-400 pb-1 hover:bg-emerald-400/10 transition-all duration-300" href="#">Dashboard</a>
+<a class="text-emerald-100/60 font-medium hover:text-emerald-200 hover:bg-emerald-400/10 transition-all duration-300" href="#">Wallets</a>
+<a class="text-emerald-100/60 font-medium hover:text-emerald-200 hover:bg-emerald-400/10 transition-all duration-300" href="#">Cards</a>
+<a class="text-emerald-100/60 font-medium hover:text-emerald-200 hover:bg-emerald-400/10 transition-all duration-300" href="#">Transactions</a>
+<a class="text-emerald-100/60 font-medium hover:text-emerald-200 hover:bg-emerald-400/10 transition-all duration-300" href="#">Banking</a>
+<a class="text-emerald-100/60 font-medium hover:text-emerald-200 hover:bg-emerald-400/10 transition-all duration-300" href="#">Help</a>
+</nav>
+<div class="flex items-center space-x-4">
+<button class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors" data-icon="notifications">notifications</button>
+<div class="w-10 h-10 rounded-full overflow-hidden border border-primary/20 p-0.5">
+<img alt="User profile" class="w-full h-full object-cover" data-alt="professional portrait of a young man with a friendly expression, minimalist clean vector avatar style with emerald accents" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA5uoNHuIG_AYN4s2RuUfXuXS83MvI7UXkbayl8WtiqXwC_S8OsCNhdOVBmB0sq6iG_wGR7kkJQ0yGeJb1hLiijgxAn3rhlKJH-H4iVPTRNp5nRnKpZvc_HHbbKVhRjY_I-vH3w3tr-2LblkSqFzFfoOMgZOJJGF86eR3_gIMBPSPxhF-eExyG6bEf7NQlC9FjmkyC_xrGTnfuzYKa4fKJVtjnzd9JJvViRFCyJco8--iRY1igl-HBMmWhwWY4N7CI7cZ7J5zLT3po"/>
+</div>
+</div>
+</header>
+<!-- SideNavBar (Theme Toggle) -->
+<aside class="fixed right-0 top-1/2 -translate-y-1/2 w-16 rounded-l-2xl border-l border-y border-emerald-500/20 bg-emerald-950/60 backdrop-blur-lg flex flex-col items-center py-6 space-y-4 z-40">
+<div class="text-[10px] data-mono text-emerald-400 mb-2 rotate-[-90deg] origin-center whitespace-nowrap">THEME</div>
+<button class="w-8 h-8 rounded-full ring-2 ring-emerald-400 ring-offset-2 ring-offset-emerald-950 scale-110 flex items-center justify-center transition-transform" title="Emerald">
+<span class="material-symbols-outlined text-primary text-sm" data-icon="palette">palette</span>
+</button>
+<button class="w-6 h-6 rounded-full bg-orange-500/50 opacity-50 hover:opacity-100 hover:scale-110 transition-all" title="Amber"></button>
+<button class="w-6 h-6 rounded-full bg-blue-500/50 opacity-50 hover:opacity-100 hover:scale-110 transition-all" title="Ocean"></button>
+<button class="w-6 h-6 rounded-full bg-purple-500/50 opacity-50 hover:opacity-100 hover:scale-110 transition-all" title="Pulse"></button>
+<button class="w-6 h-6 rounded-full bg-slate-900 opacity-50 hover:opacity-100 hover:scale-110 transition-all" title="Void"></button>
+</aside>
+<main class="pt-[96px] pb-[64px] px-4 md:px-8 max-w-[1280px] mx-auto space-y-8">
+<!-- Profile Header Card -->
+<section class="glass-panel p-6 rounded-lg flex flex-col md:flex-row items-center justify-between gap-6">
+<div class="flex items-center gap-6">
+<div class="relative">
+<img alt="Avatar" class="w-20 h-20 rounded-full border-2 border-primary" data-alt="close-up minimalist male avatar with glasses and a green sweater in a clean modern vector style" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCFFM0pANmosuUTRqlK4bmITNx6D49EPpTNQ1EjYLwcjWDIZl4GFEWEfT8nKMByMED_2guKsjMQfwbonbK9GaOsnQt8H-6Ks1JYEs6TsThnwIaNvL9aQ66oAMXZIrKF6T3n5WMeKwUq9W1edJWwrN9WO75M_WvthOB9q1LaYIjieXd1xjEGtL7iYGIvEtpEgr9laFlAZMh2bZNDW0VHPhuIbbYr7Qic8xm08r8q3KXp5xzI4oUHyJrQl6ip0Ieca06J42mDcPAB5lc"/>
+<span class="absolute bottom-1 right-1 w-4 h-4 bg-primary rounded-full border-2 border-background animate-pulse"></span>
+</div>
+<div>
+<h1 class="text-3xl font-black gradient-heading tracking-tight leading-none mb-1" data-slot="fullName">Loading…</h1>
+<div class="flex flex-wrap items-center gap-3">
+<span class="data-mono text-xs text-on-surface-variant" data-slot="email">—</span>
+<span class="px-2 py-0.5 bg-surface-container-high rounded-full text-[10px] data-mono text-on-surface border border-outline-variant" data-slot="accountType">PERSONAL ACCOUNT</span>
+<span class="px-2 py-0.5 bg-primary/10 text-primary border border-primary/20 rounded-full text-[10px] data-mono flex items-center gap-1">
+<span class="w-1.5 h-1.5 bg-primary rounded-full animate-ping"></span> <span data-slot="kycStatus">SANDBOX USER</span>
+                        </span>
+</div>
+</div>
+</div>
+<div class="flex gap-12 text-right">
+<div>
+<p class="text-[10px] data-mono text-on-surface-variant uppercase tracking-widest">Member Since</p>
+<p class="data-mono text-primary font-bold" data-slot="memberSince">—</p>
+</div>
+<div>
+<p class="text-[10px] data-mono text-on-surface-variant uppercase tracking-widest">Account Tier</p>
+<p class="data-mono text-primary font-bold" data-slot="accountTier">Sandbox</p>
+</div>
+</div>
+</section>
+<!-- Wallet Capsules Row -->
+<section class="grid grid-cols-1 md:grid-cols-3 gap-8 relative py-4">
+<!-- Connection Lines (SVG) -->
+<svg class="hidden md:block absolute top-1/2 left-0 w-full h-1 translate-y-[-50%] z-[-1]" preserveaspectratio="none" viewbox="0 0 1000 10">
+<path d="M 0 5 L 1000 5" fill="none" stroke="rgba(16,185,129,0.15)" stroke-dasharray="8 8" stroke-width="2"></path>
+</svg>
+<!-- Wallet Item 1 -->
+<div class="flex flex-col items-center group cursor-pointer">
+<div class="relative w-32 h-32 flex items-center justify-center mb-4 transition-transform group-hover:scale-105 duration-500">
+<svg class="absolute inset-0 w-full h-full rotate-[-90deg]" viewbox="0 0 100 100">
+<circle cx="50" cy="50" fill="none" r="45" stroke="rgba(16,185,129,0.1)" stroke-width="2"></circle>
+<circle cx="50" cy="50" fill="none" r="45" stroke="#4edea3" stroke-dasharray="283" stroke-dashoffset="140" stroke-linecap="round" stroke-width="2"></circle>
+</svg>
+<div class="w-20 h-20 rounded-full bg-surface-container-low glass-panel flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-3xl" data-icon="account_balance_wallet">account_balance_wallet</span>
+</div>
+</div>
+<h3 class="data-mono text-[10px] tracking-[0.2em] text-on-surface-variant uppercase mb-1">E-WALLET</h3>
+<p class="data-mono text-2xl font-bold"><span data-slot="balanceEWallet">$0.00</span> <span class="text-sm font-normal text-on-surface-variant">USD</span></p>
+</div>
+<!-- Wallet Item 2 -->
+<div class="flex flex-col items-center group cursor-pointer">
+<div class="relative w-32 h-32 flex items-center justify-center mb-4 transition-transform group-hover:scale-105 duration-500">
+<svg class="absolute inset-0 w-full h-full rotate-[45deg]" viewbox="0 0 100 100">
+<circle cx="50" cy="50" fill="none" r="45" stroke="rgba(16,185,129,0.1)" stroke-width="2"></circle>
+<circle cx="50" cy="50" fill="none" r="45" stroke="#4edea3" stroke-dasharray="283" stroke-dashoffset="200" stroke-linecap="round" stroke-width="2"></circle>
+</svg>
+<div class="w-20 h-20 rounded-full bg-surface-container-low glass-panel flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-3xl" data-icon="link">link</span>
+</div>
+</div>
+<h3 class="data-mono text-[10px] tracking-[0.2em] text-on-surface-variant uppercase mb-1">CRYPTO</h3>
+<p class="data-mono text-2xl font-bold"><span data-slot="balanceCrypto">$0.00</span> <span class="text-sm font-normal text-on-surface-variant">USD</span></p>
+</div>
+<!-- Wallet Item 3 -->
+<div class="flex flex-col items-center group cursor-pointer">
+<div class="relative w-32 h-32 flex items-center justify-center mb-4 transition-transform group-hover:scale-105 duration-500">
+<svg class="absolute inset-0 w-full h-full rotate-[180deg]" viewbox="0 0 100 100">
+<circle cx="50" cy="50" fill="none" r="45" stroke="rgba(16,185,129,0.1)" stroke-width="2"></circle>
+<circle cx="50" cy="50" fill="none" r="45" stroke="#4edea3" stroke-dasharray="283" stroke-dashoffset="250" stroke-linecap="round" stroke-width="2"></circle>
+</svg>
+<div class="w-20 h-20 rounded-full bg-surface-container-low glass-panel flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-3xl" data-icon="credit_card">credit_card</span>
+</div>
+</div>
+<h3 class="data-mono text-[10px] tracking-[0.2em] text-on-surface-variant uppercase mb-1">CARD</h3>
+<p class="data-mono text-2xl font-bold">$0.00 <span class="text-sm font-normal text-on-surface-variant">USD</span></p>
+</div>
+</section>
+<!-- Quick Actions -->
+<section class="grid grid-cols-2 md:grid-cols-4 gap-4">
+<button class="glass-panel p-6 rounded-lg flex flex-col items-center gap-3 hover:bg-primary/10 hover:shadow-[0_0_20px_rgba(16,185,129,0.15)] transition-all duration-300 group">
+<span class="material-symbols-outlined text-primary text-2xl group-hover:scale-110 transition-transform" data-icon="send">send</span>
+<span class="data-mono text-xs font-bold tracking-widest">SEND</span>
+</button>
+<button class="glass-panel p-6 rounded-lg flex flex-col items-center gap-3 hover:bg-primary/10 hover:shadow-[0_0_20px_rgba(16,185,129,0.15)] transition-all duration-300 group">
+<span class="material-symbols-outlined text-primary text-2xl group-hover:scale-110 transition-transform" data-icon="download">download</span>
+<span class="data-mono text-xs font-bold tracking-widest">RECEIVE</span>
+</button>
+<button class="glass-panel p-6 rounded-lg flex flex-col items-center gap-3 hover:bg-primary/10 hover:shadow-[0_0_20px_rgba(16,185,129,0.15)] transition-all duration-300 group">
+<span class="material-symbols-outlined text-primary text-2xl group-hover:scale-110 transition-transform" data-icon="swap_horiz">swap_horiz</span>
+<span class="data-mono text-xs font-bold tracking-widest">SWAP</span>
+</button>
+<button class="glass-panel p-6 rounded-lg flex flex-col items-center gap-3 hover:bg-primary/10 hover:shadow-[0_0_20px_rgba(16,185,129,0.15)] transition-all duration-300 group">
+<span class="material-symbols-outlined text-primary text-2xl group-hover:scale-110 transition-transform" data-icon="payments">payments</span>
+<span class="data-mono text-xs font-bold tracking-widest">PAY</span>
+</button>
+</section>
+<!-- Split Section -->
+<section class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+<!-- Left: Activity Timeline -->
+<div class="lg:col-span-2 space-y-6">
+<div class="flex justify-between items-end">
+<h2 class="text-xl font-bold gradient-heading">Recent Activity</h2>
+<a class="data-mono text-[10px] text-primary hover:underline" href="#">VIEW ALL -&gt;</a>
+</div>
+<div class="relative space-y-4 before:absolute before:left-[19px] before:top-4 before:bottom-4 before:w-[2px] before:bg-outline-variant/30">
+<!-- Item 1 -->
+<div class="glass-panel rounded-full p-3 flex items-center justify-between gap-4 group cursor-pointer hover:bg-surface-container-high transition-colors">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center relative z-10 border border-primary/30">
+<span class="material-symbols-outlined text-primary text-xl" data-icon="arrow_upward">arrow_upward</span>
+</div>
+<div>
+<p class="text-sm font-bold">Transfer to BTC Wallet</p>
+<p class="data-mono text-[10px] text-on-surface-variant">TX: 0x82f...a12c</p>
+</div>
+</div>
+<div class="text-right px-4">
+<p class="data-mono text-error font-bold">-$420.00</p>
+<p class="data-mono text-[10px] text-on-surface-variant">12:04 PM</p>
+</div>
+</div>
+<!-- Item 2 -->
+<div class="glass-panel rounded-full p-3 flex items-center justify-between gap-4 group cursor-pointer hover:bg-surface-container-high transition-colors">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-tertiary-container/20 flex items-center justify-center relative z-10 border border-tertiary/30">
+<span class="material-symbols-outlined text-tertiary text-xl" data-icon="bolt">bolt</span>
+</div>
+<div>
+<p class="text-sm font-bold">Swap USDT to ETH</p>
+<p class="data-mono text-[10px] text-on-surface-variant">TX: 0x11e...99b2</p>
+</div>
+</div>
+<div class="text-right px-4">
+<p class="data-mono text-tertiary font-bold">0.12 ETH</p>
+<p class="data-mono text-[10px] text-on-surface-variant">10:30 AM</p>
+</div>
+</div>
+<!-- Item 3 -->
+<div class="glass-panel rounded-full p-3 flex items-center justify-between gap-4 group cursor-pointer hover:bg-surface-container-high transition-colors">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center relative z-10 border border-primary/30">
+<span class="material-symbols-outlined text-primary text-xl" data-icon="arrow_downward">arrow_downward</span>
+</div>
+<div>
+<p class="text-sm font-bold">Received from External</p>
+<p class="data-mono text-[10px] text-on-surface-variant">TX: 0xfe2...cc10</p>
+</div>
+</div>
+<div class="text-right px-4">
+<p class="data-mono text-primary font-bold">+$1,500.00</p>
+<p class="data-mono text-[10px] text-on-surface-variant">Yesterday</p>
+</div>
+</div>
+<!-- Item 4 -->
+<div class="glass-panel rounded-full p-3 flex items-center justify-between gap-4 group cursor-pointer hover:bg-surface-container-high transition-colors">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center relative z-10 border border-primary/30">
+<span class="material-symbols-outlined text-primary text-xl" data-icon="shopping_cart">shopping_cart</span>
+</div>
+<div>
+<p class="text-sm font-bold">Amazon Web Services</p>
+<p class="data-mono text-[10px] text-on-surface-variant">TX: 0xcc1...5521</p>
+</div>
+</div>
+<div class="text-right px-4">
+<p class="data-mono text-error font-bold">-$89.99</p>
+<p class="data-mono text-[10px] text-on-surface-variant">Yesterday</p>
+</div>
+</div>
+<!-- Item 5 -->
+<div class="glass-panel rounded-full p-3 flex items-center justify-between gap-4 group cursor-pointer hover:bg-surface-container-high transition-colors">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center relative z-10 border border-primary/30">
+<span class="material-symbols-outlined text-primary text-xl" data-icon="account_balance">account_balance</span>
+</div>
+<div>
+<p class="text-sm font-bold">Interest Earned</p>
+<p class="data-mono text-[10px] text-on-surface-variant">Yield Multiplier x1.5</p>
+</div>
+</div>
+<div class="text-right px-4">
+<p class="data-mono text-primary font-bold">+$4.20</p>
+<p class="data-mono text-[10px] text-on-surface-variant">2 days ago</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Right: Secondary Info -->
+<div class="space-y-8">
+<!-- Welcome Card -->
+<div class="glass-panel p-6 rounded-lg relative overflow-hidden group">
+<div class="absolute -right-10 -bottom-10 w-40 h-40 bg-primary/10 rounded-full blur-3xl group-hover:bg-primary/20 transition-all"></div>
+<h3 class="text-lg font-bold mb-3">Welcome to Crymad Cash</h3>
+<p class="text-xs text-on-surface-variant leading-relaxed mb-6">
+                        Your bioluminescent financial ecosystem is ready. Secure your assets with hardware-grade encryption and real-time pulse monitoring.
+                    </p>
+<div class="mb-6 flex justify-center">
+<svg class="w-24 h-24 text-primary opacity-80" fill="none" stroke="currentColor" stroke-width="1.5" viewbox="0 0 24 24">
+<path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z"></path>
+<path d="M12 6V12L16 14" stroke-linecap="round" stroke-linejoin="round"></path>
+<circle cx="12" cy="12" r="9" stroke-dasharray="2 4"></circle>
+</svg>
+</div>
+<button class="w-full py-3 border border-primary-container rounded-md text-xs font-bold data-mono tracking-widest hover:bg-gradient-to-r hover:from-emerald-400 hover:to-teal-400 hover:text-on-primary transition-all duration-300">
+                        COMPLETE YOUR SETUP
+                    </button>
+</div>
+<!-- Security Score -->
+<div class="glass-panel p-6 rounded-lg flex items-center justify-between">
+<div>
+<h4 class="text-xs font-bold text-on-surface-variant data-mono mb-1">SECURITY SCORE</h4>
+<p class="text-2xl font-black gradient-heading">85<span class="text-sm font-normal text-on-surface-variant">/100</span></p>
+</div>
+<div class="relative w-16 h-16 flex items-center justify-center">
+<svg class="absolute inset-0 w-full h-full rotate-[-90deg]" viewbox="0 0 36 36">
+<path d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="rgba(16,185,129,0.1)" stroke-width="3"></path>
+<path d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="#4edea3" stroke-dasharray="85, 100" stroke-linecap="round" stroke-width="3"></path>
+</svg>
+<span class="material-symbols-outlined text-primary text-xl" data-icon="verified_user" style="font-variation-settings: 'FILL' 1;">verified_user</span>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer / Status Strip -->
+<footer class="fixed bottom-0 w-full h-8 z-50 bg-emerald-950/30 backdrop-blur-md border-t border-emerald-500/5 flex items-center justify-between px-6">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 bg-emerald-500 rounded-full animate-pulse shadow-[0_0_8px_#10b981]"></span>
+<span class="text-[10px] data-mono font-normal uppercase tracking-widest text-emerald-400">SYSTEM OPERATIONAL</span>
+</div>
+<div class="flex gap-6">
+<span class="text-[10px] data-mono text-emerald-100/40 hover:text-emerald-300 transition-colors cursor-default">BTC: $64,201</span>
+<span class="text-[10px] data-mono text-emerald-100/40 hover:text-emerald-300 transition-colors cursor-default">ETH: $3,450</span>
+<span class="text-[10px] data-mono text-emerald-100/40 hover:text-emerald-300 transition-colors cursor-default">LAST SYNC: 12:04:11</span>
+</div>
+</footer>
+</body></html>

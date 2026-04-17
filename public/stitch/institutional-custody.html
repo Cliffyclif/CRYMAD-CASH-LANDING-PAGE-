@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Institutional Custody | THE VAULT</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;family=Space+Grotesk:wght@500;700&amp;family=JetBrains+Mono:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container": "#17221e",
+                        "on-tertiary": "#472a00",
+                        "outline": "#86948a",
+                        "on-surface-variant": "#bbcabf",
+                        "tertiary-fixed-dim": "#ffb95f",
+                        "on-tertiary-container": "#523200",
+                        "on-primary-fixed": "#002113",
+                        "on-primary": "#003824",
+                        "secondary-container": "#00bd85",
+                        "secondary-fixed": "#68fcbf",
+                        "on-primary-fixed-variant": "#005236",
+                        "outline-variant": "#3c4a42",
+                        "surface-container-highest": "#2c3733",
+                        "on-background": "#d9e5df",
+                        "on-error": "#690005",
+                        "surface-variant": "#2c3733",
+                        "on-secondary": "#003825",
+                        "on-secondary-container": "#00452e",
+                        "inverse-primary": "#006c49",
+                        "primary-fixed": "#6ffbbe",
+                        "primary-container": "#10b981",
+                        "on-tertiary-fixed": "#2a1700",
+                        "surface-tint": "#4edea3",
+                        "surface-dim": "#0b1512",
+                        "background": "#0b1512",
+                        "surface-container-lowest": "#06100d",
+                        "error-container": "#93000a",
+                        "on-error-container": "#ffdad6",
+                        "tertiary-fixed": "#ffddb8",
+                        "on-tertiary-fixed-variant": "#653e00",
+                        "tertiary-container": "#e29100",
+                        "inverse-surface": "#d9e5df",
+                        "surface-bright": "#313b38",
+                        "secondary-fixed-dim": "#45dfa4",
+                        "primary": "#4edea3",
+                        "on-secondary-fixed-variant": "#005137",
+                        "surface": "#0b1512",
+                        "error": "#ffb4ab",
+                        "on-primary-container": "#00422b",
+                        "secondary": "#45dfa4",
+                        "primary-fixed-dim": "#4edea3",
+                        "surface-container-high": "#222c29",
+                        "surface-container-low": "#131e1a",
+                        "on-secondary-fixed": "#002114",
+                        "on-surface": "#d9e5df",
+                        "tertiary": "#ffb95f",
+                        "inverse-on-surface": "#28332f"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "1rem",
+                        "lg": "2rem",
+                        "xl": "3rem",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Inter"],
+                        "body": ["Inter"],
+                        "label": ["Space Grotesk"],
+                        "mono": ["JetBrains Mono"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .glass-panel {
+            background: rgba(44, 55, 51, 0.4);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(16, 185, 129, 0.08);
+        }
+        .bioluminescent-glow {
+            box-shadow: 0 0 40px rgba(16, 185, 129, 0.06);
+        }
+        .status-pulse {
+            animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: .5; transform: scale(1.2); }
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body selection:bg-primary/30 min-h-screen">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full h-16 z-50 bg-[#040d0a]/80 backdrop-blur-xl flex justify-between items-center px-8 border-b border-primary/10 shadow-[0_0_40px_rgba(16,185,129,0.06)]">
+<div class="flex items-center gap-6">
+<div class="flex items-center gap-2">
+<span class="text-primary font-label font-bold tracking-tighter text-xl">THE VAULT</span>
+<div class="w-2 h-2 rounded-full bg-primary status-pulse shadow-[0_0_8px_#10b981]"></div>
+</div>
+<div class="h-6 w-[1px] bg-outline-variant/30"></div>
+<span class="bg-tertiary-container/20 text-tertiary font-label text-[10px] tracking-widest px-3 py-1 rounded-full border border-tertiary/20">INSTITUTIONAL PORTAL</span>
+</div>
+<div class="hidden md:flex gap-8 items-center">
+<a class="font-label uppercase tracking-widest text-xs text-on-surface-variant hover:text-primary transition-colors duration-300" href="#">Portfolio</a>
+<a class="font-label uppercase tracking-widest text-xs text-primary border-b-2 border-primary pb-1" href="#">Ledger</a>
+<a class="font-label uppercase tracking-widest text-xs text-on-surface-variant hover:text-primary transition-colors duration-300" href="#">Staking</a>
+<a class="font-label uppercase tracking-widest text-xs text-on-surface-variant hover:text-primary transition-colors duration-300" href="#">Governance</a>
+</div>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer hover:text-primary transition-colors">settings</span>
+<div class="w-8 h-8 rounded-full overflow-hidden border border-primary/20 bg-surface-container-highest">
+<img alt="User profile" data-alt="minimalist professional avatar illustration for an institutional asset manager in soft teal tones" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDW5bkKfwlaDS2mEfVjjnRrNtSmTsgrDsOKg0cPt27J6RKAkR90EQGNTtE-Ionc75guilPP3FIkIlxw2AkMxt2zVoKGKniqCpl-LjTKSQbL35wt4SltD8Z71U47dUptpEFSv7wL_KZWJwGQzzlVPMdrO2hPtdWkDBAPRj5V1r41sDHCSdDruj3JIowN6bSNQ0Y4axsczoTbZ7ZQCqD0BTZWWQ1Mom8WLq3HHq9tJ_6Qyd3OVyn_PXYFyhe7_g_wa2BUsyyQKSrRUec"/>
+</div>
+</div>
+</nav>
+<!-- Main Content Canvas -->
+<main class="pt-24 pb-20 px-8 max-w-[1600px] mx-auto">
+<!-- Header -->
+<header class="mb-10">
+<h1 class="text-5xl font-bold tracking-tight bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent mb-2">Custody &amp; Segregation</h1>
+<p class="font-mono text-xs tracking-[0.2em] text-on-surface-variant/60 uppercase">SEGREGATED COLD + HOT WALLETS // NETWORK_STATUS: SECURE</p>
+</header>
+<!-- Bento Grid Layout -->
+<div class="grid grid-cols-12 gap-6">
+<!-- Proof of Reserves Hero -->
+<section class="col-span-12 glass-panel rounded-xl p-10 flex flex-col md:flex-row justify-between items-center relative overflow-hidden">
+<div class="absolute top-0 right-0 w-[500px] h-[500px] bg-primary/5 rounded-full blur-[120px] -mr-64 -mt-64"></div>
+<div class="z-10">
+<span class="font-mono text-xs text-primary/60 tracking-widest mb-4 block">PROOF OF RESERVES</span>
+<h2 class="text-6xl font-bold font-label bg-gradient-to-br from-on-surface to-primary-container bg-clip-text text-transparent mb-6">100% FULLY BACKED</h2>
+<div class="flex items-center gap-4">
+<div class="px-4 py-2 bg-surface-container-lowest rounded-md border border-outline-variant/20">
+<span class="font-mono text-[10px] text-on-surface-variant/80 uppercase">LAST AUDIT: Apr 10, 2026 by Deloitte</span>
+</div>
+<div class="flex items-center gap-2 bg-secondary-container/10 px-4 py-2 rounded-full border border-secondary/20">
+<span class="w-2 h-2 rounded-full bg-secondary"></span>
+<span class="text-secondary font-label text-xs font-bold tracking-tight uppercase">$500M LLOYD'S OF LONDON INSURANCE</span>
+</div>
+</div>
+</div>
+<div class="z-10 mt-10 md:mt-0 relative flex items-center justify-center">
+<div class="absolute w-48 h-48 border border-primary/20 rounded-full animate-[pulse_4s_ease-in-out_infinite]"></div>
+<div class="absolute w-64 h-64 border border-primary/10 rounded-full animate-[pulse_6s_ease-in-out_infinite]"></div>
+<div class="w-32 h-32 bg-primary/10 rounded-full flex items-center justify-center border border-primary/30 bioluminescent-glow">
+<span class="material-symbols-outlined text-primary text-6xl" style="font-variation-settings: 'FILL' 1;">shield</span>
+</div>
+</div>
+</section>
+<!-- Cold Storage Table (Left 2/3) -->
+<section class="col-span-12 lg:col-span-8 glass-panel rounded-xl overflow-hidden flex flex-col">
+<div class="p-6 border-b border-primary/5 flex justify-between items-center bg-surface-container-high/30">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary">ac_unit</span>
+<h3 class="font-label font-bold text-lg tracking-tight">COLD STORAGE</h3>
+</div>
+<button class="bg-primary-container text-on-primary-container px-4 py-2 rounded-md font-label text-xs font-bold flex items-center gap-2 hover:opacity-90 transition-all">
+<span class="material-symbols-outlined text-sm">download</span> EXPORT AUDIT LOG
+                    </button>
+</div>
+<div class="p-0 overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-lowest/50">
+<th class="px-6 py-4 font-mono text-[10px] text-on-surface-variant tracking-widest uppercase">Asset</th>
+<th class="px-6 py-4 font-mono text-[10px] text-on-surface-variant tracking-widest uppercase text-right">Quantity</th>
+<th class="px-6 py-4 font-mono text-[10px] text-on-surface-variant tracking-widest uppercase text-right">USD Value</th>
+<th class="px-6 py-4 font-mono text-[10px] text-on-surface-variant tracking-widest uppercase">Address</th>
+<th class="px-6 py-4 font-mono text-[10px] text-on-surface-variant tracking-widest uppercase text-center">Status</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-primary/5">
+<tr class="hover:bg-primary/5 transition-colors group">
+<td class="px-6 py-5 flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-surface-container-highest flex items-center justify-center border border-outline-variant/30">BTC</div>
+<span class="font-label font-bold">Bitcoin</span>
+</td>
+<td class="px-6 py-5 font-mono text-sm text-right">5,421.200</td>
+<td class="px-6 py-5 font-mono text-sm text-right text-primary">$348,210,432</td>
+<td class="px-6 py-5 font-mono text-xs text-on-surface-variant/60">bc1qxy2...a89n</td>
+<td class="px-6 py-5 text-center">
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-secondary-container/10 border border-secondary/20 text-secondary text-[10px] font-bold">
+<span class="material-symbols-outlined text-[12px]">verified</span> VERIFIED
+                                    </span>
+</td>
+</tr>
+<tr class="hover:bg-primary/5 transition-colors">
+<td class="px-6 py-5 flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-surface-container-highest flex items-center justify-center border border-outline-variant/30">ETH</div>
+<span class="font-label font-bold">Ethereum</span>
+</td>
+<td class="px-6 py-5 font-mono text-sm text-right">18,240.000</td>
+<td class="px-6 py-5 font-mono text-sm text-right text-primary">$62,964,480</td>
+<td class="px-6 py-5 font-mono text-xs text-on-surface-variant/60">0x71C7...E121</td>
+<td class="px-6 py-5 text-center">
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-secondary-container/10 border border-secondary/20 text-secondary text-[10px] font-bold">
+<span class="material-symbols-outlined text-[12px]">verified</span> VERIFIED
+                                    </span>
+</td>
+</tr>
+<tr class="hover:bg-primary/5 transition-colors">
+<td class="px-6 py-5 flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-surface-container-highest flex items-center justify-center border border-outline-variant/30">T</div>
+<span class="font-label font-bold">USDT</span>
+</td>
+<td class="px-6 py-5 font-mono text-sm text-right">180,000,000</td>
+<td class="px-6 py-5 font-mono text-sm text-right text-primary">$180,000,000</td>
+<td class="px-6 py-5 font-mono text-xs text-on-surface-variant/60">TR7NHq...mK7B</td>
+<td class="px-6 py-5 text-center">
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-secondary-container/10 border border-secondary/20 text-secondary text-[10px] font-bold">
+<span class="material-symbols-outlined text-[12px]">verified</span> VERIFIED
+                                    </span>
+</td>
+</tr>
+<tr class="hover:bg-primary/5 transition-colors">
+<td class="px-6 py-5 flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-surface-container-highest flex items-center justify-center border border-outline-variant/30">S</div>
+<span class="font-label font-bold">SOL</span>
+</td>
+<td class="px-6 py-5 font-mono text-sm text-right">420,000.000</td>
+<td class="px-6 py-5 font-mono text-sm text-right text-primary">$58,800,000</td>
+<td class="px-6 py-5 font-mono text-xs text-on-surface-variant/60">v6N8k...zN2M</td>
+<td class="px-6 py-5 text-center">
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-secondary-container/10 border border-secondary/20 text-secondary text-[10px] font-bold">
+<span class="material-symbols-outlined text-[12px]">verified</span> VERIFIED
+                                    </span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<!-- Sidebar (Right 1/3) -->
+<aside class="col-span-12 lg:col-span-4 flex flex-col gap-6">
+<!-- Hot Wallet Operational -->
+<div class="glass-panel rounded-xl p-6">
+<div class="flex justify-between items-center mb-6">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary">local_fire_department</span>
+<h3 class="font-label font-bold uppercase tracking-tight">Hot Wallet</h3>
+</div>
+<span class="text-[10px] font-mono text-on-surface-variant/40">OPERATIONAL FUNDS</span>
+</div>
+<div class="space-y-4">
+<div class="flex justify-between items-end">
+<span class="font-mono text-xs text-on-surface-variant">AVAILABLE</span>
+<span class="font-label font-bold text-2xl text-secondary">$14,240,000.00</span>
+</div>
+<div class="w-full bg-surface-container-lowest h-2 rounded-full overflow-hidden">
+<div class="h-full bg-secondary w-1/3 shadow-[0_0_10px_#45dfa4]"></div>
+</div>
+<div class="flex justify-between text-[10px] font-mono text-on-surface-variant/60">
+<span>RESERVE LEVEL: LOW</span>
+<span>PENDING: $1.2M</span>
+</div>
+</div>
+</div>
+<!-- Withdrawal Limits -->
+<div class="glass-panel rounded-xl p-6">
+<div class="flex justify-between items-center mb-6">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-tertiary">lock_clock</span>
+<h3 class="font-label font-bold uppercase tracking-tight">Withdrawal Limits</h3>
+</div>
+</div>
+<div class="space-y-6">
+<div class="flex justify-between items-center">
+<div>
+<p class="font-mono text-[10px] text-on-surface-variant uppercase mb-1">Daily Limit</p>
+<p class="font-label font-bold text-xl">$50,000,000</p>
+</div>
+<div class="text-right">
+<p class="font-mono text-[10px] text-on-surface-variant uppercase mb-1">Used Today</p>
+<p class="font-label font-bold text-xl text-tertiary">$12,000,000</p>
+</div>
+</div>
+<div class="relative pt-1">
+<div class="overflow-hidden h-3 text-xs flex rounded-md bg-surface-container-lowest">
+<div class="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-tertiary shadow-[0_0_15px_#f59e0b]" style="width:24%"></div>
+</div>
+<div class="mt-2 font-mono text-[9px] text-center text-on-surface-variant tracking-widest">RESET IN 14H 22M 11S</div>
+</div>
+</div>
+</div>
+<!-- Security Quick Actions -->
+<div class="glass-panel rounded-xl p-6 border-primary/20 bg-primary/5">
+<h3 class="font-label font-bold text-xs uppercase tracking-[0.2em] text-primary mb-4">SECURITY OVERRIDE</h3>
+<div class="grid grid-cols-2 gap-3">
+<button class="flex flex-col items-center justify-center p-4 bg-surface-container-highest rounded-lg border border-primary/10 hover:bg-primary/20 transition-all group">
+<span class="material-symbols-outlined text-primary mb-2 group-hover:scale-110 transition-transform">emergency_home</span>
+<span class="font-label text-[10px] font-bold">PANIC LOCK</span>
+</button>
+<button class="flex flex-col items-center justify-center p-4 bg-surface-container-highest rounded-lg border border-primary/10 hover:bg-primary/20 transition-all group">
+<span class="material-symbols-outlined text-primary mb-2 group-hover:scale-110 transition-transform">key_visualizer</span>
+<span class="font-label text-[10px] font-bold">MULTISIG RESET</span>
+</button>
+</div>
+</div>
+</aside>
+<!-- Segregation Map -->
+<section class="col-span-12 glass-panel rounded-xl p-8 overflow-hidden">
+<div class="flex items-center justify-between mb-10">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary">account_tree</span>
+<h3 class="font-label font-bold text-lg tracking-tight uppercase">Segregated Asset Mapping</h3>
+</div>
+<span class="font-mono text-[10px] text-on-surface-variant/40">HIERARCHY_LEVEL: MASTER_ENTITY</span>
+</div>
+<div class="relative flex flex-col md:flex-row items-center justify-between gap-12 px-10">
+<!-- Master Entity -->
+<div class="z-10 flex flex-col items-center">
+<div class="w-48 p-6 bg-primary-container rounded-xl border border-primary shadow-[0_0_30px_rgba(16,185,129,0.2)] text-center">
+<span class="font-mono text-[10px] text-on-primary-container/60 block mb-2 uppercase">Institutional Master</span>
+<h4 class="font-label font-bold text-sm text-on-primary-container leading-tight">Aurora Capital Management</h4>
+</div>
+</div>
+<!-- Connectors -->
+<div class="absolute inset-0 flex items-center justify-center pointer-events-none opacity-20">
+<svg fill="none" height="100%" viewbox="0 0 800 200" width="100%" xmlns="http://www.w3.org/2000/svg">
+<path d="M150 100 H650" stroke="url(#paint0_linear)" stroke-dasharray="8 8" stroke-width="2"></path>
+<path d="M400 100 V10" stroke="url(#paint0_linear)" stroke-dasharray="8 8" stroke-width="2"></path>
+<path d="M400 100 V190" stroke="url(#paint0_linear)" stroke-dasharray="8 8" stroke-width="2"></path>
+<defs>
+<lineargradient gradientunits="userSpaceOnUse" id="paint0_linear" x1="150" x2="650" y1="100" y2="100">
+<stop stop-color="#10b981"></stop>
+<stop offset="1" stop-color="#34d399"></stop>
+</lineargradient>
+</defs>
+</svg>
+</div>
+<!-- Sub Accounts -->
+<div class="z-10 flex flex-col md:flex-row gap-6 w-full md:w-auto">
+<!-- Account 1 -->
+<div class="flex-1 min-w-[200px] glass-panel p-5 rounded-xl border-primary/20 hover:bg-primary/5 transition-all">
+<div class="flex justify-between items-start mb-4">
+<span class="bg-primary/20 text-primary p-2 rounded-lg material-symbols-outlined text-sm">payments</span>
+<span class="font-mono text-[8px] text-on-surface-variant/40">ID: AC-001</span>
+</div>
+<h5 class="font-label font-bold text-xs uppercase tracking-wider mb-2">OPERATING</h5>
+<p class="font-mono text-lg font-bold text-on-surface">$12,420,000</p>
+</div>
+<!-- Account 2 -->
+<div class="flex-1 min-w-[200px] glass-panel p-5 rounded-xl border-primary shadow-[0_0_20px_rgba(16,185,129,0.1)] bg-surface-container-highest">
+<div class="flex justify-between items-start mb-4">
+<span class="bg-primary text-on-primary p-2 rounded-lg material-symbols-outlined text-sm">lock</span>
+<span class="font-mono text-[8px] text-on-surface-variant/40">ID: AC-002</span>
+</div>
+<h5 class="font-label font-bold text-xs uppercase tracking-wider mb-2">CUSTODY</h5>
+<p class="font-mono text-lg font-bold text-primary">$450,210,000</p>
+</div>
+<!-- Account 3 -->
+<div class="flex-1 min-w-[200px] glass-panel p-5 rounded-xl border-primary/20 hover:bg-primary/5 transition-all">
+<div class="flex justify-between items-start mb-4">
+<span class="bg-primary/20 text-primary p-2 rounded-lg material-symbols-outlined text-sm">monitoring</span>
+<span class="font-mono text-[8px] text-on-surface-variant/40">ID: AC-003</span>
+</div>
+<h5 class="font-label font-bold text-xs uppercase tracking-wider mb-2">TRADING</h5>
+<p class="font-mono text-lg font-bold text-on-surface">$188,400,000</p>
+</div>
+</div>
+</div>
+</section>
+</div>
+</main>
+<!-- Footer Status Bar -->
+<footer class="fixed bottom-0 w-full h-8 bg-[#0b1512] flex items-center justify-between px-6 z-50 border-t border-primary/10 shadow-[0_-4px_20px_rgba(16,185,129,0.04)]">
+<div class="flex items-center gap-6">
+<span class="font-mono text-[10px] text-on-surface-variant/50 tracking-tight uppercase">© 2024 BIOLUMINESCENT VAULT // AUDIT_READY</span>
+<div class="flex items-center gap-4 border-l border-primary/10 pl-6">
+<span class="font-mono text-[10px] text-on-surface-variant/50">SYSTEM: <span class="text-secondary">OPERATIONAL</span></span>
+<span class="font-mono text-[10px] text-on-surface-variant/50">LATENCY: <span class="text-primary">14MS</span></span>
+</div>
+</div>
+<div class="flex items-center gap-8">
+<div class="flex items-center gap-4">
+<span class="font-mono text-[10px] text-on-surface-variant/50 hover:text-tertiary cursor-pointer transition-colors">BTC: <span class="text-on-surface">$64,231</span></span>
+<span class="font-mono text-[10px] text-on-surface-variant/50 hover:text-tertiary cursor-pointer transition-colors">ETH: <span class="text-on-surface">$3,452</span></span>
+</div>
+<div class="flex items-center gap-2">
+<div class="w-1.5 h-1.5 rounded-full bg-secondary"></div>
+<span class="font-mono text-[9px] text-secondary tracking-widest">LIVE_NODE_SYNC</span>
+</div>
+</div>
+</footer>
+</body></html>

@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>EMERALD PULSE - Add Beneficiary</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&amp;family=JetBrains+Mono:wght@400;700&amp;family=Space+Grotesk:wght@700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container-low": "#0a1612",
+                        "secondary-fixed-dim": "#55e4a9",
+                        "surface-variant": "#1a2924",
+                        "on-secondary-fixed-variant": "#006343",
+                        "on-tertiary-container": "#006042",
+                        "on-surface": "#f0fcf6",
+                        "surface-container-highest": "#1a2924",
+                        "on-secondary": "#00583b",
+                        "surface": "#06100d",
+                        "surface-container": "#0f1c18",
+                        "secondary": "#65f3b6",
+                        "primary-dim": "#58e7ab",
+                        "tertiary-container": "#6bffc1",
+                        "primary-fixed-dim": "#58e7ab",
+                        "secondary-dim": "#55e4a9",
+                        "on-primary": "#005a3c",
+                        "on-tertiary-fixed-variant": "#006b4a",
+                        "inverse-surface": "#f0fcf6",
+                        "on-secondary-fixed": "#00432c",
+                        "inverse-primary": "#006d4a",
+                        "on-background": "#f0fcf6",
+                        "on-tertiary": "#006948",
+                        "surface-container-lowest": "#000000",
+                        "primary": "#69f6b8",
+                        "on-surface-variant": "#a2aea8",
+                        "surface-tint": "#69f6b8",
+                        "tertiary": "#cdffe3",
+                        "outline-variant": "#3f4a46",
+                        "on-error": "#490006",
+                        "on-primary-fixed": "#00452d",
+                        "inverse-on-surface": "#4c5753",
+                        "secondary-fixed": "#65f3b6",
+                        "tertiary-fixed": "#6bffc1",
+                        "on-tertiary-fixed": "#004b33",
+                        "on-secondary-container": "#e1ffec",
+                        "background": "#06100d",
+                        "surface-bright": "#1f2f2a",
+                        "error-dim": "#d7383b",
+                        "on-primary-container": "#002919",
+                        "outline": "#6c7873",
+                        "error": "#ff716c",
+                        "surface-container-high": "#15221e",
+                        "error-container": "#9f0519",
+                        "on-error-container": "#ffa8a3",
+                        "primary-fixed": "#69f6b8",
+                        "tertiary-dim": "#5af0b4",
+                        "on-primary-fixed-variant": "#006544",
+                        "primary-container": "#06b77f",
+                        "surface-dim": "#06100d",
+                        "tertiary-fixed-dim": "#5af0b4",
+                        "secondary-container": "#006c4a"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "1rem",
+                        "lg": "2rem",
+                        "xl": "3rem",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Inter"],
+                        "body": ["Inter"],
+                        "mono": ["JetBrains Mono"],
+                        "label": ["Space Grotesk"]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .bioluminescent-blob {
+            background: radial-gradient(circle, #69f6b8 0%, transparent 70%);
+            filter: blur(80px);
+            opacity: 0.15;
+            position: absolute;
+            z-index: 0;
+            pointer-events: none;
+        }
+        .energy-line {
+            background: linear-gradient(45deg, transparent 45%, #3f4a46 48%, #3f4a46 52%, transparent 55%);
+            background-size: 100px 100px;
+            opacity: 0.05;
+        }
+        .glass-panel {
+            background: rgba(44, 55, 51, 0.4);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(16, 185, 129, 0.08);
+        }
+        .text-gradient-emerald {
+            background: linear-gradient(to bottom, #10b981, #34d399);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    </style>
+</head>
+<body class="bg-surface text-[#d9e5df] font-body selection:bg-primary/30 min-h-screen relative overflow-hidden">
+<!-- Background Elements -->
+<div class="fixed inset-0 energy-line pointer-events-none"></div>
+<div class="bioluminescent-blob w-[500px] h-[500px] -top-24 -left-24"></div>
+<div class="bioluminescent-blob w-[600px] h-[600px] bottom-0 -right-24"></div>
+<!-- Parent Page Content (Blurred/Dimmed) -->
+<div class="flex h-screen w-full filter blur-sm brightness-50">
+<!-- SideNavBar -->
+<aside class="h-screen w-64 fixed left-0 top-0 bg-[#06100d] flex flex-col border-r border-emerald-900/20 z-10">
+<div class="p-8">
+<div class="flex items-center gap-3 mb-10">
+<div class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center border border-primary/20">
+<span class="material-symbols-outlined text-primary" data-icon="hub">hub</span>
+</div>
+<div>
+<div class="font-mono text-[10px] tracking-widest text-primary/60">OPERATOR</div>
+<div class="text-xs font-bold text-primary">Level 4 Access</div>
+</div>
+</div>
+<nav class="space-y-4">
+<div class="flex items-center gap-4 px-4 py-3 rounded-lg text-emerald-100/40 hover:bg-white/5 transition-colors cursor-pointer group">
+<span class="material-symbols-outlined group-hover:text-primary" data-icon="sensors">sensors</span>
+<span class="font-mono text-xs font-bold uppercase tracking-wider">Live Feed</span>
+</div>
+<div class="flex items-center gap-4 px-4 py-3 rounded-lg bg-emerald-400/10 text-emerald-400 border-r-2 border-emerald-400 cursor-pointer">
+<span class="material-symbols-outlined" data-icon="biometric_setup">android_fingerprint</span>
+<span class="font-mono text-xs font-bold uppercase tracking-wider">Deep Scan</span>
+</div>
+<div class="flex items-center gap-4 px-4 py-3 rounded-lg text-emerald-100/40 hover:bg-white/5 transition-colors cursor-pointer group">
+<span class="material-symbols-outlined group-hover:text-primary" data-icon="account_balance_wallet">account_balance_wallet</span>
+<span class="font-mono text-xs font-bold uppercase tracking-wider">Vault</span>
+</div>
+<div class="flex items-center gap-4 px-4 py-3 rounded-lg text-emerald-100/40 hover:bg-white/5 transition-colors cursor-pointer group">
+<span class="material-symbols-outlined group-hover:text-primary" data-icon="hub">hub</span>
+<span class="font-mono text-xs font-bold uppercase tracking-wider">Nodes</span>
+</div>
+</nav>
+</div>
+<div class="mt-auto p-8 space-y-4">
+<button class="w-full py-3 rounded-lg border border-primary text-primary font-mono text-[10px] tracking-widest hover:bg-primary/10 transition-all">UPGRADE NODE</button>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="ml-64 flex-1 flex flex-col">
+<!-- TopNavBar -->
+<header class="sticky top-0 z-20 w-full bg-[#040d0a]/40 backdrop-blur-xl shadow-[0_20px_40px_rgba(16,185,129,0.12)] flex justify-between items-center px-8 py-4">
+<div class="text-xl font-extrabold tracking-tighter bg-clip-text text-transparent bg-gradient-to-b from-emerald-400 to-emerald-600">EMERALD PULSE</div>
+<nav class="hidden md:flex items-center gap-8">
+<a class="text-sm font-semibold text-emerald-100/60 hover:text-emerald-200" href="#">Portfolio</a>
+<a class="text-sm font-semibold text-emerald-100/60 hover:text-emerald-200" href="#">Markets</a>
+<a class="text-sm font-semibold text-emerald-400 border-b-2 border-emerald-400 pb-1" href="#">Analytics</a>
+</nav>
+<div class="flex items-center gap-6">
+<div class="flex gap-4">
+<span class="material-symbols-outlined text-emerald-100/60 cursor-pointer hover:text-primary" data-icon="notifications">notifications</span>
+<span class="material-symbols-outlined text-emerald-100/60 cursor-pointer hover:text-primary" data-icon="settings">settings</span>
+</div>
+<img alt="User profile" class="w-8 h-8 rounded-full border border-emerald-500/30" data-alt="Professional corporate headshot of a male executive in dark surroundings with subtle green ambient light accents" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC9o61eTVrwRIGEXCEgII6AHT4N16NsrSgUDOG30pfMDspD6xxfgMcmDaiOK78-3KB3MWWC9w-F4AxubTdvfKxd28EVnx8on1u8FmcEb7Ww_TLLiitqtUme5yzGbCPhXeSKiqruUskQlK4XpTvPIFp0mQNHMIzx3OQbAo3LBdhtwvfYOEj3LFRTnuqSQnGh5ZWKwauynu330WPLtXD9yoFZb4rngFqu0XfuwZ7fBN3bvb6ThmqZdsEKEg2GyvWnLI8Aipiul-NqcJs"/>
+</div>
+</header>
+<!-- Page Canvas -->
+<section class="p-12 space-y-12">
+<div class="flex justify-between items-end">
+<div>
+<h1 class="text-4xl font-extrabold text-gradient-emerald">Beneficiaries</h1>
+<p class="text-on-surface-variant font-mono text-xs mt-2 uppercase tracking-widest">Global Network Integrity: Active</p>
+</div>
+<button class="bg-primary/10 border border-primary px-6 py-3 rounded-xl font-mono text-xs text-primary tracking-widest flex items-center gap-2">
+<span class="material-symbols-outlined text-sm" data-icon="add">add</span> NEW RECIPIENT
+                    </button>
+</div>
+<!-- Beneficiary Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+<!-- Alex Morgan Card -->
+<div class="glass-panel p-6 rounded-lg relative group">
+<div class="flex justify-between items-start mb-6">
+<div class="w-12 h-12 rounded-full overflow-hidden border-2 border-emerald-500/20">
+<img alt="Alex Morgan" data-alt="Modern close-up portrait of Alex Morgan with dramatic professional studio lighting and cool tones" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAduJzA0ECSOBupN1JDM6OCFvUL-pRA4rvldQVgUdx-qqNRiB57sQRsvgHrjB8DAmQ5vX7PYsSr-PPqB6AIwOZBKoKZ9-ojm0gba3T7eJLcCzDsQEGCbNHcyjlHLKokG65FH4cXu49d3U8d6rDrUdI_f0LQv4czdXh9QmQ-epKcil4HpaXpyvy3TqTmL0MJSCKwqcdP_54pylq6kqFowpvlrnenvkW6iBAzZrczmbYiahXV7bnEw241aWZq3X_dLk7gJ5_V653pZGk"/>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant text-lg" data-icon="more_vert">more_vert</span>
+</div>
+<h3 class="text-lg font-semibold text-emerald-50">Alex Morgan</h3>
+<p class="font-mono text-[10px] text-emerald-100/40 mt-1 uppercase">JP Morgan Chase • **** 4920</p>
+<div class="mt-6 flex justify-between items-center">
+<span class="text-xs font-mono px-3 py-1 bg-emerald-400/10 text-emerald-400 rounded-full">USD</span>
+<span class="material-symbols-outlined text-emerald-400/60" data-icon="bolt">bolt</span>
+</div>
+</div>
+<!-- Sarah Chen Card -->
+<div class="glass-panel p-6 rounded-lg relative">
+<div class="flex justify-between items-start mb-6">
+<div class="w-12 h-12 rounded-full overflow-hidden border-2 border-emerald-500/20">
+<img alt="Sarah Chen" data-alt="Portrait of Sarah Chen with cinematic warm lighting and dark aesthetic background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCQpvA4NoY_G0WN7YvwDVd42NtGxyYIesX15HLftlSIaMS_MuiL10HCDodEvMx-pJmuQQOvywqLtZNPlPO9jP3x6LSEJXQxn3gY9PahOrT4ZwpQwN9SrcxXRN74PCYcEMKb3IfLjg0lJ7fLs6oqv2-1Aq01zdk3-9M6ivdkdJz45dusHS1WOgUnvjth3vw7QiiEzqCr9moMybL8yosu1QkGyyN-GaYaGgehWG_AEs2oLDb5B9R2ZyF-mJ3BD5PxzamxWe2-Ie3UEY4"/>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant text-lg" data-icon="more_vert">more_vert</span>
+</div>
+<h3 class="text-lg font-semibold text-emerald-50">Sarah Chen</h3>
+<p class="font-mono text-[10px] text-emerald-100/40 mt-1 uppercase">HSBC UK • **** 8831</p>
+<div class="mt-6 flex justify-between items-center">
+<span class="text-xs font-mono px-3 py-1 bg-emerald-400/10 text-emerald-400 rounded-full">GBP</span>
+<span class="material-symbols-outlined text-emerald-400/60" data-icon="bolt">bolt</span>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="fixed bottom-0 w-full bg-[#040d0a]/80 backdrop-blur-md border-t border-emerald-500/10 px-6 py-2 flex justify-between items-center z-50">
+<div class="flex items-center gap-4">
+<div class="w-1.5 h-1.5 rounded-full bg-primary animate-pulse"></div>
+<div class="font-mono text-[10px] tracking-widest text-emerald-100/50">SYSTEM STATUS: OPTIMAL | BTC: $64,231.12 | ETH: $3,452.89</div>
+</div>
+<div class="flex gap-6">
+<a class="font-mono text-[10px] tracking-widest text-emerald-100/50 hover:text-emerald-300" href="#">Support</a>
+<a class="font-mono text-[10px] tracking-widest text-emerald-100/50 hover:text-emerald-300" href="#">Terminal</a>
+<a class="font-mono text-[10px] tracking-widest text-emerald-100/50 hover:text-emerald-300" href="#">Privacy</a>
+</div>
+</footer>
+</div>
+<!-- Modal Overlay -->
+<div class="fixed inset-0 z-[100] flex items-center justify-center bg-surface-container-lowest/40 backdrop-blur-[2px]">
+<!-- Modal Dialog -->
+<div class="w-full max-w-[620px] glass-panel rounded-xl shadow-[0_20px_60px_rgba(4,13,10,0.5),0_0_40px_rgba(16,185,129,0.15)] relative overflow-hidden">
+<!-- Modal Header -->
+<div class="p-8 pb-4 flex justify-between items-start">
+<div>
+<h2 class="text-3xl font-extrabold text-gradient-emerald">Add Beneficiary</h2>
+<p class="font-mono text-[10px] tracking-widest text-primary/70 mt-1 uppercase">LINK A NEW RECIPIENT ACCOUNT</p>
+</div>
+<button class="p-2 text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-2xl" data-icon="close">close</span>
+</button>
+</div>
+<!-- Modal Content -->
+<form class="p-8 pt-4 space-y-8">
+<!-- Section: Personal Details -->
+<div class="grid grid-cols-2 gap-6">
+<div class="space-y-2">
+<label class="font-mono text-[10px] tracking-widest text-on-surface-variant uppercase ml-1">Full Name</label>
+<input class="w-full bg-transparent border-0 border-b-2 border-outline-variant focus:ring-0 focus:border-primary transition-all px-1 py-2 text-sm text-emerald-50 placeholder:text-emerald-100/20" placeholder="e.g. Marcus Thorne" type="text"/>
+</div>
+<div class="space-y-2">
+<label class="font-mono text-[10px] tracking-widest text-on-surface-variant uppercase ml-1">Email</label>
+<input class="w-full bg-transparent border-0 border-b-2 border-outline-variant focus:ring-0 focus:border-primary transition-all px-1 py-2 text-sm text-emerald-50 placeholder:text-emerald-100/20" placeholder="m.thorne@emerald.net" type="email"/>
+</div>
+</div>
+<!-- Section: Banking Info -->
+<div class="space-y-2">
+<label class="font-mono text-[10px] tracking-widest text-on-surface-variant uppercase ml-1">Bank Name</label>
+<div class="flex items-center justify-between bg-surface-container-high px-4 py-3 rounded-xl border border-primary/10 cursor-pointer group hover:bg-surface-container-highest transition-colors">
+<span class="text-sm text-emerald-50">Select Destination Bank</span>
+<span class="material-symbols-outlined text-primary group-hover:translate-y-0.5 transition-transform" data-icon="expand_more">expand_more</span>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-6">
+<div class="space-y-2">
+<label class="font-mono text-[10px] tracking-widest text-on-surface-variant uppercase ml-1">Account Number</label>
+<input class="w-full bg-transparent border-0 border-b-2 border-outline-variant focus:ring-0 focus:border-primary transition-all px-1 py-2 text-sm font-mono text-emerald-50 placeholder:text-emerald-100/20 tracking-tighter" placeholder="0000 0000 0000" type="text"/>
+</div>
+<div class="space-y-2">
+<label class="font-mono text-[10px] tracking-widest text-on-surface-variant uppercase ml-1">Routing / SWIFT Code</label>
+<input class="w-full bg-transparent border-0 border-b-2 border-outline-variant focus:ring-0 focus:border-primary transition-all px-1 py-2 text-sm font-mono text-emerald-50 placeholder:text-emerald-100/20 tracking-tighter" placeholder="EMRLD01X" type="text"/>
+</div>
+</div>
+<div class="space-y-2">
+<label class="font-mono text-[10px] tracking-widest text-on-surface-variant uppercase ml-1">Nickname (Optional)</label>
+<input class="w-full bg-transparent border-0 border-b-2 border-outline-variant focus:ring-0 focus:border-primary transition-all px-1 py-2 text-sm text-emerald-50 placeholder:text-emerald-100/20" placeholder="Main Business Account" type="text"/>
+</div>
+<!-- Section: Currency Selection -->
+<div class="space-y-4">
+<label class="font-mono text-[10px] tracking-widest text-on-surface-variant uppercase ml-1">CURRENCY</label>
+<div class="flex gap-3">
+<div class="flex-1 text-center py-2 bg-primary text-on-primary rounded-lg font-mono text-xs font-bold cursor-pointer hover:brightness-110 transition-all">USD</div>
+<div class="flex-1 text-center py-2 bg-emerald-400/5 text-emerald-100/60 border border-emerald-900/40 rounded-lg font-mono text-xs font-bold cursor-pointer hover:bg-emerald-400/10 transition-all">EUR</div>
+<div class="flex-1 text-center py-2 bg-emerald-400/5 text-emerald-100/60 border border-emerald-900/40 rounded-lg font-mono text-xs font-bold cursor-pointer hover:bg-emerald-400/10 transition-all">GBP</div>
+<div class="flex-1 text-center py-2 bg-emerald-400/5 text-emerald-100/60 border border-emerald-900/40 rounded-lg font-mono text-xs font-bold cursor-pointer hover:bg-emerald-400/10 transition-all">NGN</div>
+</div>
+</div>
+<!-- Info Note -->
+<div class="flex gap-3 bg-primary/5 border border-primary/10 p-4 rounded-xl items-start">
+<span class="material-symbols-outlined text-primary text-xl" data-icon="info">info</span>
+<p class="font-mono text-[10px] leading-relaxed text-emerald-100/60">
+                        We'll send a $0.01 test deposit to verify this account. System protocols will monitor node integrity during the handshake.
+                    </p>
+</div>
+<!-- Modal Actions -->
+<div class="flex justify-end gap-6 pt-4">
+<button class="font-mono text-[10px] tracking-widest text-on-surface-variant hover:text-emerald-50 transition-colors uppercase" type="button">
+                        CANCEL
+                    </button>
+<button class="group flex items-center gap-3 px-8 py-3 rounded-lg border border-primary text-primary font-mono text-[10px] tracking-widest hover:bg-primary hover:text-on-primary transition-all duration-300" type="submit">
+                        ADD BENEFICIARY 
+                        <span class="material-symbols-outlined text-sm group-hover:translate-x-1 transition-transform" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+</form>
+<!-- Decorative corner accent -->
+<div class="absolute -bottom-10 -right-10 w-24 h-24 bg-primary/20 blur-3xl pointer-events-none"></div>
+</div>
+</div>
+</body></html>

@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&amp;family=JetBrains+Mono:wght@400;700&amp;family=Space+Grotesk:wght@500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .mono-gradient-text {
+            background: linear-gradient(to right, #10b981, #34d399);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .glass-panel {
+            background: rgba(44, 55, 51, 0.4);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(16, 185, 129, 0.08);
+        }
+        .organic-blob {
+            filter: blur(80px);
+            opacity: 0.15;
+            position: absolute;
+            z-index: -1;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-secondary": "#003824",
+                        "on-surface": "#d9e5df",
+                        "primary-fixed": "#6ffbbe",
+                        "on-secondary-container": "#003e28",
+                        "on-secondary-fixed-variant": "#005236",
+                        "background": "#0b1512",
+                        "error": "#ffb4ab",
+                        "primary-container": "#10b981",
+                        "surface-container-highest": "#2c3733",
+                        "inverse-primary": "#006c49",
+                        "surface-container": "#17221e",
+                        "inverse-on-surface": "#28332f",
+                        "secondary-fixed-dim": "#4edea3",
+                        "tertiary-fixed": "#ffdad5",
+                        "tertiary-container": "#d79189",
+                        "inverse-surface": "#d9e5df",
+                        "surface-container-lowest": "#06100d",
+                        "surface-container-low": "#131e1a",
+                        "surface-container-high": "#222c29",
+                        "on-primary-fixed": "#002113",
+                        "surface-dim": "#0b1512",
+                        "on-tertiary-fixed": "#360e0a",
+                        "outline": "#86948a",
+                        "on-tertiary": "#51221d",
+                        "tertiary": "#ffb4ab",
+                        "on-tertiary-container": "#5c2b25",
+                        "on-error-container": "#ffdad6",
+                        "secondary-fixed": "#6ffbbe",
+                        "surface-tint": "#4edea3",
+                        "secondary-container": "#00b47d",
+                        "on-tertiary-fixed-variant": "#6c3832",
+                        "primary-fixed-dim": "#4edea3",
+                        "on-error": "#690005",
+                        "on-secondary-fixed": "#002114",
+                        "on-primary-container": "#00422b",
+                        "surface-variant": "#2c3733",
+                        "on-surface-variant": "#bbcabf",
+                        "secondary": "#4edea3",
+                        "primary": "#4edea3",
+                        "tertiary-fixed-dim": "#ffb4ab",
+                        "on-background": "#d9e5df",
+                        "surface": "#0b1512",
+                        "error-container": "#93000a",
+                        "on-primary": "#003824",
+                        "outline-variant": "#3c4a42",
+                        "surface-bright": "#313b38",
+                        "on-primary-fixed-variant": "#005236"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "1rem",
+                        "lg": "2rem",
+                        "xl": "3rem",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Inter"],
+                        "body": ["Inter"],
+                        "label": ["Space Grotesk"],
+                        "mono": ["JetBrains Mono"]
+                    }
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background text-on-surface font-body overflow-hidden">
+<!-- Living Background Layer -->
+<div class="fixed inset-0 overflow-hidden pointer-events-none">
+<div class="organic-blob bg-primary-container w-[600px] h-[600px] -top-40 -left-40 rounded-full"></div>
+<div class="organic-blob bg-secondary w-[400px] h-[400px] bottom-20 right-20 rounded-full"></div>
+<div class="absolute inset-0 opacity-10" style="background-image: repeating-linear-gradient(45deg, transparent, transparent 100px, rgba(16,185,129,0.1) 100px, rgba(16,185,129,0.1) 101px);"></div>
+</div>
+<!-- Background Content (/orders page blurred) -->
+<div class="min-h-screen flex flex-col opacity-20 blur-sm pointer-events-none">
+<!-- TopNavBar Anchor -->
+<nav class="bg-emerald-950/40 backdrop-blur-xl flex justify-between items-center w-full px-8 py-4 max-w-full border-b border-emerald-500/10">
+<span class="text-xl font-extrabold tracking-tighter text-emerald-400 drop-shadow-[0_0_8px_rgba(16,185,129,0.4)]">CRYMAD CA$H</span>
+<div class="flex gap-8 items-center">
+<a class="font-['Inter'] font-semibold tracking-tight uppercase text-emerald-100/60" href="#">Dashboard</a>
+<a class="font-['Inter'] font-semibold tracking-tight uppercase text-emerald-400 border-b-2 border-emerald-400 pb-1" href="#">Wallets</a>
+<a class="font-['Inter'] font-semibold tracking-tight uppercase text-emerald-100/60" href="#">Cards</a>
+<a class="font-['Inter'] font-semibold tracking-tight uppercase text-emerald-100/60" href="#">Transactions</a>
+<a class="font-['Inter'] font-semibold tracking-tight uppercase text-emerald-100/60" href="#">Banking</a>
+<a class="font-['Inter'] font-semibold tracking-tight uppercase text-emerald-100/60" href="#">Help</a>
+</div>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-emerald-400">notifications</span>
+<span class="material-symbols-outlined text-emerald-400">settings</span>
+<div class="w-10 h-10 rounded-full bg-surface-container-highest flex items-center justify-center border border-emerald-500/20">
+<img class="w-8 h-8 rounded-full" data-alt="User profile avatar close-up portrait of a man with clean studio lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDgZxEM_QH0_z8JxayCgf84AzlRl9y68VyEZ609IF1_ZOyWRqc3mwIW6vWxcasUUXYK1J8AjCOplFJGxNGePpLi6MQpO6yylrFSou-eJJuRLUJBE9A2ejxappzE3gZZaiQ0zI7MDGw9ntWI7AVu8hUR-qsx7NYMghZBG9JH4aQhUNfRvUVVfv8DTm8qCLdB-98CwyYBk-PdDX790bHHxoSfpD_dw8d7Kr9qS2TlAKbj0q0JAp7FGqk3EI9gkr0cboJ0ImWiya7xYPE"/>
+</div>
+</div>
+</nav>
+<main class="flex-grow p-12">
+<h1 class="text-4xl font-extrabold mb-8 font-headline">Order History</h1>
+<div class="grid grid-cols-1 gap-6">
+<!-- Mock Order Rows -->
+<div class="glass-panel rounded-lg p-6 flex items-center justify-between">
+<div class="flex items-center gap-6">
+<div class="w-16 h-16 rounded-xl bg-white flex items-center justify-center overflow-hidden">
+<img class="w-12 h-12" data-alt="minimalist white smartwatch product photography on plain background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDjqGYFcJqi1LlrRaEeYatg6t27nRNvxaQKKWke-lS6j2QjdB_hBXoejHmy69mfSCYWZxxg4h-Xc7LZwCLnuVq5Yj8a7AX927l7ugJyr05hjr3440KDIYUm1xyXzMSw3njfj9XQUQRtMU2vP258GI6RCu7lSj3_tOt1KH-EXqKiV05uQ07SWd9TFofT1f9pLToeihrnGFsWPdqXPIxXCUMlYaWhstCIpWfPluhUXDI8cTpslsZhqzlOwHvvWKVIEha3mvJFTrH2yBo"/>
+</div>
+<div>
+<p class="font-bold text-lg">Amazon</p>
+<p class="font-mono text-sm opacity-60">ORD-9821</p>
+</div>
+</div>
+<p class="font-mono font-bold text-xl">$473.90</p>
+</div>
+<div class="glass-panel rounded-lg p-6 flex items-center justify-between">
+<div class="flex items-center gap-6">
+<div class="w-16 h-16 rounded-xl bg-white flex items-center justify-center">
+<img class="w-12 h-12" data-alt="athletic running shoes on vibrant abstract background high fashion studio lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDVRrAZZ6bYlf3zRfAoW1wiUDm7uCxhxnCwXyd4DqY9eTL1amF2HWU1n7tPPEdb82x5wsPV_HXZFRTdHZ4dvVhKkhsZJGArnhGPfPu5kC8GqHR7D9f-V4_JAp6SKTNosK8L5oGomTZKrLXIDXqnj3TpNnQrbtQk6NeP2qrMFxfrnHJUpMRJgpuxWDk3vsVZwvWDwSAH0mKxoEr2SXnAWp2vsxMpPwgc6NULJtONURgLuJ8LqHBhqHQsxckTUQ6yytOq6mBgdzub_-M"/>
+</div>
+<div>
+<p class="font-bold text-lg">Nike Store</p>
+<p class="font-mono text-sm opacity-60">ORD-7742</p>
+</div>
+</div>
+<p class="font-mono font-bold text-xl">$129.00</p>
+</div>
+<div class="glass-panel rounded-lg p-6 flex items-center justify-between">
+<div class="flex items-center gap-6">
+<div class="w-16 h-16 rounded-xl bg-white flex items-center justify-center">
+<img class="w-12 h-12" data-alt="premium leather wallet close-up with soft cinematic shadows on textured surface" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDx5iVqbcUwqK4sK9Ib1arW-b-w_WX-SecbBw1j4UVp241hSNxUPwwiBh2vQHRxAN05s9Grke1FIJ18gy4ikJn8Nn--_cnD25WR2TMVTnO4cRMBxFDsfB1ayFLIqqPqXuyqqrn3zJbifA4IgbnKaRzU5XgEeeMOJ3v3iVe5jNYWwHiNSJ02Z7SzjBBfqwVxUJgJT8IrSEUEDD3LrkBrGhuQuAAwRW6PFzGiuyQR0nzSPw09KakKr9zy4Ry_DlAPMWGMGVac0fGX-lw"/>
+</div>
+<div>
+<p class="font-bold text-lg">Apple</p>
+<p class="font-mono text-sm opacity-60">ORD-1230</p>
+</div>
+</div>
+<p class="font-mono font-bold text-xl">$1,299.00</p>
+</div>
+</div>
+</main>
+</div>
+<!-- Modal Overlay -->
+<div class="fixed inset-0 flex items-center justify-center z-50 bg-black/40 backdrop-blur-sm">
+<!-- Request Refund Modal -->
+<div class="w-full max-w-[560px] glass-panel rounded-xl overflow-hidden shadow-[0_20px_40px_rgba(16,185,129,0.05)] relative">
+<!-- Close Icon -->
+<button class="absolute top-6 right-6 text-on-surface-variant hover:text-emerald-400 transition-colors">
+<span class="material-symbols-outlined">close</span>
+</button>
+<div class="p-8 space-y-8">
+<!-- Header -->
+<div class="space-y-1">
+<h2 class="text-3xl font-extrabold font-headline mono-gradient-text tracking-tight">Request Refund</h2>
+<p class="font-mono text-xs tracking-widest text-emerald-400">ORDER #ORD-9821</p>
+</div>
+<!-- Order Summary Strip -->
+<div class="glass-panel rounded-full px-6 py-3 flex items-center justify-between border-emerald-500/20">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-white flex items-center justify-center overflow-hidden border border-emerald-500/10">
+<img class="w-6 h-6" data-alt="amazon logo stylized icon with white background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAYQo8rjIsygWSPDi8TP3RFTbF3nnkewW1T7j-mfpp4rBzI1Tb7yNB41ipU2GhJYZPWrvZPZyMov2159hls3SYipeapPlMRDHwaCw_n1Tou84FM28YZCs20RkmDycaNxoUFZHdoAtZMvgGzCwxsP1F8Po5IHyOrWu2iORQjrlsjq57BS2umTUUdOOaexwuVOk65HIj2sFWX7kOX-XjxVno9TI0GZh99GjarLUmSFo5qomHpkO3WiUdzEVfDqO7QudlIEFNOtNRzSvA"/>
+</div>
+<span class="font-bold font-headline">Amazon</span>
+</div>
+<span class="font-mono font-bold text-secondary text-lg">$473.90</span>
+</div>
+<!-- Form Body -->
+<div class="space-y-6">
+<!-- Reason Dropdown -->
+<div class="space-y-2">
+<label class="block font-mono text-[10px] uppercase tracking-widest text-on-surface-variant">REASON</label>
+<div class="glass-panel rounded-full px-6 py-4 flex items-center justify-between cursor-pointer hover:bg-emerald-500/5 transition-all">
+<span class="text-on-surface-variant/70">Select reason...</span>
+<span class="material-symbols-outlined text-emerald-400">expand_more</span>
+</div>
+</div>
+<!-- Additional Details -->
+<div class="space-y-2">
+<label class="block font-mono text-[10px] uppercase tracking-widest text-on-surface-variant">ADDITIONAL DETAILS</label>
+<textarea class="w-full glass-panel rounded-lg p-6 focus:ring-1 focus:ring-emerald-400 outline-none resize-none placeholder:text-on-surface-variant/50" placeholder="Describe the issue..." rows="4"></textarea>
+</div>
+<!-- Proof Upload -->
+<div class="space-y-2">
+<div class="glass-panel rounded-lg border-dashed border-emerald-500/30 p-8 flex flex-col items-center gap-3 group cursor-pointer hover:bg-emerald-500/5 transition-all">
+<span class="material-symbols-outlined text-3xl text-emerald-400 group-hover:scale-110 transition-transform">cloud_upload</span>
+<div class="text-center">
+<p class="font-mono text-[10px] tracking-widest text-on-surface">DRAG &amp; DROP FILES OR CLICK TO BROWSE</p>
+<p class="font-mono text-[8px] tracking-tighter text-on-surface-variant/60 mt-1 uppercase">JPG, PNG, PDF · MAX 10MB</p>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<!-- Refund Amount Input -->
+<div class="space-y-2">
+<label class="block font-mono text-[10px] uppercase tracking-widest text-on-surface-variant">REFUND AMOUNT</label>
+<div class="glass-panel rounded-full px-6 py-4 flex items-center border-emerald-500/40">
+<span class="font-mono font-bold text-2xl mono-gradient-text">$473.90</span>
+</div>
+</div>
+<!-- Arrival Chip -->
+<div class="flex flex-col justify-end">
+<div class="glass-panel rounded-full px-4 py-3 flex items-center gap-2 bg-emerald-500/5 border-emerald-500/10">
+<span class="material-symbols-outlined text-sm text-emerald-400">schedule</span>
+<span class="font-mono text-[9px] tracking-widest text-emerald-400">REFUND IN: 3-5 BUSINESS DAYS</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Action Row -->
+<div class="flex items-center justify-between pt-4 border-t border-emerald-500/10">
+<button class="font-mono text-xs font-bold uppercase tracking-widest px-8 py-4 rounded-full text-on-surface-variant hover:text-on-surface hover:bg-white/5 transition-all">
+                        CANCEL
+                    </button>
+<button class="bg-primary text-on-primary font-mono text-xs font-bold uppercase tracking-widest px-8 py-4 rounded-full shadow-[0_0_20px_rgba(16,185,129,0.3)] hover:brightness-110 active:scale-95 transition-all flex items-center gap-2">
+                        SUBMIT REFUND REQUEST <span class="material-symbols-outlined text-base">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Footer Anchor -->
+<footer class="bg-[#040d0a] border-t border-emerald-500/10 fixed bottom-0 w-full flex justify-between items-center px-8 py-2 z-10 opacity-40 blur-[1px]">
+<div class="flex gap-4">
+<span class="font-['JetBrains_Mono'] text-[10px] uppercase text-emerald-900">Network Latency: 24ms</span>
+<span class="font-['JetBrains_Mono'] text-[10px] uppercase text-emerald-900">API: Online</span>
+<span class="font-['JetBrains_Mono'] text-[10px] uppercase text-emerald-900">Security: Shielded</span>
+</div>
+<span class="font-['JetBrains_Mono'] text-[10px] uppercase text-emerald-500">SYSTEM STATUS: OPTIMAL // ENCRYPTED</span>
+</footer>
+</body></html>

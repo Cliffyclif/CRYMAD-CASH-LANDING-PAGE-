@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&amp;family=JetBrains+Mono:wght@400;700&amp;family=Space+Grotesk:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+    body {
+      background-color: #06100d;
+      font-family: 'Inter', sans-serif;
+      color: #d9e5df;
+      overflow: hidden;
+    }
+    .jade-gradient-text {
+      background: linear-gradient(to bottom, #10b981, #34d399);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .mono-label {
+      font-family: 'JetBrains Mono', monospace;
+      letter-spacing: 0.05em;
+    }
+    .glass-panel {
+      background: rgba(44, 55, 51, 0.4);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+    }
+    .ghost-border {
+      border: 1px solid rgba(101, 243, 182, 0.1);
+    }
+    .breathing-ring {
+      box-shadow: 0 0 0 2px rgba(101, 243, 182, 0.4);
+    }
+    @keyframes pulse-slow {
+      0%, 100% { opacity: 0.4; }
+      50% { opacity: 0.8; }
+    }
+    .animate-pulse-slow {
+      animation: pulse-slow 6s ease-in-out infinite;
+    }
+  </style>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "tertiary-dim": "#efab53",
+            "inverse-surface": "#f0fcf6",
+            "surface-container-lowest": "#000000",
+            "error": "#ff716c",
+            "surface-variant": "#1a2924",
+            "surface-bright": "#1f2f2a",
+            "outline": "#6c7873",
+            "on-secondary-container": "#ffc2ba",
+            "primary-fixed-dim": "#55e4a9",
+            "tertiary-container": "#ffb95f",
+            "primary-dim": "#55e4a9",
+            "secondary-fixed-dim": "#fcb1a8",
+            "secondary-fixed": "#ffc3bc",
+            "secondary-container": "#6c3832",
+            "on-background": "#f0fcf6",
+            "tertiary-fixed": "#ffb95f",
+            "on-primary": "#00583b",
+            "tertiary": "#ffcb8e",
+            "inverse-primary": "#006d4a",
+            "surface-container-highest": "#1a2924",
+            "primary-fixed": "#65f3b6",
+            "on-surface-variant": "#a2aea8",
+            "on-tertiary": "#684000",
+            "background": "#06100d",
+            "surface-dim": "#06100d",
+            "surface-container-high": "#15221e",
+            "on-error": "#490006",
+            "primary-container": "#07b77f",
+            "on-primary-fixed": "#00432c",
+            "secondary": "#ffb4ab",
+            "primary": "#65f3b6",
+            "on-secondary-fixed": "#562621",
+            "on-primary-container": "#002919",
+            "on-error-container": "#ffa8a3",
+            "on-primary-fixed-variant": "#006343",
+            "secondary-dim": "#efa69e",
+            "on-tertiary-container": "#5c3800",
+            "surface": "#06100d",
+            "surface-container": "#0f1c18",
+            "outline-variant": "#3f4a46",
+            "inverse-on-surface": "#4c5753",
+            "surface-tint": "#65f3b6",
+            "error-container": "#9f0519",
+            "on-tertiary-fixed-variant": "#684000",
+            "error-dim": "#d7383b",
+            "surface-container-low": "#0a1612",
+            "on-tertiary-fixed": "#412600",
+            "on-secondary-fixed-variant": "#78413b",
+            "on-secondary": "#64312c",
+            "tertiary-fixed-dim": "#efab53",
+            "on-surface": "#f0fcf6"
+          },
+          "borderRadius": {
+            "DEFAULT": "1rem",
+            "lg": "2rem",
+            "xl": "3rem",
+            "full": "9999px"
+          },
+          "fontFamily": {
+            "headline": ["Inter"],
+            "body": ["Inter"],
+            "label": ["Space Grotesk"]
+          }
+        },
+      },
+    }
+  </script>
+</head>
+<body class="relative min-h-screen">
+<!-- Background Bioluminescence Blobs -->
+<div class="fixed inset-0 overflow-hidden -z-10">
+<div class="absolute top-1/4 -left-20 w-96 h-96 bg-primary/20 rounded-full blur-[120px] animate-pulse-slow"></div>
+<div class="absolute bottom-1/4 -right-20 w-96 h-96 bg-tertiary/10 rounded-full blur-[120px] animate-pulse-slow" style="animation-delay: 2s"></div>
+</div>
+<!-- Parent Page Content (Team Behind) -->
+<div class="opacity-20 blur-sm pointer-events-none transition-all duration-700">
+<!-- TopNavBar -->
+<nav class="flex justify-between items-center w-full px-8 py-4 sticky top-0 z-50 bg-[#06100d]/40 backdrop-blur-xl border-[#65f3b6]/10 border-b">
+<div class="text-2xl font-black bg-clip-text text-transparent bg-gradient-to-b from-[#10b981] to-[#34d399]">CRYMAD CA$H</div>
+<div class="hidden md:flex items-center gap-8">
+<span class="text-[#d9e5df] opacity-70 mono-label uppercase text-xs">Dashboard</span>
+<span class="text-[#d9e5df] opacity-70 mono-label uppercase text-xs">Wallets</span>
+<span class="text-[#65f3b6] border-b-2 border-[#65f3b6] pb-1 mono-label uppercase text-xs">Transactions</span>
+<span class="text-[#d9e5df] opacity-70 mono-label uppercase text-xs">Banking</span>
+<span class="text-[#d9e5df] opacity-70 mono-label uppercase text-xs">Help</span>
+</div>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-[#65f3b6]">notifications</span>
+<span class="material-symbols-outlined text-[#65f3b6]">settings</span>
+<div class="w-8 h-8 rounded-full bg-surface-container-high border border-[#65f3b6]/20"></div>
+</div>
+</nav>
+<!-- Main Content Mock -->
+<main class="p-12 max-w-7xl mx-auto space-y-12">
+<header class="flex justify-between items-end">
+<div>
+<h1 class="text-5xl font-extrabold jade-gradient-text tracking-tight">Team Management</h1>
+<p class="text-on-surface-variant mono-label mt-2">NETWORK NODES: 24 ACTIVE</p>
+</div>
+<button class="px-6 py-3 border border-primary text-primary mono-label uppercase text-sm rounded-full">Add Member</button>
+</header>
+<div class="grid grid-cols-3 gap-6">
+<div class="h-64 rounded-xl bg-surface-container-low ghost-border"></div>
+<div class="h-64 rounded-xl bg-surface-container-low ghost-border"></div>
+<div class="h-64 rounded-xl bg-surface-container-low ghost-border"></div>
+</div>
+</main>
+<!-- BottomNavBar -->
+<footer class="fixed bottom-0 w-full z-50 flex justify-around items-center px-12 py-3 bg-[#0a1612]/60 backdrop-blur-md border-t border-[#65f3b6]/10 rounded-t-[32px]">
+<div class="flex items-center gap-2 text-[#d9e5df]/60 mono-label text-[10px] uppercase font-bold">
+<span class="material-symbols-outlined text-sm">check_circle</span> System Operational
+      </div>
+<div class="flex items-center gap-2 text-[#d9e5df]/60 mono-label text-[10px] uppercase font-bold">
+<span class="material-symbols-outlined text-sm">trending_up</span> BTC: $64,201
+      </div>
+<div class="flex items-center gap-2 text-[#d9e5df]/60 mono-label text-[10px] uppercase font-bold">
+<span class="material-symbols-outlined text-sm">currency_bitcoin</span> ETH: $3,452
+      </div>
+<div class="flex items-center gap-2 text-[#d9e5df]/60 mono-label text-[10px] uppercase font-bold">
+<span class="material-symbols-outlined text-sm">sync</span> Sync: 2m ago
+      </div>
+</footer>
+</div>
+<!-- Modal Overlay -->
+<div class="fixed inset-0 z-[100] flex items-center justify-center p-4">
+<!-- Centered Glass Modal -->
+<div class="w-full max-w-[520px] glass-panel rounded-xl shadow-[0_20px_60px_rgba(4,13,10,0.5),0_0_40px_rgba(16,185,129,0.15)] border border-[rgba(16,185,129,0.08)] relative flex flex-col">
+<!-- Close Button -->
+<button class="absolute top-6 right-6 text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined">close</span>
+</button>
+<div class="p-8 space-y-8">
+<!-- Heading & Subtitle -->
+<div class="space-y-1">
+<h2 class="text-3xl font-extrabold jade-gradient-text tracking-tight">Edit Role</h2>
+<p class="text-xs font-normal text-on-surface-variant mono-label uppercase">UPDATE PERMISSIONS FOR THIS MEMBER</p>
+</div>
+<!-- Member Header -->
+<div class="flex items-center gap-4 bg-surface-container-low/50 p-4 rounded-lg ghost-border">
+<div class="relative">
+<img alt="Sarah Chen" class="w-16 h-16 rounded-full object-cover breathing-ring p-0.5 bg-background" data-alt="Professional portrait of a young woman with dark hair against a soft dark background, sharp focus, cinematic lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAh7wirmnN0bLtKzFGxl6FW47F79_giFwjvTDecfnc6KP8Z-pMAlPndAKFv7MzfDckCKafzdvs3kVejhN2V5_PYI9W50gtN10eG_GV-ogpLhx4qNnN9RweMckm5W72sryIu7ar8ig_k6X1ohBfn9oTriYHL97pB00AnqxJz17ZAaoxllI8dIqy_EAD1kllmsuW9c5SfYJrgxl39xRSMDxtWeY5wKrEVbpNNyHBpJvjCMIEzUs7WXN0rVxHrhTbe166LTjce4w9SVJs"/>
+<div class="absolute inset-0 rounded-full border-2 border-primary/40 animate-ping opacity-20"></div>
+</div>
+<div class="flex-1">
+<h3 class="text-lg font-semibold text-on-surface">Sarah Chen</h3>
+<p class="text-xs text-on-surface-variant mono-label">sarah@crymad.io</p>
+</div>
+<div class="px-3 py-1 bg-primary/10 border border-primary/20 text-primary text-[10px] font-bold mono-label rounded-full">
+            MANAGER
+          </div>
+</div>
+<!-- Role Selector Grid -->
+<div class="grid grid-cols-2 gap-3">
+<!-- ADMIN -->
+<div class="p-4 rounded-lg bg-surface-container-low/30 ghost-border cursor-pointer hover:bg-surface-container-high/50 transition-all group">
+<div class="flex justify-between items-start mb-2">
+<span class="material-symbols-outlined text-primary group-hover:scale-110 transition-transform">shield</span>
+<span class="text-[10px] mono-label text-on-surface-variant">24 PERMS</span>
+</div>
+<p class="font-bold text-sm text-on-surface">ADMIN</p>
+<p class="text-[10px] text-on-surface-variant leading-tight mt-1">Full system override and node configuration.</p>
+</div>
+<!-- MANAGER (Selected) -->
+<div class="p-4 rounded-lg bg-primary/5 border-2 border-primary shadow-[0_0_15px_rgba(101,243,182,0.15)] cursor-pointer transition-all relative overflow-hidden">
+<div class="flex justify-between items-start mb-2">
+<span class="material-symbols-outlined text-primary" data-weight="fill">badge</span>
+<span class="text-[10px] mono-label text-primary">18 PERMS</span>
+</div>
+<p class="font-bold text-sm text-on-surface">MANAGER</p>
+<p class="text-[10px] text-on-surface-variant leading-tight mt-1">Team ops, transaction approvals &amp; reporting.</p>
+<div class="absolute -right-2 -bottom-2 opacity-10">
+<span class="material-symbols-outlined text-4xl text-primary">check_circle</span>
+</div>
+</div>
+<!-- VIEWER -->
+<div class="p-4 rounded-lg bg-surface-container-low/30 ghost-border cursor-pointer hover:bg-surface-container-high/50 transition-all group">
+<div class="flex justify-between items-start mb-2">
+<span class="material-symbols-outlined text-primary group-hover:scale-110 transition-transform">table_eye</span>
+<span class="text-[10px] mono-label text-on-surface-variant">4 PERMS</span>
+</div>
+<p class="font-bold text-sm text-on-surface">VIEWER</p>
+<p class="text-[10px] text-on-surface-variant leading-tight mt-1">Read-only access to dashboards &amp; logs.</p>
+</div>
+<!-- ACCOUNTANT -->
+<div class="p-4 rounded-lg bg-surface-container-low/30 ghost-border cursor-pointer hover:bg-surface-container-high/50 transition-all group">
+<div class="flex justify-between items-start mb-2">
+<span class="material-symbols-outlined text-primary group-hover:scale-110 transition-transform">briefcase_meal</span>
+<span class="text-[10px] mono-label text-on-surface-variant">12 PERMS</span>
+</div>
+<p class="font-bold text-sm text-on-surface">ACCOUNTANT</p>
+<p class="text-[10px] text-on-surface-variant leading-tight mt-1">Financial reconciliation &amp; tax exports.</p>
+</div>
+</div>
+<!-- Changes Preview -->
+<div class="p-5 glass-panel rounded-lg border border-primary/10 space-y-3">
+<p class="text-[10px] mono-label text-primary font-bold">CHANGES</p>
+<div class="space-y-2">
+<div class="flex items-center gap-2 text-primary text-xs font-semibold">
+<span class="material-symbols-outlined text-sm">add_circle</span>
+              Access Reports
+            </div>
+<div class="flex items-center gap-2 text-primary text-xs font-semibold">
+<span class="material-symbols-outlined text-sm">add_circle</span>
+              Export Data
+            </div>
+<div class="flex items-center gap-2 text-secondary text-xs font-semibold">
+<span class="material-symbols-outlined text-sm">do_not_disturb_on</span>
+              Manage API Keys
+            </div>
+</div>
+</div>
+<!-- Footer Actions -->
+<div class="flex items-center gap-4 pt-4">
+<button class="flex-1 py-3 text-xs mono-label uppercase font-bold text-on-surface-variant hover:text-on-surface transition-colors">
+            CANCEL
+          </button>
+<button class="flex-[1.5] py-3 bg-transparent border border-primary text-primary hover:bg-gradient-to-r hover:from-primary/20 hover:to-primary-container/20 mono-label uppercase text-xs font-bold rounded-lg transition-all flex items-center justify-center gap-2 group">
+            UPDATE ROLE 
+            <span class="material-symbols-outlined text-sm group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</body></html>

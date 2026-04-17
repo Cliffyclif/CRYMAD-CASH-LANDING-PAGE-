@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Biolume Team | Batch Import</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800&amp;family=JetBrains+Mono:wght@400;700&amp;family=Space+Grotesk:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary-container": "#d6963f",
+                        "on-secondary": "#003824",
+                        "on-tertiary-container": "#523200",
+                        "surface-container-lowest": "#06100d",
+                        "tertiary-fixed-dim": "#ffb95f",
+                        "on-secondary-fixed": "#002114",
+                        "on-primary-fixed": "#002113",
+                        "inverse-on-surface": "#28332f",
+                        "tertiary-fixed": "#ffddb8",
+                        "surface-container-highest": "#2c3733",
+                        "secondary": "#4edea3",
+                        "on-background": "#d9e5df",
+                        "surface-tint": "#4edea3",
+                        "surface-container-low": "#131e1a",
+                        "outline": "#86948a",
+                        "primary-fixed-dim": "#4edea3",
+                        "error-container": "#93000a",
+                        "on-secondary-container": "#003e28",
+                        "secondary-fixed": "#6ffbbe",
+                        "surface-container-high": "#222c29",
+                        "secondary-fixed-dim": "#4edea3",
+                        "tertiary": "#ffb95f",
+                        "primary": "#4edea3",
+                        "on-primary": "#003824",
+                        "background": "#0b1512",
+                        "outline-variant": "#3c4a42",
+                        "on-error": "#690005",
+                        "surface-bright": "#313b38",
+                        "surface-container": "#17221e",
+                        "surface-dim": "#0b1512",
+                        "error": "#ffb4ab",
+                        "on-surface": "#d9e5df",
+                        "primary-fixed": "#6ffbbe",
+                        "inverse-primary": "#006c49",
+                        "on-tertiary": "#472a00",
+                        "on-tertiary-fixed-variant": "#653e00",
+                        "on-surface-variant": "#bbcabf",
+                        "on-error-container": "#ffdad6",
+                        "on-secondary-fixed-variant": "#005236",
+                        "primary-container": "#10b981",
+                        "surface": "#0b1512",
+                        "secondary-container": "#00b47d",
+                        "inverse-surface": "#d9e5df",
+                        "on-tertiary-fixed": "#2a1700",
+                        "on-primary-fixed-variant": "#005236",
+                        "surface-variant": "#2c3733",
+                        "on-primary-container": "#00422b"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "1rem",
+                        "lg": "2rem",
+                        "xl": "3rem",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Inter"],
+                        "body": ["Inter"],
+                        "label": ["Space Grotesk"],
+                        "mono": ["JetBrains Mono"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-panel {
+            background: rgba(44, 55, 51, 0.4);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(16, 185, 129, 0.08);
+        }
+        .diagonal-lines {
+            background-image: repeating-linear-gradient(45deg, rgba(16, 185, 129, 0.05) 0, rgba(16, 185, 129, 0.05) 1px, transparent 0, transparent 50%);
+            background-size: 40px 40px;
+        }
+    </style>
+</head>
+<body class="bg-[#040d0a] text-on-surface font-body selection:bg-primary/30 selection:text-primary min-h-screen overflow-hidden">
+<!-- Living Background -->
+<div class="fixed inset-0 overflow-hidden pointer-events-none z-0">
+<div class="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] bg-[#10b981] rounded-full blur-[120px] opacity-20"></div>
+<div class="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-[#34d399] rounded-full blur-[100px] opacity-15"></div>
+<div class="absolute top-[20%] right-[10%] w-[30%] h-[30%] bg-[#00b47d] rounded-full blur-[120px] opacity-10"></div>
+<div class="absolute bottom-[20%] left-[10%] w-[25%] h-[25%] bg-[#4edea3] rounded-full blur-[80px] opacity-10"></div>
+<div class="absolute inset-0 diagonal-lines opacity-20"></div>
+</div>
+<!-- Main Content (Dimmed & Blurred Background) -->
+<div class="relative z-10 opacity-20 blur-sm pointer-events-none transition-all duration-700 h-screen overflow-hidden">
+<!-- TopNavBar (Shared Component) -->
+<nav class="flex justify-between items-center px-8 h-20 w-full fixed top-0 z-50 bg-[#0b1512]/80 backdrop-blur-xl">
+<div class="text-2xl font-black bg-gradient-to-r from-[#10b981] to-[#34d399] bg-clip-text text-transparent">Biolume Team</div>
+<div class="hidden md:flex items-center space-x-8">
+<a class="text-[#10b981] font-bold border-b-2 border-[#10b981] pb-1 font-['Inter']" href="#">Dashboard</a>
+<a class="text-[#d9e5df]/60 hover:text-[#d9e5df] transition-all duration-300 font-['Inter']" href="#">Wallets</a>
+<a class="text-[#d9e5df]/60 hover:text-[#d9e5df] transition-all duration-300 font-['Inter']" href="#">Cards</a>
+<a class="text-[#d9e5df]/60 hover:text-[#d9e5df] transition-all duration-300 font-['Inter']" href="#">Transactions</a>
+<a class="text-[#d9e5df]/60 hover:text-[#d9e5df] transition-all duration-300 font-['Inter']" href="#">Banking</a>
+<a class="text-[#d9e5df]/60 hover:text-[#d9e5df] transition-all duration-300 font-['Inter']" href="#">Help</a>
+</div>
+<div class="flex items-center space-x-6">
+<span class="material-symbols-outlined text-on-surface/60 hover:bg-[#2c3733]/50 p-2 rounded-full cursor-pointer transition-all">notifications</span>
+<span class="material-symbols-outlined text-on-surface/60 hover:bg-[#2c3733]/50 p-2 rounded-full cursor-pointer transition-all">settings</span>
+<div class="w-10 h-10 rounded-full bg-surface-container-highest overflow-hidden">
+<img alt="User Profile" class="w-full h-full object-cover" data-alt="professional portrait of a tech executive with a clean modern aesthetic and soft studio lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC6R8jTeWqIuLT1_mgUprDzD5SaBy75ZdZvnmIa5l8Xn1Iq-TiUD32MZxDWgJCSbb4Um1LO2W3K_waX2MOvB4CycJZabX9yRUba9odl1xp5jYRDvNxnlKKgWNOimBpsRlLebwFV4Knwx2FSu0EVE0B5URnPzFtNW1W4-AGMNKV8rL-KRuIiF8-6OrLmP_2UhoCRhtYVb48y90YC4bgvluXhBs46VfivAobz9s_4Sw5Qaiabyqv_usWU5ye3pGW24KOaJLYdmoO0vpU"/>
+</div>
+</div>
+</nav>
+<!-- Dashboard Placeholder Content -->
+<main class="pt-28 px-12 pb-20">
+<div class="flex justify-between items-end mb-12">
+<div>
+<h1 class="text-5xl font-extrabold tracking-tight mb-2">Team Management</h1>
+<p class="text-on-surface/60 max-w-lg">Control access and permissions for your entire bioluminescent ecosystem.</p>
+</div>
+<button class="px-8 py-3 rounded-full border border-primary text-primary font-mono uppercase tracking-widest text-sm hover:bg-gradient-to-r hover:from-primary hover:to-primary-container hover:text-on-primary transition-all duration-300">
+                    Add Member
+                </button>
+</div>
+<div class="grid grid-cols-12 gap-6">
+<div class="col-span-8 glass-panel rounded-xl p-8 min-h-[400px]"></div>
+<div class="col-span-4 glass-panel rounded-xl p-8 min-h-[400px]"></div>
+</div>
+</main>
+<!-- BottomNavBar (Shared Component) -->
+<footer class="fixed bottom-0 w-full h-10 z-40 flex justify-between items-center px-10 bg-[#040d0a]/90 backdrop-blur-md">
+<div class="flex items-center space-x-2 text-[#4edea3] font-['JetBrains_Mono'] uppercase tracking-widest text-[10px]">
+<span class="material-symbols-outlined text-xs">check_circle</span>
+<span>System Operational</span>
+</div>
+<div class="flex items-center space-x-8">
+<div class="flex items-center space-x-2 text-[#d9e5df]/40 font-['JetBrains_Mono'] uppercase tracking-widest text-[10px]">
+<span class="material-symbols-outlined text-xs">trending_up</span>
+<span>BTC: $64,231</span>
+</div>
+<div class="flex items-center space-x-2 text-[#d9e5df]/40 font-['JetBrains_Mono'] uppercase tracking-widest text-[10px]">
+<span class="material-symbols-outlined text-xs">trending_up</span>
+<span>ETH: $3,452</span>
+</div>
+</div>
+</footer>
+</div>
+<!-- Modal Overlay Centered -->
+<div class="fixed inset-0 z-[100] flex items-center justify-center p-6 bg-[#040d0a]/40">
+<!-- CENTERED GLASS MODAL DIALOG -->
+<div class="w-full max-w-[620px] glass-panel rounded-xl shadow-[0_20px_60px_rgba(4,13,10,0.5),0_0_40px_rgba(16,185,129,0.15)] overflow-hidden flex flex-col relative">
+<!-- Header -->
+<div class="p-8 pb-0">
+<div class="flex justify-between items-start">
+<div>
+<h2 class="text-3xl font-extrabold bg-gradient-to-r from-[#10b981] to-[#34d399] bg-clip-text text-transparent mb-1">Batch Import Members</h2>
+<p class="font-mono text-xs tracking-widest text-on-surface/40 uppercase">Invite multiple people at once</p>
+</div>
+<button class="text-on-surface/60 hover:text-primary transition-colors p-2 -mr-2">
+<span class="material-symbols-outlined">close</span>
+</button>
+</div>
+</div>
+<div class="p-8 space-y-6">
+<!-- CSV Upload Dropzone -->
+<div class="glass-panel border-2 border-dashed border-[#10b981]/30 rounded-xl p-10 flex flex-col items-center justify-center group cursor-pointer hover:border-primary/60 transition-all duration-300">
+<div class="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-primary text-3xl">cloud_upload</span>
+</div>
+<p class="font-mono text-sm tracking-tighter text-on-surface font-bold mb-1">DRAG &amp; DROP CSV FILE</p>
+<p class="text-sm text-on-surface/40">or <span class="text-primary hover:underline transition-all">click to browse</span></p>
+</div>
+<!-- Template Link -->
+<div class="flex justify-center">
+<a class="font-mono text-[10px] tracking-widest text-primary hover:text-primary-container transition-colors uppercase flex items-center space-x-2" href="#">
+<span>Need a template? Download CSV</span>
+<span class="material-symbols-outlined text-xs">arrow_forward</span>
+</a>
+</div>
+<!-- Preview Area -->
+<div class="space-y-3">
+<div class="flex justify-between items-center">
+<span class="font-mono text-[10px] tracking-widest text-on-surface/40 uppercase">Preview</span>
+<div class="flex items-center space-x-2 px-3 py-1 glass-panel rounded-full cursor-pointer hover:bg-surface-container-highest transition-colors">
+<span class="font-mono text-[10px] text-primary">DEFAULT ROLE: VIEWER</span>
+<span class="material-symbols-outlined text-[14px]">expand_more</span>
+</div>
+</div>
+<div class="glass-panel rounded-lg overflow-hidden border border-outline-variant/10">
+<table class="w-full text-left font-mono text-[11px] leading-relaxed">
+<tbody class="divide-y divide-outline-variant/10">
+<tr class="bg-surface-container-low/30 hover:bg-surface-container-highest/50 transition-colors">
+<td class="px-4 py-3 text-on-surface/80">alice@crymad.io</td>
+<td class="px-4 py-3 font-bold text-primary">ADMIN</td>
+<td class="px-4 py-3 text-on-surface/60">Alice Kim</td>
+</tr>
+<tr class="bg-surface-container-low/30 hover:bg-surface-container-highest/50 transition-colors">
+<td class="px-4 py-3 text-on-surface/80">bob@crymad.io</td>
+<td class="px-4 py-3 font-bold text-on-surface/40">VIEWER</td>
+<td class="px-4 py-3 text-on-surface/60">Bob Lee</td>
+</tr>
+<tr class="bg-surface-container-low/30 hover:bg-surface-container-highest/50 transition-colors">
+<td class="px-4 py-3 text-on-surface/80">carol@crymad.io</td>
+<td class="px-4 py-3 font-bold text-tertiary">MANAGER</td>
+<td class="px-4 py-3 text-on-surface/60">Carol Dao</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<!-- Error Strip -->
+<div class="bg-tertiary/20 border border-tertiary/30 rounded-lg p-3 flex justify-between items-center">
+<div class="flex items-center space-x-3">
+<span class="material-symbols-outlined text-tertiary text-lg">warning</span>
+<span class="font-mono text-[11px] text-tertiary font-bold tracking-tight">2 ROWS HAVE ISSUES</span>
+</div>
+<span class="material-symbols-outlined text-tertiary cursor-pointer">expand_more</span>
+</div>
+</div>
+<!-- Bottom Action Row -->
+<div class="p-8 pt-4 flex items-center justify-end space-x-4">
+<button class="px-6 py-2.5 rounded-full text-on-surface/60 font-mono text-xs uppercase tracking-widest hover:text-on-surface transition-colors">
+                    Cancel
+                </button>
+<button class="flex items-center space-x-3 px-8 py-3 rounded-full border border-primary text-primary font-mono text-xs uppercase tracking-widest hover:bg-gradient-to-r hover:from-primary hover:to-primary-container hover:text-on-primary transition-all duration-300">
+<span>Import 24 Members</span>
+<span class="material-symbols-outlined text-sm">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+</body></html>
