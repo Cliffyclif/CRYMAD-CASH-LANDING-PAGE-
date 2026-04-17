@@ -1,0 +1,1 @@
+{"root":["./src/app.tsx","./src/phoneshell.tsx","./src/stitchscreen.tsx","./src/main.tsx","./src/routes.generated.ts","./src/lib/api.ts","./src/lib/hooks.ts","./src/screens/loginscreen.tsx","./src/screens/registerscreen.tsx"],"version":"5.9.3"}
