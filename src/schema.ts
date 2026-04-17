@@ -1,5 +1,15 @@
 import { sqliteTable, text, integer, real } from "drizzle-orm/sqlite-core";
 
+export const userCache = sqliteTable("user_cache", {
+  email: text("email").primaryKey(),
+  userId: text("user_id").notNull(),
+  externalUserId: text("external_user_id"),
+  firstName: text("first_name"),
+  lastName: text("last_name"),
+  tenantId: text("tenant_id"),
+  createdAt: integer("created_at").notNull(),
+});
+
 export const sessions = sqliteTable("sessions", {
   id: text("id").primaryKey(),
   userId: text("user_id").notNull(),

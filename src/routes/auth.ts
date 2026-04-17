@@ -1,8 +1,11 @@
 import { Hono } from "hono";
 import { z } from "zod";
+import { eq } from "drizzle-orm";
 import { tyga } from "../tyga.js";
 import { authApi, usersApi } from "../tyga-client/index.js";
 import { createSession, destroySession, getSession } from "../session.js";
+import { db } from "../db.js";
+import { userCache } from "../schema.js";
 
 const loginSchema = z.object({
   email: z.string().email(),
@@ -28,21 +31,40 @@ authRoutes.post("/login", async (c) => {
   if (!parsed.success) return c.json({ error: "invalid body", details: parsed.error.flatten() }, 400);
 
   try {
-    const user = await usersApi.getUserBy(tyga, { email: parsed.data.email });
-    if (!user || !user.userId) {
+    // Look up the user in our local cache (populated on register). This cluster doesn't
+    // support email-based queries on TygaPay, so the cache keeps us reliable.
+    const cached = db.select().from(userCache).where(eq(userCache.email, parsed.data.email)).all()[0];
+    if (!cached?.userId) {
       return c.json({ error: "user not found", hint: "register first" }, 404);
+    }
+    // Cache has the userId — that's enough to mint a session. Optionally enrich from TygaPay.
+    let user: Record<string, unknown> = {
+      userId: cached.userId,
+      email: cached.email,
+      externalUserId: cached.externalUserId ?? undefined,
+      firstName: cached.firstName ?? undefined,
+      lastName: cached.lastName ?? undefined,
+      tenantId: cached.tenantId ?? undefined,
+    };
+    try {
+      const fresh = await usersApi.getUserBy(tyga, { userId: cached.userId });
+      if (fresh && typeof fresh === "object") {
+        user = { ...user, ...fresh, userId: cached.userId };
+      }
+    } catch {
+      /* cached copy is enough */
     }
     // Mint TygaPay client-token for SSO session
     let tygaClientToken: string | undefined;
     try {
-      const tokenResp = await authApi.clientToken(tyga, { userId: user.userId });
+      const tokenResp = await authApi.clientToken(tyga, { userId: cached.userId });
       tygaClientToken = tokenResp.token;
     } catch {
       // Auth service may not be provisioned on sandbox — non-fatal for local dev
     }
     await createSession(c, {
-      userId: user.userId,
-      email: user.email ?? parsed.data.email,
+      userId: cached.userId,
+      email: (user.email as string | undefined) ?? parsed.data.email,
       tygaClientToken,
     });
     return c.json({ ok: true, user });
@@ -56,13 +78,33 @@ authRoutes.post("/register", async (c) => {
   const parsed = registerSchema.safeParse(await c.req.json().catch(() => ({})));
   if (!parsed.success) return c.json({ error: "invalid body", details: parsed.error.flatten() }, 400);
   try {
-    // Auto-generate thirdPartyUserId from email if missing (TygaPay requires it)
+    // qqoeazmgga-uc cluster requires externalUserId + createdBy (not thirdPartyUserId).
+    // We auto-generate both from the email if not provided.
+    const slug = parsed.data.email.replace(/[^a-z0-9]/gi, "_");
     const body = {
       ...parsed.data,
-      thirdPartyUserId: parsed.data.thirdPartyUserId ?? `crmdx_${parsed.data.email.replace(/[^a-z0-9]/gi, "_")}`,
+      externalUserId: `crmdx_${slug}`,
+      thirdPartyUserId: parsed.data.thirdPartyUserId ?? `crmdx_${slug}`,
+      createdBy: "crmdx-signup",
     };
     const user = await usersApi.createUser(tyga, body);
     if (user.userId) {
+      // Cache the email -> userId mapping so future logins can find this user.
+      db.insert(userCache)
+        .values({
+          email: parsed.data.email,
+          userId: user.userId,
+          externalUserId: (user.externalUserId as string) ?? body.externalUserId,
+          firstName: parsed.data.firstName,
+          lastName: parsed.data.lastName,
+          tenantId: (user.tenantId as string) ?? null,
+          createdAt: Date.now(),
+        })
+        .onConflictDoUpdate({
+          target: userCache.email,
+          set: { userId: user.userId, firstName: parsed.data.firstName, lastName: parsed.data.lastName },
+        })
+        .run();
       await createSession(c, { userId: user.userId, email: user.email ?? parsed.data.email });
     }
     return c.json({ ok: true, user });

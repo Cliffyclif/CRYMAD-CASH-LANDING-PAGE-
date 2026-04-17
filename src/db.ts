@@ -17,6 +17,16 @@ export const db = drizzle(sqlite, { schema });
 
 // Initialize schema (dev-only quick bootstrap; prod would use drizzle-kit migrations)
 sqlite.exec(`
+  CREATE TABLE IF NOT EXISTS user_cache (
+    email TEXT PRIMARY KEY,
+    user_id TEXT NOT NULL,
+    external_user_id TEXT,
+    first_name TEXT,
+    last_name TEXT,
+    tenant_id TEXT,
+    created_at INTEGER NOT NULL
+  );
+
   CREATE TABLE IF NOT EXISTS sessions (
     id TEXT PRIMARY KEY,
     user_id TEXT NOT NULL,
