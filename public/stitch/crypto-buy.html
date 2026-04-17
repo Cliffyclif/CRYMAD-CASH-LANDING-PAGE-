@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&amp;family=JetBrains+Mono:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "surface-bright": "#313b38",
+                        "on-error": "#690005",
+                        "primary-fixed": "#6ffbbe",
+                        "on-surface": "#d9e5df",
+                        "on-tertiary-fixed-variant": "#653e00",
+                        "on-tertiary": "#472a00",
+                        "inverse-primary": "#006c49",
+                        "error": "#ffb4ab",
+                        "surface-dim": "#0b1512",
+                        "surface-container": "#17221e",
+                        "inverse-surface": "#d9e5df",
+                        "on-tertiary-fixed": "#2a1700",
+                        "surface": "#0b1512",
+                        "primary-container": "#10b981",
+                        "secondary-container": "#00bd85",
+                        "on-secondary-fixed-variant": "#005137",
+                        "on-error-container": "#ffdad6",
+                        "on-surface-variant": "#bbcabf",
+                        "on-primary-container": "#00422b",
+                        "surface-variant": "#2c3733",
+                        "on-primary-fixed-variant": "#005236",
+                        "tertiary-fixed-dim": "#ffb95f",
+                        "on-secondary-fixed": "#002114",
+                        "on-primary-fixed": "#002113",
+                        "inverse-on-surface": "#28332f",
+                        "tertiary-fixed": "#ffddb8",
+                        "surface-container-lowest": "#06100d",
+                        "tertiary-container": "#e29100",
+                        "on-secondary": "#003825",
+                        "on-tertiary-container": "#523200",
+                        "surface-container-low": "#131e1a",
+                        "outline": "#86948a",
+                        "secondary": "#45dfa4",
+                        "on-background": "#d9e5df",
+                        "surface-tint": "#4edea3",
+                        "surface-container-highest": "#2c3733",
+                        "secondary-fixed": "#68fcbf",
+                        "surface-container-high": "#222c29",
+                        "primary-fixed-dim": "#4edea3",
+                        "on-secondary-container": "#00452e",
+                        "error-container": "#93000a",
+                        "on-primary": "#003824",
+                        "background": "#0b1512",
+                        "outline-variant": "#3c4a42",
+                        "tertiary": "#ffb95f",
+                        "primary": "#4edea3",
+                        "secondary-fixed-dim": "#45dfa4"
+                    },
+                    borderRadius: {
+                        "DEFAULT": "1rem",
+                        "lg": "2rem",
+                        "xl": "3rem",
+                        "full": "9999px"
+                    },
+                    fontFamily: {
+                        "headline": ["Inter"],
+                        "body": ["Inter"],
+                        "label": ["Inter"],
+                        "mono": ["JetBrains Mono"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .glass-panel {
+            background: rgba(44, 55, 51, 0.4);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(16, 185, 129, 0.08);
+        }
+        .text-gradient {
+            background: linear-gradient(to bottom, #10b981, #34d399);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .bg-gradient-primary {
+            background: linear-gradient(135deg, #10b981, #34d399);
+        }
+        body {
+            background-color: #040d0a;
+            color: #d9e5df;
+            font-family: 'Inter', sans-serif;
+            overflow: hidden;
+        }
+        .mono {
+            font-family: 'JetBrains Mono', monospace;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="flex items-center justify-center min-h-screen">
+<!-- Mobile Screen Container (390x844) -->
+<div class="relative w-[390px] h-[844px] bg-surface overflow-hidden shadow-2xl">
+<!-- Background Blobs -->
+<div class="absolute top-20 left-10 w-64 h-64 bg-primary/20 rounded-full blur-[80px]"></div>
+<div class="absolute bottom-40 right-10 w-80 h-80 bg-secondary/10 rounded-full blur-[100px]"></div>
+<!-- Parent Crypto Screen (Dimmed & Blurred) -->
+<div class="absolute inset-0 opacity-25 blur-sm flex flex-col p-6 pointer-events-none">
+<header class="flex justify-between items-center mb-10">
+<div class="w-10 h-10 rounded-full bg-surface-variant flex items-center justify-center">
+<span class="material-symbols-outlined text-primary">menu</span>
+</div>
+<div class="w-10 h-10 rounded-full bg-surface-variant flex items-center justify-center">
+<span class="material-symbols-outlined text-primary">account_balance_wallet</span>
+</div>
+</header>
+<div class="space-y-6">
+<div class="h-40 glass-panel rounded-lg"></div>
+<div class="h-12 w-1/2 bg-surface-variant rounded-full"></div>
+<div class="grid grid-cols-2 gap-4">
+<div class="h-32 glass-panel rounded-lg"></div>
+<div class="h-32 glass-panel rounded-lg"></div>
+</div>
+<div class="h-64 glass-panel rounded-lg"></div>
+</div>
+</div>
+<!-- Bottom Sheet Overlay (Scrim) -->
+<div class="absolute inset-0 bg-black/40"></div>
+<!-- Bottom Sheet -->
+<div class="absolute bottom-0 w-full h-[75%] glass-panel rounded-t-[28px] flex flex-col">
+<!-- Grab Handle -->
+<div class="w-full flex justify-center pt-3 pb-6">
+<div class="w-9 h-1 bg-on-surface-variant/30 rounded-full"></div>
+</div>
+<!-- Content Container -->
+<div class="flex-1 px-6 overflow-y-auto">
+<h1 class="text-3xl font-extrabold text-gradient mb-8">Buy Crypto</h1>
+<!-- FROM Card -->
+<div class="glass-panel p-5 rounded-lg mb-2 relative">
+<div class="flex justify-between items-center mb-2">
+<span class="text-[10px] font-bold uppercase tracking-widest text-on-surface-variant">From</span>
+<div class="flex items-center gap-1.5 px-3 py-1 bg-surface-container rounded-full">
+<img alt="" class="w-4 h-4 rounded-full" data-alt="close up of a high quality circular american flag icon with realistic texture" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBD3VC6mfVJ11jmFWx4ULOXb--3CEySoIC_-NQ3jPfZe39WZZAYCWYlnxsy4mpxfdTag2-bHI_XxWC6bnNoD4zqG0pWPRqxjvwc3X1r4BISXCJpuGofN_I4n8XWRx7rF0_MoP2PGPaVriKLrZ_yCdG0TgScLHNdqMOoLbaMrofjZDs7ynsjXrGUxe9PVK9t0dnAYTdb7BopRpAQ5n5ihG52yRM8H_A-VhFBTg1s-QlLufTtlW-0zR6lOQTH3-o7BiXmf1HlNBAk2TGg"/>
+<span class="text-xs font-semibold">USD</span>
+</div>
+</div>
+<div class="flex items-baseline">
+<span class="mono text-2xl font-bold text-gradient mr-1">$</span>
+<input class="mono text-4xl font-bold bg-transparent border-none p-0 focus:ring-0 text-gradient w-full outline-none" readonly="" type="text" value="100.00"/>
+</div>
+</div>
+<!-- Swap Arrow -->
+<div class="flex justify-center -my-3 relative z-10">
+<div class="w-10 h-10 glass-panel rounded-full flex items-center justify-center text-primary shadow-lg">
+<span class="material-symbols-outlined text-xl">swap_vert</span>
+</div>
+</div>
+<!-- TO Card -->
+<div class="glass-panel p-5 rounded-lg mt-2 mb-6">
+<div class="flex justify-between items-center mb-2">
+<span class="text-[10px] font-bold uppercase tracking-widest text-on-surface-variant">To</span>
+<div class="flex items-center gap-1.5 px-3 py-1 bg-surface-container rounded-full cursor-pointer hover:bg-surface-variant transition-colors">
+<img alt="" class="w-4 h-4 rounded-full bg-tertiary flex items-center justify-center text-[10px] font-bold text-on-tertiary" data-alt="close up of a digital bitcoin symbol rendered in gold 3d texture" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDBNEQQSBMbyBGexOswIpSgEfgtDtlpVKDLT1P65oaw5JYwKjKUhNloiyLrskELM3TEroEqV869advh9bKBT6KhL2OWsd1FSvMd_Pb84IH1Jf6uYxseymO1QJKwel2WjwiBQp5UAnyOfnPOn2yMYhQ3ikPPIzrW-t_lwG52EisevJrcspGg700Mdjhrk4y7QpjC0htC6OZUAEm_fjzWTSpDdWR8klU8GUZI5dSxxe9FGmO2rSB82hN94r2Pr_HYfu2JTHvvK0PHkZYN"/>
+<span class="text-xs font-semibold">BTC</span>
+<span class="material-symbols-outlined text-sm">expand_more</span>
+</div>
+</div>
+<div class="mono text-2xl font-bold text-on-surface">
+                        0.00149 <span class="text-sm font-medium opacity-60">BTC</span>
+</div>
+</div>
+<!-- Live Rate -->
+<div class="flex items-center justify-center gap-2 mb-8">
+<div class="w-1.5 h-1.5 bg-primary rounded-full shadow-[0_0_8px_rgba(16,185,129,0.8)] animate-pulse"></div>
+<span class="mono text-xs text-on-surface-variant">1 BTC = $67,241.30</span>
+</div>
+<!-- Funding Source -->
+<div class="mb-8">
+<span class="text-[10px] font-bold uppercase tracking-widest text-on-surface-variant block mb-3 px-1">Funding Source</span>
+<div class="flex items-center justify-between p-4 glass-panel rounded-lg hover:bg-surface-variant transition-colors cursor-pointer">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary">account_balance_wallet</span>
+</div>
+<div>
+<p class="text-sm font-bold">E-Wallet</p>
+<p class="mono text-xs text-primary">$12,458.32</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant">chevron_right</span>
+</div>
+</div>
+<!-- Fee Breakdown -->
+<div class="glass-panel p-4 rounded-lg mb-10">
+<div class="flex justify-between mb-2">
+<span class="text-xs text-on-surface-variant">Fee</span>
+<span class="mono text-xs">$1</span>
+</div>
+<div class="flex justify-between">
+<span class="text-xs text-on-surface-variant">Crypto</span>
+<span class="mono text-xs text-primary">$99</span>
+</div>
+</div>
+</div>
+<!-- Footer & CTA -->
+<div class="px-6 pb-12 pt-4 bg-gradient-to-t from-surface to-transparent">
+<button class="w-full h-14 bg-gradient-primary rounded-full flex items-center justify-center gap-2 shadow-[0_8px_24px_rgba(16,185,129,0.3)] active:scale-95 transition-all duration-200">
+<span class="font-extrabold uppercase tracking-widest text-on-primary">BUY NOW</span>
+<span class="material-symbols-outlined text-on-primary">arrow_forward</span>
+</button>
+</div>
+<!-- iOS Home Indicator -->
+<div class="absolute bottom-2 left-1/2 -translate-x-1/2 w-[134px] h-[5px] bg-on-surface/20 rounded-full"></div>
+</div>
+</div>
+</body></html>

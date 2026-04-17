@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Batch Payout - The Bioluminescent Archive</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&amp;family=JetBrains+Mono:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary": "#45dfa4",
+                        "on-secondary-container": "#00452e",
+                        "surface-container": "#17221e",
+                        "on-primary-fixed": "#002113",
+                        "on-secondary": "#003825",
+                        "on-tertiary-fixed": "#2a1700",
+                        "tertiary-fixed": "#ffddb8",
+                        "surface": "#0b1512",
+                        "secondary-fixed": "#68fcbf",
+                        "inverse-on-surface": "#28332f",
+                        "outline-variant": "#3c4a42",
+                        "on-surface": "#d9e5df",
+                        "tertiary": "#ffb95f",
+                        "surface-tint": "#4edea3",
+                        "on-error": "#690005",
+                        "surface-container-highest": "#2c3733",
+                        "on-secondary-fixed-variant": "#005137",
+                        "on-surface-variant": "#bbcabf",
+                        "on-tertiary-container": "#523200",
+                        "surface-container-lowest": "#06100d",
+                        "on-tertiary": "#472a00",
+                        "primary": "#4edea3",
+                        "surface-variant": "#2c3733",
+                        "on-secondary-fixed": "#002114",
+                        "secondary-fixed-dim": "#45dfa4",
+                        "on-background": "#d9e5df",
+                        "inverse-primary": "#006c49",
+                        "surface-container-low": "#131e1a",
+                        "inverse-surface": "#d9e5df",
+                        "secondary-container": "#00bd85",
+                        "tertiary-fixed-dim": "#ffb95f",
+                        "on-primary": "#003824",
+                        "on-tertiary-fixed-variant": "#653e00",
+                        "primary-fixed-dim": "#4edea3",
+                        "primary-container": "#10b981",
+                        "on-primary-fixed-variant": "#005236",
+                        "surface-dim": "#0b1512",
+                        "error-container": "#93000a",
+                        "tertiary-container": "#e29100",
+                        "primary-fixed": "#6ffbbe",
+                        "on-error-container": "#ffdad6",
+                        "surface-container-high": "#222c29",
+                        "surface-bright": "#313b38",
+                        "background": "#0b1512",
+                        "error": "#ffb4ab",
+                        "outline": "#86948a",
+                        "on-primary-container": "#00422b"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "1rem",
+                        "lg": "2rem",
+                        "xl": "3rem",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Inter"],
+                        "body": ["Inter"],
+                        "label": ["Inter"],
+                        "mono": ["JetBrains Mono"]
+                    }
+                },
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-panel {
+            background: rgba(4, 13, 10, 0.6);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(16, 185, 129, 0.08);
+        }
+        .biolume-glow {
+            box-shadow: 0 0 40px -10px rgba(16, 185, 129, 0.15);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface font-body overflow-hidden">
+<!-- Background Layer (Blurred Parent Dashboard) -->
+<div class="fixed inset-0 z-0 opacity-40 blur-md scale-105">
+<!-- Mocking the Payouts Dashboard Background -->
+<div class="p-6 space-y-8">
+<div class="h-20 w-full glass-panel rounded-lg"></div>
+<div class="grid grid-cols-2 gap-4">
+<div class="h-32 glass-panel rounded-lg"></div>
+<div class="h-32 glass-panel rounded-lg"></div>
+</div>
+<div class="h-64 w-full glass-panel rounded-lg"></div>
+<div class="h-64 w-full glass-panel rounded-lg"></div>
+</div>
+<!-- Ambient Blobs -->
+<div class="absolute top-1/4 left-1/4 w-64 h-64 bg-primary/10 rounded-full blur-[80px]"></div>
+<div class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-secondary/10 rounded-full blur-[100px]"></div>
+</div>
+<!-- Bottom Sheet Overlay Darkener -->
+<div class="fixed inset-0 bg-black/60 z-10"></div>
+<!-- Bottom Sheet Container -->
+<div class="fixed bottom-0 left-0 right-0 h-[92%] z-50 glass-panel rounded-t-[28px] border-t border-primary/20 flex flex-col shadow-[0_-20px_50px_rgba(16,185,129,0.1)]">
+<!-- Grab Handle -->
+<div class="w-full flex justify-center py-3">
+<div class="w-12 h-1.5 bg-on-surface/10 rounded-full"></div>
+</div>
+<!-- Header -->
+<div class="px-6 pb-6">
+<h1 class="text-3xl font-extrabold tracking-tight bg-clip-text text-transparent bg-gradient-to-b from-[#10b981] to-[#34d399] uppercase font-headline">
+                Batch Payout
+            </h1>
+<p class="text-[10px] font-mono tracking-[0.2em] text-secondary mt-1">
+                PAY MULTIPLE AT ONCE
+            </p>
+</div>
+<!-- Scrollable Content Area -->
+<div class="flex-1 overflow-y-auto px-6 space-y-6 pb-32">
+<!-- CSV Upload Dropzone -->
+<div class="h-[180px] w-full border-2 border-dashed border-primary/30 rounded-lg flex flex-col items-center justify-center space-y-3 bg-primary/5 hover:bg-primary/10 transition-colors group cursor-pointer biolume-glow">
+<div class="w-14 h-14 rounded-full bg-primary/20 flex items-center justify-center group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-primary text-3xl" data-icon="cloud_upload">cloud_upload</span>
+</div>
+<p class="text-on-surface-variant text-sm font-medium">Tap to upload CSV or drag &amp; drop</p>
+</div>
+<!-- Parsed Preview List -->
+<div class="space-y-2">
+<div class="flex justify-between items-center mb-3">
+<h3 class="text-xs font-mono text-on-surface-variant uppercase tracking-widest">Parsed Preview</h3>
+<span class="text-[10px] font-mono bg-primary/20 text-primary px-2 py-0.5 rounded-full">5 ITEMS READY</span>
+</div>
+<!-- Row 1 -->
+<div class="flex items-center justify-between p-4 bg-surface-container-highest/40 rounded-full border border-primary/5">
+<div class="flex items-center space-x-3">
+<div class="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center overflow-hidden">
+<img alt="Avatar" class="w-full h-full object-cover" data-alt="minimalist avatar of a person with short hair and glasses on a teal background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC52qX7aeF0L0B2sQSkmfsULkLS552_Npg8ETXWlMxTDwz6nJZuz2hbgXdWhZQ1EZCkJZ7x0Ec3u3KeUAdCYyXKEPkz-bv7rbYHy-LDFIhgG3ERefYJK4GtRHefPqQ2opSx7qTm4QuiG6yYyW0H-ILSGR7G_FtcGQGvKXmUJvWezWGQDJL15qu_wM6Yr7LKn6QlPAMng2ABhE0w0WjcUwOfsVWAKjMAS1gIns5Kn0u38dNi35L5GoU_9mG_8yIFWY_Fpyne-pKtBiYO"/>
+</div>
+<div>
+<p class="text-sm font-semibold text-on-surface leading-none">Alex Rivera</p>
+<p class="text-[10px] text-on-surface-variant mt-0.5">Chase Bank • •••• 4492</p>
+</div>
+</div>
+<div class="flex items-center space-x-3">
+<span class="font-mono text-sm font-bold text-primary">$4,200.00</span>
+<span class="material-symbols-outlined text-primary text-lg" data-icon="check_circle" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+</div>
+<!-- Row 2 -->
+<div class="flex items-center justify-between p-4 bg-surface-container-highest/40 rounded-full border border-primary/5">
+<div class="flex items-center space-x-3">
+<div class="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center overflow-hidden">
+<img alt="Avatar" class="w-full h-full object-cover" data-alt="minimalist avatar of a person with wavy hair on a dark green background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD7XiR6_RryoIbtUBWNLEVjnTC02sf_wEGHJVwmK136xsZ9Rs6QKPgIpt4wW3tu7_jdpdw237G9uVdt033d25lqY1_zqzkuAknbvVooR0-URSIiX51JyLI7_nwbsd8QfUQksg7-PQe73cunKAvLwO0MOzk101kPWUU_bwSIJHRi9M6Re_AjX7npoXL2LjBxcOUSdOr7wcNAIIBl3WvlrOAH_HwLwkxxHZgGkmS9Ci8Qy7CmCgqp59ILt8bo1-iw3T3VRZztndQDQbz8"/>
+</div>
+<div>
+<p class="text-sm font-semibold text-on-surface leading-none">Jordan Smith</p>
+<p class="text-[10px] text-on-surface-variant mt-0.5">Wells Fargo • •••• 1102</p>
+</div>
+</div>
+<div class="flex items-center space-x-3">
+<span class="font-mono text-sm font-bold text-tertiary">$1,150.00</span>
+<span class="material-symbols-outlined text-tertiary text-lg" data-icon="warning" style="font-variation-settings: 'FILL' 1;">warning</span>
+</div>
+</div>
+<!-- Row 3 -->
+<div class="flex items-center justify-between p-4 bg-surface-container-highest/40 rounded-full border border-primary/5">
+<div class="flex items-center space-x-3">
+<div class="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center overflow-hidden">
+<img alt="Avatar" class="w-full h-full object-cover" data-alt="minimalist avatar of a person with a beanie on a emerald background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAWaoeFJG_RC3Fvp3j4F0KwRPk6Tc_ZNqsfG_JOaqjQeBV38b39faeY8IZLQL6VX-VXH6-A8OmS9GZWKTnwevsdhxK_EFdS_W-94TDQrqjWdBUB5HQnmkX1GM5LnueRLCl2GyAOhFliRq4tlLNXhhBJ1sbGaRv0VSRlCnj_ZJHFX1nEJ03sbWhqh4Zvv2MnW9CSwzI8O5TldvpH3hN36uHkzomobJj74SgURb9pT-R4DOxp4a4CUlmEwDOS4u5-XUWN9yY6CntSb_Mh"/>
+</div>
+<div>
+<p class="text-sm font-semibold text-on-surface leading-none">Casey Chen</p>
+<p class="text-[10px] text-on-surface-variant mt-0.5">Bank of America • •••• 8821</p>
+</div>
+</div>
+<div class="flex items-center space-x-3">
+<span class="font-mono text-sm font-bold text-primary">$8,940.00</span>
+<span class="material-symbols-outlined text-primary text-lg" data-icon="check_circle" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+</div>
+<!-- Row 4 -->
+<div class="flex items-center justify-between p-4 bg-surface-container-highest/40 rounded-full border border-primary/5">
+<div class="flex items-center space-x-3">
+<div class="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center overflow-hidden">
+<img alt="Avatar" class="w-full h-full object-cover" data-alt="minimalist avatar of a person with long straight hair on a teal background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC6MquoElE9N1NbXxk1uwQMTrAAiRH8mHkHl7bwE_U4B_XrwubCkkJxqDTLyR7ZjX_cm8OZ5cHgCIOAWuXm8samDumgheQ-y1xvezvxUnOM3Rpnfm1EKysPkdM0ahXybm1gJfEVFOd5PINVUa4_OLFyEdvDOQ0wTiXWmcdncHhH3SEkF89-MErHrjookylfGW-YXEyjJpJAaLz0tmiM_5i3vhkpjmKTtnrFsz-lsbv76mNzEuTID3WtY2jjr1G1tnbCngA-TteGMxgz"/>
+</div>
+<div>
+<p class="text-sm font-semibold text-on-surface leading-none">Morgan Lee</p>
+<p class="text-[10px] text-on-surface-variant mt-0.5">Citibank • •••• 3341</p>
+</div>
+</div>
+<div class="flex items-center space-x-3">
+<span class="font-mono text-sm font-bold text-primary">$2,500.00</span>
+<span class="material-symbols-outlined text-primary text-lg" data-icon="check_circle" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+</div>
+<!-- Row 5 -->
+<div class="flex items-center justify-between p-4 bg-surface-container-highest/40 rounded-full border border-primary/5">
+<div class="flex items-center space-x-3">
+<div class="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center overflow-hidden">
+<img alt="Avatar" class="w-full h-full object-cover" data-alt="minimalist avatar of a person with a short beard on a dark forest background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBbDReIc4bRrJJGi2aqhyP6TngNYnpg1xj2m_hXPqD3oxCTEI34hMj8qSlpKfhvMADSiszvd-5P-hfe050vBgYBtUCbGk3b_odAhPjFx7R4Hpq8mCnU-KDTx-_JPYn4kZMuBTl79gsgqIRuVU9SMpFdTv3suIiXbvmj_9Qa126Lc45LOIUwSqieFcVH6S5toZMmCUvS310n1vK1fJT20b27QVhGo5vgjP-i3iEEnyGdO0kQ7AR14Eo_jiwnNEIz7gkxCxuwQjLZ6Zxx"/>
+</div>
+<div>
+<p class="text-sm font-semibold text-on-surface leading-none">Sam Taylor</p>
+<p class="text-[10px] text-on-surface-variant mt-0.5">PNC Bank • •••• 9002</p>
+</div>
+</div>
+<div class="flex items-center space-x-3">
+<span class="font-mono text-sm font-bold text-primary">$1,450.00</span>
+<span class="material-symbols-outlined text-primary text-lg" data-icon="check_circle" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+</div>
+</div>
+<!-- Running Totals Strip -->
+<div class="glass-panel p-5 rounded-lg space-y-4 biolume-glow">
+<div class="flex justify-between items-end">
+<span class="text-[10px] font-mono text-on-surface-variant tracking-wider uppercase">Total Recipients</span>
+<span class="text-xl font-mono font-bold text-primary">24</span>
+</div>
+<div class="flex justify-between items-end border-t border-primary/5 pt-3">
+<span class="text-[10px] font-mono text-on-surface-variant tracking-wider uppercase">Subtotal Amount</span>
+<span class="text-xl font-mono font-bold text-on-surface">$18,240.00</span>
+</div>
+<div class="flex justify-between items-end border-t border-primary/5 pt-3">
+<span class="text-[10px] font-mono text-on-surface-variant tracking-wider uppercase">Transaction Fees</span>
+<span class="text-sm font-mono font-bold text-tertiary">$12.00</span>
+</div>
+</div>
+<!-- Authorization Row -->
+<div class="flex items-center space-x-4 p-4 rounded-lg bg-primary/5">
+<div class="relative flex items-center justify-center">
+<input class="w-6 h-6 rounded bg-surface border-primary/40 text-primary focus:ring-primary/20 transition-all checked:bg-primary" id="authorize" type="checkbox"/>
+</div>
+<label class="text-sm text-primary font-semibold leading-tight" for="authorize">
+                    I authorize this payout of <span class="font-mono">$18,252.00</span>
+</label>
+</div>
+</div>
+<!-- Sticky CTA Footer -->
+<div class="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-background to-transparent pt-12">
+<button class="w-full h-16 bg-primary text-on-primary font-extrabold text-lg rounded-full flex items-center justify-center space-x-2 shadow-[0_10px_30px_rgba(16,185,129,0.3)] active:scale-[0.98] transition-transform">
+<span>EXECUTE BATCH</span>
+<span class="material-symbols-outlined" data-icon="trending_flat">trending_flat</span>
+</button>
+<!-- Home Indicator Space -->
+<div class="h-6 w-full"></div>
+</div>
+</div>
+<!-- Top AppBar Navigation Shell (Simulated as Parent) -->
+<header class="fixed top-0 w-full z-10 px-6 h-20 flex items-center justify-between pointer-events-none opacity-20">
+<div class="flex items-center space-x-3">
+<span class="material-symbols-outlined text-primary" data-icon="menu">menu</span>
+<span class="font-headline font-extrabold tracking-tight uppercase text-primary">Payouts</span>
+</div>
+<div class="w-10 h-10 rounded-full bg-surface-container-highest border border-primary/20"></div>
+</header>
+<!-- Bottom Navigation Shell (Simulated as Parent) -->
+<nav class="fixed bottom-0 left-0 w-full h-20 flex justify-around items-center px-4 bg-surface-container-highest/40 backdrop-blur-md border-t border-primary/10 z-0 pointer-events-none opacity-20">
+<div class="flex flex-col items-center justify-center text-[#d9e5df]/40">
+<span class="material-symbols-outlined" data-icon="grid_view">grid_view</span>
+<span class="font-mono text-[10px] uppercase mt-1">Dashboard</span>
+</div>
+<div class="flex flex-col items-center justify-center text-primary bg-primary/10 rounded-full px-4 py-1">
+<span class="material-symbols-outlined" data-icon="payments">payments</span>
+<span class="font-mono text-[10px] uppercase mt-1">Payouts</span>
+</div>
+<div class="flex flex-col items-center justify-center text-[#d9e5df]/40">
+<span class="material-symbols-outlined" data-icon="group">group</span>
+<span class="font-mono text-[10px] uppercase mt-1">Recipients</span>
+</div>
+<div class="flex flex-col items-center justify-center text-[#d9e5df]/40">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-mono text-[10px] uppercase mt-1">Settings</span>
+</div>
+</nav>
+</body></html>

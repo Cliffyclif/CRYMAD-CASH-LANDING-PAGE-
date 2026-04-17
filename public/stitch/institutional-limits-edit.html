@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&amp;family=JetBrains+Mono:wght@400;700&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-panel {
+            background: rgba(44, 55, 51, 0.4);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(16, 185, 129, 0.08);
+        }
+        .text-gradient-emerald {
+            background: linear-gradient(to bottom, #10b981, #34d399);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .energy-line {
+            background: linear-gradient(90deg, transparent, rgba(16, 185, 129, 0.1), transparent);
+            height: 1px;
+            width: 100%;
+        }
+        body {
+            background-color: #040d0a;
+            color: #d9e5df;
+            font-family: 'Inter', sans-serif;
+            overflow: hidden;
+        }
+        .mono {
+            font-family: 'JetBrains Mono', monospace;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "surface-container-high": "#222c29",
+                      "on-secondary-fixed-variant": "#005137",
+                      "surface-tint": "#4edea3",
+                      "surface-variant": "#2c3733",
+                      "on-tertiary-fixed-variant": "#653e00",
+                      "tertiary": "#ffb95f",
+                      "inverse-on-surface": "#28332f",
+                      "secondary-fixed": "#68fcbf",
+                      "error": "#ffb4ab",
+                      "outline": "#86948a",
+                      "error-container": "#93000a",
+                      "surface-container-lowest": "#06100d",
+                      "tertiary-fixed": "#ffddb8",
+                      "on-tertiary-fixed": "#2a1700",
+                      "primary-fixed-dim": "#4edea3",
+                      "on-surface": "#d9e5df",
+                      "inverse-surface": "#d9e5df",
+                      "secondary-container": "#00bd85",
+                      "background": "#0b1512",
+                      "outline-variant": "#3c4a42",
+                      "surface-container-highest": "#2c3733",
+                      "on-error-container": "#ffdad6",
+                      "primary-fixed": "#6ffbbe",
+                      "on-error": "#690005",
+                      "primary-container": "#10b981",
+                      "tertiary-container": "#e29100",
+                      "on-tertiary-container": "#523200",
+                      "tertiary-fixed-dim": "#ffb95f",
+                      "secondary-fixed-dim": "#45dfa4",
+                      "on-surface-variant": "#bbcabf",
+                      "on-secondary-container": "#00452e",
+                      "on-primary-fixed-variant": "#005236",
+                      "on-background": "#d9e5df",
+                      "on-secondary-fixed": "#002114",
+                      "inverse-primary": "#006c49",
+                      "secondary": "#45dfa4",
+                      "on-primary-container": "#00422b",
+                      "surface-container-low": "#131e1a",
+                      "surface-container": "#17221e",
+                      "surface-bright": "#313b38",
+                      "surface": "#0b1512",
+                      "primary": "#4edea3",
+                      "on-primary": "#003824",
+                      "surface-dim": "#0b1512",
+                      "on-tertiary": "#472a00",
+                      "on-secondary": "#003825",
+                      "on-primary-fixed": "#002113"
+              },
+              "borderRadius": {
+                      "DEFAULT": "1rem",
+                      "lg": "2rem",
+                      "xl": "3rem",
+                      "full": "9999px"
+              },
+              "fontFamily": {
+                      "headline": ["Inter"],
+                      "body": ["Inter"],
+                      "label": ["Inter"]
+              }
+            },
+          }
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="antialiased">
+<!-- Background Layer (Parent Screen /institutional/limits) -->
+<div class="fixed inset-0 z-0 opacity-20 pointer-events-none scale-105 blur-sm p-6 overflow-hidden">
+<div class="flex justify-between items-center mb-12">
+<h1 class="text-3xl font-extrabold tracking-tight text-primary">Risk Management</h1>
+<span class="material-symbols-outlined text-primary text-3xl">account_balance</span>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div class="h-48 glass-panel rounded-lg"></div>
+<div class="h-48 glass-panel rounded-lg"></div>
+<div class="h-64 col-span-2 glass-panel rounded-lg"></div>
+</div>
+<!-- Ambient Blobs -->
+<div class="absolute top-1/4 -left-20 w-80 h-80 bg-primary/20 rounded-full blur-[100px]"></div>
+<div class="absolute bottom-1/4 -right-20 w-96 h-96 bg-secondary/10 rounded-full blur-[120px]"></div>
+</div>
+<!-- Scrim -->
+<div class="fixed inset-0 bg-black/60 z-10"></div>
+<!-- Bottom Sheet Container -->
+<div class="fixed bottom-0 inset-x-0 z-20 h-[85%] bg-[#040d0a] rounded-t-[28px] flex flex-col border-t border-primary/10 shadow-[0_-10px_50px_rgba(16,185,129,0.15)] overflow-hidden">
+<!-- Grab Handle -->
+<div class="w-full flex justify-center py-4">
+<div class="w-12 h-1 bg-surface-variant rounded-full"></div>
+</div>
+<!-- Sheet Content Scrollable Area -->
+<div class="flex-1 overflow-y-auto px-6 pb-28 space-y-8">
+<!-- Header -->
+<header class="flex justify-between items-start">
+<h2 class="text-3xl font-extrabold text-gradient-emerald tracking-tight">Edit Limit</h2>
+<button class="w-10 h-10 rounded-full glass-panel flex items-center justify-center hover:bg-surface-variant transition-colors">
+<span class="material-symbols-outlined text-on-surface-variant">close</span>
+</button>
+</header>
+<!-- Counterparty Card -->
+<div class="glass-panel p-5 rounded-lg relative overflow-hidden">
+<div class="absolute top-0 left-0 w-1 h-full bg-primary/50"></div>
+<div class="flex justify-between items-start">
+<div>
+<p class="text-[11px] font-semibold uppercase tracking-[0.2em] text-on-surface-variant mb-1">Counterparty</p>
+<h3 class="text-xl font-bold text-on-surface">Galaxy Digital</h3>
+<p class="mono text-xs text-primary/70 mt-1">CP-00421</p>
+</div>
+<div class="bg-tertiary/10 border border-tertiary/20 px-3 py-1 rounded-full">
+<p class="mono text-[10px] font-bold text-tertiary">44% UTILIZED</p>
+</div>
+</div>
+</div>
+<!-- Current Value & Input Section -->
+<div class="space-y-6">
+<div class="flex justify-between items-end">
+<div>
+<p class="text-[11px] font-semibold uppercase tracking-[0.2em] text-on-surface-variant mb-1">Current Limit</p>
+<p class="mono text-2xl font-bold text-on-surface">$50,000,000</p>
+</div>
+<div class="flex items-center gap-2 mono text-secondary font-bold text-sm bg-secondary/5 px-3 py-1 rounded-full border border-secondary/10">
+<span class="material-symbols-outlined text-sm">trending_up</span>
+<span>+$50M +100%</span>
+</div>
+</div>
+<div class="space-y-3">
+<label class="text-[11px] font-semibold uppercase tracking-[0.2em] text-primary/80 block">NEW LIMIT
+<div class="relative">
+<input class="w-full bg-[#06100d] border border-primary/20 rounded-lg p-6 mono text-3xl font-bold text-gradient-emerald focus:ring-0 focus:border-primary/40 transition-all text-center" type="text" value="$100,000,000"/>
+<div class="absolute inset-0 pointer-events-none rounded-lg shadow-[inset_0_0_20px_rgba(16,185,129,0.05)]"></div>
+</div>
+</label></div>
+</div>
+<!-- Form Elements -->
+<div class="grid grid-cols-1 gap-6">
+<div class="space-y-3">
+<label class="text-[11px] font-semibold uppercase tracking-[0.2em] text-on-surface-variant">Reason for change</label>
+<div class="relative">
+<select class="w-full glass-panel border-none rounded-lg px-4 py-4 appearance-none focus:ring-0 text-on-surface">
+<option>Business Growth</option>
+<option>Strategic</option>
+<option>Risk Reassessment</option>
+<option>Other</option>
+</select>
+<span class="material-symbols-outlined absolute right-4 top-4 text-primary pointer-events-none">expand_more</span>
+</div>
+</div>
+<div class="space-y-3">
+<label class="text-[11px] font-semibold uppercase tracking-[0.2em] text-on-surface-variant">Justification</label>
+<textarea class="w-full glass-panel border-none rounded-lg p-4 h-32 focus:ring-0 text-on-surface placeholder:text-on-surface-variant/40 resize-none" placeholder="Provide detailed rationale for limit expansion..."></textarea>
+</div>
+</div>
+<!-- Risk Impact & Approval -->
+<div class="space-y-6">
+<div class="bg-primary/5 p-4 rounded-lg border border-primary/10">
+<p class="mono text-xs text-primary flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">info</span>
+                        +$50M will push book exposure from 38% to 44%
+                    </p>
+</div>
+<div class="space-y-4">
+<div class="flex justify-between items-center">
+<p class="text-[11px] font-semibold uppercase tracking-[0.2em] text-on-surface-variant">APPROVAL REQUIRED</p>
+<p class="mono text-xs text-on-surface-variant/60">0/4 PENDING</p>
+</div>
+<div class="flex items-center gap-6 glass-panel p-4 rounded-lg">
+<div class="flex-1">
+<p class="text-xs font-semibold text-on-surface mb-1 uppercase tracking-wider">CRO + 2 Risk Officers + Board</p>
+<div class="flex gap-2">
+<div class="w-3 h-3 rounded-full border border-outline-variant"></div>
+<div class="w-3 h-3 rounded-full border border-outline-variant"></div>
+<div class="w-3 h-3 rounded-full border border-outline-variant"></div>
+<div class="w-3 h-3 rounded-full border border-outline-variant"></div>
+</div>
+</div>
+<div class="h-10 w-[1px] bg-outline-variant/30"></div>
+<div class="flex items-center gap-2 bg-surface-variant/40 px-3 py-2 rounded-full">
+<span class="material-symbols-outlined text-sm text-primary">calendar_today</span>
+<p class="mono text-[10px] font-bold text-on-surface">T + 2</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Sticky Footer Action -->
+<div class="absolute bottom-0 w-full p-6 glass-panel border-t-0 shadow-[0_-20px_40px_rgba(4,13,10,0.8)]">
+<button class="w-full h-16 bg-primary text-on-primary font-bold rounded-full flex items-center justify-center gap-3 active:scale-[0.98] transition-transform shadow-[0_0_20px_rgba(16,185,129,0.3)]">
+                SUBMIT FOR APPROVAL
+                <span class="material-symbols-outlined">arrow_forward</span>
+</button>
+</div>
+</div>
+<!-- Navigation Shell Placeholder (BottomNavBar) -->
+<nav class="fixed bottom-0 w-full z-50 rounded-t-[32px] bg-emerald-950/40 backdrop-blur-xl border-t border-emerald-500/10 flex justify-around items-center h-24 px-4 pb-4 shadow-[0_-10px_50px_rgba(16,185,129,0.08)]">
+<div class="flex flex-col items-center justify-center text-emerald-700/60">
+<span class="material-symbols-outlined" data-icon="account_balance_wallet">account_balance_wallet</span>
+<span class="text-[11px] font-semibold uppercase tracking-widest Inter">Portfolio</span>
+</div>
+<div class="flex flex-col items-center justify-center text-emerald-400 bg-emerald-500/10 rounded-full px-5 py-1">
+<span class="material-symbols-outlined" data-icon="security_update_good">security_update_good</span>
+<span class="text-[11px] font-semibold uppercase tracking-widest Inter">Risk Limits</span>
+</div>
+<div class="flex flex-col items-center justify-center text-emerald-700/60">
+<span class="material-symbols-outlined" data-icon="analytics">analytics</span>
+<span class="text-[11px] font-semibold uppercase tracking-widest Inter">Flow</span>
+</div>
+<div class="flex flex-col items-center justify-center text-emerald-700/60">
+<span class="material-symbols-outlined" data-icon="key">key</span>
+<span class="text-[11px] font-semibold uppercase tracking-widest Inter">Vault</span>
+</div>
+</nav>
+</body></html>

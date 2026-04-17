@@ -1,0 +1,122 @@
+/* Phone-frame layout for viewing mobile UX in browser */
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 32px 16px;
+  min-height: 100vh;
+}
+
+#root {
+  width: 100%;
+  max-width: 420px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: auto;
+}
+
+.phone-shell {
+  position: relative;
+  width: 390px;
+  height: 844px;
+  background: #040d0a;
+  border-radius: 56px;
+  border: 2px solid rgba(16, 185, 129, 0.24);
+  box-shadow:
+    0 0 0 10px rgba(8, 16, 14, 0.85),
+    0 0 80px rgba(16, 185, 129, 0.15),
+    0 40px 80px rgba(0, 0, 0, 0.5);
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.phone-notch {
+  position: absolute;
+  top: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 120px;
+  height: 28px;
+  background: #040d0a;
+  border-radius: 999px;
+  border: 1px solid rgba(16, 185, 129, 0.24);
+  z-index: 20;
+}
+
+.phone-viewport {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  overflow-y: auto;
+}
+.phone-viewport::-webkit-scrollbar { display: none; }
+
+.status-bar {
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 24px;
+  padding-top: 12px;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 11px;
+  font-weight: 700;
+  color: #d9e5df;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: rgba(4, 13, 10, 0.8);
+  backdrop-filter: blur(20px);
+}
+
+.tab-bar {
+  position: sticky;
+  bottom: 0;
+  height: 83px;
+  padding: 8px 16px 28px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-around;
+  background: rgba(4, 13, 10, 0.9);
+  backdrop-filter: blur(20px);
+  border-top: 1px solid rgba(16, 185, 129, 0.08);
+  z-index: 10;
+}
+
+.tab-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 8px 12px;
+  flex: 1;
+  cursor: pointer;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 9px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: rgba(217, 229, 223, 0.5);
+  transition: color 200ms;
+}
+.tab-item.active { color: #10b981; }
+.tab-icon {
+  width: 22px;
+  height: 22px;
+  border-radius: 6px;
+  background: currentColor;
+  opacity: 0.85;
+}
+
+@media (max-width: 440px) {
+  body { padding: 0; }
+  .phone-shell {
+    width: 100vw;
+    height: 100vh;
+    border-radius: 0;
+    border: 0;
+    box-shadow: none;
+  }
+  .phone-notch { display: none; }
+}

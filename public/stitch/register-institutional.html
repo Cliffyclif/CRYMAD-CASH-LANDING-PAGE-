@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&amp;family=JetBrains+Mono:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "primary-fixed": "#6ffbbe",
+                      "error": "#ffb4ab",
+                      "secondary-fixed": "#68fcbf",
+                      "primary-fixed-dim": "#4edea3",
+                      "tertiary-fixed-dim": "#ffb95f",
+                      "outline": "#86948a",
+                      "on-surface-variant": "#bbcabf",
+                      "on-secondary-container": "#00452e",
+                      "primary-container": "#10b981",
+                      "surface-tint": "#4edea3",
+                      "inverse-primary": "#006c49",
+                      "primary": "#4edea3",
+                      "surface": "#0b1512",
+                      "surface-container-lowest": "#06100d",
+                      "outline-variant": "#3c4a42",
+                      "on-secondary": "#003825",
+                      "on-secondary-fixed-variant": "#005137",
+                      "surface-bright": "#313b38",
+                      "on-error": "#690005",
+                      "error-container": "#93000a",
+                      "on-primary-fixed-variant": "#005236",
+                      "secondary-container": "#00bd85",
+                      "tertiary": "#ffb95f",
+                      "surface-variant": "#2c3733",
+                      "tertiary-container": "#e29100",
+                      "surface-container-highest": "#2c3733",
+                      "on-primary": "#003824",
+                      "secondary-fixed-dim": "#45dfa4",
+                      "on-error-container": "#ffdad6",
+                      "surface-container-high": "#222c29",
+                      "on-tertiary-fixed": "#2a1700",
+                      "surface-container-low": "#131e1a",
+                      "surface-dim": "#0b1512",
+                      "surface-container": "#17221e",
+                      "on-surface": "#d9e5df",
+                      "on-primary-fixed": "#002113",
+                      "on-primary-container": "#00422b",
+                      "on-tertiary-container": "#523200",
+                      "tertiary-fixed": "#ffddb8",
+                      "secondary": "#45dfa4",
+                      "on-secondary-fixed": "#002114",
+                      "on-tertiary-fixed-variant": "#653e00",
+                      "on-background": "#d9e5df",
+                      "inverse-on-surface": "#28332f",
+                      "background": "#0b1512",
+                      "inverse-surface": "#d9e5df",
+                      "on-tertiary": "#472a00"
+              },
+              "borderRadius": {
+                      "DEFAULT": "1rem",
+                      "lg": "2rem",
+                      "xl": "3rem",
+                      "full": "9999px"
+              },
+              "fontFamily": {
+                      "headline": ["Inter"],
+                      "body": ["Inter"],
+                      "label": ["Inter"],
+                      "mono": ["JetBrains Mono"]
+              }
+            },
+          },
+        }
+      </script>
+<style>
+        body {
+            background-color: #040d0a;
+            color: #d9e5df;
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .bg-pattern {
+            background-image: repeating-linear-gradient(45deg, rgba(16, 185, 129, 0.05) 0px, rgba(16, 185, 129, 0.05) 1px, transparent 1px, transparent 20px);
+        }
+        .glass-panel {
+            background: rgba(44, 55, 51, 0.4);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(16, 185, 129, 0.1);
+        }
+        .inset-input {
+            background: rgba(6, 16, 13, 0.6);
+            border: 1px solid rgba(16, 185, 129, 0.08);
+            border-radius: 24px;
+        }
+        .inset-input:focus-within {
+            border-color: rgba(16, 185, 129, 0.2);
+        }
+        .gradient-text {
+            background: linear-gradient(to bottom, #10b981, #34d399);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="min-h-screen relative">
+<!-- Animated Blobs -->
+<div class="fixed inset-0 overflow-hidden pointer-events-none z-0">
+<div class="absolute top-[-10%] left-[-10%] w-[400px] h-[400px] bg-primary/20 blur-[60px] rounded-full"></div>
+<div class="absolute top-[20%] right-[-5%] w-[300px] h-[300px] bg-secondary/15 blur-[60px] rounded-full"></div>
+<div class="absolute bottom-[10%] left-[5%] w-[350px] h-[350px] bg-tertiary/10 blur-[60px] rounded-full"></div>
+<div class="absolute bottom-[-10%] right-[10%] w-[400px] h-[400px] bg-primary/10 blur-[60px] rounded-full"></div>
+<div class="absolute inset-0 bg-pattern opacity-30"></div>
+</div>
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full rounded-b-[24px] bg-emerald-950/40 backdrop-blur-xl border-b border-emerald-500/10 shadow-[0_0_40px_rgba(16,185,129,0.05)] z-50 flex items-center justify-between px-6 py-4 h-16">
+<div class="flex items-center gap-4">
+<button class="active:scale-95 transition-transform hover:bg-emerald-500/10 p-2 rounded-full text-emerald-500">
+<span class="material-symbols-outlined">arrow_back</span>
+</button>
+<div class="flex items-center gap-2">
+<h1 class="font-['Inter'] font-extrabold uppercase tracking-widest text-transparent bg-clip-text bg-gradient-to-b from-[#10b981] to-[#34d399]">ONBOARDING</h1>
+<div class="bg-tertiary/20 px-2 py-0.5 rounded-full flex items-center gap-1.5 border border-tertiary/20">
+<div class="w-1.5 h-1.5 bg-tertiary rounded-full animate-pulse"></div>
+<span class="text-[10px] font-mono font-bold text-tertiary">INST</span>
+</div>
+</div>
+</div>
+<button class="active:scale-95 transition-transform hover:bg-emerald-500/10 p-2 rounded-full text-emerald-500">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</header>
+<!-- Main Content -->
+<main class="relative z-10 pt-24 pb-40 px-5 space-y-16 max-w-2xl mx-auto">
+<!-- Progress Steps -->
+<nav class="flex items-center justify-center gap-3">
+<div class="flex-1 glass-panel py-2 px-4 rounded-full flex items-center justify-center gap-2 border-emerald-500/40">
+<span class="material-symbols-outlined text-emerald-500 text-sm" style="font-variation-settings: 'FILL' 1;">business</span>
+<span class="font-mono text-[10px] font-bold text-emerald-400">ENTITY</span>
+</div>
+<div class="flex-1 glass-panel py-2 px-4 rounded-full flex items-center justify-center gap-2 opacity-50">
+<span class="material-symbols-outlined text-emerald-800 text-sm">account_balance_wallet</span>
+<span class="font-mono text-[10px] font-bold text-emerald-800/60">UBO</span>
+</div>
+<div class="flex-1 glass-panel py-2 px-4 rounded-full flex items-center justify-center gap-2 opacity-50">
+<span class="material-symbols-outlined text-emerald-800 text-sm">description</span>
+<span class="font-mono text-[10px] font-bold text-emerald-800/60">DOCS</span>
+</div>
+</nav>
+<!-- Header Text -->
+<section class="space-y-2">
+<h2 class="text-4xl font-extrabold gradient-text tracking-tight">Institutional Onboarding</h2>
+<div class="flex items-center gap-2 text-on-surface-variant/60">
+<span class="font-mono text-sm tracking-tighter">KYB · 48H REVIEW</span>
+</div>
+</section>
+<!-- ENTITY INFO -->
+<section class="space-y-6">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center border border-primary/20">
+<span class="material-symbols-outlined text-primary text-lg">corporate_fare</span>
+</div>
+<h3 class="font-bold text-lg tracking-tight">ENTITY INFO</h3>
+</div>
+<div class="grid grid-cols-1 gap-5">
+<div class="space-y-2">
+<label class="text-[11px] font-mono font-bold text-primary/60 px-4">LEGAL NAME</label>
+<div class="inset-input px-4 py-4 flex items-center">
+<input class="bg-transparent w-full outline-none text-on-surface placeholder:text-outline/40" placeholder="Enter formal entity name" type="text"/>
+</div>
+</div>
+<div class="space-y-2">
+<label class="text-[11px] font-mono font-bold text-primary/60 px-4">ENTITY TYPE</label>
+<div class="glass-panel px-5 py-4 rounded-[24px] flex items-center justify-between cursor-pointer">
+<span class="text-on-surface font-semibold">Hedge Fund</span>
+<span class="material-symbols-outlined text-primary">expand_more</span>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div class="space-y-2">
+<label class="text-[11px] font-mono font-bold text-primary/60 px-4">JURISDICTION</label>
+<div class="inset-input px-4 py-4">
+<input class="bg-transparent w-full outline-none text-on-surface placeholder:text-outline/40 text-sm" placeholder="Cayman Islands" type="text"/>
+</div>
+</div>
+<div class="space-y-2">
+<label class="text-[11px] font-mono font-bold text-primary/60 px-4">INCORPORATED</label>
+<div class="inset-input px-4 py-4">
+<input class="bg-transparent w-full outline-none text-on-surface font-mono placeholder:text-outline/40 text-sm" placeholder="DD / MM / YYYY" type="text"/>
+</div>
+</div>
+</div>
+<div class="space-y-2">
+<label class="text-[11px] font-mono font-bold text-primary/60 px-4">LEI (LEGAL ENTITY IDENTIFIER)</label>
+<div class="inset-input px-4 py-4 flex items-center gap-3">
+<span class="material-symbols-outlined text-outline/40 text-sm">fingerprint</span>
+<input class="bg-transparent w-full outline-none text-primary font-mono placeholder:text-outline/40 tracking-widest" placeholder="549300..." type="text"/>
+</div>
+</div>
+<div class="space-y-2">
+<label class="text-[11px] font-mono font-bold text-primary/60 px-4">REGULATORY STATUS</label>
+<div class="glass-panel px-5 py-4 rounded-[24px] flex items-center justify-between cursor-pointer">
+<span class="text-on-surface-variant">Select compliance status...</span>
+<span class="material-symbols-outlined text-primary">verified_user</span>
+</div>
+</div>
+</div>
+</section>
+<!-- BUSINESS PROFILE -->
+<section class="space-y-6">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center border border-primary/20">
+<span class="material-symbols-outlined text-primary text-lg">monitoring</span>
+</div>
+<h3 class="font-bold text-lg tracking-tight">BUSINESS PROFILE</h3>
+</div>
+<div class="space-y-5">
+<div class="space-y-2">
+<label class="text-[11px] font-mono font-bold text-primary/60 px-4">INDUSTRY</label>
+<div class="glass-panel px-5 py-4 rounded-[24px] flex items-center justify-between cursor-pointer">
+<span class="text-on-surface">Asset Management</span>
+<span class="material-symbols-outlined text-primary">category</span>
+</div>
+</div>
+<div class="space-y-3">
+<label class="text-[11px] font-mono font-bold text-primary/60 px-4">EXPECTED VOLUME TIER</label>
+<div class="flex flex-wrap gap-2">
+<button class="px-5 py-2.5 rounded-full font-mono text-xs glass-panel text-on-surface/60 hover:border-primary/30 transition-all">
+                            $1M
+                        </button>
+<button class="px-5 py-2.5 rounded-full font-mono text-xs glass-panel text-on-surface/60 hover:border-primary/30 transition-all">
+                            $10M
+                        </button>
+<button class="px-5 py-2.5 rounded-full font-mono text-xs bg-primary text-on-primary shadow-[0_0_15px_rgba(78,222,163,0.3)] border border-primary-fixed">
+                            $100M
+                        </button>
+<button class="px-5 py-2.5 rounded-full font-mono text-xs glass-panel text-on-surface/60 hover:border-primary/30 transition-all">
+                            $1B+
+                        </button>
+</div>
+</div>
+<div class="space-y-2">
+<label class="text-[11px] font-mono font-bold text-primary/60 px-4">USE CASES</label>
+<div class="grid grid-cols-2 gap-3">
+<div class="glass-panel px-4 py-3 rounded-xl flex items-center gap-3 border-primary/40 bg-primary/5">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span class="text-sm font-semibold">OTC</span>
+</div>
+<div class="glass-panel px-4 py-3 rounded-xl flex items-center gap-3 border-primary/40 bg-primary/5">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span class="text-sm font-semibold">Custody</span>
+</div>
+<div class="glass-panel px-4 py-3 rounded-xl flex items-center gap-3 opacity-60">
+<span class="material-symbols-outlined text-outline/30">radio_button_unchecked</span>
+<span class="text-sm font-semibold">Treasury</span>
+</div>
+<div class="glass-panel px-4 py-3 rounded-xl flex items-center gap-3 opacity-60">
+<span class="material-symbols-outlined text-outline/30">radio_button_unchecked</span>
+<span class="text-sm font-semibold">Payments</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- REGULATORY -->
+<section class="space-y-6">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center border border-primary/20">
+<span class="material-symbols-outlined text-primary text-lg">gavel</span>
+</div>
+<h3 class="font-bold text-lg tracking-tight">REGULATORY</h3>
+</div>
+<div class="space-y-5">
+<div class="space-y-2">
+<label class="text-[11px] font-mono font-bold text-primary/60 px-4">REGULATOR NAME</label>
+<div class="inset-input px-4 py-4">
+<input class="bg-transparent w-full outline-none text-on-surface placeholder:text-outline/40" placeholder="e.g. SEC, FCA, CIMA" type="text"/>
+</div>
+</div>
+<div class="space-y-2">
+<label class="text-[11px] font-mono font-bold text-primary/60 px-4">REGISTRATION NUMBER</label>
+<div class="inset-input px-4 py-4">
+<input class="bg-transparent w-full outline-none text-primary font-mono placeholder:text-outline/40" placeholder="R-XXXX-XXXXX" type="text"/>
+</div>
+</div>
+</div>
+</section>
+<!-- CONTACT -->
+<section class="space-y-6">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center border border-primary/20">
+<span class="material-symbols-outlined text-primary text-lg">person_pin_circle</span>
+</div>
+<h3 class="font-bold text-lg tracking-tight">COMPLIANCE CONTACT</h3>
+</div>
+<div class="grid grid-cols-1 gap-5">
+<div class="space-y-2">
+<label class="text-[11px] font-mono font-bold text-primary/60 px-4">CCO FULL NAME</label>
+<div class="inset-input px-4 py-4">
+<input class="bg-transparent w-full outline-none text-on-surface" placeholder="Chief Compliance Officer" type="text"/>
+</div>
+</div>
+<div class="space-y-2">
+<label class="text-[11px] font-mono font-bold text-primary/60 px-4">CCO EMAIL</label>
+<div class="inset-input px-4 py-4 flex items-center gap-3">
+<span class="material-symbols-outlined text-outline/40 text-sm">mail</span>
+<input class="bg-transparent w-full outline-none text-on-surface" placeholder="compliance@entity.com" type="email"/>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Bottom Actions -->
+<footer class="fixed bottom-0 w-full glass-panel border-t-0 rounded-t-[32px] px-6 pt-6 pb-10 z-50">
+<div class="max-w-2xl mx-auto space-y-6">
+<div class="flex flex-col items-center gap-4">
+<p class="font-mono text-[10px] text-on-surface-variant/40 tracking-wider flex items-center gap-2">
+<span class="material-symbols-outlined text-[12px]">lock</span>
+                    Encrypted · Reviewed by compliance team in 48h
+                </p>
+<button class="w-full bg-primary py-5 rounded-full text-on-primary font-extrabold flex items-center justify-center gap-3 active:scale-[0.98] transition-all hover:shadow-[0_0_40px_rgba(78,222,163,0.4)]">
+                    CONTINUE TO UBO
+                    <span class="material-symbols-outlined text-xl">arrow_forward</span>
+</button>
+</div>
+<!-- Home Indicator -->
+<div class="w-32 h-1.5 bg-on-surface/10 rounded-full mx-auto mt-4"></div>
+</div>
+</footer>
+
+```</body></html>

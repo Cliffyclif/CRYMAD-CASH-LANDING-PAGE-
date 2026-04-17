@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&amp;family=JetBrains+Mono:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "tertiary-fixed": "#ffddb8",
+                        "tertiary-container": "#e29100",
+                        "surface-container-lowest": "#06100d",
+                        "inverse-surface": "#d9e5df",
+                        "secondary-fixed-dim": "#45dfa4",
+                        "inverse-on-surface": "#28332f",
+                        "surface-container-high": "#222c29",
+                        "surface-dim": "#0b1512",
+                        "on-primary-fixed": "#002113",
+                        "outline": "#86948a",
+                        "on-tertiary-fixed": "#2a1700",
+                        "on-secondary": "#003825",
+                        "on-secondary-container": "#00452e",
+                        "primary-fixed": "#6ffbbe",
+                        "on-surface": "#d9e5df",
+                        "on-secondary-fixed-variant": "#005137",
+                        "surface-container": "#17221e",
+                        "inverse-primary": "#006c49",
+                        "surface-container-highest": "#2c3733",
+                        "primary-container": "#10b981",
+                        "error": "#ffb4ab",
+                        "background": "#0b1512",
+                        "on-secondary-fixed": "#002114",
+                        "on-error": "#690005",
+                        "primary-fixed-dim": "#4edea3",
+                        "surface-variant": "#2c3733",
+                        "surface-container-low": "#131e1a",
+                        "on-primary-container": "#00422b",
+                        "tertiary-fixed-dim": "#ffb95f",
+                        "secondary": "#45dfa4",
+                        "primary": "#4edea3",
+                        "on-background": "#d9e5df",
+                        "on-surface-variant": "#bbcabf",
+                        "on-primary-fixed-variant": "#005236",
+                        "surface-bright": "#313b38",
+                        "outline-variant": "#3c4a42",
+                        "on-primary": "#003824",
+                        "surface": "#0b1512",
+                        "error-container": "#93000a",
+                        "tertiary": "#ffb95f",
+                        "on-tertiary": "#472a00",
+                        "secondary-fixed": "#68fcbf",
+                        "on-tertiary-container": "#523200",
+                        "on-error-container": "#ffdad6",
+                        "surface-tint": "#4edea3",
+                        "secondary-container": "#00bd85",
+                        "on-tertiary-fixed-variant": "#653e00"
+                    },
+                    borderRadius: {
+                        "DEFAULT": "1rem",
+                        "lg": "2rem",
+                        "xl": "3rem",
+                        "full": "9999px"
+                    },
+                    fontFamily: {
+                        "headline": ["Inter"],
+                        "body": ["Inter"],
+                        "label": ["Inter"],
+                        "mono": ["JetBrains Mono"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .glass-sheet {
+            background: rgba(44, 55, 51, 0.4);
+            backdrop-filter: blur(20px);
+            border-top: 1px solid rgba(16, 185, 129, 0.08);
+        }
+        .biolume-glow {
+            box-shadow: 0 0 40px rgba(16, 185, 129, 0.08);
+        }
+        .diagonal-lines {
+            background-image: repeating-linear-gradient(45deg, rgba(16, 185, 129, 0.03) 0, rgba(16, 185, 129, 0.03) 1px, transparent 0, transparent 50%);
+            background-size: 10px 10px;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-[#040d0a] text-on-surface font-body selection:bg-primary/30 min-h-screen overflow-hidden">
+<!-- Background Layer (Living Hardware) -->
+<div class="fixed inset-0 z-0 overflow-hidden">
+<div class="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] rounded-full bg-primary/10 blur-[100px]"></div>
+<div class="absolute bottom-[-10%] right-[-10%] w-[60%] h-[60%] rounded-full bg-secondary/5 blur-[120px]"></div>
+<div class="absolute inset-0 diagonal-lines opacity-30"></div>
+</div>
+<!-- Parent Screen (Blurred/Dimmed Content) -->
+<div class="fixed inset-0 z-10 opacity-25 blur-sm flex flex-col p-6 pointer-events-none">
+<header class="flex justify-between items-center mb-8">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-surface-container-highest border border-primary/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary" data-icon="user_profile_biometric">user_attributes</span>
+</div>
+<div class="font-headline font-black tracking-widest text-primary uppercase">ARCHIVE</div>
+</div>
+<span class="material-symbols-outlined text-primary" data-icon="bolt">bolt</span>
+</header>
+<div class="space-y-6">
+<div class="h-32 w-full rounded-lg bg-surface-container-low border border-primary/5 p-6 flex flex-col justify-end">
+<div class="font-mono text-4xl font-bold text-primary">12,450.00</div>
+<div class="font-label text-xs tracking-widest opacity-40 uppercase">Total Portfolio (USD)</div>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div class="h-24 bg-surface-container border border-primary/5 rounded-lg"></div>
+<div class="h-24 bg-surface-container border border-primary/5 rounded-lg"></div>
+</div>
+<div class="h-64 bg-surface-container-low border border-primary/5 rounded-lg"></div>
+</div>
+</div>
+<!-- Backdrop Overlay -->
+<div class="fixed inset-0 bg-background/60 z-20"></div>
+<!-- Bottom Sheet -->
+<div class="fixed bottom-0 left-0 right-0 z-30 flex flex-col h-[75%] max-w-lg mx-auto">
+<div class="glass-sheet rounded-t-[28px] h-full flex flex-col biolume-glow">
+<!-- Grab Handle -->
+<div class="flex justify-center py-4">
+<div class="w-9 h-1 bg-on-surface/10 rounded-full"></div>
+</div>
+<!-- Content Container -->
+<div class="flex-1 px-8 pb-8 overflow-y-auto">
+<div class="flex justify-between items-start mb-6">
+<div>
+<h1 class="text-2xl font-headline font-black tracking-tighter uppercase bg-clip-text text-transparent bg-gradient-to-b from-primary to-secondary leading-tight">
+                            Convert &amp; Send to Card
+                        </h1>
+<p class="font-mono text-[10px] tracking-widest text-on-surface-variant uppercase mt-1">
+                            CRYPTO TO FIAT TO CARD
+                        </p>
+</div>
+<button class="w-10 h-10 rounded-full bg-surface-container-highest flex items-center justify-center hover:bg-surface-bright transition-colors">
+<span class="material-symbols-outlined text-on-surface-variant text-xl" data-icon="close">close</span>
+</button>
+</div>
+<!-- Input Group -->
+<div class="space-y-4">
+<!-- Asset Selector -->
+<div class="bg-surface-container-low rounded-lg p-4 border border-primary/5 flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-[#26a17b]/20 flex items-center justify-center">
+<span class="material-symbols-outlined text-[#26a17b] text-lg" data-icon="currency_exchange" style="font-variation-settings: 'FILL' 1;">currency_exchange</span>
+</div>
+<span class="font-headline font-semibold text-on-surface">USDT</span>
+</div>
+<span class="material-symbols-outlined text-on-surface/40" data-icon="expand_more">expand_more</span>
+</div>
+<!-- Amount Input -->
+<div class="bg-surface-container-lowest rounded-lg p-6 border border-primary/10 shadow-inner">
+<div class="flex justify-between items-center mb-2">
+<label class="font-label text-[10px] uppercase tracking-widest opacity-40">Amount to Convert</label>
+<span class="font-mono text-[10px] text-primary">Max: 1,200.00</span>
+</div>
+<div class="flex items-baseline gap-2">
+<span class="font-mono text-4xl font-bold text-on-surface">500</span>
+<span class="font-mono text-lg text-primary/60">USDT</span>
+</div>
+</div>
+<!-- Card Target -->
+<div class="bg-surface-container-low rounded-lg p-4 border border-primary/5 flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-lg" data-icon="credit_card" style="font-variation-settings: 'FILL' 1;">credit_card</span>
+</div>
+<div>
+<p class="text-sm font-semibold">Physical •••2049</p>
+<p class="text-[10px] opacity-40 uppercase tracking-tighter">Instant Sync Enabled</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-on-surface/40" data-icon="chevron_right">chevron_right</span>
+</div>
+</div>
+<!-- Conversion Preview Area -->
+<div class="mt-8 pt-6 border-t border-primary/5">
+<div class="flex items-center justify-between px-2">
+<div class="flex flex-col items-center">
+<span class="font-mono text-sm text-on-surface">500 USDT</span>
+</div>
+<span class="material-symbols-outlined text-primary/30" data-icon="arrow_forward">arrow_forward</span>
+<div class="flex flex-col items-center">
+<span class="font-mono text-sm text-on-surface">$500.00</span>
+</div>
+<span class="material-symbols-outlined text-primary/30" data-icon="arrow_forward">arrow_forward</span>
+<div class="flex flex-col items-center">
+<span class="font-mono text-sm text-primary">Card</span>
+</div>
+</div>
+<!-- Data Rows -->
+<div class="mt-8 space-y-3">
+<div class="flex justify-between items-center">
+<span class="font-label text-[11px] uppercase tracking-widest opacity-40">Network Fee</span>
+<span class="font-mono text-sm text-on-surface">$2.50</span>
+</div>
+<div class="flex justify-between items-center">
+<span class="font-label text-[11px] uppercase tracking-widest opacity-40">Conversion Rate</span>
+<span class="font-mono text-sm text-on-surface">1 USDT = $1.00</span>
+</div>
+</div>
+</div>
+<!-- CTA Button -->
+<div class="mt-8">
+<button class="w-full h-14 rounded-full bg-gradient-to-r from-primary to-secondary text-on-primary-container font-headline font-black uppercase tracking-widest flex items-center justify-center gap-2 shadow-[0_0_20px_rgba(16,185,129,0.3)] active:scale-95 transition-all duration-200">
+                        SYNC NOW
+                        <span class="material-symbols-outlined" data-icon="trending_flat">trending_flat</span>
+</button>
+<button class="w-full mt-4 h-10 font-label text-[10px] text-on-surface/40 uppercase tracking-widest hover:text-on-surface transition-colors">
+                        Cancel Transaction
+                    </button>
+</div>
+</div>
+</div>
+</div>
+<!-- Fixed Bottom Navbar Fragment (Visible but below sheet) -->
+<nav class="fixed bottom-6 left-0 right-0 flex justify-around items-center z-40 mx-auto max-w-md w-[92%] rounded-full bg-[#2c3733]/40 backdrop-blur-xl border border-[#10b981]/10 px-4 py-2 shadow-[0_10px_40px_rgba(4,13,10,0.8)] opacity-20 pointer-events-none">
+<div class="flex flex-col items-center text-on-surface/40 py-2 px-4">
+<span class="material-symbols-outlined text-lg" data-icon="account_balance_wallet">account_balance_wallet</span>
+<span class="text-[8px] mt-1 font-semibold uppercase tracking-widest">Vault</span>
+</div>
+<div class="flex flex-col items-center text-on-surface/40 py-2 px-4">
+<span class="material-symbols-outlined text-lg" data-icon="query_stats">query_stats</span>
+<span class="text-[8px] mt-1 font-semibold uppercase tracking-widest">Flow</span>
+</div>
+<div class="flex flex-col items-center text-primary bg-primary/10 rounded-full py-2 px-4 shadow-[0_0_15px_rgba(16,185,129,0.2)]">
+<span class="material-symbols-outlined text-lg" data-icon="swap_calls">swap_calls</span>
+<span class="text-[8px] mt-1 font-semibold uppercase tracking-widest">Swap</span>
+</div>
+<div class="flex flex-col items-center text-on-surface/40 py-2 px-4">
+<span class="material-symbols-outlined text-lg" data-icon="credit_card">credit_card</span>
+<span class="text-[8px] mt-1 font-semibold uppercase tracking-widest">Card</span>
+</div>
+<div class="flex flex-col items-center text-on-surface/40 py-2 px-4">
+<span class="material-symbols-outlined text-lg" data-icon="Settings">settings</span>
+<span class="text-[8px] mt-1 font-semibold uppercase tracking-widest">Intel</span>
+</div>
+</nav>
+</body></html>

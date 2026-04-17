@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Issue Reward - Bioluminescent Archive</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&amp;family=JetBrains+Mono:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                "surface-container-low": "#131e1a",
+                "on-background": "#d9e5df",
+                "inverse-primary": "#006c49",
+                "secondary-fixed-dim": "#45dfa4",
+                "surface-variant": "#2c3733",
+                "on-secondary-fixed": "#002114",
+                "primary": "#4edea3",
+                "surface-container-lowest": "#06100d",
+                "on-tertiary": "#472a00",
+                "on-tertiary-container": "#523200",
+                "on-surface-variant": "#bbcabf",
+                "on-secondary-fixed-variant": "#005137",
+                "surface-container-highest": "#2c3733",
+                "on-error": "#690005",
+                "tertiary": "#ffb95f",
+                "surface-tint": "#4edea3",
+                "outline-variant": "#3c4a42",
+                "on-surface": "#d9e5df",
+                "tertiary-fixed": "#ffddb8",
+                "surface": "#0b1512",
+                "secondary-fixed": "#68fcbf",
+                "inverse-on-surface": "#28332f",
+                "on-tertiary-fixed": "#2a1700",
+                "on-secondary": "#003825",
+                "on-primary-fixed": "#002113",
+                "surface-container": "#17221e",
+                "secondary": "#45dfa4",
+                "on-secondary-container": "#00452e",
+                "outline": "#86948a",
+                "on-primary-container": "#00422b",
+                "error": "#ffb4ab",
+                "surface-bright": "#313b38",
+                "background": "#0b1512",
+                "surface-container-high": "#222c29",
+                "on-error-container": "#ffdad6",
+                "primary-fixed": "#6ffbbe",
+                "tertiary-container": "#e29100",
+                "error-container": "#93000a",
+                "surface-dim": "#0b1512",
+                "on-primary-fixed-variant": "#005236",
+                "primary-fixed-dim": "#4edea3",
+                "primary-container": "#10b981",
+                "on-tertiary-fixed-variant": "#653e00",
+                "tertiary-fixed-dim": "#ffb95f",
+                "on-primary": "#003824",
+                "secondary-container": "#00bd85",
+                "inverse-surface": "#d9e5df"
+            },
+            "borderRadius": {
+                "DEFAULT": "1rem",
+                "lg": "2rem",
+                "xl": "3rem",
+                "full": "9999px"
+            },
+            "fontFamily": {
+                "headline": ["Inter"],
+                "body": ["Inter"],
+                "label": ["Inter"],
+                "mono": ["JetBrains Mono"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            background-color: #040d0a;
+            color: #d9e5df;
+            font-family: 'Inter', sans-serif;
+            overflow: hidden;
+            width: 390px;
+            height: 844px;
+            margin: 0 auto;
+            position: relative;
+        }
+        .bioluminescent-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+            background: radial-gradient(circle at 50% 20%, rgba(16, 185, 129, 0.1) 0%, transparent 50%),
+                        radial-gradient(circle at 10% 80%, rgba(52, 211, 153, 0.05) 0%, transparent 40%);
+        }
+        .glass-panel {
+            background: rgba(44, 55, 51, 0.4);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(16, 185, 129, 0.08);
+        }
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .ghost-border {
+            border: 1px solid rgba(16, 185, 129, 0.08);
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="flex flex-col items-center">
+<!-- Background Decoration -->
+<div class="bioluminescent-bg"></div>
+<div class="absolute top-1/4 -left-10 w-40 h-40 bg-primary/10 rounded-full blur-[60px]"></div>
+<div class="absolute bottom-1/4 -right-10 w-60 h-60 bg-secondary/10 rounded-full blur-[80px]"></div>
+<!-- Parent Screen (/rewards) - Dimmed Background -->
+<div class="w-full h-full p-6 opacity-30 pointer-events-none">
+<header class="flex justify-between items-center mb-8">
+<h1 class="text-2xl font-black text-on-background">Rewards</h1>
+<div class="w-10 h-10 rounded-full bg-surface-container-high"></div>
+</header>
+<div class="grid grid-cols-2 gap-4">
+<div class="h-32 rounded-lg bg-surface-container-low"></div>
+<div class="h-32 rounded-lg bg-surface-container-low"></div>
+<div class="h-48 col-span-2 rounded-lg bg-surface-container-low"></div>
+</div>
+</div>
+<!-- Top App Bar (Shared Component Anchor) -->
+<nav class="fixed top-0 w-full px-4 pt-4 z-10">
+<div class="flex justify-between items-center h-16 w-full max-w-md mx-auto backdrop-blur-xl bg-transparent">
+<div class="p-2 hover:bg-emerald-500/10 transition-colors rounded-full scale-95 active:duration-150">
+<span class="material-symbols-outlined text-emerald-500">menu</span>
+</div>
+<h2 class="font-['Inter'] font-extrabold text-transparent bg-clip-text bg-gradient-to-b from-[#10b981] to-[#34d399] text-xl">Issue Reward</h2>
+<div class="w-8 h-8 rounded-full border-2 border-emerald-500/20 overflow-hidden">
+<img alt="User profile" class="w-full h-full object-cover" data-alt="professional male headshot with clean lighting and minimalist background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCtmFl4l8o5tPBkd7yxEkapd0HhB3uQq-PDZ7Pkf3c2IyYgGwq4aJRCKCQ0Pz7XzcLa6w7P_XcgErUMsOsuX5NNwLNNWSpISZ2BdYQdvwfLsxPfQ3HNkjT1tyEH5ytstxxAvQUtaCsuLDLebayq2ORQrMHeEh-pjLuJkizxH5CsLQnObjp5N3XObU9MTd5lNF0goFt8me8z_CZFhUCJfXNOyhcCSem7IPOtIBLUam9yqyFOLo2MCEgl4DFj0N7rn3Vx-nk173VCOYA_"/>
+</div>
+</div>
+</nav>
+<!-- Bottom Sheet Overlay (Dimmer) -->
+<div class="absolute inset-0 bg-black/60 z-20 backdrop-blur-[2px]"></div>
+<!-- Bottom Sheet Container -->
+<div class="absolute bottom-0 w-full h-[80%] glass-panel rounded-t-[28px] z-30 flex flex-col shadow-[0_-20px_40px_rgba(0,0,0,0.4)]">
+<!-- Grab Handle -->
+<div class="w-full flex justify-center py-4">
+<div class="w-12 h-1.5 bg-on-surface-variant/30 rounded-full"></div>
+</div>
+<div class="flex-1 overflow-y-auto no-scrollbar px-6 pb-24">
+<!-- Header -->
+<div class="mb-8">
+<h3 class="text-2xl font-black text-transparent bg-clip-text bg-gradient-to-r from-[#10b981] to-[#34d399] tracking-tight">Issue Reward</h3>
+<p class="text-on-surface-variant text-sm mt-1">Allocate assets to recipient wallet</p>
+</div>
+<!-- Recipient Search -->
+<div class="space-y-4 mb-8">
+<label class="text-[10px] font-bold text-primary tracking-widest uppercase ml-1">Recipient</label>
+<div class="relative group">
+<div class="absolute left-4 top-1/2 -translate-y-1/2">
+<span class="material-symbols-outlined text-primary/60 text-lg">search</span>
+</div>
+<input class="w-full h-14 pl-12 pr-4 bg-surface-container-lowest/40 rounded-lg border-none focus:ring-1 focus:ring-primary/40 text-on-surface placeholder:text-on-surface-variant/40 transition-all font-body" placeholder="Search wallet or name..." type="text"/>
+</div>
+<!-- Selected User Preview -->
+<div class="flex items-center p-3 rounded-lg bg-surface-container-low ghost-border">
+<img alt="Sarah Chen" class="w-12 h-12 rounded-full object-cover border border-primary/20" data-alt="smiling woman with professional studio lighting and soft green color accents" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA0SFswxn206IsXDE0PD4R1r63FyEBurMtoir1U81yEJp-oZ_sfLI7NM3WTN-SVC_FDUGnbVQsYNJQtimjUFYhegTwJ-kjIfri5G9EXuqQjJSR_lWruchYHc6VEbu_95_DZZzszQTzMLIwJXswSzGZsHGdwnTCZktK7288OEAbSMqkgM60RjagE1swexgEYc76QT2MasGT6ZceAsKAs-9um7xTOg1_UpGITrCfuNTmqwbSuNe-r1urERxbEhUCnun7H8kODZjTzAuoX"/>
+<div class="ml-4 flex-1">
+<div class="flex items-center gap-2">
+<span class="font-bold text-on-surface">Sarah Chen</span>
+<span class="px-2 py-0.5 bg-primary/10 text-primary text-[9px] font-black rounded-full border border-primary/20 uppercase tracking-tighter">PLUS</span>
+</div>
+<span class="font-mono text-xs text-primary/60 tracking-tight">sarah@email.io</span>
+</div>
+<span class="material-symbols-outlined text-primary">check_circle</span>
+</div>
+</div>
+<!-- Amount Input -->
+<div class="mb-8 text-center">
+<label class="text-[10px] font-bold text-primary tracking-widest uppercase block mb-4">Reward Amount</label>
+<div class="inline-flex items-center justify-center">
+<span class="font-mono text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-b from-[#10b981] to-[#34d399] tracking-tighter">
+                        $50.00
+                    </span>
+<div class="w-1 h-8 bg-primary/40 ml-1 rounded-full animate-pulse"></div>
+</div>
+</div>
+<!-- Category Dropdown Pill Row -->
+<div class="mb-8 overflow-hidden">
+<label class="text-[10px] font-bold text-primary tracking-widest uppercase block mb-4 ml-1">Category</label>
+<div class="flex gap-2 overflow-x-auto no-scrollbar pb-2">
+<button class="px-4 py-2 rounded-full glass-panel text-[10px] font-bold text-on-surface-variant whitespace-nowrap border-none">CASHBACK</button>
+<button class="px-4 py-2 rounded-full bg-primary/20 text-primary text-[10px] font-black whitespace-nowrap border border-primary/30 shadow-[0_0_15px_rgba(16,185,129,0.2)]">BONUS</button>
+<button class="px-4 py-2 rounded-full glass-panel text-[10px] font-bold text-on-surface-variant whitespace-nowrap border-none">REFERRAL</button>
+<button class="px-4 py-2 rounded-full glass-panel text-[10px] font-bold text-on-surface-variant whitespace-nowrap border-none">SIGNUP</button>
+<button class="px-4 py-2 rounded-full glass-panel text-[10px] font-bold text-on-surface-variant whitespace-nowrap border-none">CUSTOM</button>
+</div>
+</div>
+<!-- Textarea -->
+<div class="mb-8">
+<label class="text-[10px] font-bold text-primary tracking-widest uppercase block mb-4 ml-1">Why are you issuing this reward?</label>
+<textarea class="w-full p-4 bg-surface-container-lowest/40 rounded-lg border-none focus:ring-1 focus:ring-primary/40 text-on-surface text-sm placeholder:text-on-surface-variant/40 resize-none font-body" placeholder="Enter reason for issuance..." rows="3"></textarea>
+</div>
+<!-- Expiration -->
+<div class="mb-8 flex items-center justify-between">
+<label class="text-[10px] font-bold text-primary tracking-widest uppercase">Policy</label>
+<div class="px-3 py-1 bg-surface-variant/60 rounded-full ghost-border flex items-center gap-2">
+<span class="material-symbols-outlined text-[14px] text-primary">verified_user</span>
+<span class="text-[10px] font-black text-on-surface tracking-wide">NEVER EXPIRES</span>
+</div>
+</div>
+<!-- Preview Strip -->
+<div class="mb-10">
+<label class="text-[10px] font-bold text-on-surface-variant/60 tracking-widest uppercase block mb-3 ml-1">Recipient Preview</label>
+<div class="p-4 rounded-lg bg-emerald-500/5 ghost-border flex items-start gap-4">
+<div class="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary">card_giftcard</span>
+</div>
+<div class="flex-1">
+<p class="text-xs font-bold text-on-surface">Reward Received!</p>
+<p class="text-[10px] text-on-surface-variant mt-0.5 leading-relaxed">You just received a $50.00 BONUS reward from the treasury.</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Sticky Footer CTA -->
+<div class="absolute bottom-0 w-full p-6 bg-gradient-to-t from-[#0b1512] via-[#0b1512]/90 to-transparent">
+<button class="w-full py-4 bg-gradient-to-r from-primary-container to-secondary rounded-full flex items-center justify-center gap-2 shadow-[0_10px_30px_rgba(16,185,129,0.3)] hover:brightness-110 active:scale-[0.98] transition-all">
+<span class="text-on-primary text-sm font-black tracking-widest">ISSUE REWARD</span>
+<span class="material-symbols-outlined text-on-primary">arrow_forward</span>
+</button>
+</div>
+</div>
+<!-- Bottom Nav Bar (Shared Component Anchor) -->
+<nav class="fixed bottom-0 w-full z-50 flex justify-around items-center px-6 pb-8 pt-4 bg-[#2c3733]/40 rounded-t-[32px] backdrop-blur-[20px] border-t border-emerald-500/10 shadow-[0_-10px_30px_rgba(16,185,129,0.06)] pointer-events-none opacity-50">
+<div class="flex flex-col items-center justify-center text-[#d9e5df]/60 font-['Inter'] font-medium text-[10px] tracking-tight">
+<span class="material-symbols-outlined">account_balance_wallet</span>
+            Vault
+        </div>
+<div class="flex flex-col items-center justify-center text-emerald-400 drop-shadow-[0_0_8px_rgba(16,185,129,0.5)] font-['Inter'] font-medium text-[10px] tracking-tight">
+<span class="material-symbols-outlined">card_giftcard</span>
+            Rewards
+        </div>
+<div class="flex flex-col items-center justify-center text-[#d9e5df]/60 font-['Inter'] font-medium text-[10px] tracking-tight">
+<span class="material-symbols-outlined">query_stats</span>
+            Flow
+        </div>
+<div class="flex flex-col items-center justify-center text-[#d9e5df]/60 font-['Inter'] font-medium text-[10px] tracking-tight">
+<span class="material-symbols-outlined">fingerprint</span>
+            Identity
+        </div>
+</nav>
+</body></html>

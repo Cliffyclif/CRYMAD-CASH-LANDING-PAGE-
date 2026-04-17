@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&amp;family=JetBrains+Mono:wght@400;700&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-container-highest": "#2c3733",
+                    "inverse-surface": "#d9e5df",
+                    "primary-fixed": "#6ffbbe",
+                    "on-surface-variant": "#bbcabf",
+                    "on-tertiary": "#472a00",
+                    "surface-container-lowest": "#06100d",
+                    "error": "#ffb4ab",
+                    "surface-dim": "#0b1512",
+                    "surface-container-high": "#222c29",
+                    "on-error": "#690005",
+                    "background": "#0b1512",
+                    "secondary": "#45dfa4",
+                    "primary-container": "#10b981",
+                    "on-primary-fixed": "#002113",
+                    "surface-variant": "#2c3733",
+                    "on-secondary-fixed": "#002114",
+                    "surface-bright": "#313b38",
+                    "primary": "#4edea3",
+                    "outline": "#86948a",
+                    "on-secondary-container": "#00452e",
+                    "on-primary-container": "#00422b",
+                    "on-primary-fixed-variant": "#005236",
+                    "on-error-container": "#ffdad6",
+                    "surface": "#0b1512",
+                    "on-tertiary-container": "#523200",
+                    "primary-fixed-dim": "#4edea3",
+                    "outline-variant": "#3c4a42",
+                    "inverse-on-surface": "#28332f",
+                    "tertiary-container": "#e29100",
+                    "surface-container": "#17221e",
+                    "surface-tint": "#4edea3",
+                    "on-tertiary-fixed-variant": "#653e00",
+                    "error-container": "#93000a",
+                    "secondary-fixed-dim": "#45dfa4",
+                    "surface-container-low": "#131e1a",
+                    "on-tertiary-fixed": "#2a1700",
+                    "on-secondary-fixed-variant": "#005137",
+                    "secondary-fixed": "#68fcbf",
+                    "tertiary-fixed-dim": "#ffb95f",
+                    "secondary-container": "#00bd85",
+                    "on-background": "#d9e5df",
+                    "tertiary-fixed": "#ffddb8",
+                    "on-secondary": "#003825",
+                    "tertiary": "#ffb95f",
+                    "inverse-primary": "#006c49",
+                    "on-surface": "#d9e5df",
+                    "on-primary": "#003824"
+            },
+            "borderRadius": {
+                    "DEFAULT": "1rem",
+                    "lg": "2rem",
+                    "xl": "3rem",
+                    "full": "9999px"
+            },
+            "fontFamily": {
+                    "headline": ["Inter"],
+                    "body": ["Inter"],
+                    "label": ["Inter"],
+                    "mono": ["JetBrains Mono"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body { background-color: #040d0a; color: #d9e5df; font-family: 'Inter', sans-serif; overflow: hidden; }
+        .glass-panel { background: rgba(44, 55, 51, 0.4); backdrop-filter: blur(20px); border: 1px solid rgba(16, 185, 129, 0.08); }
+        .gradient-text { background: linear-gradient(to bottom, #10b981, #34d399); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .gradient-bg { background: linear-gradient(135deg, #10b981, #34d399); }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .inset-glass { background: rgba(11, 21, 18, 0.6); box-shadow: inset 0 2px 4px rgba(0,0,0,0.3); border-radius: 24px; border: 1px solid rgba(16, 185, 129, 0.05); }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .living-bg { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; overflow: hidden; }
+        .blob { position: absolute; width: 300px; height: 300px; filter: blur(60px); opacity: 0.25; border-radius: 50%; background: #10b981; }
+        .energy-lines { position: absolute; inset: 0; background-image: repeating-linear-gradient(45deg, transparent, transparent 40px, rgba(16, 185, 129, 0.03) 40px, rgba(16, 185, 129, 0.03) 41px); }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="antialiased">
+<div class="living-bg">
+<div class="blob top-[-10%] left-[-10%]"></div>
+<div class="blob bottom-[10%] right-[-10%] bg-secondary"></div>
+<div class="blob top-[30%] right-[20%] bg-tertiary"></div>
+<div class="blob bottom-[-5%] left-[20%]"></div>
+<div class="energy-lines"></div>
+</div>
+<!-- Parent Screen (Dimmed Background) -->
+<div class="relative w-[390px] h-[844px] mx-auto overflow-hidden shadow-2xl brightness-50 grayscale-[0.2]">
+<!-- Top App Bar (Shared Component Reference) -->
+<header class="w-full top-0 sticky bg-transparent backdrop-blur-xl border-b border-emerald-500/10 flex justify-between items-center px-6 py-4 z-10">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full border border-primary/20 overflow-hidden">
+<img alt="user profile biometric scan" class="w-full h-full object-cover" data-alt="extreme close-up of a high-tech biometric iris scan with emerald green data lines and glowing UI elements" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBz01HrDOSO0Et-OYRfOow9me7UT9DKD0cpOHue1MjHCvSqRnnAxGJxOv7X0kAYb3FWzmvH8ZZgpL9BP56_cC7Icb4uJjgZLLRhWc5om5aWaQn5QbrZPVMxEq35aqp5qCtu5XC74vYQqntx5l6pUcngVMEZFbdnIAy9eArPN63v2gYedxEpvzhHjwHNxpSwZKCI_zeROmtUr4y2TxGJkPD4qy0wh1fjT4HXeVP7S2UtvxgJSWHCbrKsEehOuWRyzXWG6RmkjgaPq7Te"/>
+</div>
+<h1 class="font-['Inter'] font-extrabold text-transparent bg-clip-text bg-gradient-to-b from-[#10b981] to-[#34d399] tracking-tight text-xl">Emerald Pulse</h1>
+</div>
+<span class="material-symbols-outlined text-emerald-500">settings_cinematic_blur</span>
+</header>
+<!-- Mock Content for Background -->
+<main class="p-6 space-y-6">
+<div class="glass-panel p-6 rounded-lg space-y-4">
+<div class="h-4 w-1/2 bg-surface-variant rounded"></div>
+<div class="h-24 w-full bg-surface-variant rounded-lg opacity-20"></div>
+<div class="h-4 w-3/4 bg-surface-variant rounded"></div>
+</div>
+<div class="glass-panel p-6 rounded-lg space-y-4">
+<div class="h-4 w-1/3 bg-surface-variant rounded"></div>
+<div class="h-24 w-full bg-surface-variant rounded-lg opacity-20"></div>
+</div>
+</main>
+</div>
+<!-- Overlay Dimmer -->
+<div class="fixed inset-0 bg-black/60 z-20"></div>
+<!-- Bottom Sheet -->
+<div class="fixed bottom-0 left-1/2 -translate-x-1/2 w-[390px] h-[92%] glass-panel rounded-t-[28px] z-30 shadow-[0_-20px_60px_rgba(16,185,129,0.15)] flex flex-col">
+<!-- Grab Handle -->
+<div class="w-full flex justify-center py-4">
+<div class="w-12 h-1 bg-surface-variant rounded-full opacity-50"></div>
+</div>
+<!-- Content Area -->
+<div class="flex-1 overflow-y-auto px-6 pb-32 no-scrollbar">
+<header class="mb-8">
+<h2 class="text-2xl font-extrabold gradient-text tracking-tight">New Recurring Payment</h2>
+<p class="text-sm text-on-surface-variant mt-1">Automate your financial ecosystem</p>
+</header>
+<!-- Recipient Search -->
+<section class="space-y-4 mb-8">
+<div class="inset-glass flex items-center px-4 py-3 gap-3">
+<span class="material-symbols-outlined text-primary/60">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-on-surface w-full placeholder:text-on-surface-variant/40" placeholder="Search recipient..." type="text"/>
+</div>
+<div class="flex gap-4 overflow-x-auto no-scrollbar py-2">
+<div class="flex flex-col items-center gap-2 flex-shrink-0">
+<div class="w-14 h-14 rounded-full border-2 border-primary gradient-bg flex items-center justify-center shadow-[0_0_15px_rgba(16,185,129,0.4)]">
+<span class="material-symbols-outlined text-on-primary">add</span>
+</div>
+<span class="text-[10px] font-mono uppercase tracking-widest text-primary">New</span>
+</div>
+<!-- Recent Avatars -->
+<div class="flex flex-col items-center gap-2 flex-shrink-0">
+<img class="w-14 h-14 rounded-full glass-panel p-0.5 object-cover" data-alt="portrait of a young tech professional in soft moody lighting with green rim light" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBnrN5xz8uKLYcYAFDgwPV0nBO5PL90mcGAbz04FLDwmuyrroMmiiAtnhouMkYhCSPSSr5q3LB12XZVK4YIh457Oj9l52AguzHOA7z6fVt9t0Om6FqFkqW8-cLO8cBq5UAwBEvizYrF4lRDtxPw5vl0hZblYQMZ_tnkzmygRSeKqIl3RsiRLwtRkvG_JJpXh0odwUwaJqexp4yl4bCduzJMxyy582rp_xEiXaHJKraTTP8b8_39U2JsrCzf2b_Qb-ZfnvoeN3Rv1iw5"/>
+<span class="text-[10px] font-mono text-on-surface-variant">J. SMITH</span>
+</div>
+<div class="flex flex-col items-center gap-2 flex-shrink-0">
+<img class="w-14 h-14 rounded-full glass-panel p-0.5 object-cover" data-alt="woman in dark studio setting with cinematic emerald lighting highlights" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBhTbp7Q-U-BpEVeogLBMs4haQ79wmX6OpGXyc-9u8eAQJlQs-ufs3eO7L5V4n9a3NFZFy9k-UYBZGu2Afss_5yE1_wCilXOQYxw8LjoNoMXwNPu7bvPSYFbu2ofwyZTVtPGDLXdMz0pNhrtUHaRXUlw2_R7HG1YbhhZcLgF--znsqy__6mFE-SSjEivOnj3DU7RqzcoCjOZcTEgqafbxRCHcvJhHJlkb6Sm9kXI8in0mjOve4WgyiSh8EFtnHejjLKb13VybJ4VCjt"/>
+<span class="text-[10px] font-mono text-on-surface-variant">A. MAYA</span>
+</div>
+<div class="flex flex-col items-center gap-2 flex-shrink-0">
+<img class="w-14 h-14 rounded-full glass-panel p-0.5 object-cover" data-alt="abstract avatar of a profile silhouette with matrix-style green digital rain texture" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA4jXr-KP_z6ZwMNE4ztvP_aw6C5uTA-3CcU6HoZ0mhm0bA-Ri-pbiwSjDDznwxzGJS-KQCd5xpVmSI7jeDgepiRzPWnGVhkxRym_zUOFSPPHXr4pn-jWtkM03uS0VFZImBt9gxVTxP3AoUdHuNn4817GeSX08xqX3dk91hFg8NzqEgEHE8drxhWZZxPjerCYNrGehRr6O88xefMddY1Npq9Iu5Xv3vAs305Pxvo0S8nfp3uXQ9HYAKo0TFtrw1qBYvDEySrvFk1k8h"/>
+<span class="text-[10px] font-mono text-on-surface-variant">T. KERN</span>
+</div>
+<div class="flex flex-col items-center gap-2 flex-shrink-0">
+<img class="w-14 h-14 rounded-full glass-panel p-0.5 object-cover" data-alt="minimalist close up portrait of a person with high contrast bioluminescent green lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuACos768Mzk3XyT9CuDeD119DWn8LOl8xwc0_c5IY2HSolphHTzTXDgD_ygW6RG6nDWWselod3M2pEG69oemZ9v4UNJ9RFZzu1J9C-rPDVoQI7toKfoBJo5jDBq1-R9LTNxIz0fRX8OOXxf_yJR9L8xY8gkm_GHac9C1OuJi6NmrOMttIlf5xPalpe6C9WFEvqVMoEA5DhycolR2pYFHF8gGMou_cpl0JvTsMqLumGOL-aP1FlKTQycHJJnRB63WfmqjiyWirJzhsqx"/>
+<span class="text-[10px] font-mono text-on-surface-variant">R. LIMA</span>
+</div>
+</div>
+</section>
+<!-- Amount Input -->
+<section class="text-center space-y-2 mb-8">
+<label class="text-[10px] font-mono uppercase tracking-[0.2em] text-primary/60">Amount per cycle</label>
+<div class="text-5xl font-mono font-bold gradient-text py-2">$500.00</div>
+</section>
+<!-- Frequency Row -->
+<section class="space-y-3 mb-8">
+<h3 class="text-xs font-mono uppercase tracking-widest text-on-surface-variant">Frequency</h3>
+<div class="flex gap-3 overflow-x-auto no-scrollbar pb-2">
+<button class="px-5 py-2 rounded-full glass-panel text-[10px] font-mono text-on-surface-variant whitespace-nowrap active:scale-95 duration-200">DAILY</button>
+<button class="px-5 py-2 rounded-full glass-panel text-[10px] font-mono text-on-surface-variant whitespace-nowrap active:scale-95 duration-200">WEEKLY</button>
+<button class="px-5 py-2 rounded-full bg-primary-container text-on-primary-container text-[10px] font-mono font-bold shadow-[0_0_15px_rgba(16,185,129,0.3)] whitespace-nowrap">MONTHLY</button>
+<button class="px-5 py-2 rounded-full glass-panel text-[10px] font-mono text-on-surface-variant whitespace-nowrap active:scale-95 duration-200">QUARTERLY</button>
+<button class="px-5 py-2 rounded-full glass-panel text-[10px] font-mono text-on-surface-variant whitespace-nowrap active:scale-95 duration-200">YEARLY</button>
+</div>
+</section>
+<!-- Start Date & End Condition -->
+<div class="grid grid-cols-2 gap-4 mb-8">
+<div class="space-y-3">
+<h3 class="text-xs font-mono uppercase tracking-widest text-on-surface-variant">Start Date</h3>
+<div class="inset-glass flex items-center justify-between px-4 py-3">
+<span class="text-sm font-mono">12 OCT 24</span>
+<span class="material-symbols-outlined text-primary text-sm">calendar_today</span>
+</div>
+</div>
+<div class="space-y-3">
+<h3 class="text-xs font-mono uppercase tracking-widest text-on-surface-variant">End After</h3>
+<div class="inset-glass flex items-center justify-between px-4 py-3">
+<span class="text-sm font-mono">12 CYCLES</span>
+<span class="material-symbols-outlined text-primary text-sm">expand_more</span>
+</div>
+</div>
+</div>
+<!-- Funding Source -->
+<section class="space-y-3 mb-8">
+<h3 class="text-xs font-mono uppercase tracking-widest text-on-surface-variant">Funding Source</h3>
+<div class="inset-glass flex items-center justify-between px-5 py-4">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-secondary/20 flex items-center justify-center">
+<span class="material-symbols-outlined text-secondary text-sm" style="font-variation-settings: 'FILL' 1;">account_balance_wallet</span>
+</div>
+<div class="flex flex-col">
+<span class="text-xs font-bold">E-Wallet</span>
+<span class="text-[10px] font-mono text-primary">$12,458.32 Available</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant">chevron_right</span>
+</div>
+</section>
+<!-- Memo -->
+<section class="space-y-3 mb-8">
+<h3 class="text-xs font-mono uppercase tracking-widest text-on-surface-variant">Memo (Optional)</h3>
+<div class="inset-glass px-5 py-4">
+<input class="bg-transparent border-none focus:ring-0 text-sm w-full p-0 placeholder:text-on-surface-variant/40" placeholder="Investment Portfolio Monthly..." type="text"/>
+</div>
+</section>
+<!-- Mini Summary Card -->
+<section class="glass-panel p-5 rounded-lg border border-primary/20 bg-primary/5 relative overflow-hidden mb-4">
+<div class="absolute top-0 right-0 p-2 opacity-10">
+<span class="material-symbols-outlined text-6xl">sync_alt</span>
+</div>
+<div class="relative z-10 flex flex-col items-center justify-center text-center">
+<p class="text-[10px] font-mono uppercase tracking-widest text-primary/80 mb-2">Transaction Projection</p>
+<div class="font-mono text-sm space-x-1">
+<span class="text-on-surface">$500.00</span>
+<span class="text-on-surface-variant">×</span>
+<span class="text-on-surface">12 MONTHS</span>
+<span class="text-on-surface-variant">=</span>
+<span class="font-bold gradient-text">$6,000.00 TOTAL</span>
+</div>
+</div>
+</section>
+</div>
+<!-- Sticky Footer CTA -->
+<div class="absolute bottom-0 left-0 w-full p-6 pt-0 bg-gradient-to-t from-background via-background/90 to-transparent">
+<button class="w-full py-4 rounded-full gradient-bg flex items-center justify-center gap-3 shadow-[0_10px_30px_rgba(16,185,129,0.3)] active:scale-95 duration-300">
+<span class="text-on-primary font-extrabold uppercase tracking-[0.2em] text-sm">Create Recurring</span>
+<span class="material-symbols-outlined text-on-primary">arrow_forward</span>
+</button>
+</div>
+</div>
+<!-- Bottom Nav Bar (Shared Component Reference - Positioned beneath sheet) -->
+<nav class="fixed bottom-6 left-1/2 -translate-x-1/2 w-[90%] rounded-full bg-[#2c3733]/40 backdrop-blur-lg border border-emerald-500/10 z-10 flex justify-around items-center px-4 py-2 opacity-20 pointer-events-none">
+<div class="flex flex-col items-center text-emerald-700/60">
+<span class="material-symbols-outlined text-xl">account_balance_wallet</span>
+<span class="font-['JetBrains_Mono'] text-[8px] uppercase tracking-widest">Vault</span>
+</div>
+<div class="flex flex-col items-center text-emerald-400">
+<span class="material-symbols-outlined text-xl">swap_horiz</span>
+<span class="font-['JetBrains_Mono'] text-[8px] uppercase tracking-widest">Flow</span>
+</div>
+<div class="flex flex-col items-center text-emerald-700/60">
+<span class="material-symbols-outlined text-xl">query_stats</span>
+<span class="font-['JetBrains_Mono'] text-[8px] uppercase tracking-widest">Pulse</span>
+</div>
+<div class="flex flex-col items-center text-emerald-700/60">
+<span class="material-symbols-outlined text-xl">fingerprint</span>
+<span class="font-['JetBrains_Mono'] text-[8px] uppercase tracking-widest">Identity</span>
+</div>
+</nav>
+</body></html>

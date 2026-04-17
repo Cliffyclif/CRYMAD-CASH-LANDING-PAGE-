@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>The Bioluminescent Archive - Subscriptions</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&amp;family=JetBrains+Mono:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary-fixed-dim": "#45dfa4",
+                        "surface-variant": "#2c3733",
+                        "on-secondary-fixed": "#002114",
+                        "on-background": "#d9e5df",
+                        "inverse-primary": "#006c49",
+                        "surface-container-low": "#131e1a",
+                        "on-surface-variant": "#bbcabf",
+                        "on-secondary-fixed-variant": "#005137",
+                        "on-tertiary-container": "#523200",
+                        "surface-container-lowest": "#06100d",
+                        "on-tertiary": "#472a00",
+                        "primary": "#4edea3",
+                        "on-secondary": "#003825",
+                        "on-primary-fixed": "#002113",
+                        "tertiary-fixed": "#ffddb8",
+                        "surface": "#0b1512",
+                        "secondary-fixed": "#68fcbf",
+                        "inverse-on-surface": "#28332f",
+                        "on-tertiary-fixed": "#2a1700",
+                        "tertiary": "#ffb95f",
+                        "surface-tint": "#4edea3",
+                        "outline-variant": "#3c4a42",
+                        "on-surface": "#d9e5df",
+                        "surface-container-highest": "#2c3733",
+                        "on-error": "#690005",
+                        "secondary": "#45dfa4",
+                        "on-secondary-container": "#00452e",
+                        "surface-container": "#17221e",
+                        "surface-bright": "#313b38",
+                        "background": "#0b1512",
+                        "outline": "#86948a",
+                        "on-primary-container": "#00422b",
+                        "error": "#ffb4ab",
+                        "tertiary-container": "#e29100",
+                        "error-container": "#93000a",
+                        "on-error-container": "#ffdad6",
+                        "primary-fixed": "#6ffbbe",
+                        "surface-container-high": "#222c29",
+                        "tertiary-fixed-dim": "#ffb95f",
+                        "on-primary": "#003824",
+                        "on-tertiary-fixed-variant": "#653e00",
+                        "on-primary-fixed-variant": "#005236",
+                        "primary-fixed-dim": "#4edea3",
+                        "primary-container": "#10b981",
+                        "surface-dim": "#0b1512",
+                        "inverse-surface": "#d9e5df",
+                        "secondary-container": "#00bd85"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "1rem",
+                        "lg": "2rem",
+                        "xl": "3rem",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Inter"],
+                        "body": ["Inter"],
+                        "label": ["Inter"],
+                        "mono": ["JetBrains Mono"]
+                    }
+                },
+            }
+        }
+    </script>
+<style>
+        body {
+            background-color: #040d0a;
+            color: #d9e5df;
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+        }
+        .mono-text { font-family: 'JetBrains Mono', monospace; }
+        .glass-panel {
+            background: rgba(44, 55, 51, 0.4);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(16, 185, 129, 0.08);
+        }
+        .gradient-heading {
+            background: linear-gradient(to bottom, #10b981, #34d399);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .living-bg {
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+            overflow: hidden;
+        }
+        .blob {
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            filter: blur(60px);
+            opacity: 0.25;
+            border-radius: 50%;
+        }
+        .energy-lines {
+            position: absolute;
+            inset: 0;
+            background-image: repeating-linear-gradient(45deg, rgba(16,185,129,0.05) 0px, rgba(16,185,129,0.05) 1px, transparent 1px, transparent 10px);
+            z-index: -1;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="min-h-screen">
+<!-- Living Background Elements -->
+<div class="living-bg">
+<div class="blob bg-primary -top-20 -left-20"></div>
+<div class="blob bg-secondary top-1/2 -right-20"></div>
+<div class="blob bg-primary bottom-0 left-1/4"></div>
+<div class="blob bg-teal-500 top-1/4 left-1/2"></div>
+<div class="energy-lines"></div>
+</div>
+<!-- Top Navigation Bar -->
+<header class="fixed top-0 left-0 w-full z-50 flex items-center justify-between px-6 bg-emerald-950/40 backdrop-blur-xl border-b border-emerald-500/10 h-[56px] shadow-[0_0_40px_rgba(16,185,129,0.08)]">
+<button class="text-emerald-500 hover:bg-emerald-500/10 transition-colors rounded-full p-1 active:scale-95 duration-300 ease-out">
+<span class="material-symbols-outlined">arrow_back</span>
+</button>
+<h1 class="text-xl font-extrabold tracking-tight Inter bg-gradient-to-b from-emerald-500 to-teal-400 bg-clip-text text-transparent">Subscriptions</h1>
+<button class="text-emerald-500 hover:bg-emerald-500/10 transition-colors rounded-full p-1 active:scale-95 duration-300 ease-out">
+<span class="material-symbols-outlined">add</span>
+</button>
+</header>
+<!-- Main Content Canvas -->
+<main class="pt-20 pb-32 px-5 space-y-8 max-w-[390px] mx-auto">
+<!-- Label Section -->
+<section>
+<p class="mono-text text-[11px] tracking-[0.2em] text-primary-fixed-dim font-bold uppercase">RECURRING COMMITMENTS</p>
+</section>
+<!-- Status Tabs Pill Row -->
+<section class="flex gap-2 overflow-x-auto no-scrollbar pb-2">
+<div class="flex items-center gap-2 px-4 py-2 bg-emerald-500/20 rounded-full border border-emerald-500/20 whitespace-nowrap">
+<span class="text-[12px] font-bold tracking-wide">PENDING</span>
+<span class="mono-text text-[10px] bg-emerald-500 text-on-primary-container px-1.5 rounded-full">2</span>
+</div>
+<div class="flex items-center gap-2 px-4 py-2 bg-emerald-500 border border-emerald-500/40 rounded-full whitespace-nowrap">
+<span class="text-[12px] font-bold tracking-wide text-on-primary">ACTIVE</span>
+<span class="mono-text text-[10px] bg-on-primary text-emerald-500 px-1.5 rounded-full">5</span>
+</div>
+<div class="flex items-center gap-2 px-4 py-2 bg-surface-container-highest/40 rounded-full border border-emerald-500/5 whitespace-nowrap">
+<span class="text-[12px] font-bold tracking-wide opacity-60">COMPLETED</span>
+</div>
+<div class="flex items-center gap-2 px-4 py-2 bg-surface-container-highest/40 rounded-full border border-emerald-500/5 whitespace-nowrap">
+<span class="text-[12px] font-bold tracking-wide opacity-60">CANCELLED</span>
+</div>
+</section>
+<!-- Summary Mini Cards Row -->
+<section class="grid grid-cols-3 gap-3">
+<div class="glass-panel p-3 rounded-xl flex flex-col justify-between h-24">
+<span class="text-[9px] font-extrabold tracking-widest opacity-60">TOTAL MONTHLY</span>
+<span class="mono-text text-lg font-bold gradient-heading">$59.48</span>
+</div>
+<div class="glass-panel p-3 rounded-xl flex flex-col justify-between h-24">
+<span class="text-[9px] font-extrabold tracking-widest opacity-60 uppercase">Active</span>
+<span class="mono-text text-xl font-bold text-primary">05</span>
+</div>
+<div class="glass-panel p-3 rounded-xl flex flex-col justify-between h-24">
+<span class="text-[9px] font-extrabold tracking-widest opacity-60">NEXT BILLING</span>
+<span class="mono-text text-[14px] font-bold text-secondary">Apr 18</span>
+</div>
+</section>
+<!-- Subscriptions Vertical Stack -->
+<section class="space-y-4">
+<!-- Card 1: Spotify -->
+<div class="glass-panel rounded-[24px] p-4 group transition-all duration-300 hover:bg-emerald-950/20">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full overflow-hidden bg-emerald-900/50 flex-shrink-0">
+<img class="w-full h-full object-cover" data-alt="Spotify logo icon on a dark circular background with a smooth gradient from deep green to black" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCjVOFYjTYm9iasyXgN5UBkD_sYaKP02yG_mK-pFJTr1O_e-w8zY8WpC45jGfSB5VxozVpFBPqq66A8yB-1a1aCuPixfzyfjSSeOM3XXeM0uEC9DpWX7hvq3CLsZjgjQWOb4EpATmrtMh1ZYxqCmKBXTHqUz10aS9-LlRI2RAqj9FZKAUzJRlJZpF9NwbqxjB819jdfmXTIe3rWw-x7x3EHeXQK1S7XlykEFdrhtOmnP2mdSv4h7FXddOPx2u_uOvrg0bJAsarIOf0e"/>
+</div>
+<div class="flex-grow">
+<div class="flex justify-between items-start">
+<h3 class="font-bold text-[16px]">Spotify</h3>
+<span class="mono-text text-primary font-bold text-sm">$9.99</span>
+</div>
+<div class="flex items-center gap-2 mt-0.5">
+<span class="mono-text text-[10px] opacity-40">SUB-8821</span>
+<div class="flex items-center gap-1.5 px-2 py-0.5 bg-secondary-container/20 rounded-full border border-secondary/10">
+<div class="w-1.5 h-1.5 bg-secondary rounded-full animate-pulse"></div>
+<span class="text-[8px] font-bold tracking-tighter uppercase text-secondary">Monthly</span>
+</div>
+</div>
+</div>
+</div>
+<div class="mt-4 flex items-center justify-between">
+<div class="flex gap-3">
+<button class="p-2 rounded-full bg-surface-container-highest/40 text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[18px]">pause</span>
+</button>
+<button class="p-2 rounded-full bg-surface-container-highest/40 text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[18px]">edit</span>
+</button>
+<button class="p-2 rounded-full bg-surface-container-highest/40 text-on-surface-variant hover:text-error transition-colors">
+<span class="material-symbols-outlined text-[18px]">close</span>
+</button>
+</div>
+<div class="text-right">
+<p class="text-[9px] opacity-40 font-bold uppercase tracking-tighter">Next Date</p>
+<p class="mono-text text-[12px] font-bold">Apr 12, 2024</p>
+</div>
+</div>
+</div>
+<!-- Card 2: Netflix -->
+<div class="glass-panel rounded-[24px] p-4 group">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full overflow-hidden bg-emerald-900/50 flex-shrink-0">
+<img class="w-full h-full object-cover" data-alt="Netflix red monogram logo on a dark glass circular base with subtle rim lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBK6EHSS571KOie2r0bsctgrQ56jnTcSVXVZd7t_YYNmfAWPoj1K8BYjDJgNk0inlWuno63rghF4i2i1z3vgkKoNg50Jy0Wo4o3iKQY6803elvKfWS4DwmdHOZSH-xy-E30UZyMRxrck2clyRRSqnaWMQ56uNfsTwkD02A5KQ170-pBRyMr1bvGjOP8MZ9GrZrbMOh5ESdZdTkmz6GW5p4axLw5Kuy5LNE4LwiwuZVbqG7U8ZL_XJt7GCejKB5bjzjViy3sOEtzFNcd"/>
+</div>
+<div class="flex-grow">
+<div class="flex justify-between items-start">
+<h3 class="font-bold text-[16px]">Netflix</h3>
+<span class="mono-text text-primary font-bold text-sm">$15.49</span>
+</div>
+<div class="flex items-center gap-2 mt-0.5">
+<span class="mono-text text-[10px] opacity-40">SUB-7734</span>
+<div class="flex items-center gap-1.5 px-2 py-0.5 bg-secondary-container/20 rounded-full border border-secondary/10">
+<div class="w-1.5 h-1.5 bg-secondary rounded-full"></div>
+<span class="text-[8px] font-bold tracking-tighter uppercase text-secondary">Monthly</span>
+</div>
+</div>
+</div>
+</div>
+<div class="mt-4 flex items-center justify-between">
+<div class="flex gap-3">
+<button class="p-2 rounded-full bg-surface-container-highest/40 text-on-surface-variant"><span class="material-symbols-outlined text-[18px]">pause</span></button>
+<button class="p-2 rounded-full bg-surface-container-highest/40 text-on-surface-variant"><span class="material-symbols-outlined text-[18px]">edit</span></button>
+<button class="p-2 rounded-full bg-surface-container-highest/40 text-on-surface-variant"><span class="material-symbols-outlined text-[18px]">close</span></button>
+</div>
+<div class="text-right">
+<p class="text-[9px] opacity-40 font-bold uppercase tracking-tighter">Next Date</p>
+<p class="mono-text text-[12px] font-bold">Apr 15, 2024</p>
+</div>
+</div>
+</div>
+<!-- Card 3: ChatGPT -->
+<div class="glass-panel rounded-[24px] p-4 group">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full overflow-hidden bg-emerald-900/50 flex-shrink-0">
+<img class="w-full h-full object-cover" data-alt="OpenAI logo in teal on a dark sleek circular background mimicking polished carbon fiber" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDbQ_12IsWg8LFXtJOqOhGXojjJuoKEkZzvhMqilXTtiPx-phA5F2csaPJCqlM4J7ERSw8WsKLQvaYn29v8KdDK0AYdp8Wm2j9PRnv5jaV5xQM_wGDsQhOS44nRZLhVuKHCQhwHr01iIx74PJawugjAv1uqkEAXGpNFrqP5st8XIy1u9GmOTSa1QcfSWfB8aoB3mKF-xIoxCCxaRdu4Y9rK88Ox6ClRFXGCfVgJZ_DitVl33JRZflaN3SzRy9VarsVwgZDC4HeRR0qf"/>
+</div>
+<div class="flex-grow">
+<div class="flex justify-between items-start">
+<h3 class="font-bold text-[16px]">ChatGPT</h3>
+<span class="mono-text text-primary font-bold text-sm">$20.00</span>
+</div>
+<div class="flex items-center gap-2 mt-0.5">
+<span class="mono-text text-[10px] opacity-40">SUB-4412</span>
+<div class="flex items-center gap-1.5 px-2 py-0.5 bg-secondary-container/20 rounded-full border border-secondary/10">
+<div class="w-1.5 h-1.5 bg-secondary rounded-full"></div>
+<span class="text-[8px] font-bold tracking-tighter uppercase text-secondary">Monthly</span>
+</div>
+</div>
+</div>
+</div>
+<div class="mt-4 flex items-center justify-between">
+<div class="flex gap-3">
+<button class="p-2 rounded-full bg-surface-container-highest/40 text-on-surface-variant"><span class="material-symbols-outlined text-[18px]">pause</span></button>
+<button class="p-2 rounded-full bg-surface-container-highest/40 text-on-surface-variant"><span class="material-symbols-outlined text-[18px]">edit</span></button>
+<button class="p-2 rounded-full bg-surface-container-highest/40 text-on-surface-variant"><span class="material-symbols-outlined text-[18px]">close</span></button>
+</div>
+<div class="text-right">
+<p class="text-[9px] opacity-40 font-bold uppercase tracking-tighter">Next Date</p>
+<p class="mono-text text-[12px] font-bold">Apr 18, 2024</p>
+</div>
+</div>
+</div>
+<!-- Card 4: GitHub -->
+<div class="glass-panel rounded-[24px] p-4 group">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full overflow-hidden bg-emerald-900/50 flex-shrink-0">
+<img class="w-full h-full object-cover" data-alt="GitHub white octocat silhouette on a dark textured glass background with emerald edge highlight" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAi6rLtwzEEGI1bWoXm1RTfY0oYVXkS3sm3QV94HJmqpOnfA0LjsLa9VHnLeIe6HQ6n1djctMHjbLbzQAHpexWf2Tu3PAYwy9IjvQPYc3b_ConfvYBV177ETEbzI-tmyvuDiOZFwkcf8AhGPt0GW3ypkh7nz4C0OfGIy-rm-hfjVCRd7nEk1A4ztCuW6C1TMtZpojekM0UyYGYjBRqKq5VbJizSJCckw4IrlF58nshe0CFMou5RxsXj4m6egikpqrWptm3ZomZS5fSW"/>
+</div>
+<div class="flex-grow">
+<div class="flex justify-between items-start">
+<h3 class="font-bold text-[16px]">GitHub</h3>
+<span class="mono-text text-primary font-bold text-sm">$4.00</span>
+</div>
+<div class="flex items-center gap-2 mt-0.5">
+<span class="mono-text text-[10px] opacity-40">SUB-1102</span>
+<div class="flex items-center gap-1.5 px-2 py-0.5 bg-secondary-container/20 rounded-full border border-secondary/10">
+<div class="w-1.5 h-1.5 bg-secondary rounded-full"></div>
+<span class="text-[8px] font-bold tracking-tighter uppercase text-secondary">Monthly</span>
+</div>
+</div>
+</div>
+</div>
+<div class="mt-4 flex items-center justify-between">
+<div class="flex gap-3">
+<button class="p-2 rounded-full bg-surface-container-highest/40 text-on-surface-variant"><span class="material-symbols-outlined text-[18px]">pause</span></button>
+<button class="p-2 rounded-full bg-surface-container-highest/40 text-on-surface-variant"><span class="material-symbols-outlined text-[18px]">edit</span></button>
+<button class="p-2 rounded-full bg-surface-container-highest/40 text-on-surface-variant"><span class="material-symbols-outlined text-[18px]">close</span></button>
+</div>
+<div class="text-right">
+<p class="text-[9px] opacity-40 font-bold uppercase tracking-tighter">Next Date</p>
+<p class="mono-text text-[12px] font-bold">Apr 21, 2024</p>
+</div>
+</div>
+</div>
+<!-- Card 5: Notion -->
+<div class="glass-panel rounded-[24px] p-4 group">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full overflow-hidden bg-emerald-900/50 flex-shrink-0">
+<img class="w-full h-full object-cover" data-alt="Notion 'N' icon in white on a dark translucent emerald-tinted circular surface" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBxx52AnsyzOxG2C4-0qsrgqbG0c--vzA61fHn8aV7q7e3W-IBLKbrbSRTuEMWrbba-g07hU6plnHH2YSxSjRaU04WJAJFt_A3k075zBsG6kHyDsDnYgcbbJMmsqR1EstvglucmO_diyyoYBQW3j7FJKZtkf1ohDcDl9lf47zj82a8lCtTRkhttj2GrBA2P_zzVHAmiCpNEHEV6w9deqCNG7tPWdSz0bHGvclvzuedYeUdYSxkuCeuruOJ2Ib_7Az2oYCoNM0XWhdq_"/>
+</div>
+<div class="flex-grow">
+<div class="flex justify-between items-start">
+<h3 class="font-bold text-[16px]">Notion</h3>
+<span class="mono-text text-primary font-bold text-sm">$10.00</span>
+</div>
+<div class="flex items-center gap-2 mt-0.5">
+<span class="mono-text text-[10px] opacity-40">SUB-9942</span>
+<div class="flex items-center gap-1.5 px-2 py-0.5 bg-secondary-container/20 rounded-full border border-secondary/10">
+<div class="w-1.5 h-1.5 bg-secondary rounded-full"></div>
+<span class="text-[8px] font-bold tracking-tighter uppercase text-secondary">Monthly</span>
+</div>
+</div>
+</div>
+</div>
+<div class="mt-4 flex items-center justify-between">
+<div class="flex gap-3">
+<button class="p-2 rounded-full bg-surface-container-highest/40 text-on-surface-variant"><span class="material-symbols-outlined text-[18px]">pause</span></button>
+<button class="p-2 rounded-full bg-surface-container-highest/40 text-on-surface-variant"><span class="material-symbols-outlined text-[18px]">edit</span></button>
+<button class="p-2 rounded-full bg-surface-container-highest/40 text-on-surface-variant"><span class="material-symbols-outlined text-[18px]">close</span></button>
+</div>
+<div class="text-right">
+<p class="text-[9px] opacity-40 font-bold uppercase tracking-tighter">Next Date</p>
+<p class="mono-text text-[12px] font-bold">May 01, 2024</p>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Bottom Navigation Shell -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pb-6 bg-emerald-950/40 backdrop-blur-2xl border-t border-emerald-500/10 h-[83px] rounded-t-[32px] shadow-[0_-10px_40px_rgba(16,185,129,0.1)]">
+<div class="flex flex-col items-center justify-center text-emerald-800 opacity-60 hover:opacity-100 hover:text-teal-300 transition-colors">
+<span class="material-symbols-outlined">home</span>
+<span class="text-[10px] font-bold tracking-widest Inter uppercase mt-1">HOME</span>
+</div>
+<div class="flex flex-col items-center justify-center text-emerald-800 opacity-60 hover:opacity-100 hover:text-teal-300 transition-colors">
+<span class="material-symbols-outlined">account_balance_wallet</span>
+<span class="text-[10px] font-bold tracking-widest Inter uppercase mt-1">WALLETS</span>
+</div>
+<div class="flex flex-col items-center justify-center text-emerald-800 opacity-60 hover:opacity-100 hover:text-teal-300 transition-colors">
+<span class="material-symbols-outlined">credit_card</span>
+<span class="text-[10px] font-bold tracking-widest Inter uppercase mt-1">CARDS</span>
+</div>
+<div class="flex flex-col items-center justify-center text-emerald-400 bg-emerald-500/10 rounded-full p-2 ring-1 ring-emerald-500/20 scale-110 duration-300 ease-in-out">
+<span class="material-symbols-outlined">bar_chart</span>
+<span class="text-[10px] font-bold tracking-widest Inter uppercase mt-0.5">ACTIVITY</span>
+</div>
+<div class="flex flex-col items-center justify-center text-emerald-800 opacity-60 hover:opacity-100 hover:text-teal-300 transition-colors">
+<span class="material-symbols-outlined">more_horiz</span>
+<span class="text-[10px] font-bold tracking-widest Inter uppercase mt-1">MORE</span>
+</div>
+</nav>
+</body></html>

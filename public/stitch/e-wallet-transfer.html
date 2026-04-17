@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&amp;family=JetBrains+Mono:wght@400;700&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "surface-container-lowest": "#06100d",
+                      "on-surface-variant": "#bbcabf",
+                      "on-secondary-fixed-variant": "#005137",
+                      "on-tertiary-fixed-variant": "#653e00",
+                      "on-error": "#690005",
+                      "inverse-on-surface": "#28332f",
+                      "tertiary-fixed-dim": "#ffb95f",
+                      "primary-fixed": "#6ffbbe",
+                      "inverse-surface": "#d9e5df",
+                      "surface-dim": "#0b1512",
+                      "surface-container-highest": "#2c3733",
+                      "on-primary-fixed": "#002113",
+                      "surface": "#0b1512",
+                      "on-primary-container": "#00422b",
+                      "surface-container-high": "#222c29",
+                      "outline-variant": "#3c4a42",
+                      "inverse-primary": "#006c49",
+                      "primary-fixed-dim": "#4edea3",
+                      "surface-container-low": "#131e1a",
+                      "surface-bright": "#313b38",
+                      "tertiary": "#ffb95f",
+                      "error": "#ffb4ab",
+                      "secondary": "#45dfa4",
+                      "on-primary": "#003824",
+                      "secondary-container": "#00bd85",
+                      "primary-container": "#10b981",
+                      "tertiary-fixed": "#ffddb8",
+                      "on-secondary-fixed": "#002114",
+                      "on-tertiary": "#472a00",
+                      "primary": "#4edea3",
+                      "background": "#0b1512",
+                      "error-container": "#93000a",
+                      "on-secondary": "#003825",
+                      "on-background": "#d9e5df",
+                      "secondary-fixed-dim": "#45dfa4",
+                      "surface-container": "#17221e",
+                      "on-tertiary-container": "#523200",
+                      "surface-tint": "#4edea3",
+                      "outline": "#86948a",
+                      "on-secondary-container": "#00452e",
+                      "on-primary-fixed-variant": "#005236",
+                      "on-error-container": "#ffdad6",
+                      "tertiary-container": "#e29100",
+                      "on-tertiary-fixed": "#2a1700",
+                      "secondary-fixed": "#68fcbf",
+                      "surface-variant": "#2c3733",
+                      "on-surface": "#d9e5df"
+              },
+              "borderRadius": {
+                      "DEFAULT": "1rem",
+                      "lg": "2rem",
+                      "xl": "3rem",
+                      "full": "9999px"
+              },
+              "fontFamily": {
+                      "headline": ["Inter"],
+                      "body": ["Inter"],
+                      "label": ["Inter"],
+                      "mono": ["JetBrains Mono"]
+              }
+            },
+          }
+        }
+      </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-panel {
+            background: rgba(44, 55, 51, 0.4);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+        .ghost-border {
+            border: 1px solid rgba(16, 185, 129, 0.08);
+        }
+        .text-gradient {
+            background: linear-gradient(to bottom, #10b981, #34d399);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        body {
+            background-color: #040d0a;
+            color: #d9e5df;
+            font-family: 'Inter', sans-serif;
+            overflow: hidden;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="flex flex-col h-[844px] w-[390px] mx-auto relative overflow-hidden">
+<!-- BACKGROUND PARENT SCREEN (Dimmed and Blurred) -->
+<div class="absolute inset-0 opacity-25 blur-md pointer-events-none z-0">
+<!-- Top App Bar Mock -->
+<header class="flex justify-between items-center px-6 h-16 w-full border-b border-emerald-500/10">
+<div class="w-10 h-10 rounded-full bg-emerald-500/20"></div>
+<span class="font-extrabold uppercase tracking-tighter text-emerald-500">BIOLUMINESCENT ARCHIVE</span>
+<span class="material-symbols-outlined text-emerald-500">notifications_active</span>
+</header>
+<main class="p-6 space-y-8">
+<div class="glass-panel h-48 rounded-xl p-6 flex flex-col justify-end">
+<div class="font-mono text-4xl font-bold">$12,450.00</div>
+<div class="font-mono text-xs text-emerald-500/60 uppercase">Current Liquidity</div>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div class="glass-panel h-32 rounded-xl"></div>
+<div class="glass-panel h-32 rounded-xl"></div>
+</div>
+<div class="glass-panel h-64 rounded-xl"></div>
+</main>
+</div>
+<!-- MODAL OVERLAY -->
+<div class="absolute inset-0 bg-black/40 z-10"></div>
+<!-- BOTTOM SHEET -->
+<div class="absolute bottom-0 w-full h-[75%] glass-panel rounded-t-[28px] ghost-border z-20 flex flex-col">
+<!-- Grab Handle -->
+<div class="w-full flex justify-center py-3">
+<div class="w-12 h-1.5 bg-emerald-500/20 rounded-full"></div>
+</div>
+<div class="px-6 pb-8 flex-1 overflow-y-auto space-y-6">
+<!-- Header Section -->
+<div class="text-center space-y-1">
+<h1 class="text-2xl font-black uppercase tracking-tight text-gradient">Send Money</h1>
+<p class="font-mono text-[10px] tracking-[0.2em] text-emerald-500/60">PEER-TO-PEER TRANSFER</p>
+</div>
+<!-- Recipient Search -->
+<div class="space-y-2">
+<label class="text-[10px] uppercase tracking-widest font-mono text-emerald-500/40 px-4">Recipient</label>
+<div class="relative">
+<input class="w-full bg-surface-container-lowest/50 border-none rounded-lg h-14 pl-12 text-on-surface placeholder:text-emerald-900/50 focus:ring-1 focus:ring-emerald-500/20 transition-all font-body" placeholder="@username or email" type="text"/>
+<span class="material-symbols-outlined absolute left-4 top-4 text-emerald-500/50">search</span>
+</div>
+</div>
+<!-- Recent Recipients -->
+<div class="flex justify-between px-2">
+<div class="flex flex-col items-center gap-2 group">
+<div class="w-14 h-14 rounded-full p-[2px] bg-gradient-to-tr from-emerald-500 to-teal-400">
+<img alt="User avatar" class="w-full h-full rounded-full bg-surface-container-highest" data-alt="Portrait of a digital avatar with green glowing glasses and futuristic headset in bioluminescent style" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBdZyNYAXw7VoW7OYPL1u5Ln0Gq1p874LA_1zVX-Zio3NeJUYtk_TvNbXDl8NDVSbXeRixtPEAANPYmhAh3YE7xwp6lPqb8TDxh2jjMvN_6dXjazK-bWMNKhpLyStvX8wv5OXZQsx_zbVRtWjxMdyvh2CelM0Gsy5dOwFX8XOX-miW67Y0YLzLp-LZ2U9T5EuVPi21TLCV8znjJqZNGs7B2NC2VdE08D5Mfm5nrxEKZxlC7J2wH_VwQbTOl_l80xKN80UPS66f_w53R"/>
+</div>
+<span class="text-[10px] font-mono text-emerald-500/80">FELIX</span>
+</div>
+<div class="flex flex-col items-center gap-2">
+<div class="w-14 h-14 rounded-full p-[2px] bg-emerald-500/10">
+<img alt="User avatar" class="w-full h-full rounded-full bg-surface-container-highest" data-alt="Abstract minimalist avatar with cool teal lighting and sharp geometric hair style" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCTkvgPcTiWuRlt3JzpBLnn59wF3VYTeNDcbG1nPvFxdbfezmm1D5tNc5C-w6Luu904xkBEEy2J_Omlt3Y5va3LaXczbsiJ3Hsjl4yo4mH0rJ0umdv5RLdxpA2AevwxkQC6zfSbdJsEJhLM89bumdopE7ABVl2JvnqAFutEaBRGEEZiGXx7ef34UPKirXmJr5r2YisZmih6D_sGEKY6cMQtjjrVGzWI3rpzz1sEccgOKOddUAqPHgoSxBJifK7wkAAEQuqNix7rQb1A"/>
+</div>
+<span class="text-[10px] font-mono text-emerald-500/80">LUNA</span>
+</div>
+<div class="flex flex-col items-center gap-2">
+<div class="w-14 h-14 rounded-full p-[2px] bg-emerald-500/10">
+<img alt="User avatar" class="w-full h-full rounded-full bg-surface-container-highest" data-alt="Cyberpunk style character avatar with subtle emerald green skin accents and high-tech collar" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAj93ewXVCy5emLAdQ4X7stGdyoH6Zzt1b-43PVgAq9cmNUdYlwpvRXBPu0RL2WHAC5Gt5eYond1W88CMDT9KSAdLwsf9M-FkxgBDMYMy-Gj5dWPXudfPM23yRkbk9DCjYr3x8HgokAZeRiMSgLXUTbzrxMrcShMxKYJRy52-lLtWFy7M9APEsVNSLKacYAhNoA_WvSG-DxpbUD57NuKfUc4EHDqPKhu500xARVJ1kQqj5C1-lyL5f_vpuPf96brwJsr_3Grhz3XOYW"/>
+</div>
+<span class="text-[10px] font-mono text-emerald-500/80">ATLAS</span>
+</div>
+<div class="flex flex-col items-center gap-2">
+<div class="w-14 h-14 rounded-full p-[2px] bg-emerald-500/10">
+<img alt="User avatar" class="w-full h-full rounded-full bg-surface-container-highest" data-alt="Female avatar with glowing neon green hair highlights and sophisticated digital eyewear" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC1W7Ye1lPykzURNFTJ1sMOPP0mxTLCv3g8PaQJc6uaQRANeH1QZteiA4q6gKxQ6MVnekYWC85ookBYUM3aqwXx70DlXWa0gbYZPhPgiLS1Dq-92C14_lojDrfDGlBGbeFcn5WIDZiCYFNlzFUjyTDw3iS5obcfFB4jm2aJbuhzypXnM5gFsZJZgi3cZE4tXX4eIG1-OOMo8GYff1Lk-e8KvwfagytfkrJEvu9iJ_o3oeseMnaxHkCLn9NX8i4FS7oHkz-Dr1F-8acv"/>
+</div>
+<span class="text-[10px] font-mono text-emerald-500/80">NOVA</span>
+</div>
+</div>
+<!-- Amount Section -->
+<div class="space-y-4 py-4">
+<div class="flex flex-col items-center justify-center space-y-2">
+<div class="flex items-baseline gap-2">
+<span class="text-5xl font-mono font-bold text-gradient">$100.00</span>
+</div>
+<div class="bg-emerald-500/10 px-3 py-1 rounded-full ghost-border">
+<span class="font-mono text-[10px] text-emerald-400 tracking-tighter">USD</span>
+</div>
+</div>
+<!-- Quick Amount Pills -->
+<div class="flex justify-center gap-3">
+<button class="px-4 py-2 glass-panel rounded-full ghost-border font-mono text-xs hover:bg-emerald-500/10 transition-colors text-emerald-400">$10</button>
+<button class="px-4 py-2 glass-panel rounded-full ghost-border font-mono text-xs hover:bg-emerald-500/10 transition-colors text-emerald-400">$50</button>
+<button class="px-4 py-2 bg-emerald-500/20 rounded-full ghost-border font-mono text-xs text-emerald-300">$100</button>
+<button class="px-4 py-2 glass-panel rounded-full ghost-border font-mono text-xs hover:bg-emerald-500/10 transition-colors text-emerald-400">$500</button>
+</div>
+</div>
+<!-- Memo Field -->
+<div class="space-y-2">
+<label class="text-[10px] uppercase tracking-widest font-mono text-emerald-500/40 px-4">Transaction Memo</label>
+<div class="relative">
+<input class="w-full bg-surface-container-lowest/50 border-none rounded-lg h-14 px-6 text-on-surface placeholder:text-emerald-900/50 focus:ring-1 focus:ring-emerald-500/20 transition-all font-body italic text-sm" placeholder="Add a note (optional)" type="text"/>
+</div>
+</div>
+<!-- Fee Breakdown Card -->
+<div class="glass-panel p-4 rounded-xl ghost-border space-y-2">
+<div class="flex justify-between items-center font-mono text-[10px] uppercase tracking-wider text-emerald-500/50">
+<span>Network Protocol Fee</span>
+<span class="text-emerald-400">$0.24</span>
+</div>
+<div class="flex justify-between items-center font-mono text-[10px] uppercase tracking-wider text-emerald-500/50">
+<span>Arrival Estimate</span>
+<span class="text-emerald-400">INSTANT</span>
+</div>
+</div>
+<!-- Action Buttons -->
+<div class="pt-4 space-y-4">
+<button class="w-full h-16 bg-emerald-500 hover:bg-emerald-400 text-on-primary font-black uppercase tracking-[0.2em] rounded-full transition-all active:scale-95 shadow-[0_0_20px_rgba(16,185,129,0.3)]">
+                    SEND
+                </button>
+<div class="text-center">
+<button class="text-emerald-700 hover:text-emerald-500 font-mono text-[10px] uppercase tracking-[0.2em] transition-colors">
+                        Cancel Transfer
+                    </button>
+</div>
+</div>
+</div>
+</div>
+<!-- Hidden NavBar (as per background structure but suppressed for focus) -->
+<nav class="fixed bottom-0 w-full z-50 rounded-t-[32px] bg-[#2c3733]/40 backdrop-blur-xl border-t border-emerald-500/10 flex justify-around items-center px-4 pt-3 pb-8 opacity-20 pointer-events-none">
+<div class="flex flex-col items-center justify-center text-emerald-700 p-2">
+<span class="material-symbols-outlined">account_balance_wallet</span>
+<span class="font-mono text-[10px] uppercase tracking-widest mt-1">Vault</span>
+</div>
+<div class="flex flex-col items-center justify-center text-emerald-700 p-2">
+<span class="material-symbols-outlined">swap_calls</span>
+<span class="font-mono text-[10px] uppercase tracking-widest mt-1">Flow</span>
+</div>
+<div class="flex flex-col items-center justify-center text-emerald-700 p-2">
+<span class="material-symbols-outlined">monitoring</span>
+<span class="font-mono text-[10px] uppercase tracking-widest mt-1">Pulse</span>
+</div>
+<div class="flex flex-col items-center justify-center text-emerald-700 p-2">
+<span class="material-symbols-outlined">fingerprint</span>
+<span class="font-mono text-[10px] uppercase tracking-widest mt-1">Identity</span>
+</div>
+</nav>
+</body></html>

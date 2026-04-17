@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&amp;family=JetBrains+Mono:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "outline-variant": "#3c4a42",
+                        "on-surface-variant": "#bbcabf",
+                        "error-container": "#93000a",
+                        "surface": "#0b1512",
+                        "on-tertiary": "#472a00",
+                        "outline": "#86948a",
+                        "secondary-container": "#00bd85",
+                        "on-secondary-container": "#00452e",
+                        "surface-container-low": "#131e1a",
+                        "surface-dim": "#0b1512",
+                        "surface-container": "#17221e",
+                        "surface-container-highest": "#2c3733",
+                        "error": "#ffb4ab",
+                        "background": "#0b1512",
+                        "on-background": "#d9e5df",
+                        "surface-container-high": "#222c29",
+                        "surface-tint": "#4edea3",
+                        "tertiary-fixed-dim": "#ffb95f",
+                        "tertiary": "#ffb95f",
+                        "on-secondary": "#003825",
+                        "on-secondary-fixed-variant": "#005137",
+                        "on-secondary-fixed": "#002114",
+                        "surface-variant": "#2c3733",
+                        "on-tertiary-container": "#523200",
+                        "tertiary-container": "#e29100",
+                        "inverse-on-surface": "#28332f",
+                        "on-primary-container": "#00422b",
+                        "secondary-fixed-dim": "#45dfa4",
+                        "on-primary-fixed": "#002113",
+                        "primary-fixed-dim": "#4edea3",
+                        "on-primary-fixed-variant": "#005236",
+                        "secondary-fixed": "#68fcbf",
+                        "primary": "#4edea3",
+                        "surface-container-lowest": "#06100d",
+                        "primary-fixed": "#6ffbbe",
+                        "secondary": "#45dfa4",
+                        "on-error-container": "#ffdad6",
+                        "primary-container": "#10b981",
+                        "on-error": "#690005",
+                        "inverse-primary": "#006c49",
+                        "on-tertiary-fixed-variant": "#653e00",
+                        "on-tertiary-fixed": "#2a1700",
+                        "inverse-surface": "#d9e5df",
+                        "on-primary": "#003824",
+                        "surface-bright": "#313b38",
+                        "tertiary-fixed": "#ffddb8",
+                        "on-surface": "#d9e5df"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "1rem",
+                        "lg": "2rem",
+                        "xl": "3rem",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Inter"],
+                        "body": ["Inter"],
+                        "label": ["Inter"],
+                        "mono": ["JetBrains Mono"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .glass-panel {
+            background: rgba(44, 55, 51, 0.4);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(16, 185, 129, 0.08);
+        }
+        .bg-living-hardware {
+            background-color: #040d0a;
+            position: relative;
+            overflow: hidden;
+        }
+        .blob {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(60px);
+            opacity: 0.15;
+            z-index: 0;
+        }
+        .diagonal-lines {
+            background-image: repeating-linear-gradient(45deg, rgba(16, 185, 129, 0.03) 0, rgba(16, 185, 129, 0.03) 1px, transparent 0, transparent 50%);
+            background-size: 10px 10px;
+        }
+        .text-gradient {
+            background: linear-gradient(to right, #10b981, #34d399);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-living-hardware font-body text-on-surface min-h-screen selection:bg-primary/30">
+<!-- Background Elements -->
+<div class="fixed inset-0 diagonal-lines pointer-events-none"></div>
+<div class="blob w-64 h-64 bg-primary -top-20 -left-20 animate-pulse"></div>
+<div class="blob w-80 h-80 bg-secondary bottom-40 -right-20"></div>
+<div class="blob w-48 h-48 bg-primary-container top-1/2 left-1/4 opacity-10"></div>
+<div class="blob w-72 h-72 bg-tertiary bottom-0 left-0 opacity-5"></div>
+<!-- Status Bar Spacer (iOS Style 44pt) -->
+<div class="h-11 w-full"></div>
+<!-- TopAppBar -->
+<nav class="fixed top-0 w-full z-50 bg-[#040d0a]/40 backdrop-blur-xl border-b border-emerald-500/10 shadow-[0_0_40px_rgba(16,185,129,0.08)] max-w-md mx-auto left-0 right-0">
+<div class="flex items-center justify-between px-6 h-16">
+<button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-emerald-500/10 transition-colors active:scale-95 duration-300 ease-out">
+<span class="material-symbols-outlined text-primary">arrow_back</span>
+</button>
+<h1 class="font-['Inter'] font-extrabold tracking-tight uppercase text-gradient text-xl">Team Management</h1>
+<button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-emerald-500/10 transition-colors active:scale-95 duration-300 ease-out">
+<span class="material-symbols-outlined text-primary">person_add</span>
+</button>
+</div>
+</nav>
+<!-- Content Canvas -->
+<main class="relative z-10 px-6 pt-20 pb-32 max-w-md mx-auto">
+<!-- Sub-header -->
+<div class="mb-6">
+<p class="font-mono text-[10px] tracking-[0.2em] text-primary opacity-80 uppercase">Manage Your Organization</p>
+</div>
+<!-- Stats Section (2x2 Bento) -->
+<div class="grid grid-cols-2 gap-4 mb-8">
+<div class="glass-panel rounded-lg p-4 flex flex-col gap-1">
+<span class="font-mono text-[10px] text-on-surface-variant uppercase">Total</span>
+<span class="font-mono text-3xl font-bold text-primary leading-none">5</span>
+</div>
+<div class="glass-panel rounded-lg p-4 flex flex-col gap-1">
+<span class="font-mono text-[10px] text-on-surface-variant uppercase">Admins</span>
+<span class="font-mono text-3xl font-bold text-primary leading-none">2</span>
+</div>
+<div class="glass-panel rounded-lg p-4 flex flex-col gap-1">
+<span class="font-mono text-[10px] text-on-surface-variant uppercase">Invites</span>
+<span class="font-mono text-3xl font-bold text-primary leading-none">1</span>
+</div>
+<div class="glass-panel rounded-lg p-4 flex flex-col gap-1">
+<span class="font-mono text-[10px] text-on-surface-variant uppercase">Active</span>
+<span class="font-mono text-3xl font-bold text-primary leading-none">4</span>
+</div>
+</div>
+<!-- Filter Section -->
+<div class="flex gap-3 mb-8">
+<div class="flex-1 glass-panel rounded-full px-4 h-12 flex items-center gap-3 bg-surface-container-lowest/40">
+<span class="material-symbols-outlined text-on-surface-variant text-sm">search</span>
+<input class="bg-transparent border-none outline-none text-sm font-body text-on-surface placeholder:text-on-surface-variant/50 w-full focus:ring-0" placeholder="Search members..." type="text"/>
+</div>
+<button class="glass-panel rounded-full px-4 h-12 flex items-center gap-2 bg-surface-container-highest/40 active:scale-95 transition-transform">
+<span class="text-xs font-semibold text-primary">Role</span>
+<span class="material-symbols-outlined text-xs text-primary">keyboard_arrow_down</span>
+</button>
+</div>
+<!-- Team List -->
+<div class="flex flex-col gap-4">
+<!-- Member 1: Joseph -->
+<div class="glass-panel rounded-lg p-4 flex items-start gap-4 transition-all duration-300 hover:bg-surface-container-highest/60">
+<div class="relative">
+<div class="w-14 h-14 rounded-full p-0.5 border-2 border-primary shadow-[0_0_10px_rgba(16,185,129,0.3)]">
+<img alt="Joseph Obasi" class="w-full h-full rounded-full object-cover" data-alt="professional portrait of a confident West African man in a modern workspace environment with soft ambient lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBfZRawBUS_1VMB0E9JLY8tF1SuwRMSN6JoD7w6ZL5BE9lUs7Boac13VgJJmtt-HH8smSOnffOBuZboAo1aIH7IQRKakvji2LSawqieJCeEkLUkTfxiqBqx7lg-_iXwyQGCx-J-KFh33CcUauJMah4WVvxl1zeJu6NKI_Gl-EKBlqy2ZgAWEWYi4vqkuP_LrCUmcdagRkTecilObL23UQNUKHUn4Djf_k5hb33s1SI-WmpsOncIb0rnwJ52XQMjwH8905XBSyZxm-Pz"/>
+</div>
+<div class="absolute bottom-0 right-0 w-3.5 h-3.5 bg-secondary border-2 border-surface rounded-full shadow-[0_0_8px_rgba(69,223,164,0.5)]"></div>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex items-center gap-2 mb-0.5">
+<h3 class="font-semibold text-on-surface truncate">Joseph Obasi</h3>
+<span class="px-2 py-0.5 bg-primary/20 text-primary text-[8px] font-black rounded-full uppercase tracking-tighter">You</span>
+</div>
+<p class="font-mono text-[10px] text-on-surface-variant/70 mb-2">joseph.o@archive.io</p>
+<div class="flex flex-wrap gap-2">
+<span class="px-2 py-0.5 bg-primary/10 text-primary border border-primary/20 text-[9px] font-bold rounded-full">ADMIN</span>
+<span class="px-2 py-0.5 bg-secondary/10 text-secondary text-[9px] font-bold rounded-full">ACTIVE</span>
+</div>
+</div>
+<div class="flex flex-col gap-2">
+<button class="w-8 h-8 rounded-full glass-panel flex items-center justify-center text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-sm">edit</span>
+</button>
+<span class="font-mono text-[8px] text-on-surface-variant/40 text-center">NOW</span>
+</div>
+</div>
+<!-- Member 2: Sarah -->
+<div class="glass-panel rounded-lg p-4 flex items-start gap-4">
+<div class="relative">
+<div class="w-14 h-14 rounded-full p-0.5 border border-primary/20">
+<img alt="Sarah Chen" class="w-full h-full rounded-full object-cover" data-alt="headshot of a smiling young East Asian woman with glasses and professional attire in a bright office setting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDuCVkskuK1UzVwxgMqg1y_3ImQbQQfLKNHVQ4eBv9ZL148qj6HHRcX9siDu3thgsnY99Tz0zOCX1U41S0ussuuS5HVfeagGJrWFh-KNME4APtIbljBg7Nee1VJos3U7RrDpHtxYb9cc7TChxs7S5hgBXM0H6vVR7Dmlemc73Yh5YDWDi-XTG2_QlMxHRZKpsiefBlOwS9uMTPbKHn5o_3GbtYwws4LzjAOVPDTCMR6Yq7rDpZ7-fDO-ort1uHq6IBukcl_DFL_tUe1"/>
+</div>
+<div class="absolute bottom-0 right-0 w-3.5 h-3.5 bg-secondary border-2 border-surface rounded-full shadow-[0_0_8px_rgba(69,223,164,0.5)]"></div>
+</div>
+<div class="flex-1 min-w-0">
+<h3 class="font-semibold text-on-surface truncate">Sarah Chen</h3>
+<p class="font-mono text-[10px] text-on-surface-variant/70 mb-2">s.chen@archive.io</p>
+<div class="flex flex-wrap gap-2">
+<span class="px-2 py-0.5 bg-on-primary-fixed-variant/10 text-secondary border border-secondary/20 text-[9px] font-bold rounded-full">MANAGER</span>
+<span class="px-2 py-0.5 bg-secondary/10 text-secondary text-[9px] font-bold rounded-full">ACTIVE</span>
+</div>
+</div>
+<div class="flex flex-col items-center gap-1">
+<div class="flex gap-1">
+<button class="w-8 h-8 rounded-full glass-panel flex items-center justify-center text-on-surface-variant">
+<span class="material-symbols-outlined text-sm">chat_bubble</span>
+</button>
+</div>
+<span class="font-mono text-[8px] text-on-surface-variant/40">2M AGO</span>
+</div>
+</div>
+<!-- Member 3: Marcus -->
+<div class="glass-panel rounded-lg p-4 flex items-start gap-4">
+<div class="relative">
+<div class="w-14 h-14 rounded-full p-0.5 border border-primary/20">
+<img alt="Marcus Klein" class="w-full h-full rounded-full object-cover" data-alt="close-up portrait of a man with a beard and intense eyes in soft directional lighting with organic background textures" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDj0_OMLEob5oIRasp4sVHp_aAMM3h81alZ6vCbJ5r-JY73jw9W4CXlVN24idCyIJnM3W7sy0O0eRsv_egSNjAtLDuPRRYdADvPAWDUR9BVIcLufghg8N9mtDPE7DZhkVNXkQCtsw4JPgMTlXWn5BqGdAMR0cbdFVhXdX0RWxbcJKdDKUbEv__YCKREKOHaDy3yIfZi8hQPsOOtG1NHpaXpg2lUyaHUrej2RDfjU5jwRNrffHpc1HsE5CsboUjl50QrIChfv-Q4mQr8"/>
+</div>
+<div class="absolute bottom-0 right-0 w-3.5 h-3.5 bg-secondary border-2 border-surface rounded-full shadow-[0_0_8px_rgba(69,223,164,0.5)]"></div>
+</div>
+<div class="flex-1 min-w-0">
+<h3 class="font-semibold text-on-surface truncate">Marcus Klein</h3>
+<p class="font-mono text-[10px] text-on-surface-variant/70 mb-2">klein.m@archive.io</p>
+<div class="flex flex-wrap gap-2">
+<span class="px-2 py-0.5 bg-surface-container-highest text-on-surface-variant text-[9px] font-bold rounded-full">VIEWER</span>
+<span class="px-2 py-0.5 bg-secondary/10 text-secondary text-[9px] font-bold rounded-full">ACTIVE</span>
+</div>
+</div>
+<div class="flex flex-col items-center gap-1">
+<div class="flex gap-1">
+<button class="w-8 h-8 rounded-full glass-panel flex items-center justify-center text-on-surface-variant">
+<span class="material-symbols-outlined text-sm">chat_bubble</span>
+</button>
+</div>
+<span class="font-mono text-[8px] text-on-surface-variant/40">15M AGO</span>
+</div>
+</div>
+<!-- Member 4: Priya -->
+<div class="glass-panel rounded-lg p-4 flex items-start gap-4">
+<div class="relative">
+<div class="w-14 h-14 rounded-full p-0.5 border border-tertiary/20">
+<img alt="Priya Patel" class="w-full h-full rounded-full object-cover grayscale opacity-50" data-alt="professional portrait of a young South Asian woman with a thoughtful expression in a contemporary interior space" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBpKBgXL-j_NcZSZ2MIyvWXqj3UrxgIgKvOoHUWlloOh3O1sekJ6B5Z3Q0rTppf5ncES4PFZM1CroEkj_EszwTcLPahpzt9WvdabAvlNEphSuW_1A9VdHRW2WTlEyBCNUjIdCC6DK_rwaPp1UAl1akaqtnugRxDHnE-nbiZRNJit-6Mms83UNiUk3yczYd6JJ_4NCXv6eVWwrH_q8wySEY747LI2f_YbYsQXesEJlk0ObuW16KPKR9fo_9PREIvUOT7N6Gz6Jvv3yDj"/>
+</div>
+</div>
+<div class="flex-1 min-w-0">
+<h3 class="font-semibold text-on-surface truncate">Priya Patel</h3>
+<p class="font-mono text-[10px] text-on-surface-variant/70 mb-2">priya.p@archive.io</p>
+<div class="flex flex-wrap gap-2">
+<span class="px-2 py-0.5 bg-tertiary/10 text-tertiary border border-tertiary/20 text-[9px] font-bold rounded-full">ACCOUNTANT</span>
+<span class="px-2 py-0.5 bg-tertiary/20 text-tertiary text-[9px] font-bold rounded-full">INVITED</span>
+</div>
+</div>
+<div class="flex flex-col items-center gap-1">
+<button class="w-8 h-8 rounded-full glass-panel flex items-center justify-center text-on-surface-variant">
+<span class="material-symbols-outlined text-sm">forward_to_inbox</span>
+</button>
+<span class="font-mono text-[8px] text-on-surface-variant/40">PENDING</span>
+</div>
+</div>
+<!-- Member 5: David -->
+<div class="glass-panel rounded-lg p-4 flex items-start gap-4 border-error/10">
+<div class="relative">
+<div class="w-14 h-14 rounded-full p-0.5 border border-error/20">
+<img alt="David Osei" class="w-full h-full rounded-full object-cover saturate-0 opacity-40" data-alt="candid portrait of a young man of West African descent with a serious expression, softly lit against a dark background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA1lzHNlVAUZeT-DQiRpRaO-9O5t6MKs9Rxi_y54M69OB3CBMZ1XJdoa9SGoD4_F4C3tPjZaB_bCFcZiGtY3TXcidTPvuWm3oFcLhUaxhQ0CKTHmL_9aevpB_Gm5_MK2QoceZlGv5T6ZvE8FGvrD7IoU6pau-ueZ2wLzVuvMOPznhWXxrhjBFAD9-vhKDGrVRsbYQnicqXNnt4NeIFVMzcRCTH7pXIPAIk6WO-Y_EYJohQ3b4UG3EkCEk7nasdnrVXMrWW7SnOkdPSe"/>
+</div>
+</div>
+<div class="flex-1 min-w-0">
+<h3 class="font-semibold text-on-surface-variant truncate">David Osei</h3>
+<p class="font-mono text-[10px] text-on-surface-variant/40 mb-2">d.osei@archive.io</p>
+<div class="flex flex-wrap gap-2">
+<span class="px-2 py-0.5 bg-surface-container text-on-surface-variant/60 text-[9px] font-bold rounded-full">MANAGER</span>
+<span class="px-2 py-0.5 bg-error/10 text-error text-[9px] font-bold rounded-full">SUSPENDED</span>
+</div>
+</div>
+<div class="flex flex-col items-center gap-1">
+<button class="w-8 h-8 rounded-full glass-panel flex items-center justify-center text-error/60">
+<span class="material-symbols-outlined text-sm">person_remove</span>
+</button>
+<span class="font-mono text-[8px] text-on-surface-variant/40">3D AGO</span>
+</div>
+</div>
+</div>
+</main>
+<!-- FAB -->
+<button class="fixed bottom-28 right-6 z-50 bg-primary-container text-on-primary-container flex items-center gap-2 px-6 py-4 rounded-full shadow-[0_10px_30px_rgba(16,185,129,0.3)] font-bold tracking-tight active:scale-95 transition-all">
+<span class="text-sm">INVITE +</span>
+</button>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full flex justify-around items-center px-4 pt-3 pb-8 bg-[#14261f]/60 backdrop-blur-2xl border-t border-emerald-500/10 shadow-[0_-10px_40px_rgba(16,185,129,0.1)] rounded-t-[32px] z-50 max-w-md mx-auto right-0">
+<div class="flex flex-col items-center justify-center text-emerald-900/50 hover:text-emerald-300 transition-all active:scale-90 animate-pulse-slow">
+<span class="material-symbols-outlined">home</span>
+<span class="font-['Inter'] font-semibold text-[10px] tracking-wider">Home</span>
+</div>
+<div class="flex flex-col items-center justify-center text-emerald-900/50 hover:text-emerald-300 transition-all active:scale-90 animate-pulse-slow">
+<span class="material-symbols-outlined">account_balance_wallet</span>
+<span class="font-['Inter'] font-semibold text-[10px] tracking-wider">Wallets</span>
+</div>
+<div class="flex flex-col items-center justify-center text-emerald-900/50 hover:text-emerald-300 transition-all active:scale-90 animate-pulse-slow">
+<span class="material-symbols-outlined">credit_card</span>
+<span class="font-['Inter'] font-semibold text-[10px] tracking-wider">Cards</span>
+</div>
+<div class="flex flex-col items-center justify-center text-emerald-900/50 hover:text-emerald-300 transition-all active:scale-90 animate-pulse-slow">
+<span class="material-symbols-outlined">insights</span>
+<span class="font-['Inter'] font-semibold text-[10px] tracking-wider">Activity</span>
+</div>
+<div class="flex flex-col items-center justify-center text-emerald-400 bg-emerald-500/20 rounded-full px-5 py-1.5 shadow-[0_0_15px_rgba(16,185,129,0.3)] active:scale-90 animate-pulse-slow">
+<span class="material-symbols-outlined">more_horiz</span>
+<span class="font-['Inter'] font-semibold text-[10px] tracking-wider">More</span>
+</div>
+</nav>
+<!-- Bottom Spacer for iOS (83pt total height) -->
+<div class="h-24 w-full"></div>
+</body></html>

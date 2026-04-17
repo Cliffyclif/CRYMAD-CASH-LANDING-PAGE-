@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+<title>Crymad Cash - Verify Identity</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&amp;family=JetBrains+Mono:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-error": "#690005",
+                    "primary-fixed-dim": "#4edea3",
+                    "on-primary-fixed-variant": "#005236",
+                    "surface-container-high": "#222c29",
+                    "secondary": "#45dfa4",
+                    "on-surface": "#d9e5df",
+                    "secondary-container": "#00bd85",
+                    "inverse-on-surface": "#28332f",
+                    "error-container": "#93000a",
+                    "on-secondary": "#003825",
+                    "surface-tint": "#4edea3",
+                    "on-tertiary-fixed-variant": "#653e00",
+                    "on-surface-variant": "#bbcabf",
+                    "on-secondary-fixed": "#002114",
+                    "on-primary": "#003824",
+                    "surface-container-low": "#131e1a",
+                    "tertiary": "#ffb95f",
+                    "outline": "#86948a",
+                    "error": "#ffb4ab",
+                    "on-background": "#d9e5df",
+                    "tertiary-container": "#e29100",
+                    "on-primary-container": "#00422b",
+                    "on-error-container": "#ffdad6",
+                    "surface-container-lowest": "#06100d",
+                    "surface-container-highest": "#2c3733",
+                    "primary-fixed": "#6ffbbe",
+                    "secondary-fixed-dim": "#45dfa4",
+                    "surface-bright": "#313b38",
+                    "on-tertiary-container": "#523200",
+                    "tertiary-fixed-dim": "#ffb95f",
+                    "tertiary-fixed": "#ffddb8",
+                    "surface-container": "#17221e",
+                    "on-tertiary-fixed": "#2a1700",
+                    "inverse-primary": "#006c49",
+                    "surface": "#0b1512",
+                    "primary-container": "#10b981",
+                    "surface-variant": "#2c3733",
+                    "on-tertiary": "#472a00",
+                    "surface-dim": "#0b1512",
+                    "on-secondary-container": "#00452e",
+                    "inverse-surface": "#d9e5df",
+                    "secondary-fixed": "#68fcbf",
+                    "background": "#0b1512",
+                    "on-primary-fixed": "#002113",
+                    "outline-variant": "#3c4a42",
+                    "primary": "#4edea3",
+                    "on-secondary-fixed-variant": "#005137"
+            },
+            "borderRadius": {
+                    "DEFAULT": "1rem",
+                    "lg": "2rem",
+                    "xl": "3rem",
+                    "full": "9999px"
+            },
+            "fontFamily": {
+                    "headline": ["Inter"],
+                    "body": ["Inter"],
+                    "label": ["Inter"],
+                    "mono": ["JetBrains Mono"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            background-color: #040d0a;
+            color: #d9e5df;
+            font-family: 'Inter', sans-serif;
+            overflow: hidden;
+        }
+        .living-bg {
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+            overflow: hidden;
+        }
+        .blob {
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            filter: blur(60px);
+            opacity: 0.25;
+            border-radius: 50%;
+        }
+        .energy-lines {
+            position: absolute;
+            inset: 0;
+            background-image: repeating-linear-gradient(45deg, rgba(16, 185, 129, 0.05) 0px, rgba(16, 185, 129, 0.05) 1px, transparent 1px, transparent 10px);
+            opacity: 0.05;
+        }
+        .glass-panel {
+            background: rgba(44, 55, 51, 0.4);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(16, 185, 129, 0.08);
+        }
+        .gradient-text {
+            background: linear-gradient(to bottom, #10b981, #34d399);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .conic-ring {
+            background: conic-gradient(from 0deg, transparent 0%, #10b981 50%, transparent 100%);
+            animation: spin 3s linear infinite;
+            mask: radial-gradient(transparent 65%, black 66%);
+            -webkit-mask: radial-gradient(transparent 65%, black 66%);
+        }
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+        .cursor-blink {
+            animation: blink 1s step-end infinite;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="flex flex-col items-center justify-center min-h-screen p-6">
+<!-- Living Background -->
+<div class="living-bg">
+<div class="blob bg-[#10b981] top-[-50px] left-[-50px]"></div>
+<div class="blob bg-[#34d399] bottom-[-50px] right-[-50px]"></div>
+<div class="blob bg-[#10b981] top-[40%] right-[10%]"></div>
+<div class="blob bg-[#34d399] bottom-[20%] left-[20%]"></div>
+<div class="energy-lines"></div>
+</div>
+<!-- Main Content Shell -->
+<main class="w-full max-w-[390px] mx-auto flex flex-col items-center gap-8 pt-4 pb-12">
+<!-- Header Brand Anchor (TopAppBar Logic - Suppressed for focus journey) -->
+<div class="w-full flex justify-center items-center h-12">
+<span class="gradient-text font-extrabold tracking-tight uppercase text-sm">Crymad Cash</span>
+</div>
+<!-- Visual Anchor: Shield & Key -->
+<div class="relative w-32 h-32 flex items-center justify-center">
+<div class="absolute inset-0 conic-ring rounded-full opacity-40"></div>
+<div class="glass-panel w-24 h-24 rounded-full flex items-center justify-center shadow-[0_0_30px_rgba(16,185,129,0.15)]">
+<span class="material-symbols-outlined text-[48px] text-[#10b981]" style="font-variation-settings: 'FILL' 0, 'wght' 300;">shield_lock</span>
+</div>
+</div>
+<!-- Typography Cluster -->
+<div class="text-center space-y-2">
+<h1 class="text-3xl font-extrabold gradient-text tracking-tight">Verify Your Identity</h1>
+<p class="font-mono text-[11px] tracking-[0.2em] text-on-surface-variant uppercase">ENTER AUTHENTICATOR CODE</p>
+</div>
+<!-- Device Pill -->
+<div class="glass-panel px-4 py-2 rounded-full flex items-center gap-2">
+<span class="material-symbols-outlined text-sm text-[#10b981]">smartphone</span>
+<span class="font-mono text-[10px] tracking-wider text-on-surface uppercase">AUTHENTICATOR • Google Auth</span>
+</div>
+<!-- 6-Digit Input Row -->
+<div class="flex gap-2.5 justify-center mt-4">
+<!-- Box 1 -->
+<div class="glass-panel w-12 h-14 rounded-xl flex items-center justify-center">
+<span class="font-mono text-2xl font-bold text-primary">4</span>
+</div>
+<!-- Box 2 -->
+<div class="glass-panel w-12 h-14 rounded-xl flex items-center justify-center">
+<span class="font-mono text-2xl font-bold text-primary">9</span>
+</div>
+<!-- Box 3 -->
+<div class="glass-panel w-12 h-14 rounded-xl flex items-center justify-center">
+<span class="font-mono text-2xl font-bold text-primary">2</span>
+</div>
+<!-- Box 4 (Active State) -->
+<div class="bg-[#10b981]/10 border-2 border-[#10b981] w-12 h-14 rounded-xl flex items-center justify-center relative shadow-[0_0_15px_rgba(16,185,129,0.2)]">
+<div class="w-[2px] h-6 bg-[#10b981] cursor-blink"></div>
+</div>
+<!-- Box 5 -->
+<div class="glass-panel w-12 h-14 rounded-xl flex items-center justify-center"></div>
+<!-- Box 6 -->
+<div class="glass-panel w-12 h-14 rounded-xl flex items-center justify-center"></div>
+</div>
+<!-- Countdown Timer -->
+<div class="glass-panel px-4 py-2 rounded-full flex items-center gap-3">
+<div class="w-1.5 h-1.5 rounded-full bg-tertiary shadow-[0_0_8px_#f59e0b] animate-pulse"></div>
+<span class="font-mono text-xs tracking-widest text-on-surface/80">RESEND IN 00:24</span>
+</div>
+<!-- Primary Action -->
+<div class="w-full px-4 mt-8">
+<button class="w-full h-14 bg-[#10b981] rounded-2xl flex items-center justify-center gap-2 group transition-all duration-300 active:scale-[0.98] shadow-[0_8px_30px_rgba(16,185,129,0.3)]">
+<span class="font-headline font-bold text-on-primary-fixed tracking-widest uppercase">VERIFY</span>
+<span class="material-symbols-outlined text-on-primary-fixed group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</button>
+</div>
+<!-- Secondary Links -->
+<div class="flex flex-col items-center gap-6 mt-4">
+<a class="font-mono text-[11px] text-primary flex items-center gap-1 hover:brightness-125 transition-all" href="#">
+                Use Backup Code <span class="material-symbols-outlined text-xs">arrow_forward</span>
+</a>
+<a class="font-mono text-[11px] text-on-surface-variant/60 flex items-center gap-1 hover:text-on-surface transition-colors mt-8" href="#">
+<span class="material-symbols-outlined text-xs">arrow_back</span> Back to Sign In
+            </a>
+</div>
+</main>
+<!-- Content-Specific Image Placement (Abstract Decorative) -->
+<div class="fixed bottom-0 left-0 w-full opacity-20 pointer-events-none">
+<div class="h-64 w-full bg-gradient-to-t from-[#10b981]/20 to-transparent"></div>
+</div>
+</body></html>

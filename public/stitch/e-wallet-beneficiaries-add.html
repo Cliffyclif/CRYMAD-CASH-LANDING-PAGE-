@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Add Beneficiary - Bioluminescent Archive</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&amp;family=JetBrains+Mono:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-container-low": "#131e1a",
+                    "outline": "#86948a",
+                    "secondary": "#45dfa4",
+                    "on-background": "#d9e5df",
+                    "surface-tint": "#4edea3",
+                    "surface-container-highest": "#2c3733",
+                    "tertiary-fixed-dim": "#ffb95f",
+                    "on-secondary-fixed": "#002114",
+                    "on-primary-fixed": "#002113",
+                    "inverse-on-surface": "#28332f",
+                    "tertiary-fixed": "#ffddb8",
+                    "surface-container-lowest": "#06100d",
+                    "tertiary-container": "#e29100",
+                    "on-secondary": "#003825",
+                    "on-tertiary-container": "#523200",
+                    "on-primary": "#003824",
+                    "background": "#0b1512",
+                    "outline-variant": "#3c4a42",
+                    "tertiary": "#ffb95f",
+                    "primary": "#4edea3",
+                    "secondary-fixed-dim": "#45dfa4",
+                    "secondary-fixed": "#68fcbf",
+                    "surface-container-high": "#222c29",
+                    "primary-fixed-dim": "#4edea3",
+                    "on-secondary-container": "#00452e",
+                    "error-container": "#93000a",
+                    "primary-fixed": "#6ffbbe",
+                    "on-surface": "#d9e5df",
+                    "on-tertiary-fixed-variant": "#653e00",
+                    "on-tertiary": "#472a00",
+                    "inverse-primary": "#006c49",
+                    "error": "#ffb4ab",
+                    "surface-dim": "#0b1512",
+                    "surface-container": "#17221e",
+                    "surface-bright": "#313b38",
+                    "on-error": "#690005",
+                    "on-primary-container": "#00422b",
+                    "surface-variant": "#2c3733",
+                    "on-primary-fixed-variant": "#005236",
+                    "inverse-surface": "#d9e5df",
+                    "on-tertiary-fixed": "#2a1700",
+                    "surface": "#0b1512",
+                    "primary-container": "#10b981",
+                    "secondary-container": "#00bd85",
+                    "on-secondary-fixed-variant": "#005137",
+                    "on-error-container": "#ffdad6",
+                    "on-surface-variant": "#bbcabf"
+            },
+            "borderRadius": {
+                    "DEFAULT": "1rem",
+                    "lg": "2rem",
+                    "xl": "3rem",
+                    "full": "9999px"
+            },
+            "fontFamily": {
+                    "headline": ["Inter"],
+                    "body": ["Inter"],
+                    "label": ["Inter"],
+                    "mono": ["JetBrains Mono"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .bg-mesh {
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(16, 185, 129, 0.15) 0%, transparent 40%),
+                radial-gradient(circle at 90% 80%, rgba(52, 211, 153, 0.15) 0%, transparent 40%),
+                linear-gradient(45deg, transparent 48%, rgba(16, 185, 129, 0.05) 50%, transparent 52%);
+            background-size: 100% 100%, 100% 100%, 20px 20px;
+        }
+        .gradient-text {
+            background: linear-gradient(#10b981, #34d399);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .ghost-border {
+            border: 1px solid rgba(16, 185, 129, 0.08);
+        }
+        .glow-button:active {
+            box-shadow: 0 0 20px rgba(78, 222, 163, 0.4);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-[#040d0a] text-on-surface font-body selection:bg-primary/30 min-h-screen flex items-center justify-center">
+<!-- Parent Screen Simulation (Blurred Background Content) -->
+<div class="fixed inset-0 bg-mesh opacity-40 blur-sm pointer-events-none overflow-hidden">
+<div class="p-8 space-y-6">
+<div class="h-48 w-full bg-surface-container-low rounded-xl ghost-border"></div>
+<div class="h-12 w-3/4 bg-surface-container-low rounded-full ghost-border"></div>
+<div class="grid grid-cols-2 gap-4">
+<div class="h-32 bg-surface-container-low rounded-xl ghost-border"></div>
+<div class="h-32 bg-surface-container-low rounded-xl ghost-border"></div>
+</div>
+<div class="h-64 w-full bg-surface-container-low rounded-xl ghost-border"></div>
+</div>
+</div>
+<!-- Darkened Overlay -->
+<div class="fixed inset-0 bg-black/60 backdrop-blur-md z-10"></div>
+<!-- iPhone Frame Container -->
+<main class="relative w-[390px] h-[844px] bg-transparent overflow-hidden z-20">
+<!-- TopAppBar (Shared Component Logic) -->
+<header class="bg-emerald-950/40 backdrop-blur-xl text-emerald-500 border-b border-emerald-500/10 shadow-[0_0_40px_rgba(16,185,129,0.05)] flex justify-between items-center w-full px-6 py-4 fixed top-0 z-40">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-emerald-400 active:scale-95 duration-200">arrow_back</span>
+<h1 class="font-['Inter'] font-extrabold tracking-tight uppercase text-emerald-500">Vault Details</h1>
+</div>
+<span class="material-symbols-outlined text-emerald-700 hover:text-emerald-300 transition-colors">more_vert</span>
+</header>
+<!-- Bottom Sheet Container (85% Height) -->
+<div class="absolute bottom-0 left-0 w-full h-[85%] bg-emerald-950/40 backdrop-blur-2xl rounded-t-[28px] ghost-border flex flex-col z-50">
+<!-- Grab Handle -->
+<div class="w-full flex justify-center py-4">
+<div class="w-9 h-1 bg-surface-container-highest rounded-full"></div>
+</div>
+<!-- Scrollable Content -->
+<div class="flex-1 overflow-y-auto px-6 pb-32">
+<!-- Header -->
+<div class="mb-8">
+<h2 class="text-2xl font-headline font-extrabold tracking-tight uppercase gradient-text">Add Beneficiary</h2>
+<p class="text-on-surface-variant text-sm mt-1">Connect a secure receiving hardware address.</p>
+</div>
+<!-- Form Fields -->
+<div class="space-y-5">
+<!-- Full Name -->
+<div class="space-y-2">
+<label class="text-[10px] font-mono uppercase tracking-widest text-primary/60 px-4">Full Name</label>
+<div class="bg-surface-container-lowest/50 backdrop-blur-md px-5 py-4 rounded-[24px] ghost-border transition-all focus-within:border-primary/20">
+<input class="bg-transparent border-none p-0 w-full text-on-surface placeholder:text-surface-variant focus:ring-0 font-body" placeholder="Johnathan Doe" type="text"/>
+</div>
+</div>
+<!-- Email -->
+<div class="space-y-2">
+<label class="text-[10px] font-mono uppercase tracking-widest text-primary/60 px-4">Entity Email</label>
+<div class="bg-surface-container-lowest/50 backdrop-blur-md px-5 py-4 rounded-[24px] ghost-border">
+<input class="bg-transparent border-none p-0 w-full text-on-surface placeholder:text-surface-variant focus:ring-0 font-body" placeholder="archive.id@vault.network" type="email"/>
+</div>
+</div>
+<!-- Bank Dropdown -->
+<div class="space-y-2">
+<label class="text-[10px] font-mono uppercase tracking-widest text-primary/60 px-4">Bank Institution</label>
+<div class="bg-surface-container-lowest/50 backdrop-blur-md px-5 py-4 rounded-[24px] ghost-border flex justify-between items-center cursor-pointer">
+<span class="text-on-surface">Select Hardware Node</span>
+<span class="material-symbols-outlined text-primary">expand_more</span>
+</div>
+</div>
+<!-- Account & Routing (Mono Group) -->
+<div class="grid grid-cols-2 gap-4">
+<div class="space-y-2">
+<label class="text-[10px] font-mono uppercase tracking-widest text-primary/60 px-4">Account</label>
+<div class="bg-surface-container-lowest/50 backdrop-blur-md px-5 py-4 rounded-[24px] ghost-border">
+<input class="bg-transparent border-none p-0 w-full text-on-surface placeholder:text-surface-variant focus:ring-0 font-mono" placeholder="00129384" type="text"/>
+</div>
+</div>
+<div class="space-y-2">
+<label class="text-[10px] font-mono uppercase tracking-widest text-primary/60 px-4">Routing</label>
+<div class="bg-surface-container-lowest/50 backdrop-blur-md px-5 py-4 rounded-[24px] ghost-border">
+<input class="bg-transparent border-none p-0 w-full text-on-surface placeholder:text-surface-variant focus:ring-0 font-mono" placeholder="RT-449" type="text"/>
+</div>
+</div>
+</div>
+<!-- Currency Row -->
+<div class="space-y-3 pt-2">
+<label class="text-[10px] font-mono uppercase tracking-widest text-primary/60 px-4">Base Currency</label>
+<div class="flex gap-2 overflow-x-auto pb-2 no-scrollbar">
+<button class="flex-shrink-0 bg-primary/20 text-primary px-6 py-2 rounded-full border border-primary/30 font-mono text-sm">USD</button>
+<button class="flex-shrink-0 bg-surface-container-lowest/50 text-on-surface-variant px-6 py-2 rounded-full ghost-border font-mono text-sm">EUR</button>
+<button class="flex-shrink-0 bg-surface-container-lowest/50 text-on-surface-variant px-6 py-2 rounded-full ghost-border font-mono text-sm">GBP</button>
+<button class="flex-shrink-0 bg-surface-container-lowest/50 text-on-surface-variant px-6 py-2 rounded-full ghost-border font-mono text-sm">NGN</button>
+</div>
+</div>
+<!-- Nickname -->
+<div class="space-y-2">
+<label class="text-[10px] font-mono uppercase tracking-widest text-primary/60 px-4">Alias (Optional)</label>
+<div class="bg-surface-container-lowest/50 backdrop-blur-md px-5 py-4 rounded-[24px] ghost-border">
+<input class="bg-transparent border-none p-0 w-full text-on-surface placeholder:text-surface-variant focus:ring-0 font-body" placeholder="Personal Vault B" type="text"/>
+</div>
+</div>
+<!-- Verification Note -->
+<div class="flex items-center gap-3 bg-primary/5 p-4 rounded-[24px] ghost-border">
+<span class="material-symbols-outlined text-primary text-xl">info</span>
+<p class="text-xs text-on-surface-variant leading-relaxed font-body">
+                            We will send a <span class="font-mono text-primary">$0.01</span> test deposit to verify hardware integrity.
+                        </p>
+</div>
+</div>
+</div>
+<!-- Footer Button Area -->
+<div class="absolute bottom-0 left-0 w-full p-6 bg-gradient-to-t from-background to-transparent pt-12">
+<button class="w-full bg-primary hover:bg-secondary text-on-primary py-5 rounded-full font-headline font-extrabold text-sm tracking-widest shadow-[0_0_30px_rgba(16,185,129,0.3)] active:scale-95 transition-all duration-300 glow-button flex items-center justify-center gap-2">
+                    ADD BENEFICIARY
+                    <span class="material-symbols-outlined text-lg">arrow_forward</span>
+</button>
+<div class="w-32 h-1 bg-white/10 rounded-full mx-auto mt-6"></div>
+</div>
+</div>
+<!-- Hidden BottomNavBar (Suppressed for focused task per rule) -->
+</main>
+</body></html>

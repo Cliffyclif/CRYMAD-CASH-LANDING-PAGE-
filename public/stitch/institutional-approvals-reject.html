@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Institutional Approvals - Reject Request</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&amp;family=JetBrains+Mono:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "primary-container": "#10b981",
+                    "on-error": "#690005",
+                    "on-error-container": "#ffdad6",
+                    "on-primary": "#003824",
+                    "surface-bright": "#313b38",
+                    "tertiary-fixed": "#ffddb8",
+                    "on-surface": "#d9e5df",
+                    "inverse-primary": "#006c49",
+                    "on-tertiary-fixed-variant": "#653e00",
+                    "on-tertiary-fixed": "#2a1700",
+                    "inverse-surface": "#d9e5df",
+                    "on-primary-fixed-variant": "#005236",
+                    "secondary-fixed": "#68fcbf",
+                    "primary-fixed-dim": "#4edea3",
+                    "surface-container-lowest": "#06100d",
+                    "primary-fixed": "#6ffbbe",
+                    "secondary": "#45dfa4",
+                    "primary": "#4edea3",
+                    "tertiary-fixed-dim": "#ffb95f",
+                    "tertiary": "#ffb95f",
+                    "on-secondary": "#003825",
+                    "on-secondary-fixed-variant": "#005137",
+                    "on-secondary-fixed": "#002114",
+                    "on-background": "#d9e5df",
+                    "surface-container-high": "#222c29",
+                    "surface-tint": "#4edea3",
+                    "secondary-fixed-dim": "#45dfa4",
+                    "on-primary-fixed": "#002113",
+                    "surface-variant": "#2c3733",
+                    "on-tertiary-container": "#523200",
+                    "tertiary-container": "#e29100",
+                    "inverse-on-surface": "#28332f",
+                    "on-primary-container": "#00422b",
+                    "secondary-container": "#00bd85",
+                    "on-secondary-container": "#00452e",
+                    "outline-variant": "#3c4a42",
+                    "on-surface-variant": "#bbcabf",
+                    "error-container": "#93000a",
+                    "surface": "#0b1512",
+                    "on-tertiary": "#472a00",
+                    "outline": "#86948a",
+                    "surface-container-highest": "#2c3733",
+                    "error": "#ffb4ab",
+                    "background": "#0b1512",
+                    "surface-container-low": "#131e1a",
+                    "surface-dim": "#0b1512",
+                    "surface-container": "#17221e"
+            },
+            "borderRadius": {
+                    "DEFAULT": "1rem",
+                    "lg": "2rem",
+                    "xl": "3rem",
+                    "full": "9999px"
+            },
+            "fontFamily": {
+                    "headline": ["Inter"],
+                    "body": ["Inter"],
+                    "label": ["Inter"],
+                    "mono": ["JetBrains Mono"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body { background-color: #040d0a; color: #d9e5df; }
+        .glass-panel { background: rgba(44, 55, 51, 0.4); backdrop-filter: blur(20px); border: 1px solid rgba(16, 185, 129, 0.08); }
+        .text-gradient { background: linear-gradient(#10b981, #34d399); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .text-gradient-error { background: linear-gradient(#ffb4ab, #ff897d); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .bioluminescent-blob { filter: blur(60px); opacity: 0.15; position: fixed; border-radius: 50%; z-index: -1; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="font-body selection:bg-primary-container selection:text-on-primary-container">
+<!-- Bioluminescent Background Blobs -->
+<div class="bioluminescent-blob bg-primary w-96 h-96 top-[-10%] left-[-10%]"></div>
+<div class="bioluminescent-blob bg-secondary w-[500px] h-[500px] bottom-[-20%] right-[-10%]"></div>
+<!-- Top App Bar (Shared Component) -->
+<header class="bg-emerald-950/40 backdrop-blur-xl text-emerald-500 fixed top-0 w-full z-50 border-b border-emerald-500/10 shadow-[0_0_40px_rgba(16,185,129,0.05)]">
+<div class="flex justify-between items-center px-6 h-16 w-full max-w-full">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-emerald-400" data-icon="account_balance">account_balance</span>
+<h1 class="font-['Inter'] font-extrabold uppercase tracking-widest text-emerald-400 text-lg">INSTITUTIONAL</h1>
+</div>
+<div class="flex items-center gap-4">
+<span class="font-mono text-xs text-emerald-700 tracking-tighter">STATUS: ACTIVE</span>
+<div class="w-2 h-2 rounded-full bg-primary shadow-[0_0_8px_#10b981]"></div>
+</div>
+</div>
+</header>
+<!-- Background Content (Approval List - Dimmed/Blurred) -->
+<main class="pt-24 pb-32 px-6 opacity-40 grayscale-[0.5] filter blur-[2px] transition-all">
+<div class="max-w-4xl mx-auto space-y-6">
+<div class="flex justify-between items-end mb-8">
+<div>
+<h2 class="text-4xl font-extrabold text-gradient">Approvals</h2>
+<p class="font-mono text-secondary-fixed text-sm">PENDING_REQUEST_COUNT: 14</p>
+</div>
+</div>
+<!-- List Item (Mock) -->
+<div class="glass-panel p-6 rounded-lg flex items-center justify-between">
+<div class="flex items-center gap-6">
+<div class="w-12 h-12 rounded-full bg-surface-container-highest flex items-center justify-center">
+<span class="material-symbols-outlined text-primary" data-icon="payments">payments</span>
+</div>
+<div>
+<p class="font-mono text-sm text-on-surface">APR-8821</p>
+<h3 class="font-semibold text-lg">Cold Withdrawal 50 BTC</h3>
+</div>
+</div>
+<span class="text-tertiary font-mono text-xs bg-tertiary/10 px-3 py-1 rounded-full">PENDING_REVIEW</span>
+</div>
+<div class="glass-panel p-6 rounded-lg flex items-center justify-between opacity-60">
+<div class="flex items-center gap-6">
+<div class="w-12 h-12 rounded-full bg-surface-container-highest flex items-center justify-center">
+<span class="material-symbols-outlined text-primary" data-icon="shield">shield</span>
+</div>
+<div>
+<p class="font-mono text-sm text-on-surface">APR-8819</p>
+<h3 class="font-semibold text-lg">Policy Change: Multi-Sig</h3>
+</div>
+</div>
+<span class="text-secondary font-mono text-xs bg-secondary/10 px-3 py-1 rounded-full">APPROVED</span>
+</div>
+</div>
+</main>
+<!-- Bottom Sheet Modal Overlay -->
+<div class="fixed inset-0 z-[60] bg-[#040d0a]/80 backdrop-blur-sm flex flex-col justify-end">
+<!-- Compact Bottom Sheet (60% height) -->
+<div class="bg-surface-container-lowest glass-panel rounded-t-[3rem] w-full max-w-3xl mx-auto h-[75%] shadow-[0_-20px_60px_rgba(0,0,0,0.5)] border-t border-emerald-500/20 relative overflow-hidden flex flex-col">
+<!-- Grab Handle -->
+<div class="flex justify-center pt-4 pb-2">
+<div class="w-12 h-1.5 rounded-full bg-surface-variant/50"></div>
+</div>
+<div class="flex-1 overflow-y-auto px-8 pb-12">
+<!-- Large Warning Icon -->
+<div class="flex justify-center mb-6">
+<div class="w-24 h-24 rounded-full bg-error/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-error !text-[80px]" data-icon="warning" style="font-variation-settings: 'FILL' 1;">warning</span>
+</div>
+</div>
+<!-- Titles -->
+<div class="text-center space-y-2 mb-8">
+<h2 class="text-3xl font-extrabold text-gradient-error">Reject Approval?</h2>
+<p class="font-mono text-on-surface-variant tracking-tight text-sm">
+                        APR-8821 <span class="mx-2 opacity-30">·</span> Cold Withdrawal 50 BTC
+                    </p>
+</div>
+<!-- Body Text -->
+<div class="surface-container p-5 rounded-lg mb-8">
+<p class="text-on-surface text-center leading-relaxed">
+                        Rejecting cancels this request. Initiator will be notified. All other signatures voided.
+                    </p>
+</div>
+<!-- Form Controls -->
+<div class="space-y-6">
+<!-- Dropdown -->
+<div class="space-y-2">
+<label class="text-xs font-mono uppercase tracking-widest text-emerald-500/70 ml-4">Reason for Rejection</label>
+<div class="relative">
+<select class="w-full h-14 bg-surface-container-high border-none rounded-lg px-6 appearance-none focus:ring-1 focus:ring-primary/40 text-on-surface cursor-pointer">
+<option>Risk</option>
+<option>Compliance</option>
+<option>Destination Unverified</option>
+<option>Insufficient Justification</option>
+<option>Other</option>
+</select>
+<span class="material-symbols-outlined absolute right-4 top-4 pointer-events-none text-emerald-500" data-icon="expand_more">expand_more</span>
+</div>
+</div>
+<!-- Textarea -->
+<div class="space-y-2">
+<label class="text-xs font-mono uppercase tracking-widest text-emerald-500/70 ml-4">Notes (Required)</label>
+<textarea class="w-full bg-surface-container-high border-none rounded-lg px-6 py-4 focus:ring-1 focus:ring-primary/40 text-on-surface placeholder:text-emerald-700/50 min-h-[100px] resize-none" placeholder="Provide context for this rejection..."></textarea>
+</div>
+<!-- Checkbox -->
+<div class="flex items-center gap-3 ml-1">
+<div class="relative flex items-center">
+<input checked="" class="w-6 h-6 rounded border-emerald-500/20 bg-surface-container-high text-primary focus:ring-primary/40 focus:ring-offset-0" type="checkbox"/>
+</div>
+<span class="text-sm font-semibold text-on-surface">Notify all approvers</span>
+</div>
+</div>
+</div>
+<!-- Side-by-Side Buttons -->
+<div class="p-8 border-t border-emerald-500/10 flex gap-4 bg-surface-container-lowest/80 backdrop-blur-md">
+<button class="flex-1 h-14 rounded-full border border-emerald-500/20 font-bold uppercase tracking-wider text-on-surface hover:bg-white/5 transition-colors active:scale-95 duration-300">
+                    KEEP
+                </button>
+<button class="flex-1 h-14 rounded-full bg-error text-on-error font-bold uppercase tracking-wider shadow-[0_0_20px_rgba(255,180,171,0.3)] hover:brightness-110 transition-all flex items-center justify-center gap-2 active:scale-95 duration-300">
+                    REJECT <span class="material-symbols-outlined text-[20px]" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Bottom Navigation Bar (Shared Component) -->
+<nav class="fixed bottom-0 w-full z-50 rounded-t-[32px] bg-emerald-950/60 backdrop-blur-2xl border-t border-emerald-500/10 shadow-[0_-10px_40px_rgba(16,185,129,0.08)]">
+<div class="fixed bottom-0 left-0 w-full flex justify-around items-center px-4 py-3 pb-8">
+<a class="flex flex-col items-center justify-center text-emerald-700 opacity-60 hover:text-emerald-300 transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="security">security</span>
+<span class="font-['JetBrains_Mono'] text-[10px] uppercase tracking-tighter mt-1">Vault</span>
+</a>
+<a class="flex flex-col items-center justify-center text-emerald-700 opacity-60 hover:text-emerald-300 transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="account_tree">account_tree</span>
+<span class="font-['JetBrains_Mono'] text-[10px] uppercase tracking-tighter mt-1">Flows</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-emerald-500/20 text-emerald-400 rounded-full px-5 py-1.5 shadow-[0_0_15px_rgba(16,185,129,0.3)]" href="#">
+<span class="material-symbols-outlined" data-icon="verified_user" style="font-variation-settings: 'FILL' 1;">verified_user</span>
+<span class="font-['JetBrains_Mono'] text-[10px] uppercase tracking-tighter mt-1">Approvals</span>
+</a>
+<a class="flex flex-col items-center justify-center text-emerald-700 opacity-60 hover:text-emerald-300 transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="analytics">analytics</span>
+<span class="font-['JetBrains_Mono'] text-[10px] uppercase tracking-tighter mt-1">Ledger</span>
+</a>
+</div>
+</nav>
+</body></html>

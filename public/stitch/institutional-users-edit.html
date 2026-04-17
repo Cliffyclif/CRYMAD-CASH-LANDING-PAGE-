@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&amp;family=JetBrains+Mono:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary-fixed": "#68fcbf",
+                        "on-error": "#690005",
+                        "surface-variant": "#2c3733",
+                        "surface-bright": "#313b38",
+                        "on-surface-variant": "#bbcabf",
+                        "on-primary-fixed-variant": "#005236",
+                        "on-secondary-fixed": "#002114",
+                        "inverse-primary": "#006c49",
+                        "inverse-surface": "#d9e5df",
+                        "tertiary": "#f59e0b",
+                        "on-primary": "#003824",
+                        "inverse-on-surface": "#28332f",
+                        "background": "#040d0a",
+                        "surface-container-low": "#131e1a",
+                        "on-tertiary": "#472a00",
+                        "on-secondary": "#003825",
+                        "on-background": "#d9e5df",
+                        "error-container": "#93000a",
+                        "tertiary-fixed": "#ffddb8",
+                        "surface": "#040d0a",
+                        "primary-fixed": "#6ffbbe",
+                        "secondary": "#34d399",
+                        "surface-container": "#17221e",
+                        "on-tertiary-fixed": "#2a1700",
+                        "on-primary-container": "#00422b",
+                        "on-secondary-fixed-variant": "#005137",
+                        "secondary-fixed-dim": "#45dfa4",
+                        "on-secondary-container": "#00452e",
+                        "tertiary-fixed-dim": "#ffb95f",
+                        "tertiary-container": "#e29100",
+                        "error": "#ffb4ab",
+                        "primary-container": "#10b981",
+                        "on-tertiary-container": "#523200",
+                        "on-surface": "#d9e5df",
+                        "surface-container-lowest": "#06100d",
+                        "surface-dim": "#040d0a",
+                        "primary": "#4edea3",
+                        "surface-tint": "#4edea3",
+                        "on-primary-fixed": "#002113",
+                        "secondary-container": "#00bd85",
+                        "on-tertiary-fixed-variant": "#653e00",
+                        "on-error-container": "#ffdad6",
+                        "surface-container-highest": "#2c3733",
+                        "primary-fixed-dim": "#4edea3",
+                        "outline": "#86948a",
+                        "surface-container-high": "#222c29",
+                        "outline-variant": "#3c4a42"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "1rem",
+                        "lg": "24px",
+                        "xl": "28px",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Inter"],
+                        "body": ["Inter"],
+                        "label": ["Inter"],
+                        "mono": ["JetBrains Mono"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .glass-panel {
+            background: rgba(44, 55, 51, 0.4);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(16, 185, 129, 0.08);
+        }
+        .bioluminescent-glow {
+            box-shadow: 0 0 20px rgba(16, 185, 129, 0.15);
+        }
+        .text-gradient {
+            background: linear-gradient(to bottom, #10b981, #34d399);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .bg-gradient-header {
+            background: linear-gradient(to bottom, #10b981, #34d399);
+        }
+        .blob {
+            position: fixed;
+            filter: blur(60px);
+            opacity: 0.15;
+            z-index: -1;
+        }
+        .energy-line {
+            position: fixed;
+            width: 200%;
+            height: 1px;
+            background: repeating-linear-gradient(90deg, transparent, rgba(16, 185, 129, 0.05) 50%, transparent 100%);
+            transform: rotate(-45deg);
+            z-index: -1;
+        }
+        input:checked + div {
+            border-color: #10b981;
+            background: rgba(16, 185, 129, 0.1);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background font-body min-h-screen overflow-x-hidden">
+<!-- Ambient Background -->
+<div class="blob w-64 h-64 bg-primary top-10 -left-20"></div>
+<div class="blob w-80 h-80 bg-secondary bottom-20 -right-20"></div>
+<div class="energy-line top-1/4"></div>
+<div class="energy-line top-2/3"></div>
+<!-- Top Navigation Anchor -->
+<header class="fixed top-0 w-full z-50 bg-[#040d0a]/80 backdrop-blur-xl border-b border-emerald-500/10 flex justify-between items-center px-6 h-16 shadow-[0_0_40px_rgba(16,185,129,0.05)]">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary">menu</span>
+<span class="text-xl font-black bg-gradient-to-b from-emerald-400 to-teal-400 bg-clip-text text-transparent font-headline tracking-tight">Emerald Pulse</span>
+</div>
+<div class="px-3 py-1 bg-tertiary/20 border border-tertiary/30 rounded-full">
+<span class="font-mono text-xs font-bold text-tertiary tracking-widest">INST</span>
+</div>
+</header>
+<!-- Page Content (Dimmed Backdrop for Bottom Sheet) -->
+<main class="pt-20 pb-32 px-5 opacity-40 pointer-events-none">
+<div class="space-y-6">
+<div class="glass-panel p-6 rounded-lg">
+<div class="h-4 w-24 bg-surface-variant rounded mb-4"></div>
+<div class="h-8 w-48 bg-surface-variant rounded mb-2"></div>
+<div class="h-24 w-full bg-surface-variant rounded-lg"></div>
+</div>
+</div>
+</main>
+<!-- Bottom Sheet Component -->
+<div class="fixed inset-0 z-[60] flex items-end justify-center pointer-events-none">
+<div class="w-[92%] bg-[#06100d] glass-panel rounded-t-xl pointer-events-auto border-t border-primary/20 shadow-[0_-20px_60px_rgba(4,13,10,0.8)] max-h-[751px] overflow-y-auto">
+<!-- Grab Handle -->
+<div class="flex justify-center pt-3 pb-2">
+<div class="w-10 h-1 bg-surface-container-highest rounded-full"></div>
+</div>
+<div class="px-6 pb-24">
+<!-- Title -->
+<h2 class="text-2xl font-extrabold text-gradient font-headline mb-6">Edit User</h2>
+<!-- Member Header -->
+<div class="flex items-center gap-4 mb-8">
+<div class="relative">
+<div class="w-[72px] h-[72px] rounded-full p-1 ring-2 ring-primary/30 bioluminescent-glow">
+<img class="w-full h-full object-cover rounded-full" data-alt="professional portrait of a south asian woman with a confident expression in a high-tech corporate office setting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAEC70mkYhGU5zBqgbFYV8a5_5UwRIS_AzswRo8WGhT-NL2SlLTkoRF5WaHnpCqdW408Mr8RasiiWYPEn7GRNYPsn4wLEg7H6Aaje08YC8Mdt90mLVElNybgSXNK1LNfUTRIeN41R-Tap8_E8-YZ_9hsfJQJ4HGq6fWpY-1iVH4iRPImox3IzF_GDkj7mcAct0XEgxWKyoIpR-32tDdzM9IGvTViHLzHPeNuGiFAk7Uv_wGeF2Gk4hOg0ibgXrObN4f9GicgnxgxZsj"/>
+</div>
+</div>
+<div class="flex-1">
+<div class="flex items-center gap-2 mb-1">
+<span class="text-lg font-bold text-on-background leading-tight">Priya Patel</span>
+<span class="px-2 py-0.5 bg-surface-container-highest text-[10px] font-bold text-on-surface-variant rounded tracking-widest uppercase">TREASURY</span>
+</div>
+<div class="font-mono text-xs text-on-surface-variant mb-1">priya@aurora-capital.com</div>
+<div class="text-[10px] uppercase font-bold text-primary tracking-widest">TREASURER</div>
+</div>
+</div>
+<!-- Role Selector -->
+<div class="space-y-3 mb-8">
+<span class="text-[10px] uppercase tracking-widest font-bold text-on-surface-variant ml-1">Access Level</span>
+<label class="block relative cursor-pointer">
+<input checked="" class="hidden" name="role" type="radio"/>
+<div class="glass-panel p-4 rounded-lg border-primary/40 bg-primary/5">
+<div class="flex justify-between items-start mb-1">
+<span class="font-bold text-on-background">TREASURER</span>
+<span class="font-mono text-[10px] text-primary">42 PERMS</span>
+</div>
+<p class="text-xs text-on-surface-variant leading-relaxed">Full access to vault management, approvals, and liquidity controls.</p>
+</div>
+</label>
+<label class="block relative cursor-pointer">
+<input class="hidden" name="role" type="radio"/>
+<div class="glass-panel p-4 rounded-lg transition-colors hover:bg-surface-container-highest">
+<div class="flex justify-between items-start mb-1">
+<span class="font-bold text-on-background">ANALYST</span>
+<span class="font-mono text-[10px] text-on-surface-variant">12 PERMS</span>
+</div>
+<p class="text-xs text-on-surface-variant leading-relaxed">View all reports and market pulse. No transactional authority.</p>
+</div>
+</label>
+<label class="block relative cursor-pointer">
+<input class="hidden" name="role" type="radio"/>
+<div class="glass-panel p-4 rounded-lg transition-colors hover:bg-surface-container-highest">
+<div class="flex justify-between items-start mb-1">
+<span class="font-bold text-on-background">ASSISTANT TREASURER</span>
+<span class="font-mono text-[10px] text-on-surface-variant">28 PERMS</span>
+</div>
+<p class="text-xs text-on-surface-variant leading-relaxed">Draft transactions and manage assets under threshold.</p>
+</div>
+</label>
+<label class="block relative cursor-pointer">
+<input class="hidden" name="role" type="radio"/>
+<div class="glass-panel p-4 rounded-lg transition-colors hover:bg-surface-container-highest">
+<div class="flex justify-between items-start mb-1">
+<span class="font-bold text-on-background">VIEWER</span>
+<span class="font-mono text-[10px] text-on-surface-variant">4 PERMS</span>
+</div>
+<p class="text-xs text-on-surface-variant leading-relaxed">Read-only access to specific departmental vaults.</p>
+</div>
+</label>
+</div>
+<!-- Approval Tier Slider -->
+<div class="mb-8">
+<div class="flex justify-between items-end mb-4">
+<span class="text-[10px] uppercase tracking-widest font-bold text-on-surface-variant ml-1">Approval Tier</span>
+<span class="font-mono text-xl font-bold text-primary">$25M</span>
+</div>
+<div class="relative h-2 bg-surface-container-high rounded-full overflow-hidden">
+<div class="absolute top-0 left-0 h-full w-2/3 bg-gradient-to-r from-primary to-secondary bioluminescent-glow"></div>
+<div class="absolute top-1/2 left-2/3 -translate-y-1/2 -translate-x-1/2 w-4 h-4 bg-white rounded-full shadow-[0_0_10px_#4edea3]"></div>
+</div>
+<div class="flex justify-between mt-2 font-mono text-[10px] text-outline">
+<span>$0</span>
+<span>$100M+</span>
+</div>
+</div>
+<!-- Permission Diff Glass Card -->
+<div class="glass-panel p-4 rounded-lg mb-8 bg-surface-container-low/30 border-primary/5">
+<span class="text-[10px] uppercase tracking-widest font-bold text-on-surface-variant mb-3 block">Delta Snapshot</span>
+<div class="space-y-2">
+<div class="flex items-center gap-3 text-secondary">
+<span class="material-symbols-outlined text-sm">add_circle</span>
+<span class="text-xs font-semibold">Add OTC Limits, Bulk Payouts</span>
+</div>
+<div class="flex items-center gap-3 text-error">
+<span class="material-symbols-outlined text-sm">remove_circle</span>
+<span class="text-xs font-semibold">Delete Archives</span>
+</div>
+</div>
+</div>
+<!-- Security Toggles -->
+<div class="space-y-4 mb-8">
+<div class="flex justify-between items-center glass-panel p-4 rounded-lg">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary">verified_user</span>
+<span class="text-sm font-semibold">2FA Multi-Factor</span>
+</div>
+<div class="w-10 h-5 bg-primary/20 rounded-full relative p-0.5">
+<div class="w-4 h-4 bg-primary rounded-full absolute right-0.5"></div>
+</div>
+</div>
+<div class="flex justify-between items-center glass-panel p-4 rounded-lg">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary">key</span>
+<span class="text-sm font-semibold">Hardware Key Required</span>
+</div>
+<div class="w-10 h-5 bg-primary/20 rounded-full relative p-0.5">
+<div class="w-4 h-4 bg-primary rounded-full absolute right-0.5"></div>
+</div>
+</div>
+</div>
+<!-- Inputs -->
+<div class="space-y-6 mb-8">
+<div>
+<label class="text-[10px] uppercase tracking-widest font-bold text-on-surface-variant ml-1 mb-2 block">Deactivate-after</label>
+<div class="glass-panel px-4 py-3 rounded-lg flex justify-between items-center border-primary/5">
+<span class="font-mono text-sm">2024-12-31</span>
+<span class="material-symbols-outlined text-primary">calendar_month</span>
+</div>
+</div>
+<div>
+<label class="text-[10px] uppercase tracking-widest font-bold text-on-surface-variant ml-1 mb-2 block">Audit Notes</label>
+<textarea class="w-full glass-panel px-4 py-3 rounded-lg border-primary/5 focus:border-primary/20 focus:ring-0 text-sm h-24 bg-surface-container-low/30 resize-none" placeholder="Reason for change..."></textarea>
+</div>
+</div>
+<!-- Action Buttons -->
+<div class="flex gap-4">
+<button class="flex-1 py-4 border border-error/20 text-error font-bold tracking-widest text-[10px] uppercase rounded-lg active:scale-95 transition-transform">REMOVE</button>
+<button class="flex-[2] py-4 bg-primary text-on-primary font-bold tracking-widest text-[10px] uppercase rounded-lg shadow-[0_0_20px_rgba(78,222,163,0.3)] active:scale-95 transition-transform">SAVE CHANGES →</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Bottom Navigation Shell -->
+<nav class="fixed bottom-0 w-full z-50 bg-[#040d0a]/40 backdrop-blur-2xl border-t border-emerald-500/10 shadow-[0_-10px_40px_rgba(16,185,129,0.08)] rounded-t-[32px] flex justify-around items-center px-4 pt-3 pb-8">
+<div class="flex flex-col items-center gap-1 text-emerald-800">
+<span class="material-symbols-outlined" data-icon="account_balance_wallet">account_balance_wallet</span>
+<span class="font-['JetBrains_Mono'] text-[10px] uppercase tracking-widest">Vault</span>
+</div>
+<div class="flex flex-col items-center gap-1 text-emerald-800">
+<span class="material-symbols-outlined" data-icon="swap_horiz">swap_horiz</span>
+<span class="font-['JetBrains_Mono'] text-[10px] uppercase tracking-widest">Flow</span>
+</div>
+<div class="flex flex-col items-center gap-1 text-emerald-800">
+<span class="material-symbols-outlined" data-icon="query_stats">query_stats</span>
+<span class="font-['JetBrains_Mono'] text-[10px] uppercase tracking-widest">Pulse</span>
+</div>
+<div class="flex flex-col items-center gap-1 text-emerald-800">
+<span class="material-symbols-outlined" data-icon="database">database</span>
+<span class="font-['JetBrains_Mono'] text-[10px] uppercase tracking-widest">Assets</span>
+</div>
+<div class="flex flex-col items-center gap-1 text-emerald-400 bg-emerald-500/10 rounded-full px-4 py-2">
+<span class="material-symbols-outlined" data-icon="more_horiz">more_horiz</span>
+<span class="font-['JetBrains_Mono'] text-[10px] uppercase tracking-widest">More</span>
+</div>
+</nav>
+</body></html>

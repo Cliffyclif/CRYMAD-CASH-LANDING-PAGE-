@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Bioluminescent Archive - Edit Beneficiary</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&amp;family=JetBrains+Mono:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary-container": "#00bd85",
+                        "on-tertiary-fixed": "#2a1700",
+                        "inverse-on-surface": "#28332f",
+                        "tertiary": "#ffb95f",
+                        "on-secondary": "#003825",
+                        "tertiary-container": "#e29100",
+                        "on-surface-variant": "#bbcabf",
+                        "tertiary-fixed": "#ffddb8",
+                        "on-tertiary-fixed-variant": "#653e00",
+                        "surface-tint": "#4edea3",
+                        "on-primary-fixed-variant": "#005236",
+                        "on-tertiary": "#472a00",
+                        "on-background": "#d9e5df",
+                        "on-tertiary-container": "#523200",
+                        "primary-fixed": "#6ffbbe",
+                        "on-primary-container": "#00422b",
+                        "surface-container": "#17221e",
+                        "on-primary-fixed": "#002113",
+                        "surface-container-low": "#131e1a",
+                        "on-primary": "#003824",
+                        "surface-container-lowest": "#06100d",
+                        "primary": "#4edea3",
+                        "secondary-fixed-dim": "#45dfa4",
+                        "surface-container-highest": "#2c3733",
+                        "inverse-primary": "#006c49",
+                        "surface-bright": "#313b38",
+                        "surface-dim": "#0b1512",
+                        "background": "#0b1512",
+                        "secondary": "#45dfa4",
+                        "on-error": "#690005",
+                        "outline": "#86948a",
+                        "on-surface": "#d9e5df",
+                        "primary-container": "#10b981",
+                        "primary-fixed-dim": "#4edea3",
+                        "outline-variant": "#3c4a42",
+                        "error-container": "#93000a",
+                        "error": "#ffb4ab",
+                        "surface-container-high": "#222c29",
+                        "surface": "#0b1512",
+                        "secondary-fixed": "#68fcbf",
+                        "on-secondary-fixed-variant": "#005137",
+                        "on-secondary-container": "#00452e",
+                        "on-secondary-fixed": "#002114",
+                        "on-error-container": "#ffdad6",
+                        "inverse-surface": "#d9e5df",
+                        "tertiary-fixed-dim": "#ffb95f",
+                        "surface-variant": "#2c3733"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "1rem",
+                        "lg": "2rem",
+                        "xl": "3rem",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Inter"],
+                        "body": ["Inter"],
+                        "label": ["Inter"],
+                        "mono": ["JetBrains Mono"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; background-color: #040d0a; overflow: hidden; }
+        .font-mono { font-family: 'JetBrains Mono', monospace; }
+        .glass-panel {
+            background: rgba(44, 55, 51, 0.4);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(16, 185, 129, 0.08);
+        }
+        .text-gradient {
+            background: linear-gradient(to bottom, #10b981, #34d399);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .living-bg-blob {
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            filter: blur(60px);
+            opacity: 0.25;
+            z-index: -1;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="text-on-background antialiased flex items-center justify-center min-h-screen">
+<!-- Living Background -->
+<div class="fixed inset-0 overflow-hidden pointer-events-none -z-10">
+<div class="living-bg-blob bg-primary top-[-10%] left-[-10%]"></div>
+<div class="living-bg-blob bg-secondary bottom-[-10%] right-[-10%]"></div>
+<div class="living-bg-blob bg-primary-container top-[40%] right-[10%]"></div>
+<div class="absolute inset-0 opacity-[0.05]" style="background-image: repeating-linear-gradient(45deg, #10b981 0px, #10b981 1px, transparent 1px, transparent 10px);"></div>
+</div>
+<!-- Main Container (iPhone 14 Pro Dimensions) -->
+<main class="relative w-[390px] h-[844px] bg-background shadow-2xl overflow-hidden rounded-[48px] border-[8px] border-surface-container-highest">
+<!-- Parent Screen (Beneficiaries List) - Dimmed/Blurred -->
+<div class="absolute inset-0 opacity-25 blur-sm p-6 pt-16 flex flex-col gap-6">
+<header class="flex justify-between items-center">
+<span class="material-symbols-outlined text-primary">arrow_back</span>
+<h2 class="font-headline font-extrabold uppercase tracking-tight text-xl">Beneficiaries</h2>
+<div class="w-10 h-10 rounded-full bg-surface-container-highest flex items-center justify-center">
+<span class="material-symbols-outlined">add</span>
+</div>
+</header>
+<div class="space-y-4">
+<div class="glass-panel p-5 rounded-lg flex items-center gap-4">
+<div class="w-12 h-12 rounded-full bg-primary-container flex items-center justify-center font-bold text-on-primary-container">AM</div>
+<div class="flex-1">
+<p class="font-semibold">Alex Morgan</p>
+<p class="text-xs text-on-surface-variant font-mono">CHASE •••• 4421</p>
+</div>
+</div>
+<div class="glass-panel p-5 rounded-lg flex items-center gap-4">
+<div class="w-12 h-12 rounded-full bg-surface-container-highest flex items-center justify-center font-bold text-on-surface">JS</div>
+<div class="flex-1">
+<p class="font-semibold">Jordan Smith</p>
+<p class="text-xs text-on-surface-variant font-mono">WELLS •••• 9802</p>
+</div>
+</div>
+<div class="glass-panel p-5 rounded-lg flex items-center gap-4">
+<div class="w-12 h-12 rounded-full bg-surface-container-highest flex items-center justify-center font-bold text-on-surface">RK</div>
+<div class="flex-1">
+<p class="font-semibold">Riley King</p>
+<p class="text-xs text-on-surface-variant font-mono">BOFA •••• 1156</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Overlay / Backdrop -->
+<div class="absolute inset-0 bg-black/40 z-10"></div>
+<!-- Bottom Sheet -->
+<div class="absolute bottom-0 left-0 right-0 h-[80%] glass-panel rounded-t-[28px] z-20 flex flex-col px-6 pb-12">
+<!-- Grab Handle -->
+<div class="flex justify-center pt-4 pb-6">
+<div class="w-14 h-1.5 bg-on-surface-variant/20 rounded-full"></div>
+</div>
+<!-- Header Section -->
+<div class="flex justify-between items-start mb-8">
+<div class="space-y-1">
+<h1 class="text-gradient font-headline font-extrabold text-3xl tracking-tight">Edit Beneficiary</h1>
+<div class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full border border-primary/30 bg-primary/10">
+<span class="text-[10px] font-bold tracking-widest text-primary font-headline">VERIFIED</span>
+<span class="material-symbols-outlined text-sm text-primary" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+</div>
+<button class="w-10 h-10 rounded-full glass-panel flex items-center justify-center hover:bg-white/5 transition-colors">
+<span class="material-symbols-outlined text-on-surface">close</span>
+</button>
+</div>
+<!-- Form Content -->
+<div class="flex-1 overflow-y-auto space-y-6 pr-1">
+<!-- Full Name -->
+<div class="space-y-2">
+<label class="text-[11px] font-bold uppercase tracking-widest text-on-surface-variant ml-1">Full Name</label>
+<div class="relative">
+<input class="w-full h-14 glass-panel rounded-lg px-5 text-on-surface focus:outline-none focus:ring-1 focus:ring-primary/50 transition-all" type="text" value="Alex Morgan"/>
+</div>
+</div>
+<!-- Email -->
+<div class="space-y-2">
+<label class="text-[11px] font-bold uppercase tracking-widest text-on-surface-variant ml-1">Email</label>
+<div class="relative">
+<input class="w-full h-14 glass-panel rounded-lg px-5 text-on-surface focus:outline-none focus:ring-1 focus:ring-primary/50 transition-all" type="email" value="alex@email.com"/>
+</div>
+</div>
+<!-- Bank Name -->
+<div class="space-y-2">
+<label class="text-[11px] font-bold uppercase tracking-widest text-on-surface-variant ml-1">Bank Name</label>
+<div class="relative">
+<input class="w-full h-14 glass-panel rounded-lg px-5 text-on-surface focus:outline-none focus:ring-1 focus:ring-primary/50 transition-all" type="text" value="Chase Bank"/>
+<span class="material-symbols-outlined absolute right-5 top-4 text-on-surface-variant">account_balance</span>
+</div>
+</div>
+<!-- Account Number (Locked) -->
+<div class="space-y-2 opacity-80">
+<label class="text-[11px] font-bold uppercase tracking-widest text-on-surface-variant ml-1">Account Number</label>
+<div class="relative">
+<div class="w-full h-14 bg-surface-container-lowest/50 border border-emerald-500/5 rounded-lg flex items-center px-5 font-mono text-on-surface tracking-wider">
+                            •••• 4421
+                            <span class="material-symbols-outlined absolute right-5 text-sm" style="font-variation-settings: 'FILL' 1;">lock</span>
+</div>
+</div>
+<p class="text-[10px] font-mono text-tertiary/80 ml-1 flex items-center gap-1">
+                         Account number cannot be edited for security
+                    </p>
+</div>
+<!-- Currency -->
+<div class="space-y-3">
+<label class="text-[11px] font-bold uppercase tracking-widest text-on-surface-variant ml-1">Preferred Currency</label>
+<div class="flex gap-3">
+<button class="flex-1 h-12 glass-panel rounded-full border-primary/40 bg-primary/10 flex items-center justify-center gap-2 shadow-[0_0_15px_rgba(16,185,129,0.1)] transition-all">
+<span class="font-mono font-bold text-primary">USD</span>
+<span class="material-symbols-outlined text-primary text-sm" style="font-variation-settings: 'FILL' 1;">radio_button_checked</span>
+</button>
+<button class="flex-1 h-12 glass-panel rounded-full flex items-center justify-center gap-2 text-on-surface-variant hover:text-on-surface transition-all">
+<span class="font-mono font-bold">EUR</span>
+<span class="material-symbols-outlined text-sm">radio_button_unchecked</span>
+</button>
+<button class="flex-1 h-12 glass-panel rounded-full flex items-center justify-center gap-2 text-on-surface-variant hover:text-on-surface transition-all">
+<span class="font-mono font-bold">GBP</span>
+<span class="material-symbols-outlined text-sm">radio_button_unchecked</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Save Changes Button -->
+<div class="pt-8">
+<button class="w-full h-16 rounded-full bg-gradient-to-r from-primary to-secondary text-on-primary font-headline font-extrabold text-sm tracking-widest uppercase flex items-center justify-center gap-2 shadow-[0_4px_20px_rgba(16,185,129,0.3)] hover:scale-[1.02] active:scale-95 transition-all">
+                    SAVE CHANGES
+                    <span class="material-symbols-outlined">arrow_forward</span>
+</button>
+</div>
+</div>
+<!-- Dynamic Island/Notch Mockup -->
+<div class="absolute top-4 left-1/2 -translate-x-1/2 w-32 h-8 bg-black rounded-full z-50"></div>
+</main>
+<!-- Navigation Shell Placeholder (Not rendered as per task exclusion rules for focused sheet views) -->
+</body></html>

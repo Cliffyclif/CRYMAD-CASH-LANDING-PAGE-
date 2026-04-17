@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&amp;family=JetBrains+Mono:wght@400;700&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "inverse-primary": "#006c49",
+                    "surface-container-high": "#222c29",
+                    "outline-variant": "#3c4a42",
+                    "secondary": "#45dfa4",
+                    "on-primary": "#003824",
+                    "tertiary": "#ffb95f",
+                    "error": "#ffb4ab",
+                    "surface-container-low": "#131e1a",
+                    "surface-bright": "#313b38",
+                    "primary-fixed-dim": "#4edea3",
+                    "surface": "#0b1512",
+                    "on-primary-container": "#00422b",
+                    "tertiary-fixed-dim": "#ffb95f",
+                    "primary-fixed": "#6ffbbe",
+                    "inverse-surface": "#d9e5df",
+                    "surface-container-highest": "#2c3733",
+                    "on-primary-fixed": "#002113",
+                    "surface-dim": "#0b1512",
+                    "on-error": "#690005",
+                    "on-tertiary-fixed-variant": "#653e00",
+                    "surface-container-lowest": "#06100d",
+                    "on-surface-variant": "#bbcabf",
+                    "on-secondary-fixed-variant": "#005137",
+                    "inverse-on-surface": "#28332f",
+                    "tertiary-container": "#e29100",
+                    "on-tertiary-fixed": "#2a1700",
+                    "surface-variant": "#2c3733",
+                    "on-surface": "#d9e5df",
+                    "secondary-fixed": "#68fcbf",
+                    "on-tertiary-container": "#523200",
+                    "on-error-container": "#ffdad6",
+                    "surface-tint": "#4edea3",
+                    "outline": "#86948a",
+                    "on-secondary-container": "#00452e",
+                    "on-primary-fixed-variant": "#005236",
+                    "on-secondary": "#003825",
+                    "on-background": "#d9e5df",
+                    "error-container": "#93000a",
+                    "background": "#0b1512",
+                    "primary": "#4edea3",
+                    "surface-container": "#17221e",
+                    "secondary-fixed-dim": "#45dfa4",
+                    "secondary-container": "#00bd85",
+                    "primary-container": "#10b981",
+                    "on-tertiary": "#472a00",
+                    "tertiary-fixed": "#ffddb8",
+                    "on-secondary-fixed": "#002114"
+            },
+            "borderRadius": {
+                    "DEFAULT": "1rem",
+                    "lg": "2rem",
+                    "xl": "3rem",
+                    "full": "9999px"
+            },
+            "fontFamily": {
+                    "headline": ["Inter"],
+                    "body": ["Inter"],
+                    "label": ["Inter"],
+                    "mono": ["JetBrains Mono"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-panel {
+            background: rgba(44, 55, 51, 0.4);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(16, 185, 129, 0.08);
+        }
+        .living-bg {
+            background-color: #040d0a;
+            background-image: linear-gradient(45deg, rgba(16, 185, 129, 0.05) 25%, transparent 25%, transparent 50%, rgba(16, 185, 129, 0.05) 50%, rgba(16, 185, 129, 0.05) 75%, transparent 75%, transparent);
+            background-size: 100px 100px;
+            position: relative;
+            overflow: hidden;
+        }
+        .blob {
+            position: absolute;
+            filter: blur(60px);
+            opacity: 0.25;
+            border-radius: 50%;
+            z-index: 0;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface font-body living-bg min-h-screen selection:bg-primary/30">
+<!-- Living Background Blobs -->
+<div class="blob w-64 h-64 bg-primary top-[-10%] left-[-10%]"></div>
+<div class="blob w-48 h-48 bg-secondary bottom-[20%] right-[-5%]"></div>
+<div class="blob w-72 h-72 bg-emerald-900 top-[40%] left-[20%]"></div>
+<div class="blob w-40 h-40 bg-teal-500 bottom-[-5%] left-[-5%]"></div>
+<!-- Top App Bar -->
+<header class="fixed top-0 w-full z-50 bg-emerald-950/40 backdrop-blur-xl border-b border-emerald-500/10 shadow-[0_0_40px_rgba(16,185,129,0.08)] flex justify-between items-center px-6 h-16 w-full">
+<button class="text-emerald-500 hover:bg-emerald-500/10 transition-all duration-300 p-2 rounded-full active:scale-95">
+<span class="material-symbols-outlined">arrow_back</span>
+</button>
+<h1 class="font-['Inter'] font-extrabold text-transparent bg-clip-text bg-gradient-to-b from-emerald-400 to-teal-400 text-lg">Transactions</h1>
+<button class="text-emerald-500 hover:bg-emerald-500/10 transition-all duration-300 p-2 rounded-full active:scale-95">
+<span class="material-symbols-outlined">filter_list</span>
+</button>
+</header>
+<!-- Main Content Canvas -->
+<main class="relative z-10 pt-20 pb-32 px-5 max-w-[390px] mx-auto">
+<!-- Subtitle & Identity -->
+<div class="mb-6">
+<p class="font-mono text-[10px] tracking-[0.2em] text-emerald-500/60 uppercase">ALL MOVEMENT OF BIOLUMINESCENT VALUE</p>
+</div>
+<!-- Tab Pills -->
+<div class="flex gap-2 mb-6 overflow-x-auto no-scrollbar py-1">
+<button class="flex items-center gap-2 px-5 py-2 rounded-full glass-panel bg-primary text-on-primary font-semibold text-xs transition-all active:scale-95">
+                INTERNAL <span class="bg-on-primary/20 px-2 py-0.5 rounded-full text-[10px]">12</span>
+</button>
+<button class="flex items-center gap-2 px-5 py-2 rounded-full glass-panel text-emerald-500/70 font-semibold text-xs transition-all active:scale-95">
+                CRYPTO <span class="bg-emerald-500/10 px-2 py-0.5 rounded-full text-[10px]">4</span>
+</button>
+<button class="flex items-center gap-2 px-5 py-2 rounded-full glass-panel text-emerald-500/70 font-semibold text-xs transition-all active:scale-95">
+                BANK <span class="bg-emerald-500/10 px-2 py-0.5 rounded-full text-[10px]">0</span>
+</button>
+<button class="flex items-center gap-2 px-5 py-2 rounded-full glass-panel text-emerald-500/70 font-semibold text-xs transition-all active:scale-95">
+                CARDS <span class="bg-emerald-500/10 px-2 py-0.5 rounded-full text-[10px]">2</span>
+</button>
+</div>
+<!-- Search Bar -->
+<div class="relative mb-8">
+<div class="absolute inset-y-0 left-4 flex items-center pointer-events-none">
+<span class="material-symbols-outlined text-emerald-500/50 text-xl">search</span>
+</div>
+<input class="w-full h-12 bg-surface-container-lowest/40 glass-panel rounded-lg pl-12 pr-4 text-emerald-100 font-mono text-[11px] tracking-wider placeholder:text-emerald-500/30 focus:ring-1 focus:ring-emerald-500/30 outline-none transition-all" placeholder="SEARCH TRANSACTIONS..." type="text"/>
+</div>
+<!-- Summary Grid -->
+<div class="grid grid-cols-2 gap-4 mb-8">
+<div class="glass-panel p-4 rounded-lg flex flex-col justify-between h-24">
+<span class="text-[10px] font-mono text-emerald-500/50 uppercase tracking-widest">Inflow</span>
+<span class="text-primary font-mono text-lg font-bold">+$4,280.00</span>
+</div>
+<div class="glass-panel p-4 rounded-lg flex flex-col justify-between h-24">
+<span class="text-[10px] font-mono text-emerald-500/50 uppercase tracking-widest">Outflow</span>
+<span class="text-error font-mono text-lg font-bold">-$1,945.30</span>
+</div>
+<div class="glass-panel p-4 rounded-lg flex flex-col justify-between h-24 bg-gradient-to-br from-emerald-500/5 to-teal-500/5">
+<span class="text-[10px] font-mono text-emerald-500/50 uppercase tracking-widest">Net</span>
+<span class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-teal-400 font-mono text-lg font-bold">+$2,334.70</span>
+</div>
+<div class="glass-panel p-4 rounded-lg flex flex-col justify-between h-24">
+<span class="text-[10px] font-mono text-emerald-500/50 uppercase tracking-widest">Count</span>
+<span class="text-on-surface font-mono text-lg font-bold">142</span>
+</div>
+</div>
+<!-- Transaction List -->
+<div class="flex justify-between items-end mb-4 px-1">
+<h2 class="text-lg font-extrabold text-on-surface">Recent</h2>
+<button class="font-mono text-[10px] text-emerald-500/70 hover:text-emerald-400 tracking-tighter">SORT ↓</button>
+</div>
+<div class="space-y-3">
+<!-- Tx 1: Wallet to Wallet -->
+<div class="glass-panel h-[72px] rounded-lg px-4 flex items-center gap-4 hover:bg-emerald-500/10 transition-all cursor-pointer">
+<div class="w-10 h-10 rounded-full bg-primary/20 border border-primary/30 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">account_balance_wallet</span>
+</div>
+<div class="flex-1 min-w-0">
+<p class="font-semibold text-sm truncate">External Relay</p>
+<p class="font-mono text-[9px] text-emerald-500/40 truncate">0x82f...a12c</p>
+</div>
+<div class="text-right shrink-0">
+<p class="font-mono text-sm font-bold text-primary">+$850.00</p>
+<p class="font-mono text-[9px] text-emerald-500/40 uppercase">14:22 UTC</p>
+</div>
+</div>
+<!-- Tx 2: P2P -->
+<div class="glass-panel h-[72px] rounded-lg px-4 flex items-center gap-4 hover:bg-emerald-500/10 transition-all cursor-pointer">
+<div class="w-10 h-10 rounded-full bg-secondary/20 border border-secondary/30 flex items-center justify-center shrink-0 overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="close-up portrait of a digital avatar with green aesthetic lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAwGY2KNFkIo9aa2aSsP4T2ohiCcAuFCxBiVK3lTjqiEqlY34Gkh9wBpq9h6pwjzp2XtBkXn_Oj43CxI32lBOxcCkTyLRL7mp8VvHNK9ccuEkGq64eTr75S-Sxgm3VnAssotcT9yv9Bu_iuPBS1W988y5S1BEgGZdLmscF6nYK2mQkUD7RlOUItP4QG5cJye3nsvPWjvs56dMtHxp-qygxtcghuEmEYGXW-iY7wI4nMcbj2eSeGl2cjrlwmvMo1J8lewIjZc8hd2MA7"/>
+</div>
+<div class="flex-1 min-w-0">
+<p class="font-semibold text-sm truncate">Lumina Vance</p>
+<p class="font-mono text-[9px] text-emerald-500/40 truncate">P2P TRANSFER • 0x3d1...89ee</p>
+</div>
+<div class="text-right shrink-0">
+<p class="font-mono text-sm font-bold text-error">-$120.00</p>
+<p class="font-mono text-[9px] text-emerald-500/40 uppercase">12:05 UTC</p>
+</div>
+</div>
+<!-- Tx 3: Split Payment -->
+<div class="glass-panel h-[72px] rounded-lg px-4 flex items-center gap-4 hover:bg-emerald-500/10 transition-all cursor-pointer">
+<div class="w-10 h-10 rounded-full bg-tertiary/20 border border-tertiary/30 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-tertiary" style="font-variation-settings: 'FILL' 1;">call_split</span>
+</div>
+<div class="flex-1 min-w-0">
+<p class="font-semibold text-sm truncate">Synapse Dinner</p>
+<p class="font-mono text-[9px] text-emerald-500/40 truncate">SPLIT • GROUP ID: 9942</p>
+</div>
+<div class="text-right shrink-0">
+<p class="font-mono text-sm font-bold text-tertiary">-$42.15</p>
+<p class="font-mono text-[9px] text-emerald-500/40 uppercase">YESTERDAY</p>
+</div>
+</div>
+<!-- Tx 4: Wallet to Wallet -->
+<div class="glass-panel h-[72px] rounded-lg px-4 flex items-center gap-4 hover:bg-emerald-500/10 transition-all cursor-pointer">
+<div class="w-10 h-10 rounded-full bg-primary/20 border border-primary/30 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">token</span>
+</div>
+<div class="flex-1 min-w-0">
+<p class="font-semibold text-sm truncate">DAO Rewards</p>
+<p class="font-mono text-[9px] text-emerald-500/40 truncate">STAKING YIELD • BLOCK #4492</p>
+</div>
+<div class="text-right shrink-0">
+<p class="font-mono text-sm font-bold text-primary">+$12.44</p>
+<p class="font-mono text-[9px] text-emerald-500/40 uppercase">YESTERDAY</p>
+</div>
+</div>
+<!-- Tx 5: Crypto Swap -->
+<div class="glass-panel h-[72px] rounded-lg px-4 flex items-center gap-4 hover:bg-emerald-500/10 transition-all cursor-pointer">
+<div class="w-10 h-10 rounded-full bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-emerald-400" style="font-variation-settings: 'FILL' 1;">swap_horiz</span>
+</div>
+<div class="flex-1 min-w-0">
+<p class="font-semibold text-sm truncate">Liquidity Swap</p>
+<p class="font-mono text-[9px] text-emerald-500/40 truncate">SOL → EMERALD</p>
+</div>
+<div class="text-right shrink-0">
+<p class="font-mono text-sm font-bold text-on-surface">2.44 ETH</p>
+<p class="font-mono text-[9px] text-emerald-500/40 uppercase">MAY 22</p>
+</div>
+</div>
+<!-- Tx 6: P2P -->
+<div class="glass-panel h-[72px] rounded-lg px-4 flex items-center gap-4 hover:bg-emerald-500/10 transition-all cursor-pointer">
+<div class="w-10 h-10 rounded-full bg-secondary/20 border border-secondary/30 flex items-center justify-center shrink-0 overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="digital portrait of a man with minimalist futuristic green light accents" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAqwf86eyLTt4q8UBqbXia6hCFxXWAYxkHcG4DXaoEs-8mURZqovxQXoQ5DfifxtqArG4-K8ZqV-c468z7ZwThsF5n1tNjkWjj0hGAIXXDjgw9Oat_Al7hWr28O0CWnlttj0XG3JURg0STZI1dI0zdcxrnZNegkV0Nitfv-z_MTcmBReIDaUFM3-txPUJJzcYI96hTXAA-D3EAdhezxLdB6xa7EDAMIcvuQGCY6U8rzF-HgJwypGb1lRT0eHQ-rbVt1NWnSFCS_WN0Q"/>
+</div>
+<div class="flex-1 min-w-0">
+<p class="font-semibold text-sm truncate">Kaelen Moore</p>
+<p class="font-mono text-[9px] text-emerald-500/40 truncate">MERCHANDISE • 0x4f2...c3a1</p>
+</div>
+<div class="text-right shrink-0">
+<p class="font-mono text-sm font-bold text-error">-$299.00</p>
+<p class="font-mono text-[9px] text-emerald-500/40 uppercase">MAY 21</p>
+</div>
+</div>
+<!-- Tx 7: Inbound -->
+<div class="glass-panel h-[72px] rounded-lg px-4 flex items-center gap-4 hover:bg-emerald-500/10 transition-all cursor-pointer">
+<div class="w-10 h-10 rounded-full bg-primary/20 border border-primary/30 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">add_circle</span>
+</div>
+<div class="flex-1 min-w-0">
+<p class="font-semibold text-sm truncate">Treasury Mint</p>
+<p class="font-mono text-[9px] text-emerald-500/40 truncate">SYSTEM PROTOCOL 0.1</p>
+</div>
+<div class="text-right shrink-0">
+<p class="font-mono text-sm font-bold text-primary">+$1,500.00</p>
+<p class="font-mono text-[9px] text-emerald-500/40 uppercase">MAY 20</p>
+</div>
+</div>
+</div>
+</main>
+<!-- Bottom Navigation Bar -->
+<nav class="fixed bottom-0 w-full z-50 bg-emerald-950/40 backdrop-blur-xl border-t border-emerald-500/10 rounded-t-[24px] shadow-[0_-10px_40px_rgba(16,185,129,0.08)] flex justify-around items-center h-20 px-4 w-full pb-safe">
+<div class="flex flex-col items-center justify-center text-emerald-800 hover:text-emerald-300 transition-colors active:scale-90 duration-300 cursor-pointer">
+<span class="material-symbols-outlined mb-1">home</span>
+<span class="font-['JetBrains_Mono'] text-[10px] tracking-widest">HOME</span>
+</div>
+<div class="flex flex-col items-center justify-center text-emerald-800 hover:text-emerald-300 transition-colors active:scale-90 duration-300 cursor-pointer">
+<span class="material-symbols-outlined mb-1">account_balance_wallet</span>
+<span class="font-['JetBrains_Mono'] text-[10px] tracking-widest">WALLETS</span>
+</div>
+<div class="flex flex-col items-center justify-center text-emerald-800 hover:text-emerald-300 transition-colors active:scale-90 duration-300 cursor-pointer">
+<span class="material-symbols-outlined mb-1">credit_card</span>
+<span class="font-['JetBrains_Mono'] text-[10px] tracking-widest">CARDS</span>
+</div>
+<!-- ACTIVE TAB: ACTIVITY -->
+<div class="flex flex-col items-center justify-center text-emerald-400 bg-emerald-500/10 rounded-full px-4 py-1 active:scale-90 duration-300 cursor-pointer">
+<span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' 1;">receipt_long</span>
+<span class="font-['JetBrains_Mono'] text-[10px] tracking-widest">ACTIVITY</span>
+</div>
+<div class="flex flex-col items-center justify-center text-emerald-800 hover:text-emerald-300 transition-colors active:scale-90 duration-300 cursor-pointer">
+<span class="material-symbols-outlined mb-1">more_horiz</span>
+<span class="font-['JetBrains_Mono'] text-[10px] tracking-widest">MORE</span>
+</div>
+</nav>
+<!-- Home Indicator -->
+<div class="fixed bottom-1.5 left-1/2 -translate-x-1/2 w-32 h-1 bg-emerald-500/20 rounded-full z-[60]"></div>
+</body></html>

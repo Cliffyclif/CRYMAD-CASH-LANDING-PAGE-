@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&amp;family=JetBrains+Mono:wght@400;700&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-container-high": "#222c29",
+                    "inverse-on-surface": "#28332f",
+                    "tertiary-fixed": "#ffddb8",
+                    "tertiary-container": "#e29100",
+                    "surface-container-lowest": "#06100d",
+                    "inverse-surface": "#d9e5df",
+                    "secondary-fixed-dim": "#45dfa4",
+                    "outline": "#86948a",
+                    "on-tertiary-fixed": "#2a1700",
+                    "on-primary-fixed": "#002113",
+                    "surface-dim": "#0b1512",
+                    "primary-fixed": "#6ffbbe",
+                    "on-surface": "#d9e5df",
+                    "on-secondary-container": "#00452e",
+                    "on-secondary": "#003825",
+                    "surface-container-highest": "#2c3733",
+                    "primary-container": "#10b981",
+                    "error": "#ffb4ab",
+                    "background": "#0b1512",
+                    "surface-container": "#17221e",
+                    "inverse-primary": "#006c49",
+                    "on-secondary-fixed-variant": "#005137",
+                    "on-primary-container": "#00422b",
+                    "surface-variant": "#2c3733",
+                    "surface-container-low": "#131e1a",
+                    "primary-fixed-dim": "#4edea3",
+                    "on-secondary-fixed": "#002114",
+                    "on-error": "#690005",
+                    "surface-bright": "#313b38",
+                    "outline-variant": "#3c4a42",
+                    "on-primary": "#003824",
+                    "surface": "#0b1512",
+                    "error-container": "#93000a",
+                    "on-primary-fixed-variant": "#005236",
+                    "tertiary-fixed-dim": "#ffb95f",
+                    "secondary": "#45dfa4",
+                    "primary": "#4edea3",
+                    "on-background": "#d9e5df",
+                    "on-surface-variant": "#bbcabf",
+                    "secondary-fixed": "#68fcbf",
+                    "on-tertiary-container": "#523200",
+                    "on-error-container": "#ffdad6",
+                    "tertiary": "#ffb95f",
+                    "on-tertiary": "#472a00",
+                    "secondary-container": "#00bd85",
+                    "on-tertiary-fixed-variant": "#653e00",
+                    "surface-tint": "#4edea3"
+            },
+            "borderRadius": {
+                    "DEFAULT": "1rem",
+                    "lg": "2rem",
+                    "xl": "3rem",
+                    "full": "9999px"
+            },
+            "fontFamily": {
+                    "headline": ["Inter"],
+                    "body": ["Inter"],
+                    "label": ["Inter"],
+                    "mono": ["JetBrains Mono"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-card {
+            background: rgba(44, 55, 51, 0.4);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(16, 185, 129, 0.08);
+        }
+        .bg-abyss {
+            background-color: #040d0a;
+            position: relative;
+            overflow-x: hidden;
+        }
+        .biolume-blob {
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(16, 185, 129, 0.15) 0%, rgba(16, 185, 129, 0) 70%);
+            filter: blur(60px);
+            z-index: 0;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-abyss text-on-surface font-body selection:bg-primary/30 min-h-screen pb-[120px]">
+<!-- Ambient Background Elements -->
+<div class="biolume-blob top-[-100px] left-[-100px]"></div>
+<div class="biolume-blob bottom-[20%] right-[-100px]"></div>
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-[#040d0a]/80 backdrop-blur-xl border-b border-emerald-500/10 shadow-[0_0_40px_rgba(16,185,129,0.05)]">
+<div class="flex items-center justify-between px-6 h-16 w-full">
+<div class="flex items-center gap-4">
+<button class="hover:bg-emerald-500/10 transition-colors active:scale-95 duration-300 ease-out p-2 rounded-full">
+<span class="material-symbols-outlined text-emerald-500">arrow_back</span>
+</button>
+<div class="flex flex-col">
+<div class="flex items-center gap-2">
+<h1 class="font-headline font-extrabold text-transparent bg-clip-text bg-gradient-to-b from-[#10b981] to-[#34d399] tracking-tight text-xl">The Bioluminescent Archive</h1>
+<span class="text-xs font-mono px-2 py-0.5 rounded-full bg-amber-500/20 text-amber-500 border border-amber-500/30">INST</span>
+</div>
+</div>
+</div>
+<button class="hover:bg-emerald-500/10 transition-colors active:scale-95 duration-300 ease-out p-2 rounded-full">
+<span class="material-symbols-outlined text-emerald-500">add</span>
+</button>
+</div>
+</header>
+<main class="relative z-10 pt-20 px-6">
+<!-- Section Subtitle -->
+<div class="mb-6">
+<h2 class="font-mono text-[10px] uppercase tracking-[0.2em] text-[#d9e5df]/60">ROLES · DEPARTMENTS · THRESHOLDS</h2>
+</div>
+<!-- Mini Stats Grid -->
+<div class="grid grid-cols-2 gap-4 mb-8">
+<div class="glass-card rounded-[28px] p-5 flex flex-col gap-1">
+<span class="font-mono text-[10px] uppercase tracking-widest text-[#d9e5df]/40">TOTAL</span>
+<span class="font-mono text-2xl font-bold text-primary">28</span>
+</div>
+<div class="glass-card rounded-[28px] p-5 flex flex-col gap-1">
+<span class="font-mono text-[10px] uppercase tracking-widest text-[#d9e5df]/40">DEPTS</span>
+<span class="font-mono text-2xl font-bold text-primary">6</span>
+</div>
+<div class="glass-card rounded-[28px] p-5 flex flex-col gap-1">
+<span class="font-mono text-[10px] uppercase tracking-widest text-[#d9e5df]/40">INVITES</span>
+<span class="font-mono text-2xl font-bold text-tertiary">3</span>
+</div>
+<div class="glass-card rounded-[28px] p-5 flex flex-col gap-1">
+<span class="font-mono text-[10px] uppercase tracking-widest text-[#d9e5df]/40">ACTIVE</span>
+<span class="font-mono text-2xl font-bold text-primary">12</span>
+</div>
+</div>
+<!-- Filter Row -->
+<div class="flex overflow-x-auto gap-3 pb-6 no-scrollbar">
+<button class="whitespace-nowrap px-5 py-2 rounded-full border border-emerald-500/10 font-mono text-[10px] tracking-widest bg-surface-container-high text-[#d9e5df]/60">ALL</button>
+<button class="whitespace-nowrap px-5 py-2 rounded-full border border-emerald-500/10 font-mono text-[10px] tracking-widest bg-surface-container-high text-[#d9e5df]/60">EXEC</button>
+<button class="whitespace-nowrap px-5 py-2 rounded-full border border-emerald-500/10 font-mono text-[10px] tracking-widest bg-surface-container-high text-[#d9e5df]/60">TRADING</button>
+<button class="whitespace-nowrap px-5 py-2 rounded-full border border-emerald-500/10 font-mono text-[10px] tracking-widest bg-surface-container-high text-[#d9e5df]/60">TREASURY</button>
+<button class="whitespace-nowrap px-5 py-2 rounded-full border border-emerald-500/30 font-mono text-[10px] tracking-widest bg-primary text-on-primary">COMPLIANCE</button>
+<button class="whitespace-nowrap px-5 py-2 rounded-full border border-emerald-500/10 font-mono text-[10px] tracking-widest bg-surface-container-high text-[#d9e5df]/60">OPS</button>
+<button class="whitespace-nowrap px-5 py-2 rounded-full border border-emerald-500/10 font-mono text-[10px] tracking-widest bg-surface-container-high text-[#d9e5df]/60">IT</button>
+</div>
+<!-- User List -->
+<div class="flex flex-col gap-3">
+<!-- User 1 -->
+<div class="glass-card rounded-[28px] h-[96px] px-4 flex items-center gap-4">
+<div class="relative w-14 h-14 rounded-full p-0.5 ring-1 ring-primary/30">
+<img class="w-full h-full rounded-full object-cover" data-alt="professional portrait of a man in a dark suite with soft lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDni50-HfmCcR4V7tKX_175dS73AnqRdFZUWMWETqd3pyiWYhIeVobpPCX02qivCz2MgqPj6FRmllZ7CWUFYo8KR1wQOKERgMKlN8BngfTCceyZzbOw3glB1wMMp1qcjEoT-lQgzbhrp8lTCXTqJQCid6_o6p_dkIQ3uuZMcO6k2qPEBaVlm-1QD2GC6NlISAfbmUq_OayHigtOQhGpkWQt0_0KXIedP4qss9pEo-UzofcmWveJP0tAIjzpRrS7Cz7BFTnaAuUy4TXb"/>
+<div class="absolute bottom-0 right-0 w-3 h-3 bg-primary rounded-full border-2 border-[#040d0a] animate-pulse"></div>
+</div>
+<div class="flex-1 min-w-0">
+<h3 class="font-headline font-bold text-sm truncate">Joseph Obasi</h3>
+<p class="font-mono text-[10px] text-[#d9e5df]/50 truncate">j.obasi@inst.archive</p>
+<div class="mt-1 flex gap-2">
+<span class="text-[9px] font-mono px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">ADMIN ACTIVE</span>
+</div>
+</div>
+<button class="p-2 text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</div>
+<!-- User 2 -->
+<div class="glass-card rounded-[28px] h-[96px] px-4 flex items-center gap-4">
+<div class="relative w-14 h-14 rounded-full p-0.5 ring-1 ring-primary/30">
+<img class="w-full h-full rounded-full object-cover" data-alt="modern headshot of a business woman with clear skin and soft overhead studio lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDmqSxl0NECHlcnEip3dUdUgdjD_mImzH0xFHIFNR3j02jT1IZnkD6MypngRn3WcSIN1PO90fvCtlQj_Dt6LtEjMH5ZGrjKw_JKmylaoys6r5W5KC7OgPGRXFsrzpLWKF-S2rszzs1DOQYIzO0OtBq49K4beF_2x0wIxghcYlGdspjuM7fzxVVjSOoLr24xy6iGo8SqkoEhe-3t6U5Ak2PyohvIn9fmOwE6Q33A4HYW9mJgN16mxk5CV0qI1eUyh_ZU2mG0-ODyjxOr"/>
+<div class="absolute bottom-0 right-0 w-3 h-3 bg-primary rounded-full border-2 border-[#040d0a] animate-pulse"></div>
+</div>
+<div class="flex-1 min-w-0">
+<h3 class="font-headline font-bold text-sm truncate">Sarah Chen</h3>
+<p class="font-mono text-[10px] text-[#d9e5df]/50 truncate">s.chen@inst.archive</p>
+<div class="mt-1 flex gap-2">
+<span class="text-[9px] font-mono px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">CFO ACTIVE</span>
+</div>
+</div>
+<button class="p-2 text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</div>
+<!-- User 3 -->
+<div class="glass-card rounded-[28px] h-[96px] px-4 flex items-center gap-4">
+<div class="relative w-14 h-14 rounded-full p-0.5 ring-1 ring-primary/30">
+<img class="w-full h-full rounded-full object-cover" data-alt="portrait of a man with focused expression in a dimly lit tech environment" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAU9FKpjyoC2gpNnX5vb7s9-HWyjObyLaIb2zaCFmYOrRrgmAYcP93FkXJeZQeSA1Q5HHTlrPVP-LOreq85fyRBPnnWVJWlxmPgQwgYydRpuHZ7-90T43eLBAHqLqw9XU5aYYp8c7ZAKrdJKLzu0YI1dm8uc2HNNtfV7gpiU5SsctNwRRTymDxFVgs3C7NdDSeujehTr01atp-l94MmxArDZl0JBp4FO37V6NMFw77VaJ31TqapCksONvJt5rMxT2WUkUg-hmY-1nJ7"/>
+<div class="absolute bottom-0 right-0 w-3 h-3 bg-primary rounded-full border-2 border-[#040d0a] animate-pulse"></div>
+</div>
+<div class="flex-1 min-w-0">
+<h3 class="font-headline font-bold text-sm truncate">Marcus Klein</h3>
+<p class="font-mono text-[10px] text-[#d9e5df]/50 truncate">m.klein@inst.archive</p>
+<div class="mt-1 flex gap-2">
+<span class="text-[9px] font-mono px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">CRO ACTIVE</span>
+</div>
+</div>
+<button class="p-2 text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</div>
+<!-- User 4 -->
+<div class="glass-card rounded-[28px] h-[96px] px-4 flex items-center gap-4">
+<div class="relative w-14 h-14 rounded-full p-0.5 ring-1 ring-primary/30">
+<img class="w-full h-full rounded-full object-cover" data-alt="professional corporate headshot of a woman in a dark blazer with neutral background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBvd-vCA2R1Sc76hLqvPjxO6c2DCckxNL4GbFooG5LOGhcNKYO_cTwGtlCnQmxG5fVgHcu3vfUHDN1xtNVX8kHci_zwDmfjYxau2fuo7KPpMwlybzUr5oMsTqiw1uz3lfZUdjBd4iDIISrxj5r6osXqIe-IcSFkF_yewbNtvIr6yyoTQuj1_O4K8p7TCFlSmXoHJZDoEDlzO9SazuFIy__MoNbsSk6bpMlGwic51q-uBPhbhSraXCpZqoGMUCbm_CxCoJiz-C9-WcZE"/>
+<div class="absolute bottom-0 right-0 w-3 h-3 bg-primary rounded-full border-2 border-[#040d0a] animate-pulse"></div>
+</div>
+<div class="flex-1 min-w-0">
+<h3 class="font-headline font-bold text-sm truncate">Elena Rossi</h3>
+<p class="font-mono text-[10px] text-[#d9e5df]/50 truncate">e.rossi@inst.archive</p>
+<div class="mt-1 flex gap-2">
+<span class="text-[9px] font-mono px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">CCO ACTIVE</span>
+</div>
+</div>
+<button class="p-2 text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</div>
+<!-- User 5 -->
+<div class="glass-card rounded-[28px] h-[96px] px-4 flex items-center gap-4">
+<div class="relative w-14 h-14 rounded-full p-0.5 ring-1 ring-primary/30">
+<img class="w-full h-full rounded-full object-cover" data-alt="candid professional headshot with soft natural morning light and deep shadows" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDprxeWVxRVyWyneUSKTPWlguadSy9KdVX-bo7nUgTgK4tfCG6AiDAShpemfGggY1bGctiYJIvPJIPyDgNF9JPaINVFaz5fIOd9DZscmhNJzBLbeLxsX7474NYaKy69YF_ahpoTX8ZIkSSeh167CxS1w407pbcgnrlqhAFkOMtjLccAGpVHnA-riy-D4zGDX5DMIt7tcyWxDwPvY8YpHnf20OjBQ_2-5LQVwmFbU47ySqAdXvXDV2b8sGAHpb2qa3r1K6hGgyXWOtJ_"/>
+<div class="absolute bottom-0 right-0 w-3 h-3 bg-primary rounded-full border-2 border-[#040d0a] animate-pulse"></div>
+</div>
+<div class="flex-1 min-w-0">
+<h3 class="font-headline font-bold text-sm truncate">Priya Patel</h3>
+<p class="font-mono text-[10px] text-[#d9e5df]/50 truncate">p.patel@inst.archive</p>
+<div class="mt-1 flex gap-2">
+<span class="text-[9px] font-mono px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">TREASURER ACTIVE</span>
+</div>
+</div>
+<button class="p-2 text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</div>
+<!-- User 6 -->
+<div class="glass-card rounded-[28px] h-[96px] px-4 flex items-center gap-4">
+<div class="relative w-14 h-14 rounded-full p-0.5 ring-1 ring-primary/30">
+<img class="w-full h-full rounded-full object-cover" data-alt="executive businessman portrait in high-end office with blueish rim lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDOr3y25FT5cWkoAkPbFPsyCQ7xo3Hj-a5KFSdbYZKYviZQFMFrZ_cIdBDQuU_Nnld0bXhx3VGqGX1xAhSB8UhJ0Yv9ToWFEMty-fGcmyEJ5UpoZYgzwPEsWErmOZXkn98twc-YzsqEeu9uPfBwr-FVe9DAlDrYb6Az7Bp4TUXB4w8EFHUjyNOPR8uA_71efXqNheHGBNMbCePdGZYDG5PTjB_mexrpNH01ZX0OUk-hxixbLkBdqj2DNouBSGaQF6UYfiYtFcObQrrg"/>
+<div class="absolute bottom-0 right-0 w-3 h-3 bg-primary rounded-full border-2 border-[#040d0a] animate-pulse"></div>
+</div>
+<div class="flex-1 min-w-0">
+<h3 class="font-headline font-bold text-sm truncate">David Osei</h3>
+<p class="font-mono text-[10px] text-[#d9e5df]/50 truncate">d.osei@inst.archive</p>
+<div class="mt-1 flex gap-2">
+<span class="text-[9px] font-mono px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">HEAD TRADER ACTIVE</span>
+</div>
+</div>
+<button class="p-2 text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</div>
+<!-- User 7 -->
+<div class="glass-card rounded-[28px] h-[96px] px-4 flex items-center gap-4">
+<div class="relative w-14 h-14 rounded-full p-0.5 ring-1 ring-primary/30">
+<img class="w-full h-full rounded-full object-cover" data-alt="smart tech professional headshot with subtle neon reflections and dark background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAasL2SSiYXd12l576SkB_hlJAcjfrVP-a6MrRmIdqZsa1k9o650PL9t0h-iKrddEn0Pr8MojvmyKTRUAEeEH1P9yogXAOBQ74S8i6cXKWV3bGkMjqhMFvcgKFVAuQo6Y_6iOu1AxI2h2VdEwHDf8XRZVcqian7FUuD-ah8NA90xgq8lCbCqofGI-ib-W7hrEVX0ZH4U8_GnIJeBQXl9tiwxBPWBcZot4JUikpnuxfJLHAEWWPshYwLUaMBYv-xlD3cVE6MKRUZPk3T"/>
+<div class="absolute bottom-0 right-0 w-3 h-3 bg-primary rounded-full border-2 border-[#040d0a] animate-pulse"></div>
+</div>
+<div class="flex-1 min-w-0">
+<h3 class="font-headline font-bold text-sm truncate">Chen Wei</h3>
+<p class="font-mono text-[10px] text-[#d9e5df]/50 truncate">c.wei@inst.archive</p>
+<div class="mt-1 flex gap-2">
+<span class="text-[9px] font-mono px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">TRADER ACTIVE</span>
+</div>
+</div>
+<button class="p-2 text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</div>
+<!-- User 8 -->
+<div class="glass-card rounded-[28px] h-[96px] px-4 flex items-center gap-4">
+<div class="relative w-14 h-14 rounded-full p-0.5 ring-1 ring-amber-500/30">
+<img class="w-full h-full rounded-full object-cover grayscale opacity-50" data-alt="young asian woman professional portrait with clean lighting and neutral environment" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDKKcSh8blPPVqYn0ExtXE5sWZayircx0d1mZAIbHa3VJKzyz0VObH-4P1KcaYVrFb7tKk3nUSJiiM4VNi2dBArjEgsfyqkNh8sCQPU6sh0CjDVJHjWRnkxeYbqmP9_2Ve2J6qYFYcZWMhBPgC2eVGwGQro6k1N3ladZVG5rNWmcvTguBl4_mB57esn-np8p229Qfv4a-NATydSLPG1JfskqECEFPrD-oBjxO_IClECpFHzHYFkCypjCRQR77VzXy2h1tK9a2tnoWxx"/>
+<div class="absolute bottom-0 right-0 w-3 h-3 bg-amber-500 rounded-full border-2 border-[#040d0a]"></div>
+</div>
+<div class="flex-1 min-w-0">
+<h3 class="font-headline font-bold text-sm truncate text-[#d9e5df]/60">Rachel Kim</h3>
+<p class="font-mono text-[10px] text-[#d9e5df]/30 truncate">r.kim@inst.archive</p>
+<div class="mt-1 flex gap-2">
+<span class="text-[9px] font-mono px-2 py-0.5 rounded bg-amber-500/10 text-amber-500 border border-amber-500/20">AUDITOR INVITED</span>
+</div>
+</div>
+<button class="p-2 text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</div>
+</div>
+</main>
+<!-- Floating Action Button -->
+<button class="fixed bottom-[110px] right-6 z-50 bg-primary text-on-primary w-14 h-14 rounded-full flex items-center justify-center shadow-[0_0_20px_rgba(16,185,129,0.4)] active:scale-95 transition-transform">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">person_add</span>
+</button>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pb-6 bg-[#2c3733]/40 backdrop-blur-xl h-[83px] rounded-t-[24px] border-t border-emerald-500/10 shadow-[0_-10px_40px_rgba(16,185,129,0.08)]">
+<a class="flex flex-col items-center justify-center text-[#d9e5df]/60 hover:text-emerald-300 transition-all duration-300 ease-in-out" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="font-mono text-[10px] uppercase tracking-widest mt-1">HOME</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#d9e5df]/60 hover:text-emerald-300 transition-all duration-300 ease-in-out" href="#">
+<span class="material-symbols-outlined">rebase_edit</span>
+<span class="font-mono text-[10px] uppercase tracking-widest mt-1">FLOW</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#d9e5df]/60 hover:text-emerald-300 transition-all duration-300 ease-in-out" href="#">
+<span class="material-symbols-outlined">account_balance</span>
+<span class="font-mono text-[10px] uppercase tracking-widest mt-1">ARCHIVE</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#d9e5df]/60 hover:text-emerald-300 transition-all duration-300 ease-in-out" href="#">
+<span class="material-symbols-outlined">monitoring</span>
+<span class="font-mono text-[10px] uppercase tracking-widest mt-1">ASSETS</span>
+</a>
+<a class="flex flex-col items-center justify-center text-emerald-400 drop-shadow-[0_0_8px_rgba(16,185,129,0.5)] transition-all duration-300 ease-in-out" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">more_horiz</span>
+<span class="font-mono text-[10px] uppercase tracking-widest mt-1">MORE</span>
+</a>
+</nav>
+</body></html>

@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&amp;family=JetBrains+Mono:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary": "#4edea3",
+                        "secondary": "#45dfa4",
+                        "surface-container-lowest": "#06100d",
+                        "primary-fixed": "#6ffbbe",
+                        "primary-fixed-dim": "#4edea3",
+                        "on-primary-fixed-variant": "#005236",
+                        "secondary-fixed": "#68fcbf",
+                        "on-tertiary-fixed": "#2a1700",
+                        "inverse-surface": "#d9e5df",
+                        "inverse-primary": "#006c49",
+                        "on-tertiary-fixed-variant": "#653e00",
+                        "tertiary-fixed": "#ffddb8",
+                        "on-surface": "#d9e5df",
+                        "on-primary": "#003824",
+                        "surface-bright": "#313b38",
+                        "on-error-container": "#ffdad6",
+                        "primary-container": "#10b981",
+                        "on-error": "#690005",
+                        "surface-container": "#17221e",
+                        "surface-container-low": "#131e1a",
+                        "surface-dim": "#0b1512",
+                        "background": "#0b1512",
+                        "surface-container-highest": "#2c3733",
+                        "error": "#ffb4ab",
+                        "surface": "#0b1512",
+                        "on-tertiary": "#472a00",
+                        "outline": "#86948a",
+                        "outline-variant": "#3c4a42",
+                        "on-surface-variant": "#bbcabf",
+                        "error-container": "#93000a",
+                        "secondary-container": "#00bd85",
+                        "on-secondary-container": "#00452e",
+                        "tertiary-container": "#e29100",
+                        "inverse-on-surface": "#28332f",
+                        "on-primary-container": "#00422b",
+                        "surface-variant": "#2c3733",
+                        "on-tertiary-container": "#523200",
+                        "secondary-fixed-dim": "#45dfa4",
+                        "on-primary-fixed": "#002113",
+                        "surface-container-high": "#222c29",
+                        "surface-tint": "#4edea3",
+                        "on-background": "#d9e5df",
+                        "on-secondary": "#003825",
+                        "on-secondary-fixed-variant": "#005137",
+                        "on-secondary-fixed": "#002114",
+                        "tertiary-fixed-dim": "#ffb95f",
+                        "tertiary": "#ffb95f"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "1rem",
+                        "lg": "2rem",
+                        "xl": "3rem",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Inter"],
+                        "body": ["Inter"],
+                        "label": ["Inter"],
+                        "mono": ["JetBrains Mono"]
+                    }
+                },
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-panel {
+            background: rgba(44, 55, 51, 0.4);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(16, 185, 129, 0.08);
+        }
+        .breathing-ring {
+            box-shadow: 0 0 0 0 rgba(245, 158, 11, 0.4);
+            animation: pulse 3s infinite;
+        }
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(245, 158, 11, 0.4); }
+            70% { box-shadow: 0 0 0 20px rgba(245, 158, 11, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(245, 158, 11, 0); }
+        }
+        .text-gradient {
+            background: linear-gradient(to bottom, #10b981, #34d399);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-[#040d0a] text-on-surface font-body selection:bg-primary/30 min-h-[844px] w-[390px] mx-auto overflow-hidden relative shadow-2xl">
+<!-- Background Organic Blobs -->
+<div class="fixed inset-0 pointer-events-none overflow-hidden">
+<div class="absolute top-[-10%] left-[-20%] w-[300px] h-[300px] bg-primary/10 blur-[80px] rounded-full"></div>
+<div class="absolute bottom-[20%] right-[-10%] w-[250px] h-[250px] bg-tertiary/5 blur-[80px] rounded-full"></div>
+</div>
+<!-- Parent Screen (/cards) - Dimmed/Blurred -->
+<div class="relative w-full h-full p-6 flex flex-col gap-6 filter blur-[4px] brightness-50 opacity-60">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 px-6 py-4 flex justify-between items-center bg-emerald-950/40 backdrop-blur-xl rounded-b-3xl border-b border-emerald-500/10 shadow-[0_0_40px_rgba(16,185,129,0.08)]">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-emerald-500">fingerprint</span>
+<span class="text-lg font-black bg-clip-text text-transparent bg-gradient-to-b from-emerald-400 to-teal-500 font-extrabold uppercase italic Inter tracking-wider">SECURITY PROTOCOL</span>
+</div>
+<span class="material-symbols-outlined text-emerald-800">settings</span>
+</header>
+<div class="mt-20 space-y-8">
+<!-- Mock Card Item -->
+<div class="h-56 w-full glass-panel rounded-xl p-6 relative overflow-hidden flex flex-col justify-between">
+<div class="flex justify-between items-start">
+<span class="font-mono text-emerald-500/50">PLATINUM CORE</span>
+<span class="material-symbols-outlined text-emerald-500/20 text-4xl">contactless</span>
+</div>
+<div>
+<div class="font-mono text-xl tracking-widest text-emerald-100">•••• •••• •••• 2049</div>
+<div class="mt-4 flex justify-between items-end">
+<span class="uppercase text-[10px] tracking-widest opacity-40">Exp 09/28</span>
+<span class="text-xl font-bold italic text-gradient">PROTOS</span>
+</div>
+</div>
+</div>
+<!-- Stats Module -->
+<div class="grid grid-cols-2 gap-4">
+<div class="glass-panel p-4 rounded-lg">
+<div class="text-[10px] uppercase tracking-tighter opacity-50 font-mono mb-1">Weekly Limit</div>
+<div class="font-mono text-lg text-primary">$4,200.00</div>
+</div>
+<div class="glass-panel p-4 rounded-lg">
+<div class="text-[10px] uppercase tracking-tighter opacity-50 font-mono mb-1">Available</div>
+<div class="font-mono text-lg text-primary">$1,240.50</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Bottom Sheet Overlay Container -->
+<div class="absolute inset-0 z-50 flex flex-col justify-end bg-black/20 backdrop-blur-[2px]">
+<!-- The Bottom Sheet -->
+<div class="glass-panel rounded-t-[28px] w-full min-h-[55%] p-8 flex flex-col items-center animate-slide-up relative">
+<!-- Grab Handle -->
+<div class="w-12 h-1 bg-white/10 rounded-full absolute top-3"></div>
+<!-- Lock Visualization -->
+<div class="mt-4 mb-8 flex items-center justify-center">
+<div class="w-24 h-24 rounded-full border border-tertiary/20 flex items-center justify-center breathing-ring relative">
+<!-- Conic gradient overlay ring -->
+<div class="absolute inset-[-4px] rounded-full border border-dashed border-tertiary/10"></div>
+<span class="material-symbols-outlined text-[80px] text-tertiary" style="font-variation-settings: 'wght' 200;">lock</span>
+</div>
+</div>
+<!-- Content -->
+<div class="text-center space-y-3">
+<h2 class="text-2xl font-extrabold italic text-gradient uppercase tracking-tight">Lock Your Card?</h2>
+<div class="font-mono text-[10px] text-tertiary/80 tracking-[0.2em] uppercase">Temporary Card Freeze</div>
+<p class="text-on-surface-variant text-sm leading-relaxed max-w-[280px] mx-auto">
+                    Locking will prevent all transactions until you unlock. Subscriptions and auto-pay pause too.
+                </p>
+</div>
+<!-- Preview Card Pill -->
+<div class="mt-8 mb-6 glass-panel py-2 px-4 rounded-full flex items-center gap-3 opacity-60">
+<div class="w-8 h-5 rounded-[4px] bg-gradient-to-br from-emerald-900 to-emerald-950 border border-emerald-500/10"></div>
+<span class="font-mono text-xs text-on-surface uppercase tracking-tight">Physical •••• 2049</span>
+</div>
+<!-- Info Chip -->
+<div class="mb-8 bg-surface-container-highest/50 py-1.5 px-4 rounded-full">
+<span class="font-mono text-[9px] text-primary/70 uppercase tracking-widest">You can unlock anytime</span>
+</div>
+<!-- Actions -->
+<div class="w-full flex gap-4 mt-auto">
+<button class="flex-1 py-4 px-6 rounded-full glass-panel font-bold text-xs tracking-widest text-on-surface-variant hover:bg-white/5 transition-all duration-300 uppercase">
+                    Cancel
+                </button>
+<button class="flex-2 flex-[1.5] py-4 px-6 rounded-full bg-primary hover:bg-primary-fixed shadow-[0_0_20px_rgba(78,222,163,0.3)] flex items-center justify-center gap-2 transition-all duration-300 active:scale-95 group">
+<span class="font-bold text-xs tracking-widest text-on-primary uppercase">Lock Card</span>
+<span class="material-symbols-outlined text-on-primary text-lg group-hover:translate-x-1 transition-transform">lock</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Bottom Navigation (Shared Component) -->
+<nav class="fixed bottom-0 w-full z-50 flex justify-around items-center px-4 pb-8 pt-4 bg-emerald-950/60 backdrop-blur-2xl rounded-t-[32px] border-t border-emerald-500/10 shadow-[0_-10px_40px_rgba(16,185,129,0.05)]">
+<div class="flex flex-col items-center gap-1 text-emerald-900 opacity-60">
+<span class="material-symbols-outlined">account_balance_wallet</span>
+<span class="font-mono text-[10px] uppercase tracking-tighter">Vault</span>
+</div>
+<div class="flex flex-col items-center gap-1 text-emerald-900 opacity-60">
+<span class="material-symbols-outlined">swap_horiz</span>
+<span class="font-mono text-[10px] uppercase tracking-tighter">Flow</span>
+</div>
+<div class="flex flex-col items-center gap-1 text-emerald-900 opacity-60">
+<span class="material-symbols-outlined">query_stats</span>
+<span class="font-mono text-[10px] uppercase tracking-tighter">Metrics</span>
+</div>
+<div class="flex flex-col items-center gap-1 text-emerald-400 shadow-[0_0_20px_rgba(16,185,129,0.3)]">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">verified_user</span>
+<span class="font-mono text-[10px] uppercase tracking-tighter">Security</span>
+</div>
+</nav>
+<!-- Overlay Background Elements (Pulse Energy Lines) -->
+<div class="fixed inset-0 pointer-events-none opacity-[0.03] z-[1]">
+<div class="absolute inset-0" style="background-image: repeating-linear-gradient(45deg, #10b981 0, #10b981 1px, transparent 0, transparent 40px);"></div>
+</div>
+</body></html>

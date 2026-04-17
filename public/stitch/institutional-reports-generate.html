@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Institutional Reports - Mobile</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&amp;family=JetBrains+Mono:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary-fixed": "#68fcbf",
+                        "surface-container-high": "#222c29",
+                        "primary-fixed-dim": "#4edea3",
+                        "on-secondary-container": "#00452e",
+                        "error-container": "#93000a",
+                        "tertiary": "#ffb95f",
+                        "primary": "#4edea3",
+                        "secondary-fixed-dim": "#45dfa4",
+                        "on-primary": "#003824",
+                        "background": "#0b1512",
+                        "outline-variant": "#3c4a42",
+                        "tertiary-container": "#e29100",
+                        "on-secondary": "#003825",
+                        "on-tertiary-container": "#523200",
+                        "tertiary-fixed-dim": "#ffb95f",
+                        "on-secondary-fixed": "#002114",
+                        "on-primary-fixed": "#002113",
+                        "inverse-on-surface": "#28332f",
+                        "tertiary-fixed": "#ffddb8",
+                        "surface-container-lowest": "#06100d",
+                        "surface-container-highest": "#2c3733",
+                        "surface-container-low": "#131e1a",
+                        "outline": "#86948a",
+                        "secondary": "#45dfa4",
+                        "on-background": "#d9e5df",
+                        "surface-tint": "#4edea3",
+                        "on-secondary-fixed-variant": "#005137",
+                        "on-error-container": "#ffdad6",
+                        "on-surface-variant": "#bbcabf",
+                        "inverse-surface": "#d9e5df",
+                        "on-tertiary-fixed": "#2a1700",
+                        "surface": "#0b1512",
+                        "primary-container": "#10b981",
+                        "secondary-container": "#00bd85",
+                        "surface-variant": "#2c3733",
+                        "on-primary-fixed-variant": "#005236",
+                        "on-primary-container": "#00422b",
+                        "surface-bright": "#313b38",
+                        "on-error": "#690005",
+                        "surface-dim": "#0b1512",
+                        "surface-container": "#17221e",
+                        "primary-fixed": "#6ffbbe",
+                        "on-surface": "#d9e5df",
+                        "on-tertiary-fixed-variant": "#653e00",
+                        "on-tertiary": "#472a00",
+                        "inverse-primary": "#006c49",
+                        "error": "#ffb4ab"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "1rem",
+                        "lg": "2rem",
+                        "xl": "3rem",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Inter"],
+                        "body": ["Inter"],
+                        "label": ["Inter"],
+                        "mono": ["JetBrains Mono"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body { background-color: #040d0a; color: #d9e5df; font-family: 'Inter', sans-serif; }
+        .glass-panel { background: rgba(44, 55, 51, 0.4); backdrop-filter: blur(20px); border: 1px solid rgba(16, 185, 129, 0.08); }
+        .glow-soft { box-shadow: 0 0 30px rgba(16, 185, 129, 0.1); }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .bg-blob { position: fixed; filter: blur(60px); opacity: 0.25; z-index: -1; border-radius: 50%; }
+        .gradient-text { background: linear-gradient(to bottom, #10b981, #34d399); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="min-h-screen relative overflow-hidden">
+<!-- Animated Background Blobs -->
+<div class="bg-blob w-64 h-64 bg-primary top-[-10%] left-[-10%]"></div>
+<div class="bg-blob w-96 h-96 bg-secondary bottom-[-20%] right-[-10%]"></div>
+<div class="fixed inset-0 pointer-events-none opacity-5" style="background-image: repeating-linear-gradient(45deg, #10b981 0px, #10b981 1px, transparent 1px, transparent 10px);"></div>
+<!-- Parent View: Reports Dashboard (Dimmed) -->
+<div class="opacity-30 pointer-events-none">
+<header class="bg-[#040d0a]/80 backdrop-blur-xl border-b border-[#10b981]/10 fixed top-0 w-full z-50 flex items-center justify-between px-6 h-16 shadow-[0_20px_40px_rgba(16,185,129,0.05)]">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-emerald-500">menu</span>
+<h1 class="font-['Inter'] font-extrabold uppercase tracking-wider text-transparent bg-clip-text bg-gradient-to-b from-[#10b981] to-[#34d399] text-lg">Institutional Reports</h1>
+</div>
+<div class="w-8 h-8 rounded-full border border-emerald-500/30 overflow-hidden">
+<img alt="Profile" data-alt="high-quality digital avatar of a professional male executive in a corporate setting with soft studio lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA5_HWIvFAhE92j_TKpzpE_rhpApLo4xwBzeMykdlqxoQIyyF1fiBjk24Yv74Gg1_T1PD-Opz7iXRhVr6rbi46cA9-zeDzLMTEtB3WnirLpYhTL_F0l6VEKFrYbe6o0twKEjQ4HwW4YxJ4qZI4XKgwiWnd0lDfrHs3pt4kCdA19NXGa9sSv_doLxrSxnVnYORMshWzqVMy3geaoXHUnNpC7ZT9DW2gNmghntElWTQQJG5guIWOzkL8uzqETvS0i0bMw3Jx_Gdm4I-NT"/>
+</div>
+</header>
+<main class="pt-24 px-6 pb-24 space-y-6">
+<div class="glass-panel p-6 rounded-lg space-y-4">
+<div class="flex justify-between items-center">
+<span class="font-mono text-sm opacity-60">AUDIT_LOG_092</span>
+<span class="px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-mono uppercase tracking-tighter">Verified</span>
+</div>
+<h2 class="text-xl font-bold">Quarterly Compliance Summary</h2>
+<div class="h-1 bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full bg-primary w-3/4 shadow-[0_0_8px_#10b981]"></div>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div class="glass-panel p-4 rounded-lg">
+<p class="font-mono text-[10px] uppercase opacity-40">Volume</p>
+<p class="font-mono text-lg font-bold text-secondary">$4.2B</p>
+</div>
+<div class="glass-panel p-4 rounded-lg">
+<p class="font-mono text-[10px] uppercase opacity-40">Assets</p>
+<p class="font-mono text-lg font-bold text-secondary">2,841</p>
+</div>
+</div>
+</main>
+</div>
+<!-- Bottom Sheet -->
+<div class="fixed inset-x-0 bottom-0 z-[60] h-[88%] glass-panel rounded-t-[28px] border-t border-emerald-500/20 shadow-[0_-20px_60px_rgba(4,13,10,0.8)] overflow-y-auto">
+<!-- Grab Handle -->
+<div class="w-full flex justify-center pt-3 pb-6">
+<div class="w-10 h-1 bg-white/20 rounded-full"></div>
+</div>
+<div class="px-6 space-y-8 pb-12">
+<!-- Header -->
+<div class="space-y-1">
+<h2 class="text-2xl font-['Inter'] font-extrabold gradient-text">Generate Report</h2>
+<p class="text-sm opacity-60 font-medium">Compliance Configuration Suite</p>
+</div>
+<!-- Report Type Dropdown -->
+<div class="space-y-2">
+<label class="text-[10px] font-mono uppercase tracking-widest opacity-40 px-1">Institutional Protocol</label>
+<div class="glass-panel p-4 rounded-lg flex justify-between items-center bg-surface-container-highest/30">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">description</span>
+<span class="font-semibold text-sm">MIFID II Transaction Report</span>
+</div>
+<span class="material-symbols-outlined opacity-40">expand_more</span>
+</div>
+</div>
+<!-- Period Glass Card -->
+<div class="space-y-4">
+<label class="text-[10px] font-mono uppercase tracking-widest opacity-40 px-1">Timeframe Precision</label>
+<div class="glass-panel p-5 rounded-lg space-y-6">
+<div class="flex items-center justify-between gap-4">
+<div class="flex-1 space-y-1">
+<span class="text-[9px] opacity-40 block uppercase font-mono">From</span>
+<div class="bg-surface-container-low p-2 rounded-lg font-mono text-xs text-primary/80 text-center border border-primary/5">2023.10.01</div>
+</div>
+<span class="material-symbols-outlined opacity-20 text-xs">arrow_forward</span>
+<div class="flex-1 space-y-1">
+<span class="text-[9px] opacity-40 block uppercase font-mono">To</span>
+<div class="bg-surface-container-low p-2 rounded-lg font-mono text-xs text-primary/80 text-center border border-primary/5">2023.12.31</div>
+</div>
+</div>
+<div class="flex flex-wrap gap-2">
+<span class="px-3 py-1.5 rounded-full bg-surface-container-highest text-[10px] font-mono opacity-60 border border-white/5">Q1</span>
+<span class="px-3 py-1.5 rounded-full bg-surface-container-highest text-[10px] font-mono opacity-60 border border-white/5">Q2</span>
+<span class="px-3 py-1.5 rounded-full bg-surface-container-highest text-[10px] font-mono opacity-60 border border-white/5">Q3</span>
+<span class="px-3 py-1.5 rounded-full bg-primary/10 text-primary text-[10px] font-mono border border-primary/30">Q4</span>
+<span class="px-3 py-1.5 rounded-full bg-surface-container-highest text-[10px] font-mono opacity-60 border border-white/5">CUSTOM</span>
+<span class="px-3 py-1.5 rounded-full bg-secondary/5 text-secondary text-[10px] font-mono border border-secondary/20">YTD</span>
+</div>
+</div>
+</div>
+<!-- Output Format -->
+<div class="space-y-4">
+<label class="text-[10px] font-mono uppercase tracking-widest opacity-40 px-1">Export Format</label>
+<div class="flex gap-2">
+<button class="flex-1 py-3 glass-panel rounded-lg bg-primary text-on-primary font-mono text-xs font-bold transition-all shadow-[0_0_15px_rgba(16,185,129,0.3)]">PDF</button>
+<button class="flex-1 py-3 glass-panel rounded-lg text-on-background/60 font-mono text-xs transition-all">CSV</button>
+<button class="flex-1 py-3 glass-panel rounded-lg text-on-background/60 font-mono text-xs transition-all">XBRL</button>
+<button class="flex-1 py-3 glass-panel rounded-lg text-on-background/60 font-mono text-xs transition-all">JSON</button>
+</div>
+</div>
+<!-- Scope Glass Card -->
+<div class="space-y-4">
+<label class="text-[10px] font-mono uppercase tracking-widest opacity-40 px-1">Audit Scope Definitions</label>
+<div class="glass-panel p-5 rounded-lg space-y-4">
+<div class="flex items-center justify-between">
+<span class="text-sm font-medium">OTC Trades</span>
+<div class="w-5 h-5 rounded bg-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-on-primary text-sm font-bold">check</span>
+</div>
+</div>
+<div class="flex items-center justify-between">
+<span class="text-sm font-medium">Custody Assets</span>
+<div class="w-5 h-5 rounded bg-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-on-primary text-sm font-bold">check</span>
+</div>
+</div>
+<div class="flex items-center justify-between">
+<span class="text-sm font-medium">Wire Transfers</span>
+<div class="w-5 h-5 rounded bg-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-on-primary text-sm font-bold">check</span>
+</div>
+</div>
+<div class="flex items-center justify-between">
+<span class="text-sm font-medium opacity-40">Internal Journaling</span>
+<div class="w-5 h-5 rounded border border-white/20"></div>
+</div>
+<div class="flex items-center justify-between">
+<span class="text-sm font-medium">Fee Disclosures</span>
+<div class="w-5 h-5 rounded bg-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-on-primary text-sm font-bold">check</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Authority Info -->
+<div class="grid grid-cols-2 gap-4">
+<div class="space-y-1">
+<span class="text-[9px] font-mono uppercase opacity-40">Managing Entity</span>
+<p class="text-xs font-semibold text-secondary">Aurora Capital Management</p>
+</div>
+<div class="space-y-1 text-right">
+<span class="text-[9px] font-mono uppercase opacity-40">Authorized Signer</span>
+<p class="text-xs font-semibold">Joseph Obasi <span class="opacity-40">CEO</span></p>
+</div>
+</div>
+<!-- Footer Action -->
+<div class="pt-4 space-y-4">
+<div class="flex justify-center items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-secondary animate-pulse"></span>
+<span class="font-mono text-[11px] text-secondary tracking-widest uppercase">GENERATING: ~45s</span>
+</div>
+<button class="w-full bg-primary hover:bg-primary-container text-on-primary h-16 rounded-lg font-['Inter'] font-extrabold uppercase tracking-widest text-sm flex items-center justify-center gap-3 active:scale-95 duration-200 shadow-[0_10px_30px_rgba(16,185,129,0.3)]">
+                    GENERATE &amp; SIGN
+                    <span class="material-symbols-outlined">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Bottom Nav Shell (For Context) -->
+<nav class="bg-[#2c3733]/40 backdrop-blur-2xl border-t border-[#10b981]/10 fixed bottom-0 left-0 w-full flex justify-around items-center h-20 px-8 pb-4 z-[70] shadow-[0_-10px_40px_rgba(16,185,129,0.1)] rounded-t-[32px] pointer-events-none opacity-50">
+<div class="flex flex-col items-center justify-center text-[#d9e5df]/40">
+<span class="material-symbols-outlined text-2xl">dashboard</span>
+<span class="font-['JetBrains_Mono'] text-[10px] tracking-tighter">Dashboard</span>
+</div>
+<div class="flex flex-col items-center justify-center text-[#d9e5df]/40">
+<span class="material-symbols-outlined text-2xl">query_stats</span>
+<span class="font-['JetBrains_Mono'] text-[10px] tracking-tighter">Analytics</span>
+</div>
+<div class="flex flex-col items-center justify-center text-emerald-400 bg-[#10b981]/10 rounded-full px-4 py-1">
+<span class="material-symbols-outlined text-2xl" style="font-variation-settings: 'FILL' 1;">description</span>
+<span class="font-['JetBrains_Mono'] text-[10px] tracking-tighter">Reports</span>
+</div>
+<div class="flex flex-col items-center justify-center text-[#d9e5df]/40">
+<span class="material-symbols-outlined text-2xl">settings</span>
+<span class="font-['JetBrains_Mono'] text-[10px] tracking-tighter">Settings</span>
+</div>
+</nav>
+</body></html>

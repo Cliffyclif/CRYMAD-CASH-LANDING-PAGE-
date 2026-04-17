@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=390, height=844, initial-scale=1.0" name="viewport"/>
+<title>CRYMAD CA$H - Registration</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&amp;family=JetBrains+Mono:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary": "#45dfa4",
+                        "on-secondary-container": "#00452e",
+                        "surface-container": "#17221e",
+                        "on-secondary": "#003825",
+                        "on-primary-fixed": "#002113",
+                        "tertiary-fixed": "#ffddb8",
+                        "surface": "#0b1512",
+                        "secondary-fixed": "#68fcbf",
+                        "inverse-on-surface": "#28332f",
+                        "on-tertiary-fixed": "#2a1700",
+                        "tertiary": "#ffb95f",
+                        "surface-tint": "#4edea3",
+                        "outline-variant": "#3c4a42",
+                        "on-surface": "#d9e5df",
+                        "surface-container-highest": "#2c3733",
+                        "on-error": "#690005",
+                        "on-surface-variant": "#bbcabf",
+                        "on-secondary-fixed-variant": "#005137",
+                        "on-tertiary-container": "#523200",
+                        "surface-container-lowest": "#06100d",
+                        "on-tertiary": "#472a00",
+                        "primary": "#4edea3",
+                        "secondary-fixed-dim": "#45dfa4",
+                        "surface-variant": "#2c3733",
+                        "on-secondary-fixed": "#002114",
+                        "on-background": "#d9e5df",
+                        "inverse-primary": "#006c49",
+                        "surface-container-low": "#131e1a",
+                        "inverse-surface": "#d9e5df",
+                        "secondary-container": "#00bd85",
+                        "tertiary-fixed-dim": "#ffb95f",
+                        "on-primary": "#003824",
+                        "on-tertiary-fixed-variant": "#653e00",
+                        "on-primary-fixed-variant": "#005236",
+                        "primary-fixed-dim": "#4edea3",
+                        "primary-container": "#10b981",
+                        "surface-dim": "#0b1512",
+                        "tertiary-container": "#e29100",
+                        "error-container": "#93000a",
+                        "on-error-container": "#ffdad6",
+                        "primary-fixed": "#6ffbbe",
+                        "surface-container-high": "#222c29",
+                        "surface-bright": "#313b38",
+                        "background": "#0b1512",
+                        "outline": "#86948a",
+                        "on-primary-container": "#00422b",
+                        "error": "#ffb4ab"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "1rem",
+                        "lg": "2rem",
+                        "xl": "3rem",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Inter"],
+                        "body": ["Inter"],
+                        "label": ["Inter"],
+                        "mono": ["JetBrains Mono"]
+                    }
+                },
+            }
+        }
+    </script>
+<style>
+        body {
+            background-color: #040d0a;
+            color: #d9e5df;
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+        }
+        .bioluminescent-blob {
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background: #10b981;
+            filter: blur(60px);
+            opacity: 0.25;
+            z-index: -1;
+        }
+        .diagonal-grid {
+            background-image: repeating-linear-gradient(45deg, rgba(16, 185, 129, 0.05) 0px, rgba(16, 185, 129, 0.05) 1px, transparent 1px, transparent 20px);
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: -2;
+        }
+        .glass-panel {
+            background: rgba(44, 55, 51, 0.4);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(16, 185, 129, 0.08);
+        }
+        .text-gradient {
+            background: linear-gradient(to bottom, #10b981, #34d399);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="min-h-screen flex flex-col relative overflow-hidden">
+<!-- Background Elements -->
+<div class="diagonal-grid"></div>
+<div class="bioluminescent-blob -top-20 -left-20"></div>
+<div class="bioluminescent-blob top-1/4 -right-20"></div>
+<div class="bioluminescent-blob bottom-1/4 -left-40"></div>
+<div class="bioluminescent-blob -bottom-20 right-0"></div>
+<!-- Top Navigation -->
+<header class="flex items-center justify-between w-full top-0 px-6 py-4 shadow-[0_0_40px_rgba(16,185,129,0.08)] bg-transparent">
+<button class="active:scale-95 duration-300 hover:bg-emerald-500/10 transition-colors p-2 rounded-full">
+<span class="material-symbols-outlined text-emerald-500 text-3xl">chevron_left</span>
+</button>
+<h1 class="font-extrabold tracking-tighter uppercase font-inter text-emerald-500">REGISTRATION</h1>
+<div class="w-10"></div> <!-- Spacer for centering -->
+</header>
+<main class="flex-1 px-6 pt-4 pb-32 overflow-y-auto">
+<!-- Step Indicator -->
+<div class="flex items-center justify-between mb-8 px-4">
+<div class="flex flex-col items-center gap-2">
+<div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center shadow-[0_0_15px_rgba(16,185,129,0.5)]">
+<span class="material-symbols-outlined text-on-primary text-sm" style="font-variation-settings: 'FILL' 1;">check</span>
+</div>
+<span class="font-mono text-[10px] text-primary tracking-tighter">IDENTITY</span>
+</div>
+<div class="flex-1 h-[2px] border-t-2 border-dashed border-primary/30 mx-2 -mt-6"></div>
+<div class="flex flex-col items-center gap-2">
+<div class="w-8 h-8 rounded-full border-2 border-primary flex items-center justify-center relative">
+<div class="absolute inset-0 rounded-full animate-pulse border-4 border-primary/20"></div>
+<span class="font-mono font-bold text-primary text-sm">2</span>
+</div>
+<span class="font-mono text-[10px] text-primary tracking-tighter">CONTACT</span>
+</div>
+<div class="flex-1 h-[2px] border-t-2 border-dashed border-white/10 mx-2 -mt-6"></div>
+<div class="flex flex-col items-center gap-2">
+<div class="w-8 h-8 rounded-full border-2 border-white/20 flex items-center justify-center">
+<span class="font-mono text-white/20 text-sm">3</span>
+</div>
+<span class="font-mono text-[10px] text-white/20 tracking-tighter">PREFERENCES</span>
+</div>
+</div>
+<!-- Header -->
+<div class="mb-8">
+<h2 class="text-3xl font-extrabold text-gradient mb-1">Contact &amp; Address</h2>
+<p class="font-mono text-xs tracking-widest text-on-surface-variant">TELL US WHERE TO REACH YOU</p>
+</div>
+<!-- Form Sections -->
+<div class="space-y-6">
+<!-- Phone Number -->
+<div class="space-y-3">
+<div class="flex gap-3 h-14">
+<div class="glass-panel flex items-center gap-2 px-4 rounded-lg flex-shrink-0 cursor-pointer hover:bg-emerald-500/10 transition-colors">
+<img alt="US Flag" class="w-6 h-4 object-cover rounded-sm" data-alt="Small crisp flag of the United States on a dark green background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuATPr-L7qTSkMqYLeEPVlPJ3N3WJa8SJ_pz_Hzrw91FKUCMZEBhFYwWAYfdqmNjLmCO8pgW8Az3-PzAoHWePMo800SawaFDzoOD0U5KMV2-uQWbQ6iYXiqUtje5r6Jo_sbwaKLFTqBjv4ZXOe02U-QvU7EeyVV_R-FAaIFi91VY5xsC4gGnaRFDOK6yPzW3a0QNXj7fSlWftxJ5EULSPPUfh6ziII2Sy2P-q6x8aMxUE4fu7U2S3o-n19YmUVAPA552crvLtT7TYDgd"/>
+<span class="font-mono text-on-surface text-sm">+1</span>
+<span class="material-symbols-outlined text-emerald-500 text-lg">expand_more</span>
+</div>
+<div class="glass-panel flex-1 rounded-lg flex items-center px-4">
+<input class="bg-transparent border-none focus:ring-0 w-full font-mono text-on-surface placeholder:text-surface-variant text-lg" placeholder="(555) 000-0000" type="tel"/>
+</div>
+</div>
+</div>
+<div class="pt-2">
+<p class="font-mono text-[10px] text-primary/60 tracking-widest mb-4">ADDRESS</p>
+<!-- Street Address -->
+<div class="glass-panel h-14 rounded-lg flex items-center px-4 mb-4">
+<input class="bg-transparent border-none focus:ring-0 w-full font-inter text-on-surface placeholder:text-surface-variant" placeholder="Street Address" type="text"/>
+</div>
+<!-- City / State Grid -->
+<div class="grid grid-cols-2 gap-4 mb-4">
+<div class="glass-panel h-14 rounded-lg flex items-center px-4">
+<input class="bg-transparent border-none focus:ring-0 w-full font-inter text-on-surface placeholder:text-surface-variant" placeholder="City" type="text"/>
+</div>
+<div class="glass-panel h-14 rounded-lg flex items-center px-4 justify-between cursor-pointer group">
+<input class="bg-transparent border-none focus:ring-0 w-full font-inter text-on-surface placeholder:text-surface-variant cursor-pointer" placeholder="State" readonly="" type="text"/>
+<span class="material-symbols-outlined text-emerald-500/50 group-hover:text-emerald-500 transition-colors">arrow_drop_down</span>
+</div>
+</div>
+<!-- Zip / Country Grid -->
+<div class="grid grid-cols-2 gap-4">
+<div class="glass-panel h-14 rounded-lg flex items-center px-4">
+<input class="bg-transparent border-none focus:ring-0 w-full font-mono text-on-surface placeholder:text-surface-variant" placeholder="Postal Code" type="text"/>
+</div>
+<div class="glass-panel h-14 rounded-lg flex items-center px-4 justify-between cursor-pointer group">
+<span class="font-inter text-on-surface">United States</span>
+<span class="material-symbols-outlined text-emerald-500/50 group-hover:text-emerald-500 transition-colors">language</span>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Fixed Bottom Controls -->
+<footer class="fixed bottom-0 left-0 w-full z-50 bg-[#040d0a]/80 backdrop-blur-xl px-6 pb-10 pt-4">
+<div class="flex flex-col items-center gap-6">
+<button class="font-mono text-xs text-on-surface-variant/60 hover:text-primary transition-colors tracking-widest uppercase">
+                ← BACK
+            </button>
+<button class="w-full h-14 bg-primary text-on-primary font-extrabold tracking-tighter text-lg rounded-lg shadow-[0_0_30px_rgba(16,185,129,0.3)] active:scale-95 duration-300 flex items-center justify-center gap-2">
+                CONTINUE
+                <span class="material-symbols-outlined">arrow_forward</span>
+</button>
+<p class="font-mono text-[9px] text-surface-variant tracking-[0.2em] uppercase">
+                Encrypted with hardware-grade pulse monitoring
+            </p>
+</div>
+</footer>
+<!-- Decorative Bottom Tab bar spacer (simulating non-visible bar in focused task) -->
+<div class="h-6 w-full fixed bottom-0"></div>
+</body></html>

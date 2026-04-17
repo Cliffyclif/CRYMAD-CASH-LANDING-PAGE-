@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>AURORA Institutional Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&amp;family=JetBrains+Mono:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "secondary-fixed-dim": "#45dfa4",
+                        "primary": "#4edea3",
+                        "surface-container-lowest": "#06100d",
+                        "surface-container-highest": "#2c3733",
+                        "inverse-primary": "#006c49",
+                        "secondary": "#45dfa4",
+                        "on-error": "#690005",
+                        "surface-dim": "#0b1512",
+                        "background": "#0b1512",
+                        "surface-bright": "#313b38",
+                        "outline": "#86948a",
+                        "on-surface": "#d9e5df",
+                        "error": "#ffb4ab",
+                        "primary-fixed-dim": "#4edea3",
+                        "outline-variant": "#3c4a42",
+                        "error-container": "#93000a",
+                        "primary-container": "#10b981",
+                        "secondary-fixed": "#68fcbf",
+                        "on-secondary-fixed-variant": "#005137",
+                        "surface": "#0b1512",
+                        "surface-container-high": "#222c29",
+                        "tertiary-fixed-dim": "#ffb95f",
+                        "surface-variant": "#2c3733",
+                        "on-error-container": "#ffdad6",
+                        "inverse-surface": "#d9e5df",
+                        "on-secondary-fixed": "#002114",
+                        "on-secondary-container": "#00452e",
+                        "on-tertiary-fixed": "#2a1700",
+                        "inverse-on-surface": "#28332f",
+                        "secondary-container": "#00bd85",
+                        "tertiary-container": "#e29100",
+                        "on-secondary": "#003825",
+                        "tertiary": "#ffb95f",
+                        "tertiary-fixed": "#ffddb8",
+                        "on-tertiary-fixed-variant": "#653e00",
+                        "on-surface-variant": "#bbcabf",
+                        "surface-tint": "#4edea3",
+                        "on-primary-fixed-variant": "#005236",
+                        "on-tertiary-container": "#523200",
+                        "on-tertiary": "#472a00",
+                        "on-background": "#d9e5df",
+                        "surface-container": "#17221e",
+                        "on-primary-container": "#00422b",
+                        "primary-fixed": "#6ffbbe",
+                        "surface-container-low": "#131e1a",
+                        "on-primary": "#003824",
+                        "on-primary-fixed": "#002113"
+                    },
+                    borderRadius: {
+                        "DEFAULT": "1rem",
+                        "lg": "2rem",
+                        "xl": "3rem",
+                        "full": "9999px"
+                    },
+                    fontFamily: {
+                        "headline": ["Inter"],
+                        "body": ["Inter"],
+                        "label": ["Inter"],
+                        "mono": ["JetBrains Mono"]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .glass-card {
+            background: rgba(44, 55, 51, 0.4);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(16, 185, 129, 0.08);
+            border-radius: 24px;
+        }
+        .biolume-blob {
+            position: fixed;
+            width: 300px;
+            height: 300px;
+            filter: blur(80px);
+            opacity: 0.15;
+            z-index: -1;
+            border-radius: 50%;
+        }
+        .energy-line {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: repeating-linear-gradient(45deg, transparent, transparent 40px, rgba(16, 185, 129, 0.02) 41px);
+            z-index: -1;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface-container-lowest text-on-surface font-body selection:bg-primary/30 min-h-screen">
+<!-- Background Elements -->
+<div class="energy-line"></div>
+<div class="biolume-blob bg-primary top-[-10%] left-[-20%]"></div>
+<div class="biolume-blob bg-tertiary bottom-[10%] right-[-20%]"></div>
+<div class="biolume-blob bg-secondary top-[40%] right-[10%]"></div>
+<!-- Status Bar (Simulated) -->
+<div class="h-[44px] w-full flex justify-between items-center px-8 text-xs font-mono opacity-60">
+<span>9:41</span>
+<div class="flex gap-1.5">
+<span class="material-symbols-outlined text-[14px]">signal_cellular_4_bar</span>
+<span class="material-symbols-outlined text-[14px]">wifi</span>
+<span class="material-symbols-outlined text-[14px]">battery_full</span>
+</div>
+</div>
+<!-- TopAppBar -->
+<header class="h-[56px] w-full sticky top-0 z-50 bg-emerald-950/40 backdrop-blur-xl border-b border-emerald-500/10 shadow-[0_4px_30px_rgba(16,185,129,0.05)] flex justify-between items-center px-6">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary">arrow_back_ios</span>
+<h1 class="text-xl font-headline font-extrabold uppercase tracking-tightest bg-clip-text text-transparent bg-gradient-to-b from-emerald-400 to-teal-400">Institutional</h1>
+</div>
+<div class="flex items-center gap-4">
+<div class="flex items-center gap-1.5 bg-tertiary/10 px-2 py-0.5 rounded-full border border-tertiary/20">
+<span class="w-1.5 h-1.5 bg-tertiary rounded-full animate-pulse"></span>
+<span class="font-mono text-[10px] font-bold text-tertiary">INST</span>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant">notifications</span>
+</div>
+</header>
+<main class="px-5 pt-6 pb-32 flex flex-col gap-6">
+<!-- Entity Hero Card -->
+<section class="flex flex-col gap-1">
+<div class="flex justify-between items-start">
+<div>
+<h2 class="text-2xl font-headline font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-on-surface to-primary">Aurora Capital Management</h2>
+<p class="font-mono text-[10px] tracking-[0.2em] text-primary mt-1">INSTITUTIONAL PLATINUM</p>
+</div>
+<div class="flex flex-col items-end">
+<div class="w-10 h-10 rounded-full border-2 border-primary/20 overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="professional headshot of elegant female executive in dark minimalist setting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCT6lww45wPW_qjxUFpmDzM_FMnaRrTp9PvGXeNhZJAfL7fQAuEttKqowQBP8PCHcCKmCInBI2z2yfEJpf7g81ZM-H9xybTX9FQh-lz-KK1ufuwvQMbN-6yUIWSzm4IJOgqgIHxd_RbjaaRYz2vgAsCqKIJXxq_YuYbQJT3Up6ZTReVo_AHPq2pUFIvIjDRPFvteftJOIyjO2SVauAHf3V8E2Ae16QNPAUEM73pSCAi4CwBFXheQpJNJhRgW7ZJQ8RxkRBhtxicIu9S"/>
+</div>
+<span class="text-[9px] font-mono text-on-surface-variant mt-1 italic">Elena Rossi</span>
+</div>
+</div>
+</section>
+<!-- AUM Hero Glass Card -->
+<section class="glass-card p-6 flex flex-col gap-2 relative overflow-hidden">
+<div class="absolute top-[-20px] right-[-20px] w-40 h-40 bg-primary/5 blur-3xl rounded-full"></div>
+<div class="flex justify-between items-center">
+<span class="font-mono text-xs text-on-surface-variant uppercase tracking-widest">AUM Total</span>
+<div class="px-2.5 py-1 bg-primary/10 rounded-full border border-primary/20 flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px] text-primary">trending_up</span>
+<span class="font-mono text-[10px] font-bold text-primary">+2.4% MTH</span>
+</div>
+</div>
+<div class="flex items-baseline gap-2">
+<span class="text-4xl font-mono font-bold bg-clip-text text-transparent bg-gradient-to-b from-on-surface via-primary to-primary">$284.5M</span>
+</div>
+<div class="w-full h-12 mt-4 opacity-40">
+<svg class="w-full h-full preserve-3d" viewbox="0 0 100 30">
+<path class="text-primary" d="M0 25 Q 10 15, 20 20 T 40 10 T 60 15 T 80 5 T 100 12" fill="none" stroke="currentColor" stroke-width="1.5"></path>
+<path d="M0 25 Q 10 15, 20 20 T 40 10 T 60 15 T 80 5 T 100 12 V 30 H 0 Z" fill="url(#grad1)" stroke="none"></path>
+<defs>
+<lineargradient id="grad1" x1="0%" x2="0%" y1="0%" y2="100%">
+<stop offset="0%" style="stop-color:rgba(78, 222, 163, 0.2);stop-opacity:1"></stop>
+<stop offset="100%" style="stop-color:rgba(78, 222, 163, 0);stop-opacity:1"></stop>
+</lineargradient>
+</defs>
+</svg>
+</div>
+</section>
+<!-- KPI 2x2 Grid -->
+<section class="grid grid-cols-2 gap-4">
+<div class="glass-card p-4 flex flex-col gap-1">
+<span class="text-[10px] font-mono text-on-surface-variant uppercase tracking-tighter">30D VOL</span>
+<span class="text-lg font-mono font-bold text-on-surface">$1.42B</span>
+</div>
+<div class="glass-card p-4 flex flex-col gap-1">
+<span class="text-[10px] font-mono text-on-surface-variant uppercase tracking-tighter">Open Pos</span>
+<span class="text-lg font-mono font-bold text-on-surface">47</span>
+</div>
+<div class="glass-card p-4 flex flex-col gap-1">
+<span class="text-[10px] font-mono text-on-surface-variant uppercase tracking-tighter">Approvals</span>
+<div class="flex items-center gap-1.5">
+<span class="text-lg font-mono font-bold text-tertiary">12</span>
+<span class="text-[9px] font-mono text-tertiary/60 uppercase">Pending</span>
+</div>
+</div>
+<div class="glass-card p-4 flex flex-col gap-1">
+<span class="text-[10px] font-mono text-on-surface-variant uppercase tracking-tighter">Compliance</span>
+<div class="flex items-center gap-1.5">
+<span class="text-lg font-mono font-bold text-tertiary">3</span>
+<span class="text-[9px] font-mono text-tertiary/60 uppercase">Alerts</span>
+</div>
+</div>
+</section>
+<!-- Gauge and Market Section -->
+<section class="flex flex-col gap-4">
+<div class="glass-card p-6 flex items-center justify-between overflow-hidden">
+<div class="flex flex-col gap-1">
+<span class="font-headline font-bold text-lg">Deployment</span>
+<span class="font-mono text-xs text-on-surface-variant italic">Active Strategy Allocation</span>
+<div class="mt-4 flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-primary"></span>
+<span class="text-xs font-mono">Risk-On / Aggressive</span>
+</div>
+</div>
+<div class="relative w-[110px] h-[110px] flex items-center justify-center">
+<svg class="w-full h-full -rotate-90">
+<circle class="text-surface-container-highest" cx="55" cy="55" fill="none" r="48" stroke="currentColor" stroke-width="8"></circle>
+<circle class="text-primary" cx="55" cy="55" fill="none" r="48" stroke="currentColor" stroke-dasharray="301.59" stroke-dashoffset="45.24" stroke-linecap="round" stroke-width="8"></circle>
+</svg>
+<div class="absolute inset-0 flex flex-col items-center justify-center">
+<span class="font-mono font-bold text-xl">85%</span>
+</div>
+</div>
+</div>
+<!-- Market Ticker -->
+<div class="flex overflow-x-auto gap-3 pb-2 no-scrollbar">
+<div class="flex-shrink-0 px-4 py-2 glass-card flex items-center gap-2">
+<span class="font-mono text-[10px] font-bold text-on-surface">BTC</span>
+<span class="font-mono text-[10px] text-primary">$67,241</span>
+</div>
+<div class="flex-shrink-0 px-4 py-2 glass-card flex items-center gap-2">
+<span class="font-mono text-[10px] font-bold text-on-surface">ETH</span>
+<span class="font-mono text-[10px] text-primary">$3,421</span>
+</div>
+<div class="flex-shrink-0 px-4 py-2 glass-card flex items-center gap-2">
+<span class="font-mono text-[10px] font-bold text-on-surface">USDC</span>
+<span class="font-mono text-[10px] text-on-surface-variant">$1.00</span>
+</div>
+<div class="flex-shrink-0 px-4 py-2 glass-card flex items-center gap-2">
+<span class="font-mono text-[10px] font-bold text-on-surface">SOL</span>
+<span class="font-mono text-[10px] text-primary">$148.2</span>
+</div>
+<div class="flex-shrink-0 px-4 py-2 glass-card flex items-center gap-2">
+<span class="font-mono text-[10px] font-bold text-on-surface">USDT</span>
+<span class="font-mono text-[10px] text-on-surface-variant">$1.00</span>
+</div>
+</div>
+</section>
+<!-- Today's Activity -->
+<section class="flex flex-col gap-4">
+<h3 class="font-headline font-bold text-lg px-1">Today's Activity</h3>
+<div class="flex flex-col gap-2">
+<!-- Row 1 -->
+<div class="glass-card p-4 flex items-center justify-between border-l-4 border-l-primary/40">
+<div class="flex flex-col">
+<span class="font-headline font-semibold text-sm">RFQ BTC $5M</span>
+<span class="font-mono text-[10px] text-on-surface-variant italic">14:22:01 UTC</span>
+</div>
+<span class="font-mono text-[10px] font-bold text-primary uppercase bg-primary/10 px-2 py-1 rounded">Filled</span>
+</div>
+<!-- Row 2 -->
+<div class="glass-card p-4 flex items-center justify-between border-l-4 border-l-tertiary/40">
+<div class="flex flex-col">
+<span class="font-headline font-semibold text-sm">Block ETH $2.1M</span>
+<span class="font-mono text-[10px] text-on-surface-variant italic">13:45:10 UTC</span>
+</div>
+<span class="font-mono text-[10px] font-bold text-tertiary uppercase bg-tertiary/10 px-2 py-1 rounded">Pending</span>
+</div>
+<!-- Row 3 -->
+<div class="glass-card p-4 flex items-center justify-between border-l-4 border-l-primary/40">
+<div class="flex flex-col">
+<span class="font-headline font-semibold text-sm">Wire $10M Outbound</span>
+<span class="font-mono text-[10px] text-on-surface-variant italic">11:15:33 UTC</span>
+</div>
+<span class="font-mono text-[10px] font-bold text-primary uppercase bg-primary/10 px-2 py-1 rounded">Complete</span>
+</div>
+<!-- Row 4 -->
+<div class="glass-card p-4 flex items-center justify-between border-l-4 border-l-tertiary/40">
+<div class="flex flex-col">
+<span class="font-headline font-semibold text-sm">Custody Resolution</span>
+<span class="font-mono text-[10px] text-on-surface-variant italic">09:10:45 UTC</span>
+</div>
+<span class="font-mono text-[10px] font-bold text-tertiary uppercase bg-tertiary/10 px-2 py-1 rounded">2/5 Signed</span>
+</div>
+<!-- Row 5 -->
+<div class="glass-card p-4 flex items-center justify-between border-l-4 border-l-primary/40">
+<div class="flex flex-col">
+<span class="font-headline font-semibold text-sm">Interest Accrual</span>
+<span class="font-mono text-[10px] text-on-surface-variant italic">00:00:01 UTC</span>
+</div>
+<span class="font-mono text-[10px] font-bold text-primary px-2 py-1">+$4.2k</span>
+</div>
+<!-- Row 6 -->
+<div class="glass-card p-4 flex items-center justify-between border-l-4 border-l-on-surface-variant/20">
+<div class="flex flex-col">
+<span class="font-headline font-semibold text-sm">OTC $800k Quote</span>
+<span class="font-mono text-[10px] text-on-surface-variant italic">Yesterday</span>
+</div>
+<span class="font-mono text-[10px] font-bold text-on-surface-variant uppercase bg-surface-container-highest px-2 py-1 rounded">Quoted</span>
+</div>
+</div>
+</section>
+<!-- Footer Elements -->
+<section class="flex flex-col items-center gap-6 py-4">
+<div class="px-6 py-3 glass-card bg-primary/5 border-primary/20 flex items-center gap-3">
+<span class="material-symbols-outlined text-primary text-xl">account_balance_wallet</span>
+<div class="flex flex-col">
+<span class="font-mono text-[10px] text-on-surface-variant uppercase tracking-widest">Treasury Yield</span>
+<span class="font-mono text-sm font-bold text-primary">4.25% APY • $14.2k</span>
+</div>
+</div>
+<div class="flex flex-col items-center gap-1 opacity-40">
+<p class="text-[8px] font-mono tracking-[0.3em] uppercase">Powered by CRYMAD Institutional</p>
+<div class="w-12 h-px bg-gradient-to-r from-transparent via-primary to-transparent"></div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 w-full z-50 flex justify-around items-center px-4 pb-4 bg-emerald-950/60 backdrop-blur-2xl border-t border-emerald-500/10 shadow-[0_-8px_40px_rgba(16,185,129,0.08)] h-[83px] rounded-t-[32px]">
+<a class="flex flex-col items-center justify-center text-emerald-200/40 hover:text-emerald-300 transition-all" href="#">
+<span class="material-symbols-outlined">pie_chart</span>
+<span class="font-['JetBrains_Mono'] text-[10px] tracking-widest uppercase font-bold mt-1">Portfolio</span>
+</a>
+<a class="flex flex-col items-center justify-center text-emerald-200/40 hover:text-emerald-300 transition-all" href="#">
+<span class="material-symbols-outlined">query_stats</span>
+<span class="font-['JetBrains_Mono'] text-[10px] tracking-widest uppercase font-bold mt-1">Market</span>
+</a>
+<a class="flex flex-col items-center justify-center text-emerald-200/40 hover:text-emerald-300 transition-all" href="#">
+<span class="material-symbols-outlined">swap_calls</span>
+<span class="font-['JetBrains_Mono'] text-[10px] tracking-widest uppercase font-bold mt-1">Flow</span>
+</a>
+<a class="flex flex-col items-center justify-center text-emerald-200/40 hover:text-emerald-300 transition-all" href="#">
+<span class="material-symbols-outlined">notifications_active</span>
+<span class="font-['JetBrains_Mono'] text-[10px] tracking-widest uppercase font-bold mt-1">Alerts</span>
+</a>
+<a class="flex flex-col items-center justify-center text-emerald-400 bg-emerald-500/10 rounded-full px-6 py-2 scale-105 duration-300 ease-in-out" href="#">
+<span class="material-symbols-outlined">more_horiz</span>
+<span class="font-['JetBrains_Mono'] text-[10px] tracking-widest uppercase font-bold mt-1">More</span>
+</a>
+</nav>
+<!-- Home Indicator (Simulated) -->
+<div class="fixed bottom-1 left-1/2 -translate-x-1/2 w-32 h-1 bg-on-surface/20 rounded-full z-[60]"></div>
+</body></html>

@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=390, height=844, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&amp;family=JetBrains+Mono:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container-low": "#131e1a",
+                        "on-primary": "#003824",
+                        "on-primary-fixed": "#002113",
+                        "on-primary-container": "#00422b",
+                        "surface-container": "#17221e",
+                        "primary-fixed": "#6ffbbe",
+                        "on-tertiary-container": "#523200",
+                        "on-tertiary": "#472a00",
+                        "on-background": "#d9e5df",
+                        "surface-tint": "#4edea3",
+                        "on-primary-fixed-variant": "#005236",
+                        "on-surface-variant": "#bbcabf",
+                        "tertiary-fixed": "#ffddb8",
+                        "on-tertiary-fixed-variant": "#653e00",
+                        "tertiary-container": "#e29100",
+                        "tertiary": "#ffb95f",
+                        "on-secondary": "#003825",
+                        "on-tertiary-fixed": "#2a1700",
+                        "inverse-on-surface": "#28332f",
+                        "secondary-container": "#00bd85",
+                        "on-error-container": "#ffdad6",
+                        "inverse-surface": "#d9e5df",
+                        "tertiary-fixed-dim": "#ffb95f",
+                        "surface-variant": "#2c3733",
+                        "on-secondary-container": "#00452e",
+                        "on-secondary-fixed": "#002114",
+                        "surface": "#0b1512",
+                        "secondary-fixed": "#68fcbf",
+                        "on-secondary-fixed-variant": "#005137",
+                        "surface-container-high": "#222c29",
+                        "error": "#ffb4ab",
+                        "primary-container": "#10b981",
+                        "primary-fixed-dim": "#4edea3",
+                        "outline-variant": "#3c4a42",
+                        "error-container": "#93000a",
+                        "outline": "#86948a",
+                        "on-surface": "#d9e5df",
+                        "surface-dim": "#0b1512",
+                        "background": "#0b1512",
+                        "secondary": "#45dfa4",
+                        "on-error": "#690005",
+                        "surface-bright": "#313b38",
+                        "surface-container-highest": "#2c3733",
+                        "inverse-primary": "#006c49",
+                        "secondary-fixed-dim": "#45dfa4",
+                        "surface-container-lowest": "#06100d",
+                        "primary": "#4edea3"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "1rem",
+                        "lg": "2rem",
+                        "xl": "3rem",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Inter"],
+                        "body": ["Inter"],
+                        "label": ["Inter"],
+                        "mono": ["JetBrains Mono"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            background-color: #040d0a;
+            color: #d9e5df;
+            font-family: 'Inter', sans-serif;
+            overflow: hidden;
+            width: 390px;
+            height: 844px;
+        }
+        .bioluminescent-blob {
+            position: absolute;
+            filter: blur(60px);
+            opacity: 0.25;
+            border-radius: 50%;
+            z-index: 0;
+        }
+        .diagonal-lines {
+            background-image: repeating-linear-gradient(45deg, rgba(16, 185, 129, 0.05) 0, rgba(16, 185, 129, 0.05) 1px, transparent 0, transparent 50%);
+            background-size: 20px 20px;
+        }
+        .glass-panel {
+            background: rgba(44, 55, 51, 0.4);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(16, 185, 129, 0.08);
+        }
+        .gradient-text {
+            background: linear-gradient(to bottom, #10b981, #34d399);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .active-fill {
+            font-variation-settings: 'FILL' 1;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="relative flex flex-col items-center justify-end overflow-hidden">
+<!-- Background Layer -->
+<div class="fixed inset-0 z-0">
+<div class="bioluminescent-blob w-64 h-64 bg-emerald-500 top-[-50px] left-[-30px]"></div>
+<div class="bioluminescent-blob w-72 h-72 bg-teal-600 bottom-[-40px] right-[-20px]"></div>
+<div class="bioluminescent-blob w-48 h-48 bg-emerald-400 top-[30%] right-[10%]"></div>
+<div class="bioluminescent-blob w-56 h-56 bg-teal-800 bottom-[20%] left-[5%]"></div>
+<div class="absolute inset-0 diagonal-lines opacity-20"></div>
+</div>
+<!-- Parent Screen Content (Dimmed) -->
+<div class="absolute inset-0 z-10 opacity-30 flex flex-col p-6 pointer-events-none">
+<header class="flex justify-between items-center mb-8">
+<span class="material-symbols-outlined text-emerald-500">arrow_back</span>
+<h1 class="font-headline font-extrabold tracking-tight text-xl gradient-text">RECURRING PAYMENTS</h1>
+<span class="material-symbols-outlined text-emerald-500">more_vert</span>
+</header>
+<div class="space-y-4">
+<div class="glass-panel rounded-lg p-4 flex justify-between items-center">
+<div class="flex items-center gap-3">
+<div class="w-12 h-12 rounded-full bg-surface-container-highest flex items-center justify-center">
+<span class="material-symbols-outlined text-emerald-500">cloud_queue</span>
+</div>
+<div>
+<p class="font-semibold">Cloud Storage</p>
+<p class="font-mono text-xs text-on-surface-variant">Active Since Jan 2024</p>
+</div>
+</div>
+<div class="text-right">
+<p class="font-mono font-bold">$12.99</p>
+<p class="text-[10px] uppercase tracking-widest text-emerald-500">Monthly</p>
+</div>
+</div>
+<div class="glass-panel rounded-lg p-4 flex justify-between items-center bg-emerald-500/10 border-emerald-500/20">
+<div class="flex items-center gap-3">
+<img alt="Alex Morgan" class="w-12 h-12 rounded-full border border-emerald-500/30" data-alt="professional portrait of Alex Morgan with subtle warm rim lighting against a dark neutral studio background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCL0pO1DMrDmfYw5xoj1JXOzk0dzbqk-AS__1tpW7d6wa0-dQx1kewZyeVZYZfaBjDqZO-7fWQSLIXwUO6vdWMFCr3MjtySFr3N63RSXEq0_xn5KA6PpL51OCmuaemsW_la_3BKAHaJgDWl7TPg4gkgyjNTkGpyCVY0G9QKnKdTb9TAdS6NVKAhVsI_16YRaUc0btau8YXvI82TXm5t8vnF7a_3vImkOCuDskQVeI5aUV3qmho1y1HGBxFbEMsW5duhn3k3UI7vf3b6"/>
+<div>
+<p class="font-semibold">Alex Morgan</p>
+<p class="font-mono text-xs text-on-surface-variant">Marketing Consultant</p>
+</div>
+</div>
+<div class="text-right">
+<p class="font-mono font-bold">$500.00</p>
+<p class="text-[10px] uppercase tracking-widest text-emerald-500">Monthly</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Bottom Sheet Mask Overlay -->
+<div class="fixed inset-0 bg-black/60 z-20"></div>
+<!-- Compact Bottom Sheet -->
+<div class="relative z-30 w-full h-[65%] glass-panel rounded-t-[28px] flex flex-col px-6 pt-3 pb-8 shadow-[0_-10px_50px_rgba(16,185,129,0.15)]">
+<!-- Grab Handle -->
+<div class="w-10 h-1 bg-surface-variant rounded-full mx-auto mb-6 opacity-40"></div>
+<div class="flex-1 flex flex-col items-center text-center">
+<!-- Large Warning Icon -->
+<div class="relative mb-4">
+<div class="absolute inset-0 bg-error/20 blur-xl rounded-full"></div>
+<span class="material-symbols-outlined text-[80px] text-error relative z-10 drop-shadow-[0_0_15px_rgba(255,180,171,0.4)]">warning</span>
+</div>
+<!-- Title -->
+<h2 class="font-headline font-extrabold text-2xl gradient-text mb-6">
+                Cancel Recurring Payment?
+            </h2>
+<!-- Preview Card -->
+<div class="w-full glass-panel rounded-lg p-4 mb-6 flex items-center justify-between border-emerald-500/10">
+<div class="flex items-center gap-3">
+<img alt="Alex Morgan" class="w-10 h-10 rounded-full border border-emerald-500/20" data-alt="close-up of a woman with a confident expression in low key lighting with emerald accents" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAhQB-dPB_q3cuidLfhcAXZh9EfCQnquSGKwY-SkPU5tVdcx3vsXeyWpDCy71YkU5kAOzw135__1G4m1Xz2kN97LPNgMXAyPWrSyLbMMKVjKWV9MUs48a7W6ctrlerEcZUCXn271nhCOj6-XIazbdRBRcyM5PpdQleMYpELeEZlYANvb-U0vK0zXKp6BH6Ohn-Xuc9QQvlkXzaVchdQMyt7ybn395pMFveFyYDhU8r8IHz8r4hVs9VtdVQX8-OKZw7L0g9b6ivTA056"/>
+<div class="text-left">
+<p class="font-semibold text-sm">Alex Morgan</p>
+<p class="font-mono text-[10px] text-on-surface-variant tracking-wider uppercase">
+<span class="text-emerald-400">11</span> remaining
+                        </p>
+</div>
+</div>
+<div class="flex flex-col items-end">
+<p class="font-mono font-bold text-lg text-on-surface">$500.00</p>
+<span class="bg-surface-container-highest text-[9px] font-bold text-emerald-400 px-2 py-0.5 rounded-full border border-emerald-500/10 tracking-widest uppercase">Monthly</span>
+</div>
+</div>
+<!-- Warning Text -->
+<p class="text-sm text-on-surface/80 leading-relaxed mb-6 px-4">
+                This will stop all future payments. This action cannot be undone.
+            </p>
+<!-- Action Controls -->
+<div class="w-full space-y-4 mb-8">
+<!-- Dropdown -->
+<div class="w-full h-12 glass-panel rounded-full flex items-center justify-between px-5 cursor-pointer hover:bg-emerald-500/5 transition-colors">
+<span class="text-xs font-semibold uppercase tracking-widest text-on-surface-variant">Why cancelling?</span>
+<span class="material-symbols-outlined text-emerald-500">expand_more</span>
+</div>
+<!-- Radio Pills -->
+<div class="flex gap-3">
+<button class="flex-1 h-12 rounded-full border border-emerald-500/30 bg-emerald-500/10 flex items-center justify-center gap-2">
+<div class="w-3 h-3 rounded-full border border-emerald-500 flex items-center justify-center">
+<div class="w-1.5 h-1.5 bg-emerald-500 rounded-full"></div>
+</div>
+<span class="text-[10px] font-bold uppercase tracking-tighter">Cancel future only</span>
+</button>
+<button class="flex-1 h-12 rounded-full border border-surface-variant flex items-center justify-center gap-2">
+<div class="w-3 h-3 rounded-full border border-surface-variant"></div>
+<span class="text-[10px] font-bold uppercase tracking-tighter text-on-surface-variant">Refund last payment</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Sticky Footer Buttons -->
+<div class="flex gap-3 mt-auto">
+<button class="flex-1 h-14 rounded-full font-headline font-bold text-xs uppercase tracking-widest text-on-surface-variant hover:bg-white/5 transition-all">
+                Keep Active
+            </button>
+<button class="flex-[1.4] h-14 rounded-full bg-error text-on-error font-headline font-extrabold text-xs uppercase tracking-widest flex items-center justify-center gap-2 shadow-[0_0_20px_rgba(255,180,171,0.3)] hover:scale-[1.02] transition-transform">
+                Cancel Payment <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</button>
+</div>
+</div>
+<!-- Bottom Nav Bar (JSON Inspired Structure) -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-6 pb-8 pt-4 bg-[#2c3733]/40 backdrop-blur-xl rounded-t-[32px] border-t border-emerald-500/10 shadow-[0_-10px_50px_rgba(16,185,129,0.15)] opacity-50">
+<div class="flex flex-col items-center justify-center text-emerald-900/50">
+<span class="material-symbols-outlined mb-1">account_balance_wallet</span>
+<span class="font-['JetBrains_Mono'] text-[10px] uppercase tracking-widest">Vault</span>
+</div>
+<div class="flex flex-col items-center justify-center text-emerald-400 font-bold drop-shadow-[0_0_8px_rgba(16,185,129,0.6)]">
+<span class="material-symbols-outlined active-fill mb-1">swap_horiz</span>
+<span class="font-['JetBrains_Mono'] text-[10px] uppercase tracking-widest">Flow</span>
+</div>
+<div class="flex flex-col items-center justify-center text-emerald-900/50">
+<span class="material-symbols-outlined mb-1">query_stats</span>
+<span class="font-['JetBrains_Mono'] text-[10px] uppercase tracking-widest">Pulse</span>
+</div>
+<div class="flex flex-col items-center justify-center text-emerald-900/50">
+<span class="material-symbols-outlined mb-1">fingerprint</span>
+<span class="font-['JetBrains_Mono'] text-[10px] uppercase tracking-widest">Identity</span>
+</div>
+</nav>
+</body></html>

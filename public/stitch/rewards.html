@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Archive Rewards</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&amp;family=JetBrains+Mono:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-error-container": "#ffdad6",
+                        "surface-container-highest": "#2c3733",
+                        "primary-fixed-dim": "#4edea3",
+                        "outline": "#86948a",
+                        "surface-container-high": "#222c29",
+                        "outline-variant": "#3c4a42",
+                        "primary": "#4edea3",
+                        "surface-tint": "#4edea3",
+                        "on-primary-fixed": "#002113",
+                        "secondary-container": "#00bd85",
+                        "on-tertiary-fixed-variant": "#653e00",
+                        "primary-container": "#10b981",
+                        "on-tertiary-container": "#523200",
+                        "on-surface": "#d9e5df",
+                        "surface-container-lowest": "#06100d",
+                        "surface-dim": "#0b1512",
+                        "on-tertiary-fixed": "#2a1700",
+                        "on-primary-container": "#00422b",
+                        "on-secondary-fixed-variant": "#005137",
+                        "secondary-fixed-dim": "#45dfa4",
+                        "on-secondary-container": "#00452e",
+                        "tertiary-fixed-dim": "#ffb95f",
+                        "tertiary-container": "#e29100",
+                        "error": "#ffb4ab",
+                        "on-background": "#d9e5df",
+                        "error-container": "#93000a",
+                        "tertiary-fixed": "#ffddb8",
+                        "surface": "#0b1512",
+                        "primary-fixed": "#6ffbbe",
+                        "secondary": "#45dfa4",
+                        "surface-container": "#17221e",
+                        "background": "#0b1512",
+                        "surface-container-low": "#131e1a",
+                        "on-tertiary": "#472a00",
+                        "on-secondary": "#003825",
+                        "inverse-surface": "#d9e5df",
+                        "tertiary": "#ffb95f",
+                        "on-primary": "#003824",
+                        "inverse-on-surface": "#28332f",
+                        "secondary-fixed": "#68fcbf",
+                        "on-error": "#690005",
+                        "surface-variant": "#2c3733",
+                        "surface-bright": "#313b38",
+                        "on-surface-variant": "#bbcabf",
+                        "on-primary-fixed-variant": "#005236",
+                        "on-secondary-fixed": "#002114",
+                        "inverse-primary": "#006c49"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "1rem",
+                        "lg": "2rem",
+                        "xl": "3rem",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Inter"],
+                        "body": ["Inter"],
+                        "label": ["Inter"],
+                        "mono": ["JetBrains Mono"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .living-blob {
+            position: fixed;
+            filter: blur(80px);
+            opacity: 0.15;
+            z-index: -1;
+            border-radius: 50%;
+        }
+        .diagonal-lines {
+            position: fixed;
+            inset: 0;
+            background-image: repeating-linear-gradient(45deg, rgba(16, 185, 129, 0.03) 0px, rgba(16, 185, 129, 0.03) 1px, transparent 1px, transparent 20px);
+            z-index: -1;
+        }
+        .ghost-border {
+            border: 1px solid rgba(16, 185, 129, 0.08);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface-container-lowest text-on-surface font-body min-h-screen overflow-x-hidden selection:bg-primary/30">
+<!-- Living Background Elements -->
+<div class="diagonal-lines"></div>
+<div class="living-blob bg-primary w-[300px] h-[300px] -top-20 -left-20"></div>
+<div class="living-blob bg-secondary w-[250px] h-[250px] top-1/2 -right-20"></div>
+<div class="living-blob bg-tertiary w-[200px] h-[200px] bottom-20 left-1/4"></div>
+<div class="living-blob bg-primary w-[350px] h-[350px] -bottom-40 right-0"></div>
+<!-- Top App Bar -->
+<header class="fixed top-0 w-full z-50 bg-emerald-950/40 backdrop-blur-xl border-b border-emerald-500/10 flex justify-between items-center px-6 h-[56px]">
+<div class="flex items-center gap-4">
+<button class="active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-primary" data-icon="arrow_back">arrow_back</span>
+</button>
+<h1 class="font-['Inter'] font-extrabold uppercase tracking-widest text-transparent bg-clip-text bg-gradient-to-b from-emerald-400 to-teal-500 text-lg">Archive Rewards</h1>
+</div>
+<button class="active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-primary" data-icon="info">info</span>
+</button>
+</header>
+<!-- Main Content Canvas -->
+<main class="pt-[72px] pb-[100px] px-5 space-y-6">
+<!-- HERO BALANCE CARD -->
+<section class="w-full bg-[#2c3733]/40 backdrop-blur-[20px] ghost-border rounded-[28px] p-6 flex justify-between items-center relative overflow-hidden shadow-[0_0_40px_rgba(16,185,129,0.08)]">
+<div class="flex flex-col gap-1 z-10">
+<span class="font-mono text-[12px] text-on-surface-variant tracking-wider uppercase">REWARDS BALANCE</span>
+<span class="font-mono text-[40px] font-bold text-transparent bg-clip-text bg-gradient-to-b from-primary to-secondary leading-tight">$1,250.00</span>
+<div class="mt-2 inline-flex items-center bg-primary/10 border border-primary/20 px-3 py-1 rounded-full">
+<span class="font-mono text-[10px] text-primary font-bold">+42.80 THIS WEEK</span>
+</div>
+</div>
+<div class="relative z-10">
+<div class="absolute inset-0 flex items-center justify-center">
+<div class="w-24 h-24 border border-primary/20 rounded-full animate-pulse"></div>
+<div class="absolute w-32 h-32 border border-primary/10 rounded-full animate-pulse [animation-delay:500ms]"></div>
+</div>
+<span class="material-symbols-outlined text-[80px] text-primary/80" data-icon="emoji_events">emoji_events</span>
+</div>
+</section>
+<!-- LEVEL BADGE STRIP -->
+<section class="space-y-3">
+<div class="flex justify-between items-end">
+<span class="font-mono text-[10px] text-primary uppercase tracking-tighter">LEVEL 3 PULSE MEMBER</span>
+<span class="font-mono text-[10px] text-on-surface-variant uppercase tracking-tighter">850 POINTS TO LEVEL 4</span>
+</div>
+<div class="h-1.5 w-full bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full bg-gradient-to-r from-primary to-secondary w-[65%] rounded-full shadow-[0_0_10px_rgba(16,185,129,0.5)]"></div>
+</div>
+</section>
+<!-- ACTION BUTTON ROW -->
+<section class="grid grid-cols-3 gap-3">
+<button class="bg-[#2c3733]/40 backdrop-blur-xl ghost-border rounded-2xl py-3 flex flex-col items-center gap-1 active:scale-95 transition-all hover:bg-primary/10 group">
+<span class="material-symbols-outlined text-primary group-hover:scale-110 transition-transform" data-icon="download">download</span>
+<span class="font-mono text-[10px] text-on-surface font-bold">CLAIM</span>
+</button>
+<button class="bg-[#2c3733]/40 backdrop-blur-xl ghost-border rounded-2xl py-3 flex flex-col items-center gap-1 active:scale-95 transition-all hover:bg-primary/10 group">
+<span class="material-symbols-outlined text-primary group-hover:scale-110 transition-transform" data-icon="send">send</span>
+<span class="font-mono text-[10px] text-on-surface font-bold">ISSUE</span>
+</button>
+<button class="bg-[#2c3733]/40 backdrop-blur-xl ghost-border rounded-2xl py-3 flex flex-col items-center gap-1 active:scale-95 transition-all hover:bg-primary/10 group">
+<span class="material-symbols-outlined text-primary group-hover:scale-110 transition-transform" data-icon="payments">payments</span>
+<span class="font-mono text-[10px] text-on-surface font-bold">DEBIT</span>
+</button>
+</section>
+<!-- TABS PILL ROW -->
+<nav class="flex gap-2">
+<button class="px-6 py-2 rounded-full bg-primary text-on-primary font-mono text-[12px] font-bold">PAYOUTS</button>
+<button class="px-6 py-2 rounded-full bg-surface-container-highest/50 ghost-border text-on-surface-variant font-mono text-[12px]">DEBITS</button>
+<button class="px-6 py-2 rounded-full bg-surface-container-highest/50 ghost-border text-on-surface-variant font-mono text-[12px]">HISTORY</button>
+</nav>
+<!-- REWARDS LIST -->
+<section class="space-y-3">
+<!-- Row 1 -->
+<div class="bg-[#2c3733]/30 backdrop-blur-lg ghost-border rounded-[24px] p-4 flex items-center justify-between group hover:bg-surface-container-highest/40 transition-colors">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-2xl bg-surface-container-highest flex items-center justify-center text-primary">
+<span class="material-symbols-outlined" data-icon="credit_card">credit_card</span>
+</div>
+<div>
+<p class="font-semibold text-sm">CASHBACK CARD</p>
+<p class="font-mono text-[10px] text-on-surface-variant">RWD-8821 • OCT 12</p>
+</div>
+</div>
+<div class="text-right">
+<p class="font-mono font-bold text-primary">+$12.40</p>
+<span class="inline-block px-2 py-0.5 rounded-full bg-primary/10 text-[9px] font-mono text-primary font-bold">CLAIMED</span>
+</div>
+</div>
+<!-- Row 2 -->
+<div class="bg-[#2c3733]/30 backdrop-blur-lg ghost-border rounded-[24px] p-4 flex items-center justify-between group hover:bg-surface-container-highest/40 transition-colors">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-2xl bg-surface-container-highest flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined" data-icon="person_add">person_add</span>
+</div>
+<div>
+<p class="font-semibold text-sm">REFERRAL BONUS</p>
+<p class="font-mono text-[10px] text-on-surface-variant">RWD-4492 • OCT 10</p>
+</div>
+</div>
+<div class="text-right">
+<p class="font-mono font-bold text-primary">+$50.00</p>
+<span class="inline-block px-2 py-0.5 rounded-full bg-tertiary/10 text-[9px] font-mono text-tertiary font-bold">PENDING</span>
+</div>
+</div>
+<!-- Row 3 -->
+<div class="bg-[#2c3733]/30 backdrop-blur-lg ghost-border rounded-[24px] p-4 flex items-center justify-between group hover:bg-surface-container-highest/40 transition-colors">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-2xl bg-surface-container-highest flex items-center justify-center text-primary">
+<span class="material-symbols-outlined" data-icon="account_balance">account_balance</span>
+</div>
+<div>
+<p class="font-semibold text-sm">STAKING YIELD</p>
+<p class="font-mono text-[10px] text-on-surface-variant">RWD-1102 • OCT 08</p>
+</div>
+</div>
+<div class="text-right">
+<p class="font-mono font-bold text-primary">+$4.22</p>
+<span class="inline-block px-2 py-0.5 rounded-full bg-primary/10 text-[9px] font-mono text-primary font-bold">CLAIMED</span>
+</div>
+</div>
+<!-- Row 4 -->
+<div class="bg-[#2c3733]/30 backdrop-blur-lg ghost-border rounded-[24px] p-4 flex items-center justify-between group hover:bg-surface-container-highest/40 transition-colors">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-2xl bg-surface-container-highest flex items-center justify-center text-tertiary">
+<span class="material-symbols-outlined" data-icon="stars">stars</span>
+</div>
+<div>
+<p class="font-semibold text-sm">SIGNUP BONUS</p>
+<p class="font-mono text-[10px] text-on-surface-variant">RWD-0012 • OCT 05</p>
+</div>
+</div>
+<div class="text-right">
+<p class="font-mono font-bold text-primary">+$100.00</p>
+<span class="inline-block px-2 py-0.5 rounded-full bg-primary/10 text-[9px] font-mono text-primary font-bold">CLAIMED</span>
+</div>
+</div>
+<!-- Row 5 -->
+<div class="bg-[#2c3733]/30 backdrop-blur-lg ghost-border rounded-[24px] p-4 flex items-center justify-between group hover:bg-surface-container-highest/40 transition-colors">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-2xl bg-surface-container-highest flex items-center justify-center text-primary">
+<span class="material-symbols-outlined" data-icon="receipt_long">receipt_long</span>
+</div>
+<div>
+<p class="font-semibold text-sm">TRANSACTION REBATE</p>
+<p class="font-mono text-[10px] text-on-surface-variant">RWD-9981 • OCT 01</p>
+</div>
+</div>
+<div class="text-right">
+<p class="font-mono font-bold text-primary">+$1.15</p>
+<span class="inline-block px-2 py-0.5 rounded-full bg-primary/10 text-[9px] font-mono text-primary font-bold">CLAIMED</span>
+</div>
+</div>
+</section>
+</main>
+<!-- Bottom Navigation Bar -->
+<nav class="fixed bottom-0 w-full z-50 rounded-t-[32px] bg-[#040d0a]/60 backdrop-blur-2xl border-t border-emerald-500/10 shadow-[0_-10px_40px_rgba(16,185,129,0.05)]">
+<div class="flex justify-around items-center w-full px-4 pb-8 pt-4">
+<!-- Vault Tab -->
+<a class="flex flex-col items-center justify-center text-emerald-100/40 px-5 py-2 hover:text-emerald-300 transition-all active:scale-90 duration-300" href="#">
+<span class="material-symbols-outlined" data-icon="account_balance_wallet">account_balance_wallet</span>
+<span class="font-['JetBrains_Mono'] text-[10px] tracking-tighter">Vault</span>
+</a>
+<!-- Flow Tab -->
+<a class="flex flex-col items-center justify-center text-emerald-100/40 px-5 py-2 hover:text-emerald-300 transition-all active:scale-90 duration-300" href="#">
+<span class="material-symbols-outlined" data-icon="swap_horiz">swap_horiz</span>
+<span class="font-['JetBrains_Mono'] text-[10px] tracking-tighter">Flow</span>
+</a>
+<!-- Pulse Tab -->
+<a class="flex flex-col items-center justify-center text-emerald-100/40 px-5 py-2 hover:text-emerald-300 transition-all active:scale-90 duration-300" href="#">
+<span class="material-symbols-outlined" data-icon="query_stats">query_stats</span>
+<span class="font-['JetBrains_Mono'] text-[10px] tracking-tighter">Pulse</span>
+</a>
+<!-- More Tab (Active) -->
+<a class="flex flex-col items-center justify-center text-emerald-400 bg-emerald-500/10 rounded-full px-5 py-2 shadow-[0_0_15px_rgba(16,185,129,0.2)] active:scale-90 duration-300" href="#">
+<span class="material-symbols-outlined" data-icon="more_horiz">more_horiz</span>
+<span class="font-['JetBrains_Mono'] text-[10px] tracking-tighter">More</span>
+</a>
+</div>
+</nav>
+</body></html>

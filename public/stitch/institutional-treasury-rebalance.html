@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Institutional Treasury Management</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&amp;family=JetBrains+Mono:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary-fixed": "#ffddb8",
+                        "on-tertiary-fixed-variant": "#653e00",
+                        "on-surface-variant": "#bbcabf",
+                        "surface-tint": "#4edea3",
+                        "on-primary-fixed-variant": "#005236",
+                        "secondary-container": "#00bd85",
+                        "on-tertiary-fixed": "#2a1700",
+                        "inverse-on-surface": "#28332f",
+                        "on-secondary": "#003825",
+                        "tertiary": "#ffb95f",
+                        "tertiary-container": "#e29100",
+                        "primary-fixed": "#6ffbbe",
+                        "surface-container": "#17221e",
+                        "on-primary-container": "#00422b",
+                        "on-primary-fixed": "#002113",
+                        "surface-container-low": "#131e1a",
+                        "on-primary": "#003824",
+                        "on-tertiary": "#472a00",
+                        "on-background": "#d9e5df",
+                        "on-tertiary-container": "#523200",
+                        "surface-bright": "#313b38",
+                        "secondary": "#45dfa4",
+                        "on-error": "#690005",
+                        "surface-dim": "#0b1512",
+                        "background": "#0b1512",
+                        "outline": "#86948a",
+                        "on-surface": "#d9e5df",
+                        "primary": "#4edea3",
+                        "surface-container-lowest": "#06100d",
+                        "secondary-fixed-dim": "#45dfa4",
+                        "surface-container-highest": "#2c3733",
+                        "inverse-primary": "#006c49",
+                        "surface-container-high": "#222c29",
+                        "secondary-fixed": "#68fcbf",
+                        "on-secondary-fixed-variant": "#005137",
+                        "surface": "#0b1512",
+                        "on-secondary-fixed": "#002114",
+                        "on-secondary-container": "#00452e",
+                        "tertiary-fixed-dim": "#ffb95f",
+                        "surface-variant": "#2c3733",
+                        "on-error-container": "#ffdad6",
+                        "inverse-surface": "#d9e5df",
+                        "primary-fixed-dim": "#4edea3",
+                        "outline-variant": "#3c4a42",
+                        "error-container": "#93000a",
+                        "primary-container": "#10b981",
+                        "error": "#ffb4ab"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "1rem",
+                        "lg": "2rem",
+                        "xl": "3rem",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Inter"],
+                        "body": ["Inter"],
+                        "label": ["Inter"],
+                        "mono": ["JetBrains Mono"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .glass-panel {
+            background: rgba(44, 55, 51, 0.4);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(16, 185, 129, 0.08);
+        }
+        .text-gradient {
+            background: linear-gradient(to bottom, #10b981, #34d399);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .blob {
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(16, 185, 129, 0.15) 0%, transparent 70%);
+            filter: blur(60px);
+            z-index: 0;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .bg-grid {
+            background-image: linear-gradient(rgba(16, 185, 129, 0.03) 1px, transparent 1px),
+                              linear-gradient(90deg, rgba(16, 185, 129, 0.03) 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-[#040d0a] text-on-background font-body selection:bg-primary/30 overflow-hidden">
+<!-- Background Decoration -->
+<div class="fixed inset-0 overflow-hidden pointer-events-none">
+<div class="blob top-[-100px] left-[-50px]"></div>
+<div class="blob bottom-[-50px] right-[-50px]"></div>
+<div class="bg-grid absolute inset-0 opacity-40"></div>
+</div>
+<!-- Mobile Shell: Status Bar (Simulated) -->
+<div class="fixed top-0 w-full h-11 px-6 flex justify-between items-center z-[60] bg-[#040d0a]/80 backdrop-blur-md">
+<span class="font-mono text-sm font-bold">09:41</span>
+<div class="flex gap-1.5 items-center">
+<span class="material-symbols-outlined text-xs">signal_cellular_alt</span>
+<span class="material-symbols-outlined text-xs">wifi</span>
+<span class="material-symbols-outlined text-xs">battery_full</span>
+</div>
+</div>
+<!-- Shared Component: TopAppBar -->
+<header class="fixed top-11 w-full z-50 bg-[#040d0a]/80 backdrop-blur-xl border-b border-emerald-500/10 flex justify-between items-center px-6 h-14 w-full shadow-[0_0_40px_rgba(16,185,129,0.05)]">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-emerald-500">terminal</span>
+<h1 class="font-headline font-extrabold uppercase tracking-tighter text-xl font-black text-transparent bg-clip-text bg-gradient-to-b from-emerald-400 to-teal-500">
+                INSTITUTIONAL
+            </h1>
+<div class="flex items-center gap-1.5 ml-1">
+<span class="bg-tertiary px-1.5 py-0.5 rounded text-[10px] font-mono font-bold text-on-tertiary">INST</span>
+<div class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></div>
+</div>
+</div>
+<div class="w-8 h-8 rounded-full glass-panel flex items-center justify-center">
+<span class="material-symbols-outlined text-sm">settings_input_component</span>
+</div>
+</header>
+<!-- Main Content Background (Preview of Treasury Management) -->
+<main class="pt-28 px-6 pb-32 h-full opacity-30 blur-sm">
+<div class="mb-8">
+<p class="font-mono text-xs text-primary/60 mb-1 uppercase tracking-widest">Total Treasury Value</p>
+<h2 class="text-4xl font-mono font-bold">$248,592,041.12</h2>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div class="glass-panel p-4 rounded-lg">
+<div class="flex justify-between mb-2">
+<span class="text-xs uppercase font-mono opacity-60">APY</span>
+<span class="material-symbols-outlined text-xs text-jade">trending_up</span>
+</div>
+<div class="text-xl font-mono font-bold">12.4%</div>
+</div>
+<div class="glass-panel p-4 rounded-lg">
+<div class="flex justify-between mb-2">
+<span class="text-xs uppercase font-mono opacity-60">Risk</span>
+<span class="material-symbols-outlined text-xs text-tertiary">warning</span>
+</div>
+<div class="text-xl font-mono font-bold uppercase">Med-Low</div>
+</div>
+</div>
+</main>
+<!-- Bottom Sheet: Rebalance Treasury -->
+<div class="fixed inset-0 z-50 bg-black/60 flex items-end">
+<div class="w-full h-[90%] bg-[#040d0a] rounded-t-[28px] border-t border-primary/10 shadow-2xl relative flex flex-col">
+<!-- Grab Handle -->
+<div class="w-12 h-1 bg-surface-container-highest rounded-full mx-auto mt-3 mb-6"></div>
+<div class="px-6 flex-1 overflow-y-auto pb-32">
+<!-- Header -->
+<div class="mb-6">
+<h3 class="text-gradient font-headline font-extrabold text-2xl tracking-tight">Rebalance Treasury</h3>
+<p class="font-mono text-[10px] tracking-widest text-primary/80 font-bold uppercase">AUTO-REBALANCE STRATEGY</p>
+</div>
+<!-- Donut Chart -->
+<div class="flex justify-center mb-8 relative">
+<div class="w-[140px] h-[140px] rounded-full border-[12px] border-emerald-500/20 relative flex items-center justify-center">
+<!-- Simulated segments -->
+<div class="absolute inset-[-12px] rounded-full border-[12px] border-transparent border-t-primary border-r-secondary" style="transform: rotate(45deg);"></div>
+<div class="absolute inset-[-12px] rounded-full border-[12px] border-transparent border-l-tertiary" style="transform: rotate(-120deg); opacity: 0.6;"></div>
+<div class="text-center">
+<span class="block font-mono text-xl font-bold leading-tight">100%</span>
+<span class="block font-mono text-[8px] opacity-60">ALLOCATED</span>
+</div>
+</div>
+</div>
+<!-- Comparison Table Card -->
+<div class="glass-panel rounded-lg p-5 mb-6">
+<div class="grid grid-cols-4 border-b border-white/5 pb-2 mb-3">
+<span class="font-mono text-[9px] opacity-40 uppercase">Asset</span>
+<span class="font-mono text-[9px] opacity-40 uppercase text-right">Current</span>
+<span class="font-mono text-[9px] opacity-40 uppercase text-right">Target</span>
+<span class="font-mono text-[9px] opacity-40 uppercase text-right">Delta</span>
+</div>
+<div class="space-y-4">
+<!-- USD Row -->
+<div class="grid grid-cols-4 items-center">
+<span class="font-mono text-xs font-bold">USD</span>
+<span class="font-mono text-xs text-right opacity-80">22.4%</span>
+<span class="font-mono text-xs text-right opacity-80">20.0%</span>
+<span class="font-mono text-xs text-right text-error">-2.4%</span>
+</div>
+<!-- EUR Row -->
+<div class="grid grid-cols-4 items-center">
+<span class="font-mono text-xs font-bold">EUR</span>
+<span class="font-mono text-xs text-right opacity-80">14.1%</span>
+<span class="font-mono text-xs text-right opacity-80">15.0%</span>
+<span class="font-mono text-xs text-right text-primary">+0.9%</span>
+</div>
+<!-- GBP Row -->
+<div class="grid grid-cols-4 items-center">
+<span class="font-mono text-xs font-bold">GBP</span>
+<span class="font-mono text-xs text-right opacity-80">8.2%</span>
+<span class="font-mono text-xs text-right opacity-80">8.0%</span>
+<span class="font-mono text-xs text-right text-error">-0.2%</span>
+</div>
+<!-- USDC Row -->
+<div class="grid grid-cols-4 items-center">
+<span class="font-mono text-xs font-bold">USDC</span>
+<span class="font-mono text-xs text-right opacity-80">18.5%</span>
+<span class="font-mono text-xs text-right opacity-80">20.0%</span>
+<span class="font-mono text-xs text-right text-primary">+1.5%</span>
+</div>
+<!-- USDT Row -->
+<div class="grid grid-cols-4 items-center">
+<span class="font-mono text-xs font-bold">USDT</span>
+<span class="font-mono text-xs text-right opacity-80">12.8%</span>
+<span class="font-mono text-xs text-right opacity-80">15.0%</span>
+<span class="font-mono text-xs text-right text-primary">+2.2%</span>
+</div>
+<!-- BTC Row -->
+<div class="grid grid-cols-4 items-center">
+<span class="font-mono text-xs font-bold">BTC</span>
+<span class="font-mono text-xs text-right opacity-80">15.2%</span>
+<span class="font-mono text-xs text-right opacity-80">12.0%</span>
+<span class="font-mono text-xs text-right text-error">-3.2%</span>
+</div>
+<!-- ETH Row -->
+<div class="grid grid-cols-4 items-center">
+<span class="font-mono text-xs font-bold">ETH</span>
+<span class="font-mono text-xs text-right opacity-80">8.8%</span>
+<span class="font-mono text-xs text-right opacity-80">10.0%</span>
+<span class="font-mono text-xs text-right text-primary">+1.2%</span>
+</div>
+</div>
+</div>
+<!-- Execution Pills Row -->
+<div class="flex flex-wrap gap-2 mb-6">
+<button class="px-4 py-2 rounded-full glass-panel text-[10px] font-mono font-bold opacity-60">IMMEDIATE</button>
+<button class="px-4 py-2 rounded-full glass-panel text-[10px] font-mono font-bold opacity-60">TWAP 1H</button>
+<button class="px-4 py-2 rounded-full bg-primary/20 border border-primary/40 text-primary text-[10px] font-mono font-bold shadow-[0_0_15px_rgba(16,185,129,0.2)]">TWAP 4H</button>
+<button class="px-4 py-2 rounded-full glass-panel text-[10px] font-mono font-bold opacity-60">VWAP</button>
+</div>
+<!-- Summary Glass Row -->
+<div class="glass-panel rounded-full px-5 py-3 mb-8">
+<p class="font-mono text-[10px] text-primary/90 text-center leading-relaxed">
+                        7 trades · $18.2M notional · slippage 0.08% · fees $2,187
+                    </p>
+</div>
+</div>
+<!-- Sticky Action Button -->
+<div class="absolute bottom-0 w-full p-6 bg-gradient-to-t from-[#040d0a] to-transparent">
+<button class="w-full bg-primary text-on-primary py-4 rounded-lg font-headline font-bold text-sm tracking-tight flex items-center justify-center gap-2 active:scale-95 transition-transform">
+                    SIMULATE &amp; EXECUTE <span class="material-symbols-outlined text-base">arrow_forward</span>
+</button>
+<!-- Home Indicator -->
+<div class="w-32 h-1 bg-white/20 rounded-full mx-auto mt-6"></div>
+</div>
+</div>
+</div>
+<!-- Shared Component: BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full h-20 bg-[#040d0a]/60 backdrop-blur-2xl border-t border-emerald-500/10 flex justify-around items-center px-4 pb-safe z-[60] shadow-[0_-10px_40px_rgba(16,185,129,0.08)] rounded-t-[24px]">
+<div class="flex flex-col items-center justify-center text-emerald-900/50 py-2 px-4 hover:text-emerald-300 transition-all active:scale-90 duration-300 ease-in-out">
+<span class="material-symbols-outlined" data-icon="account_balance_wallet">account_balance_wallet</span>
+<span class="font-['JetBrains_Mono'] text-[10px] font-bold uppercase tracking-widest mt-1">Vault</span>
+</div>
+<div class="flex flex-col items-center justify-center text-emerald-900/50 py-2 px-4 hover:text-emerald-300 transition-all active:scale-90 duration-300 ease-in-out">
+<span class="material-symbols-outlined" data-icon="swap_horiz">swap_horiz</span>
+<span class="font-['JetBrains_Mono'] text-[10px] font-bold uppercase tracking-widest mt-1">Flow</span>
+</div>
+<div class="flex flex-col items-center justify-center text-emerald-900/50 py-2 px-4 hover:text-emerald-300 transition-all active:scale-90 duration-300 ease-in-out">
+<span class="material-symbols-outlined" data-icon="pie_chart">pie_chart</span>
+<span class="font-['JetBrains_Mono'] text-[10px] font-bold uppercase tracking-widest mt-1">Assets</span>
+</div>
+<div class="flex flex-col items-center justify-center text-emerald-900/50 py-2 px-4 hover:text-emerald-300 transition-all active:scale-90 duration-300 ease-in-out">
+<span class="material-symbols-outlined" data-icon="query_stats">query_stats</span>
+<span class="font-['JetBrains_Mono'] text-[10px] font-bold uppercase tracking-widest mt-1">Pulse</span>
+</div>
+<div class="flex flex-col items-center justify-center text-emerald-400 bg-emerald-500/10 rounded-full py-2 px-4 shadow-[0_0_15px_rgba(16,185,129,0.2)] active:scale-90 duration-300 ease-in-out">
+<span class="material-symbols-outlined" data-icon="more_horiz">more_horiz</span>
+<span class="font-['JetBrains_Mono'] text-[10px] font-bold uppercase tracking-widest mt-1">More</span>
+</div>
+</nav>
+</body></html>
