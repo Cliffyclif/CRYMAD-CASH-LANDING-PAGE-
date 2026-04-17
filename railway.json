@@ -2,7 +2,7 @@
   "$schema": "https://railway.com/railway.schema.json",
   "build": {
     "builder": "NIXPACKS",
-    "buildCommand": "cd ../.. && corepack enable && pnpm install --frozen-lockfile && pnpm --filter @crymad/bff build"
+    "buildCommand": "corepack enable && pnpm install --frozen-lockfile && pnpm build"
   },
   "deploy": {
     "startCommand": "node dist/main.js",
