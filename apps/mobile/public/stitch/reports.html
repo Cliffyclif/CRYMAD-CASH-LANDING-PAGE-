@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Emerald Pulse | Financial Reports</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&amp;family=JetBrains+Mono:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-tertiary-fixed": "#2a1700",
+                        "on-tertiary-container": "#523200",
+                        "on-surface-variant": "#bbcabf",
+                        "on-secondary-fixed-variant": "#005137",
+                        "error-container": "#93000a",
+                        "secondary": "#45dfa4",
+                        "primary-fixed": "#6ffbbe",
+                        "on-surface": "#d9e5df",
+                        "on-secondary": "#003825",
+                        "on-primary-fixed-variant": "#005236",
+                        "on-background": "#d9e5df",
+                        "tertiary-fixed-dim": "#ffb95f",
+                        "tertiary-container": "#e29100",
+                        "on-primary": "#003824",
+                        "surface-container-high": "#222c29",
+                        "on-tertiary": "#472a00",
+                        "surface-variant": "#2c3733",
+                        "outline-variant": "#3c4a42",
+                        "on-error-container": "#ffdad6",
+                        "on-primary-fixed": "#002113",
+                        "inverse-surface": "#d9e5df",
+                        "surface-container-highest": "#2c3733",
+                        "surface-bright": "#313b38",
+                        "secondary-container": "#00bd85",
+                        "surface-container-low": "#131e1a",
+                        "on-tertiary-fixed-variant": "#653e00",
+                        "surface-tint": "#4edea3",
+                        "surface": "#0b1512",
+                        "secondary-fixed-dim": "#45dfa4",
+                        "on-secondary-fixed": "#002114",
+                        "inverse-primary": "#006c49",
+                        "primary-fixed-dim": "#4edea3",
+                        "outline": "#86948a",
+                        "on-secondary-container": "#00452e",
+                        "on-primary-container": "#00422b",
+                        "surface-dim": "#0b1512",
+                        "primary-container": "#10b981",
+                        "tertiary-fixed": "#ffddb8",
+                        "tertiary": "#ffb95f",
+                        "error": "#ffb4ab",
+                        "surface-container": "#17221e",
+                        "primary": "#4edea3",
+                        "inverse-on-surface": "#28332f",
+                        "secondary-fixed": "#68fcbf",
+                        "background": "#0b1512",
+                        "surface-container-lowest": "#06100d",
+                        "on-error": "#690005"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "1rem",
+                        "lg": "2rem",
+                        "xl": "3rem",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Inter"],
+                        "body": ["Inter"],
+                        "label": ["Inter"],
+                        "mono": ["JetBrains Mono"]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body {
+            background-color: #040d0a;
+            color: #d9e5df;
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+            width: 390px;
+            height: 844px;
+            margin: 0 auto;
+            position: relative;
+        }
+        .bg-pattern {
+            background-image: linear-gradient(45deg, rgba(16, 185, 129, 0.05) 25%, transparent 25%, transparent 50%, rgba(16, 185, 129, 0.05) 50%, rgba(16, 185, 129, 0.05) 75%, transparent 75%, transparent);
+            background-size: 20px 20px;
+        }
+        .glass {
+            background: rgba(44, 55, 51, 0.4);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(16, 185, 129, 0.08);
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .chart-glow {
+            filter: drop-shadow(0 0 8px rgba(78, 222, 163, 0.3));
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-pattern antialiased">
+<!-- Glowing Background Blobs -->
+<div class="fixed top-[-10%] left-[-20%] w-[80%] h-[40%] bg-primary/20 blur-[120px] rounded-full pointer-events-none"></div>
+<div class="fixed bottom-[10%] right-[-10%] w-[60%] h-[30%] bg-secondary/15 blur-[100px] rounded-full pointer-events-none"></div>
+<div class="fixed top-[40%] right-[10%] w-[40%] h-[20%] bg-tertiary/10 blur-[80px] rounded-full pointer-events-none"></div>
+<div class="fixed bottom-[-10%] left-[10%] w-[50%] h-[25%] bg-primary-container/10 blur-[100px] rounded-full pointer-events-none"></div>
+<!-- Top Navigation Bar -->
+<header class="w-full top-0 sticky bg-emerald-950/40 backdrop-blur-xl border-b border-emerald-500/10 shadow-[0_0_40px_rgba(16,185,129,0.05)] flex items-center justify-between px-6 py-4 z-50">
+<button class="text-emerald-400 hover:bg-emerald-500/10 transition-colors active:scale-95 transition-transform duration-300 rounded-full p-2">
+<span class="material-symbols-outlined">arrow_back</span>
+</button>
+<h1 class="font-['Inter'] font-extrabold text-transparent bg-clip-text bg-gradient-to-b from-[#10b981] to-[#34d399] tracking-tight text-xl">Reports</h1>
+<button class="text-emerald-400 hover:bg-emerald-500/10 transition-colors active:scale-95 transition-transform duration-300 rounded-full p-2">
+<span class="material-symbols-outlined">ios_share</span>
+</button>
+</header>
+<main class="px-5 py-6 pb-32 flex flex-col gap-6">
+<!-- Section Header -->
+<div class="space-y-1">
+<p class="font-mono text-[10px] tracking-[0.2em] text-on-surface/60">PULSE-MEASURED INSIGHTS</p>
+</div>
+<!-- Date Range Picker -->
+<div class="glass rounded-lg p-4 flex items-center justify-between group cursor-pointer transition-all hover:bg-surface-container-highest/60">
+<div class="flex items-center gap-4">
+<div class="bg-secondary/10 p-2 rounded-full text-secondary">
+<span class="material-symbols-outlined text-[20px]">calendar_today</span>
+</div>
+<div class="flex items-center gap-2 font-mono text-sm">
+<span class="bg-surface-container-lowest px-3 py-1 rounded-full border border-outline-variant/30 text-on-surface">2023-11-01</span>
+<span class="text-outline">→</span>
+<span class="bg-surface-container-lowest px-3 py-1 rounded-full border border-outline-variant/30 text-on-surface">2023-11-30</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline group-hover:text-primary transition-colors">expand_more</span>
+</div>
+<!-- Filters Row -->
+<div class="flex gap-3 overflow-x-auto pb-2 scrollbar-hide">
+<div class="glass flex items-center gap-2 px-4 py-2 rounded-full border border-primary/10 whitespace-nowrap">
+<span class="text-xs font-semibold text-primary">Type:</span>
+<span class="text-xs text-on-surface">All Flows</span>
+<span class="material-symbols-outlined text-xs">keyboard_arrow_down</span>
+</div>
+<div class="glass flex items-center gap-2 px-4 py-2 rounded-full border border-primary/10 whitespace-nowrap">
+<span class="text-xs font-semibold text-primary">Wallet:</span>
+<span class="text-xs text-on-surface">Primary Glass</span>
+<span class="material-symbols-outlined text-xs">keyboard_arrow_down</span>
+</div>
+</div>
+<!-- Summary Grid -->
+<div class="grid grid-cols-2 gap-4">
+<!-- Inflow -->
+<div class="glass rounded-lg p-4 relative overflow-hidden">
+<p class="text-[10px] font-bold tracking-widest text-secondary/70 mb-1">INFLOW</p>
+<p class="font-mono text-lg font-bold text-transparent bg-clip-text bg-gradient-to-r from-secondary to-primary">+$4,280.12</p>
+<div class="mt-2 h-6 opacity-40">
+<svg class="w-full h-full stroke-secondary fill-none stroke-[2]" viewbox="0 0 100 20">
+<path d="M0 15 Q 10 12, 20 18 T 40 10 T 60 14 T 80 5 T 100 8"></path>
+</svg>
+</div>
+</div>
+<!-- Outflow -->
+<div class="glass rounded-lg p-4 relative overflow-hidden">
+<p class="text-[10px] font-bold tracking-widest text-error/70 mb-1">OUTFLOW</p>
+<p class="font-mono text-lg font-bold text-error">-$1,945.38</p>
+<div class="mt-2 h-6 opacity-40">
+<svg class="w-full h-full stroke-error fill-none stroke-[2]" viewbox="0 0 100 20">
+<path d="M0 5 Q 10 18, 20 12 T 40 15 T 60 8 T 80 12 T 100 18"></path>
+</svg>
+</div>
+</div>
+<!-- Net -->
+<div class="glass rounded-lg p-4 relative overflow-hidden flex flex-col justify-between h-24">
+<div>
+<p class="text-[10px] font-bold tracking-widest text-on-surface/50 mb-1">NET GAIN</p>
+<p class="font-mono text-lg font-bold text-on-surface">+$2,334.74</p>
+</div>
+<div class="bg-tertiary/10 text-tertiary text-[10px] font-mono px-2 py-0.5 rounded-full self-start border border-tertiary/20">
+                    +18.2%
+                </div>
+</div>
+<!-- Count -->
+<div class="glass rounded-lg p-4 flex flex-col justify-between h-24">
+<div>
+<p class="text-[10px] font-bold tracking-widest text-on-surface/50 mb-1">COUNT</p>
+<p class="font-mono text-2xl font-bold text-on-surface">142</p>
+</div>
+<p class="text-[9px] font-bold tracking-tighter text-outline-variant uppercase">Transactions</p>
+</div>
+</div>
+<!-- Area Chart -->
+<div class="glass rounded-xl p-5">
+<div class="flex items-center justify-between mb-6">
+<h3 class="text-sm font-bold text-on-surface">Cash Flow Over Time</h3>
+<span class="material-symbols-outlined text-outline text-lg">insights</span>
+</div>
+<div class="h-[200px] w-full relative">
+<!-- Grid Lines -->
+<div class="absolute inset-0 flex flex-col justify-between py-2">
+<div class="w-full h-[1px] bg-outline-variant/10"></div>
+<div class="w-full h-[1px] bg-outline-variant/10"></div>
+<div class="w-full h-[1px] bg-outline-variant/10"></div>
+<div class="w-full h-[1px] bg-outline-variant/10"></div>
+</div>
+<!-- SVG Area Chart -->
+<svg class="w-full h-full overflow-visible chart-glow" viewbox="0 0 300 200">
+<!-- Inflow Area -->
+<defs>
+<lineargradient id="jadeGradient" x1="0" x2="0" y1="0" y2="1">
+<stop offset="0%" stop-color="#4edea3" stop-opacity="0.3"></stop>
+<stop offset="100%" stop-color="#4edea3" stop-opacity="0"></stop>
+</lineargradient>
+<lineargradient id="coralGradient" x1="0" x2="0" y1="0" y2="1">
+<stop offset="0%" stop-color="#ffb4ab" stop-opacity="0.3"></stop>
+<stop offset="100%" stop-color="#ffb4ab" stop-opacity="0"></stop>
+</lineargradient>
+</defs>
+<!-- Jade Path -->
+<path d="M0 160 Q 50 140, 100 150 T 150 100 T 200 120 T 250 80 T 300 90 L 300 200 L 0 200 Z" fill="url(#jadeGradient)"></path>
+<path d="M0 160 Q 50 140, 100 150 T 150 100 T 200 120 T 250 80 T 300 90" fill="none" stroke="#4edea3" stroke-width="3"></path>
+<!-- Coral Path -->
+<path d="M0 180 Q 50 170, 100 185 T 150 160 T 200 175 T 250 150 T 300 165 L 300 200 L 0 200 Z" fill="url(#coralGradient)"></path>
+<path d="M0 180 Q 50 170, 100 185 T 150 160 T 200 175 T 250 150 T 300 165" fill="none" stroke="#ffb4ab" stroke-width="3"></path>
+</svg>
+</div>
+<!-- Legend -->
+<div class="flex gap-4 mt-6">
+<div class="flex items-center gap-2">
+<div class="w-2 h-2 rounded-full bg-secondary"></div>
+<span class="text-[10px] font-mono text-outline uppercase tracking-wider">Inflow</span>
+</div>
+<div class="flex items-center gap-2">
+<div class="w-2 h-2 rounded-full bg-error"></div>
+<span class="text-[10px] font-mono text-outline uppercase tracking-wider">Outflow</span>
+</div>
+</div>
+</div>
+<!-- Transaction List -->
+<div class="space-y-3">
+<p class="font-mono text-[10px] tracking-[0.2em] text-on-surface/40 px-2">DETAILED LOGS</p>
+<!-- Item 1 -->
+<div class="glass rounded-full px-4 py-3 flex items-center justify-between">
+<div class="flex items-center gap-3">
+<p class="font-mono text-[10px] text-outline">11/24</p>
+<div class="px-2 py-0.5 rounded-full bg-secondary/10 border border-secondary/20 text-[9px] text-secondary font-bold">SALE</div>
+<p class="text-xs text-on-surface truncate max-w-[80px]">POS Payment</p>
+</div>
+<div class="text-right">
+<p class="font-mono text-xs font-bold text-secondary">+$124.50</p>
+<p class="font-mono text-[9px] text-outline/50">$4,280.12</p>
+</div>
+</div>
+<!-- Item 2 -->
+<div class="glass rounded-full px-4 py-3 flex items-center justify-between">
+<div class="flex items-center gap-3">
+<p class="font-mono text-[10px] text-outline">11/22</p>
+<div class="px-2 py-0.5 rounded-full bg-error/10 border border-error/20 text-[9px] text-error font-bold">FEES</div>
+<p class="text-xs text-on-surface truncate max-w-[80px]">Service Fee</p>
+</div>
+<div class="text-right">
+<p class="font-mono text-xs font-bold text-error">-$12.00</p>
+<p class="font-mono text-[9px] text-outline/50">$4,155.62</p>
+</div>
+</div>
+<!-- Item 3 -->
+<div class="glass rounded-full px-4 py-3 flex items-center justify-between">
+<div class="flex items-center gap-3">
+<p class="font-mono text-[10px] text-outline">11/20</p>
+<div class="px-2 py-0.5 rounded-full bg-tertiary/10 border border-tertiary/20 text-[9px] text-tertiary font-bold">SWAP</div>
+<p class="text-xs text-on-surface truncate max-w-[80px]">ETH to USDC</p>
+</div>
+<div class="text-right">
+<p class="font-mono text-xs font-bold text-on-surface">$0.00</p>
+<p class="font-mono text-[9px] text-outline/50">$4,167.62</p>
+</div>
+</div>
+<!-- Item 4 -->
+<div class="glass rounded-full px-4 py-3 flex items-center justify-between">
+<div class="flex items-center gap-3">
+<p class="font-mono text-[10px] text-outline">11/18</p>
+<div class="px-2 py-0.5 rounded-full bg-secondary/10 border border-secondary/20 text-[9px] text-secondary font-bold">DEP</div>
+<p class="text-xs text-on-surface truncate max-w-[80px]">Wire Transfer</p>
+</div>
+<div class="text-right">
+<p class="font-mono text-xs font-bold text-secondary">+$2,000.00</p>
+<p class="font-mono text-[9px] text-outline/50">$4,167.62</p>
+</div>
+</div>
+<!-- Item 5 -->
+<div class="glass rounded-full px-4 py-3 flex items-center justify-between">
+<div class="flex items-center gap-3">
+<p class="font-mono text-[10px] text-outline">11/15</p>
+<div class="px-2 py-0.5 rounded-full bg-error/10 border border-error/20 text-[9px] text-error font-bold">RENT</div>
+<p class="text-xs text-on-surface truncate max-w-[80px]">Studio Space</p>
+</div>
+<div class="text-right">
+<p class="font-mono text-xs font-bold text-error">-$1,200.00</p>
+<p class="font-mono text-[9px] text-outline/50">$2,167.62</p>
+</div>
+</div>
+</div>
+<!-- Export Action -->
+<button class="w-full bg-primary-container text-on-primary-container font-bold rounded-full py-4 flex items-center justify-center gap-2 shadow-[0_0_20px_rgba(16,185,129,0.3)] active:scale-[0.98] transition-all hover:bg-secondary active:duration-150">
+<span class="material-symbols-outlined">download</span>
+<span class="tracking-widest text-sm">EXPORT CSV</span>
+</button>
+</main>
+<!-- Bottom Navigation Bar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pt-3 pb-8 bg-[#040d0a]/80 backdrop-blur-2xl rounded-t-[32px] border-t border-emerald-500/5 shadow-[0_-10px_50px_rgba(16,185,129,0.08)]">
+<!-- Home -->
+<div class="flex flex-col items-center justify-center text-emerald-800 hover:text-emerald-300 transition-all active:scale-90 duration-300 ease-out">
+<span class="material-symbols-outlined">grid_view</span>
+<span class="font-['JetBrains_Mono'] text-[10px] uppercase tracking-widest mt-1">Home</span>
+</div>
+<!-- Activity (Active) -->
+<div class="flex flex-col items-center justify-center text-emerald-400 bg-emerald-500/10 rounded-full px-4 py-1 shadow-[0_0_15px_rgba(16,185,129,0.2)] active:scale-90 transition-all duration-300 ease-out">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">analytics</span>
+<span class="font-['JetBrains_Mono'] text-[10px] uppercase tracking-widest mt-1">Activity</span>
+</div>
+<!-- Wallets -->
+<div class="flex flex-col items-center justify-center text-emerald-800 hover:text-emerald-300 transition-all active:scale-90 duration-300 ease-out">
+<span class="material-symbols-outlined">account_balance_wallet</span>
+<span class="font-['JetBrains_Mono'] text-[10px] uppercase tracking-widest mt-1">Wallets</span>
+</div>
+<!-- Vault -->
+<div class="flex flex-col items-center justify-center text-emerald-800 hover:text-emerald-300 transition-all active:scale-90 duration-300 ease-out">
+<span class="material-symbols-outlined">lock</span>
+<span class="font-['JetBrains_Mono'] text-[10px] uppercase tracking-widest mt-1">Vault</span>
+</div>
+</nav>
+</body></html>

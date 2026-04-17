@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>EMERALD PULSE | Institutional OTC</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&amp;family=JetBrains+Mono:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-surface-variant": "#bbcabf",
+                    "primary-container": "#10b981",
+                    "surface-tint": "#4edea3",
+                    "on-error-container": "#ffdad6",
+                    "on-tertiary-fixed": "#2a1700",
+                    "outline-variant": "#3c4a42",
+                    "on-primary-container": "#00422b",
+                    "surface-container-highest": "#2c3733",
+                    "surface-bright": "#313b38",
+                    "on-surface": "#d9e5df",
+                    "surface-container-low": "#131e1a",
+                    "error": "#ffb4ab",
+                    "surface-container-lowest": "#06100d",
+                    "surface-variant": "#2c3733",
+                    "on-secondary-container": "#00452e",
+                    "error-container": "#93000a",
+                    "on-primary": "#003824",
+                    "background": "#0b1512",
+                    "on-background": "#d9e5df",
+                    "on-tertiary-fixed-variant": "#653e00",
+                    "inverse-surface": "#d9e5df",
+                    "inverse-on-surface": "#28332f",
+                    "on-primary-fixed": "#002113",
+                    "inverse-primary": "#006c49",
+                    "outline": "#86948a",
+                    "on-secondary-fixed-variant": "#005137",
+                    "tertiary-container": "#e29100",
+                    "primary": "#4edea3",
+                    "primary-fixed-dim": "#4edea3",
+                    "tertiary": "#ffb95f",
+                    "on-error": "#690005",
+                    "on-tertiary": "#472a00",
+                    "on-secondary": "#003825",
+                    "surface-dim": "#0b1512",
+                    "secondary-container": "#00bd85",
+                    "secondary": "#45dfa4",
+                    "surface-container": "#17221e",
+                    "tertiary-fixed": "#ffddb8",
+                    "on-tertiary-container": "#523200",
+                    "surface-container-high": "#222c29",
+                    "secondary-fixed": "#68fcbf",
+                    "primary-fixed": "#6ffbbe",
+                    "on-primary-fixed-variant": "#005236",
+                    "secondary-fixed-dim": "#45dfa4",
+                    "on-secondary-fixed": "#002114",
+                    "tertiary-fixed-dim": "#ffb95f",
+                    "surface": "#0b1512"
+            },
+            "borderRadius": {
+                    "DEFAULT": "1rem",
+                    "lg": "2rem",
+                    "xl": "3rem",
+                    "full": "9999px"
+            },
+            "fontFamily": {
+                    "headline": ["Inter"],
+                    "body": ["Inter"],
+                    "label": ["Inter"],
+                    "mono": ["JetBrains Mono"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .glass-panel {
+            background: rgba(44, 55, 51, 0.4);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(16, 185, 129, 0.08);
+        }
+        .bioluminescent-glow {
+            background: radial-gradient(circle at center, rgba(78, 222, 163, 0.15) 0%, transparent 70%);
+        }
+        .reticle-texture {
+            background-image: repeating-linear-gradient(45deg, rgba(16, 185, 129, 0.04) 0px, rgba(16, 185, 129, 0.04) 1px, transparent 1px, transparent 12px);
+        }
+        .segmented-control-active {
+            box-shadow: 0 0 15px rgba(78, 222, 163, 0.2);
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body selection:bg-primary/30 min-h-screen overflow-hidden flex items-center justify-center reticle-texture">
+<!-- Mock Background Page (Dimmed) -->
+<div class="fixed inset-0 opacity-20 pointer-events-none flex flex-col">
+<!-- TopNavBar Mock -->
+<nav class="flex justify-between items-center px-8 w-full h-16 bg-emerald-950/40 backdrop-blur-xl border-b border-emerald-500/10 font-['Inter'] tracking-tight font-semibold">
+<div class="text-2xl font-black tracking-tighter text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-teal-400">EMERALD PULSE</div>
+<div class="flex space-x-8">
+<span class="text-emerald-400 border-b-2 border-emerald-400 pb-1">Portfolio</span>
+<span class="text-emerald-100/60">Governance</span>
+<span class="text-emerald-100/60">Vaults</span>
+<span class="text-emerald-100/60">Ledger</span>
+</div>
+<div class="text-emerald-400">INSTITUTIONAL PORTAL</div>
+</nav>
+<main class="flex-1 p-12 grid grid-cols-12 gap-8">
+<div class="col-span-8 space-y-8">
+<div class="h-64 bg-surface-container-low rounded-lg border border-emerald-500/5"></div>
+<div class="grid grid-cols-3 gap-6">
+<div class="h-32 bg-surface-container rounded-lg"></div>
+<div class="h-32 bg-surface-container rounded-lg"></div>
+<div class="h-32 bg-surface-container rounded-lg"></div>
+</div>
+</div>
+<div class="col-span-4 bg-surface-container-high rounded-lg border border-emerald-500/5"></div>
+</main>
+</div>
+<!-- Atmospheric Glow -->
+<div class="fixed inset-0 bioluminescent-glow pointer-events-none"></div>
+<!-- RFQ MODAL -->
+<div class="relative z-50 w-[640px] glass-panel rounded-lg p-8 shadow-[0_0_60px_rgba(0,33,19,0.5)]">
+<!-- Header -->
+<header class="mb-8">
+<h1 class="text-3xl font-black tracking-tighter bg-clip-text text-transparent bg-gradient-to-r from-[#10b981] to-[#34d399] uppercase">
+                Request for Quote
+            </h1>
+<div class="flex items-center space-x-2 mt-2">
+<div class="w-1.5 h-1.5 rounded-full bg-primary animate-pulse shadow-[0_0_8px_#4edea3]"></div>
+<span class="font-mono text-[10px] tracking-widest text-on-surface-variant uppercase">Institutional Liquidity Engine • Active</span>
+</div>
+</header>
+<div class="space-y-6">
+<!-- Pair Selector -->
+<div>
+<label class="font-mono text-[10px] uppercase tracking-widest text-on-surface-variant mb-3 block">Asset Configuration</label>
+<div class="flex gap-3">
+<button class="flex-1 py-3 px-4 rounded-full border border-primary/40 bg-primary/10 text-primary font-bold text-sm transition-all">BTC/USD</button>
+<button class="flex-1 py-3 px-4 rounded-full border border-outline-variant bg-surface-container-low text-on-surface-variant font-bold text-sm hover:border-outline transition-all">ETH/USD</button>
+<button class="flex-1 py-3 px-4 rounded-full border border-outline-variant bg-surface-container-low text-on-surface-variant font-bold text-sm hover:border-outline transition-all">USDT/USD</button>
+</div>
+</div>
+<!-- Side Toggle -->
+<div class="grid grid-cols-2 gap-0 p-1 bg-surface-container-lowest rounded-full border border-outline-variant/30">
+<button class="py-3 rounded-full text-sm font-black bg-primary text-on-primary segmented-control-active transition-all">BUY</button>
+<button class="py-3 rounded-full text-sm font-black text-on-surface-variant hover:text-on-surface transition-all">SELL</button>
+</div>
+<!-- Notional Input -->
+<div class="relative group">
+<label class="font-mono text-[10px] uppercase tracking-widest text-on-surface-variant mb-3 block">Notional Amount</label>
+<div class="bg-surface-container-highest rounded-lg p-6 flex items-center justify-between border border-transparent group-focus-within:border-primary/20 transition-all">
+<div class="flex flex-col">
+<span class="font-mono text-4xl font-bold text-primary drop-shadow-[0_0_12px_rgba(78,222,163,0.3)]">$5,000,000</span>
+</div>
+<div class="px-3 py-1 bg-primary/10 border border-primary/20 rounded flex items-center space-x-2">
+<span class="font-mono text-xs font-bold text-primary">$5M</span>
+<span class="material-symbols-outlined text-sm text-primary" style="font-variation-settings: 'FILL' 1;">terminal</span>
+</div>
+</div>
+</div>
+<!-- Calculation Pill -->
+<div class="flex justify-center">
+<div class="glass-panel px-6 py-2.5 rounded-full border border-white/5 flex items-center space-x-3">
+<span class="font-mono text-xs text-on-surface-variant">≈ 74.35 BTC</span>
+<div class="w-1 h-1 rounded-full bg-outline-variant"></div>
+<span class="font-mono text-xs text-primary/80">@ $67,241</span>
+</div>
+</div>
+<!-- Settlement & Counterparty -->
+<div class="grid grid-cols-2 gap-6">
+<div>
+<label class="font-mono text-[10px] uppercase tracking-widest text-on-surface-variant mb-3 block">Settlement Period</label>
+<div class="flex gap-2">
+<button class="flex-1 py-2 rounded-lg border border-outline-variant text-xs font-bold text-on-surface-variant">T+0</button>
+<button class="flex-1 py-2 rounded-lg bg-primary/20 border border-primary/40 text-xs font-bold text-primary">T+1</button>
+<button class="flex-1 py-2 rounded-lg border border-outline-variant text-xs font-bold text-on-surface-variant">T+2</button>
+</div>
+</div>
+<div>
+<label class="font-mono text-[10px] uppercase tracking-widest text-on-surface-variant mb-3 block">Counterparty</label>
+<div class="w-full py-2 px-4 rounded-lg bg-surface-container-low border border-outline-variant flex items-center justify-between">
+<span class="text-xs font-bold text-on-surface">ANY</span>
+<span class="material-symbols-outlined text-sm text-on-surface-variant">expand_more</span>
+</div>
+</div>
+</div>
+<!-- Slippage & Warning -->
+<div class="space-y-4">
+<div class="flex justify-between items-center">
+<span class="text-[10px] font-mono text-on-surface-variant uppercase tracking-widest">Slippage Tolerance</span>
+<span class="text-[10px] font-mono text-primary font-bold px-2 py-0.5 bg-primary/5 rounded border border-primary/10">Max 0.05%</span>
+</div>
+<!-- Expiry Warning -->
+<div class="bg-tertiary/10 border border-tertiary/20 rounded-lg p-3 flex items-center space-x-3">
+<span class="material-symbols-outlined text-tertiary text-lg">info</span>
+<p class="font-mono text-[10px] text-tertiary font-bold tracking-wider uppercase">QUOTE VALIDITY: 30 SECONDS</p>
+</div>
+</div>
+<!-- Action -->
+<button class="w-full py-5 rounded-full bg-gradient-to-r from-primary to-secondary text-on-primary font-black text-sm tracking-widest flex items-center justify-center space-x-3 shadow-[0_4px_20px_rgba(78,222,163,0.3)] hover:scale-[1.02] active:scale-[0.98] transition-all uppercase">
+<span>Request Quote</span>
+<span class="material-symbols-outlined">arrow_forward</span>
+</button>
+</div>
+<!-- System Footer -->
+<footer class="mt-8 pt-6 border-t border-emerald-500/10 flex justify-between items-center">
+<div class="flex items-center space-x-4">
+<div class="flex flex-col">
+<span class="text-[9px] font-mono text-on-surface-variant/60 uppercase">Terminal ID</span>
+<span class="text-[10px] font-mono text-on-surface">EP-RFQ-7704</span>
+</div>
+<div class="h-6 w-px bg-outline-variant/30"></div>
+<div class="flex flex-col">
+<span class="text-[9px] font-mono text-on-surface-variant/60 uppercase">Encryption</span>
+<span class="text-[10px] font-mono text-primary">AES-256</span>
+</div>
+</div>
+<div class="text-[10px] font-mono text-on-surface-variant/40 italic">Audit-Ready Snapshot Enabled</div>
+</footer>
+</div>
+<!-- SideNavBar (from JSON) -->
+<aside class="fixed right-0 top-16 h-[calc(100vh-64px-48px)] w-20 z-40 border-l border-emerald-500/10 bg-emerald-950/40 backdrop-blur-xl flex flex-col items-center py-6 space-y-8">
+<div class="flex flex-col items-center space-y-1">
+<div class="w-10 h-10 rounded-full bg-emerald-500/10 flex items-center justify-center text-emerald-400 border border-emerald-500/20">
+<span class="material-symbols-outlined">palette</span>
+</div>
+<span class="font-['JetBrains_Mono'] uppercase text-[10px] tracking-widest text-emerald-100/40">Appearance</span>
+</div>
+<div class="flex flex-col items-center space-y-1 bg-emerald-500/10 text-emerald-400 border-r-2 border-emerald-400 px-4 py-2">
+<div class="w-10 h-10 rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined">visibility</span>
+</div>
+<span class="font-['JetBrains_Mono'] uppercase text-[10px] tracking-widest">Visual Override</span>
+</div>
+</aside>
+<!-- BottomNavBar (from JSON) -->
+<footer class="fixed bottom-0 w-full h-12 z-50 border-t border-emerald-500/10 bg-emerald-950/60 backdrop-blur-md flex justify-center items-center space-x-12 px-6">
+<div class="flex items-center space-x-2 text-emerald-100/50 font-['JetBrains_Mono'] text-[11px] font-medium">
+<span class="material-symbols-outlined text-sm">currency_bitcoin</span>
+<span>BTC/USD 64,231</span>
+</div>
+<div class="flex items-center space-x-2 text-emerald-100/50 font-['JetBrains_Mono'] text-[11px] font-medium">
+<span class="material-symbols-outlined text-sm">eco</span>
+<span>ETH/USD 3,421</span>
+</div>
+<div class="flex items-center space-x-2 text-emerald-400 font-['JetBrains_Mono'] text-[11px] font-medium">
+<span class="material-symbols-outlined text-sm">sync_saved_locally</span>
+<span>SYSTEM SYNCED</span>
+</div>
+</footer>
+</body></html>

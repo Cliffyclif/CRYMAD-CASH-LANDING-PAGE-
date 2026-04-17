@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Subscriptions | CRYMAD CA$H</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&amp;family=JetBrains+Mono:wght@400;700&amp;family=Space+Grotesk:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "tertiary": "#ffb95f",
+                    "inverse-primary": "#006c49",
+                    "on-surface": "#d9e5df",
+                    "on-primary": "#003824",
+                    "tertiary-fixed-dim": "#ffb95f",
+                    "secondary-container": "#00bd85",
+                    "on-background": "#d9e5df",
+                    "tertiary-fixed": "#ffddb8",
+                    "on-secondary": "#003825",
+                    "surface-container-low": "#131e1a",
+                    "on-tertiary-fixed": "#2a1700",
+                    "on-secondary-fixed-variant": "#005137",
+                    "secondary-fixed": "#68fcbf",
+                    "secondary-fixed-dim": "#45dfa4",
+                    "surface-tint": "#4edea3",
+                    "on-tertiary-fixed-variant": "#653e00",
+                    "error-container": "#93000a",
+                    "primary-fixed-dim": "#4edea3",
+                    "outline-variant": "#3c4a42",
+                    "inverse-on-surface": "#28332f",
+                    "tertiary-container": "#e29100",
+                    "surface-container": "#17221e",
+                    "surface": "#0b1512",
+                    "on-tertiary-container": "#523200",
+                    "on-primary-fixed-variant": "#005236",
+                    "on-error-container": "#ffdad6",
+                    "outline": "#86948a",
+                    "on-secondary-container": "#00452e",
+                    "on-primary-container": "#00422b",
+                    "on-secondary-fixed": "#002114",
+                    "surface-bright": "#313b38",
+                    "primary": "#4edea3",
+                    "secondary": "#45dfa4",
+                    "primary-container": "#10b981",
+                    "on-primary-fixed": "#002113",
+                    "surface-variant": "#2c3733",
+                    "surface-dim": "#0b1512",
+                    "surface-container-high": "#222c29",
+                    "on-error": "#690005",
+                    "background": "#0b1512",
+                    "on-tertiary": "#472a00",
+                    "surface-container-lowest": "#06100d",
+                    "error": "#ffb4ab",
+                    "inverse-surface": "#d9e5df",
+                    "primary-fixed": "#6ffbbe",
+                    "on-surface-variant": "#bbcabf",
+                    "surface-container-highest": "#2c3733"
+            },
+            "borderRadius": {
+                    "DEFAULT": "1rem",
+                    "lg": "2rem",
+                    "xl": "3rem",
+                    "full": "9999px"
+            },
+            "fontFamily": {
+                    "headline": ["Inter"],
+                    "body": ["Inter"],
+                    "label": ["Space Grotesk"],
+                    "mono": ["JetBrains Mono"]
+            }
+          },
+        }
+      }
+    </script>
+<style>
+        body {
+            background-color: #040d0a;
+            color: #d9e5df;
+        }
+        .glass-panel {
+            background: rgba(44, 55, 51, 0.4);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(16, 185, 129, 0.08);
+            border-radius: 2rem;
+        }
+        .text-gradient-emerald {
+            background: linear-gradient(to right, #10b981, #34d399);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .pulse-dot {
+            animation: pulse-ring 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+        @keyframes pulse-ring {
+            0% { transform: scale(0.8); opacity: 0.5; }
+            50% { transform: scale(1.2); opacity: 1; }
+            100% { transform: scale(0.8); opacity: 0.5; }
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="font-body selection:bg-primary/30 min-h-screen">
+<!-- Top Navigation Shell -->
+<nav class="fixed top-0 w-full h-16 bg-emerald-950/40 backdrop-blur-xl border-b border-emerald-500/10 shadow-[0_0_15px_rgba(16,185,129,0.05)] flex justify-between items-center px-8 z-50">
+<div class="text-xl font-black bg-gradient-to-r from-emerald-400 to-teal-400 bg-clip-text text-transparent">CRYMAD CA$H</div>
+<div class="hidden md:flex items-center space-x-8">
+<a class="text-emerald-100/60 hover:text-emerald-400 transition-colors" href="#">Dashboard</a>
+<a class="text-emerald-100/60 hover:text-emerald-400 transition-colors" href="#">Wallets</a>
+<a class="text-emerald-100/60 hover:text-emerald-400 transition-colors" href="#">Cards</a>
+<a class="text-emerald-400 border-b-2 border-emerald-400 pb-1" href="#">Transactions</a>
+<a class="text-emerald-100/60 hover:text-emerald-400 transition-colors" href="#">Banking</a>
+<a class="text-emerald-100/60 hover:text-emerald-400 transition-colors" href="#">Help</a>
+</div>
+<div class="flex items-center space-x-4">
+<button class="material-symbols-outlined text-emerald-100/60 hover:text-emerald-400 transition-all">notifications</button>
+<div class="w-8 h-8 rounded-full border border-emerald-400/30 overflow-hidden">
+<img alt="User profile" data-alt="close up professional portrait of a tech executive with subtle bioluminescent lighting in background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCu2q-K2EA0HbJsqAUilKzC4JB6wu37vigSh4JyB26QJtnA7JZSgsxrUFdTI5uhKvif-FyPXpXVN_d3dLVkqZTN71tteEff0iH5jSCHa1PKT4cmOCu8veuS8jGtDiIrhAK8_ssVAeuw2UvtSw41Ixgdod29yzfLK__1ehFfPvbeId9r9u63i5zPB7RnVKjZ5ZfeAKE2K6XZYwF9SaCzBHnQuFTnQYMANqLos1g4i4ZtniGBrTRt9Blc0TWpnIE8yptKcgqaNy9NyFI"/>
+</div>
+</div>
+</nav>
+<!-- Side Navigation Shell (Theme Selector) -->
+<aside class="fixed right-0 top-1/2 -translate-y-1/2 w-16 bg-emerald-950/40 backdrop-blur-xl rounded-l-3xl shadow-[0_20px_40px_rgba(4,13,10,0.5)] flex flex-col items-center py-8 space-y-6 z-40 outline-variant opacity-10">
+<div class="flex flex-col items-center mb-4">
+<span class="font-mono text-[10px] uppercase text-emerald-400 tracking-tighter">THEME</span>
+</div>
+<button class="w-4 h-4 rounded-full ring-2 ring-emerald-400 ring-offset-2 ring-offset-transparent bg-emerald-400"></button>
+<button class="w-4 h-4 rounded-full bg-tertiary opacity-50 hover:opacity-100 transition-all"></button>
+<button class="w-4 h-4 rounded-full bg-blue-400 opacity-50 hover:opacity-100 transition-all"></button>
+<button class="w-4 h-4 rounded-full bg-gray-900 opacity-50 hover:opacity-100 transition-all"></button>
+<button class="w-4 h-4 rounded-full bg-yellow-400 opacity-50 hover:opacity-100 transition-all"></button>
+</aside>
+<main class="pt-24 pb-16 px-8 md:px-12 max-w-[1600px] mx-auto relative">
+<!-- Header Section -->
+<header class="mb-12 flex flex-col md:flex-row md:items-end justify-between gap-6">
+<div>
+<h1 class="text-5xl md:text-6xl font-black text-gradient-emerald tracking-tight mb-2">Subscriptions</h1>
+<p class="font-mono text-sm tracking-[0.2em] text-on-surface-variant">RECURRING COMMITMENTS ON AUTOPILOT</p>
+</div>
+<div class="flex flex-wrap gap-4">
+<div class="glass-panel px-6 py-4 flex flex-col justify-center min-w-[160px]">
+<span class="text-[10px] font-mono text-on-surface-variant uppercase">Total Monthly</span>
+<span class="text-2xl font-mono font-bold text-gradient-emerald">$59.48</span>
+</div>
+<div class="glass-panel px-6 py-4 flex flex-col justify-center min-w-[140px]">
+<span class="text-[10px] font-mono text-on-surface-variant uppercase">Active Count</span>
+<span class="text-2xl font-mono font-bold text-on-surface">05</span>
+</div>
+<div class="glass-panel px-6 py-4 flex flex-col justify-center min-w-[140px]">
+<span class="text-[10px] font-mono text-on-surface-variant uppercase">Next Billing</span>
+<span class="text-2xl font-mono font-bold text-on-surface">Apr 18</span>
+</div>
+</div>
+</header>
+<!-- Controls Row -->
+<div class="flex flex-col xl:flex-row gap-6 mb-8 items-start xl:items-center justify-between">
+<div class="flex flex-wrap items-center gap-3">
+<button class="px-6 py-2 rounded-full glass-panel border-tertiary/20 text-tertiary text-xs font-mono flex items-center gap-2">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary pulse-dot"></span>
+                    PENDING (2)
+                </button>
+<button class="px-6 py-2 rounded-full bg-primary/10 border border-primary/40 text-primary text-xs font-mono flex items-center gap-2">
+<span class="w-1.5 h-1.5 rounded-full bg-primary pulse-dot"></span>
+                    ACTIVE (5)
+                </button>
+<button class="px-6 py-2 rounded-full glass-panel text-on-surface-variant text-xs font-mono">COMPLETED</button>
+<button class="px-6 py-2 rounded-full glass-panel text-on-surface-variant text-xs font-mono">CANCELLED</button>
+</div>
+<div class="flex w-full xl:w-auto gap-4">
+<div class="relative flex-grow xl:w-80">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-on-surface-variant text-sm">search</span>
+<input class="w-full bg-surface-container-highest/20 border-b border-outline-variant focus:border-primary transition-all px-12 py-3 text-sm focus:ring-0 text-on-surface placeholder:text-on-surface-variant/50" placeholder="Filter by name or reference..." type="text"/>
+</div>
+<button class="px-8 py-3 rounded-full border border-primary-container text-primary hover:bg-primary hover:text-on-primary transition-all duration-300 font-bold text-xs flex items-center gap-2 group">
+                    NEW SUBSCRIPTION
+                    <span class="material-symbols-outlined text-sm group-hover:rotate-90 transition-transform">add</span>
+</button>
+</div>
+</div>
+<div class="grid grid-cols-1 xl:grid-cols-12 gap-8 items-start">
+<!-- Table Container -->
+<div class="xl:col-span-8 glass-panel overflow-hidden">
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="border-b border-emerald-500/10">
+<th class="px-8 py-6 font-mono text-[10px] text-on-surface-variant tracking-widest uppercase">Reference</th>
+<th class="px-6 py-6 font-mono text-[10px] text-on-surface-variant tracking-widest uppercase">Status</th>
+<th class="px-6 py-6 font-mono text-[10px] text-on-surface-variant tracking-widest uppercase">Product</th>
+<th class="px-6 py-6 font-mono text-[10px] text-on-surface-variant tracking-widest uppercase text-right">Total</th>
+<th class="px-6 py-6 font-mono text-[10px] text-on-surface-variant tracking-widest uppercase">Interval</th>
+<th class="px-8 py-6 font-mono text-[10px] text-on-surface-variant tracking-widest uppercase">Next Billing</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-emerald-500/5">
+<!-- Row 1: Spotify -->
+<tr class="group hover:bg-emerald-400/5 transition-colors cursor-pointer">
+<td class="px-8 py-6 font-mono text-xs text-on-surface-variant">SUB-8821</td>
+<td class="px-6 py-6">
+<span class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-400 text-[10px] font-mono border border-emerald-500/20">
+<span class="w-1 h-1 rounded-full bg-emerald-400 animate-pulse"></span>
+                                        ACTIVE
+                                    </span>
+</td>
+<td class="px-6 py-6">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-black flex items-center justify-center p-1.5 border border-outline-variant">
+<img alt="Spotify" data-alt="minimalist spotify logo circle in green and black color palette" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBDzdmYMW_yGNJL7c4zMC1VfMj5G_SZ1PD4iD_I5LUpBotxsqaeTA1xXjN3uJSW_mrwkw7PQyHF4ypULs2D3StYMmuUW-bXhYracRxUj9SOW6vsUDYeI70UjAwILOOeAIwi8au0mZYnLoM66qnWJmhFYSDUGgf6AWZfpi60EdfCeACdqnGiyl_nqzZFARpAiyI4VTVgUzC_PspfdxIUNxWYL-buHzmoAPwh4v9KUxdzGoZefRAou1Hy7xD4jWmc7YxGv1lyF_SRTjo"/>
+</div>
+<span class="font-semibold text-on-surface">Spotify Premium</span>
+</div>
+</td>
+<td class="px-6 py-6 font-mono text-sm text-right text-on-surface font-bold">$9.99</td>
+<td class="px-6 py-6">
+<span class="text-[10px] font-mono text-on-surface-variant px-2 py-1 rounded border border-outline-variant/30">MONTHLY</span>
+</td>
+<td class="px-8 py-6 font-mono text-xs text-on-surface">2024-04-18</td>
+</tr>
+<!-- Row 2: Netflix -->
+<tr class="group hover:bg-emerald-400/5 transition-colors cursor-pointer">
+<td class="px-8 py-6 font-mono text-xs text-on-surface-variant">SUB-4410</td>
+<td class="px-6 py-6">
+<span class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-400 text-[10px] font-mono border border-emerald-500/20">
+<span class="w-1 h-1 rounded-full bg-emerald-400 animate-pulse"></span>
+                                        ACTIVE
+                                    </span>
+</td>
+<td class="px-6 py-6">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-black flex items-center justify-center p-1.5 border border-outline-variant">
+<img alt="Netflix" data-alt="minimalist netflix logo icon in deep red and black circles" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCFVnaxK7WNevCwv7A-SHB_yvJ3YD9kGgpuTwbRzBs-_Z5g8pwKNnaapxjHY5RGyivbwG8nVLSQ1qQ850qdlFYYaIaEx84y_34qfv3IR5-RJhuQuAzN70AhiEJcnod0TUviSnbx5-7NIgFFgf0C8cckMuSv5d9iBeZbwNvMrpYbIWewSksYW2xcpl1AWxWHjttByfRTCZi_YKqzI4tSQoOh1_F6u5LREC0gME2yinupwx0KRrIOJmdHihlSBT7hKP7qc56paT5LUgI"/>
+</div>
+<span class="font-semibold text-on-surface">Netflix Standard</span>
+</div>
+</td>
+<td class="px-6 py-6 font-mono text-sm text-right text-on-surface font-bold">$15.49</td>
+<td class="px-6 py-6">
+<span class="text-[10px] font-mono text-on-surface-variant px-2 py-1 rounded border border-outline-variant/30">MONTHLY</span>
+</td>
+<td class="px-8 py-6 font-mono text-xs text-on-surface">2024-04-22</td>
+</tr>
+<!-- Row 3: ChatGPT -->
+<tr class="group hover:bg-emerald-400/5 transition-colors cursor-pointer">
+<td class="px-8 py-6 font-mono text-xs text-on-surface-variant">SUB-1102</td>
+<td class="px-6 py-6">
+<span class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-400 text-[10px] font-mono border border-emerald-500/20">
+<span class="w-1 h-1 rounded-full bg-emerald-400 animate-pulse"></span>
+                                        ACTIVE
+                                    </span>
+</td>
+<td class="px-6 py-6">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-black flex items-center justify-center p-1.5 border border-outline-variant">
+<img alt="ChatGPT" data-alt="ai interface logo icon with geometric white lines on dark background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCwaIBx0dzVgUo_PAEXC5jc_BD_kSTjRgX1OEdg24xgA1nePWHNXDqQ2nko_QFBLPuPcnxP-YXHR_GENk-ZV0kvTZfSHlqsvrLFSfsZ6ysqt2JfWDQKFsdP3wxXBaP6FuO1L2UxRcCmm93dn9mKFUnfFWOFHE90z1NCxLbX_mpCsmgnwlTAs4Z8xqKXsM8PXHlHVW4e8pYX7GwXI6RGy-4bsVeATMduLcWJVSnj-QxCO16OlIEHInupObeQztpDfGOqUElj6xnLfQA"/>
+</div>
+<span class="font-semibold text-on-surface">ChatGPT Plus</span>
+</div>
+</td>
+<td class="px-6 py-6 font-mono text-sm text-right text-on-surface font-bold">$20.00</td>
+<td class="px-6 py-6">
+<span class="text-[10px] font-mono text-on-surface-variant px-2 py-1 rounded border border-outline-variant/30">MONTHLY</span>
+</td>
+<td class="px-8 py-6 font-mono text-xs text-on-surface">2024-04-12</td>
+</tr>
+<!-- Row 4: GitHub -->
+<tr class="group hover:bg-emerald-400/5 transition-colors cursor-pointer">
+<td class="px-8 py-6 font-mono text-xs text-on-surface-variant">SUB-9034</td>
+<td class="px-6 py-6">
+<span class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-400 text-[10px] font-mono border border-emerald-500/20">
+<span class="w-1 h-1 rounded-full bg-emerald-400 animate-pulse"></span>
+                                        ACTIVE
+                                    </span>
+</td>
+<td class="px-6 py-6">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-black flex items-center justify-center p-1.5 border border-outline-variant">
+<img alt="GitHub" data-alt="minimalist white cat silhouette icon for developer platform on black background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDkKTENICMnQ1yu8_xC9oEL8E-FJRGX_uzuTg1g1nzwuHbUWyk2hMqMmOaSitqLyl1SFvqbNcL_bCCAUs74b8_kTrLk6n9xvUyTneFw_IopuWLee6frDZcVSbR2rP7TNyTedRmqirCaC35ObnEZTwLscIgVsvIWhmghrAutWwe1bcg0jGVl7_wb2HTLv4Tmxlbf8ryfIM1001xrRM6WcD8QV_6fy0gIelMGcOrxH73nLo3DwAPO0Sp0hGXaesHlTh5SRnKBYHtRNh8"/>
+</div>
+<span class="font-semibold text-on-surface">GitHub Team</span>
+</div>
+</td>
+<td class="px-6 py-6 font-mono text-sm text-right text-on-surface font-bold">$4.00</td>
+<td class="px-6 py-6">
+<span class="text-[10px] font-mono text-on-surface-variant px-2 py-1 rounded border border-outline-variant/30">MONTHLY</span>
+</td>
+<td class="px-8 py-6 font-mono text-xs text-on-surface">2024-05-01</td>
+</tr>
+<!-- Row 5: Notion -->
+<tr class="group hover:bg-emerald-400/5 transition-colors cursor-pointer">
+<td class="px-8 py-6 font-mono text-xs text-on-surface-variant">SUB-0056</td>
+<td class="px-6 py-6">
+<span class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-400 text-[10px] font-mono border border-emerald-500/20">
+<span class="w-1 h-1 rounded-full bg-emerald-400 animate-pulse"></span>
+                                        ACTIVE
+                                    </span>
+</td>
+<td class="px-6 py-6">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-black flex items-center justify-center p-1.5 border border-outline-variant">
+<img alt="Notion" data-alt="minimalist digital workspace icon with letter N in black and white" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCHicSvwAYh66Al706_JQREAEUnVD8wm_B_0xS6ILzSbvT-kA4m6Xapt49ODdtdjC5oIvgGHe_9cqisOgn9OpNs9DA6x0BXdmjbl4MqQVj_Rlvona8_tsws_MWw9ZjKZRDwcXpg_LdTSrrM23TzdicA3VRO0olVL9aOyVZGec2dH8juPkcYxU0LvzJk_Uh3P73ZN-4sAxboFuJ_lKQNFNwi8eTgZe2TdLiSqmZrwDnpFJhwQOU4pvuhmt0mEFD_h354c7dudu5kaQo"/>
+</div>
+<span class="font-semibold text-on-surface">Notion Pro</span>
+</div>
+</td>
+<td class="px-6 py-6 font-mono text-sm text-right text-on-surface font-bold">$10.00</td>
+<td class="px-6 py-6">
+<span class="text-[10px] font-mono text-on-surface-variant px-2 py-1 rounded border border-outline-variant/30">MONTHLY</span>
+</td>
+<td class="px-8 py-6 font-mono text-xs text-on-surface">2024-04-14</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<!-- Detail Modal Preview / Aside -->
+<div class="xl:col-span-4 space-y-8">
+<div class="glass-panel p-8 relative overflow-hidden shadow-[0_20px_40px_rgba(0,0,0,0.5),0_0_20px_rgba(16,185,129,0.1)]">
+<!-- Glow effect -->
+<div class="absolute -top-24 -right-24 w-64 h-64 bg-primary/10 blur-[100px]"></div>
+<div class="flex justify-between items-start mb-8">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-2xl bg-black border border-primary/20 flex items-center justify-center p-2">
+<img alt="Spotify Detail" data-alt="spotify logo close up with vibrant green and deep black textures" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCDWbZXEB5MaBbgpOvfTNawtgHeE8nrkltbSodAh9USiK5WKvEw4O_zONvhMxKhhKPBVSJz7TaUljtLAQ4zcSY3EKs0OzOXeY7BnMXB9c1p8VJkepMaYebBqY_g1He-c4z9QTGT9ljin9MSDvJURRpVPU9-ey-guNTMMMQwxIstUe1ByCOkyCmN3AJUfjv4-_M1YtsnOcihMA0wOZWth3W6Z0axtJFc89htR2kmlEMRKBQnAdCrEjezpW8SVG7lFc2r1nmCP70Lx1U"/>
+</div>
+<div>
+<h3 class="text-xl font-bold text-on-surface">Spotify Premium</h3>
+<p class="text-[10px] font-mono text-on-surface-variant uppercase tracking-widest">SUB-8821 • INDIVIDUAL</p>
+</div>
+</div>
+<button class="material-symbols-outlined text-on-surface-variant hover:text-white transition-colors">more_vert</button>
+</div>
+<div class="grid grid-cols-2 gap-4 mb-8">
+<div class="bg-surface-container-highest/20 rounded-2xl p-4 border border-outline-variant/30">
+<p class="text-[10px] font-mono text-on-surface-variant mb-1 uppercase">Monthly Bill</p>
+<p class="text-xl font-mono text-primary font-bold">$9.99</p>
+</div>
+<div class="bg-surface-container-highest/20 rounded-2xl p-4 border border-outline-variant/30">
+<p class="text-[10px] font-mono text-on-surface-variant mb-1 uppercase">Currency</p>
+<p class="text-xl font-mono text-on-surface font-bold">USD</p>
+</div>
+</div>
+<div class="mb-8">
+<h4 class="text-[10px] font-mono text-on-surface-variant uppercase tracking-[0.2em] mb-6">Payment History</h4>
+<div class="space-y-6 relative">
+<!-- Timeline Line -->
+<div class="absolute left-[7px] top-2 bottom-2 w-px bg-emerald-500/10"></div>
+<div class="flex items-center gap-4 relative">
+<div class="w-3.5 h-3.5 rounded-full bg-emerald-400 border-4 border-emerald-950 z-10"></div>
+<div class="flex flex-grow justify-between items-center">
+<span class="font-mono text-xs text-on-surface">MAR 18, 2024</span>
+<span class="font-mono text-xs text-primary font-bold">-$9.99</span>
+</div>
+</div>
+<div class="flex items-center gap-4 relative opacity-60">
+<div class="w-3.5 h-3.5 rounded-full bg-emerald-400/50 border-4 border-emerald-950 z-10"></div>
+<div class="flex flex-grow justify-between items-center">
+<span class="font-mono text-xs text-on-surface">FEB 18, 2024</span>
+<span class="font-mono text-xs text-on-surface font-bold">-$9.99</span>
+</div>
+</div>
+<div class="flex items-center gap-4 relative opacity-40">
+<div class="w-3.5 h-3.5 rounded-full bg-emerald-400/30 border-4 border-emerald-950 z-10"></div>
+<div class="flex flex-grow justify-between items-center">
+<span class="font-mono text-xs text-on-surface">JAN 18, 2024</span>
+<span class="font-mono text-xs text-on-surface font-bold">-$9.99</span>
+</div>
+</div>
+<div class="flex items-center gap-4 relative opacity-20">
+<div class="w-3.5 h-3.5 rounded-full bg-emerald-400/20 border-4 border-emerald-950 z-10"></div>
+<div class="flex flex-grow justify-between items-center">
+<span class="font-mono text-xs text-on-surface">DEC 18, 2023</span>
+<span class="font-mono text-xs text-on-surface font-bold">-$9.99</span>
+</div>
+</div>
+</div>
+</div>
+<button class="w-full py-4 rounded-xl border border-error/30 text-error hover:bg-error/5 transition-all font-mono text-[11px] tracking-widest uppercase flex items-center justify-center gap-2 group">
+<span class="material-symbols-outlined text-sm">cancel</span>
+                        CANCEL SUBSCRIPTION
+                    </button>
+</div>
+<!-- Insights Pill -->
+<div class="glass-panel p-6 border-emerald-500/10">
+<div class="flex items-start gap-4">
+<span class="material-symbols-outlined text-emerald-400">info</span>
+<div>
+<p class="text-sm font-semibold text-on-surface mb-1">Upcoming Peak</p>
+<p class="text-xs text-on-surface-variant leading-relaxed">Your highest billing day is <span class="font-mono text-primary">Apr 22</span>. Total outflows will reach <span class="font-mono text-primary">$35.49</span>.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Global Footer Shell -->
+<footer class="fixed bottom-0 w-full h-8 px-6 bg-emerald-950/40 backdrop-blur-xl border-t border-emerald-500/10 flex items-center justify-between z-50">
+<div class="flex items-center space-x-6">
+<span class="font-mono text-[10px] text-emerald-400 flex items-center gap-2">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                SYSTEM OPERATIONAL
+            </span>
+<div class="hidden md:flex space-x-6">
+<span class="font-mono text-[10px] text-emerald-100/60 hover:text-emerald-300 transition-colors cursor-pointer uppercase">BTC: $64,210</span>
+<span class="font-mono text-[10px] text-emerald-100/60 hover:text-emerald-300 transition-colors cursor-pointer uppercase">ETH: $3,450</span>
+</div>
+</div>
+<div class="font-mono text-[10px] text-emerald-100/60 uppercase">
+            LAST SYNC: 12:04:11
+        </div>
+</footer>
+</body></html>

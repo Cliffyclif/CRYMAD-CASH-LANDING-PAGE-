@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Regulatory Reports Portal</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "inverse-on-surface": "#28332f",
+                        "on-primary": "#003824",
+                        "tertiary": "#ffb95f",
+                        "inverse-surface": "#d9e5df",
+                        "on-secondary-fixed": "#002114",
+                        "inverse-primary": "#006c49",
+                        "surface-variant": "#2c3733",
+                        "surface-bright": "#313b38",
+                        "on-surface-variant": "#bbcabf",
+                        "on-primary-fixed-variant": "#005236",
+                        "on-error": "#690005",
+                        "secondary-fixed": "#68fcbf",
+                        "secondary": "#45dfa4",
+                        "surface-container": "#17221e",
+                        "tertiary-fixed": "#ffddb8",
+                        "primary-fixed": "#6ffbbe",
+                        "surface": "#0b1512",
+                        "on-background": "#d9e5df",
+                        "error-container": "#93000a",
+                        "on-tertiary": "#472a00",
+                        "on-secondary": "#003825",
+                        "background": "#0b1512",
+                        "surface-container-low": "#131e1a",
+                        "surface-dim": "#0b1512",
+                        "surface-container-lowest": "#06100d",
+                        "primary-container": "#10b981",
+                        "on-surface": "#d9e5df",
+                        "on-tertiary-container": "#523200",
+                        "tertiary-fixed-dim": "#ffb95f",
+                        "tertiary-container": "#e29100",
+                        "error": "#ffb4ab",
+                        "on-secondary-container": "#00452e",
+                        "on-secondary-fixed-variant": "#005137",
+                        "secondary-fixed-dim": "#45dfa4",
+                        "on-primary-container": "#00422b",
+                        "on-tertiary-fixed": "#2a1700",
+                        "outline-variant": "#3c4a42",
+                        "surface-container-high": "#222c29",
+                        "outline": "#86948a",
+                        "on-error-container": "#ffdad6",
+                        "surface-container-highest": "#2c3733",
+                        "primary-fixed-dim": "#4edea3",
+                        "secondary-container": "#00bd85",
+                        "on-tertiary-fixed-variant": "#653e00",
+                        "on-primary-fixed": "#002113",
+                        "surface-tint": "#4edea3",
+                        "primary": "#4edea3"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "1rem",
+                        "lg": "2rem",
+                        "xl": "3rem",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Inter"],
+                        "body": ["Inter"],
+                        "label": ["JetBrains Mono"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 200, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-card {
+            background: rgba(44, 55, 51, 0.4);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+        .glow-bg {
+            background: radial-gradient(circle at 50% 50%, rgba(16, 185, 129, 0.08) 0%, transparent 70%);
+        }
+        .text-gradient {
+            background: linear-gradient(135deg, #10b981 0%, #34d399 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        @keyframes pulse-ring {
+            0% { transform: scale(1); opacity: 0.8; }
+            50% { transform: scale(2.5); opacity: 0; }
+            100% { transform: scale(1); opacity: 0; }
+        }
+        .pulse-dot::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background-color: #4edea3;
+            animation: pulse-ring 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body selection:bg-primary-container selection:text-on-primary-container min-h-screen pb-[40px]">
+<!-- Top Navigation Bar -->
+<nav class="fixed top-0 w-full h-[64px] z-50 bg-[#2c3733]/40 backdrop-blur-[20px] shadow-[0_0_40px_rgba(16,185,129,0.06)]">
+<div class="flex justify-between items-center px-8 w-full max-w-[1280px] mx-auto h-full">
+<div class="text-lg font-bold tracking-[0.2em] text-[#4edea3]">INSTITUTIONAL PORTAL</div>
+<div class="hidden md:flex gap-8 items-center font-['Inter'] font-medium tracking-tight">
+<a class="text-emerald-500/60 hover:text-[#4edea3] transition-all" href="#">DASHBOARD</a>
+<a class="text-[#4edea3] border-b-2 border-[#4edea3]" href="#">REPORTS</a>
+<a class="text-emerald-500/60 hover:text-[#4edea3] transition-all" href="#">ANALYTICS</a>
+<a class="text-emerald-500/60 hover:text-[#4edea3] transition-all" href="#">NODES</a>
+</div>
+<div class="flex items-center gap-4 text-[#4edea3]">
+<span class="material-symbols-outlined cursor-pointer hover:bg-emerald-500/5 p-2 rounded-full transition-all">sensors</span>
+<span class="material-symbols-outlined cursor-pointer hover:bg-emerald-500/5 p-2 rounded-full transition-all">account_circle</span>
+</div>
+</div>
+<div class="bg-gradient-to-r from-transparent via-[#4edea3]/10 to-transparent h-[1px] absolute bottom-0 w-full"></div>
+</nav>
+<!-- Side Navigation (Technical Sidebar) -->
+<aside class="fixed right-0 top-0 h-full w-[280px] rounded-l-[32px] bg-[#131e1a] backdrop-blur-[20px] border-l border-emerald-500/10 shadow-[-10px_0_30px_rgba(4,13,10,0.5)] z-40 hidden xl:flex flex-col p-6 space-y-8 pt-24">
+<div>
+<div class="font-['JetBrains_Mono'] text-xs uppercase tracking-widest text-[#4edea3] mb-1">APPEARANCE</div>
+<div class="font-['JetBrains_Mono'] text-[10px] text-emerald-500/40 uppercase">Technical Config</div>
+</div>
+<div class="space-y-4">
+<div class="flex items-center gap-4 text-[#4edea3] bg-emerald-500/10 rounded-full p-3 font-['JetBrains_Mono'] text-xs uppercase tracking-widest cursor-pointer">
+<span class="material-symbols-outlined">palette</span>
+<span>Visuals</span>
+</div>
+<div class="flex items-center gap-4 text-emerald-500/40 hover:bg-[#2c3733] hover:text-[#4edea3] transition-all p-3 rounded-full font-['JetBrains_Mono'] text-xs uppercase tracking-widest cursor-pointer">
+<span class="material-symbols-outlined">dark_mode</span>
+<span>Theme</span>
+</div>
+<div class="flex items-center gap-4 text-emerald-500/40 hover:bg-[#2c3733] hover:text-[#4edea3] transition-all p-3 rounded-full font-['JetBrains_Mono'] text-xs uppercase tracking-widest cursor-pointer">
+<span class="material-symbols-outlined">grid_view</span>
+<span>Data Density</span>
+</div>
+<div class="flex items-center gap-4 text-emerald-500/40 hover:bg-[#2c3733] hover:text-[#4edea3] transition-all p-3 rounded-full font-['JetBrains_Mono'] text-xs uppercase tracking-widest cursor-pointer">
+<span class="material-symbols-outlined">history_edu</span>
+<span>Audit Mode</span>
+</div>
+</div>
+<div class="mt-auto pt-8 border-t border-emerald-500/5">
+<div class="font-['JetBrains_Mono'] text-[10px] text-emerald-500/40 uppercase mb-4 tracking-tighter">Upcoming Deadlines</div>
+<div class="space-y-6">
+<div class="flex gap-4 relative">
+<div class="w-2 h-2 rounded-full bg-primary-fixed-dim pulse-dot mt-1.5 relative"></div>
+<div>
+<div class="text-[11px] font-['JetBrains_Mono'] text-on-surface">MIFID II - APR 30</div>
+<div class="text-[9px] font-['JetBrains_Mono'] text-emerald-500/30">System Lock in 4 days</div>
+</div>
+</div>
+<div class="flex gap-4 relative">
+<div class="w-2 h-2 rounded-full bg-primary-fixed-dim pulse-dot mt-1.5 relative"></div>
+<div>
+<div class="text-[11px] font-['JetBrains_Mono'] text-on-surface">AML SUM - MAY 05</div>
+<div class="text-[9px] font-['JetBrains_Mono'] text-emerald-500/30">Review Pending</div>
+</div>
+</div>
+<div class="flex gap-4 relative">
+<div class="w-2 h-2 rounded-full bg-primary-fixed-dim pulse-dot mt-1.5 relative"></div>
+<div>
+<div class="text-[11px] font-['JetBrains_Mono'] text-on-surface">CRS EX - JUN 30</div>
+<div class="text-[9px] font-['JetBrains_Mono'] text-emerald-500/30">Queueing scheduled</div>
+</div>
+</div>
+</div>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="pt-24 px-8 pb-20 w-full max-w-[1280px] mx-auto xl:pr-[320px]">
+<!-- Hero Header -->
+<header class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-8">
+<div>
+<h1 class="text-5xl md:text-6xl font-bold tracking-tight text-gradient mb-4">Regulatory Reports</h1>
+<div class="flex flex-wrap gap-3 font-['JetBrains_Mono'] text-xs text-emerald-500/60 tracking-widest">
+<span>MIFID</span>
+<span class="text-emerald-500/20">•</span>
+<span>FATCA</span>
+<span class="text-emerald-500/20">•</span>
+<span>CRS</span>
+<span class="text-emerald-500/20">•</span>
+<span>1099</span>
+<span class="text-emerald-500/20">•</span>
+<span>CUSTOM</span>
+</div>
+</div>
+<button class="bg-gradient-to-br from-primary-container to-secondary-container text-on-primary-container px-8 py-4 rounded-full font-bold tracking-tight shadow-[0_10px_30px_rgba(16,185,129,0.2)] hover:scale-95 active:opacity-80 transition-all flex items-center gap-3">
+                GENERATE NEW REPORT
+                <span class="material-symbols-outlined">arrow_forward</span>
+</button>
+</header>
+<!-- Bento Grid of Cards -->
+<section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-20">
+<!-- Card 1 -->
+<div class="glass-card p-8 rounded-lg border border-emerald-500/5 hover:border-emerald-500/20 transition-all group">
+<div class="flex justify-between items-start mb-6">
+<span class="material-symbols-outlined text-primary text-4xl">account_balance</span>
+<div class="text-right">
+<div class="text-[10px] font-['JetBrains_Mono'] text-emerald-500/40 uppercase">Next Due</div>
+<div class="text-sm font-['JetBrains_Mono'] text-primary">Apr 30</div>
+</div>
+</div>
+<h3 class="text-xl font-bold mb-2">MIFID II Transaction Report</h3>
+<p class="text-on-surface-variant text-sm mb-6 leading-relaxed">Compliance framework for EU investment firms and transparency requirements.</p>
+<a class="text-primary text-sm font-bold flex items-center gap-2 group-hover:gap-3 transition-all" href="#">
+                    GENERATE <span class="material-symbols-outlined text-sm">open_in_new</span>
+</a>
+</div>
+<!-- Card 2 -->
+<div class="glass-card p-8 rounded-lg border border-emerald-500/5 hover:border-emerald-500/20 transition-all group">
+<div class="flex justify-between items-start mb-6">
+<span class="material-symbols-outlined text-primary text-4xl">flag</span>
+<div class="text-right">
+<div class="text-[10px] font-['JetBrains_Mono'] text-emerald-500/40 uppercase">Next Due</div>
+<div class="text-sm font-['JetBrains_Mono'] text-primary">Mar 31 2027</div>
+</div>
+</div>
+<h3 class="text-xl font-bold mb-2">FATCA 8966</h3>
+<p class="text-on-surface-variant text-sm mb-6 leading-relaxed">US tax reporting for foreign financial institutions regarding US person assets.</p>
+<a class="text-primary text-sm font-bold flex items-center gap-2 group-hover:gap-3 transition-all" href="#">
+                    GENERATE <span class="material-symbols-outlined text-sm">open_in_new</span>
+</a>
+</div>
+<!-- Card 3 -->
+<div class="glass-card p-8 rounded-lg border border-emerald-500/5 hover:border-emerald-500/20 transition-all group">
+<div class="flex justify-between items-start mb-6">
+<span class="material-symbols-outlined text-primary text-4xl">public</span>
+<div class="text-right">
+<div class="text-[10px] font-['JetBrains_Mono'] text-emerald-500/40 uppercase">Next Due</div>
+<div class="text-sm font-['JetBrains_Mono'] text-primary">Apr 30</div>
+</div>
+</div>
+<h3 class="text-xl font-bold mb-2">CRS</h3>
+<p class="text-on-surface-variant text-sm mb-6 leading-relaxed">OECD standard for automatic exchange of financial account information globally.</p>
+<a class="text-primary text-sm font-bold flex items-center gap-2 group-hover:gap-3 transition-all" href="#">
+                    GENERATE <span class="material-symbols-outlined text-sm">open_in_new</span>
+</a>
+</div>
+<!-- Card 4 -->
+<div class="glass-card p-8 rounded-lg border border-emerald-500/5 hover:border-emerald-500/20 transition-all group">
+<div class="flex justify-between items-start mb-6">
+<span class="material-symbols-outlined text-primary text-4xl">description</span>
+<div class="text-right">
+<div class="text-[10px] font-['JetBrains_Mono'] text-emerald-500/40 uppercase">Next Due</div>
+<div class="text-sm font-['JetBrains_Mono'] text-primary">Jan 31 2027</div>
+</div>
+</div>
+<h3 class="text-xl font-bold mb-2">Form 1099</h3>
+<p class="text-on-surface-variant text-sm mb-6 leading-relaxed">Income reporting for US tax clients covering dividends and interest.</p>
+<a class="text-primary text-sm font-bold flex items-center gap-2 group-hover:gap-3 transition-all" href="#">
+                    GENERATE <span class="material-symbols-outlined text-sm">open_in_new</span>
+</a>
+</div>
+<!-- Card 5 -->
+<div class="glass-card p-8 rounded-lg border border-emerald-500/5 hover:border-emerald-500/20 transition-all group">
+<div class="flex justify-between items-start mb-6">
+<span class="material-symbols-outlined text-primary text-4xl">verified_user</span>
+<div class="text-right">
+<div class="text-[10px] font-['JetBrains_Mono'] text-emerald-500/40 uppercase">Next Due</div>
+<div class="text-sm font-['JetBrains_Mono'] text-primary">May 5</div>
+</div>
+</div>
+<h3 class="text-xl font-bold mb-2">AML Monthly</h3>
+<p class="text-on-surface-variant text-sm mb-6 leading-relaxed">Automated compliance summary of anti-money laundering risk signals.</p>
+<a class="text-primary text-sm font-bold flex items-center gap-2 group-hover:gap-3 transition-all" href="#">
+                    GENERATE <span class="material-symbols-outlined text-sm">open_in_new</span>
+</a>
+</div>
+<!-- Card 6 -->
+<div class="glass-card p-8 rounded-lg border border-emerald-500/5 hover:border-emerald-500/20 transition-all group">
+<div class="flex justify-between items-start mb-6">
+<span class="material-symbols-outlined text-primary text-4xl">database</span>
+<div class="text-right">
+<div class="text-[10px] font-['JetBrains_Mono'] text-emerald-500/40 uppercase">Status</div>
+<div class="text-sm font-['JetBrains_Mono'] text-tertiary">ON-DEMAND</div>
+</div>
+</div>
+<h3 class="text-xl font-bold mb-2">Custom Auditor Export</h3>
+<p class="text-on-surface-variant text-sm mb-6 leading-relaxed">Bespoke telemetry data extraction for third-party auditing partners.</p>
+<a class="text-primary text-sm font-bold flex items-center gap-2 group-hover:gap-3 transition-all" href="#">
+                    CONFIGURE <span class="material-symbols-outlined text-sm">settings</span>
+</a>
+</div>
+</section>
+<!-- Recent Filings Section -->
+<section class="space-y-6">
+<div class="flex items-center justify-between">
+<h2 class="text-2xl font-bold tracking-tight">Recent Filings</h2>
+<div class="h-[1px] flex-grow mx-8 bg-emerald-500/10"></div>
+<span class="font-['JetBrains_Mono'] text-[10px] text-emerald-500/40">SYSTEM UPTIME 99.99%</span>
+</div>
+<div class="glass-card rounded-lg overflow-hidden border border-emerald-500/5">
+<table class="w-full text-left font-['JetBrains_Mono'] text-xs">
+<thead class="bg-surface-container-highest/50 text-emerald-500/40 uppercase tracking-widest">
+<tr>
+<th class="px-6 py-4 font-medium">DATE</th>
+<th class="px-6 py-4 font-medium">REPORT</th>
+<th class="px-6 py-4 font-medium">PERIOD</th>
+<th class="px-6 py-4 font-medium">STATUS</th>
+<th class="px-6 py-4 font-medium">FILED BY</th>
+<th class="px-6 py-4 font-medium text-right">ACTION</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-emerald-500/5">
+<tr class="hover:bg-emerald-500/5 transition-colors">
+<td class="px-6 py-5">Apr 10</td>
+<td class="px-6 py-5 font-bold text-on-surface">MIFID</td>
+<td class="px-6 py-5">Q1</td>
+<td class="px-6 py-5"><span class="text-primary font-bold">FILED</span></td>
+<td class="px-6 py-5">Sarah Chen</td>
+<td class="px-6 py-5 text-right">
+<button class="text-emerald-500/40 hover:text-primary transition-all flex items-center gap-2 ml-auto">
+<span class="material-symbols-outlined text-sm">lock</span> DOWNLOAD
+                                </button>
+</td>
+</tr>
+<tr class="hover:bg-emerald-500/5 transition-colors">
+<td class="px-6 py-5">Mar 30</td>
+<td class="px-6 py-5 font-bold text-on-surface">FATCA</td>
+<td class="px-6 py-5">2025</td>
+<td class="px-6 py-5"><span class="text-primary font-bold">FILED</span></td>
+<td class="px-6 py-5">Automated Node</td>
+<td class="px-6 py-5 text-right">
+<button class="text-emerald-500/40 hover:text-primary transition-all flex items-center gap-2 ml-auto">
+<span class="material-symbols-outlined text-sm">lock</span> DOWNLOAD
+                                </button>
+</td>
+</tr>
+<tr class="hover:bg-emerald-500/5 transition-colors">
+<td class="px-6 py-5">Mar 25</td>
+<td class="px-6 py-5 font-bold text-on-surface">CRS</td>
+<td class="px-6 py-5">2025</td>
+<td class="px-6 py-5"><span class="text-primary font-bold">FILED</span></td>
+<td class="px-6 py-5">Automated Node</td>
+<td class="px-6 py-5 text-right">
+<button class="text-emerald-500/40 hover:text-primary transition-all flex items-center gap-2 ml-auto">
+<span class="material-symbols-outlined text-sm">lock</span> DOWNLOAD
+                                </button>
+</td>
+</tr>
+<tr class="hover:bg-emerald-500/5 transition-colors">
+<td class="px-6 py-5">Mar 05</td>
+<td class="px-6 py-5 font-bold text-on-surface">AML</td>
+<td class="px-6 py-5">March</td>
+<td class="px-6 py-5"><span class="text-secondary font-bold">COMPLETE</span></td>
+<td class="px-6 py-5">Compliance Bot</td>
+<td class="px-6 py-5 text-right">
+<button class="text-emerald-500/40 hover:text-primary transition-all flex items-center gap-2 ml-auto">
+<span class="material-symbols-outlined text-sm">lock</span> DOWNLOAD
+                                </button>
+</td>
+</tr>
+<tr class="hover:bg-emerald-500/5 transition-colors">
+<td class="px-6 py-5">Feb 28</td>
+<td class="px-6 py-5 font-bold text-on-surface">Custom</td>
+<td class="px-6 py-5">Deloitte</td>
+<td class="px-6 py-5 text-emerald-500/80">DOWNLOADED</td>
+<td class="px-6 py-5">Deloitte Audit</td>
+<td class="px-6 py-5 text-right">
+<button class="text-emerald-500/40 hover:text-primary transition-all flex items-center gap-2 ml-auto">
+<span class="material-symbols-outlined text-sm">lock</span> DOWNLOAD
+                                </button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</main>
+<!-- Bottom Status Bar -->
+<footer class="fixed bottom-0 left-0 w-full h-[40px] z-50 flex justify-between items-center px-12 bg-[#0b1512]/80 backdrop-blur-md border-t border-emerald-500/20">
+<div class="flex items-center gap-6 font-['JetBrains_Mono'] text-[10px] uppercase">
+<div class="text-[#4edea3] flex items-center gap-2">
+<span class="material-symbols-outlined text-xs">speed</span>
+                LATENCY: 14ms
+            </div>
+<div class="text-[#4edea3] flex items-center gap-2">
+<span class="material-symbols-outlined text-xs">sync</span>
+                SYNC: ACTIVE
+            </div>
+</div>
+<div class="text-emerald-500/50 flex items-center gap-2 font-['JetBrains_Mono'] text-[10px] uppercase">
+<span class="material-symbols-outlined text-xs">dns</span>
+            UPTIME: 99.99%
+        </div>
+</footer>
+<!-- Aesthetic Decorative Blobs -->
+<div class="fixed top-0 left-0 w-full h-full pointer-events-none z-[-1] overflow-hidden">
+<div class="absolute top-[-10%] right-[-10%] w-[600px] h-[600px] glow-bg opacity-30 rounded-full blur-[120px]"></div>
+<div class="absolute bottom-[20%] left-[-5%] w-[400px] h-[400px] glow-bg opacity-20 rounded-full blur-[100px]"></div>
+</div>
+</body></html>

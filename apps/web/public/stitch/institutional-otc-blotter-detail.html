@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Emerald Pulse | Trade Detail</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=JetBrains+Mono:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                "outline": "#86948a",
+                "on-error-container": "#ffdad6",
+                "surface-container-highest": "#2c3733",
+                "primary-fixed-dim": "#4edea3",
+                "surface-container-high": "#222c29",
+                "outline-variant": "#3c4a42",
+                "surface-tint": "#4edea3",
+                "primary": "#4edea3",
+                "secondary-container": "#00bd85",
+                "on-tertiary-fixed-variant": "#653e00",
+                "on-primary-fixed": "#002113",
+                "surface-container-lowest": "#06100d",
+                "on-tertiary-container": "#523200",
+                "on-surface": "#d9e5df",
+                "primary-container": "#10b981",
+                "surface-dim": "#0b1512",
+                "on-secondary-fixed-variant": "#005137",
+                "secondary-fixed-dim": "#45dfa4",
+                "on-tertiary-fixed": "#2a1700",
+                "on-primary-container": "#00422b",
+                "tertiary-fixed-dim": "#ffb95f",
+                "error": "#ffb4ab",
+                "tertiary-container": "#e29100",
+                "on-secondary-container": "#00452e",
+                "error-container": "#93000a",
+                "on-background": "#d9e5df",
+                "secondary": "#45dfa4",
+                "surface-container": "#17221e",
+                "surface": "#0b1512",
+                "primary-fixed": "#6ffbbe",
+                "tertiary-fixed": "#ffddb8",
+                "background": "#0b1512",
+                "surface-container-low": "#131e1a",
+                "on-tertiary": "#472a00",
+                "on-secondary": "#003825",
+                "tertiary": "#ffb95f",
+                "inverse-surface": "#d9e5df",
+                "inverse-on-surface": "#28332f",
+                "on-primary": "#003824",
+                "surface-bright": "#313b38",
+                "surface-variant": "#2c3733",
+                "on-surface-variant": "#bbcabf",
+                "on-primary-fixed-variant": "#005236",
+                "on-error": "#690005",
+                "secondary-fixed": "#68fcbf",
+                "inverse-primary": "#006c49",
+                "on-secondary-fixed": "#002114"
+            },
+            "borderRadius": {
+                "DEFAULT": "1rem",
+                "lg": "2rem",
+                "xl": "3rem",
+                "full": "9999px"
+            },
+            "fontFamily": {
+                "headline": ["Inter"],
+                "body": ["Inter"],
+                "label": ["JetBrains Mono"]
+            }
+          }
+        }
+      }
+    </script>
+<style>
+        .glass-panel {
+            background: rgba(44, 55, 51, 0.4);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(16, 185, 129, 0.08);
+        }
+        .bio-glow {
+            filter: blur(80px);
+            opacity: 0.08;
+            pointer-events: none;
+        }
+        .jade-gradient-text {
+            background: linear-gradient(135deg, #10b981 0%, #34d399 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .jade-gradient-bg {
+            background: linear-gradient(135deg, #10b981 0%, #34d399 100%);
+        }
+        .pulse-animation {
+            box-shadow: 0 0 0 0 rgba(78, 222, 163, 0.4);
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(78, 222, 163, 0.4); }
+            70% { box-shadow: 0 0 0 10px rgba(78, 222, 163, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(78, 222, 163, 0); }
+        }
+        .custom-scrollbar::-webkit-scrollbar { width: 4px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: rgba(78, 222, 163, 0.1); border-radius: 10px; }
+    </style>
+</head>
+<body class="bg-surface font-body text-on-background min-h-screen overflow-hidden">
+<!-- Background Layer (Simulated OTC Desk) -->
+<div class="fixed inset-0 z-0 pointer-events-none opacity-20 flex items-center justify-center">
+<div class="w-full max-w-7xl grid grid-cols-4 gap-6 p-8">
+<div class="h-64 bg-surface-container-high rounded-lg"></div>
+<div class="h-64 bg-surface-container-high rounded-lg"></div>
+<div class="h-64 bg-surface-container-high rounded-lg"></div>
+<div class="h-64 bg-surface-container-high rounded-lg"></div>
+</div>
+</div>
+<!-- Modal Backdrop -->
+<div class="fixed inset-0 z-50 flex items-center justify-center bg-surface-lowest/80 backdrop-blur-sm">
+<!-- Bioluminescent Blobs -->
+<div class="absolute w-[400px] h-[400px] bg-primary rounded-full bio-glow -top-20 -left-20"></div>
+<div class="absolute w-[300px] h-[300px] bg-tertiary rounded-full bio-glow bottom-20 right-20"></div>
+<!-- Modal Container -->
+<div class="relative w-full max-w-[720px] glass-panel rounded-xl shadow-[0_0_48px_-12px_rgba(16,185,129,0.15)] overflow-hidden flex flex-col max-h-[921px]">
+<!-- Modal Header -->
+<div class="p-8 pb-6 flex items-center justify-between border-b border-primary/5">
+<div class="flex items-center gap-4">
+<h1 class="text-2xl font-extrabold tracking-tighter jade-gradient-text">Trade TRD-INST-8921</h1>
+<span class="px-3 py-1 bg-primary/10 text-primary text-[10px] font-bold font-label tracking-widest rounded-full flex items-center gap-2">
+<span class="w-1.5 h-1.5 bg-primary rounded-full pulse-animation"></span>
+                        FILLED
+                    </span>
+</div>
+<button class="p-2 hover:bg-white/5 rounded-full transition-colors group">
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-on-surface">close</span>
+</button>
+</div>
+<!-- Scrollable Content Area -->
+<div class="flex-1 overflow-y-auto custom-scrollbar p-8 pt-2 space-y-8">
+<!-- Hero Section (Audit Summary) -->
+<div class="bg-surface-container-low/50 p-8 rounded-lg border border-primary/5">
+<div class="grid grid-cols-2 gap-8">
+<div>
+<div class="text-[10px] font-label text-on-surface-variant uppercase tracking-[0.2em] mb-2">Transaction Pair</div>
+<div class="flex items-baseline gap-2">
+<span class="text-3xl font-label font-bold text-primary">BUY</span>
+<span class="text-4xl font-label font-bold text-on-surface">74.35 BTC</span>
+</div>
+</div>
+<div class="text-right">
+<div class="text-[10px] font-label text-on-surface-variant uppercase tracking-[0.2em] mb-2">Unit Price (USD)</div>
+<div class="text-3xl font-label font-medium text-on-surface tracking-tight">$67,248.10</div>
+</div>
+</div>
+<div class="mt-8 pt-8 border-t border-primary/5 flex items-center justify-between">
+<div>
+<div class="text-[10px] font-label text-on-surface-variant uppercase tracking-[0.2em] mb-1">Total Notional Value</div>
+<div class="text-4xl font-label font-bold text-on-surface">$5,000,006<span class="text-on-surface-variant opacity-40 text-2xl">.00</span></div>
+</div>
+<div class="text-right flex flex-col items-end">
+<div class="flex -space-x-2 mb-2">
+<div class="w-8 h-8 rounded-full bg-surface-container-highest border-2 border-surface flex items-center justify-center overflow-hidden">
+<img alt="Approver 1" class="w-full h-full object-cover" data-alt="Avatar of a professional financial compliance officer with a modern sleek background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBE8Rgmlo4AreQV5R6e98QMnp-9i6Rb8fvbOo6cYObMVU9xEk-kaSuWDVbd9R6vZousDkwdKl5SA-AD-Lbg3xDOd5ty1PCQZD9q2m3f9J5R3x5bcR7nZza61FqAkRtSt3RKUgJCt4TaB_z1CfNL7GoOkM5NpU7npJNEeDTJmeydyL5T93gl1RWM1s0y2PVdUu2YJENph82dRebi-J9EaHSz4L8OW44ncuQ50m3qMY4xATqYyi_d_NYo0mK1L4LwZtt9FT-G6rZYGZE"/>
+</div>
+<div class="w-8 h-8 rounded-full bg-surface-container-highest border-2 border-surface flex items-center justify-center overflow-hidden">
+<img alt="Approver 2" class="w-full h-full object-cover" data-alt="Close up avatar of a senior hedge fund manager in a high-tech trading environment" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCsw2DXPTxIuEXpAnkAYtFnQvQ6N_v1qnWIS5ytYHpTvBYuOJ_QaaA9M2bL9RKECwjnlJna7YZhpfL8VjJFNgUXMw9mNbR0crMb8kC1TfbdRiiJNUv9wXmRIEsE2wbXIm_wroE3jpRNi55rgbb2dd93gfdZNOvAVMv8x8He_4zTCTJX1OB5ckcpnDLCfH5UmXnBsO7Jk6BVbaQ4iOu7Q5MFlumu9vPiMwPM_zCBj13JGhjPUpC26K9qqialQgBg9lwyYIBR7aWvY-w"/>
+</div>
+<div class="w-8 h-8 rounded-full bg-primary/20 border-2 border-primary/40 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-xs" style="font-variation-settings: 'FILL' 1;">check</span>
+</div>
+</div>
+<span class="text-[10px] font-label text-primary uppercase tracking-widest font-bold">Signed 2/2</span>
+</div>
+</div>
+</div>
+<!-- Split View: Table & Execution -->
+<div class="grid grid-cols-12 gap-8">
+<!-- Metadata Table (12 rows) -->
+<div class="col-span-8 space-y-4">
+<div class="text-[10px] font-label text-on-surface-variant uppercase tracking-[0.2em]">Institutional Metadata</div>
+<div class="space-y-1">
+<div class="flex justify-between py-2.5 px-3 rounded-md hover:bg-primary/5 transition-colors group">
+<span class="text-xs font-label text-on-surface-variant/70 uppercase">Execution Desk</span>
+<span class="text-xs font-label text-on-surface font-medium group-hover:text-primary transition-colors">HKG_OTC_04</span>
+</div>
+<div class="flex justify-between py-2.5 px-3 rounded-md hover:bg-primary/5 transition-colors group">
+<span class="text-xs font-label text-on-surface-variant/70 uppercase">Counterparty</span>
+<span class="text-xs font-label text-on-surface font-medium group-hover:text-primary transition-colors">BLACKROCK_PRIME</span>
+</div>
+<div class="flex justify-between py-2.5 px-3 rounded-md hover:bg-primary/5 transition-colors group">
+<span class="text-xs font-label text-on-surface-variant/70 uppercase">Venue</span>
+<span class="text-xs font-label text-on-surface font-medium group-hover:text-primary transition-colors">COINBASE_INST</span>
+</div>
+<div class="flex justify-between py-2.5 px-3 rounded-md hover:bg-primary/5 transition-colors group">
+<span class="text-xs font-label text-on-surface-variant/70 uppercase">Settlement Tier</span>
+<span class="text-xs font-label text-on-surface font-medium group-hover:text-primary transition-colors">TIER_1_IMMEDIATE</span>
+</div>
+<div class="flex justify-between py-2.5 px-3 rounded-md hover:bg-primary/5 transition-colors group">
+<span class="text-xs font-label text-on-surface-variant/70 uppercase">Custody Node</span>
+<span class="text-xs font-label text-on-surface font-medium group-hover:text-primary transition-colors">ANCHORAGE_VAULT_9</span>
+</div>
+<div class="flex justify-between py-2.5 px-3 rounded-md hover:bg-primary/5 transition-colors group">
+<span class="text-xs font-label text-on-surface-variant/70 uppercase">Slippage Tolerance</span>
+<span class="text-xs font-label text-on-surface font-medium group-hover:text-primary transition-colors">0.02%</span>
+</div>
+<div class="flex justify-between py-2.5 px-3 rounded-md hover:bg-primary/5 transition-colors group">
+<span class="text-xs font-label text-on-surface-variant/70 uppercase">Network Fee</span>
+<span class="text-xs font-label text-on-surface font-medium group-hover:text-primary transition-colors">0.00042 BTC</span>
+</div>
+<div class="flex justify-between py-2.5 px-3 rounded-md hover:bg-primary/5 transition-colors group">
+<span class="text-xs font-label text-on-surface-variant/70 uppercase">Protocol</span>
+<span class="text-xs font-label text-on-surface font-medium group-hover:text-primary transition-colors">FIX_4.4_SECURE</span>
+</div>
+<div class="flex justify-between py-2.5 px-3 rounded-md hover:bg-primary/5 transition-colors group">
+<span class="text-xs font-label text-on-surface-variant/70 uppercase">Timezone</span>
+<span class="text-xs font-label text-on-surface font-medium group-hover:text-primary transition-colors">GMT +0 (UTC)</span>
+</div>
+<div class="flex justify-between py-2.5 px-3 rounded-md hover:bg-primary/5 transition-colors group">
+<span class="text-xs font-label text-on-surface-variant/70 uppercase">Reporting ID</span>
+<span class="text-xs font-label text-on-surface font-medium group-hover:text-primary transition-colors">FID-88219-X</span>
+</div>
+<div class="flex justify-between py-2.5 px-3 rounded-md hover:bg-primary/5 transition-colors group">
+<span class="text-xs font-label text-on-surface-variant/70 uppercase">Allocation</span>
+<span class="text-xs font-label text-on-surface font-medium group-hover:text-primary transition-colors">MULTI_FUND_B</span>
+</div>
+<div class="flex justify-between py-2.5 px-3 rounded-md hover:bg-primary/5 transition-colors group">
+<span class="text-xs font-label text-on-surface-variant/70 uppercase">Compliance Hash</span>
+<span class="text-xs font-label text-on-surface font-medium group-hover:text-primary transition-colors">0x88...f2a9</span>
+</div>
+</div>
+</div>
+<!-- Execution Timeline -->
+<div class="col-span-4 space-y-6">
+<div class="text-[10px] font-label text-on-surface-variant uppercase tracking-[0.2em]">Flow Timeline</div>
+<div class="relative pl-6 space-y-8 before:content-[''] before:absolute before:left-[7px] before:top-2 before:bottom-2 before:w-[1px] before:bg-primary/20">
+<!-- RFQ -->
+<div class="relative">
+<div class="absolute -left-6 top-1 w-3.5 h-3.5 rounded-full bg-primary ring-4 ring-primary/10"></div>
+<div>
+<div class="text-[10px] font-bold text-primary font-label">RFQ REQUESTED</div>
+<div class="text-[9px] font-label text-on-surface-variant/60">09:12:04:221</div>
+</div>
+</div>
+<!-- QUOTED -->
+<div class="relative">
+<div class="absolute -left-6 top-1 w-3.5 h-3.5 rounded-full bg-primary ring-4 ring-primary/10"></div>
+<div>
+<div class="text-[10px] font-bold text-primary font-label">QUOTED</div>
+<div class="text-[9px] font-label text-on-surface-variant/60">09:12:05:002</div>
+</div>
+</div>
+<!-- ACCEPTED -->
+<div class="relative">
+<div class="absolute -left-6 top-1 w-3.5 h-3.5 rounded-full bg-primary ring-4 ring-primary/10"></div>
+<div>
+<div class="text-[10px] font-bold text-primary font-label">ACCEPTED</div>
+<div class="text-[9px] font-label text-on-surface-variant/60">09:12:07:812</div>
+</div>
+</div>
+<!-- EXECUTED -->
+<div class="relative">
+<div class="absolute -left-6 top-1 w-3.5 h-3.5 rounded-full bg-primary ring-4 ring-primary/10"></div>
+<div>
+<div class="text-[10px] font-bold text-primary font-label">EXECUTED</div>
+<div class="text-[9px] font-label text-on-surface-variant/60">09:12:08:119</div>
+</div>
+</div>
+<!-- SETTLED (Pending) -->
+<div class="relative">
+<div class="absolute -left-6 top-1 w-3.5 h-3.5 rounded-full border-2 border-tertiary bg-surface animate-pulse"></div>
+<div>
+<div class="text-[10px] font-bold text-tertiary font-label">SETTLED</div>
+<div class="text-[9px] font-label text-tertiary/60">PENDING CONFIRMATION</div>
+</div>
+</div>
+</div>
+<!-- Technical Decorative Line -->
+<div class="pt-8 opacity-20">
+<div class="h-[0.5px] w-full bg-primary"></div>
+<div class="flex justify-between mt-2">
+<div class="w-1 h-1 bg-primary rounded-full"></div>
+<div class="w-1 h-1 bg-primary rounded-full"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Bottom Actions -->
+<div class="p-8 border-t border-primary/5 flex items-center justify-between bg-surface-container-low/30">
+<div class="flex gap-4">
+<button class="px-6 py-3 jade-gradient-bg text-on-primary font-bold text-xs uppercase tracking-widest rounded-xl hover:shadow-[0_0_10px_rgba(16,185,129,0.4)] transition-all flex items-center gap-2">
+<span class="material-symbols-outlined text-lg">download</span>
+                        DOWNLOAD PDF
+                    </button>
+<button class="px-6 py-3 border border-primary/20 text-primary font-bold text-xs font-label uppercase tracking-widest rounded-xl hover:bg-primary/5 transition-all flex items-center gap-2">
+<span class="material-symbols-outlined text-lg">terminal</span>
+                        AUDIT LOG
+                    </button>
+</div>
+<button class="text-on-surface-variant hover:text-on-surface text-xs font-bold font-label uppercase tracking-widest transition-colors">
+                    CLOSE
+                </button>
+</div>
+</div>
+</div>
+<!-- Status Bar Component (Shared - Predicted) -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-center items-center gap-12 px-8 bg-surface/80 backdrop-blur-xl border-t border-primary/20 h-10">
+<div class="flex items-center gap-2 text-primary">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span class="font-label text-[11px] uppercase tracking-tighter">System OK</span>
+</div>
+<div class="flex items-center gap-2 text-on-surface/50">
+<span class="material-symbols-outlined text-sm">speed</span>
+<span class="font-label text-[11px] uppercase tracking-tighter">Latency: 12ms</span>
+</div>
+<div class="flex items-center gap-2 text-on-surface/50">
+<span class="material-symbols-outlined text-sm">timer</span>
+<span class="font-label text-[11px] uppercase tracking-tighter">Uptime: 99.9%</span>
+</div>
+<div class="flex items-center gap-2 text-on-surface/50">
+<span class="material-symbols-outlined text-sm animate-spin" style="animation-duration: 3s">sync</span>
+<span class="font-label text-[11px] uppercase tracking-tighter">Syncing...</span>
+</div>
+</nav>
+</body></html>

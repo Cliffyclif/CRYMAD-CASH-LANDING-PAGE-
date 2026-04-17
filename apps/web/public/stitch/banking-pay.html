@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>BIO-BANK | Send Payment</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&amp;family=JetBrains+Mono:wght@400;700&amp;family=Space+Grotesk:wght@400&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-error": "#490006",
+                        "on-surface": "#f0fcf6",
+                        "inverse-surface": "#f0fcf6",
+                        "on-tertiary-fixed": "#4c1e19",
+                        "secondary-dim": "#55e4a9",
+                        "on-tertiary-fixed-variant": "#6f3a34",
+                        "secondary-fixed": "#65f3b6",
+                        "primary-dim": "#58e7ab",
+                        "secondary": "#65f3b6",
+                        "primary": "#69f6b8",
+                        "on-secondary-fixed-variant": "#006343",
+                        "tertiary-fixed-dim": "#efa69e",
+                        "secondary-fixed-dim": "#55e4a9",
+                        "on-primary-fixed": "#00452d",
+                        "tertiary-container": "#ffb4ab",
+                        "inverse-on-surface": "#4c5753",
+                        "on-primary-container": "#002919",
+                        "on-secondary-container": "#e1ffec",
+                        "on-tertiary": "#6f3a34",
+                        "on-surface-variant": "#a2aea8",
+                        "surface-container": "#0f1c18",
+                        "surface-container-low": "#0a1612",
+                        "primary-container": "#06b77f",
+                        "on-error-container": "#ffa8a3",
+                        "error-dim": "#d7383b",
+                        "tertiary-fixed": "#ffb4ab",
+                        "on-primary": "#005a3c",
+                        "surface-bright": "#1f2f2a",
+                        "inverse-primary": "#006d4a",
+                        "on-primary-fixed-variant": "#006544",
+                        "primary-fixed-dim": "#58e7ab",
+                        "surface-container-lowest": "#000000",
+                        "primary-fixed": "#69f6b8",
+                        "on-secondary": "#00583b",
+                        "on-secondary-fixed": "#00432c",
+                        "tertiary": "#ffc7c0",
+                        "surface-container-high": "#15221e",
+                        "surface-tint": "#69f6b8",
+                        "on-background": "#f0fcf6",
+                        "surface-variant": "#1a2924",
+                        "on-tertiary-container": "#64312c",
+                        "secondary-container": "#006c4a",
+                        "surface": "#06100d",
+                        "outline": "#6c7873",
+                        "outline-variant": "#3f4a46",
+                        "error-container": "#9f0519",
+                        "tertiary-dim": "#efa69e",
+                        "background": "#06100d",
+                        "error": "#ff716c",
+                        "surface-container-highest": "#1a2924",
+                        "surface-dim": "#06100d"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "fontFamily": {
+                        "headline": ["Inter"],
+                        "body": ["Inter"],
+                        "label": ["Space Grotesk"],
+                        "mono": ["JetBrains Mono"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-panel {
+            background: rgba(44, 55, 51, 0.4);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(63, 74, 70, 0.15);
+        }
+        .text-gradient {
+            background: linear-gradient(to bottom, #10b981, #34d399);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .bg-gradient-primary {
+            background: linear-gradient(to bottom right, #69f6b8, #06b77f);
+        }
+        .bio-blob {
+            position: fixed;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(16, 185, 129, 0.08) 0%, rgba(16, 185, 129, 0) 70%);
+            filter: blur(60px);
+            z-index: -1;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body selection:bg-primary/30 min-h-screen overflow-hidden">
+<!-- Bioluminescent Background Elements -->
+<div class="bio-blob top-[-100px] left-[-100px]"></div>
+<div class="bio-blob bottom-[-100px] right-[-100px]"></div>
+<!-- Background Dashboard (Dimmed) -->
+<div class="fixed inset-0 opacity-20 blur-sm pointer-events-none z-0">
+<nav class="flex justify-between items-center px-8 h-16 w-full bg-[#06100d]/80 backdrop-blur-xl border-b border-[#3f4a46]/15">
+<div class="text-2xl font-black tracking-tighter bg-clip-text text-transparent bg-gradient-to-b from-[#10b981] to-[#34d399] font-headline">BIO-BANK</div>
+<div class="flex gap-8 items-center">
+<span class="text-[#10b981] border-b-2 border-[#10b981] pb-1 font-mono text-sm">Banking</span>
+<span class="text-[#d9e5df] opacity-70 font-mono text-sm">Investments</span>
+<span class="text-[#d9e5df] opacity-70 font-mono text-sm">Security</span>
+<span class="text-[#d9e5df] opacity-70 font-mono text-sm">Analytics</span>
+</div>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-[#d9e5df]/60">notifications</span>
+<span class="material-symbols-outlined text-[#d9e5df]/60">settings</span>
+<div class="w-8 h-8 rounded-full bg-surface-container-highest overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Portrait of a professional technician in a high-tech environment with soft cyan rim lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAlbGBmow2VOd_oRuE7BYxGIQA67Bf7yUQmg70zvtagY3kdb4Bdp30h1Mz5uXJtdCXVElR60gW-ClK-42R18tnLPoyCSGnQRzBhlxqh3FeuH_cPHruOIfxEebuhdzykkwFm_9MlYSYg0_0UGqugPVCPk9_aKZuPke6wL9WaN5N96Mqs0F3C3eWMiJ6rDJ_IkCbO1yiZjoZIDTQPJfl6PS2ls-EOwKwL7h-SKyl3yItmVJnieLGVTBLyZESuRIaZqXunmEOYzn3zUbI"/>
+</div>
+</div>
+</nav>
+<div class="p-12 grid grid-cols-3 gap-8">
+<div class="h-64 rounded-xl bg-surface-container-low border border-outline-variant/15"></div>
+<div class="h-64 rounded-xl bg-surface-container-low border border-outline-variant/15"></div>
+<div class="h-64 rounded-xl bg-surface-container-low border border-outline-variant/15"></div>
+<div class="col-span-2 h-96 rounded-xl bg-surface-container-low border border-outline-variant/15"></div>
+<div class="h-96 rounded-xl bg-surface-container-low border border-outline-variant/15"></div>
+</div>
+</div>
+<!-- Modal Overlay -->
+<div class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-background/60 backdrop-blur-md">
+<!-- Payment Modal -->
+<div class="glass-panel w-full max-w-[600px] rounded-xl overflow-hidden shadow-[0_20px_60px_rgba(4,13,10,0.5),0_0_40px_rgba(16,185,129,0.15)] flex flex-col">
+<!-- Header -->
+<div class="px-8 pt-8 pb-6 flex justify-between items-start">
+<div>
+<h1 class="text-3xl font-headline font-extrabold tracking-tight text-gradient">Send Payment</h1>
+<p class="font-mono text-[10px] tracking-widest text-on-surface-variant mt-1">ACH / WIRE / SEPA</p>
+</div>
+<button class="p-2 hover:bg-surface-bright rounded-lg transition-colors">
+<span class="material-symbols-outlined text-on-surface-variant">close</span>
+</button>
+</div>
+<div class="px-8 pb-8 space-y-6 overflow-y-auto max-h-[768px]">
+<!-- Payment Type Segmented Control -->
+<div class="flex p-1 bg-surface-container-lowest/40 rounded-lg border border-outline-variant/10">
+<button class="flex-1 flex items-center justify-center gap-2 py-2 px-4 bg-primary-container text-on-primary-container rounded font-mono text-xs font-bold transition-all">
+<span class="w-1.5 h-1.5 rounded-full bg-primary animate-pulse"></span>
+                        ACH
+                    </button>
+<button class="flex-1 py-2 px-4 text-on-surface-variant font-mono text-xs hover:text-on-surface transition-colors">WIRE</button>
+<button class="flex-1 py-2 px-4 text-on-surface-variant font-mono text-xs hover:text-on-surface transition-colors">SEPA</button>
+</div>
+<!-- Amount Hero Panel -->
+<div class="bg-surface-container-highest/30 rounded-xl p-8 border border-outline-variant/15 flex flex-col items-center justify-center relative overflow-hidden">
+<div class="absolute inset-0 bg-primary/5 blur-3xl rounded-full"></div>
+<p class="font-mono text-[10px] tracking-[0.2em] text-on-surface-variant mb-2 relative z-10">AMOUNT</p>
+<div class="text-5xl font-mono font-bold text-gradient tracking-tighter relative z-10">$5,000.00</div>
+</div>
+<!-- Recipient Form -->
+<div class="space-y-4">
+<div class="grid grid-cols-2 gap-4">
+<div class="space-y-1.5">
+<label class="font-mono text-[9px] text-on-surface-variant uppercase ml-1">Recipient Name</label>
+<div class="bg-surface-container-highest/40 rounded-full px-4 py-2.5 border border-outline-variant/15 text-sm font-medium">John Smith</div>
+</div>
+<div class="space-y-1.5">
+<label class="font-mono text-[9px] text-on-surface-variant uppercase ml-1">Bank Name</label>
+<div class="bg-surface-container-highest/40 rounded-full px-4 py-2.5 border border-outline-variant/15 text-sm font-medium">Bank of America</div>
+</div>
+<div class="space-y-1.5">
+<label class="font-mono text-[9px] text-on-surface-variant uppercase ml-1">Routing #</label>
+<div class="bg-surface-container-highest/40 rounded-full px-4 py-2.5 border border-outline-variant/15 text-sm font-mono tracking-wider">026009593</div>
+</div>
+<div class="space-y-1.5">
+<label class="font-mono text-[9px] text-on-surface-variant uppercase ml-1">Account #</label>
+<div class="bg-surface-container-highest/40 rounded-full px-4 py-2.5 border border-outline-variant/15 text-sm font-mono tracking-wider">••••4827</div>
+</div>
+</div>
+</div>
+<!-- Memo Section -->
+<div class="space-y-1.5">
+<label class="font-mono text-[9px] text-on-surface-variant uppercase ml-1">Memo (Optional)</label>
+<div class="bg-surface-container-highest/40 rounded-xl px-4 py-3 border border-outline-variant/15 text-sm min-h-[60px]">Invoice #2842</div>
+</div>
+<!-- Fee Breakdown -->
+<div class="bg-surface-container-low/60 rounded-xl p-5 border border-outline-variant/20 space-y-3">
+<div class="flex justify-between text-xs">
+<span class="text-on-surface-variant font-mono">Amount</span>
+<span class="text-on-surface font-mono">$5,000.00</span>
+</div>
+<div class="flex justify-between text-xs">
+<span class="text-on-surface-variant font-mono">ACH Fee</span>
+<span class="text-error font-mono">-$0.50</span>
+</div>
+<div class="flex justify-between text-xs">
+<span class="text-on-surface-variant font-mono">Convenience Fee</span>
+<span class="text-error font-mono">-$1.25</span>
+</div>
+<div class="h-[1px] bg-outline-variant/20 my-1"></div>
+<div class="flex justify-between items-end">
+<span class="text-[10px] font-mono text-on-surface-variant mb-1 uppercase tracking-wider">Total Debit</span>
+<span class="text-xl font-mono font-bold text-gradient tracking-tight">$5,001.75</span>
+</div>
+</div>
+<!-- Estimated Arrival Chip -->
+<div class="flex justify-center">
+<div class="flex items-center gap-2 px-3 py-1.5 bg-surface-bright rounded-full border border-primary/20">
+<span class="material-symbols-outlined text-[14px] text-primary">schedule</span>
+<span class="font-mono text-[9px] text-primary tracking-widest">ARRIVES: 1-2 BUSINESS DAYS</span>
+</div>
+</div>
+</div>
+<!-- Bottom Actions -->
+<div class="p-6 bg-surface-container-lowest/20 flex justify-between items-center border-t border-outline-variant/10">
+<button class="px-6 py-2.5 text-xs font-mono font-bold text-primary border border-primary/20 hover:bg-primary/10 rounded transition-all active:scale-95">
+                    CANCEL
+                </button>
+<button class="px-8 py-2.5 text-xs font-mono font-bold text-on-primary bg-gradient-primary rounded shadow-[0_0_20px_rgba(16,185,129,0.2)] hover:shadow-[0_0_30px_rgba(16,185,129,0.3)] transition-all active:scale-95 flex items-center gap-2">
+                    SEND PAYMENT <span class="material-symbols-outlined text-[16px]">trending_flat</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Mandatory TopNavBar (Shared Component Identity) -->
+<!-- Note: Included in the "dimmed background" section above for structural clarity, 
+         but technically should be a fixed layer if it were a functional screen -->
+<!-- Mandatory Bottom Status Bar (Network/Uptime) -->
+<footer class="fixed bottom-0 w-full z-50 h-8 bg-[#040d0a]/90 backdrop-blur-md border-t border-[#3f4a46]/20 flex justify-around items-center px-12">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-emerald-500 text-xs">sensors</span>
+<span class="font-mono text-[10px] uppercase tracking-widest text-[#d9e5df]/40">Network: 99.9%</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-emerald-500 text-xs">speed</span>
+<span class="font-mono text-[10px] uppercase tracking-widest text-[#d9e5df]/40">Latency: 12ms</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-emerald-500 text-xs">timer</span>
+<span class="font-mono text-[10px] uppercase tracking-widest text-[#d9e5df]/40">Uptime: 342d</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-emerald-500 text-xs" style="font-variation-settings: 'FILL' 1;">shield</span>
+<span class="font-mono text-[10px] uppercase tracking-widest text-emerald-400">Encryption: AES-256</span>
+</div>
+</footer>
+</body></html>

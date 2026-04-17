@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>The Bioluminescent Archive - Orders</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&amp;family=JetBrains+Mono:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-container-low": "#131e1a",
+                    "surface-variant": "#2c3733",
+                    "on-primary-container": "#00422b",
+                    "on-secondary-fixed": "#002114",
+                    "on-error": "#690005",
+                    "primary-fixed-dim": "#4edea3",
+                    "on-primary-fixed-variant": "#005236",
+                    "surface": "#0b1512",
+                    "error-container": "#93000a",
+                    "surface-bright": "#313b38",
+                    "outline-variant": "#3c4a42",
+                    "on-primary": "#003824",
+                    "on-surface-variant": "#bbcabf",
+                    "tertiary-fixed-dim": "#ffb95f",
+                    "secondary": "#45dfa4",
+                    "primary": "#4edea3",
+                    "on-background": "#d9e5df",
+                    "secondary-fixed": "#68fcbf",
+                    "on-tertiary-container": "#523200",
+                    "on-error-container": "#ffdad6",
+                    "tertiary": "#ffb95f",
+                    "on-tertiary": "#472a00",
+                    "secondary-container": "#00bd85",
+                    "on-tertiary-fixed-variant": "#653e00",
+                    "surface-tint": "#4edea3",
+                    "surface-container-high": "#222c29",
+                    "secondary-fixed-dim": "#45dfa4",
+                    "tertiary-fixed": "#ffddb8",
+                    "tertiary-container": "#e29100",
+                    "surface-container-lowest": "#06100d",
+                    "inverse-surface": "#d9e5df",
+                    "inverse-on-surface": "#28332f",
+                    "outline": "#86948a",
+                    "on-tertiary-fixed": "#2a1700",
+                    "surface-dim": "#0b1512",
+                    "on-primary-fixed": "#002113",
+                    "on-secondary-container": "#00452e",
+                    "on-surface": "#d9e5df",
+                    "primary-fixed": "#6ffbbe",
+                    "on-secondary": "#003825",
+                    "surface-container": "#17221e",
+                    "inverse-primary": "#006c49",
+                    "error": "#ffb4ab",
+                    "background": "#0b1512",
+                    "surface-container-highest": "#2c3733",
+                    "primary-container": "#10b981",
+                    "on-secondary-fixed-variant": "#005137"
+            },
+            "borderRadius": {
+                    "DEFAULT": "1rem",
+                    "lg": "2rem",
+                    "xl": "3rem",
+                    "full": "9999px"
+            },
+            "fontFamily": {
+                    "headline": ["Inter"],
+                    "body": ["Inter"],
+                    "label": ["Inter"],
+                    "mono": ["JetBrains Mono"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            background-color: #040d0a;
+            color: #d9e5df;
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+        }
+        .glass {
+            background: rgba(44, 55, 51, 0.4);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(16, 185, 129, 0.08);
+        }
+        .mono {
+            font-family: 'JetBrains Mono', monospace;
+        }
+        .bg-lines {
+            background-image: repeating-linear-gradient(45deg, rgba(16, 185, 129, 0.05) 0px, rgba(16, 185, 129, 0.05) 1px, transparent 1px, transparent 20px);
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="min-h-screen">
+<!-- Living Background blobs -->
+<div class="fixed inset-0 overflow-hidden pointer-events-none z-0">
+<div class="absolute top-[-10%] left-[-10%] w-[300px] h-[300px] bg-primary/20 blur-[100px] rounded-full"></div>
+<div class="absolute bottom-[20%] right-[-5%] w-[250px] h-[250px] bg-secondary/15 blur-[80px] rounded-full"></div>
+<div class="absolute top-[40%] right-[10%] w-[200px] h-[200px] bg-emerald-500/10 blur-[90px] rounded-full"></div>
+<div class="absolute bottom-[-10%] left-[20%] w-[280px] h-[280px] bg-primary-container/10 blur-[110px] rounded-full"></div>
+<div class="absolute inset-0 bg-lines opacity-30"></div>
+</div>
+<!-- Top App Bar -->
+<header class="fixed top-0 w-full z-50 flex items-center justify-between px-6 h-16 bg-emerald-950/40 backdrop-blur-xl border-b border-emerald-500/10 shadow-[0_20px_40px_rgba(16,185,129,0.08)]">
+<div class="flex items-center gap-4">
+<button class="active:scale-95 duration-300 ease-out text-emerald-500 hover:bg-emerald-500/10 p-2 rounded-full">
+<span class="material-symbols-outlined">arrow_back</span>
+</button>
+<h1 class="text-xl font-extrabold text-transparent bg-clip-text bg-gradient-to-b from-emerald-400 to-emerald-600 font-['Inter']">Orders</h1>
+</div>
+<button class="active:scale-95 duration-300 ease-out text-emerald-500 hover:bg-emerald-500/10 p-2 rounded-full">
+<span class="material-symbols-outlined">add</span>
+</button>
+</header>
+<!-- Content Canvas -->
+<main class="relative z-10 pt-20 pb-32 px-6 max-w-[390px] mx-auto">
+<!-- Subtitle -->
+<div class="mb-6">
+<span class="mono text-[10px] tracking-[0.2em] text-on-background/60 uppercase">ECOMMERCE CHECKOUT HISTORY</span>
+</div>
+<!-- Filter Tabs -->
+<div class="flex gap-2 mb-6">
+<button class="glass px-4 py-2 rounded-full text-[12px] font-semibold text-tertiary border-tertiary/20">PENDING</button>
+<button class="bg-primary/20 border border-primary/40 px-4 py-2 rounded-full text-[12px] font-bold text-primary">COMPLETED</button>
+<button class="glass px-4 py-2 rounded-full text-[12px] font-semibold text-on-background/40">CANCELLED</button>
+</div>
+<!-- Search & Filter Area -->
+<div class="flex gap-3 mb-8">
+<div class="flex-1 glass h-12 rounded-lg flex items-center px-4 gap-3">
+<span class="material-symbols-outlined text-primary/60 text-[20px]">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-sm placeholder:text-on-background/30 w-full" placeholder="Search orders..." type="text"/>
+</div>
+<button class="glass aspect-square h-12 rounded-lg flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">filter_list</span>
+</button>
+</div>
+<!-- Order List -->
+<div class="space-y-4">
+<!-- Order 1 -->
+<div class="glass p-4 rounded-lg flex items-center gap-4 group active:scale-[0.98] transition-transform">
+<div class="w-12 h-12 rounded-full bg-surface-container-highest flex items-center justify-center overflow-hidden border border-primary/10">
+<img alt="Amazon" class="w-8 h-8 object-contain" data-alt="amazon company logo icon with clean minimalist aesthetic and subtle shadow on white background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBDzPS9ewv269mib7p_ipPRNGktzRJYoxkx-ltqn6g2IVa1bwgrAlpNsjdga33BLspWR8sR2wR-CRmd07sBaAu2_YPuAlN98QMMkriqGMBEZ7_mEeS7IMbJuBrKMx4cPZLQ3NPdwU-gVsC0V1HhpHyUnbA3s8FaTcazO_Eo0bPdU3cDt4VJvSK8tsbYNS_e2PDkW9WT7XcbppA8CfBZK94ahFe09pJCtiHWVqzaz9ihiva3AmZzTRVn9ThHrGyX9lns0TAgWVyM2eJa"/>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-start">
+<div>
+<h3 class="font-bold text-on-background text-sm">Amazon</h3>
+<span class="mono text-[10px] text-on-background/40">ORD-9821</span>
+</div>
+<span class="mono text-primary font-bold text-sm">$45.20</span>
+</div>
+<div class="flex justify-between items-center mt-2">
+<span class="text-[10px] text-on-surface-variant">Oct 24, 2023</span>
+<div class="flex items-center gap-1 bg-primary/10 px-2 py-0.5 rounded-full">
+<div class="w-1.5 h-1.5 bg-primary rounded-full"></div>
+<span class="text-[9px] font-bold text-primary tracking-tighter">COMPLETED</span>
+</div>
+</div>
+</div>
+<span class="material-symbols-outlined text-on-background/20 group-hover:text-primary transition-colors">chevron_right</span>
+</div>
+<!-- Order 2 -->
+<div class="glass p-4 rounded-lg flex items-center gap-4 group active:scale-[0.98] transition-transform">
+<div class="w-12 h-12 rounded-full bg-surface-container-highest flex items-center justify-center overflow-hidden border border-primary/10">
+<img alt="Spotify" class="w-8 h-8 object-contain" data-alt="spotify logo green circle with three curved sound waves in minimalist high-end digital style" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBfXWf0Sb5Gtquxy1asltT7bJCkMcH0ZS--huThG6E8GrjqPlr8a-pA0h0_YW4XUpu8lUzIkF2V6RHI2hN8YzVpxXfJzov133aM-09o0dzPJOg28PhcyUCyrBsw0AnBqfjs2x2QeQy4RoLm59dGBh5yR51faHPIiATKZ5YRCP_u252ZH9AO3T0Xx08JlTCbWT9ILmaBlGi-B1xkoBClMwscrrvAggXl1SUJUCPzjU6Rllxhcg4FAoyd-rd76Cy62N6qgAdI5zCb9pHG"/>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-start">
+<div>
+<h3 class="font-bold text-on-background text-sm">Spotify</h3>
+<span class="mono text-[10px] text-on-background/40">ORD-7244</span>
+</div>
+<span class="mono text-primary font-bold text-sm">$10.99</span>
+</div>
+<div class="flex justify-between items-center mt-2">
+<span class="text-[10px] text-on-surface-variant">Oct 22, 2023</span>
+<div class="flex items-center gap-1 bg-primary/10 px-2 py-0.5 rounded-full">
+<div class="w-1.5 h-1.5 bg-primary rounded-full animate-pulse"></div>
+<span class="text-[9px] font-bold text-primary tracking-tighter">PROCESSING</span>
+</div>
+</div>
+</div>
+<span class="material-symbols-outlined text-on-background/20 group-hover:text-primary transition-colors">chevron_right</span>
+</div>
+<!-- Order 3 -->
+<div class="glass p-4 rounded-lg flex items-center gap-4 group active:scale-[0.98] transition-transform">
+<div class="w-12 h-12 rounded-full bg-surface-container-highest flex items-center justify-center overflow-hidden border border-primary/10">
+<img alt="Shopify" class="w-8 h-8 object-contain" data-alt="shopify bag logo with leaf accent in soft green and white tones flat design" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA8tsSRBh80VEX0ZR38rDWR6iULLqvIprGXm6IEi9a35-FpzJhR8Kimy5kch4ncSd1dSKANixvGY1tsdu0-Fo0nHhYGw78WzZp7CoDDw4fSxOzHf_BNzUzjfM3MTCG9lFdziLQU9WjiKSeg-hQaUbsZaOw98Kn0W9RUJT714rx15uSXsXriJ2KcRuxRLysMhsp3d4EKTBSrYnxiq-Y_1vT2HT9AaxGXMQSbZy6xfAYfkp-iD5YYlI5hnGBTB4N_ntcMHFz1DThmwFTQ"/>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-start">
+<div>
+<h3 class="font-bold text-on-background text-sm">Shopify</h3>
+<span class="mono text-[10px] text-on-background/40">ORD-1029</span>
+</div>
+<span class="mono text-primary font-bold text-sm">$284.00</span>
+</div>
+<div class="flex justify-between items-center mt-2">
+<span class="text-[10px] text-on-surface-variant">Oct 20, 2023</span>
+<div class="flex items-center gap-1 bg-tertiary/10 px-2 py-0.5 rounded-full">
+<div class="w-1.5 h-1.5 bg-tertiary rounded-full"></div>
+<span class="text-[9px] font-bold text-tertiary tracking-tighter">REFUNDED</span>
+</div>
+</div>
+</div>
+<span class="material-symbols-outlined text-on-background/20 group-hover:text-primary transition-colors">chevron_right</span>
+</div>
+<!-- Order 4 -->
+<div class="glass p-4 rounded-lg flex items-center gap-4 group active:scale-[0.98] transition-transform">
+<div class="w-12 h-12 rounded-full bg-surface-container-highest flex items-center justify-center overflow-hidden border border-primary/10">
+<img alt="Apple" class="w-8 h-8 object-contain opacity-60" data-alt="classic apple logo silhouette in light grey on dark background minimalist tech style" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDpNH4qFfjj08xFlGwAUS7McHAuZbigmxkFfXdtnvKuSH52w5k7koIDM3Imoy8OQHnQ2Uz97YPUrtCrjJi5ig4W-aK8hngU_IOmIodeqUN6mZT4Wm8-pH_mvESy3GtGcd3qcgsj6M8UMIfSHpgNU0CGboZfTFB21mApfKIllxRZY0RnhhN75ev2ZmyqD0zRiulCJAFbad9PB_KB_HKez6QFds9KU5cebjO7fLe1VscCVDCs8bjL589ru0CBeIfvoiW0hyho9YIbs8b5"/>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-start">
+<div>
+<h3 class="font-bold text-on-background text-sm">Apple Store</h3>
+<span class="mono text-[10px] text-on-background/40">ORD-5501</span>
+</div>
+<span class="mono text-primary font-bold text-sm">$1,299.00</span>
+</div>
+<div class="flex justify-between items-center mt-2">
+<span class="text-[10px] text-on-surface-variant">Oct 18, 2023</span>
+<div class="flex items-center gap-1 bg-primary/10 px-2 py-0.5 rounded-full">
+<div class="w-1.5 h-1.5 bg-primary rounded-full"></div>
+<span class="text-[9px] font-bold text-primary tracking-tighter">COMPLETED</span>
+</div>
+</div>
+</div>
+<span class="material-symbols-outlined text-on-background/20 group-hover:text-primary transition-colors">chevron_right</span>
+</div>
+<!-- Order 5 -->
+<div class="glass p-4 rounded-lg flex items-center gap-4 group active:scale-[0.98] transition-transform">
+<div class="w-12 h-12 rounded-full bg-surface-container-highest flex items-center justify-center overflow-hidden border border-primary/10">
+<img alt="Nike" class="w-8 h-8 object-contain" data-alt="nike swoosh logo in dark charcoal gray on neutral light background sporty minimalist" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBfeni0r94mBedg2LY50dmcxvyCEdIg4Iy7QR3rK4trdbnyXfPOy0RoF7svj4PA2tQZffwCzusJpS5ysBF-taQi8j9JZU_95pxbE6ceUrAZtLhHUqhvOn0kB8PPArzVpxUcNxOUobCy6ZhdxupHJu_SwaW5TcwE5b8bSz-_DTP33eaZi6_ZC1svEaQ-cr6NSz6lxDPEDKS9nav1EJAJFpehoW5cQdGeLIJYGP46oIyn9v0ky5i_9wOwdCZ0mgUMYOEK3D7sZJlA8Pna"/>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-start">
+<div>
+<h3 class="font-bold text-on-background text-sm">Nike</h3>
+<span class="mono text-[10px] text-on-background/40">ORD-3329</span>
+</div>
+<span class="mono text-primary font-bold text-sm">$120.00</span>
+</div>
+<div class="flex justify-between items-center mt-2">
+<span class="text-[10px] text-on-surface-variant">Oct 15, 2023</span>
+<div class="flex items-center gap-1 bg-primary/10 px-2 py-0.5 rounded-full">
+<div class="w-1.5 h-1.5 bg-primary rounded-full"></div>
+<span class="text-[9px] font-bold text-primary tracking-tighter">COMPLETED</span>
+</div>
+</div>
+</div>
+<span class="material-symbols-outlined text-on-background/20 group-hover:text-primary transition-colors">chevron_right</span>
+</div>
+</div>
+</main>
+<!-- FAB -->
+<button class="fixed bottom-24 right-6 z-50 flex items-center gap-2 bg-primary px-6 h-14 rounded-full shadow-[0_0_30px_rgba(16,185,129,0.3)] hover:shadow-[0_0_40px_rgba(16,185,129,0.5)] transition-all active:scale-95 group">
+<span class="font-bold text-on-primary-container tracking-tight">NEW ORDER</span>
+<span class="material-symbols-outlined text-on-primary-container font-bold">add</span>
+</button>
+<!-- Bottom Navigation Bar -->
+<nav class="fixed bottom-0 w-full z-50 flex justify-around items-center px-4 h-20 pb-safe bg-emerald-950/40 backdrop-blur-xl rounded-t-[24px] border-t border-emerald-500/10 shadow-[0_-20px_40px_rgba(16,185,129,0.08)]">
+<div class="flex flex-col items-center justify-center text-emerald-100/40 hover:text-emerald-300 transition-all active:scale-90 duration-300">
+<span class="material-symbols-outlined">home</span>
+<span class="font-['Inter'] text-[10px] tracking-wider uppercase font-semibold mt-1">Home</span>
+</div>
+<div class="flex flex-col items-center justify-center text-emerald-400 bg-emerald-500/10 rounded-full px-4 py-1 active:scale-90 duration-300 transition-all">
+<span class="material-symbols-outlined">analytics</span>
+<span class="font-['Inter'] text-[10px] tracking-wider uppercase font-semibold mt-1">Activity</span>
+</div>
+<div class="flex flex-col items-center justify-center text-emerald-100/40 hover:text-emerald-300 transition-all active:scale-90 duration-300">
+<span class="material-symbols-outlined">account_balance_wallet</span>
+<span class="font-['Inter'] text-[10px] tracking-wider uppercase font-semibold mt-1">Wallet</span>
+</div>
+<div class="flex flex-col items-center justify-center text-emerald-100/40 hover:text-emerald-300 transition-all active:scale-90 duration-300">
+<span class="material-symbols-outlined">person</span>
+<span class="font-['Inter'] text-[10px] tracking-wider uppercase font-semibold mt-1">Profile</span>
+</div>
+</nav>
+</body></html>

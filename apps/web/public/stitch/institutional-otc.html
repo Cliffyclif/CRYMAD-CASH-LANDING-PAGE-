@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&amp;family=JetBrains+Mono:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "surface-variant": "#2c3733",
+            "surface-container-low": "#131e1a",
+            "on-primary-container": "#00422b",
+            "on-secondary-fixed": "#002114",
+            "on-error": "#690005",
+            "primary-fixed-dim": "#4edea3",
+            "on-primary-fixed-variant": "#005236",
+            "on-primary": "#003824",
+            "outline-variant": "#3c4a42",
+            "surface-bright": "#313b38",
+            "surface": "#0b1512",
+            "error-container": "#93000a",
+            "on-background": "#d9e5df",
+            "tertiary-fixed-dim": "#ffb95f",
+            "primary": "#4edea3",
+            "secondary": "#45dfa4",
+            "on-surface-variant": "#bbcabf",
+            "secondary-fixed": "#68fcbf",
+            "on-error-container": "#ffdad6",
+            "on-tertiary-container": "#523200",
+            "on-tertiary": "#472a00",
+            "tertiary": "#ffb95f",
+            "on-tertiary-fixed-variant": "#653e00",
+            "secondary-container": "#00bd85",
+            "surface-tint": "#4edea3",
+            "surface-container-high": "#222c29",
+            "surface-container-lowest": "#06100d",
+            "inverse-surface": "#d9e5df",
+            "tertiary-container": "#e29100",
+            "tertiary-fixed": "#ffddb8",
+            "secondary-fixed-dim": "#45dfa4",
+            "inverse-on-surface": "#28332f",
+            "outline": "#86948a",
+            "on-tertiary-fixed": "#2a1700",
+            "surface-dim": "#0b1512",
+            "on-primary-fixed": "#002113",
+            "on-secondary-container": "#00452e",
+            "primary-fixed": "#6ffbbe",
+            "on-surface": "#d9e5df",
+            "on-secondary": "#003825",
+            "inverse-primary": "#006c49",
+            "surface-container": "#17221e",
+            "primary-container": "#10b981",
+            "surface-container-highest": "#2c3733",
+            "error": "#ffb4ab",
+            "background": "#0b1512",
+            "on-secondary-fixed-variant": "#005137"
+          },
+          "borderRadius": {
+            "DEFAULT": "1rem",
+            "lg": "2rem",
+            "xl": "3rem",
+            "full": "9999px"
+          },
+          "fontFamily": {
+            "headline": ["Inter"],
+            "body": ["Inter"],
+            "label": ["Inter"],
+            "mono": ["JetBrains Mono"]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    body {
+      background-color: #040d0a;
+      color: #d9e5df;
+      font-family: 'Inter', sans-serif;
+    }
+    .glass-card {
+      background: rgba(44, 55, 51, 0.4);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(16, 185, 129, 0.08);
+    }
+    .bioluminescent-blob {
+      position: fixed;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(16, 185, 129, 0.07) 0%, rgba(16, 185, 129, 0) 70%);
+      filter: blur(60px);
+      z-index: -1;
+    }
+    .diagonal-pattern {
+      background-image: repeating-linear-gradient(45deg, rgba(16, 185, 129, 0.03) 0px, rgba(16, 185, 129, 0.03) 1px, transparent 1px, transparent 12px);
+    }
+    .audit-pulse {
+      animation: pulse-opacity 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    }
+    @keyframes pulse-opacity {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.4; }
+    }
+    .text-gradient {
+      background: linear-gradient(to right, #10b981, #34d399);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+  </style>
+</head>
+<body class="diagonal-pattern min-h-screen">
+<div class="bioluminescent-blob top-[-100px] left-[-100px]"></div>
+<div class="bioluminescent-blob bottom-[-200px] right-[-100px]"></div>
+<header class="fixed top-0 w-full h-16 z-50 bg-[#2c3733]/40 backdrop-blur-xl shadow-[0_40px_40px_-10px_rgba(16,185,129,0.06)]">
+<div class="flex justify-between items-center px-8 w-full max-w-[1280px] mx-auto h-full">
+<div class="flex items-center gap-4">
+<span class="text-xl font-black bg-gradient-to-r from-emerald-500 to-teal-400 bg-clip-text text-transparent">LIVING LEDGER</span>
+<div class="flex items-center gap-2 px-3 py-1 rounded-full bg-tertiary/10 border border-tertiary/20">
+<div class="w-2 h-2 rounded-full bg-tertiary audit-pulse"></div>
+<span class="text-[10px] font-bold tracking-widest text-tertiary uppercase">INSTITUTIONAL PORTAL</span>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<div class="hidden md:flex gap-8 items-center text-sm font-semibold text-emerald-900/60">
+<a class="text-emerald-400 border-b-2 border-emerald-500 py-5" href="#">Overview</a>
+<a class="hover:text-emerald-300 transition-colors py-5" href="#">Ledger</a>
+<a class="hover:text-emerald-300 transition-colors py-5" href="#">Audit</a>
+<a class="hover:text-emerald-300 transition-colors py-5" href="#">Risk</a>
+</div>
+<div class="flex items-center gap-3">
+<button class="p-2 hover:bg-emerald-500/10 transition-colors rounded-full text-emerald-500">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="p-2 hover:bg-emerald-500/10 transition-colors rounded-full text-emerald-500">
+<span class="material-symbols-outlined">account_balance_wallet</span>
+</button>
+<div class="w-8 h-8 rounded-full overflow-hidden border border-primary/20">
+<img class="w-full h-full object-cover" data-alt="professional portrait of a high-level financial institutional user in a modern office setting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAaRTsoVXN76nJ-gipHWUgl2IJi5rBsZbgUIGJawECFymU78gUK1mM32CUwo3IdCj__Q8fWZIApIAFdWwRSMrd48QJa5Wn_WP6WAas5mnsTKctlWJPk1qy32QIuQtTA7u92UshFE8mn-Bh7Q_ASfo9UGEGQw7ffvdSjjSD1IFsa2ip7XnY35UGmsNdiLmSzWxhhBZGQJcemvABn9GV8NcxS_cDvupLfQme0jS1lTe95OfyqLjgEVKkAQ3G8WlTRAK60KcwJDusN7bA"/>
+</div>
+</div>
+</div>
+</div>
+</header>
+<main class="max-w-[1280px] mx-auto pt-[96px] pb-[120px] px-8 space-y-8">
+<section class="flex overflow-x-auto pb-4 gap-4 no-scrollbar">
+<div class="glass-card min-w-[180px] p-4 rounded-lg flex flex-col gap-2">
+<div class="flex justify-between items-center">
+<span class="text-[10px] font-bold tracking-widest text-on-surface-variant uppercase">BTC/USD</span>
+<span class="material-symbols-outlined text-primary text-sm">trending_up</span>
+</div>
+<span class="font-mono text-lg font-bold text-on-surface">67,248.10</span>
+<div class="h-8 w-full bg-primary/10 rounded overflow-hidden">
+<div class="w-full h-full border-b border-primary/30" style="clip-path: polygon(0 80%, 10% 75%, 20% 85%, 30% 60%, 40% 70%, 50% 40%, 60% 50%, 70% 20%, 80% 30%, 90% 10%, 100% 5%)"></div>
+</div>
+</div>
+<div class="glass-card min-w-[180px] p-4 rounded-lg flex flex-col gap-2">
+<div class="flex justify-between items-center">
+<span class="text-[10px] font-bold tracking-widest text-on-surface-variant uppercase">ETH/USD</span>
+<span class="material-symbols-outlined text-primary text-sm">trending_up</span>
+</div>
+<span class="font-mono text-lg font-bold text-on-surface">3,492.55</span>
+<div class="h-8 w-full bg-primary/10 rounded overflow-hidden">
+<div class="w-full h-full border-b border-primary/30" style="clip-path: polygon(0 90%, 10% 80%, 30% 85%, 50% 60%, 70% 65%, 90% 30%, 100% 20%)"></div>
+</div>
+</div>
+<div class="glass-card min-w-[180px] p-4 rounded-lg flex flex-col gap-2">
+<div class="flex justify-between items-center">
+<span class="text-[10px] font-bold tracking-widest text-on-surface-variant uppercase">SOL/USD</span>
+<span class="material-symbols-outlined text-error text-sm">trending_down</span>
+</div>
+<span class="font-mono text-lg font-bold text-on-surface">142.88</span>
+<div class="h-8 w-full bg-error/10 rounded overflow-hidden">
+<div class="w-full h-full border-b border-error/30" style="clip-path: polygon(0 20%, 20% 30%, 40% 25%, 60% 50%, 80% 45%, 100% 80%)"></div>
+</div>
+</div>
+<div class="glass-card min-w-[180px] p-4 rounded-lg flex flex-col gap-2">
+<div class="flex justify-between items-center">
+<span class="text-[10px] font-bold tracking-widest text-on-surface-variant uppercase">USDC/USD</span>
+<span class="material-symbols-outlined text-on-surface-variant text-sm">check_circle</span>
+</div>
+<span class="font-mono text-lg font-bold text-on-surface">1.0001</span>
+<div class="h-2 w-full bg-on-surface-variant/10 rounded mt-auto"></div>
+</div>
+<div class="glass-card min-w-[180px] p-4 rounded-lg flex flex-col gap-2">
+<div class="flex justify-between items-center">
+<span class="text-[10px] font-bold tracking-widest text-on-surface-variant uppercase">USDT/USD</span>
+<span class="material-symbols-outlined text-on-surface-variant text-sm">check_circle</span>
+</div>
+<span class="font-mono text-lg font-bold text-on-surface">0.9998</span>
+<div class="h-2 w-full bg-on-surface-variant/10 rounded mt-auto"></div>
+</div>
+</section>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+<div class="lg:col-span-8 space-y-8">
+<section class="glass-card p-8 rounded-xl relative overflow-hidden">
+<div class="absolute top-0 right-0 w-64 h-64 bg-primary/5 blur-[80px] -mr-32 -mt-32"></div>
+<div class="flex justify-between items-start mb-10">
+<div>
+<h1 class="text-3xl font-bold text-gradient tracking-tight">Institutional OTC Desk</h1>
+<p class="text-on-surface-variant text-sm mt-1">Direct liquidity access for large block orders</p>
+</div>
+<div class="text-right">
+<span class="text-[10px] font-bold tracking-widest text-on-surface-variant uppercase block">P&amp;L TODAY</span>
+<span class="text-2xl font-mono font-bold text-primary">+$482,150</span>
+</div>
+</div>
+<div class="flex gap-2 mb-8 p-1 bg-surface-container-lowest rounded-full w-fit">
+<button class="px-6 py-2 rounded-full text-xs font-bold bg-primary text-on-primary">BTC/USD</button>
+<button class="px-6 py-2 rounded-full text-xs font-bold text-on-surface-variant hover:text-on-surface transition-colors">ETH/USD</button>
+<button class="px-6 py-2 rounded-full text-xs font-bold text-on-surface-variant hover:text-on-surface transition-colors">USDT/USD</button>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<div class="space-y-6">
+<div class="flex gap-1 p-1 bg-surface-container-lowest rounded-lg border border-outline-variant/20">
+<button class="flex-1 py-3 rounded text-sm font-bold bg-primary text-on-primary">BUY</button>
+<button class="flex-1 py-3 rounded text-sm font-bold text-on-surface-variant hover:bg-surface-container-high transition-all">SELL</button>
+</div>
+<div class="space-y-2">
+<label class="text-[10px] font-bold tracking-widest text-on-surface-variant uppercase">NOTIONAL AMOUNT (USD)</label>
+<div class="relative group">
+<input class="w-full bg-surface-container-highest border-none rounded-lg py-4 px-6 text-2xl font-mono text-on-surface focus:ring-0" type="text" value="$5,000,000"/>
+<div class="absolute bottom-0 left-0 h-[2px] bg-primary w-0 group-focus-within:w-full transition-all duration-500 blur-[2px]"></div>
+</div>
+</div>
+</div>
+<div class="flex flex-col justify-between">
+<div class="p-6 rounded-xl bg-surface-container-low border border-outline-variant/10 space-y-4">
+<div class="flex justify-between items-center">
+<span class="text-xs text-on-surface-variant">Estimated Quote</span>
+<span class="flex items-center gap-1 text-[10px] text-primary">
+<span class="w-1.5 h-1.5 rounded-full bg-primary audit-pulse"></span>
+                    LIVE
+                  </span>
+</div>
+<div class="text-center py-2">
+<span class="text-4xl font-mono font-bold text-on-surface">$67,248.10</span>
+<p class="text-[10px] text-on-surface-variant mt-2">LAST UPDATE · 30S AGO</p>
+</div>
+</div>
+<button class="w-full mt-6 py-5 rounded-full bg-gradient-to-r from-emerald-500 to-teal-400 text-on-primary font-bold text-lg hover:scale-[1.02] active:scale-95 transition-all shadow-lg shadow-primary/20">
+                REQUEST QUOTE
+              </button>
+</div>
+</div>
+</section>
+<section class="glass-card rounded-xl overflow-hidden">
+<div class="p-6 border-b border-outline-variant/10 flex justify-between items-center">
+<h3 class="text-sm font-bold tracking-tight uppercase text-on-surface-variant">EXECUTION BLOTTER</h3>
+<button class="text-[10px] font-bold text-primary flex items-center gap-1 hover:gap-2 transition-all">
+              NEW BLOCK TRADE <span class="material-symbols-outlined text-xs">arrow_forward</span>
+</button>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left">
+<thead>
+<tr class="text-[10px] font-bold tracking-widest text-on-surface-variant uppercase bg-surface-container-low/50">
+<th class="px-6 py-4">TIME</th>
+<th class="px-6 py-4">TRADE ID</th>
+<th class="px-6 py-4">PAIR</th>
+<th class="px-6 py-4">SIDE</th>
+<th class="px-6 py-4">NOTIONAL</th>
+<th class="px-6 py-4">PRICE</th>
+<th class="px-6 py-4">STATUS</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant/5">
+<tr class="hover:bg-surface-container-low/30 transition-colors">
+<td class="px-6 py-4 text-xs font-mono">14:22:01</td>
+<td class="px-6 py-4 text-xs font-mono text-primary">OTC-88219</td>
+<td class="px-6 py-4 text-xs font-bold">BTC/USD</td>
+<td class="px-6 py-4 text-xs font-bold text-primary">BUY</td>
+<td class="px-6 py-4 text-xs font-mono">1,250,000</td>
+<td class="px-6 py-4 text-xs font-mono">67,245.50</td>
+<td class="px-6 py-4">
+<span class="px-2 py-1 rounded bg-primary/10 text-primary text-[10px] font-bold">FILLED</span>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-low/30 transition-colors">
+<td class="px-6 py-4 text-xs font-mono">14:15:33</td>
+<td class="px-6 py-4 text-xs font-mono text-primary">OTC-88214</td>
+<td class="px-6 py-4 text-xs font-bold">ETH/USD</td>
+<td class="px-6 py-4 text-xs font-bold text-error">SELL</td>
+<td class="px-6 py-4 text-xs font-mono">3,000,000</td>
+<td class="px-6 py-4 text-xs font-mono">3,495.12</td>
+<td class="px-6 py-4">
+<span class="px-2 py-1 rounded bg-primary/10 text-primary text-[10px] font-bold">FILLED</span>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-low/30 transition-colors">
+<td class="px-6 py-4 text-xs font-mono">14:02:11</td>
+<td class="px-6 py-4 text-xs font-mono text-primary">OTC-88192</td>
+<td class="px-6 py-4 text-xs font-bold">BTC/USD</td>
+<td class="px-6 py-4 text-xs font-bold text-primary">BUY</td>
+<td class="px-6 py-4 text-xs font-mono">5,000,000</td>
+<td class="px-6 py-4 text-xs font-mono">67,248.10</td>
+<td class="px-6 py-4">
+<span class="px-2 py-1 rounded bg-tertiary/10 text-tertiary text-[10px] font-bold">WORKING</span>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-low/30 transition-colors">
+<td class="px-6 py-4 text-xs font-mono">13:55:00</td>
+<td class="px-6 py-4 text-xs font-mono text-primary">OTC-88188</td>
+<td class="px-6 py-4 text-xs font-bold">USDT/USD</td>
+<td class="px-6 py-4 text-xs font-bold text-primary">BUY</td>
+<td class="px-6 py-4 text-xs font-mono">10,000,000</td>
+<td class="px-6 py-4 text-xs font-mono">1.0000</td>
+<td class="px-6 py-4">
+<span class="px-2 py-1 rounded bg-secondary-container/20 text-secondary text-[10px] font-bold uppercase">PARTIAL</span>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-low/30 transition-colors">
+<td class="px-6 py-4 text-xs font-mono">13:42:19</td>
+<td class="px-6 py-4 text-xs font-mono text-primary">OTC-88172</td>
+<td class="px-6 py-4 text-xs font-bold">SOL/USD</td>
+<td class="px-6 py-4 text-xs font-bold text-error">SELL</td>
+<td class="px-6 py-4 text-xs font-mono">450,000</td>
+<td class="px-6 py-4 text-xs font-mono">143.10</td>
+<td class="px-6 py-4">
+<span class="px-2 py-1 rounded bg-primary/10 text-primary text-[10px] font-bold">FILLED</span>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-low/30 transition-colors">
+<td class="px-6 py-4 text-xs font-mono">13:30:05</td>
+<td class="px-6 py-4 text-xs font-mono text-primary">OTC-88165</td>
+<td class="px-6 py-4 text-xs font-bold">BTC/USD</td>
+<td class="px-6 py-4 text-xs font-bold text-primary">BUY</td>
+<td class="px-6 py-4 text-xs font-mono">2,200,000</td>
+<td class="px-6 py-4 text-xs font-mono">67,210.00</td>
+<td class="px-6 py-4">
+<span class="px-2 py-1 rounded bg-primary/10 text-primary text-[10px] font-bold">FILLED</span>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-low/30 transition-colors">
+<td class="px-6 py-4 text-xs font-mono">13:15:44</td>
+<td class="px-6 py-4 text-xs font-mono text-primary">OTC-88152</td>
+<td class="px-6 py-4 text-xs font-bold">ETH/USD</td>
+<td class="px-6 py-4 text-xs font-bold text-primary">BUY</td>
+<td class="px-6 py-4 text-xs font-mono">1,500,000</td>
+<td class="px-6 py-4 text-xs font-mono">3,488.25</td>
+<td class="px-6 py-4">
+<span class="px-2 py-1 rounded bg-primary/10 text-primary text-[10px] font-bold">FILLED</span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</div>
+<aside class="lg:col-span-4 space-y-8">
+<section class="glass-card p-6 rounded-xl space-y-6">
+<div class="flex justify-between items-center">
+<h3 class="text-sm font-bold tracking-tight uppercase text-on-surface-variant">GLOBAL ORDER BOOK</h3>
+<span class="text-[10px] font-mono text-on-surface-variant">BTC/USD · CONSOLIDATED</span>
+</div>
+<div class="space-y-1">
+<div class="flex justify-between text-[10px] font-bold text-on-surface-variant mb-2">
+<span>PRICE</span>
+<span>SIZE (BTC)</span>
+<span>TOTAL</span>
+</div>
+<div class="relative flex justify-between py-1 text-xs font-mono text-error">
+<div class="absolute inset-y-0 right-0 bg-error/5" style="width: 85%"></div>
+<span>67,255.50</span>
+<span>12.450</span>
+<span>837.3K</span>
+</div>
+<div class="relative flex justify-between py-1 text-xs font-mono text-error">
+<div class="absolute inset-y-0 right-0 bg-error/5" style="width: 72%"></div>
+<span>67,254.00</span>
+<span>8.210</span>
+<span>552.1K</span>
+</div>
+<div class="relative flex justify-between py-1 text-xs font-mono text-error">
+<div class="absolute inset-y-0 right-0 bg-error/5" style="width: 60%"></div>
+<span>67,252.50</span>
+<span>5.110</span>
+<span>343.6K</span>
+</div>
+<div class="relative flex justify-between py-1 text-xs font-mono text-error">
+<div class="absolute inset-y-0 right-0 bg-error/5" style="width: 45%"></div>
+<span>67,251.00</span>
+<span>4.200</span>
+<span>282.4K</span>
+</div>
+<div class="relative flex justify-between py-1 text-xs font-mono text-error">
+<div class="absolute inset-y-0 right-0 bg-error/5" style="width: 25%"></div>
+<span>67,249.50</span>
+<span>2.150</span>
+<span>144.6K</span>
+</div>
+<div class="py-4 text-center border-y border-outline-variant/10 my-2">
+<span class="text-2xl font-mono font-bold text-on-surface">67,248.10</span>
+<p class="text-[10px] text-on-surface-variant uppercase tracking-widest mt-1">MID MARKET</p>
+</div>
+<div class="relative flex justify-between py-1 text-xs font-mono text-primary">
+<div class="absolute inset-y-0 right-0 bg-primary/5" style="width: 30%"></div>
+<span>67,246.50</span>
+<span>3.550</span>
+<span>238.7K</span>
+</div>
+<div class="relative flex justify-between py-1 text-xs font-mono text-primary">
+<div class="absolute inset-y-0 right-0 bg-primary/5" style="width: 48%"></div>
+<span>67,245.00</span>
+<span>6.120</span>
+<span>411.5K</span>
+</div>
+<div class="relative flex justify-between py-1 text-xs font-mono text-primary">
+<div class="absolute inset-y-0 right-0 bg-primary/5" style="width: 62%"></div>
+<span>67,243.50</span>
+<span>9.440</span>
+<span>634.8K</span>
+</div>
+<div class="relative flex justify-between py-1 text-xs font-mono text-primary">
+<div class="absolute inset-y-0 right-0 bg-primary/5" style="width: 80%"></div>
+<span>67,242.00</span>
+<span>15.200</span>
+<span>1.02M</span>
+</div>
+<div class="relative flex justify-between py-1 text-xs font-mono text-primary">
+<div class="absolute inset-y-0 right-0 bg-primary/5" style="width: 95%"></div>
+<span>67,240.50</span>
+<span>22.100</span>
+<span>1.48M</span>
+</div>
+</div>
+</section>
+<section class="glass-card p-6 rounded-xl space-y-4">
+<h3 class="text-xs font-bold tracking-widest text-on-surface-variant uppercase">RISK PARAMETERS</h3>
+<div class="space-y-4">
+<div class="flex justify-between items-end">
+<span class="text-[10px] text-on-surface-variant">Margin Usage</span>
+<span class="text-sm font-mono text-on-surface">32.4%</span>
+</div>
+<div class="h-2 w-full bg-surface-container-low rounded-full overflow-hidden">
+<div class="h-full bg-primary" style="width: 32.4%"></div>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div class="p-4 rounded-lg bg-surface-container-low border border-outline-variant/5">
+<span class="text-[10px] text-on-surface-variant block mb-1">24H LIMIT</span>
+<span class="font-mono text-sm">$50.0M</span>
+</div>
+<div class="p-4 rounded-lg bg-surface-container-low border border-outline-variant/5">
+<span class="text-[10px] text-on-surface-variant block mb-1">AVAILABLE</span>
+<span class="font-mono text-sm text-primary">$34.2M</span>
+</div>
+</div>
+</div>
+</section>
+</aside></div>
+</main>
+<aside class="fixed right-0 top-0 h-full w-72 z-40 bg-[#06100d] flex flex-col py-20 px-6 transform translate-x-full transition-all duration-300 ease-in-out">
+<div class="space-y-8">
+<div>
+<h4 class="text-sm font-bold text-on-surface uppercase tracking-widest mb-4">System Appearance</h4>
+<div class="p-4 rounded-xl bg-surface-container-high flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">palette</span>
+</div>
+<div>
+<p class="text-xs font-bold text-on-surface">Bioluminescent Mode</p>
+<p class="text-[10px] text-on-surface-variant">Active Configuration</p>
+</div>
+</div>
+</div>
+<nav class="space-y-2">
+<a class="flex items-center gap-3 px-4 py-3 rounded-full bg-emerald-500/20 text-emerald-400" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="text-sm font-semibold tracking-wide">Overview</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-full text-emerald-900/50 hover:text-emerald-300 transition-all" href="#">
+<span class="material-symbols-outlined">database</span>
+<span class="text-sm font-semibold tracking-wide">Ledger</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-full text-emerald-900/50 hover:text-emerald-300 transition-all" href="#">
+<span class="material-symbols-outlined">verified_user</span>
+<span class="text-sm font-semibold tracking-wide">Audit</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-full text-emerald-900/50 hover:text-emerald-300 transition-all" href="#">
+<span class="material-symbols-outlined">security</span>
+<span class="text-sm font-semibold tracking-wide">Risk</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-full text-emerald-900/50 hover:text-emerald-300 transition-all" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="text-sm font-semibold tracking-wide">Settings</span>
+</a>
+</nav>
+<div class="pt-8 mt-auto border-t border-outline-variant/10">
+<button class="w-full py-4 rounded-full bg-primary text-on-primary font-bold text-xs tracking-widest uppercase">DEPLOY CHANGES</button>
+</div>
+</div>
+</aside>
+<footer class="fixed bottom-0 left-0 w-full h-10 z-50 bg-[#06100d] flex justify-center items-center gap-12 px-8 shadow-[0_-10px_30px_rgba(16,185,129,0.04)]">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-sm text-primary">trending_up</span>
+<span class="text-[10px] font-mono font-bold tracking-widest text-emerald-400 uppercase">BTC/USD</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-sm text-primary">trending_up</span>
+<span class="text-[10px] font-mono tracking-widest text-emerald-900/40 uppercase">ETH/USD</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-sm text-primary">check_circle</span>
+<span class="text-[10px] font-mono tracking-widest text-emerald-900/40 uppercase">SYS_STATUS</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-sm text-primary">speed</span>
+<span class="text-[10px] font-mono tracking-widest text-emerald-900/40 uppercase">GAS</span>
+</div>
+</footer>
+</body></html>

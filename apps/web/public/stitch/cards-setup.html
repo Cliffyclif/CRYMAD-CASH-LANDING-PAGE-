@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Card Account Setup | CRYMAD CA$H</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&amp;family=JetBrains+Mono:wght@400;700&amp;family=Space+Grotesk:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-variant": "#2c3733",
+                    "surface-container-lowest": "#06100d",
+                    "on-secondary-fixed": "#002114",
+                    "on-tertiary-fixed": "#2a1700",
+                    "on-secondary": "#003825",
+                    "primary": "#4edea3",
+                    "on-secondary-container": "#00452e",
+                    "surface-container-high": "#222c29",
+                    "surface-container-highest": "#2c3733",
+                    "outline": "#86948a",
+                    "surface-container-low": "#131e1a",
+                    "secondary-fixed-dim": "#45dfa4",
+                    "on-tertiary": "#472a00",
+                    "on-surface-variant": "#bbcabf",
+                    "tertiary-container": "#e29100",
+                    "surface-container": "#17221e",
+                    "surface-bright": "#313b38",
+                    "on-primary": "#003824",
+                    "on-primary-fixed-variant": "#005236",
+                    "background": "#0b1512",
+                    "primary-fixed-dim": "#4edea3",
+                    "surface": "#0b1512",
+                    "on-tertiary-container": "#523200",
+                    "surface-tint": "#4edea3",
+                    "error-container": "#93000a",
+                    "secondary-fixed": "#68fcbf",
+                    "surface-dim": "#0b1512",
+                    "on-background": "#d9e5df",
+                    "primary-container": "#10b981",
+                    "tertiary-fixed": "#ffddb8",
+                    "inverse-primary": "#006c49",
+                    "on-primary-container": "#00422b",
+                    "inverse-on-surface": "#28332f",
+                    "primary-fixed": "#6ffbbe",
+                    "secondary": "#45dfa4",
+                    "on-tertiary-fixed-variant": "#653e00",
+                    "on-primary-fixed": "#002113",
+                    "secondary-container": "#00bd85",
+                    "tertiary-fixed-dim": "#ffb95f",
+                    "on-error": "#690005",
+                    "on-secondary-fixed-variant": "#005137",
+                    "on-surface": "#d9e5df",
+                    "outline-variant": "#3c4a42",
+                    "inverse-surface": "#d9e5df",
+                    "tertiary": "#ffb95f",
+                    "error": "#ffb4ab",
+                    "on-error-container": "#ffdad6"
+            },
+            "borderRadius": {
+                    "DEFAULT": "1rem",
+                    "lg": "2rem",
+                    "xl": "3rem",
+                    "full": "9999px"
+            },
+            "fontFamily": {
+                    "headline": ["Inter"],
+                    "body": ["Inter"],
+                    "label": ["JetBrains Mono"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            background-color: #040d0a;
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+        }
+        .jetbrains { font-family: 'JetBrains Mono', monospace; }
+        .living-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+            background: radial-gradient(circle at 50% 50%, #040d0a 0%, #020806 100%);
+        }
+        .blob {
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            background: #10b981;
+            filter: blur(120px);
+            opacity: 0.15;
+            border-radius: 50%;
+        }
+        .energy-line {
+            position: absolute;
+            width: 200%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(16, 185, 129, 0.1), transparent);
+            transform: rotate(-45deg);
+        }
+        .glass-panel {
+            background: rgba(44, 55, 51, 0.4);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(16, 185, 129, 0.08);
+        }
+        .input-underlined {
+            background: transparent;
+            border: none;
+            border-bottom: 1px solid #2c3733;
+            border-radius: 0;
+            padding: 0.75rem 0;
+            transition: all 0.3s ease;
+        }
+        .input-underlined:focus {
+            outline: none;
+            box-shadow: none;
+            border-bottom: 2px solid #4edea3;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .gradient-text {
+            background: linear-gradient(to right, #10b981, #34d399);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    </style>
+</head>
+<body class="text-on-surface">
+<!-- Living Background -->
+<div class="living-bg">
+<div class="blob top-[-100px] left-[-100px]"></div>
+<div class="blob bottom-[-100px] right-[-100px]"></div>
+<div class="blob top-[20%] right-[10%]"></div>
+<div class="blob bottom-[30%] left-[5%]"></div>
+<div class="energy-line top-0 left-0"></div>
+<div class="energy-line top-1/4 left-0"></div>
+<div class="energy-line top-1/2 left-0"></div>
+</div>
+<!-- Top Navigation -->
+<nav class="fixed top-0 w-full h-[64px] z-50 bg-emerald-950/40 backdrop-blur-xl border-b border-emerald-500/10 flex justify-between items-center px-8 w-full">
+<div class="text-xl font-black bg-clip-text text-transparent bg-gradient-to-r from-emerald-500 to-emerald-400 font-headline uppercase tracking-tighter">
+            CRYMAD CA$H
+        </div>
+<div class="hidden md:flex gap-8 items-center h-full">
+<a class="text-emerald-100/60 font-medium hover:text-emerald-300 transition-colors duration-300 jetbrains text-xs uppercase" href="#">Dashboard</a>
+<a class="text-emerald-100/60 font-medium hover:text-emerald-300 transition-colors duration-300 jetbrains text-xs uppercase" href="#">Wallets</a>
+<a class="text-emerald-400 border-b-2 border-emerald-500 pb-1 font-bold jetbrains text-xs uppercase" href="#">Cards</a>
+<a class="text-emerald-100/60 font-medium hover:text-emerald-300 transition-colors duration-300 jetbrains text-xs uppercase" href="#">Transactions</a>
+<a class="text-emerald-100/60 font-medium hover:text-emerald-300 transition-colors duration-300 jetbrains text-xs uppercase" href="#">Banking</a>
+</div>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-emerald-400 cursor-pointer">notifications</span>
+<div class="w-8 h-8 rounded-full overflow-hidden border border-emerald-500/30">
+<img alt="User Profile Avatar" class="w-full h-full object-cover" data-alt="User profile avatar close-up portrait of a man with clean studio lighting and soft emerald rim light" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAJ7iCT9_P2-56dMrFAaqObXDCsDm4lFsrD_S6iz_cQurms6C7clZbhJX95iuMqNg2CrwJi_8uL5YjcT4YDfXen6k_6ee067XdXyacdHBwupEoEyMY_qZFqHGSkiqH4-e3TKF8lbt7LHyHaQfCu3mRXloqw58Wud8kpIl2DIaoo8vRxj13zI0ObCCF5cP9KwWbTWzvrWX7nfDMiNHAHru0OumPGpmkh67c0qBUdS_dxkFIfl9XI2lI3PvwUvi5tITHfL6H2aVLyGqQ"/>
+</div>
+</div>
+</nav>
+<!-- Side Theme Panel -->
+<aside class="fixed right-0 top-1/2 -translate-y-1/2 w-16 rounded-l-3xl border-l border-emerald-500/10 bg-emerald-950/40 backdrop-blur-xl flex flex-col items-center py-8 gap-4 z-40">
+<div class="jetbrains text-[10px] text-emerald-500/50 -rotate-90 mb-4 tracking-[0.2em]">THEME</div>
+<div class="w-3 h-3 rounded-full bg-emerald-400 scale-125 shadow-[0_0_10px_#4edea3]"></div>
+<div class="w-3 h-3 rounded-full bg-orange-400/20 hover:scale-110 transition-transform cursor-pointer"></div>
+<div class="w-3 h-3 rounded-full bg-rose-400/20 hover:scale-110 transition-transform cursor-pointer"></div>
+<div class="w-3 h-3 rounded-full bg-slate-400/20 hover:scale-110 transition-transform cursor-pointer"></div>
+<div class="w-3 h-3 rounded-full bg-blue-400/20 hover:scale-110 transition-transform cursor-pointer"></div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="pt-32 pb-24 px-6 max-w-[1280px] mx-auto min-h-screen">
+<!-- Step Indicator -->
+<div class="flex items-center justify-center gap-4 mb-12">
+<div class="flex flex-col items-center gap-2">
+<div class="w-10 h-10 rounded-full border-2 border-primary flex items-center justify-center relative">
+<div class="absolute inset-0 rounded-full border-2 border-primary animate-ping opacity-25"></div>
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">person</span>
+</div>
+<span class="jetbrains text-[10px] text-primary uppercase font-bold tracking-widest">IDENTITY</span>
+</div>
+<div class="w-16 h-px border-t border-dashed border-outline-variant opacity-30 mt-[-20px]"></div>
+<div class="flex flex-col items-center gap-2 opacity-40">
+<div class="w-10 h-10 rounded-full border border-outline-variant flex items-center justify-center glass-panel">
+<span class="material-symbols-outlined text-on-surface">location_on</span>
+</div>
+<span class="jetbrains text-[10px] text-on-surface uppercase tracking-widest">ADDRESS</span>
+</div>
+<div class="w-16 h-px border-t border-dashed border-outline-variant opacity-30 mt-[-20px]"></div>
+<div class="flex flex-col items-center gap-2 opacity-40">
+<div class="w-10 h-10 rounded-full border border-outline-variant flex items-center justify-center glass-panel">
+<span class="material-symbols-outlined text-on-surface">fact_check</span>
+</div>
+<span class="jetbrains text-[10px] text-on-surface uppercase tracking-widest">REVIEW</span>
+</div>
+</div>
+<!-- Header -->
+<div class="mb-12 text-center">
+<h1 class="text-4xl md:text-5xl font-black gradient-text font-headline mb-2">Card Account Setup</h1>
+<p class="text-on-surface/70 font-body text-lg">Complete your Mastercard-backed card profile</p>
+</div>
+<!-- Form Card -->
+<div class="glass-panel rounded-xl p-8 md:p-12 mb-8">
+<form class="space-y-16">
+<!-- PERSONAL IDENTITY -->
+<section>
+<div class="flex items-center gap-4 mb-8">
+<h2 class="jetbrains text-xs font-bold tracking-[0.3em] text-primary uppercase">PERSONAL IDENTITY</h2>
+<div class="flex-grow h-px bg-outline-variant/10"></div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+<div class="flex flex-col">
+<label class="jetbrains text-[10px] uppercase text-on-surface/40 mb-1">First Name</label>
+<input class="input-underlined text-on-surface jetbrains" placeholder="ENTER NAME" type="text"/>
+</div>
+<div class="flex flex-col">
+<label class="jetbrains text-[10px] uppercase text-on-surface/40 mb-1">Middle Name</label>
+<input class="input-underlined text-on-surface jetbrains" placeholder="OPTIONAL" type="text"/>
+</div>
+<div class="flex flex-col">
+<label class="jetbrains text-[10px] uppercase text-on-surface/40 mb-1">Last Name</label>
+<input class="input-underlined text-on-surface jetbrains" placeholder="ENTER SURNAME" type="text"/>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-12 mb-12">
+<div>
+<label class="jetbrains text-[10px] uppercase text-on-surface/40 mb-4 block">Gender Selection</label>
+<div class="flex flex-wrap gap-3">
+<label class="cursor-pointer">
+<input class="hidden peer" name="gender" type="radio"/>
+<div class="px-5 py-2 rounded-full border border-outline-variant/30 jetbrains text-[11px] peer-checked:bg-primary-container peer-checked:text-on-primary-container peer-checked:border-primary transition-all">M</div>
+</label>
+<label class="cursor-pointer">
+<input class="hidden peer" name="gender" type="radio"/>
+<div class="px-5 py-2 rounded-full border border-outline-variant/30 jetbrains text-[11px] peer-checked:bg-primary-container peer-checked:text-on-primary-container peer-checked:border-primary transition-all">F</div>
+</label>
+<label class="cursor-pointer">
+<input class="hidden peer" name="gender" type="radio"/>
+<div class="px-5 py-2 rounded-full border border-outline-variant/30 jetbrains text-[11px] peer-checked:bg-primary-container peer-checked:text-on-primary-container peer-checked:border-primary transition-all">NB</div>
+</label>
+<label class="cursor-pointer">
+<input class="hidden peer" name="gender" type="radio"/>
+<div class="px-5 py-2 rounded-full border border-outline-variant/30 jetbrains text-[11px] peer-checked:bg-primary-container peer-checked:text-on-primary-container peer-checked:border-primary transition-all">OTHER</div>
+</label>
+</div>
+</div>
+<div>
+<label class="jetbrains text-[10px] uppercase text-on-surface/40 mb-4 block">Date of Birth</label>
+<div class="flex gap-4">
+<input class="input-underlined text-center w-16 jetbrains" maxlength="2" placeholder="DD" type="text"/>
+<input class="input-underlined text-center w-16 jetbrains" maxlength="2" placeholder="MM" type="text"/>
+<input class="input-underlined text-center w-24 jetbrains" maxlength="4" placeholder="YYYY" type="text"/>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<div class="flex flex-col">
+<label class="jetbrains text-[10px] uppercase text-on-surface/40 mb-1">Occupation</label>
+<input class="input-underlined text-on-surface jetbrains" placeholder="SOFTWARE ARCHITECT" type="text"/>
+</div>
+<div class="flex flex-col">
+<label class="jetbrains text-[10px] uppercase text-on-surface/40 mb-1">Source of Funds</label>
+<select class="input-underlined text-on-surface jetbrains bg-transparent appearance-none">
+<option class="bg-surface-container">SALARY / WAGES</option>
+<option class="bg-surface-container">INVESTMENTS</option>
+<option class="bg-surface-container">BUSINESS PROFIT</option>
+<option class="bg-surface-container">OTHER</option>
+</select>
+</div>
+</div>
+</section>
+<!-- CONTACT -->
+<section>
+<div class="flex items-center gap-4 mb-8">
+<h2 class="jetbrains text-xs font-bold tracking-[0.3em] text-primary uppercase">CONTACT</h2>
+<div class="flex-grow h-px bg-outline-variant/10"></div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<div class="flex flex-col">
+<label class="jetbrains text-[10px] uppercase text-on-surface/40 mb-1">Phone Number</label>
+<div class="flex gap-2">
+<span class="input-underlined text-on-surface/40 jetbrains">+1</span>
+<input class="input-underlined flex-grow text-on-surface jetbrains" placeholder="(555) 000-0000" type="tel"/>
+</div>
+</div>
+<div class="flex flex-col">
+<label class="jetbrains text-[10px] uppercase text-on-surface/40 mb-1">Email Address</label>
+<input class="input-underlined text-on-surface jetbrains" placeholder="USER@CRYMAD.CASH" type="email"/>
+</div>
+</div>
+</section>
+<!-- ADDRESS -->
+<section>
+<div class="flex items-center gap-4 mb-8">
+<h2 class="jetbrains text-xs font-bold tracking-[0.3em] text-primary uppercase">RESIDENTIAL ADDRESS</h2>
+<div class="flex-grow h-px bg-outline-variant/10"></div>
+</div>
+<div class="space-y-8">
+<div class="flex flex-col">
+<label class="jetbrains text-[10px] uppercase text-on-surface/40 mb-1">Street Address</label>
+<input class="input-underlined text-on-surface jetbrains" placeholder="123 EMERALD PLAZA" type="text"/>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<div class="flex flex-col">
+<label class="jetbrains text-[10px] uppercase text-on-surface/40 mb-1">City / State</label>
+<input class="input-underlined text-on-surface jetbrains" placeholder="NEO TOKYO / KANTO" type="text"/>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div class="flex flex-col">
+<label class="jetbrains text-[10px] uppercase text-on-surface/40 mb-1">Postal Code</label>
+<input class="input-underlined text-on-surface jetbrains" placeholder="100-0001" type="text"/>
+</div>
+<div class="flex flex-col">
+<label class="jetbrains text-[10px] uppercase text-on-surface/40 mb-1">Country</label>
+<input class="input-underlined text-on-surface jetbrains" placeholder="JAPAN" type="text"/>
+</div>
+</div>
+</div>
+</div>
+</section>
+</form>
+</div>
+<!-- Security Notice -->
+<div class="flex justify-center mb-16">
+<div class="glass-panel rounded-full px-6 py-3 flex items-center gap-3">
+<span class="material-symbols-outlined text-primary text-sm">shield</span>
+<span class="text-[10px] jetbrains uppercase tracking-wider text-on-surface/60">Your details are encrypted with hardware-grade pulse monitoring</span>
+</div>
+</div>
+<!-- Navigation Buttons -->
+<div class="flex justify-between items-center px-4">
+<button class="flex items-center gap-2 jetbrains text-xs uppercase text-on-surface/60 hover:text-primary transition-colors group">
+<span class="material-symbols-outlined group-hover:-translate-x-1 transition-transform">arrow_back</span>
+                BACK
+            </button>
+<button class="group relative px-10 py-4 bg-transparent border border-primary overflow-hidden transition-all duration-300">
+<div class="absolute inset-0 bg-gradient-to-r from-primary to-secondary opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+<span class="relative z-10 jetbrains text-xs uppercase font-bold text-primary group-hover:text-on-primary flex items-center gap-2">
+                    CONTINUE <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</span>
+</button>
+</div>
+</main>
+<!-- Footer Status Bar -->
+<footer class="fixed bottom-0 w-full h-8 z-50 bg-emerald-950/40 backdrop-blur-md border-t border-emerald-500/10 flex justify-between items-center px-6 w-full">
+<div class="jetbrains text-[10px] uppercase text-emerald-400 flex items-center gap-2">
+<div class="w-1.5 h-1.5 bg-emerald-400 rounded-full animate-pulse"></div>
+            SYSTEM OPERATIONAL
+        </div>
+<div class="flex gap-6 items-center">
+<span class="jetbrains text-[10px] text-emerald-100/40 uppercase">BTC/USD 64,201.20</span>
+<span class="jetbrains text-[10px] text-emerald-100/40 uppercase">ETH/USD 3,450.12</span>
+<span class="jetbrains text-[10px] text-emerald-100/40 uppercase">LAST SYNC: 14:22:01</span>
+</div>
+</footer>
+</body></html>

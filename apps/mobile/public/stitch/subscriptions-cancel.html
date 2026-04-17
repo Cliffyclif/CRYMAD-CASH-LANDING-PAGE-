@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&amp;family=JetBrains+Mono:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container-low": "#131e1a",
+                        "error": "#ffb4ab",
+                        "on-primary-fixed": "#002113",
+                        "surface-bright": "#313b38",
+                        "secondary-fixed-dim": "#45dfa4",
+                        "primary": "#4edea3",
+                        "on-tertiary": "#472a00",
+                        "on-primary-fixed-variant": "#005236",
+                        "surface-container-lowest": "#06100d",
+                        "primary-fixed-dim": "#4edea3",
+                        "outline": "#86948a",
+                        "surface-dim": "#0b1512",
+                        "outline-variant": "#3c4a42",
+                        "tertiary-fixed": "#ffddb8",
+                        "on-tertiary-fixed-variant": "#653e00",
+                        "surface-container-highest": "#2c3733",
+                        "on-error-container": "#ffdad6",
+                        "error-container": "#93000a",
+                        "on-tertiary-fixed": "#2a1700",
+                        "on-error": "#690005",
+                        "inverse-surface": "#d9e5df",
+                        "secondary-fixed": "#68fcbf",
+                        "on-secondary": "#003825",
+                        "tertiary": "#ffb95f",
+                        "on-tertiary-container": "#523200",
+                        "surface-variant": "#2c3733",
+                        "on-surface-variant": "#bbcabf",
+                        "surface-container": "#17221e",
+                        "secondary": "#45dfa4",
+                        "tertiary-fixed-dim": "#ffb95f",
+                        "on-primary-container": "#00422b",
+                        "inverse-primary": "#006c49",
+                        "surface": "#0b1512",
+                        "on-background": "#d9e5df",
+                        "inverse-on-surface": "#28332f",
+                        "on-secondary-container": "#00452e",
+                        "background": "#0b1512",
+                        "on-surface": "#d9e5df",
+                        "primary-fixed": "#6ffbbe",
+                        "on-primary": "#003824",
+                        "surface-tint": "#4edea3",
+                        "secondary-container": "#00bd85",
+                        "on-secondary-fixed": "#002114",
+                        "surface-container-high": "#222c29",
+                        "tertiary-container": "#e29100",
+                        "primary-container": "#10b981",
+                        "on-secondary-fixed-variant": "#005137"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "1rem",
+                        "lg": "2rem",
+                        "xl": "3rem",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Inter"],
+                        "body": ["Inter"],
+                        "label": ["Inter"],
+                        "mono": ["JetBrains Mono"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-panel {
+            background: rgba(44, 55, 51, 0.4);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(16, 185, 129, 0.08);
+        }
+        .text-gradient {
+            background: linear-gradient(to right, #10b981, #34d399);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .bioluminescent-bg {
+            background-color: #040d0a;
+            background-image: 
+                radial-gradient(circle at 20% 30%, rgba(16, 185, 129, 0.15) 0%, transparent 40%),
+                radial-gradient(circle at 80% 70%, rgba(52, 211, 153, 0.1) 0%, transparent 40%);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background font-body selection:bg-primary/30">
+<!-- Parent Screen (Subscriptions Activity) - Background Layer -->
+<div class="fixed inset-0 bioluminescent-bg opacity-40 grayscale-[0.2]">
+<!-- Top App Bar Mockup -->
+<header class="fixed top-0 w-full z-10 flex justify-between items-center px-6 h-16 border-b border-emerald-500/10">
+<span class="material-symbols-outlined text-emerald-800">arrow_back</span>
+<h1 class="font-headline font-extrabold uppercase tracking-widest text-emerald-800">Subscription</h1>
+<span class="material-symbols-outlined text-emerald-800">more_vert</span>
+</header>
+<!-- Mock Content Behind Sheet -->
+<div class="pt-20 px-6 space-y-8">
+<div class="h-48 rounded-xl bg-surface-container-low border border-emerald-500/5 p-6">
+<div class="w-12 h-12 rounded-full bg-emerald-500/10 mb-4"></div>
+<div class="h-4 w-32 bg-emerald-900/20 rounded mb-2"></div>
+<div class="h-8 w-48 bg-emerald-900/30 rounded"></div>
+</div>
+<div class="h-32 rounded-xl bg-surface-container-low border border-emerald-500/5 p-6">
+<div class="h-4 w-24 bg-emerald-900/20 rounded mb-2"></div>
+<div class="h-6 w-40 bg-emerald-900/30 rounded"></div>
+</div>
+</div>
+</div>
+<!-- Overlay / Dimmer -->
+<div class="fixed inset-0 bg-black/60 z-20"></div>
+<!-- Cancellation Bottom Sheet -->
+<div class="fixed bottom-0 left-0 right-0 h-[65%] glass-panel rounded-t-[28px] z-30 flex flex-col shadow-[0_-10px_40px_rgba(16,185,129,0.1)] overflow-hidden">
+<!-- Grab Handle -->
+<div class="w-full flex justify-center py-3">
+<div class="w-10 h-1 rounded-full bg-on-surface-variant/20"></div>
+</div>
+<div class="flex-1 overflow-y-auto px-8 pb-32">
+<!-- Header Section -->
+<div class="flex flex-col items-center text-center mt-4">
+<div class="mb-6">
+<span class="material-symbols-outlined text-[80px] text-error leading-none" style="font-variation-settings: 'FILL' 1;">warning</span>
+</div>
+<h2 class="text-3xl font-headline font-extrabold text-gradient mb-2">Cancel Spotify Premium?</h2>
+<p class="font-mono text-xs tracking-wider text-error font-bold uppercase">YOU LOSE ACCESS ON APR 22, 2026</p>
+</div>
+<!-- Explanation Body -->
+<div class="mt-8 space-y-4">
+<p class="text-on-surface text-base leading-relaxed text-center">
+                    You'll lose access to 40M+ ad-free songs, offline downloads, and your high-fidelity audio quality settings.
+                </p>
+<!-- Subscription Preview Card -->
+<div class="bg-surface-container-highest/40 border border-primary/10 rounded-lg p-4 flex items-center justify-between">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-black flex items-center justify-center p-2 border border-primary/20">
+<img alt="Minimalist Spotify logo with neon green sound waves on a dark circular background" class="w-full h-full object-contain" data-alt="Minimalist Spotify logo with neon green sound waves on a dark circular background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAP9HsWxM4pmIWMYiDr8NdEA_rAgzm4l68nHbFizriCVTcBq643y3WLKLfrOr_6NiEWTqmaM_0DTQ83o0mNN-sxn1w1oXF34BPMPVIpy5Dh6_8GFa4BNOqk15DSgtvVoxr8mMnSWI8CG1VpFuOu7zdpY1h774vbtU_aCybp0ZosgTbEdI9Xn5-7jfVzq7s_A4-YRiclCk2eUQaG2HPB1XseZdHGFGODA_bkqsWmQ_lunmJAYwB36rML_gE4xunLYINwwk9WqmxBRL_b"/>
+</div>
+<div>
+<p class="font-headline font-bold text-sm">Spotify Individual</p>
+<p class="font-mono text-[10px] text-on-surface-variant uppercase tracking-tighter">Next billing: Apr 22</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-primary/40">chevron_right</span>
+</div>
+</div>
+<!-- Reason Input (Pulse Style) -->
+<div class="mt-8">
+<label class="block font-mono text-[10px] uppercase tracking-widest text-on-surface-variant mb-3 ml-1">Why are you cancelling? (optional)</label>
+<div class="relative group">
+<select class="w-full bg-surface-container-low/60 border border-primary/10 rounded-xl px-4 py-4 text-on-surface appearance-none focus:ring-0 focus:border-primary/40 transition-all cursor-pointer">
+<option disabled="" selected="" value="">Select a reason...</option>
+<option>Too expensive</option>
+<option>Technical issues</option>
+<option>Switching to another service</option>
+<option>Not using it enough</option>
+</select>
+<div class="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none">
+<span class="material-symbols-outlined text-primary">expand_more</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Footer Actions -->
+<div class="absolute bottom-0 left-0 right-0 p-6 glass-panel border-t-0 flex gap-4 bg-surface-container-low/80">
+<button class="flex-1 py-4 rounded-full font-headline font-bold text-sm text-primary border border-primary/20 hover:bg-primary/5 active:scale-95 transition-all">
+                KEEP ACTIVE
+            </button>
+<button class="flex-1 py-4 rounded-full font-headline font-bold text-sm bg-error text-on-error hover:shadow-[0_0_20px_rgba(255,180,171,0.3)] active:scale-95 transition-all flex items-center justify-center gap-2">
+                CANCEL <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</button>
+</div>
+</div>
+<!-- Shell Logic: Navigation Hidden as per Task Context (Focused Task) -->
+</body></html>

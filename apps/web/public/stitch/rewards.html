@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800&amp;family=JetBrains+Mono:wght@400;700&amp;family=Space+Grotesk:wght@500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary-fixed": "#68fcbf",
+                        "on-primary-fixed-variant": "#005236",
+                        "primary-fixed-dim": "#4edea3",
+                        "primary-fixed": "#6ffbbe",
+                        "surface-container-lowest": "#06100d",
+                        "secondary": "#45dfa4",
+                        "primary": "#4edea3",
+                        "primary-container": "#10b981",
+                        "on-error": "#690005",
+                        "on-error-container": "#ffdad6",
+                        "surface-bright": "#313b38",
+                        "on-primary": "#003824",
+                        "on-surface": "#d9e5df",
+                        "tertiary-fixed": "#ffddb8",
+                        "on-tertiary-fixed-variant": "#653e00",
+                        "inverse-primary": "#006c49",
+                        "on-tertiary-fixed": "#2a1700",
+                        "inverse-surface": "#d9e5df",
+                        "on-secondary-container": "#00452e",
+                        "secondary-container": "#00bd85",
+                        "error-container": "#93000a",
+                        "on-surface-variant": "#bbcabf",
+                        "outline-variant": "#3c4a42",
+                        "outline": "#86948a",
+                        "surface": "#0b1512",
+                        "on-tertiary": "#472a00",
+                        "surface-container-highest": "#2c3733",
+                        "error": "#ffb4ab",
+                        "background": "#0b1512",
+                        "surface-dim": "#0b1512",
+                        "surface-container-low": "#131e1a",
+                        "surface-container": "#17221e",
+                        "tertiary": "#ffb95f",
+                        "tertiary-fixed-dim": "#ffb95f",
+                        "on-secondary-fixed": "#002114",
+                        "on-secondary-fixed-variant": "#005137",
+                        "on-secondary": "#003825",
+                        "on-background": "#d9e5df",
+                        "surface-tint": "#4edea3",
+                        "surface-container-high": "#222c29",
+                        "on-primary-fixed": "#002113",
+                        "secondary-fixed-dim": "#45dfa4",
+                        "on-tertiary-container": "#523200",
+                        "surface-variant": "#2c3733",
+                        "on-primary-container": "#00422b",
+                        "inverse-on-surface": "#28332f",
+                        "tertiary-container": "#e29100"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "1rem",
+                        "lg": "2rem",
+                        "xl": "3rem",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Inter"],
+                        "body": ["Inter"],
+                        "label": ["Space Grotesk"],
+                        "mono": ["JetBrains Mono"]
+                    }
+                },
+            }
+        }
+    </script>
+<style>
+        body {
+            background-color: #040d0a;
+            background-image: 
+                repeating-linear-gradient(45deg, rgba(78, 222, 163, 0.05) 0px, rgba(78, 222, 163, 0.05) 1px, transparent 1px, transparent 20px);
+            min-height: 100vh;
+            color: #d9e5df;
+        }
+        .glow-blob {
+            position: fixed;
+            width: 400px;
+            height: 400px;
+            border-radius: 50%;
+            background: #4edea3;
+            filter: blur(80px);
+            opacity: 0.15;
+            z-index: -1;
+        }
+        .glass-card {
+            background: rgba(44, 55, 51, 0.4);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(78, 222, 163, 0.1);
+        }
+        .text-gradient {
+            background: linear-gradient(to right, #4edea3, #45dfa4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="font-body selection:bg-primary/30">
+<!-- Glowing Background Blobs -->
+<div class="glow-blob top-[-10%] left-[-10%]"></div>
+<div class="glow-blob bottom-[-10%] right-[-10%]"></div>
+<div class="glow-blob top-[40%] right-[10%]"></div>
+<div class="glow-blob bottom-[20%] left-[20%]"></div>
+<!-- TopNavBar -->
+<nav class="fixed top-0 left-0 right-0 h-16 rounded-b-[2rem] bg-emerald-950/40 backdrop-blur-xl flex justify-between items-center px-8 w-full z-50 shadow-[0_0_32px_rgba(16,185,129,0.08)]">
+<div class="font-['JetBrains_Mono'] text-xl font-bold tracking-tighter text-emerald-400">CRYMAD CA$H</div>
+<div class="hidden md:flex items-center gap-8">
+<a class="font-['Inter'] text-sm tracking-wide text-emerald-100/60 hover:text-emerald-100 transition-colors" href="#">Dashboard</a>
+<a class="font-['Inter'] text-sm tracking-wide text-emerald-100/60 hover:text-emerald-100 transition-colors" href="#">Wallets</a>
+<a class="font-['Inter'] text-sm tracking-wide text-emerald-100/60 hover:text-emerald-100 transition-colors" href="#">Cards</a>
+<a class="font-['Inter'] text-sm tracking-wide text-emerald-100/60 hover:text-emerald-100 transition-colors" href="#">Transactions</a>
+<a class="font-['Inter'] text-sm tracking-wide text-emerald-100/60 hover:text-emerald-100 transition-colors" href="#">Banking</a>
+<a class="font-['Inter'] text-sm tracking-wide text-emerald-400 font-bold border-b-2 border-emerald-400 pb-1" href="#">Rewards</a>
+</div>
+<div class="flex items-center gap-4">
+<button class="material-symbols-outlined text-emerald-400 p-2 hover:bg-emerald-400/10 rounded-full transition-all">notifications</button>
+<div class="w-8 h-8 rounded-full bg-emerald-400/20 border border-emerald-400/40 overflow-hidden">
+<img alt="User profile" data-alt="close-up portrait of a modern tech professional with minimalist glasses and neutral expression on a dark background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAWF33_2LweSExmx4mLwfjf4U2LLWzXVnvQyzU5__n12od-ljpk43i5UNduB-QTOLAe9OFopPFDkKP1yD5MxBlH-n3GF0yigKH2sZA5ENs30pUarFuhZmbrUYRU7cPjZkFM47oVUTf6RW2IlauxdGDD4oLxwt3Prgklu6GPREHP1FsZu7r3mFrOgkKjUaA2gj7_-x57eZs9Aq7cRWQt7lW0cvZtUcVGIzA_LxYSRofHFown_EgNndk_yiUJWvojR7-ggjkej4SXgsw"/>
+</div>
+</div>
+</nav>
+<!-- SideNavBar (Theme Picker) -->
+<aside class="fixed right-0 top-1/2 -translate-y-1/2 w-12 rounded-l-[2rem] py-6 bg-emerald-950/40 backdrop-blur-xl flex flex-col items-center gap-4 z-40 shadow-[0_0_32px_rgba(16,185,129,0.08)]">
+<div class="font-['JetBrains_Mono'] text-[8px] font-bold text-emerald-400/60 vertical-text mb-2">THEME</div>
+<button class="scale-125 text-emerald-400 hover:scale-110 transition-transform"><span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">circle</span></button>
+<button class="text-emerald-400/40 hover:scale-110 transition-transform"><span class="material-symbols-outlined text-[18px]">circle</span></button>
+<button class="text-emerald-400/40 hover:scale-110 transition-transform"><span class="material-symbols-outlined text-[18px]">circle</span></button>
+<button class="text-emerald-400/40 hover:scale-110 transition-transform"><span class="material-symbols-outlined text-[18px]">circle</span></button>
+<button class="text-emerald-400/40 hover:scale-110 transition-transform"><span class="material-symbols-outlined text-[18px]">circle</span></button>
+</aside>
+<!-- Main Content Area -->
+<main class="max-w-[1280px] mx-auto pt-32 pb-24 px-6">
+<!-- Level Banner -->
+<div class="mb-12">
+<div class="flex justify-between items-end mb-4">
+<h2 class="font-mono text-xs font-bold tracking-[0.2em] text-primary">LEVEL 3 PULSE MEMBER • 850 POINTS TO LEVEL 4</h2>
+<span class="font-mono text-xs text-on-surface-variant">72%</span>
+</div>
+<div class="h-1.5 w-full bg-surface-container-highest rounded-full overflow-hidden glass-card">
+<div class="h-full bg-gradient-to-right from-primary to-secondary w-[72%] rounded-full shadow-[0_0_12px_rgba(78,222,163,0.5)]"></div>
+</div>
+</div>
+<!-- Prominent Balance Card -->
+<div class="glass-card rounded-xl p-10 flex flex-col md:flex-row justify-between items-center mb-12 relative overflow-hidden group">
+<!-- Decorative interior glow -->
+<div class="absolute top-0 right-0 w-64 h-64 bg-primary/5 rounded-full blur-[60px] -mr-32 -mt-32 transition-all duration-700 group-hover:bg-primary/10"></div>
+<div class="flex-1">
+<div class="font-mono text-xs tracking-widest text-on-surface-variant mb-4">REWARDS BALANCE</div>
+<div class="flex items-baseline gap-4 mb-6">
+<h1 class="font-mono text-6xl font-bold text-gradient leading-none tracking-tighter">$1,250.00</h1>
+<div class="bg-primary/10 border border-primary/20 px-3 py-1 rounded-full flex items-center gap-1">
+<span class="material-symbols-outlined text-primary text-xs">trending_up</span>
+<span class="font-mono text-[10px] font-bold text-primary">+42.80 THIS WEEK</span>
+</div>
+</div>
+<!-- Actions -->
+<div class="flex gap-4">
+<button class="px-6 py-2 border border-primary/40 rounded-full font-mono text-[10px] font-bold tracking-widest text-primary hover:bg-primary hover:text-on-primary transition-all duration-300">CLAIM</button>
+<button class="px-6 py-2 border border-primary/40 rounded-full font-mono text-[10px] font-bold tracking-widest text-primary hover:bg-primary hover:text-on-primary transition-all duration-300">ISSUE</button>
+<button class="px-6 py-2 border border-primary/40 rounded-full font-mono text-[10px] font-bold tracking-widest text-primary hover:bg-primary hover:text-on-primary transition-all duration-300">DEBIT</button>
+</div>
+</div>
+<div class="mt-12 md:mt-0 flex items-center justify-center relative">
+<!-- Breathing Rings -->
+<div class="absolute inset-0 flex items-center justify-center">
+<div class="w-[180px] h-[180px] border border-primary/10 rounded-full animate-pulse"></div>
+<div class="absolute w-[210px] h-[210px] border border-primary/5 rounded-full animate-pulse delay-75"></div>
+<div class="absolute w-[240px] h-[240px] border border-primary/5 rounded-full animate-pulse delay-150"></div>
+</div>
+<div class="relative z-10 w-[140px] h-[140px] flex items-center justify-center">
+<svg class="w-full h-full text-primary opacity-80" fill="none" stroke="currentColor" stroke-width="0.5" viewbox="0 0 24 24">
+<path d="M19 5H5C3.89543 5 3 5.89543 3 7V9C3 10.1046 3.89543 11 5 11H7V13C7 15.2091 8.79086 17 11 17V19H9V21H15V19H13V17C15.2091 17 17 15.2091 17 13V11H19C20.1046 11 21 10.1046 21 9V7C21 5.89543 20.1046 5 19 5Z"></path>
+</svg>
+</div>
+</div>
+</div>
+<!-- Tabs Navigation -->
+<div class="flex gap-4 mb-8">
+<button class="bg-primary px-8 py-3 rounded-full font-mono text-xs font-bold text-on-primary shadow-[0_0_15px_rgba(78,222,163,0.3)]">PAYOUTS</button>
+<button class="bg-surface-container-high px-8 py-3 rounded-full font-mono text-xs font-bold text-on-surface-variant hover:text-primary transition-colors">DEBITS</button>
+<button class="bg-surface-container-high px-8 py-3 rounded-full font-mono text-xs font-bold text-on-surface-variant hover:text-primary transition-colors">HISTORY</button>
+</div>
+<!-- Payouts Table -->
+<div class="glass-card rounded-xl overflow-hidden mb-12">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-highest/30">
+<th class="py-5 px-8 font-mono text-[10px] tracking-widest text-on-surface-variant">REWARD ID</th>
+<th class="py-5 px-8 font-mono text-[10px] tracking-widest text-on-surface-variant">SOURCE</th>
+<th class="py-5 px-8 font-mono text-[10px] tracking-widest text-on-surface-variant">AMOUNT</th>
+<th class="py-5 px-8 font-mono text-[10px] tracking-widest text-on-surface-variant">STATUS</th>
+<th class="py-5 px-8 font-mono text-[10px] tracking-widest text-on-surface-variant text-center">EARNED DATE</th>
+<th class="py-5 px-8 font-mono text-[10px] tracking-widest text-on-surface-variant text-right">ACTIONS</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant/10">
+<tr class="hover:bg-primary/5 transition-colors group">
+<td class="py-6 px-8 font-mono text-xs">#RW-88219</td>
+<td class="py-6 px-8 font-bold text-sm">CASHBACK CARD</td>
+<td class="py-6 px-8 font-mono text-sm text-secondary font-bold">+$124.50</td>
+<td class="py-6 px-8">
+<span class="bg-primary/10 text-primary px-3 py-1 rounded-full text-[10px] font-bold font-mono">CLAIMED</span>
+</td>
+<td class="py-6 px-8 font-mono text-xs text-center opacity-60">2024.05.12</td>
+<td class="py-6 px-8 text-right">
+<button class="material-symbols-outlined text-primary/40 group-hover:text-primary">more_vert</button>
+</td>
+</tr>
+<tr class="hover:bg-primary/5 transition-colors group">
+<td class="py-6 px-8 font-mono text-xs">#RW-88240</td>
+<td class="py-6 px-8 font-bold text-sm">REFERRAL BONUS</td>
+<td class="py-6 px-8 font-mono text-sm text-secondary font-bold">+$50.00</td>
+<td class="py-6 px-8">
+<span class="bg-tertiary/10 text-tertiary px-3 py-1 rounded-full text-[10px] font-bold font-mono">PENDING</span>
+</td>
+<td class="py-6 px-8 font-mono text-xs text-center opacity-60">2024.05.14</td>
+<td class="py-6 px-8 text-right">
+<button class="material-symbols-outlined text-primary/40 group-hover:text-primary">more_vert</button>
+</td>
+</tr>
+<tr class="hover:bg-primary/5 transition-colors group">
+<td class="py-6 px-8 font-mono text-xs">#RW-88291</td>
+<td class="py-6 px-8 font-bold text-sm">STAKING YIELD</td>
+<td class="py-6 px-8 font-mono text-sm text-secondary font-bold">+$218.42</td>
+<td class="py-6 px-8">
+<span class="bg-primary/10 text-primary px-3 py-1 rounded-full text-[10px] font-bold font-mono">CLAIMED</span>
+</td>
+<td class="py-6 px-8 font-mono text-xs text-center opacity-60">2024.05.15</td>
+<td class="py-6 px-8 text-right">
+<button class="material-symbols-outlined text-primary/40 group-hover:text-primary">more_vert</button>
+</td>
+</tr>
+<tr class="hover:bg-primary/5 transition-colors group">
+<td class="py-6 px-8 font-mono text-xs">#RW-88312</td>
+<td class="py-6 px-8 font-bold text-sm">LOYALTY DROP</td>
+<td class="py-6 px-8 font-mono text-sm text-secondary font-bold">+$1,000.00</td>
+<td class="py-6 px-8">
+<span class="bg-primary/10 text-primary px-3 py-1 rounded-full text-[10px] font-bold font-mono">CLAIMED</span>
+</td>
+<td class="py-6 px-8 font-mono text-xs text-center opacity-60">2024.05.16</td>
+<td class="py-6 px-8 text-right">
+<button class="material-symbols-outlined text-primary/40 group-hover:text-primary">more_vert</button>
+</td>
+</tr>
+<tr class="hover:bg-primary/5 transition-colors group">
+<td class="py-6 px-8 font-mono text-xs">#RW-88401</td>
+<td class="py-6 px-8 font-bold text-sm">MERCHANT REBATE</td>
+<td class="py-6 px-8 font-mono text-sm text-secondary font-bold">+$12.18</td>
+<td class="py-6 px-8">
+<span class="bg-tertiary/10 text-tertiary px-3 py-1 rounded-full text-[10px] font-bold font-mono">PENDING</span>
+</td>
+<td class="py-6 px-8 font-mono text-xs text-center opacity-60">2024.05.18</td>
+<td class="py-6 px-8 text-right">
+<button class="material-symbols-outlined text-primary/40 group-hover:text-primary">more_vert</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Modal Previews / Small Quick Action Cards -->
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+<button class="glass-card rounded-xl p-6 flex flex-col items-center gap-3 hover:bg-primary/10 transition-all duration-300 border-none group">
+<span class="material-symbols-outlined text-primary group-hover:scale-110 transition-transform">add_circle</span>
+<span class="font-mono text-[9px] tracking-widest text-on-surface-variant font-bold">ISSUE REWARD</span>
+</button>
+<button class="glass-card rounded-xl p-6 flex flex-col items-center gap-3 hover:bg-primary/10 transition-all duration-300 border-none group">
+<span class="material-symbols-outlined text-primary group-hover:scale-110 transition-transform">layers</span>
+<span class="font-mono text-[9px] tracking-widest text-on-surface-variant font-bold">BATCH ISSUE</span>
+</button>
+<button class="glass-card rounded-xl p-6 flex flex-col items-center gap-3 hover:bg-primary/10 transition-all duration-300 border-none group">
+<span class="material-symbols-outlined text-primary group-hover:scale-110 transition-transform">person_remove</span>
+<span class="font-mono text-[9px] tracking-widest text-on-surface-variant font-bold">DEBIT USER</span>
+</button>
+<button class="glass-card rounded-xl p-6 flex flex-col items-center gap-3 hover:bg-primary/10 transition-all duration-300 border-none group">
+<span class="material-symbols-outlined text-primary group-hover:scale-110 transition-transform">history_edu</span>
+<span class="font-mono text-[9px] tracking-widest text-on-surface-variant font-bold">REFUND</span>
+</button>
+</div>
+</main>
+<!-- Footer -->
+<footer class="fixed bottom-0 left-0 right-0 h-10 rounded-t-[2rem] bg-emerald-950/60 backdrop-blur-xl flex justify-between items-center px-10 w-full z-50 font-['JetBrains_Mono'] text-[10px] uppercase tracking-widest text-emerald-400">
+<div class="flex items-center gap-6 animate-pulse-slow">
+<span class="flex items-center gap-2">
+<span class="w-1.5 h-1.5 rounded-full bg-primary shadow-[0_0_8px_#4edea3]"></span>
+                SYSTEM OPERATIONAL
+            </span>
+<span class="opacity-60 hidden md:block">BTC/USD 64,210 • ETH/USD 3,450</span>
+<span class="opacity-60 hidden md:block">LAST SYNC 12:44:02</span>
+</div>
+<div class="flex gap-6">
+<a class="hover:text-emerald-300 transition-colors" href="#">Network Status</a>
+<a class="hover:text-emerald-300 transition-colors" href="#">API Docs</a>
+</div>
+</footer>
+<style>
+        .vertical-text {
+            writing-mode: vertical-rl;
+            text-orientation: mixed;
+        }
+        @keyframes pulse-slow {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+        .animate-pulse-slow {
+            animation: pulse-slow 3s infinite ease-in-out;
+        }
+    </style>
+</body></html>

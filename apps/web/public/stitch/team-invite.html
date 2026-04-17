@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Invite Member | EMERALD PULSE</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800&amp;family=JetBrains+Mono:wght@400;700&amp;family=Space+Grotesk:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "surface-container-low": "#131e1a",
+            "on-primary": "#003824",
+            "on-primary-fixed": "#002113",
+            "surface-container": "#17221e",
+            "on-primary-container": "#00422b",
+            "primary-fixed": "#6ffbbe",
+            "on-tertiary-container": "#5c2b25",
+            "on-tertiary": "#51221d",
+            "on-background": "#d9e5df",
+            "surface-tint": "#4edea3",
+            "on-primary-fixed-variant": "#005236",
+            "on-tertiary-fixed-variant": "#6c3832",
+            "tertiary-fixed": "#ffdad5",
+            "on-surface-variant": "#bbcabf",
+            "tertiary-container": "#d79189",
+            "on-secondary": "#003825",
+            "tertiary": "#ffb4ab",
+            "on-tertiary-fixed": "#360e0a",
+            "inverse-on-surface": "#28332f",
+            "secondary-container": "#00bd85",
+            "surface-variant": "#2c3733",
+            "tertiary-fixed-dim": "#ffb4ab",
+            "on-error-container": "#ffdad6",
+            "inverse-surface": "#d9e5df",
+            "on-secondary-fixed": "#002114",
+            "on-secondary-container": "#00452e",
+            "secondary-fixed": "#68fcbf",
+            "on-secondary-fixed-variant": "#005137",
+            "surface": "#0b1512",
+            "surface-container-high": "#222c29",
+            "error": "#ffb4ab",
+            "outline-variant": "#3c4a42",
+            "error-container": "#93000a",
+            "primary-fixed-dim": "#4edea3",
+            "primary-container": "#10b981",
+            "outline": "#86948a",
+            "on-surface": "#d9e5df",
+            "secondary": "#45dfa4",
+            "on-error": "#690005",
+            "surface-dim": "#0b1512",
+            "background": "#0b1512",
+            "surface-bright": "#313b38",
+            "inverse-primary": "#006c49",
+            "surface-container-highest": "#2c3733",
+            "secondary-fixed-dim": "#45dfa4",
+            "primary": "#4edea3",
+            "surface-container-lowest": "#06100d"
+          },
+          "borderRadius": {
+            "DEFAULT": "1rem",
+            "lg": "2rem",
+            "xl": "3rem",
+            "full": "9999px"
+          },
+          "fontFamily": {
+            "headline": ["Inter"],
+            "body": ["Inter"],
+            "label": ["Space Grotesk"],
+            "mono": ["JetBrains Mono"]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+    .glass-panel {
+      background: rgba(44, 55, 51, 0.4);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(16, 185, 129, 0.08);
+    }
+    .headline-gradient {
+      background: linear-gradient(to right, #10b981, #34d399);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .energy-lines {
+      background-image: repeating-linear-gradient(45deg, rgba(16, 185, 129, 0.05) 0px, rgba(16, 185, 129, 0.05) 1px, transparent 1px, transparent 20px);
+    }
+    .blob {
+      filter: blur(80px);
+      opacity: 0.3;
+      position: absolute;
+      z-index: 0;
+    }
+  </style>
+</head>
+<body class="bg-[#040d0a] text-on-surface font-body selection:bg-primary/30 min-h-screen overflow-hidden relative">
+<!-- Ambient Background Blobs -->
+<div class="blob w-[500px] h-[500px] bg-primary top-[-10%] left-[-10%] rounded-full"></div>
+<div class="blob w-[400px] h-[400px] bg-secondary bottom-[-5%] right-[-5%] rounded-full"></div>
+<div class="blob w-[300px] h-[300px] bg-primary/40 top-[40%] right-[10%] rounded-full"></div>
+<div class="blob w-[450px] h-[450px] bg-teal-900/50 bottom-[20%] left-[15%] rounded-full"></div>
+<div class="fixed inset-0 energy-lines pointer-events-none"></div>
+<!-- Parent Page (Dimmed Background) -->
+<div class="opacity-20 blur-[2px] pointer-events-none select-none">
+<!-- TopNavBar Mockup -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-8 py-4 bg-[#040d0a]/80 backdrop-blur-xl shadow-[0_20px_40px_rgba(16,185,129,0.05)] font-['Inter'] tracking-tight">
+<div class="text-2xl font-extrabold tracking-tighter bg-gradient-to-r from-emerald-500 to-teal-400 bg-clip-text text-transparent">EMERALD PULSE</div>
+<nav class="hidden md:flex items-center gap-8">
+<a class="text-[#d9e5df] opacity-70" href="#">Dashboard</a>
+<a class="text-[#d9e5df] opacity-70" href="#">Inventory</a>
+<a class="text-[#d9e5df] opacity-70" href="#">Telemetry</a>
+<a class="text-emerald-400 border-b-2 border-emerald-500 pb-1 font-bold" href="#">Nexus</a>
+</nav>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-emerald-500">notifications</span>
+<span class="material-symbols-outlined text-emerald-500">settings</span>
+<div class="w-8 h-8 rounded-full bg-surface-container-high border border-primary/20 overflow-hidden">
+<img alt="User" data-alt="close-up of a diverse professional person's face for a high-tech user profile avatar" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAhEHGRJOOXc99vdQ2KfS2E3AOxaqXoG2TiwWnXKwNi7QkWq3d1qn6Wvwu9-ad1ZamvX1zRH-RLdLKgj4EmX66P7fkKc8Ee4CEExkytnP5sjMIPXv4mnGgycV924T9BfuypjCLQJazDiNV4g0gsMFoA16-WRjrzAnC2gbTDeiY04xJW7sGeRsIeg5RITlPzr2luQzZ9fIngAATausxPU_UFO9_CRWE1F3C-gF9UltmnPg6xWoY5zSDoyNrvrYv69IwaQLbhpwPs-IY"/>
+</div>
+</div>
+</header>
+<!-- Main Content Mockup (Team Management) -->
+<main class="pt-32 px-12 max-w-7xl mx-auto space-y-12">
+<section class="space-y-4">
+<h1 class="text-5xl font-extrabold headline-gradient tracking-tighter">Team Management</h1>
+<p class="font-mono text-sm uppercase opacity-60">Node Identity: NEXUS-01 / Global Infrastructure</p>
+</section>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<div class="p-8 rounded-xl bg-surface-container-low border border-primary/5">
+<p class="font-mono text-xs opacity-50 uppercase">Active Nodes</p>
+<div class="text-3xl font-mono mt-2">12 / 12</div>
+</div>
+<div class="p-8 rounded-xl bg-surface-container-low border border-primary/5">
+<p class="font-mono text-xs opacity-50 uppercase">System Uptime</p>
+<div class="text-3xl font-mono mt-2">99.998%</div>
+</div>
+<div class="p-8 rounded-xl bg-surface-container-low border border-primary/5">
+<p class="font-mono text-xs opacity-50 uppercase">Network Load</p>
+<div class="text-3xl font-mono mt-2">42.1 Gb/s</div>
+</div>
+</div>
+<div class="rounded-xl overflow-hidden bg-surface-container-low/50 border border-primary/10">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="border-b border-primary/5 font-mono text-xs uppercase opacity-40">
+<th class="p-6">Member</th>
+<th class="p-6">Access Level</th>
+<th class="p-6">Last Active</th>
+<th class="p-6">Telemetry</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-primary/5">
+<tr>
+<td class="p-6 flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-surface-container-high"></div>
+<span class="font-bold">Elias Vance</span>
+</td>
+<td class="p-6 font-mono text-sm">ADMIN</td>
+<td class="p-6 font-mono text-sm">2m ago</td>
+<td class="p-6"><span class="w-2 h-2 rounded-full bg-primary inline-block"></span></td>
+</tr>
+<tr>
+<td class="p-6 flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-surface-container-high"></div>
+<span class="font-bold">Sarah Connor</span>
+</td>
+<td class="p-6 font-mono text-sm">MANAGER</td>
+<td class="p-6 font-mono text-sm">1h ago</td>
+<td class="p-6"><span class="w-2 h-2 rounded-full bg-primary inline-block"></span></td>
+</tr>
+</tbody>
+</table>
+</div>
+</main>
+<!-- Footer Mockup -->
+<footer class="fixed bottom-0 left-0 w-full z-50 flex justify-between items-center px-6 py-2 bg-[#0b1512]/90 backdrop-blur-md border-t border-emerald-500/10 font-['JetBrains_Mono'] text-xs uppercase text-emerald-400">
+<div>SYSTEM STATUS: OPTIMAL | BTC $64,231.00 | ETH $3,452.12</div>
+<div class="flex gap-4">
+<a class="hover:text-emerald-300" href="#">Docs</a>
+<a class="hover:text-emerald-300" href="#">Support</a>
+<a class="hover:text-emerald-300" href="#">Terminal</a>
+</div>
+</footer>
+</div>
+<!-- Invite Member Modal Overlay -->
+<div class="fixed inset-0 z-[100] flex items-center justify-center p-6 bg-black/40 backdrop-blur-sm">
+<!-- Modal Dialog -->
+<div class="w-full max-w-[580px] glass-panel rounded-xl shadow-[0_20px_60px_rgba(4,13,10,0.5),0_0_40px_rgba(16,185,129,0.15)] relative p-10 flex flex-col gap-8">
+<!-- Close Button -->
+<button class="absolute top-8 right-8 text-on-surface/50 hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-3xl">close</span>
+</button>
+<!-- Header -->
+<div class="space-y-1">
+<h2 class="text-4xl font-extrabold headline-gradient tracking-tighter leading-tight">Invite Team Member</h2>
+<p class="font-mono text-xs uppercase tracking-widest text-on-surface opacity-80">ADD A NEW PERSON TO YOUR ORGANIZATION</p>
+</div>
+<!-- Form Body -->
+<div class="space-y-6">
+<!-- Email Input -->
+<div class="space-y-2">
+<label class="font-mono text-[10px] uppercase tracking-widest opacity-60 ml-1">Member Email</label>
+<input class="w-full bg-surface-container-low border-0 rounded-lg p-4 font-mono text-sm text-primary placeholder:text-on-surface/20 focus:ring-1 focus:ring-primary focus:bg-surface-container-high transition-all" placeholder="teammate@company.com" type="email"/>
+</div>
+<!-- Role Pills -->
+<div class="space-y-2">
+<label class="font-mono text-[10px] uppercase tracking-widest opacity-60 ml-1">Access Role</label>
+<div class="flex flex-wrap gap-2">
+<button class="px-4 py-2 rounded-full border border-primary/20 font-mono text-xs opacity-50 hover:opacity-100 hover:border-primary/40 transition-all">ADMIN</button>
+<button class="px-6 py-2 rounded-full bg-gradient-to-r from-emerald-500 to-teal-400 text-on-primary font-mono text-xs font-bold shadow-[0_0_15px_rgba(16,185,129,0.3)]">MANAGER</button>
+<button class="px-4 py-2 rounded-full border border-primary/20 font-mono text-xs opacity-50 hover:opacity-100 hover:border-primary/40 transition-all">VIEWER</button>
+<button class="px-4 py-2 rounded-full border border-primary/20 font-mono text-xs opacity-50 hover:opacity-100 hover:border-primary/40 transition-all">ACCOUNTANT</button>
+</div>
+</div>
+<!-- Permissions Card -->
+<div class="glass-panel bg-white/5 rounded-lg p-6 space-y-4">
+<h3 class="font-mono text-xs font-bold tracking-widest opacity-80 border-b border-primary/10 pb-2">PERMISSIONS</h3>
+<div class="grid grid-cols-2 gap-y-3 gap-x-4">
+<!-- Item 1 -->
+<label class="flex items-center gap-3 cursor-pointer group">
+<div class="w-4 h-4 rounded-sm border border-primary/40 bg-primary/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-[14px]" style="font-variation-settings: 'wght' 700;">check</span>
+</div>
+<span class="text-xs font-medium opacity-80 group-hover:opacity-100 transition-opacity">View Transactions</span>
+</label>
+<!-- Item 2 -->
+<label class="flex items-center gap-3 cursor-pointer group">
+<div class="w-4 h-4 rounded-sm border border-primary/40 bg-primary/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-[14px]" style="font-variation-settings: 'wght' 700;">check</span>
+</div>
+<span class="text-xs font-medium opacity-80 group-hover:opacity-100 transition-opacity">Access Reports</span>
+</label>
+<!-- Item 3 -->
+<label class="flex items-center gap-3 cursor-pointer group">
+<div class="w-4 h-4 rounded-sm border border-primary/40 bg-primary/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-[14px]" style="font-variation-settings: 'wght' 700;">check</span>
+</div>
+<span class="text-xs font-medium opacity-80 group-hover:opacity-100 transition-opacity">Create Payouts</span>
+</label>
+<!-- Item 4 -->
+<label class="flex items-center gap-3 cursor-pointer group">
+<div class="w-4 h-4 rounded-sm border border-primary/20 bg-transparent flex items-center justify-center"></div>
+<span class="text-xs font-medium opacity-40 group-hover:opacity-100 transition-opacity">Manage API Keys</span>
+</label>
+<!-- Item 5 -->
+<label class="flex items-center gap-3 cursor-pointer group">
+<div class="w-4 h-4 rounded-sm border border-primary/40 bg-primary/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-[14px]" style="font-variation-settings: 'wght' 700;">check</span>
+</div>
+<span class="text-xs font-medium opacity-80 group-hover:opacity-100 transition-opacity">Manage Team</span>
+</label>
+<!-- Item 6 -->
+<label class="flex items-center gap-3 cursor-pointer group">
+<div class="w-4 h-4 rounded-sm border border-primary/20 bg-transparent flex items-center justify-center"></div>
+<span class="text-xs font-medium opacity-40 group-hover:opacity-100 transition-opacity">View Audit Log</span>
+</label>
+</div>
+</div>
+<!-- Personal Message -->
+<div class="space-y-2">
+<label class="font-mono text-[10px] uppercase tracking-widest opacity-60 ml-1">Personal Note</label>
+<textarea class="w-full bg-surface-container-low border-0 rounded-lg p-4 font-body text-sm text-on-surface placeholder:text-on-surface/20 focus:ring-1 focus:ring-primary focus:bg-surface-container-high transition-all resize-none" placeholder="Add a personal note..." rows="3"></textarea>
+</div>
+<!-- Expiration Pill -->
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2 px-4 py-2 rounded-full bg-surface-container-high border border-primary/10 cursor-pointer hover:border-primary/30 transition-all">
+<span class="font-mono text-[10px] text-primary">INVITE EXPIRES IN: 7 DAYS</span>
+<span class="material-symbols-outlined text-primary text-sm">expand_more</span>
+</div>
+</div>
+</div>
+<!-- Action Row -->
+<div class="flex items-center justify-between pt-4 border-t border-primary/10">
+<button class="font-mono text-xs font-bold tracking-widest opacity-40 hover:opacity-100 hover:text-error transition-all">CANCEL</button>
+<button class="group flex items-center gap-3 px-8 py-4 rounded-full border border-primary bg-transparent text-primary font-mono text-sm font-bold uppercase tracking-tighter hover:bg-gradient-to-r hover:from-emerald-500 hover:to-teal-400 hover:text-on-primary hover:shadow-[0_0_20px_rgba(16,185,129,0.4)] transition-all duration-400 cubic-bezier(0.23,1,0.32,1)">
+          SEND INVITE
+          <span class="material-symbols-outlined text-lg group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+</body></html>

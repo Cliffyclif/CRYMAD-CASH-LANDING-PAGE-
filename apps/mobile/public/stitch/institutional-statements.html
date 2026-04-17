@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&amp;family=JetBrains+Mono:wght@400;700&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "outline": "#86948a",
+                    "on-tertiary-fixed": "#2a1700",
+                    "on-primary-fixed": "#002113",
+                    "surface-dim": "#0b1512",
+                    "surface-container-high": "#222c29",
+                    "inverse-on-surface": "#28332f",
+                    "secondary-fixed-dim": "#45dfa4",
+                    "tertiary-fixed": "#ffddb8",
+                    "tertiary-container": "#e29100",
+                    "surface-container-lowest": "#06100d",
+                    "inverse-surface": "#d9e5df",
+                    "error": "#ffb4ab",
+                    "background": "#0b1512",
+                    "surface-container-highest": "#2c3733",
+                    "primary-container": "#10b981",
+                    "surface-container": "#17221e",
+                    "inverse-primary": "#006c49",
+                    "on-secondary-fixed-variant": "#005137",
+                    "on-surface": "#d9e5df",
+                    "primary-fixed": "#6ffbbe",
+                    "on-secondary-container": "#00452e",
+                    "on-secondary": "#003825",
+                    "surface": "#0b1512",
+                    "error-container": "#93000a",
+                    "surface-bright": "#313b38",
+                    "outline-variant": "#3c4a42",
+                    "on-primary": "#003824",
+                    "on-primary-fixed-variant": "#005236",
+                    "on-surface-variant": "#bbcabf",
+                    "tertiary-fixed-dim": "#ffb95f",
+                    "secondary": "#45dfa4",
+                    "primary": "#4edea3",
+                    "on-background": "#d9e5df",
+                    "on-primary-container": "#00422b",
+                    "surface-container-low": "#131e1a",
+                    "surface-variant": "#2c3733",
+                    "primary-fixed-dim": "#4edea3",
+                    "on-secondary-fixed": "#002114",
+                    "on-error": "#690005",
+                    "secondary-container": "#00bd85",
+                    "on-tertiary-fixed-variant": "#653e00",
+                    "surface-tint": "#4edea3",
+                    "secondary-fixed": "#68fcbf",
+                    "on-tertiary-container": "#523200",
+                    "on-error-container": "#ffdad6",
+                    "tertiary": "#ffb95f",
+                    "on-tertiary": "#472a00"
+            },
+            "borderRadius": {
+                    "DEFAULT": "1rem",
+                    "lg": "2rem",
+                    "xl": "3rem",
+                    "full": "9999px"
+            },
+            "fontFamily": {
+                    "headline": ["Inter"],
+                    "body": ["Inter"],
+                    "label": ["Inter"],
+                    "mono": ["JetBrains Mono"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass {
+            background: rgba(44, 55, 51, 0.4);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(16, 185, 129, 0.08);
+        }
+        .bg-blobs {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+            background-color: #040d0a;
+        }
+        .blob {
+            position: absolute;
+            filter: blur(60px);
+            opacity: 0.15;
+            border-radius: 50%;
+        }
+        .energy-lines {
+            position: fixed;
+            inset: 0;
+            background-image: repeating-linear-gradient(45deg, rgba(16, 185, 129, 0.03) 0px, rgba(16, 185, 129, 0.03) 1px, transparent 1px, transparent 10px);
+            z-index: -1;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface font-body selection:bg-primary/30">
+<div class="bg-blobs">
+<div class="blob w-96 h-96 bg-primary -top-20 -left-20"></div>
+<div class="blob w-80 h-80 bg-tertiary bottom-20 -right-20"></div>
+<div class="blob w-64 h-64 bg-secondary top-1/2 left-1/4"></div>
+<div class="energy-lines"></div>
+</div>
+<!-- Status Bar Emulation -->
+<div class="fixed top-0 w-full h-[44px] z-[60] flex justify-between items-center px-6 text-xs font-mono text-on-surface/60">
+<span>9:41</span>
+<div class="flex gap-1.5 items-center">
+<span class="material-symbols-outlined text-[14px]">signal_cellular_alt</span>
+<span class="material-symbols-outlined text-[14px]">wifi</span>
+<span class="material-symbols-outlined text-[14px]">battery_full</span>
+</div>
+</div>
+<!-- Shared TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-[#040d0a]/80 backdrop-blur-xl border-b border-[#10b981]/10 shadow-[0_0_40px_rgba(16,185,129,0.05)] h-20 pt-[24px]">
+<div class="flex justify-between items-center px-6 h-full">
+<div class="flex items-center gap-3">
+<button class="active:scale-95 transition-transform hover:bg-[#10b981]/10 p-2 rounded-full">
+<span class="material-symbols-outlined text-[#10b981]">arrow_back</span>
+</button>
+<div class="flex flex-col">
+<h1 class="font-['Inter'] font-extrabold uppercase tracking-tight bg-gradient-to-b from-[#10b981] to-[#34d399] bg-clip-text text-transparent text-lg">Statements</h1>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<span class="text-[#f59e0b] border border-[#f59e0b]/20 rounded-full px-3 py-0.5 bg-[#f59e0b]/5 font-mono text-[10px] tracking-widest font-bold">INST</span>
+<button class="active:scale-95 transition-transform hover:bg-[#10b981]/10 p-2 rounded-full">
+<span class="material-symbols-outlined text-[#10b981]">search</span>
+</button>
+</div>
+</div>
+</header>
+<main class="pt-28 pb-32 px-5 space-y-6">
+<!-- Hero Audit Card -->
+<section class="glass rounded-lg p-6 relative overflow-hidden group">
+<div class="absolute -top-12 -right-12 w-24 h-24 bg-primary/10 blur-3xl group-hover:bg-primary/20 transition-all duration-500"></div>
+<h2 class="font-headline font-extrabold text-2xl bg-gradient-to-br from-primary to-secondary bg-clip-text text-transparent leading-tight mb-2">Immutable Audit Trail</h2>
+<p class="font-mono text-primary text-sm font-bold mb-6 tracking-tight">28,421,890 signed entries</p>
+<!-- Horizontal Chain Visual -->
+<div class="flex items-center gap-2 py-4">
+<div class="flex items-center space-x-1">
+<div class="w-3 h-3 rounded-sm bg-primary shadow-[0_0_8px_rgba(16,185,129,0.5)]"></div>
+<span class="material-symbols-outlined text-[12px] text-on-surface-variant">trending_flat</span>
+<div class="w-3 h-3 rounded-sm bg-primary/60"></div>
+<span class="material-symbols-outlined text-[12px] text-on-surface-variant">trending_flat</span>
+<div class="w-3 h-3 rounded-sm bg-primary/40"></div>
+<span class="material-symbols-outlined text-[12px] text-on-surface-variant">trending_flat</span>
+<div class="w-3 h-3 rounded-sm bg-primary/20 border border-primary/30"></div>
+<span class="material-symbols-outlined text-[12px] text-on-surface-variant">trending_flat</span>
+<div class="w-3 h-3 rounded-sm border border-primary/20"></div>
+<span class="material-symbols-outlined text-[12px] text-on-surface-variant">trending_flat</span>
+<div class="w-3 h-3 rounded-sm border border-primary/10"></div>
+</div>
+</div>
+<div class="font-mono text-[9px] text-on-surface-variant/50 overflow-hidden whitespace-nowrap opacity-70">
+                HASH: 0x82f1...9a2e | NOD: 412 | SIG: 0x921b...ff02
+            </div>
+</section>
+<!-- Filter Bar -->
+<div class="glass rounded-full px-4 py-3 flex items-center justify-between gap-2 overflow-x-auto no-scrollbar">
+<div class="flex items-center gap-2 flex-shrink-0">
+<span class="material-symbols-outlined text-sm text-primary">calendar_today</span>
+<span class="text-xs font-mono">Q1 2024</span>
+</div>
+<div class="h-4 w-[1px] bg-outline-variant/30 flex-shrink-0"></div>
+<div class="flex items-center gap-2 flex-shrink-0">
+<span class="material-symbols-outlined text-sm text-primary">corporate_fare</span>
+<span class="text-xs font-label">Master Entity</span>
+</div>
+<div class="h-4 w-[1px] bg-outline-variant/30 flex-shrink-0"></div>
+<span class="material-symbols-outlined text-sm text-on-surface-variant">tune</span>
+</div>
+<!-- Statements List -->
+<section class="space-y-3">
+<!-- Row 1 -->
+<div class="glass rounded-full p-3 pl-4 flex items-center justify-between group active:scale-[0.98] transition-all">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center border border-primary/10">
+<span class="material-symbols-outlined text-primary text-xl">lock</span>
+</div>
+<div>
+<div class="font-bold text-sm">Monthly Master</div>
+<div class="flex items-center gap-3 font-mono text-[10px] text-on-surface-variant">
+<span>MAR 24</span>
+<span class="opacity-30">•</span>
+<span>48PP</span>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-3 pr-2">
+<div class="bg-primary/10 px-2 py-1 rounded-full border border-primary/20 flex items-center gap-1">
+<span class="material-symbols-outlined text-[12px] text-primary" style="font-variation-settings: 'FILL' 1;">verified</span>
+<span class="text-[9px] font-bold text-primary tracking-tighter">SIGNED</span>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors cursor-pointer">download</span>
+</div>
+</div>
+<!-- Row 2 -->
+<div class="glass rounded-full p-3 pl-4 flex items-center justify-between group active:scale-[0.98] transition-all">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center border border-primary/10">
+<span class="material-symbols-outlined text-primary text-xl">swap_horizontal_circle</span>
+</div>
+<div>
+<div class="font-bold text-sm">OTC Blotter</div>
+<div class="flex items-center gap-3 font-mono text-[10px] text-on-surface-variant">
+<span>MAR 24</span>
+<span class="opacity-30">•</span>
+<span>24PP</span>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-3 pr-2">
+<div class="bg-primary/10 px-2 py-1 rounded-full border border-primary/20 flex items-center gap-1">
+<span class="material-symbols-outlined text-[12px] text-primary" style="font-variation-settings: 'FILL' 1;">verified</span>
+<span class="text-[9px] font-bold text-primary tracking-tighter">SIGNED</span>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant">download</span>
+</div>
+</div>
+<!-- Row 3 -->
+<div class="glass rounded-full p-3 pl-4 flex items-center justify-between group active:scale-[0.98] transition-all">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center border border-primary/10">
+<span class="material-symbols-outlined text-primary text-xl">account_balance_wallet</span>
+</div>
+<div>
+<div class="font-bold text-sm">Custody Report</div>
+<div class="flex items-center gap-3 font-mono text-[10px] text-on-surface-variant">
+<span>MAR 24</span>
+<span class="opacity-30">•</span>
+<span>12PP</span>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-3 pr-2">
+<div class="bg-primary/10 px-2 py-1 rounded-full border border-primary/20 flex items-center gap-1">
+<span class="material-symbols-outlined text-[12px] text-primary" style="font-variation-settings: 'FILL' 1;">verified</span>
+<span class="text-[9px] font-bold text-primary tracking-tighter">SIGNED</span>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant">download</span>
+</div>
+</div>
+<!-- Row 4 -->
+<div class="glass rounded-full p-3 pl-4 flex items-center justify-between group active:scale-[0.98] transition-all">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center border border-primary/10">
+<span class="material-symbols-outlined text-primary text-xl">analytics</span>
+</div>
+<div>
+<div class="font-bold text-sm">Trading Summary</div>
+<div class="flex items-center gap-3 font-mono text-[10px] text-on-surface-variant">
+<span>Q1 24</span>
+<span class="opacity-30">•</span>
+<span>120PP</span>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-3 pr-2">
+<div class="bg-primary/10 px-2 py-1 rounded-full border border-primary/20 flex items-center gap-1">
+<span class="material-symbols-outlined text-[12px] text-primary" style="font-variation-settings: 'FILL' 1;">verified</span>
+<span class="text-[9px] font-bold text-primary tracking-tighter">SIGNED</span>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant">download</span>
+</div>
+</div>
+<!-- Row 5 -->
+<div class="glass rounded-full p-3 pl-4 flex items-center justify-between group active:scale-[0.98] transition-all">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center border border-primary/10">
+<span class="material-symbols-outlined text-primary text-xl">payments</span>
+</div>
+<div>
+<div class="font-bold text-sm">Fee Statement</div>
+<div class="flex items-center gap-3 font-mono text-[10px] text-on-surface-variant">
+<span>Q1 24</span>
+<span class="opacity-30">•</span>
+<span>8PP</span>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-3 pr-2">
+<div class="bg-primary/10 px-2 py-1 rounded-full border border-primary/20 flex items-center gap-1">
+<span class="material-symbols-outlined text-[12px] text-primary" style="font-variation-settings: 'FILL' 1;">verified</span>
+<span class="text-[9px] font-bold text-primary tracking-tighter">SIGNED</span>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant">download</span>
+</div>
+</div>
+<!-- Row 6 -->
+<div class="glass rounded-full p-3 pl-4 flex items-center justify-between group active:scale-[0.98] transition-all">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center border border-primary/10">
+<span class="material-symbols-outlined text-primary text-xl">gavel</span>
+</div>
+<div>
+<div class="font-bold text-sm">Regulatory MIFID</div>
+<div class="flex items-center gap-3 font-mono text-[10px] text-on-surface-variant">
+<span>MAR 24</span>
+<span class="opacity-30">•</span>
+<span>96PP</span>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-3 pr-2">
+<div class="bg-primary/10 px-2 py-1 rounded-full border border-primary/20 flex items-center gap-1">
+<span class="material-symbols-outlined text-[12px] text-primary" style="font-variation-settings: 'FILL' 1;">verified</span>
+<span class="text-[9px] font-bold text-primary tracking-tighter">SIGNED</span>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant">download</span>
+</div>
+</div>
+</section>
+<!-- Audit Live Feed -->
+<section class="glass rounded-lg p-5">
+<div class="flex justify-between items-center mb-4">
+<h3 class="text-xs uppercase font-extrabold tracking-widest text-secondary">Audit Live Feed</h3>
+<div class="w-2 h-2 rounded-full bg-primary animate-pulse"></div>
+</div>
+<div class="space-y-4">
+<div class="flex items-start gap-3">
+<div class="mt-1.5 w-1.5 h-1.5 rounded-full bg-primary"></div>
+<div class="flex-1 space-y-1">
+<div class="flex justify-between text-[10px] font-mono">
+<span class="text-on-surface">Login Verified</span>
+<span class="text-on-surface-variant/60">09:41:02</span>
+</div>
+<div class="text-[9px] font-mono text-primary/70">ENTITY_ID: 8821 | HASH: 0xA1..</div>
+</div>
+</div>
+<div class="flex items-start gap-3">
+<div class="mt-1.5 w-1.5 h-1.5 rounded-full bg-primary"></div>
+<div class="flex-1 space-y-1">
+<div class="flex justify-between text-[10px] font-mono">
+<span class="text-on-surface">Statement Signed</span>
+<span class="text-on-surface-variant/60">08:55:12</span>
+</div>
+<div class="text-[9px] font-mono text-primary/70">DOC_MASTER_MAR | HASH: 0x9F..</div>
+</div>
+</div>
+<div class="flex items-start gap-3">
+<div class="mt-1.5 w-1.5 h-1.5 rounded-full bg-primary"></div>
+<div class="flex-1 space-y-1">
+<div class="flex justify-between text-[10px] font-mono">
+<span class="text-on-surface">Withdrawal Req.</span>
+<span class="text-on-surface-variant/60">07:21:44</span>
+</div>
+<div class="text-[9px] font-mono text-primary/70">AMT: 2.5MM USD | HASH: 0xB4..</div>
+</div>
+</div>
+<div class="flex items-start gap-3">
+<div class="mt-1.5 w-1.5 h-1.5 rounded-full bg-primary"></div>
+<div class="flex-1 space-y-1">
+<div class="flex justify-between text-[10px] font-mono">
+<span class="text-on-surface">Report Generated</span>
+<span class="text-on-surface-variant/60">04:12:00</span>
+</div>
+<div class="text-[9px] font-mono text-primary/70">Q1_SUMMARY_V3 | HASH: 0xCC..</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- FAB -->
+<button class="fixed bottom-28 right-6 w-14 h-14 bg-primary text-on-primary rounded-full shadow-[0_8px_32px_rgba(16,185,129,0.4)] flex items-center justify-center active:scale-90 transition-transform z-[40] group">
+<span class="material-symbols-outlined text-3xl font-bold group-hover:rotate-90 transition-transform">add</span>
+<div class="absolute -top-1 px-2 py-0.5 bg-tertiary text-on-tertiary text-[8px] font-black rounded-full uppercase tracking-tighter border border-[#040d0a]">Generate</div>
+</button>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 w-full z-50 rounded-t-[32px] bg-[#2c3733]/40 backdrop-blur-lg border-t border-[#10b981]/10 shadow-[0_-10px_40px_rgba(16,185,129,0.08)]">
+<div class="flex justify-around items-center h-24 pb-4 px-4">
+<div class="flex flex-col items-center justify-center text-[#d9e5df]/60 hover:text-[#34d399] transition-all">
+<span class="material-symbols-outlined text-2xl">account_balance_wallet</span>
+<span class="font-['JetBrains_Mono'] text-[10px] tracking-widest uppercase mt-1">Vault</span>
+</div>
+<div class="flex flex-col items-center justify-center text-[#d9e5df]/60 hover:text-[#34d399] transition-all">
+<span class="material-symbols-outlined text-2xl">swap_horiz</span>
+<span class="font-['JetBrains_Mono'] text-[10px] tracking-widest uppercase mt-1">Flow</span>
+</div>
+<div class="flex flex-col items-center justify-center text-[#d9e5df]/60 hover:text-[#34d399] transition-all">
+<span class="material-symbols-outlined text-2xl">fact_check</span>
+<span class="font-['JetBrains_Mono'] text-[10px] tracking-widest uppercase mt-1">Audit</span>
+</div>
+<div class="flex flex-col items-center justify-center text-[#d9e5df]/60 hover:text-[#34d399] transition-all">
+<span class="material-symbols-outlined text-2xl">analytics</span>
+<span class="font-['JetBrains_Mono'] text-[10px] tracking-widest uppercase mt-1">Trace</span>
+</div>
+<div class="flex flex-col items-center justify-center text-[#10b981] drop-shadow-[0_0_8px_rgba(16,185,129,0.5)] scale-110">
+<span class="material-symbols-outlined text-2xl" style="font-variation-settings: 'FILL' 1;">more_horiz</span>
+<span class="font-['JetBrains_Mono'] text-[10px] tracking-widest uppercase mt-1">More</span>
+</div>
+</div>
+</nav>
+</body></html>

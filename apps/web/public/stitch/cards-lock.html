@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&amp;family=JetBrains+Mono:wght@400;700&amp;family=Space+Grotesk:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "surface-dim": "#0b1512",
+                      "surface-tint": "#4edea3",
+                      "on-tertiary-fixed": "#2a1700",
+                      "primary-container": "#10b981",
+                      "primary-fixed": "#6ffbbe",
+                      "inverse-primary": "#006c49",
+                      "surface-variant": "#2c3733",
+                      "on-secondary-container": "#00452e",
+                      "on-secondary": "#003825",
+                      "on-error": "#690005",
+                      "on-background": "#d9e5df",
+                      "surface-container-highest": "#2c3733",
+                      "outline-variant": "#3c4a42",
+                      "on-primary-fixed-variant": "#005236",
+                      "secondary-fixed": "#68fcbf",
+                      "secondary-container": "#00bd85",
+                      "on-primary-fixed": "#002113",
+                      "on-primary": "#003824",
+                      "tertiary-fixed-dim": "#ffb95f",
+                      "on-tertiary-container": "#523200",
+                      "outline": "#86948a",
+                      "on-surface-variant": "#bbcabf",
+                      "on-tertiary": "#472a00",
+                      "surface-container": "#17221e",
+                      "inverse-on-surface": "#28332f",
+                      "tertiary": "#ffb95f",
+                      "on-surface": "#d9e5df",
+                      "surface-container-low": "#131e1a",
+                      "surface-container-high": "#222c29",
+                      "on-secondary-fixed": "#002114",
+                      "secondary": "#45dfa4",
+                      "primary-fixed-dim": "#4edea3",
+                      "on-primary-container": "#00422b",
+                      "surface": "#0b1512",
+                      "error": "#ffb4ab",
+                      "primary": "#4edea3",
+                      "on-secondary-fixed-variant": "#005137",
+                      "surface-bright": "#313b38",
+                      "secondary-fixed-dim": "#45dfa4",
+                      "inverse-surface": "#d9e5df",
+                      "tertiary-container": "#e29100",
+                      "on-tertiary-fixed-variant": "#653e00",
+                      "tertiary-fixed": "#ffddb8",
+                      "on-error-container": "#ffdad6",
+                      "error-container": "#93000a",
+                      "surface-container-lowest": "#06100d",
+                      "background": "#0b1512"
+              },
+              "borderRadius": {
+                      "DEFAULT": "1rem",
+                      "lg": "2rem",
+                      "xl": "3rem",
+                      "full": "9999px"
+              },
+              "fontFamily": {
+                      "headline": ["Inter"],
+                      "body": ["Inter"],
+                      "label": ["Space Grotesk"],
+                      "mono": ["JetBrains Mono"]
+              }
+            },
+          },
+        }
+    </script>
+<style>
+        body {
+            background-color: #040d0a;
+            overflow: hidden;
+        }
+        .organic-blob {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.3;
+            z-index: 0;
+        }
+        .diagonal-energy {
+            background-image: repeating-linear-gradient(45deg, rgba(16, 185, 129, 0.05) 0, rgba(16, 185, 129, 0.05) 1px, transparent 0, transparent 50%);
+            background-size: 40px 40px;
+        }
+        .text-gradient {
+            background: linear-gradient(to bottom, #10b981, #34d399);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glow-button:hover {
+            box-shadow: 0 0 20px rgba(16, 185, 129, 0.4);
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.1), rgba(52, 211, 153, 0.2));
+        }
+    </style>
+</head>
+<body class="font-body text-on-surface h-screen w-full relative">
+<!-- Living Background -->
+<div class="fixed inset-0 z-0">
+<div class="organic-blob bg-primary w-[500px] h-[500px] -top-20 -left-20"></div>
+<div class="organic-blob bg-secondary w-[400px] h-[400px] top-1/2 -right-20"></div>
+<div class="organic-blob bg-primary-container w-[600px] h-[600px] -bottom-40 left-1/4"></div>
+<div class="organic-blob bg-teal-900 w-[300px] h-[300px] top-1/4 left-1/3"></div>
+<div class="absolute inset-0 diagonal-energy"></div>
+</div>
+<!-- Parent Screen (Background Context) -->
+<div class="relative z-10 w-full h-full opacity-20 flex flex-col">
+<!-- Shared Component: TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-transparent backdrop-blur-xl flex justify-between items-center px-8 py-4 w-full shadow-[inset_0_-1px_0_0_rgba(16,185,129,0.1)] shadow-[0_20px_40px_rgba(4,13,10,0.5)]">
+<div class="flex items-center gap-8">
+<span class="text-2xl font-black bg-clip-text text-transparent bg-gradient-to-r from-emerald-400 to-teal-400 font-['Inter'] font-extrabold tracking-tight">CRYMAD CA$H</span>
+<nav class="hidden md:flex gap-6 font-['Inter'] font-extrabold tracking-tight">
+<span class="text-emerald-900/60 hover:text-emerald-300 transition-all duration-300 cursor-pointer">Dashboard</span>
+<span class="text-emerald-400 drop-shadow-[0_0_8px_rgba(78,222,163,0.5)] transition-all duration-300 cursor-pointer">Cards</span>
+<span class="text-emerald-900/60 hover:text-emerald-300 transition-all duration-300 cursor-pointer">Transfers</span>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<div class="relative">
+<span class="material-symbols-outlined text-emerald-400">account_balance_wallet</span>
+</div>
+<span class="material-symbols-outlined text-emerald-400">notifications</span>
+<div class="w-10 h-10 rounded-full border border-primary/20 bg-surface-container overflow-hidden">
+<img alt="User profile" data-alt="portrait of a futuristic trader with subtle digital glowing tattoos on their face and neck in a dim emerald light" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC9nAweCI_Rxt4211MC_Joul1p7yVq2PLEHzc87wQA5ST-sVD1-JpDUTWFxWBRHqFOmnLV-x3fKhzlDt3gL2whLKFZjJpkHAxYZaZ0FXgSoVwV5bVy7GUaUZOTZiOKf2_YAjXWIFzTCoJimqqVuar4dJZzwBuBQwLqQszQNUuG_E686ZkC9Kzq7cucR_KUuAKKT1i8pZFkDNVreUqwBRVbrRuilzpCKWmWhGB5An-_L0b6VPgOuwQzSg_s25tQIVFuQFjzldYndXqs"/>
+</div>
+</div>
+</header>
+<!-- Mock Content for Depth -->
+<main class="flex-grow pt-32 px-12 grid grid-cols-12 gap-8">
+<div class="col-span-8 space-y-8">
+<div class="h-64 rounded-xl bg-surface-container-low border border-outline-variant/10"></div>
+<div class="h-96 rounded-xl bg-surface-container-low border border-outline-variant/10"></div>
+</div>
+<div class="col-span-4 space-y-8">
+<div class="h-48 rounded-xl bg-surface-container-low border border-outline-variant/10"></div>
+<div class="h-48 rounded-xl bg-surface-container-low border border-outline-variant/10"></div>
+</div>
+</main>
+</div>
+<!-- Modal Overlay -->
+<div class="fixed inset-0 z-[100] flex items-center justify-center bg-surface-dim/40 backdrop-blur-sm">
+<!-- CENTERED GLASS MODAL -->
+<div class="w-[460px] bg-[#2c3733]/40 backdrop-blur-[20px] border border-primary/10 rounded-[32px] p-8 relative flex flex-col items-center text-center shadow-[0_20px_60px_rgba(4,13,10,0.5),0_0_40px_rgba(16,185,129,0.15)]">
+<!-- Close Icon -->
+<button class="absolute top-6 right-6 text-on-surface-variant hover:text-on-surface transition-colors">
+<span class="material-symbols-outlined" data-icon="close">close</span>
+</button>
+<!-- Lock Icon with Pulse Glow -->
+<div class="mt-4 mb-8 relative flex items-center justify-center">
+<!-- Breathing Ring Animation simulated by multiple borders/gradients -->
+<div class="absolute inset-0 w-32 h-32 rounded-full border border-tertiary/20 scale-125 opacity-50"></div>
+<div class="w-24 h-24 rounded-full flex items-center justify-center bg-tertiary/5 relative">
+<span class="material-symbols-outlined text-[80px] text-tertiary drop-shadow-[0_0_15px_rgba(255,185,95,0.4)]" data-icon="lock" style="font-variation-settings: 'FILL' 0, 'wght' 200;">lock</span>
+</div>
+</div>
+<!-- Header Content -->
+<h2 class="text-3xl font-extrabold text-gradient mb-2">Lock Your Card?</h2>
+<div class="font-mono text-xs uppercase tracking-[0.2em] text-tertiary mb-6">TEMPORARY CARD FREEZE</div>
+<!-- Body Text -->
+<p class="text-on-surface-variant text-base leading-relaxed mb-8">
+                Locking your card will prevent all transactions until you unlock it. Existing subscriptions and auto-pay will also be paused.
+            </p>
+<!-- Card Preview Mini -->
+<div class="w-full bg-surface-container-low/50 rounded-2xl p-4 flex items-center gap-4 mb-6 border border-white/5 opacity-60">
+<div class="w-12 h-8 rounded bg-gradient-to-br from-emerald-900 to-surface-dim border border-white/10"></div>
+<div class="flex-grow text-left">
+<div class="text-xs font-mono uppercase text-on-surface-variant">Physical</div>
+<div class="text-sm font-mono tracking-widest text-on-surface">•••• 2049</div>
+</div>
+</div>
+<!-- Info Chip -->
+<div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-surface-container-highest/40 border border-white/5 backdrop-blur-md mb-10">
+<span class="material-symbols-outlined text-sm text-primary" data-icon="info">info</span>
+<span class="text-[10px] font-mono uppercase tracking-wider text-on-surface-variant">YOU CAN UNLOCK ANYTIME</span>
+</div>
+<!-- Action Row -->
+<div class="flex items-center w-full gap-4">
+<button class="flex-1 py-4 font-mono text-sm uppercase tracking-widest text-on-surface-variant hover:text-on-surface hover:bg-white/5 rounded-xl transition-all">
+                    CANCEL
+                </button>
+<button class="flex-[1.5] py-4 bg-primary/10 border border-primary text-primary font-mono text-sm uppercase tracking-widest rounded-xl flex items-center justify-center gap-2 glow-button transition-all">
+<span class="material-symbols-outlined text-lg" data-icon="lock">lock</span>
+                    LOCK CARD <span class="ml-1">→</span>
+</button>
+</div>
+</div>
+</div>
+</body></html>

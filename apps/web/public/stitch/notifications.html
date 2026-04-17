@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Notifications | CRYMAD CA$H</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&amp;family=JetBrains+Mono:wght@400;500&amp;family=Space+Grotesk:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "background": "#0b1512",
+                        "tertiary-fixed": "#ffddb8",
+                        "tertiary-container": "#e29100",
+                        "on-tertiary-fixed-variant": "#653e00",
+                        "surface-container-lowest": "#06100d",
+                        "on-error-container": "#ffdad6",
+                        "error-container": "#93000a",
+                        "surface": "#0b1512",
+                        "error": "#ffb4ab",
+                        "primary": "#4edea3",
+                        "on-secondary-fixed-variant": "#005137",
+                        "on-primary-container": "#00422b",
+                        "inverse-surface": "#d9e5df",
+                        "surface-bright": "#313b38",
+                        "secondary-fixed-dim": "#45dfa4",
+                        "inverse-on-surface": "#28332f",
+                        "surface-container-low": "#131e1a",
+                        "surface-container-high": "#222c29",
+                        "on-secondary-fixed": "#002114",
+                        "secondary": "#45dfa4",
+                        "primary-fixed-dim": "#4edea3",
+                        "tertiary": "#ffb95f",
+                        "on-surface": "#d9e5df",
+                        "on-tertiary": "#472a00",
+                        "surface-container": "#17221e",
+                        "outline": "#86948a",
+                        "on-surface-variant": "#bbcabf",
+                        "secondary-fixed": "#68fcbf",
+                        "on-primary-fixed": "#002113",
+                        "on-primary": "#003824",
+                        "tertiary-fixed-dim": "#ffb95f",
+                        "on-tertiary-container": "#523200",
+                        "secondary-container": "#00bd85",
+                        "inverse-primary": "#006c49",
+                        "surface-variant": "#2c3733",
+                        "on-secondary-container": "#00452e",
+                        "on-secondary": "#003825",
+                        "outline-variant": "#3c4a42",
+                        "on-primary-fixed-variant": "#005236",
+                        "on-error": "#690005",
+                        "on-background": "#d9e5df",
+                        "surface-container-highest": "#2c3733",
+                        "surface-tint": "#4edea3",
+                        "on-tertiary-fixed": "#2a1700",
+                        "primary-container": "#10b981",
+                        "surface-dim": "#0b1512",
+                        "primary-fixed": "#6ffbbe"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "1rem",
+                        "lg": "2rem",
+                        "xl": "3rem",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Inter", "sans-serif"],
+                        "body": ["Inter", "sans-serif"],
+                        "mono": ["JetBrains Mono", "monospace"],
+                        "label": ["Space Grotesk", "sans-serif"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .emerald-gradient {
+            background: linear-gradient(to right, #10b981, #34d399);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .glass-card {
+            background: rgba(44, 55, 51, 0.4);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(134, 148, 138, 0.1);
+        }
+        .energy-lines {
+            background-image: repeating-linear-gradient(45deg, rgba(16, 185, 129, 0.05) 0px, rgba(16, 185, 129, 0.05) 1px, transparent 1px, transparent 20px);
+        }
+        .breathing {
+            animation: breathe 4s ease-in-out infinite;
+        }
+        @keyframes breathe {
+            0%, 100% { opacity: 0.8; }
+            50% { opacity: 1; }
+        }
+    </style>
+</head>
+<body class="bg-[#040d0a] text-on-surface font-body selection:bg-primary/30 min-h-screen overflow-x-hidden">
+<!-- Background Ambience -->
+<div class="fixed inset-0 pointer-events-none z-0 overflow-hidden">
+<div class="energy-lines absolute inset-0 opacity-20"></div>
+<div class="absolute top-[-10%] left-[-5%] w-[400px] h-[400px] bg-primary/10 blur-[120px] rounded-full"></div>
+<div class="absolute bottom-[10%] right-[-5%] w-[500px] h-[500px] bg-secondary/10 blur-[150px] rounded-full"></div>
+<div class="absolute top-[30%] right-[10%] w-[300px] h-[300px] bg-primary/5 blur-[100px] rounded-full"></div>
+<div class="absolute bottom-[-10%] left-[20%] w-[450px] h-[450px] bg-secondary/10 blur-[130px] rounded-full"></div>
+</div>
+<!-- Top Navigation Shell -->
+<nav class="fixed top-0 w-full h-[64px] z-50 flex justify-between items-center px-8 bg-emerald-950/40 backdrop-blur-xl shadow-[0_0_15px_rgba(16,185,129,0.05)]">
+<div class="text-2xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-emerald-400 to-teal-400 font-headline">CRYMAD CA$H</div>
+<div class="hidden md:flex gap-8 items-center h-full">
+<a class="text-emerald-100/60 hover:text-emerald-200 transition-all duration-300 font-medium" href="#">Dashboard</a>
+<a class="text-emerald-100/60 hover:text-emerald-200 transition-all duration-300 font-medium" href="#">Wallets</a>
+<a class="text-emerald-100/60 hover:text-emerald-200 transition-all duration-300 font-medium" href="#">Cards</a>
+<a class="text-emerald-100/60 hover:text-emerald-200 transition-all duration-300 font-medium" href="#">Transactions</a>
+<a class="text-emerald-100/60 hover:text-emerald-200 transition-all duration-300 font-medium" href="#">Banking</a>
+<a class="text-emerald-100/60 hover:text-emerald-200 transition-all duration-300 font-medium" href="#">Help</a>
+</div>
+<div class="flex items-center gap-6">
+<div class="relative cursor-pointer hover:bg-emerald-400/10 p-2 rounded-full transition-all">
+<span class="material-symbols-outlined text-emerald-400" data-icon="notifications">notifications</span>
+<span class="absolute top-2 right-2 w-2 h-2 bg-tertiary rounded-full ring-4 ring-background"></span>
+</div>
+<img alt="User Avatar" class="w-8 h-8 rounded-full border border-primary/20" data-alt="minimalist user avatar icon with stylized facial features and soft emerald accent colors" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAjVnLmR8_sNXx6ok5j-WcFHddxmqAxXlKJ2iOdsKmm24F6mdL5nfOO4oNmzUywG_bGcjv_kH28h5BwIGmVGPhokTpjQMkra8M6bw_CX9hNh-hmDmaw5lvONnmvC3xwQutm4z7gldLzfI4QbMnNXbl5VQVTgfT5ziCU0cl0Cm8FZwFK_5URQk0guyCqtvOE3w-XtQv7cDe9PTW2cA4DQnKgVM0MZuNqnp2xKDZjV8fcdpsrN-BdtIb4Ji51QtJFVrvzFhfekDzJ5NU"/>
+</div>
+</nav>
+<!-- Side Atmosphere Toggle (Ghost Border Shell) -->
+<div class="fixed right-0 top-1/2 -translate-y-1/2 rounded-l-full py-6 flex flex-col gap-6 px-3 bg-emerald-950/20 backdrop-blur-lg outline outline-1 outline-white/5 z-40">
+<div class="group flex flex-col items-center gap-1 cursor-pointer hover:scale-110 transition-transform">
+<div class="w-8 h-8 rounded-full flex items-center justify-center bg-emerald-400/20 text-emerald-400 scale-110">
+<span class="material-symbols-outlined text-[18px]" data-icon="dark_mode">dark_mode</span>
+</div>
+<span class="text-[10px] font-mono text-emerald-100/40">Dark</span>
+</div>
+<div class="group flex flex-col items-center gap-1 cursor-pointer hover:scale-110 transition-transform">
+<div class="w-8 h-8 rounded-full flex items-center justify-center text-emerald-100/40">
+<span class="material-symbols-outlined text-[18px]" data-icon="water_drop">water_drop</span>
+</div>
+<span class="text-[10px] font-mono text-emerald-100/40">Oceanic</span>
+</div>
+<div class="group flex flex-col items-center gap-1 cursor-pointer hover:scale-110 transition-transform">
+<div class="w-8 h-8 rounded-full flex items-center justify-center text-emerald-100/40">
+<span class="material-symbols-outlined text-[18px]" data-icon="space_dashboard">space_dashboard</span>
+</div>
+<span class="text-[10px] font-mono text-emerald-100/40">Space</span>
+</div>
+</div>
+<!-- Main Content Canvas -->
+<main class="relative pt-32 pb-24 px-6 max-w-4xl mx-auto z-10">
+<!-- Header -->
+<header class="mb-12">
+<h1 class="text-5xl font-extrabold emerald-gradient font-headline mb-2 tracking-tight">Notifications</h1>
+<p class="font-mono text-on-surface-variant tracking-[0.2em] text-sm uppercase">ALL PULSES FROM YOUR FINANCIAL ECOSYSTEM</p>
+</header>
+<!-- Filter Bar -->
+<section class="flex flex-wrap items-center justify-between gap-4 mb-8">
+<div class="flex items-center gap-3">
+<button class="px-6 py-2 rounded-full bg-primary/20 text-primary border border-primary/30 font-medium text-sm transition-all">ALL</button>
+<button class="px-6 py-2 rounded-full bg-surface-variant/40 text-on-surface-variant hover:text-on-surface border border-transparent hover:border-outline-variant/30 font-medium text-sm transition-all flex items-center gap-2">
+                    UNREAD <span class="bg-primary/20 text-primary px-1.5 py-0.5 rounded-md text-[10px] font-bold">3</span>
+</button>
+<button class="px-6 py-2 rounded-full bg-surface-variant/40 text-on-surface-variant hover:text-on-surface border border-transparent hover:border-outline-variant/30 font-medium text-sm transition-all">READ</button>
+</div>
+<button class="text-on-surface-variant hover:text-primary transition-colors text-sm font-mono flex items-center gap-2 group">
+                MARK ALL READ
+                <span class="material-symbols-outlined text-sm" data-icon="done_all">done_all</span>
+</button>
+</section>
+<!-- Notification List -->
+<div class="space-y-8">
+<!-- 1. PAYOUT (Expanded) -->
+<article class="glass-card rounded-xl overflow-hidden border-l-4 border-primary transition-all duration-300 hover:shadow-[0_0_30px_rgba(78,222,163,0.05)]">
+<div class="p-8">
+<div class="flex justify-between items-start mb-4">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-2xl" data-icon="account_balance_wallet">account_balance_wallet</span>
+</div>
+<div>
+<h3 class="text-lg font-semibold text-on-surface">Payout Received</h3>
+<div class="flex items-center gap-2">
+<span class="font-mono text-primary text-xl font-bold tracking-tight">$1,500.00 deposited</span>
+<span class="w-2 h-2 bg-primary rounded-full animate-pulse"></span>
+</div>
+</div>
+</div>
+<span class="font-mono text-xs text-on-surface-variant/60">2 min ago</span>
+</div>
+<div class="mt-6 pt-6 border-t border-outline-variant/20 grid grid-cols-1 md:grid-cols-2 gap-4">
+<div class="bg-surface-container-lowest/50 p-4 rounded-lg">
+<p class="text-[10px] font-mono text-on-surface-variant mb-1 uppercase">Source</p>
+<p class="font-mono text-sm text-on-surface">CRYMAD_TREASURY_V2</p>
+</div>
+<div class="bg-surface-container-lowest/50 p-4 rounded-lg">
+<p class="text-[10px] font-mono text-on-surface-variant mb-1 uppercase">Status</p>
+<p class="font-mono text-sm text-primary">COMPLETE</p>
+</div>
+</div>
+<a class="mt-8 inline-flex items-center gap-2 text-primary hover:text-secondary font-mono text-sm group transition-all" href="#">
+                        OPEN TRANSACTION 
+                        <span class="material-symbols-outlined text-sm transition-transform group-hover:translate-x-1" data-icon="arrow_forward">arrow_forward</span>
+</a>
+</div>
+</article>
+<!-- 2. CARD -->
+<article class="glass-card rounded-xl p-8 border-l-4 border-secondary/60 hover:bg-surface-variant/30 transition-all duration-300">
+<div class="flex justify-between items-center">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-xl bg-secondary/10 flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined text-2xl" data-icon="credit_card">credit_card</span>
+</div>
+<div>
+<h3 class="text-lg font-semibold text-on-surface">Virtual Card Active</h3>
+<p class="text-on-surface-variant text-sm">ending in <span class="font-mono">• • • • 9921</span></p>
+</div>
+</div>
+<span class="font-mono text-xs text-on-surface-variant/60">15 min ago</span>
+</div>
+</article>
+<!-- 3. KYC -->
+<article class="glass-card rounded-xl p-8 border-l-4 border-tertiary/60 hover:bg-surface-variant/30 transition-all duration-300">
+<div class="flex justify-between items-center">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-xl bg-tertiary/10 flex items-center justify-center text-tertiary">
+<span class="material-symbols-outlined text-2xl" data-icon="verified_user">verified_user</span>
+</div>
+<div>
+<h3 class="text-lg font-semibold text-on-surface">KYC Review Pending</h3>
+<p class="text-on-surface-variant text-sm">Expected completion: <span class="font-mono">48h</span></p>
+</div>
+</div>
+<span class="font-mono text-xs text-on-surface-variant/60">1 hour ago</span>
+</div>
+</article>
+<!-- 4. SECURITY -->
+<article class="glass-card rounded-xl p-8 border-l-4 border-error/60 hover:bg-surface-variant/30 transition-all duration-300">
+<div class="flex justify-between items-center">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-xl bg-error/10 flex items-center justify-center text-error">
+<span class="material-symbols-outlined text-2xl" data-icon="security">security</span>
+</div>
+<div>
+<h3 class="text-lg font-semibold text-on-surface">New Login Detected</h3>
+<p class="text-on-surface-variant text-sm">Chrome on Windows • <span class="font-mono">Lagos, NG</span></p>
+</div>
+</div>
+<span class="font-mono text-xs text-on-surface-variant/60">3 hours ago</span>
+</div>
+</article>
+<!-- 5. SYSTEM -->
+<article class="glass-card rounded-xl p-8 border-l-4 border-outline/30 hover:bg-surface-variant/30 transition-all duration-300">
+<div class="flex justify-between items-center">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-xl bg-outline/10 flex items-center justify-center text-outline">
+<span class="material-symbols-outlined text-2xl" data-icon="settings_suggest">settings_suggest</span>
+</div>
+<div>
+<h3 class="text-lg font-semibold text-on-surface">Scheduled Maintenance</h3>
+<p class="text-on-surface-variant text-sm">Sunday <span class="font-mono">2-4 AM UTC</span></p>
+</div>
+</div>
+<span class="font-mono text-xs text-on-surface-variant/60">Yesterday</span>
+</div>
+</article>
+<!-- 6. CRYPTO -->
+<article class="glass-card rounded-xl p-8 border-l-4 border-primary/60 hover:bg-surface-variant/30 transition-all duration-300">
+<div class="flex justify-between items-center">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-2xl" data-icon="currency_bitcoin">currency_bitcoin</span>
+</div>
+<div>
+<h3 class="text-lg font-semibold text-on-surface">USDT Deposit Confirmed</h3>
+<p class="text-on-surface-variant text-sm">1,200 USDT received • <span class="font-mono">0x7a2e...99fA</span></p>
+</div>
+</div>
+<span class="font-mono text-xs text-on-surface-variant/60">2 days ago</span>
+</div>
+</article>
+</div>
+<!-- Pagination / Footer Note -->
+<footer class="mt-16 text-center">
+<p class="font-mono text-xs text-on-surface-variant/40 breathing">No more notifications. Pulse is quiet.</p>
+</footer>
+</main>
+<!-- System Status Bar (Fixed Footer) -->
+<footer class="fixed bottom-0 w-full h-8 z-50 flex justify-between items-center px-6 bg-emerald-950/60 backdrop-blur-2xl border-t border-emerald-400/10 font-mono text-[10px] tracking-tight text-emerald-100/70">
+<div class="flex gap-4">
+<span class="flex items-center gap-1.5"><span class="w-1.5 h-1.5 bg-primary rounded-full animate-pulse"></span> SYSTEM OPERATIONAL</span>
+<span>BTC: <span class="text-primary">$64,231</span></span>
+<span>ETH: <span class="text-primary">$3,421</span></span>
+</div>
+<div class="flex gap-4">
+<a class="hover:text-emerald-300 transition-colors uppercase" href="#">Operational Pulse</a>
+<span class="text-primary">LAST SYNC: 12:04:11</span>
+</div>
+</footer>
+</body></html>

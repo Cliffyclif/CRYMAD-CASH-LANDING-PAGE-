@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>BIO_SOLVER | Convert &amp; Send</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&amp;family=JetBrains+Mono:wght@400;500;700&amp;family=Space+Grotesk:wght@400;500;700&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glow-border {
+            box-shadow: inset 0 0 15px rgba(16, 185, 129, 0.05);
+        }
+        .atmospheric-glow {
+            box-shadow: 0 20px 60px rgba(4,13,10,0.5), 0 0 40px rgba(16,185,129,0.15);
+        }
+        body {
+            background-color: #0b1512;
+            color: #d9e5df;
+            overflow: hidden;
+        }
+        .glass-panel {
+            background: rgba(44, 55, 51, 0.4);
+            backdrop-filter: blur(20px);
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "surface": "#0b1512",
+                      "primary-container": "#10b981",
+                      "secondary-container": "#00bd85",
+                      "inverse-surface": "#d9e5df",
+                      "on-tertiary-fixed": "#2a1700",
+                      "on-surface-variant": "#bbcabf",
+                      "on-secondary-fixed-variant": "#005137",
+                      "on-error-container": "#ffdad6",
+                      "on-primary-container": "#00422b",
+                      "on-primary-fixed-variant": "#005236",
+                      "surface-variant": "#2c3733",
+                      "on-error": "#690005",
+                      "surface-bright": "#313b38",
+                      "error": "#ffb4ab",
+                      "primary-fixed": "#6ffbbe",
+                      "on-surface": "#d9e5df",
+                      "on-tertiary-fixed-variant": "#653e00",
+                      "on-tertiary": "#472a00",
+                      "inverse-primary": "#006c49",
+                      "surface-container": "#17221e",
+                      "surface-dim": "#0b1512",
+                      "primary-fixed-dim": "#4edea3",
+                      "on-secondary-container": "#00452e",
+                      "error-container": "#93000a",
+                      "secondary-fixed": "#68fcbf",
+                      "surface-container-high": "#222c29",
+                      "on-primary": "#003824",
+                      "background": "#0b1512",
+                      "outline-variant": "#3c4a42",
+                      "secondary-fixed-dim": "#45dfa4",
+                      "tertiary": "#ffb95f",
+                      "primary": "#4edea3",
+                      "surface-container-lowest": "#06100d",
+                      "tertiary-fixed-dim": "#ffb95f",
+                      "on-secondary-fixed": "#002114",
+                      "on-primary-fixed": "#002113",
+                      "inverse-on-surface": "#28332f",
+                      "tertiary-fixed": "#ffddb8",
+                      "tertiary-container": "#e29100",
+                      "on-secondary": "#003825",
+                      "on-tertiary-container": "#523200",
+                      "secondary": "#45dfa4",
+                      "on-background": "#d9e5df",
+                      "surface-tint": "#4edea3",
+                      "surface-container-low": "#131e1a",
+                      "outline": "#86948a",
+                      "surface-container-highest": "#2c3733"
+              },
+              "borderRadius": {
+                      "DEFAULT": "1rem",
+                      "lg": "2rem",
+                      "xl": "3rem",
+                      "full": "9999px"
+              },
+              "fontFamily": {
+                      "headline": ["Inter"],
+                      "body": ["Inter"],
+                      "label": ["Space Grotesk"],
+                      "mono": ["JetBrains Mono"]
+              }
+            },
+          }
+        }
+      </script>
+</head>
+<body class="font-body selection:bg-primary/30">
+<!-- BACKGROUND DASHBOARD (DIMMED) -->
+<div class="fixed inset-0 opacity-20 blur-sm pointer-events-none overflow-hidden">
+<!-- TopNavBar Mock -->
+<nav class="flex justify-between items-center px-8 h-20 w-full fixed top-0 z-50 border-b border-emerald-500/10 bg-[#06100d]/40 backdrop-blur-xl">
+<div class="text-2xl font-black bg-clip-text text-transparent bg-gradient-to-r from-emerald-400 to-teal-400 font-headline uppercase tracking-widest">BIO_SOLVER</div>
+<div class="flex gap-8">
+<span class="text-emerald-900/60 font-headline font-extrabold uppercase tracking-widest">Portfolio</span>
+<span class="text-emerald-400 border-b-2 border-emerald-400 pb-1 font-headline font-extrabold uppercase tracking-widest">Vaults</span>
+<span class="text-emerald-900/60 font-headline font-extrabold uppercase tracking-widest">Nodes</span>
+<span class="text-emerald-900/60 font-headline font-extrabold uppercase tracking-widest">Governance</span>
+</div>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-on-surface-variant">notifications</span>
+<span class="material-symbols-outlined text-on-surface-variant">settings</span>
+<div class="w-10 h-10 rounded-full bg-surface-container-highest border border-outline-variant"></div>
+</div>
+</nav>
+<main class="pt-32 px-12 max-w-7xl mx-auto space-y-12">
+<header>
+<h1 class="text-6xl font-black font-headline bg-clip-text text-transparent bg-gradient-to-b from-primary to-secondary-container">Your Sovereignty</h1>
+<p class="font-mono text-secondary mt-2 tracking-tighter">TOTAL_EQUITY: $1,420,690.00</p>
+</header>
+<div class="grid grid-cols-3 gap-8">
+<div class="h-64 rounded-lg bg-surface-container-high border border-outline-variant/20 p-8 flex flex-col justify-between">
+<span class="material-symbols-outlined text-primary scale-150">currency_bitcoin</span>
+<div class="text-4xl font-mono">14.2 BTC</div>
+</div>
+<div class="h-64 rounded-lg bg-surface-container-high border border-outline-variant/20 p-8 flex flex-col justify-between">
+<span class="material-symbols-outlined text-primary scale-150">eco</span>
+<div class="text-4xl font-mono">420 ETH</div>
+</div>
+<div class="h-64 rounded-lg bg-surface-container-high border border-outline-variant/20 p-8 flex flex-col justify-between">
+<span class="material-symbols-outlined text-primary scale-150">monetization_on</span>
+<div class="text-4xl font-mono">10,000 USDT</div>
+</div>
+</div>
+</main>
+</div>
+<!-- MODAL OVERLAY -->
+<div class="fixed inset-0 z-[100] flex items-center justify-center bg-surface/60 backdrop-blur-sm p-4">
+<!-- MODAL DIALOG -->
+<div class="w-full max-w-[560px] glass-panel atmospheric-glow rounded-lg border border-primary/10 overflow-hidden relative group">
+<!-- Close Button -->
+<button class="absolute top-6 right-6 text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined">close</span>
+</button>
+<div class="p-8 md:p-10">
+<!-- Header -->
+<header class="mb-10">
+<h2 class="text-3xl font-black font-headline bg-clip-text text-transparent bg-gradient-to-r from-[#10b981] to-[#34d399] mb-1">
+                        Convert &amp; Send to Card
+                    </h2>
+<p class="font-mono text-[12px] text-on-surface-variant tracking-widest uppercase">
+                        CRYPTO TO FIAT TO CARD
+                    </p>
+</header>
+<!-- Form Body -->
+<div class="space-y-8">
+<!-- Asset & Amount -->
+<div class="space-y-4">
+<div class="flex items-center justify-between px-4 py-3 rounded-full bg-surface-container-highest/50 border border-outline-variant/20">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-primary-container/20 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-lg" style="font-variation-settings: 'FILL' 1;">monetization_on</span>
+</div>
+<span class="font-headline font-bold text-on-surface">USDT</span>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant">expand_more</span>
+</div>
+<div class="text-center py-6 border-b border-surface-container-highest">
+<div class="font-mono text-5xl font-bold text-primary-fixed-dim">500 USDT</div>
+<div class="font-mono text-on-surface-variant/60 mt-2 text-sm">≈ $500.00 USD</div>
+</div>
+</div>
+<!-- Target Card Selector -->
+<div class="space-y-3">
+<label class="font-mono text-[10px] text-on-surface-variant tracking-widest uppercase px-1">SELECT DESTINATION</label>
+<div class="flex flex-wrap gap-3">
+<!-- Active Card -->
+<div class="flex items-center gap-3 px-5 py-3 rounded-full bg-primary/10 border border-primary/40 shadow-[0_0_15px_rgba(16,185,129,0.1)]">
+<span class="material-symbols-outlined text-primary text-sm" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<div class="flex flex-col">
+<span class="text-sm font-bold text-primary">Physical Card</span>
+<span class="text-[10px] font-mono text-primary/70">****2049</span>
+</div>
+</div>
+<!-- Inactive Card -->
+<div class="flex items-center gap-3 px-5 py-3 rounded-full bg-surface-container-highest/30 border border-outline-variant/10 hover:border-outline-variant/40 transition-all cursor-pointer">
+<div class="w-2 h-2 rounded-full bg-on-surface-variant/20"></div>
+<div class="flex flex-col">
+<span class="text-sm font-bold text-on-surface-variant">Virtual Card</span>
+<span class="text-[10px] font-mono text-on-surface-variant/40">****8871</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Conversion Preview -->
+<div class="p-6 rounded-lg bg-surface-container-lowest/50 border border-primary/5 glow-border">
+<div class="flex items-center justify-between font-mono text-[11px] text-on-surface-variant">
+<div class="flex flex-col items-center gap-1">
+<span class="text-on-surface">500 USDT</span>
+<span class="material-symbols-outlined text-primary text-xs">south</span>
+</div>
+<span class="material-symbols-outlined text-secondary-container/40">arrow_forward_ios</span>
+<div class="flex flex-col items-center gap-1">
+<span class="text-on-surface">$500.00</span>
+<span class="material-symbols-outlined text-primary text-xs">payments</span>
+</div>
+<span class="material-symbols-outlined text-secondary-container/40">arrow_forward_ios</span>
+<div class="flex flex-col items-center gap-1">
+<span class="text-on-surface">Card</span>
+<span class="material-symbols-outlined text-primary text-xs">credit_card</span>
+</div>
+</div>
+<div class="mt-6 space-y-2 border-t border-outline-variant/10 pt-4">
+<div class="flex justify-between font-mono text-[11px] uppercase tracking-tighter">
+<span class="text-on-surface-variant/60">CONVERSION FEE</span>
+<span class="text-tertiary">$2.50</span>
+</div>
+<div class="flex justify-between items-end font-mono">
+<span class="text-[11px] text-on-surface-variant/60 uppercase tracking-tighter">CARD RECEIVES</span>
+<span class="text-xl font-bold text-primary tracking-tighter">$497.50</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Bottom Actions -->
+<footer class="mt-10 flex gap-4">
+<button class="flex-1 py-4 font-mono text-xs font-bold text-on-surface-variant border border-outline-variant/20 rounded-full hover:bg-surface-container-highest transition-all uppercase tracking-widest">
+                        CANCEL
+                    </button>
+<button class="flex-1 py-4 font-mono text-xs font-bold text-primary border border-primary/30 rounded-full bg-primary/5 hover:bg-gradient-to-r hover:from-primary hover:to-secondary-container hover:text-on-primary transition-all uppercase tracking-widest flex items-center justify-center gap-2 group/btn">
+                        SYNC NOW 
+                        <span class="material-symbols-outlined text-sm group-hover/btn:translate-x-1 transition-transform">arrow_forward</span>
+</button>
+</footer>
+</div>
+</div>
+</div>
+<!-- BOTTOM STATUS STRIP -->
+<footer class="fixed bottom-0 w-full z-50 h-10 border-t border-teal-500/20 bg-[#06100d]/80 backdrop-blur-md flex justify-around items-center px-12 font-mono text-[10px] uppercase font-medium">
+<div class="text-emerald-400 flex items-center gap-2 animate-pulse">
+<span class="material-symbols-outlined text-[14px]">trending_up</span>
+            BTC $64.2k
+        </div>
+<div class="text-teal-900/70 flex items-center gap-2">
+<span class="material-symbols-outlined text-[14px]">trending_up</span>
+            ETH $3.4k
+        </div>
+<div class="text-teal-900/70 flex items-center gap-2">
+<span class="material-symbols-outlined text-[14px]">trending_down</span>
+            SOL $142.1
+        </div>
+<div class="text-teal-900/70 flex items-center gap-2">
+<span class="material-symbols-outlined text-[14px]">speed</span>
+            GAS 12gwei
+        </div>
+</footer>
+</body></html>

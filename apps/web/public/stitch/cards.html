@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&amp;family=JetBrains+Mono:wght@400;700&amp;family=Space+Grotesk:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary": "#4edea3",
+                        "surface-container-lowest": "#06100d",
+                        "on-tertiary": "#472a00",
+                        "on-tertiary-container": "#523200",
+                        "on-secondary-fixed-variant": "#005137",
+                        "on-surface-variant": "#bbcabf",
+                        "surface-container-low": "#131e1a",
+                        "inverse-primary": "#006c49",
+                        "on-background": "#d9e5df",
+                        "on-secondary-fixed": "#002114",
+                        "surface-variant": "#2c3733",
+                        "secondary-fixed-dim": "#45dfa4",
+                        "surface-container": "#17221e",
+                        "secondary": "#45dfa4",
+                        "on-secondary-container": "#00452e",
+                        "on-error": "#690005",
+                        "surface-container-highest": "#2c3733",
+                        "on-surface": "#d9e5df",
+                        "outline-variant": "#3c4a42",
+                        "tertiary": "#ffb95f",
+                        "surface-tint": "#4edea3",
+                        "on-tertiary-fixed": "#2a1700",
+                        "surface": "#0b1512",
+                        "inverse-on-surface": "#28332f",
+                        "tertiary-fixed": "#ffddb8",
+                        "secondary-fixed": "#68fcbf",
+                        "on-primary-fixed": "#002113",
+                        "on-secondary": "#003825",
+                        "surface-container-high": "#222c29",
+                        "primary-fixed": "#6ffbbe",
+                        "on-error-container": "#ffdad6",
+                        "error-container": "#93000a",
+                        "tertiary-container": "#e29100",
+                        "error": "#ffb4ab",
+                        "on-primary-container": "#00422b",
+                        "outline": "#86948a",
+                        "surface-bright": "#313b38",
+                        "background": "#0b1512",
+                        "secondary-container": "#00bd85",
+                        "inverse-surface": "#d9e5df",
+                        "surface-dim": "#0b1512",
+                        "primary-container": "#10b981",
+                        "primary-fixed-dim": "#4edea3",
+                        "on-primary-fixed-variant": "#005236",
+                        "on-tertiary-fixed-variant": "#653e00",
+                        "on-primary": "#003824",
+                        "tertiary-fixed-dim": "#ffb95f"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "1rem",
+                        "lg": "2rem",
+                        "xl": "3rem",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Inter"],
+                        "body": ["Inter"],
+                        "label": ["Space Grotesk"],
+                        "mono": ["JetBrains Mono"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body { background-color: #040d0a; overflow-x: hidden; }
+        .glass-panel {
+            background: rgba(44, 55, 51, 0.4);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(16, 185, 129, 0.08);
+        }
+        .energy-lines {
+            background-image: repeating-linear-gradient(45deg, rgba(16, 185, 129, 0.05) 0px, rgba(16, 185, 129, 0.05) 1px, transparent 1px, transparent 100px);
+        }
+        .text-glow {
+            text-shadow: 0 0 10px rgba(78, 222, 163, 0.4);
+        }
+        .card-shimmer {
+            background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 50%, rgba(255,255,255,0.1) 100%);
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="font-body text-on-surface antialiased min-h-screen relative pb-16">
+<!-- Background Blobs & Energy Lines -->
+<div class="fixed inset-0 z-0 overflow-hidden pointer-events-none">
+<div class="energy-lines absolute inset-0 opacity-20"></div>
+<div class="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-primary/30 rounded-full blur-[80px]"></div>
+<div class="absolute bottom-[10%] right-[-5%] w-[35%] h-[35%] bg-primary/20 rounded-full blur-[80px]"></div>
+<div class="absolute top-[40%] right-[15%] w-[25%] h-[25%] bg-secondary/20 rounded-full blur-[80px]"></div>
+<div class="absolute bottom-[-5%] left-[20%] w-[30%] h-[30%] bg-primary-container/20 rounded-full blur-[80px]"></div>
+</div>
+<!-- TopNavBar -->
+<header class="fixed top-0 w-full h-[64px] z-50 bg-emerald-950/40 backdrop-blur-xl border-b border-emerald-500/10 shadow-[0_0_40px_rgba(16,185,129,0.05)] flex justify-between items-center px-8">
+<div class="text-xl font-black italic bg-gradient-to-r from-emerald-500 to-teal-400 bg-clip-text text-transparent">CRYMAD CA$H</div>
+<nav class="hidden md:flex gap-8 items-center h-full">
+<a class="font-mono text-xs uppercase tracking-widest text-emerald-100/60 hover:text-emerald-100 transition-colors" href="#">Dashboard</a>
+<a class="font-mono text-xs uppercase tracking-widest text-emerald-100/60 hover:text-emerald-100 transition-colors" href="#">Wallets</a>
+<a class="font-mono text-xs uppercase tracking-widest text-emerald-400 border-b-2 border-emerald-500 pb-1" href="#">Cards</a>
+<a class="font-mono text-xs uppercase tracking-widest text-emerald-100/60 hover:text-emerald-100 transition-colors" href="#">Transactions</a>
+<a class="font-mono text-xs uppercase tracking-widest text-emerald-100/60 hover:text-emerald-100 transition-colors" href="#">Banking</a>
+<a class="font-mono text-xs uppercase tracking-widest text-emerald-100/60 hover:text-emerald-100 transition-colors" href="#">Help</a>
+</nav>
+<div class="flex items-center gap-4">
+<button class="material-symbols-outlined text-emerald-500 p-2 hover:bg-emerald-500/10 transition-all duration-300 rounded-full">notifications</button>
+<div class="w-8 h-8 rounded-full border border-primary/20 bg-surface-container-high overflow-hidden">
+<img alt="User Profile Avatar" data-alt="professional headshot of a person with friendly expression in high-tech corporate office environment" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBOs8TN-tY8YAEEOSa6YvtoUQzSmmdIn93SV_NoFjUR4ttdF2bUS2oR53aK_hc15LAo3Yjt8bXWKZhPn8lauIHpUa-QQM1K-3ECZtqOgDyGzIo6_FTC8y3yhiYvjs7YJY_DSZq1BfwncHN_ZjfttHSgoyKvrOP7z0fi3pOw065E1lKCh3ghf-2bup0LrEueiSIE7syoBnOZGiw-CZwfOXsg_W0OGQWg9hBU5bU4xZnmVzadBCRMyDsXx6D3QMBD2QbQIWcRMoVAjaw"/>
+</div>
+</div>
+</header>
+<!-- SideNavBar (Theme Swatches) -->
+<aside class="fixed right-0 top-1/2 -translate-y-1/2 w-16 h-auto py-6 rounded-l-3xl border-l border-emerald-500/10 bg-emerald-950/40 backdrop-blur-xl shadow-2xl shadow-emerald-500/5 z-40 flex flex-col items-center gap-4">
+<div class="font-mono uppercase text-[10px] tracking-[0.2em] -rotate-90 py-4 text-primary whitespace-nowrap">THEME</div>
+<div class="flex flex-col gap-4 mt-2">
+<div class="w-4 h-4 rounded-full ring-2 ring-emerald-500 ring-offset-2 ring-offset-emerald-950 bg-primary cursor-pointer hover:scale-110 transition-transform"></div>
+<div class="w-4 h-4 rounded-full bg-secondary opacity-50 hover:opacity-100 cursor-pointer hover:scale-110 transition-transform"></div>
+<div class="w-4 h-4 rounded-full bg-tertiary opacity-50 hover:opacity-100 cursor-pointer hover:scale-110 transition-transform"></div>
+<div class="w-4 h-4 rounded-full bg-surface-bright opacity-50 hover:opacity-100 cursor-pointer hover:scale-110 transition-transform"></div>
+<div class="w-4 h-4 rounded-full bg-outline opacity-50 hover:opacity-100 cursor-pointer hover:scale-110 transition-transform"></div>
+</div>
+</aside>
+<!-- Main Content -->
+<main class="relative z-10 pt-24 px-8 max-w-7xl mx-auto pb-12">
+<!-- Header -->
+<div class="mb-8">
+<h1 class="text-5xl font-extrabold tracking-tight bg-gradient-to-b from-primary to-secondary bg-clip-text text-transparent">Your Cards</h1>
+<p class="font-mono text-xs tracking-[0.3em] text-on-surface-variant mt-2">MASTERCARD POWERED • HARDWARE-GRADE SECURITY</p>
+</div>
+<!-- KYC Status Bar -->
+<div class="glass-panel rounded-xl px-8 py-4 mb-12 flex flex-col md:flex-row items-center justify-between gap-4">
+<div class="flex items-center gap-4">
+<span class="font-mono text-xs uppercase tracking-widest text-primary">3-STATE KYC GATE</span>
+<div class="h-px w-8 bg-outline-variant/30"></div>
+</div>
+<div class="flex gap-4">
+<div class="bg-primary/10 px-4 py-1.5 rounded-full flex items-center gap-2 border border-primary/20">
+<span class="material-symbols-outlined text-[14px] text-primary" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span class="font-mono text-[10px] uppercase tracking-widest text-primary">IDENTITY</span>
+</div>
+<div class="bg-primary/10 px-4 py-1.5 rounded-full flex items-center gap-2 border border-primary/20">
+<span class="material-symbols-outlined text-[14px] text-primary" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span class="font-mono text-[10px] uppercase tracking-widest text-primary">ADDRESS</span>
+</div>
+<div class="bg-tertiary/10 px-4 py-1.5 rounded-full flex items-center gap-2 border border-tertiary/20">
+<span class="material-symbols-outlined text-[14px] text-tertiary animate-spin">progress_activity</span>
+<span class="font-mono text-[10px] uppercase tracking-widest text-tertiary">FINANCIAL</span>
+</div>
+</div>
+</div>
+<!-- Cards Section -->
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16">
+<!-- Physical Card Column -->
+<div class="space-y-6">
+<div class="flex justify-between items-center px-2">
+<span class="font-mono text-xs text-on-surface-variant uppercase tracking-widest">Physical Asset</span>
+<span class="font-mono text-xl text-primary font-bold">$2,450.00 <span class="text-xs font-normal opacity-60">USD</span></span>
+</div>
+<div class="relative group">
+<div class="absolute -inset-1 bg-primary/20 rounded-xl blur-xl transition-all group-hover:bg-primary/40"></div>
+<div class="relative w-full aspect-[1.586/1] rounded-xl overflow-hidden glass-panel border border-primary/20 p-8 flex flex-col justify-between transform transition-transform duration-500 hover:rotate-1 hover:scale-[1.02] bg-gradient-to-br from-surface to-primary/20">
+<div class="card-shimmer absolute inset-0"></div>
+<div class="flex justify-between items-start z-10">
+<span class="text-lg font-black italic bg-gradient-to-r from-emerald-200 to-emerald-400 bg-clip-text text-transparent">CRYMAD CA$H</span>
+<span class="material-symbols-outlined text-primary/60">contactless</span>
+</div>
+<div class="z-10">
+<div class="font-mono text-2xl tracking-[0.2em] mb-4 text-glow">5421 •••• •••• 2049</div>
+<div class="flex justify-between items-end">
+<div>
+<p class="font-mono text-[10px] uppercase tracking-widest opacity-60">Card Holder</p>
+<p class="font-headline font-semibold uppercase">Joseph Obasi</p>
+</div>
+<div>
+<p class="font-mono text-[10px] uppercase tracking-widest opacity-60">Expires</p>
+<p class="font-mono">11/29</p>
+</div>
+<img alt="Mastercard Logo" class="h-8 w-auto opacity-80" data-alt="minimalist Mastercard logo in white silhouette for luxury credit card design" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAQnN30ugjNiG15VqsDltaF2xdeW0sW4CDvGnpbCsALrDYkPfDOpn4IkKLNk561NtE4nzQ70EZGQ-TiS5bpXmscr1hl-gbWFHKakY8ghuWEqsMx5WmPdj3jsHaoJbJMSwjAR7-OaYKa2uRwdgNh5MzpuNPf8BbktVU1p3MvMekhqDBM9dDZ-1WyPmzZ-KwzsVivQRnPkViJyjisMa9Yt29R1CFKCpLrNHC9SQB_J5lP4SHpvE0rbIiXF7sfa40oIamXqYExuAiyGEs"/>
+</div>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-4 gap-2">
+<button class="bg-surface-container-low border border-primary/20 py-3 rounded-full font-mono text-[10px] tracking-widest uppercase hover:bg-primary hover:text-on-primary-fixed transition-colors">LOAD</button>
+<button class="bg-surface-container-low border border-primary/20 py-3 rounded-full font-mono text-[10px] tracking-widest uppercase hover:bg-primary hover:text-on-primary-fixed transition-colors">LOCK</button>
+<button class="bg-surface-container-low border border-primary/20 py-3 rounded-full font-mono text-[10px] tracking-widest uppercase hover:bg-primary hover:text-on-primary-fixed transition-colors">ACTIVATE</button>
+<button class="bg-surface-container-low border border-primary/20 py-3 rounded-full font-mono text-[10px] tracking-widest uppercase hover:bg-primary hover:text-on-primary-fixed transition-colors">DETAILS</button>
+</div>
+</div>
+<!-- Virtual Card Column -->
+<div class="space-y-6">
+<div class="flex justify-between items-center px-2">
+<span class="font-mono text-xs text-on-surface-variant uppercase tracking-widest">Virtual Instance</span>
+<span class="font-mono text-xl text-primary font-bold">$1,120.45 <span class="text-xs font-normal opacity-60">USD</span></span>
+</div>
+<div class="relative group">
+<div class="absolute -inset-1 bg-secondary/10 rounded-xl blur-xl transition-all group-hover:bg-secondary/30"></div>
+<div class="relative w-full aspect-[1.586/1] rounded-xl overflow-hidden glass-panel border border-secondary/20 p-8 flex flex-col justify-between transform transition-transform duration-500 hover:-rotate-1 hover:scale-[1.02] bg-gradient-to-br from-surface to-secondary/20">
+<div class="card-shimmer absolute inset-0"></div>
+<div class="flex justify-between items-start z-10">
+<span class="text-lg font-black italic bg-gradient-to-r from-emerald-200 to-emerald-400 bg-clip-text text-transparent">CRYMAD CA$H</span>
+<div class="bg-secondary/10 px-3 py-1 rounded-full border border-secondary/20">
+<span class="font-mono text-[10px] text-secondary tracking-widest uppercase">VIRTUAL</span>
+</div>
+</div>
+<div class="z-10">
+<div class="font-mono text-2xl tracking-[0.2em] mb-4 text-glow">4992 •••• •••• 1088</div>
+<div class="flex justify-between items-end">
+<div>
+<p class="font-mono text-[10px] uppercase tracking-widest opacity-60">Card Holder</p>
+<p class="font-headline font-semibold uppercase">Joseph Obasi</p>
+</div>
+<div>
+<p class="font-mono text-[10px] uppercase tracking-widest opacity-60">Expires</p>
+<p class="font-mono">08/30</p>
+</div>
+<img alt="Mastercard Logo" class="h-8 w-auto opacity-80" data-alt="minimalist Mastercard logo in white silhouette for luxury credit card design" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDZaH_JWYZgJ2HCxQhQHCRIa0fVVq419o-r_3PxAKBmLg9dCCtAl-HhADKeBUi7EZNfdOA3ghAKUOD6yo5-W6JFad1GFg1J2tUlkIH6s6LBXMbUgdK5iKMNceLeinl_vBc7uzuIxI_DZx8O8G5BU_U-T24pRiBOYpgkZdFCc7Mf7hIV0E6ZZuk6UpxaHGFrMEZCAbv_8V8e-SkDVb4ijMb7cP6-sMMhzIa_cBQuOyyWFnRyLxo08P3YP07KJa3844dDXvpgXmUtEVU"/>
+</div>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-4 gap-2">
+<button class="bg-surface-container-low border border-primary/20 py-3 rounded-full font-mono text-[10px] tracking-widest uppercase hover:bg-primary hover:text-on-primary-fixed transition-colors">LOAD</button>
+<button class="bg-surface-container-low border border-primary/20 py-3 rounded-full font-mono text-[10px] tracking-widest uppercase hover:bg-primary hover:text-on-primary-fixed transition-colors">LOCK</button>
+<button class="bg-surface-container-low border border-primary/20 py-3 rounded-full font-mono text-[10px] tracking-widest uppercase hover:bg-primary hover:text-on-primary-fixed transition-colors">ACTIVATE</button>
+<button class="bg-surface-container-low border border-primary/20 py-3 rounded-full font-mono text-[10px] tracking-widest uppercase hover:bg-primary hover:text-on-primary-fixed transition-colors">DETAILS</button>
+</div>
+</div>
+</div>
+<!-- Transactions Table -->
+<div class="glass-panel rounded-xl overflow-hidden">
+<div class="p-6 border-b border-outline-variant/10 flex justify-between items-center">
+<h3 class="font-headline font-bold text-xl">Recent Activity</h3>
+<button class="text-xs font-mono tracking-widest text-primary hover:underline">EXPORT CSV</button>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left">
+<thead>
+<tr class="font-mono text-[10px] text-on-surface-variant uppercase tracking-widest bg-surface-container/50">
+<th class="px-8 py-4 font-normal">Date</th>
+<th class="px-8 py-4 font-normal">Merchant</th>
+<th class="px-8 py-4 font-normal">Category</th>
+<th class="px-8 py-4 font-normal">Amount</th>
+<th class="px-8 py-4 font-normal">Status</th>
+</tr>
+</thead>
+<tbody class="font-mono text-xs">
+<tr class="border-b border-outline-variant/5 hover:bg-surface-container-high/30 transition-colors">
+<td class="px-8 py-4 opacity-60">2024.05.21</td>
+<td class="px-8 py-4 font-headline font-semibold">Spotify Premium</td>
+<td class="px-8 py-4 text-on-surface-variant">Entertainment</td>
+<td class="px-8 py-4 text-error">- $10.99</td>
+<td class="px-8 py-4"><span class="text-[10px] bg-primary/10 text-primary px-2 py-0.5 rounded-full uppercase">Settled</span></td>
+</tr>
+<tr class="border-b border-outline-variant/5 hover:bg-surface-container-high/30 transition-colors">
+<td class="px-8 py-4 opacity-60">2024.05.20</td>
+<td class="px-8 py-4 font-headline font-semibold">Amazon.com</td>
+<td class="px-8 py-4 text-on-surface-variant">Shopping</td>
+<td class="px-8 py-4 text-error">- $142.50</td>
+<td class="px-8 py-4"><span class="text-[10px] bg-primary/10 text-primary px-2 py-0.5 rounded-full uppercase">Settled</span></td>
+</tr>
+<tr class="border-b border-outline-variant/5 hover:bg-surface-container-high/30 transition-colors">
+<td class="px-8 py-4 opacity-60">2024.05.19</td>
+<td class="px-8 py-4 font-headline font-semibold">Uber Trip</td>
+<td class="px-8 py-4 text-on-surface-variant">Transport</td>
+<td class="px-8 py-4 text-error">- $24.12</td>
+<td class="px-8 py-4"><span class="text-[10px] bg-tertiary/10 text-tertiary px-2 py-0.5 rounded-full uppercase">Pending</span></td>
+</tr>
+<tr class="border-b border-outline-variant/5 hover:bg-surface-container-high/30 transition-colors">
+<td class="px-8 py-4 opacity-60">2024.05.18</td>
+<td class="px-8 py-4 font-headline font-semibold">Apple Store</td>
+<td class="px-8 py-4 text-on-surface-variant">Electronics</td>
+<td class="px-8 py-4 text-error">- $999.00</td>
+<td class="px-8 py-4"><span class="text-[10px] bg-primary/10 text-primary px-2 py-0.5 rounded-full uppercase">Settled</span></td>
+</tr>
+<tr class="hover:bg-surface-container-high/30 transition-colors">
+<td class="px-8 py-4 opacity-60">2024.05.17</td>
+<td class="px-8 py-4 font-headline font-semibold">Crymad Load</td>
+<td class="px-8 py-4 text-on-surface-variant">External Transfer</td>
+<td class="px-8 py-4 text-primary">+ $1,500.00</td>
+<td class="px-8 py-4"><span class="text-[10px] bg-primary/10 text-primary px-2 py-0.5 rounded-full uppercase">Settled</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<!-- Card Tip -->
+<div class="mt-12 glass-panel rounded-xl p-6 border-l-4 border-primary/40">
+<div class="flex gap-4 items-start">
+<span class="material-symbols-outlined text-primary">lightbulb</span>
+<div>
+<p class="font-headline font-bold text-primary mb-1">PRO TIP: Instant Wallet Top-Ups</p>
+<p class="text-sm text-on-surface-variant leading-relaxed">
+                        Seamlessly move your crypto assets into your Crymad Mastercard. Tap <span class="text-primary font-mono">'LOAD'</span> to access your bioluminescent vault and convert ETH or BTC to USD instantly for real-world spending with zero terminal lag.
+                    </p>
+</div>
+</div>
+</div>
+</main>
+<!-- BottomNavBar -->
+<footer class="fixed bottom-0 w-full h-8 z-50 bg-emerald-950/40 backdrop-blur-xl border-t border-emerald-500/10 flex justify-center items-center gap-12 px-6">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[12px] text-emerald-400">radio_button_checked</span>
+<span class="font-mono text-[10px] tracking-tighter text-emerald-400 font-bold">SYSTEM OPERATIONAL</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[12px] text-emerald-500">trending_up</span>
+<span class="font-mono text-[10px] tracking-tighter text-emerald-100/80">BTC $64,210</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[12px] text-emerald-500">trending_up</span>
+<span class="font-mono text-[10px] tracking-tighter text-emerald-100/80">ETH $3,450</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[12px] text-emerald-500">sync</span>
+<span class="font-mono text-[10px] tracking-tighter text-emerald-100/80 uppercase">LAST SYNC 12:04:11</span>
+</div>
+</footer>
+</body></html>

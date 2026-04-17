@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800;900&amp;family=JetBrains+Mono:wght@400;700&amp;family=Space+Grotesk:wght@500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary-fixed-dim": "#ffb95f",
+                        "surface-container-low": "#131e1a",
+                        "on-surface": "#d9e5df",
+                        "secondary-fixed": "#68fcbf",
+                        "surface-tint": "#4edea3",
+                        "tertiary-container": "#e29100",
+                        "primary-fixed-dim": "#4edea3",
+                        "surface-container-lowest": "#06100d",
+                        "outline": "#86948a",
+                        "error": "#ffb4ab",
+                        "surface-container": "#17221e",
+                        "on-error": "#690005",
+                        "on-secondary": "#003825",
+                        "surface-bright": "#313b38",
+                        "surface-container-high": "#222c29",
+                        "secondary": "#45dfa4",
+                        "on-tertiary-fixed": "#2a1700",
+                        "primary": "#4edea3",
+                        "inverse-on-surface": "#28332f",
+                        "secondary-container": "#00bd85",
+                        "inverse-primary": "#006c49",
+                        "on-primary-fixed": "#002113",
+                        "secondary-fixed-dim": "#45dfa4",
+                        "surface-dim": "#0b1512",
+                        "outline-variant": "#3c4a42",
+                        "on-secondary-fixed-variant": "#005137",
+                        "primary-fixed": "#6ffbbe",
+                        "on-tertiary": "#472a00",
+                        "on-primary-container": "#00422b",
+                        "on-secondary-fixed": "#002114",
+                        "on-primary": "#003824",
+                        "surface-variant": "#2c3733",
+                        "on-primary-fixed-variant": "#005236",
+                        "surface": "#0b1512",
+                        "tertiary-fixed": "#ffddb8",
+                        "primary-container": "#10b981",
+                        "on-surface-variant": "#bbcabf",
+                        "on-secondary-container": "#00452e",
+                        "tertiary": "#ffb95f",
+                        "on-tertiary-container": "#523200",
+                        "inverse-surface": "#d9e5df",
+                        "error-container": "#93000a",
+                        "surface-container-highest": "#2c3733",
+                        "background": "#0b1512",
+                        "on-tertiary-fixed-variant": "#653e00",
+                        "on-error-container": "#ffdad6",
+                        "on-background": "#d9e5df"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "1rem",
+                        "lg": "2rem",
+                        "xl": "3rem",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Inter"],
+                        "body": ["Inter"],
+                        "label": ["Space Grotesk"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .glass-panel {
+            background: rgba(44, 55, 51, 0.4);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(16, 185, 129, 0.08);
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+        .mono-technical {
+            font-family: 'JetBrains Mono', monospace;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body selection:bg-primary/30 min-h-screen">
+<!-- Parent Content Background (Simulated Navigation State) -->
+<div class="fixed inset-0 z-0 overflow-hidden opacity-40 pointer-events-none">
+<div class="absolute top-[-10%] left-[-5%] w-[40%] h-[40%] bg-primary/10 blur-[120px] rounded-full"></div>
+<div class="absolute bottom-[-10%] right-[-5%] w-[40%] h-[40%] bg-tertiary/10 blur-[120px] rounded-full"></div>
+<!-- Simulated Background UI Elements -->
+<div class="max-w-[1280px] mx-auto p-8 grid grid-cols-12 gap-6 mt-24">
+<div class="col-span-8 space-y-6">
+<div class="h-64 bg-surface-container rounded-xl"></div>
+<div class="h-96 bg-surface-container rounded-xl"></div>
+</div>
+<div class="col-span-4 h-[600px] bg-surface-container rounded-xl"></div>
+</div>
+</div>
+<!-- Top Navigation Anchor -->
+<header class="max-w-[1280px] mx-auto flex justify-between items-center px-8 h-16 sticky top-4 z-50 bg-[#2c3733]/40 backdrop-blur-[20px] rounded-[32px] mt-4 border border-[#10b981]/10 shadow-[0px_24px_48px_rgba(0,0,0,0.5)]">
+<div class="text-xl font-black tracking-tighter text-[#10b981] flex items-center gap-2 uppercase font-headline">
+            EMERALD PULSE
+        </div>
+<nav class="hidden md:flex gap-8">
+<a class="font-['Inter'] font-bold tracking-tight uppercase text-xs text-[#d9e5df]/60 hover:text-[#34d399] transition-colors duration-300" href="#">Portfolio</a>
+<a class="font-['Inter'] font-bold tracking-tight uppercase text-xs text-[#d9e5df]/60 hover:text-[#34d399] transition-colors duration-300" href="#">Governance</a>
+<a class="font-['Inter'] font-bold tracking-tight uppercase text-xs text-[#d9e5df]/60 hover:text-[#34d399] transition-colors duration-300" href="#">Vaults</a>
+<a class="font-['Inter'] font-bold tracking-tight uppercase text-xs text-[#10b981] border-b-2 border-[#10b981] pb-1" href="#">Ledger</a>
+</nav>
+<div class="flex items-center gap-4">
+<button class="bg-primary-container text-on-primary-container px-6 py-2 rounded-full font-bold text-xs uppercase tracking-widest active:scale-95 duration-200">Connect Terminal</button>
+<span class="material-symbols-outlined text-[#d9e5df]/60 cursor-pointer">settings</span>
+</div>
+</header>
+<!-- Modal Overlay -->
+<div class="fixed inset-0 z-[100] flex items-center justify-center bg-black/60 backdrop-blur-sm p-4">
+<!-- Main Modal Container -->
+<main class="glass-panel w-full max-w-[720px] max-h-[921px] overflow-hidden rounded-xl shadow-[0px_24px_48px_rgba(0,0,0,0.5)] flex flex-col">
+<!-- Modal Header -->
+<div class="p-8 border-b border-outline-variant/20">
+<div class="flex justify-between items-start mb-2">
+<div class="space-y-1">
+<span class="font-label text-[10px] uppercase tracking-[0.2em] text-tertiary-fixed-dim">Institutional Security</span>
+<h1 class="text-3xl font-black tracking-tighter text-on-surface font-headline uppercase bg-gradient-to-r from-on-surface to-on-surface-variant bg-clip-text text-transparent">Card Spend Controls</h1>
+</div>
+<button class="w-10 h-10 flex items-center justify-center rounded-full bg-surface-container-highest hover:bg-surface-variant text-on-surface-variant transition-colors">
+<span class="material-symbols-outlined">close</span>
+</button>
+</div>
+<div class="flex items-center gap-3 bg-surface-container-lowest/50 p-3 rounded-full border border-outline-variant/10 w-fit">
+<div class="w-8 h-5 bg-gradient-to-br from-[#1d2a25] to-primary/20 rounded-sm border border-primary/20 flex items-center justify-center">
+<span class="text-[8px] font-bold text-primary">PLAT</span>
+</div>
+<p class="mono-technical text-xs text-on-surface-variant">Corporate Platinum ••••2049 · <span class="text-on-surface">Joseph Obasi</span></p>
+</div>
+</div>
+<!-- Scrollable Content Area -->
+<div class="flex-1 overflow-y-auto p-8 space-y-6">
+<!-- Real-time Preview Mini Card -->
+<section class="bg-primary/5 border border-primary/10 rounded-lg p-4 flex items-center justify-between">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">analytics</span>
+<p class="font-label text-xs uppercase tracking-wider text-primary">Live Configuration Impact</p>
+</div>
+<p class="mono-technical text-sm text-on-surface">Current config: <span class="text-primary font-bold">98% of txns allowed</span> <span class="text-on-surface-variant/60">based on last 30d</span></p>
+</section>
+<div class="grid grid-cols-1 gap-6">
+<!-- SPEND LIMITS -->
+<section class="glass-panel p-6 rounded-lg space-y-4">
+<div class="flex items-center gap-2 mb-2">
+<span class="material-symbols-outlined text-secondary text-sm">payments</span>
+<h2 class="font-label text-xs uppercase tracking-[0.15em] text-on-surface-variant">Spend Limits</h2>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div class="space-y-2">
+<label class="mono-technical text-[10px] text-on-surface-variant/60 uppercase">Daily Limit</label>
+<div class="relative">
+<input class="w-full bg-surface-container-highest border-none rounded-md mono-technical text-sm text-primary focus:ring-1 focus:ring-primary h-10 px-3" type="text" value="$10,000"/>
+<div class="absolute right-2 top-1/2 -translate-y-1/2 flex flex-col text-on-surface-variant/40">
+<span class="material-symbols-outlined text-xs cursor-pointer hover:text-primary">expand_less</span>
+<span class="material-symbols-outlined text-xs cursor-pointer hover:text-primary">expand_more</span>
+</div>
+</div>
+</div>
+<div class="space-y-2">
+<label class="mono-technical text-[10px] text-on-surface-variant/60 uppercase">Weekly Limit</label>
+<div class="relative">
+<input class="w-full bg-surface-container-highest border-none rounded-md mono-technical text-sm text-primary focus:ring-1 focus:ring-primary h-10 px-3" type="text" value="$35,000"/>
+<div class="absolute right-2 top-1/2 -translate-y-1/2 flex flex-col text-on-surface-variant/40">
+<span class="material-symbols-outlined text-xs cursor-pointer hover:text-primary">expand_less</span>
+<span class="material-symbols-outlined text-xs cursor-pointer hover:text-primary">expand_more</span>
+</div>
+</div>
+</div>
+<div class="space-y-2">
+<label class="mono-technical text-[10px] text-on-surface-variant/60 uppercase">Monthly Limit</label>
+<input class="w-full bg-surface-container-highest border-none rounded-md mono-technical text-sm text-primary focus:ring-1 focus:ring-primary h-10 px-3" type="text" value="$100,000"/>
+</div>
+<div class="space-y-2">
+<label class="mono-technical text-[10px] text-on-surface-variant/60 uppercase">Yearly Limit</label>
+<input class="w-full bg-surface-container-highest border-none rounded-md mono-technical text-sm text-primary focus:ring-1 focus:ring-primary h-10 px-3" type="text" value="$1,000,000"/>
+</div>
+</div>
+</section>
+<!-- VELOCITY RULES -->
+<section class="glass-panel p-6 rounded-lg space-y-4">
+<div class="flex items-center gap-2 mb-2">
+<span class="material-symbols-outlined text-secondary text-sm">speed</span>
+<h2 class="font-label text-xs uppercase tracking-[0.15em] text-on-surface-variant">Velocity Rules</h2>
+</div>
+<div class="grid grid-cols-3 gap-4">
+<div class="bg-surface-container-low p-3 rounded-md border border-outline-variant/10">
+<p class="mono-technical text-[9px] text-on-surface-variant/60 uppercase mb-1">Max Txn / Hr</p>
+<p class="mono-technical text-lg font-bold text-on-surface">10</p>
+</div>
+<div class="bg-surface-container-low p-3 rounded-md border border-outline-variant/10">
+<p class="mono-technical text-[9px] text-on-surface-variant/60 uppercase mb-1">Max Txn / Day</p>
+<p class="mono-technical text-lg font-bold text-on-surface">50</p>
+</div>
+<div class="bg-surface-container-low p-3 rounded-md border border-outline-variant/10">
+<p class="mono-technical text-[9px] text-on-surface-variant/60 uppercase mb-1">Single Limit</p>
+<p class="mono-technical text-lg font-bold text-primary">$25k</p>
+</div>
+</div>
+</section>
+<!-- MERCHANT CONTROLS -->
+<section class="glass-panel p-6 rounded-lg space-y-4">
+<div class="flex items-center gap-2 mb-2">
+<span class="material-symbols-outlined text-secondary text-sm">store</span>
+<h2 class="font-label text-xs uppercase tracking-[0.15em] text-on-surface-variant">Merchant Controls</h2>
+</div>
+<div class="grid grid-cols-2 gap-6">
+<div class="space-y-3">
+<p class="font-label text-[10px] text-on-surface-variant/60 uppercase">Allowed Categories</p>
+<div class="grid grid-cols-1 gap-2">
+<label class="flex items-center gap-3 cursor-pointer group">
+<div class="w-4 h-4 border border-primary rounded flex items-center justify-center bg-primary/20">
+<span class="material-symbols-outlined text-[12px] text-on-primary">check</span>
+</div>
+<span class="font-label text-[11px] text-on-surface uppercase tracking-tighter">Business Services</span>
+</label>
+<label class="flex items-center gap-3 cursor-pointer group">
+<div class="w-4 h-4 border border-primary rounded flex items-center justify-center bg-primary/20">
+<span class="material-symbols-outlined text-[12px] text-on-primary">check</span>
+</div>
+<span class="font-label text-[11px] text-on-surface uppercase tracking-tighter">Travel &amp; Airfare</span>
+</label>
+<label class="flex items-center gap-3 cursor-pointer group opacity-40">
+<div class="w-4 h-4 border border-outline-variant rounded flex items-center justify-center"></div>
+<span class="font-label text-[11px] text-on-surface uppercase tracking-tighter">Entertainment</span>
+</label>
+</div>
+</div>
+<div class="space-y-3">
+<p class="font-label text-[10px] text-on-surface-variant/60 uppercase">Denied Merchants</p>
+<div class="space-y-2">
+<div class="flex items-center justify-between bg-error-container/10 p-2 rounded border border-error/10">
+<span class="mono-technical text-[10px] text-error">CASINO_GROUP_INTL</span>
+<span class="material-symbols-outlined text-xs text-error cursor-pointer">remove_circle</span>
+</div>
+<div class="flex items-center justify-between bg-error-container/10 p-2 rounded border border-error/10">
+<span class="mono-technical text-[10px] text-error">CRYPTO_EXCHANGE_UNVERIFIED</span>
+<span class="material-symbols-outlined text-xs text-error cursor-pointer">remove_circle</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- GEOGRAPHY -->
+<section class="glass-panel p-6 rounded-lg space-y-4">
+<div class="flex items-center gap-2 mb-2">
+<span class="material-symbols-outlined text-secondary text-sm">public</span>
+<h2 class="font-label text-xs uppercase tracking-[0.15em] text-on-surface-variant">Geography</h2>
+</div>
+<div class="h-32 w-full rounded-md bg-surface-container-lowest border border-outline-variant/10 relative overflow-hidden">
+<img alt="world map with glowing data points" class="absolute inset-0 w-full h-full object-cover opacity-30 mix-blend-luminosity" data-alt="abstract stylized global world map with illuminated data nodes and glowing green connecting lines on dark background" data-location="Global" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDeQaLRlRR7l1afiY9Pg5vT6g7n5Nk8Wzyr088yvztm5R9bc5ZhKPho9iuPOv5q7IbdcQZn8uAdGyCDY2tuwjHZf_5Pr02rQ6G7EC3qbVwjBaj39JwjT4fLVem4M9aejxqhkyQvvTxKAxCf9Nm6DXr15tnX7MGVWeLB5DeGEbyXNxaIJpiBV3cL6VZdtWcHypjJ1TEDQOSYFpHoYoL5r0JxNcEAAR0kSui_4DjLemSKw-HHRAHIepaetsviSG5QNuxHffIbzrizL94"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container-lowest to-transparent"></div>
+<div class="absolute bottom-3 left-4 flex gap-2">
+<span class="bg-error/20 text-error text-[8px] mono-technical px-2 py-1 rounded border border-error/30 uppercase">Blocked: North Korea</span>
+<span class="bg-error/20 text-error text-[8px] mono-technical px-2 py-1 rounded border border-error/30 uppercase">Blocked: Iran</span>
+</div>
+</div>
+</section>
+<!-- TIME WINDOW & ALERT THRESHOLDS -->
+<div class="grid grid-cols-2 gap-6">
+<section class="glass-panel p-6 rounded-lg space-y-4">
+<div class="flex items-center gap-2 mb-2">
+<span class="material-symbols-outlined text-secondary text-sm">schedule</span>
+<h2 class="font-label text-xs uppercase tracking-[0.15em] text-on-surface-variant">Time Window</h2>
+</div>
+<div class="flex items-center justify-between p-3 bg-surface-container-highest rounded-md">
+<span class="mono-technical text-xs text-on-surface">24/7 Access</span>
+<div class="w-10 h-5 bg-primary/20 border border-primary/40 rounded-full relative cursor-pointer">
+<div class="absolute right-1 top-1 w-3 h-3 bg-primary rounded-full"></div>
+</div>
+</div>
+<p class="text-[10px] text-on-surface-variant/60 font-body leading-relaxed">Transactions outside selected hours will be automatically declined.</p>
+</section>
+<section class="glass-panel p-6 rounded-lg space-y-4">
+<div class="flex items-center gap-2 mb-2">
+<span class="material-symbols-outlined text-secondary text-sm">notifications_active</span>
+<h2 class="font-label text-xs uppercase tracking-[0.15em] text-on-surface-variant">Alerts</h2>
+</div>
+<div class="space-y-3">
+<div class="flex items-center gap-3">
+<div class="w-8 h-4 bg-primary/20 border border-primary/40 rounded-full relative flex items-center justify-end px-1">
+<div class="w-2.5 h-2.5 bg-primary rounded-full"></div>
+</div>
+<span class="font-label text-[10px] uppercase text-on-surface-variant">Notify CFO &gt;$10k</span>
+</div>
+<div class="flex items-center gap-3">
+<div class="w-8 h-4 bg-primary/20 border border-primary/40 rounded-full relative flex items-center justify-end px-1">
+<div class="w-2.5 h-2.5 bg-primary rounded-full"></div>
+</div>
+<span class="font-label text-[10px] uppercase text-on-surface-variant">Daily summary</span>
+</div>
+</div>
+</section>
+</div>
+</div>
+</div>
+<!-- Modal Footer CTA -->
+<div class="p-8 border-t border-outline-variant/20 bg-surface-container-low/50 flex justify-end gap-4">
+<button class="font-label text-[10px] uppercase tracking-widest text-on-surface-variant hover:text-on-surface transition-colors">Discard Changes</button>
+<button class="bg-gradient-to-r from-primary to-primary-container px-10 py-3 rounded-full font-headline font-bold text-sm uppercase tracking-widest text-on-primary shadow-lg shadow-primary/20 hover:scale-[1.02] active:scale-95 transition-all">
+                    SAVE CONTROLS →
+                </button>
+</div>
+</main>
+</div>
+<!-- Side Navigation Anchor (Hidden on smaller screens, contextually available) -->
+<aside class="fixed left-0 top-0 h-full flex flex-col bg-[#17221e] h-screen w-64 border-r border-[#10b981]/10 z-40 hidden xl:flex">
+<div class="p-8 space-y-2">
+<span class="text-[#10b981] font-bold font-headline text-lg tracking-widest">SOVEREIGN</span>
+<p class="font-['JetBrains_Mono'] text-[10px] tracking-widest text-[#d9e5df]/40 uppercase">Institutional Grade</p>
+</div>
+<nav class="flex-1 px-4 py-8 space-y-2">
+<div class="flex items-center gap-4 p-3 rounded-lg text-[#d9e5df]/40 hover:bg-[#222c29] hover:text-[#10b981] transition-all cursor-pointer font-['JetBrains_Mono'] text-sm uppercase">
+<span class="material-symbols-outlined">terminal</span>
+<span>Terminal</span>
+</div>
+<div class="flex items-center gap-4 p-3 rounded-lg bg-[#222c29] text-[#10b981] border-l-4 border-[#10b981] font-['JetBrains_Mono'] text-sm uppercase">
+<span class="material-symbols-outlined">query_stats</span>
+<span>Analytics</span>
+</div>
+<div class="flex items-center gap-4 p-3 rounded-lg text-[#d9e5df]/40 hover:bg-[#222c29] hover:text-[#10b981] transition-all cursor-pointer font-['JetBrains_Mono'] text-sm uppercase">
+<span class="material-symbols-outlined">verified_user</span>
+<span>Compliance</span>
+</div>
+<div class="flex items-center gap-4 p-3 rounded-lg text-[#d9e5df]/40 hover:bg-[#222c29] hover:text-[#10b981] transition-all cursor-pointer font-['JetBrains_Mono'] text-sm uppercase">
+<span class="material-symbols-outlined">security</span>
+<span>Security</span>
+</div>
+</nav>
+<div class="p-8 mt-auto border-t border-outline-variant/10">
+<button class="w-full bg-primary-container text-on-primary-container py-3 rounded-xl font-bold uppercase text-[10px] tracking-widest">New Asset</button>
+</div>
+</aside>
+<!-- Footer Anchor -->
+<footer class="w-full max-w-[1280px] mx-auto py-4 px-8 flex justify-between items-center border-t border-[#10b981]/05 mt-20 relative z-10">
+<p class="font-['JetBrains_Mono'] text-[10px] uppercase tracking-[0.2em] text-[#d9e5df]/30">© 2024 EMERALD PULSE INSTITUTIONAL. ALL RIGHTS RESERVED.</p>
+<div class="flex gap-6">
+<span class="font-['JetBrains_Mono'] text-[10px] uppercase tracking-[0.2em] text-[#10b981]">Privacy Protocol</span>
+<span class="font-['JetBrains_Mono'] text-[10px] uppercase tracking-[0.2em] text-[#d9e5df]/30">SYSTEM STATUS: OPERATIONAL</span>
+</div>
+</footer>
+</body></html>

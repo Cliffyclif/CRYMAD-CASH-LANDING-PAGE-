@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CRYMAD CA$H Mobile — Design Contact Sheet · 108 Screens</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #040d0a;
+    --surface: rgba(44,55,51,0.4);
+    --border: rgba(16,185,129,0.08);
+    --primary: #10b981;
+    --secondary: #34d399;
+    --text: #d9e5df;
+    --muted: #bbcabf;
+    --amber: #f59e0b;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Inter', system-ui, sans-serif;
+    min-height: 100vh;
+    overflow-x: hidden;
+    position: relative;
+    padding-bottom: 48px;
+  }
+  .bg-canvas { position: fixed; inset: 0; z-index: -2; overflow: hidden; pointer-events: none; }
+  .blob { position: absolute; filter: blur(80px); opacity: 0.3; border-radius: 50%; }
+  .blob:nth-child(1) { width: 500px; height: 500px; background: #10b981; top: -10%; left: -10%; }
+  .blob:nth-child(2) { width: 400px; height: 400px; background: #34d399; bottom: -5%; right: -5%; }
+  .blob:nth-child(3) { width: 300px; height: 300px; background: #10b981; top: 30%; right: 15%; }
+  .blob:nth-child(4) { width: 600px; height: 600px; background: #0b1512; bottom: 20%; left: 25%; }
+  .diagonal {
+    position: absolute; inset: 0;
+    background: linear-gradient(45deg, transparent 48%, rgba(16,185,129,0.05) 50%, transparent 52%);
+    background-size: 40px 40px;
+  }
+
+  header { padding: 64px 48px 32px; max-width: 1800px; margin: 0 auto; }
+  .wordmark { font-size: 28px; font-weight: 800; letter-spacing: -0.02em;
+    background: linear-gradient(to right, #10b981, #34d399);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+  h1 { font-size: 56px; font-weight: 800; letter-spacing: -0.03em; line-height: 1;
+    margin: 16px 0 8px;
+    background: linear-gradient(to right, #10b981, #34d399);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+  .subtitle { font-family: 'JetBrains Mono', monospace; font-size: 11px;
+    text-transform: uppercase; letter-spacing: 0.2em; color: var(--muted); }
+  .nav-strip {
+    display: inline-flex; gap: 12px; margin-top: 24px;
+    padding: 8px; border-radius: 999px;
+    background: var(--surface); backdrop-filter: blur(20px);
+    border: 1px solid var(--border);
+  }
+  .nav-link {
+    padding: 8px 18px; border-radius: 999px;
+    font-family: 'JetBrains Mono', monospace; font-size: 11px;
+    text-transform: uppercase; letter-spacing: 0.15em;
+    color: var(--muted); text-decoration: none;
+    transition: all 0.3s ease;
+  }
+  .nav-link.active { background: linear-gradient(to right, #10b981, #34d399); color: #003824; font-weight: 700; }
+  .nav-link:hover:not(.active) { color: var(--text); }
+  .stats { display: flex; gap: 24px; margin-top: 24px; flex-wrap: wrap; }
+  .stat {
+    background: var(--surface); backdrop-filter: blur(20px);
+    border: 1px solid var(--border); border-radius: 16px;
+    padding: 12px 20px;
+    font-family: 'JetBrains Mono', monospace; font-size: 11px;
+    text-transform: uppercase; letter-spacing: 0.15em; color: var(--muted);
+  }
+  .stat b { color: var(--primary); font-weight: 700; }
+
+  .filter-bar {
+    max-width: 1800px; margin: 24px auto 0; padding: 0 48px;
+    display: flex; gap: 12px; align-items: center; flex-wrap: wrap;
+  }
+  .filter-btn {
+    background: var(--surface); backdrop-filter: blur(20px);
+    border: 1px solid var(--border); border-radius: 999px;
+    padding: 10px 20px;
+    font-family: 'JetBrains Mono', monospace; font-size: 11px;
+    text-transform: uppercase; letter-spacing: 0.15em;
+    color: var(--muted); cursor: pointer; transition: all 0.3s ease;
+  }
+  .filter-btn.active {
+    border-color: rgba(16,185,129,0.5); color: var(--primary);
+    box-shadow: 0 0 20px rgba(16,185,129,0.15);
+  }
+  .filter-btn:hover { color: var(--text); border-color: rgba(16,185,129,0.3); }
+
+  .section-heading {
+    max-width: 1800px; margin: 48px auto 16px; padding: 0 48px;
+    font-size: 24px; font-weight: 800;
+    background: linear-gradient(to right, #10b981, #34d399);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  }
+  .section-count {
+    font-family: 'JetBrains Mono', monospace; font-size: 10px;
+    text-transform: uppercase; letter-spacing: 0.2em;
+    color: var(--muted); margin-left: 12px;
+    -webkit-text-fill-color: var(--muted);
+  }
+
+  /* Mobile grid — phone-aspect tiles */
+  .grid {
+    max-width: 1800px; margin: 0 auto; padding: 0 48px 32px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 28px;
+  }
+  .card {
+    background: transparent;
+    border-radius: 36px;
+    transition: all 0.3s ease;
+    cursor: pointer; text-decoration: none; color: inherit;
+    display: block; position: relative;
+  }
+  .card:hover { transform: translateY(-4px); }
+
+  /* Phone frame wrapper */
+  .phone-frame {
+    position: relative;
+    aspect-ratio: 390 / 844;
+    background: #0b1512;
+    border-radius: 36px;
+    padding: 8px;
+    border: 1px solid rgba(16,185,129,0.15);
+    box-shadow:
+      inset 0 0 0 1px rgba(16,185,129,0.05),
+      0 20px 40px rgba(4,13,10,0.4),
+      0 0 40px rgba(16,185,129,0.08);
+    transition: all 0.3s ease;
+  }
+  .card:hover .phone-frame {
+    border-color: rgba(16,185,129,0.4);
+    box-shadow:
+      inset 0 0 0 1px rgba(16,185,129,0.1),
+      0 20px 40px rgba(4,13,10,0.5),
+      0 0 60px rgba(16,185,129,0.2);
+  }
+  /* Notch */
+  .phone-frame::before {
+    content: '';
+    position: absolute;
+    top: 12px; left: 50%;
+    transform: translateX(-50%);
+    width: 28%; height: 20px;
+    background: #040d0a;
+    border-radius: 0 0 14px 14px;
+    z-index: 2;
+  }
+  .thumb-wrap {
+    position: relative;
+    width: 100%; height: 100%;
+    border-radius: 28px;
+    overflow: hidden;
+    background: #040d0a;
+  }
+  .thumb {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    object-position: top center;
+    transition: transform 0.6s ease;
+  }
+  .card:hover .thumb { transform: scale(1.02); }
+
+  .type-badge {
+    position: absolute;
+    top: 28px; right: 16px;
+    padding: 4px 10px; border-radius: 999px;
+    font-family: 'JetBrains Mono', monospace; font-size: 9px;
+    text-transform: uppercase; letter-spacing: 0.15em;
+    font-weight: 700; backdrop-filter: blur(12px);
+    z-index: 3;
+  }
+  .type-badge.page {
+    background: rgba(16,185,129,0.3); border: 1px solid rgba(16,185,129,0.5); color: #6ffbbe;
+  }
+  .type-badge.sheet {
+    background: rgba(245,158,11,0.25); border: 1px solid rgba(245,158,11,0.5); color: #ffd580;
+  }
+
+  .meta {
+    padding: 14px 4px 2px;
+  }
+  .title {
+    font-size: 13px; font-weight: 600; color: var(--text);
+    margin-bottom: 4px;
+  }
+  .route {
+    font-family: 'JetBrains Mono', monospace; font-size: 9px;
+    color: var(--primary); text-transform: uppercase;
+    letter-spacing: 0.08em; word-break: break-all;
+  }
+
+  .status-strip {
+    position: fixed; bottom: 0; left: 0; right: 0;
+    height: 32px;
+    background: rgba(11,21,18,0.3);
+    backdrop-filter: blur(12px);
+    border-top: 1px solid rgba(16,185,129,0.05);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 24px;
+    font-family: 'JetBrains Mono', monospace; font-size: 10px;
+    text-transform: uppercase; letter-spacing: 0.15em; z-index: 50;
+  }
+  .pulse-dot {
+    display: inline-block; width: 8px; height: 8px;
+    border-radius: 50%; background: #10b981;
+    box-shadow: 0 0 8px #10b981;
+    margin-right: 8px;
+    animation: pulse 2s ease-in-out infinite;
+    vertical-align: middle;
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(1.2); }
+  }
+  .status-strip .left { color: var(--primary); }
+  .status-strip .right { color: rgba(217,229,223,0.5); display: flex; gap: 24px; }
+</style>
+</head>
+<body>
+  <div class="bg-canvas">
+    <div class="blob"></div><div class="blob"></div><div class="blob"></div><div class="blob"></div>
+    <div class="diagonal"></div>
+  </div>
+
+  <header>
+    <div class="wordmark">CRYMAD CA$H</div>
+    <h1>Mobile Design Contact Sheet</h1>
+    <div class="subtitle">Emerald Pulse · iPhone 14 Pro · 108 Screens · 3 Account Tiers</div>
+    <div class="nav-strip">
+      <a class="nav-link" href="../../designs/index.html">← Desktop (108)</a>
+      <span class="nav-link active">Mobile (108)</span>
+    </div>
+    <div class="stats">
+      <div class="stat">Total: <b>108</b></div>
+      <div class="stat">Retail: <b>68</b></div>
+      <div class="stat">Institutional: <b>40</b></div>
+      <div class="stat">Pages: <b>42</b></div>
+      <div class="stat">Sheets: <b>66</b></div>
+      <div class="stat">Device: <b>390×844</b></div>
+    </div>
+  </header>
+
+  <div class="filter-bar">
+    <button class="filter-btn active" data-filter="all">All 108</button>
+    <button class="filter-btn" data-filter="page">Pages 42</button>
+    <button class="filter-btn" data-filter="sheet">Sheets 66</button>
+    <button class="filter-btn" data-filter="institutional">Institutional 40</button>
+  </div>
+
+  <h2 class="section-heading">Core<span class="section-count">1 page</span></h2>
+  <div class="grid">
+    <a class="card" data-type="page" href="dashboard.html" target="_blank"><div class="phone-frame"><div class="thumb-wrap"><img class="thumb" src="dashboard.png" alt=""><span class="type-badge page">PAGE</span></div></div><div class="meta"><div class="title">Dashboard</div><div class="route">/dashboard</div></div></a>
+  </div>
+
+  <h2 class="section-heading">Auth & Onboarding<span class="section-count">7 pages</span></h2>
+  <div class="grid">
+    <a class="card" data-type="page" href="login.html" target="_blank"><div class="phone-frame"><div class="thumb-wrap"><img class="thumb" src="login.png" alt=""><span class="type-badge page">PAGE</span></div></div><div class="meta"><div class="title">Login</div><div class="route">/login</div></div></a>
+    <a class="card" data-type="page" href="register.html" target="_blank"><div class="phone-frame"><div class="thumb-wrap"><img class="thumb" src="register.png" alt=""><span class="type-badge page">PAGE</span></div></div><div class="meta"><div class="title">Registration</div><div class="route">/register</div></div></a>
+    <a class="card" data-type="page" href="register-verify-email.html" target="_blank"><div class="phone-frame"><div class="thumb-wrap"><img class="thumb" src="register-verify-email.png" alt=""><span class="type-badge page">PAGE</span></div></div><div class="meta"><div class="title">Email Verification</div><div class="route">/register/verify-email</div></div></a>
+    <a class="card" data-type="page" href="register-complete.html" target="_blank"><div class="phone-frame"><div class="thumb-wrap"><img class="thumb" src="register-complete.png" alt=""><span class="type-badge page">PAGE</span></div></div><div class="meta"><div class="title">Contact & Address</div><div class="route">/register/complete</div></div></a>
+    <a class="card" data-type="page" href="register-kyc.html" target="_blank"><div class="phone-frame"><div class="thumb-wrap"><img class="thumb" src="register-kyc.png" alt=""><span class="type-badge page">PAGE</span></div></div><div class="meta"><div class="title">KYC Verification</div><div class="route">/register/kyc</div></div></a>
+    <a class="card" data-type="page" href="forgot-password.html" target="_blank"><div class="phone-frame"><div class="thumb-wrap"><img class="thumb" src="forgot-password.png" alt=""><span class="type-badge page">PAGE</span></div></div><div class="meta"><div class="title">Forgot Password</div><div class="route">/forgot-password</div></div></a>
+    <a class="card" data-type="page" href="login-verify-2fa.html" target="_blank"><div class="phone-frame"><div class="thumb-wrap"><img class="thumb" src="login-verify-2fa.png" alt=""><span class="type-badge page">PAGE</span></div></div><div class="meta"><div class="title">Two-Factor Auth</div><div class="route">/login/verify-2fa</div></div></a>
+  </div>
+
+  <h2 class="section-heading">E-Wallet<span class="section-count">2 pages · 7 sheets</span></h2>
+  <div class="grid">
+    <a class="card" data-type="page" href="e-wallet.html" target="_blank"><div class="phone-frame"><div class="thumb-wrap"><img class="thumb" src="e-wallet.png" alt=""><span class="type-badge page">PAGE</span></div></div><div class="meta"><div class="title">E-Wallet</div><div class="route">/e-wallet</div></div></a>
+    <a class="card" data-type="sheet" href="e-wallet-transfer.html" target="_blank"><div class="phone-frame"><div class="thumb-wrap"><img class="thumb" src="e-wallet-transfer.png" alt=""><span class="type-badge sheet">SHEET</span></div></div><div class="meta"><div class="title">Transfer Money</div><div class="route">/e-wallet/transfer</div></div></a>
+    <a class="card" data-type="sheet" href="e-wallet-bank-withdraw.html" target="_blank"><div class="phone-frame"><div class="thumb-wrap"><img class="thumb" src="e-wallet-bank-withdraw.png" alt=""><span class="type-badge sheet">SHEET</span></div></div><div class="meta"><div class="title">Bank Withdrawal</div><div class="route">/e-wallet/bank-withdraw</div></div></a>
+    <a class="card" data-type="sheet" href="e-wallet-crypto-swap.html" target="_blank"><div class="phone-frame"><div class="thumb-wrap"><img class="thumb" src="e-wallet-crypto-swap.png" alt=""><span class="type-badge sheet">SHEET</span></div></div><div class="meta"><div class="title">Swap to Crypto</div><div class="route">/e-wallet/crypto-swap</div></div></a>
+    <a class="card" data-type="sheet" href="e-wallet-card-load.html" target="_blank"><div class="phone-frame"><div class="thumb-wrap"><img class="thumb" src="e-wallet-card-load.png" alt=""><span class="type-badge sheet">SHEET</span></div></div><div class="meta"><div class="title">Load Card</div><div class="route">/e-wallet/card-load</div></div></a>
+    <a class="card" data-type="page" href="e-wallet-beneficiaries.html" target="_blank"><div class="phone-frame"><div class="thumb-wrap"><img class="thumb" src="e-wallet-beneficiaries.png" alt=""><span class="type-badge page">PAGE</span></div></div><div class="meta"><div class="title">Beneficiaries</div><div class="route">/e-wallet/beneficiaries</div></div></a>
+    <a class="card" data-type="sheet" href="e-wallet-beneficiaries-add.html" target="_blank"><div class="phone-frame"><div class="thumb-wrap"><img class="thumb" src="e-wallet-beneficiaries-add.png" alt=""><span class="type-badge sheet">SHEET</span></div></div><div class="meta"><div class="title">Add Beneficiary</div><div class="route">/e-wallet/beneficiaries/add</div></div></a>
+    <a class="card" data-type="sheet" href="e-wallet-beneficiaries-edit.html" target="_blank"><div class="phone-frame"><div class="thumb-wrap"><img class="thumb" src="e-wallet-beneficiaries-edit.png" alt=""><span class="type-badge sheet">SHEET</span></div></div><div class="meta"><div class="title">Edit Beneficiary</div><div class="route">/e-wallet/beneficiaries/edit</div></div></a>
+    <a class="card" data-type="sheet" href="e-wallet-beneficiaries-delete.html" target="_blank"><div class="phone-frame"><div class="thumb-wrap"><img class="thumb" src="e-wallet-beneficiaries-delete.png" alt=""><span class="type-badge sheet">SHEET</span></div></div><div class="meta"><div class="title">Delete Beneficiary</div><div class="route">/e-wallet/beneficiaries/delete</div></div></a>
+  </div>
+
+  <h2 class="section-heading">Crypto<span class="section-count">1 page · 6 sheets</span></h2>
+  <div class="grid">
+    <a class="card" data-type="page" href="crypto.html" target="_blank"><div class="phone-frame"><div class="thumb-wrap"><img class="thumb" src="crypto.png" alt=""><span class="type-badge page">PAGE</span></div></div><div class="meta"><div class="title">Crypto Wallet</div><div class="route">/crypto</div></div></a>
+    <a class="card" data-type="sheet" href="crypto-deposit.html" target="_blank"><div class="phone-frame"><div class="thumb-wrap"><img class="thumb" src="crypto-deposit.png" alt=""><span class="type-badge sheet">SHEET</span></div></div><div class="meta"><div class="title">Deposit Crypto</div><div class="route">/crypto/deposit</div></div></a>
+    <a class="card" data-type="sheet" href="crypto-withdraw.html" target="_blank"><div class="phone-frame"><div class="thumb-wrap"><img class="thumb" src="crypto-withdraw.png" alt=""><span class="type-badge sheet">SHEET</span></div></div><div class="meta"><div class="title">Withdraw Crypto</div><div class="route">/crypto/withdraw</div></div></a>
+    <a class="card" data-type="sheet" href="crypto-buy.html" target="_blank"><div class="phone-frame"><div class="thumb-wrap"><img class="thumb" src="crypto-buy.png" alt=""><span class="type-badge sheet">SHEET</span></div></div><div class="meta"><div class="title">Buy Crypto</div><div class="route">/crypto/buy</div></div></a>
+    <a class="card" data-type="sheet" href="crypto-sync-card.html" target="_blank"><div class="phone-frame"><div class="thumb-wrap"><img class="thumb" src="crypto-sync-card.png" alt=""><span class="type-badge sheet">SHEET</span></div></div><div class="meta"><div class="title">Sync to Card</div><div class="route">/crypto/sync-card</div></div></a>
+    <a class="card" data-type="sheet" href="crypto-sync-bank.html" target="_blank"><div class="phone-frame"><div class="thumb-wrap"><img class="thumb" src="crypto-sync-bank.png" alt=""><span class="type-badge sheet">SHEET</span></div></div><div class="meta"><div class="title">Sync to Bank</div><div class="route">/crypto/sync-bank</div></div></a>
+    <a class="card" data-type="sheet" href="crypto-swap.html" target="_blank"><div class="phone-frame"><div class="thumb-wrap"><img class="thumb" src="crypto-swap.png" alt=""><span class="type-badge sheet">SHEET</span></div></div><div class="meta"><div class="title">Swap Crypto</div><div class="route">/crypto/swap</div></div></a>
+  </div>
+
+  <h2 class="section-heading">Cards<span class="section-count">4 pages · 4 sheets</span></h2>
+  <div class="grid">
+    <a class="card" data-type="page" href="cards.html" target="_blank"><div class="phone-frame"><div class="thumb-wrap"><img class="thumb" src="cards.png" alt=""><span class="type-badge page">PAGE</span></div></div><div class="meta"><div class="title">Cards</div><div class="route">/cards</div></div></a>
+    <a class="card" data-type="page" href="cards-setup.html" target="_blank"><div class="phone-frame"><div class="thumb-wrap"><img class="thumb" src="cards-setup.png" alt=""><span class="type-badge page">PAGE</span></div></div><div class="meta"><div class="title">Card Setup</div><div class="route">/cards/setup</div></div></a>
+    <a class="card" data-type="page" href="cards-order.html" target="_blank"><div class="phone-frame"><div class="thumb-wrap"><img class="thumb" src="cards-order.png" alt=""><span class="type-badge page">PAGE</span></div></div><div class="meta"><div class="title">Order Card</div><div class="route">/cards/order</div></div></a>
+    <a class="card" data-type="page" href="cards-fees.html" target="_blank"><div class="phone-frame"><div class="thumb-wrap"><img class="thumb" src="cards-fees.png" alt=""><span class="type-badge page">PAGE</span></div></div><div class="meta"><div class="title">Card Fees</div><div class="route">/cards/fees</div></div></a>
+    <a class="card" data-type="sheet" href="cards-load.html" target="_blank"><div class="phone-frame"><div class="thumb-wrap"><img class="thumb" src="cards-load.png" alt=""><span class="type-badge sheet">SHEET</span></div></div><div class="meta"><div class="title">Load Card (OTP)</div><div class="route">/cards/load</div></div></a>
+    <a class="card" data-type="sheet" href="cards-lock.html" target="_blank"><div class="phone-frame"><div class="thumb-wrap"><img class="thumb" src="cards-lock.png" alt=""><span class="type-badge sheet">SHEET</span></div></div><div class="meta"><div class="title">Lock Card</div><div class="route">/cards/lock</div></div></a>
+    <a class="card" data-type="sheet" href="cards-activate.html" target="_blank"><div class="phone-frame"><div class="thumb-wrap"><img class="thumb" src="cards-activate.png" alt=""><span class="type-badge sheet">SHEET</span></div></div><div class="meta"><div class="title">Activate Card</div><div class="route">/cards/activate</div></div></a>
+    <a class="card" data-type="sheet" href="cards-credentials.html" target="_blank"><div class="phone-frame"><div class="thumb-wrap"><img class="thumb" src="cards-credentials.png" alt=""><span class="type-badge sheet">SHEET</span></div></div><div class="meta"><div class="title">Card Credentials</div><div class="route">/cards/credentials</div></div></a>
+  </div>
+
+  <h2 class="section-heading">Activity & History<span class="section-count">4 pages · 5 sheets</span></h2>
+  <div class="grid">
+    <a class="card" data-type="page" href="transactions.html" target="_blank"><div class="phone-frame"><div class="thumb-wrap"><img class="thumb" src="transactions.png" alt=""><span class="type-badge page">PAGE</span></div></div><div class="meta"><div class="title">Transactions</div><div class="route">/transactions</div></div></a>
+    <a class="card" data-type="sheet" href="transactions-detail.html" target="_blank"><div class="phone-frame"><div class="thumb-wrap"><img class="thumb" src="transactions-detail.png" alt=""><span class="type-badge sheet">SHEET</span></div></div><div class="meta"><div class="title">Transaction Detail</div><div class="route">/transactions/detail</div></div></a>
+    <a class="card" data-type="page" href="orders.html" target="_blank"><div class="phone-frame"><div class="thumb-wrap"><img class="thumb" src="orders.png" alt=""><span class="type-badge page">PAGE</span></div></div><div class="meta"><div class="title">Orders</div><div class="route">/orders</div></div></a>
+    <a class="card" data-type="sheet" href="orders-detail.html" target="_blank"><div class="phone-frame"><div class="thumb-wrap"><img class="thumb" src="orders-detail.png" alt=""><span class="type-badge sheet">SHEET</span></div></div><div class="meta"><div class="title">Order Detail</div><div class="route">/orders/detail</div></div></a>
+    <a class="card" data-type="sheet" href="orders-refund.html" target="_blank"><div class="phone-frame"><div class="thumb-wrap"><img class="thumb" src="orders-refund.png" alt=""><span class="type-badge sheet">SHEET</span></div></div><div class="meta"><div class="title">Request Refund</div><div class="route">/orders/refund</div></div></a>
+    <a class="card" data-type="page" href="subscriptions.html" target="_blank"><div class="phone-frame"><div class="thumb-wrap"><img class="thumb" src="subscriptions.png" alt=""><span class="type-badge page">PAGE</span></div></div><div class="meta"><div class="title">Subscriptions</div><div class="route">/subscriptions</div></div></a>
+    <a class="card" data-type="sheet" href="subscriptions-detail.html" target="_blank"><div class="phone-frame"><div class="thumb-wrap"><img class="thumb" src="subscriptions-detail.png" alt=""><span class="type-badge sheet">SHEET</span></div></div><div class="meta"><div class="title">Subscription Detail</div><div class="route">/subscriptions/detail</div></div></a>
+    <a class="card" data-type="sheet" href="subscriptions-cancel.html" target="_blank"><div class="phone-frame"><div class="thumb-wrap"><img class="thumb" src="subscriptions-cancel.png" alt=""><span class="type-badge sheet">SHEET</span></div></div><div class="meta"><div class="title">Cancel Subscription</div><div class="route">/subscriptions/cancel</div></div></a>
+    <a class="card" data-type="page" href="reports.html" target="_blank"><div class="phone-frame"><div class="thumb-wrap"><img class="thumb" src="reports.png" alt=""><span class="type-badge page">PAGE</span></div></div><div class="meta"><div class="title">Reports</div><div class="route">/reports</div></div></a>
+  </div>
+
+  <h2 class="section-heading">Banking<span class="section-count">2 pages · 2 sheets</span></h2>
+  <div class="grid">
+    <a class="card" data-type="page" href="banking.html" target="_blank"><div class="phone-frame"><div class="thumb-wrap"><img class="thumb" src="banking.png" alt=""><span class="type-badge page">PAGE</span></div></div><div class="meta"><div class="title">Banking Portal</div><div class="route">/banking</div></div></a>
+    <a class="card" data-type="sheet" href="banking-subscribe.html" target="_blank"><div class="phone-frame"><div class="thumb-wrap"><img class="thumb" src="banking-subscribe.png" alt=""><span class="type-badge sheet">SHEET</span></div></div><div class="meta"><div class="title">Activate Banking</div><div class="route">/banking/subscribe</div></div></a>
+    <a class="card" data-type="sheet" href="banking-pay.html" target="_blank"><div class="phone-frame"><div class="thumb-wrap"><img class="thumb" src="banking-pay.png" alt=""><span class="type-badge sheet">SHEET</span></div></div><div class="meta"><div class="title">Banking Payment</div><div class="route">/banking/pay</div></div></a>
+    <a class="card" data-type="page" href="banking-dashboard.html" target="_blank"><div class="phone-frame"><div class="thumb-wrap"><img class="thumb" src="banking-dashboard.png" alt=""><span class="type-badge page">PAGE</span></div></div><div class="meta"><div class="title">Banking Dashboard</div><div class="route">/banking/dashboard</div></div></a>
+  </div>
+
+  <h2 class="section-heading">Support & Notifications<span class="section-count">2 pages</span></h2>
+  <div class="grid">
+    <a class="card" data-type="page" href="notifications.html" target="_blank"><div class="phone-frame"><div class="thumb-wrap"><img class="thumb" src="notifications.png" alt=""><span class="type-badge page">PAGE</span></div></div><div class="meta"><div class="title">Notifications</div><div class="route">/notifications</div></div></a>
+    <a class="card" data-type="page" href="help.html" target="_blank"><div class="phone-frame"><div class="thumb-wrap"><img class="thumb" src="help.png" alt=""><span class="type-badge page">PAGE</span></div></div><div class="meta"><div class="title">Help / FAQs</div><div class="route">/help</div></div></a>
+  </div>
+
+  <h2 class="section-heading">Team & Payouts<span class="section-count">2 pages · 7 sheets</span></h2>
+  <div class="grid">
+    <a class="card" data-type="page" href="team.html" target="_blank"><div class="phone-frame"><div class="thumb-wrap"><img class="thumb" src="team.png" alt=""><span class="type-badge page">PAGE</span></div></div><div class="meta"><div class="title">Team Management</div><div class="route">/team</div></div></a>
+    <a class="card" data-type="sheet" href="team-invite.html" target="_blank"><div class="phone-frame"><div class="thumb-wrap"><img class="thumb" src="team-invite.png" alt=""><span class="type-badge sheet">SHEET</span></div></div><div class="meta"><div class="title">Invite Member</div><div class="route">/team/invite</div></div></a>
+    <a class="card" data-type="sheet" href="team-batch-import.html" target="_blank"><div class="phone-frame"><div class="thumb-wrap"><img class="thumb" src="team-batch-import.png" alt=""><span class="type-badge sheet">SHEET</span></div></div><div class="meta"><div class="title">Batch Import</div><div class="route">/team/batch-import</div></div></a>
+    <a class="card" data-type="sheet" href="team-edit-role.html" target="_blank"><div class="phone-frame"><div class="thumb-wrap"><img class="thumb" src="team-edit-role.png" alt=""><span class="type-badge sheet">SHEET</span></div></div><div class="meta"><div class="title">Edit Role</div><div class="route">/team/edit-role</div></div></a>
+    <a class="card" data-type="sheet" href="team-remove.html" target="_blank"><div class="phone-frame"><div class="thumb-wrap"><img class="thumb" src="team-remove.png" alt=""><span class="type-badge sheet">SHEET</span></div></div><div class="meta"><div class="title">Remove Member</div><div class="route">/team/remove</div></div></a>
+    <a class="card" data-type="page" href="payouts.html" target="_blank"><div class="phone-frame"><div class="thumb-wrap"><img class="thumb" src="payouts.png" alt=""><span class="type-badge page">PAGE</span></div></div><div class="meta"><div class="title">Payouts</div><div class="route">/payouts</div></div></a>
+    <a class="card" data-type="sheet" href="payouts-create.html" target="_blank"><div class="phone-frame"><div class="thumb-wrap"><img class="thumb" src="payouts-create.png" alt=""><span class="type-badge sheet">SHEET</span></div></div><div class="meta"><div class="title">Create Payout</div><div class="route">/payouts/create</div></div></a>
+    <a class="card" data-type="sheet" href="payouts-batch.html" target="_blank"><div class="phone-frame"><div class="thumb-wrap"><img class="thumb" src="payouts-batch.png" alt=""><span class="type-badge sheet">SHEET</span></div></div><div class="meta"><div class="title">Batch Payout</div><div class="route">/payouts/batch</div></div></a>
+    <a class="card" data-type="sheet" href="payouts-detail.html" target="_blank"><div class="phone-frame"><div class="thumb-wrap"><img class="thumb" src="payouts-detail.png" alt=""><span class="type-badge sheet">SHEET</span></div></div><div class="meta"><div class="title">Payout Detail</div><div class="route">/payouts/detail</div></div></a>
+  </div>
+
+  <h2 class="section-heading">Recurring & Rewards<span class="section-count">2 pages · 7 sheets</span></h2>
+  <div class="grid">
+    <a class="card" data-type="page" href="recurring-payments.html" target="_blank"><div class="phone-frame"><div class="thumb-wrap"><img class="thumb" src="recurring-payments.png" alt=""><span class="type-badge page">PAGE</span></div></div><div class="meta"><div class="title">Recurring Payments</div><div class="route">/recurring-payments</div></div></a>
+    <a class="card" data-type="sheet" href="recurring-payments-create.html" target="_blank"><div class="phone-frame"><div class="thumb-wrap"><img class="thumb" src="recurring-payments-create.png" alt=""><span class="type-badge sheet">SHEET</span></div></div><div class="meta"><div class="title">Create Recurring</div><div class="route">/recurring-payments/create</div></div></a>
+    <a class="card" data-type="sheet" href="recurring-payments-edit.html" target="_blank"><div class="phone-frame"><div class="thumb-wrap"><img class="thumb" src="recurring-payments-edit.png" alt=""><span class="type-badge sheet">SHEET</span></div></div><div class="meta"><div class="title">Edit Recurring</div><div class="route">/recurring-payments/edit</div></div></a>
+    <a class="card" data-type="sheet" href="recurring-payments-cancel.html" target="_blank"><div class="phone-frame"><div class="thumb-wrap"><img class="thumb" src="recurring-payments-cancel.png" alt=""><span class="type-badge sheet">SHEET</span></div></div><div class="meta"><div class="title">Cancel Recurring</div><div class="route">/recurring-payments/cancel</div></div></a>
+    <a class="card" data-type="page" href="rewards.html" target="_blank"><div class="phone-frame"><div class="thumb-wrap"><img class="thumb" src="rewards.png" alt=""><span class="type-badge page">PAGE</span></div></div><div class="meta"><div class="title">Rewards Program</div><div class="route">/rewards</div></div></a>
+    <a class="card" data-type="sheet" href="rewards-issue.html" target="_blank"><div class="phone-frame"><div class="thumb-wrap"><img class="thumb" src="rewards-issue.png" alt=""><span class="type-badge sheet">SHEET</span></div></div><div class="meta"><div class="title">Issue Reward</div><div class="route">/rewards/issue</div></div></a>
+    <a class="card" data-type="sheet" href="rewards-batch-issue.html" target="_blank"><div class="phone-frame"><div class="thumb-wrap"><img class="thumb" src="rewards-batch-issue.png" alt=""><span class="type-badge sheet">SHEET</span></div></div><div class="meta"><div class="title">Batch Issue Rewards</div><div class="route">/rewards/batch-issue</div></div></a>
+    <a class="card" data-type="sheet" href="rewards-debit.html" target="_blank"><div class="phone-frame"><div class="thumb-wrap"><img class="thumb" src="rewards-debit.png" alt=""><span class="type-badge sheet">SHEET</span></div></div><div class="meta"><div class="title">Debit User Reward</div><div class="route">/rewards/debit</div></div></a>
+    <a class="card" data-type="sheet" href="rewards-refund.html" target="_blank"><div class="phone-frame"><div class="thumb-wrap"><img class="thumb" src="rewards-refund.png" alt=""><span class="type-badge sheet">SHEET</span></div></div><div class="meta"><div class="title">Refund Reward</div><div class="route">/rewards/refund</div></div></a>
+  </div>
+
+  <h2 class="section-heading">Settings<span class="section-count">3 pages</span></h2>
+  <div class="grid">
+    <a class="card" data-type="page" href="settings-api.html" target="_blank"><div class="phone-frame"><div class="thumb-wrap"><img class="thumb" src="settings-api.png" alt=""><span class="type-badge page">PAGE</span></div></div><div class="meta"><div class="title">API & Webhooks</div><div class="route">/settings/api</div></div></a>
+    <a class="card" data-type="page" href="profile.html" target="_blank"><div class="phone-frame"><div class="thumb-wrap"><img class="thumb" src="profile.png" alt=""><span class="type-badge page">PAGE</span></div></div><div class="meta"><div class="title">Profile Settings</div><div class="route">/profile</div></div></a>
+    <a class="card" data-type="page" href="security.html" target="_blank"><div class="phone-frame"><div class="thumb-wrap"><img class="thumb" src="security.png" alt=""><span class="type-badge page">PAGE</span></div></div><div class="meta"><div class="title">Security Settings</div><div class="route">/security</div></div></a>
+  </div>
+
+  <h2 class="section-heading" style="margin-top:72px;border-top:1px dashed rgba(245,158,11,0.3);padding-top:40px;">🏛  Institutional Tier<span class="section-count">12 pages · 28 sheets · for hedge funds, family offices, banks</span></h2>
+
+  <h2 class="section-heading">Institutional · Onboarding (KYB)<span class="section-count">1 page · 4 sheets</span></h2>
+  <div class="grid">
+    <a class="card" data-type="page institutional" href="register-institutional.html" target="_blank"><div class="phone-frame"><div class="thumb-wrap"><img class="thumb" src="register-institutional.png" alt=""><span class="type-badge page">PAGE</span></div></div><div class="meta"><div class="title">KYB Onboarding</div><div class="route">/register/institutional</div></div></a>
+    <a class="card" data-type="sheet institutional" href="register-institutional-entity-type.html" target="_blank"><div class="phone-frame"><div class="thumb-wrap"><img class="thumb" src="register-institutional-entity-type.png" alt=""><span class="type-badge sheet">SHEET</span></div></div><div class="meta"><div class="title">Select Entity Type</div><div class="route">/register/institutional/entity-type</div></div></a>
+    <a class="card" data-type="sheet institutional" href="register-institutional-ubo.html" target="_blank"><div class="phone-frame"><div class="thumb-wrap"><img class="thumb" src="register-institutional-ubo.png" alt=""><span class="type-badge sheet">SHEET</span></div></div><div class="meta"><div class="title">UBO Declaration</div><div class="route">/register/institutional/ubo</div></div></a>
+    <a class="card" data-type="sheet institutional" href="register-institutional-documents.html" target="_blank"><div class="phone-frame"><div class="thumb-wrap"><img class="thumb" src="register-institutional-documents.png" alt=""><span class="type-badge sheet">SHEET</span></div></div><div class="meta"><div class="title">Upload Documents</div><div class="route">/register/institutional/documents</div></div></a>
+    <a class="card" data-type="sheet institutional" href="register-institutional-submitted.html" target="_blank"><div class="phone-frame"><div class="thumb-wrap"><img class="thumb" src="register-institutional-submitted.png" alt=""><span class="type-badge sheet">SHEET</span></div></div><div class="meta"><div class="title">KYB Submitted</div><div class="route">/register/institutional/submitted</div></div></a>
+  </div>
+
+  <h2 class="section-heading">Institutional · Core Portal<span class="section-count">1 page</span></h2>
+  <div class="grid">
+    <a class="card" data-type="page institutional" href="institutional-dashboard.html" target="_blank"><div class="phone-frame"><div class="thumb-wrap"><img class="thumb" src="institutional-dashboard.png" alt=""><span class="type-badge page">PAGE</span></div></div><div class="meta"><div class="title">Institutional Dashboard</div><div class="route">/institutional</div></div></a>
+  </div>
+
+  <h2 class="section-heading">Institutional · Treasury<span class="section-count">1 page · 3 sheets</span></h2>
+  <div class="grid">
+    <a class="card" data-type="page institutional" href="institutional-treasury.html" target="_blank"><div class="phone-frame"><div class="thumb-wrap"><img class="thumb" src="institutional-treasury.png" alt=""><span class="type-badge page">PAGE</span></div></div><div class="meta"><div class="title">Treasury Management</div><div class="route">/institutional/treasury</div></div></a>
+    <a class="card" data-type="sheet institutional" href="institutional-treasury-fx-hedge.html" target="_blank"><div class="phone-frame"><div class="thumb-wrap"><img class="thumb" src="institutional-treasury-fx-hedge.png" alt=""><span class="type-badge sheet">SHEET</span></div></div><div class="meta"><div class="title">FX Hedge</div><div class="route">/institutional/treasury/fx-hedge</div></div></a>
+    <a class="card" data-type="sheet institutional" href="institutional-treasury-allocate.html" target="_blank"><div class="phone-frame"><div class="thumb-wrap"><img class="thumb" src="institutional-treasury-allocate.png" alt=""><span class="type-badge sheet">SHEET</span></div></div><div class="meta"><div class="title">Allocate Treasury</div><div class="route">/institutional/treasury/allocate</div></div></a>
+    <a class="card" data-type="sheet institutional" href="institutional-treasury-rebalance.html" target="_blank"><div class="phone-frame"><div class="thumb-wrap"><img class="thumb" src="institutional-treasury-rebalance.png" alt=""><span class="type-badge sheet">SHEET</span></div></div><div class="meta"><div class="title">Rebalance</div><div class="route">/institutional/treasury/rebalance</div></div></a>
+  </div>
+
+  <h2 class="section-heading">Institutional · OTC Trading<span class="section-count">1 page · 4 sheets</span></h2>
+  <div class="grid">
+    <a class="card" data-type="page institutional" href="institutional-otc.html" target="_blank"><div class="phone-frame"><div class="thumb-wrap"><img class="thumb" src="institutional-otc.png" alt=""><span class="type-badge page">PAGE</span></div></div><div class="meta"><div class="title">OTC Trading Desk</div><div class="route">/institutional/otc</div></div></a>
+    <a class="card" data-type="sheet institutional" href="institutional-otc-rfq.html" target="_blank"><div class="phone-frame"><div class="thumb-wrap"><img class="thumb" src="institutional-otc-rfq.png" alt=""><span class="type-badge sheet">SHEET</span></div></div><div class="meta"><div class="title">Request for Quote</div><div class="route">/institutional/otc/rfq</div></div></a>
+    <a class="card" data-type="sheet institutional" href="institutional-otc-quote.html" target="_blank"><div class="phone-frame"><div class="thumb-wrap"><img class="thumb" src="institutional-otc-quote.png" alt=""><span class="type-badge sheet">SHEET</span></div></div><div class="meta"><div class="title">Quote Received</div><div class="route">/institutional/otc/quote</div></div></a>
+    <a class="card" data-type="sheet institutional" href="institutional-otc-confirm.html" target="_blank"><div class="phone-frame"><div class="thumb-wrap"><img class="thumb" src="institutional-otc-confirm.png" alt=""><span class="type-badge sheet">SHEET</span></div></div><div class="meta"><div class="title">Trade Confirmation</div><div class="route">/institutional/otc/confirm</div></div></a>
+    <a class="card" data-type="sheet institutional" href="institutional-otc-blotter-detail.html" target="_blank"><div class="phone-frame"><div class="thumb-wrap"><img class="thumb" src="institutional-otc-blotter-detail.png" alt=""><span class="type-badge sheet">SHEET</span></div></div><div class="meta"><div class="title">Blotter Detail</div><div class="route">/institutional/otc/blotter-detail</div></div></a>
+  </div>
+
+  <h2 class="section-heading">Institutional · Custody & Multi-Sig<span class="section-count">1 page · 3 sheets</span></h2>
+  <div class="grid">
+    <a class="card" data-type="page institutional" href="institutional-custody.html" target="_blank"><div class="phone-frame"><div class="thumb-wrap"><img class="thumb" src="institutional-custody.png" alt=""><span class="type-badge page">PAGE</span></div></div><div class="meta"><div class="title">Custody & Segregation</div><div class="route">/institutional/custody</div></div></a>
+    <a class="card" data-type="sheet institutional" href="institutional-custody-withdraw.html" target="_blank"><div class="phone-frame"><div class="thumb-wrap"><img class="thumb" src="institutional-custody-withdraw.png" alt=""><span class="type-badge sheet">SHEET</span></div></div><div class="meta"><div class="title">Withdrawal Request</div><div class="route">/institutional/custody/withdraw</div></div></a>
+    <a class="card" data-type="sheet institutional" href="institutional-custody-audit.html" target="_blank"><div class="phone-frame"><div class="thumb-wrap"><img class="thumb" src="institutional-custody-audit.png" alt=""><span class="type-badge sheet">SHEET</span></div></div><div class="meta"><div class="title">Proof of Reserves</div><div class="route">/institutional/custody/audit</div></div></a>
+    <a class="card" data-type="sheet institutional" href="institutional-custody-multisig-config.html" target="_blank"><div class="phone-frame"><div class="thumb-wrap"><img class="thumb" src="institutional-custody-multisig-config.png" alt=""><span class="type-badge sheet">SHEET</span></div></div><div class="meta"><div class="title">Multi-Sig Config</div><div class="route">/institutional/custody/multisig-config</div></div></a>
+  </div>
+
+  <h2 class="section-heading">Institutional · Approvals<span class="section-count">1 page · 3 sheets</span></h2>
+  <div class="grid">
+    <a class="card" data-type="page institutional" href="institutional-approvals.html" target="_blank"><div class="phone-frame"><div class="thumb-wrap"><img class="thumb" src="institutional-approvals.png" alt=""><span class="type-badge page">PAGE</span></div></div><div class="meta"><div class="title">Approval Queue</div><div class="route">/institutional/approvals</div></div></a>
+    <a class="card" data-type="sheet institutional" href="institutional-approvals-sign.html" target="_blank"><div class="phone-frame"><div class="thumb-wrap"><img class="thumb" src="institutional-approvals-sign.png" alt=""><span class="type-badge sheet">SHEET</span></div></div><div class="meta"><div class="title">Sign Approval</div><div class="route">/institutional/approvals/sign</div></div></a>
+    <a class="card" data-type="sheet institutional" href="institutional-approvals-reject.html" target="_blank"><div class="phone-frame"><div class="thumb-wrap"><img class="thumb" src="institutional-approvals-reject.png" alt=""><span class="type-badge sheet">SHEET</span></div></div><div class="meta"><div class="title">Reject Approval</div><div class="route">/institutional/approvals/reject</div></div></a>
+    <a class="card" data-type="sheet institutional" href="institutional-approvals-detail.html" target="_blank"><div class="phone-frame"><div class="thumb-wrap"><img class="thumb" src="institutional-approvals-detail.png" alt=""><span class="type-badge sheet">SHEET</span></div></div><div class="meta"><div class="title">Approval Detail</div><div class="route">/institutional/approvals/detail</div></div></a>
+  </div>
+
+  <h2 class="section-heading">Institutional · Compliance<span class="section-count">1 page · 3 sheets</span></h2>
+  <div class="grid">
+    <a class="card" data-type="page institutional" href="institutional-compliance.html" target="_blank"><div class="phone-frame"><div class="thumb-wrap"><img class="thumb" src="institutional-compliance.png" alt=""><span class="type-badge page">PAGE</span></div></div><div class="meta"><div class="title">Compliance Center</div><div class="route">/institutional/compliance</div></div></a>
+    <a class="card" data-type="sheet institutional" href="institutional-compliance-alert-detail.html" target="_blank"><div class="phone-frame"><div class="thumb-wrap"><img class="thumb" src="institutional-compliance-alert-detail.png" alt=""><span class="type-badge sheet">SHEET</span></div></div><div class="meta"><div class="title">AML Alert Detail</div><div class="route">/institutional/compliance/alert-detail</div></div></a>
+    <a class="card" data-type="sheet institutional" href="institutional-compliance-sar.html" target="_blank"><div class="phone-frame"><div class="thumb-wrap"><img class="thumb" src="institutional-compliance-sar.png" alt=""><span class="type-badge sheet">SHEET</span></div></div><div class="meta"><div class="title">File SAR Report</div><div class="route">/institutional/compliance/sar</div></div></a>
+    <a class="card" data-type="sheet institutional" href="institutional-compliance-travel-rule.html" target="_blank"><div class="phone-frame"><div class="thumb-wrap"><img class="thumb" src="institutional-compliance-travel-rule.png" alt=""><span class="type-badge sheet">SHEET</span></div></div><div class="meta"><div class="title">Travel Rule Data</div><div class="route">/institutional/compliance/travel-rule</div></div></a>
+  </div>
+
+  <h2 class="section-heading">Institutional · Reports & Risk<span class="section-count">2 pages · 3 sheets</span></h2>
+  <div class="grid">
+    <a class="card" data-type="page institutional" href="institutional-reports.html" target="_blank"><div class="phone-frame"><div class="thumb-wrap"><img class="thumb" src="institutional-reports.png" alt=""><span class="type-badge page">PAGE</span></div></div><div class="meta"><div class="title">Regulatory Reports</div><div class="route">/institutional/reports</div></div></a>
+    <a class="card" data-type="sheet institutional" href="institutional-reports-generate.html" target="_blank"><div class="phone-frame"><div class="thumb-wrap"><img class="thumb" src="institutional-reports-generate.png" alt=""><span class="type-badge sheet">SHEET</span></div></div><div class="meta"><div class="title">Generate Report</div><div class="route">/institutional/reports/generate</div></div></a>
+    <a class="card" data-type="page institutional" href="institutional-limits.html" target="_blank"><div class="phone-frame"><div class="thumb-wrap"><img class="thumb" src="institutional-limits.png" alt=""><span class="type-badge page">PAGE</span></div></div><div class="meta"><div class="title">Risk & Limits</div><div class="route">/institutional/limits</div></div></a>
+    <a class="card" data-type="sheet institutional" href="institutional-limits-edit.html" target="_blank"><div class="phone-frame"><div class="thumb-wrap"><img class="thumb" src="institutional-limits-edit.png" alt=""><span class="type-badge sheet">SHEET</span></div></div><div class="meta"><div class="title">Edit Limit</div><div class="route">/institutional/limits/edit</div></div></a>
+    <a class="card" data-type="sheet institutional" href="institutional-limits-breach.html" target="_blank"><div class="phone-frame"><div class="thumb-wrap"><img class="thumb" src="institutional-limits-breach.png" alt=""><span class="type-badge sheet">SHEET</span></div></div><div class="meta"><div class="title">Limit Breach Alert</div><div class="route">/institutional/limits/breach</div></div></a>
+  </div>
+
+  <h2 class="section-heading">Institutional · Users & Cards<span class="section-count">2 pages · 5 sheets</span></h2>
+  <div class="grid">
+    <a class="card" data-type="page institutional" href="institutional-users.html" target="_blank"><div class="phone-frame"><div class="thumb-wrap"><img class="thumb" src="institutional-users.png" alt=""><span class="type-badge page">PAGE</span></div></div><div class="meta"><div class="title">Institutional Users</div><div class="route">/institutional/users</div></div></a>
+    <a class="card" data-type="sheet institutional" href="institutional-users-invite.html" target="_blank"><div class="phone-frame"><div class="thumb-wrap"><img class="thumb" src="institutional-users-invite.png" alt=""><span class="type-badge sheet">SHEET</span></div></div><div class="meta"><div class="title">Invite User</div><div class="route">/institutional/users/invite</div></div></a>
+    <a class="card" data-type="sheet institutional" href="institutional-users-edit.html" target="_blank"><div class="phone-frame"><div class="thumb-wrap"><img class="thumb" src="institutional-users-edit.png" alt=""><span class="type-badge sheet">SHEET</span></div></div><div class="meta"><div class="title">Edit User</div><div class="route">/institutional/users/edit</div></div></a>
+    <a class="card" data-type="sheet institutional" href="institutional-users-remove.html" target="_blank"><div class="phone-frame"><div class="thumb-wrap"><img class="thumb" src="institutional-users-remove.png" alt=""><span class="type-badge sheet">SHEET</span></div></div><div class="meta"><div class="title">Remove User</div><div class="route">/institutional/users/remove</div></div></a>
+    <a class="card" data-type="page institutional" href="institutional-cards.html" target="_blank"><div class="phone-frame"><div class="thumb-wrap"><img class="thumb" src="institutional-cards.png" alt=""><span class="type-badge page">PAGE</span></div></div><div class="meta"><div class="title">Corporate Cards</div><div class="route">/institutional/cards</div></div></a>
+    <a class="card" data-type="sheet institutional" href="institutional-cards-issue.html" target="_blank"><div class="phone-frame"><div class="thumb-wrap"><img class="thumb" src="institutional-cards-issue.png" alt=""><span class="type-badge sheet">SHEET</span></div></div><div class="meta"><div class="title">Issue Card</div><div class="route">/institutional/cards/issue</div></div></a>
+    <a class="card" data-type="sheet institutional" href="institutional-cards-spend-controls.html" target="_blank"><div class="phone-frame"><div class="thumb-wrap"><img class="thumb" src="institutional-cards-spend-controls.png" alt=""><span class="type-badge sheet">SHEET</span></div></div><div class="meta"><div class="title">Spend Controls</div><div class="route">/institutional/cards/spend-controls</div></div></a>
+  </div>
+
+  <h2 class="section-heading">Institutional · Audit Trail<span class="section-count">1 page</span></h2>
+  <div class="grid">
+    <a class="card" data-type="page institutional" href="institutional-statements.html" target="_blank"><div class="phone-frame"><div class="thumb-wrap"><img class="thumb" src="institutional-statements.png" alt=""><span class="type-badge page">PAGE</span></div></div><div class="meta"><div class="title">Statements & Audit</div><div class="route">/institutional/statements</div></div></a>
+  </div>
+
+  <div class="status-strip">
+    <div class="left"><span class="pulse-dot"></span>SYSTEM OPERATIONAL · 108/108 MOBILE SCREENS GENERATED</div>
+    <div class="right">
+      <span>68 RETAIL · 40 INSTITUTIONAL</span>
+      <span>EMERALD PULSE MOBILE</span>
+      <span>390×844</span>
+    </div>
+  </div>
+
+<script>
+  const buttons = document.querySelectorAll('.filter-btn');
+  const cards = document.querySelectorAll('.card');
+  buttons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      buttons.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const filter = btn.dataset.filter;
+      cards.forEach(c => {
+        if (filter === 'all') { c.style.display = ''; return; }
+        const types = (c.dataset.type || '').split(' ');
+        c.style.display = types.includes(filter) ? '' : 'none';
+      });
+    });
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>The Bioluminescent Archive - Approvals</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&amp;family=JetBrains+Mono:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #040d0a;
+            color: #d9e5df;
+            overflow-x: hidden;
+        }
+        .mono { font-family: 'JetBrains_Mono', monospace; }
+        .glass {
+            background: rgba(44, 55, 51, 0.4);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(16, 185, 129, 0.08);
+        }
+        .glow-emerald {
+            box-shadow: 0 0 40px rgba(16, 185, 129, 0.1);
+        }
+        .text-gradient {
+            background: linear-gradient(to bottom, #10b981, #34d399);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .energy-lines {
+            background-image: repeating-linear-gradient(45deg, rgba(16, 185, 129, 0.03) 0px, rgba(16, 185, 129, 0.03) 1px, transparent 1px, transparent 10px);
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "inverse-surface": "#d9e5df",
+                        "tertiary-fixed": "#ffddb8",
+                        "surface-container": "#17221e",
+                        "inverse-on-surface": "#28332f",
+                        "secondary-fixed": "#68fcbf",
+                        "background": "#0b1512",
+                        "on-surface-variant": "#bbcabf",
+                        "primary-fixed": "#6ffbbe",
+                        "surface-variant": "#2c3733",
+                        "outline-variant": "#3c4a42",
+                        "on-primary-fixed-variant": "#005236",
+                        "on-primary": "#003824",
+                        "primary-container": "#10b981",
+                        "on-error-container": "#ffdad6",
+                        "surface": "#0b1512",
+                        "surface-bright": "#313b38",
+                        "error-container": "#93000a",
+                        "error": "#ffb4ab",
+                        "secondary": "#45dfa4",
+                        "on-surface": "#d9e5df",
+                        "on-tertiary-fixed": "#2a1700",
+                        "tertiary-container": "#e29100",
+                        "on-primary-fixed": "#002113",
+                        "on-secondary-fixed": "#002114",
+                        "surface-container-low": "#131e1a",
+                        "on-tertiary": "#472a00",
+                        "secondary-fixed-dim": "#45dfa4",
+                        "inverse-primary": "#006c49",
+                        "on-error": "#690005",
+                        "surface-container-highest": "#2c3733",
+                        "on-secondary-container": "#00452e",
+                        "on-secondary": "#003825",
+                        "tertiary-fixed-dim": "#ffb95f",
+                        "surface-dim": "#0b1512",
+                        "on-secondary-fixed-variant": "#005137",
+                        "on-tertiary-fixed-variant": "#653e00",
+                        "surface-tint": "#4edea3",
+                        "on-background": "#d9e5df",
+                        "primary": "#4edea3",
+                        "on-tertiary-container": "#523200",
+                        "tertiary": "#ffb95f",
+                        "surface-container-lowest": "#06100d",
+                        "primary-fixed-dim": "#4edea3",
+                        "secondary-container": "#00bd85",
+                        "surface-container-high": "#222c29",
+                        "on-primary-container": "#00422b",
+                        "outline": "#86948a"
+                    },
+                    borderRadius: {
+                        "DEFAULT": "1rem",
+                        "lg": "2rem",
+                        "xl": "3rem",
+                        "full": "9999px"
+                    },
+                    fontFamily: {
+                        "headline": ["Inter"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    }
+                },
+            }
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background min-h-[844px] w-[390px] mx-auto relative overflow-y-auto pb-40">
+<!-- Organic Blobs Background -->
+<div class="fixed inset-0 overflow-hidden pointer-events-none z-0">
+<div class="absolute top-[-10%] left-[-20%] w-[300px] h-[300px] bg-primary/20 rounded-full blur-[80px]"></div>
+<div class="absolute bottom-[20%] right-[-10%] w-[250px] h-[250px] bg-secondary/15 rounded-full blur-[60px]"></div>
+<div class="absolute top-[40%] right-[-30%] w-[300px] h-[300px] bg-tertiary/10 rounded-full blur-[90px]"></div>
+<div class="absolute inset-0 energy-lines opacity-20"></div>
+</div>
+<!-- Status Bar (44pt) -->
+<div class="sticky top-0 z-[60] w-full h-[44px] flex items-center justify-between px-6 bg-background/80 backdrop-blur-md">
+<div class="mono text-xs font-bold text-on-surface">9:41</div>
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[14px]">signal_cellular_alt</span>
+<span class="material-symbols-outlined text-[14px]">wifi</span>
+<span class="material-symbols-outlined text-[14px]">battery_very_low</span>
+</div>
+</div>
+<!-- Header (56pt) -->
+<header class="fixed top-11 w-full z-50 bg-emerald-950/40 backdrop-blur-xl border-b border-emerald-500/10 shadow-[0_0_40px_rgba(16,185,129,0.05)] flex justify-between items-center px-6 h-16">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-emerald-500 active:scale-95 transition-transform duration-300">arrow_back</span>
+<h1 class="font-['Inter'] font-extrabold uppercase tracking-tight text-xl font-black bg-gradient-to-b from-emerald-400 to-teal-400 bg-clip-text text-transparent">Approvals</h1>
+</div>
+<div class="flex items-center gap-3">
+<div class="bg-tertiary/20 text-tertiary border border-tertiary/30 px-2 py-0.5 rounded-full text-[10px] mono font-bold tracking-widest uppercase">INST</div>
+<span class="material-symbols-outlined text-emerald-700">filter_list</span>
+</div>
+</header>
+<main class="relative z-10 pt-32 px-5">
+<!-- Section Header -->
+<div class="mb-6">
+<div class="flex items-center justify-between mb-2">
+<p class="mono text-[10px] tracking-[0.2em] text-on-surface-variant font-bold uppercase">PENDING YOUR SIGNATURE</p>
+<div class="flex items-center gap-1">
+<span class="relative flex h-2 w-2">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-tertiary opacity-75"></span>
+<span class="relative inline-flex rounded-full h-2 w-2 bg-tertiary"></span>
+</span>
+<span class="mono text-[11px] font-bold text-tertiary">4 NEED YOUR SIGNATURE</span>
+</div>
+</div>
+<!-- Tab Row -->
+<div class="flex gap-2 overflow-x-auto pb-2 scrollbar-hide">
+<div class="bg-primary-container text-on-primary-container px-5 py-2 rounded-full text-[11px] font-bold uppercase tracking-wider flex items-center gap-2">
+                    PENDING <span class="mono">12</span>
+</div>
+<div class="glass px-5 py-2 rounded-full text-[11px] font-bold uppercase tracking-wider text-on-surface-variant">
+                    OTHERS
+                </div>
+<div class="glass px-5 py-2 rounded-full text-[11px] font-bold uppercase tracking-wider text-on-surface-variant">
+                    HISTORY
+                </div>
+</div>
+</div>
+<!-- Approval Cards Stack -->
+<div class="space-y-4">
+<!-- Card 1 -->
+<div class="glass rounded-lg p-4 flex flex-col gap-3 min-h-[160px] relative overflow-hidden">
+<div class="flex justify-between items-start">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center border border-primary/20">
+<span class="material-symbols-outlined text-primary">ac_unit</span>
+</div>
+<div>
+<p class="mono text-[10px] text-primary/70">APR-5021</p>
+<h3 class="text-on-surface font-bold text-base leading-tight">Cold Withdrawal</h3>
+</div>
+</div>
+<p class="mono text-[10px] text-on-surface-variant">2H AGO</p>
+</div>
+<div class="flex justify-between items-end">
+<div>
+<p class="mono text-primary text-lg font-bold">50.00 BTC</p>
+<div class="flex items-center gap-2 mt-1">
+<img alt="User" class="w-5 h-5 rounded-full" data-alt="close-up portrait of professional financial analyst with clean lighting and blurred office background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAtbjR1KZ_okuoHh-FPOt85YpQYAeMm_RJgcxHypY0yP0AXBmMYB3Kb0-2SeQrFtlaVgYON-eOcn9rnN3z2ZQj0OvNs36ox1hIpXi2T4ffeCDFy0Dp9YSBHfzkRnawlo8xUw325-zQ0VMecfKwFTgBeZDs872p-Q5gphnKp0NhRErU4yItLQYCwpsacDkg-_tZ2pK0LeTdZWMXbgkAuqMYgKeN4zGPmvUw4SBkhwD_Dr-Pwf0kQWsADz7lBw_UbQC40q6akLp1nilb9"/>
+<span class="text-[11px] text-on-surface-variant">Initiated by <span class="font-bold text-on-surface">Marcus V.</span></span>
+</div>
+</div>
+<div class="text-right">
+<p class="mono text-[10px] text-on-surface-variant mb-1 uppercase tracking-tighter">2/5 SIGNED</p>
+<div class="flex gap-1 justify-end mb-2">
+<div class="w-2 h-2 rounded-full bg-primary"></div>
+<div class="w-2 h-2 rounded-full bg-primary"></div>
+<div class="w-2 h-2 rounded-full border border-primary/40"></div>
+<div class="w-2 h-2 rounded-full border border-primary/40"></div>
+<div class="w-2 h-2 rounded-full border border-primary/40"></div>
+</div>
+<button class="bg-primary text-on-primary px-4 py-1.5 rounded-full text-[11px] font-bold uppercase transition-all active:scale-90">SIGN</button>
+</div>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="glass rounded-lg p-4 flex flex-col gap-3 min-h-[160px] relative overflow-hidden">
+<div class="flex justify-between items-start">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-xl bg-tertiary/10 flex items-center justify-center border border-tertiary/20">
+<span class="material-symbols-outlined text-tertiary">account_balance</span>
+</div>
+<div>
+<p class="mono text-[10px] text-tertiary/70">APR-8832</p>
+<h3 class="text-on-surface font-bold text-base leading-tight">Treasury Alloc</h3>
+</div>
+</div>
+<p class="mono text-[10px] text-on-surface-variant">5H AGO</p>
+</div>
+<div class="flex justify-between items-end">
+<div>
+<p class="mono text-tertiary text-lg font-bold">$25,000,000</p>
+<div class="flex items-center gap-2 mt-1">
+<img alt="User" class="w-5 h-5 rounded-full" data-alt="professional portrait of woman leader in modern creative environment with soft morning light" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAIeVziBrBue22K3iJxYFAv2aObPBiLb6XU7vw5mPiPGazR9GcG320FBAs5X0bQaLQMq6xXsYIj2YXrZxVTKiYPflY1t3bP8IgnXjW2bwux3XRLjQwwCMOWA-2wDUDIyXMdAk60YXy48JKcIIxETgmJ5e8q2xO2n-fsBDtt_WkjEwvp6vHZQWf48oLsRzRCxZ-B6OuKhjnR-rhyv5LVTma0dT5YMb-t2qdFa8JrrtsxXxG1vnSkXI2ckh2_lAKa8E1hYY5dromUrSVq"/>
+<span class="text-[11px] text-on-surface-variant">Initiated by <span class="font-bold text-on-surface">Elena S.</span></span>
+</div>
+</div>
+<div class="text-right">
+<p class="mono text-[10px] text-on-surface-variant mb-1 uppercase tracking-tighter">1/3 SIGNED</p>
+<div class="flex gap-1 justify-end mb-2">
+<div class="w-2 h-2 rounded-full bg-primary"></div>
+<div class="w-2 h-2 rounded-full border border-primary/40"></div>
+<div class="w-2 h-2 rounded-full border border-primary/40"></div>
+</div>
+<button class="bg-primary text-on-primary px-4 py-1.5 rounded-full text-[11px] font-bold uppercase transition-all active:scale-90">SIGN</button>
+</div>
+</div>
+</div>
+<!-- Card 3 (Completed) -->
+<div class="bg-secondary/5 border border-secondary/20 rounded-lg p-4 flex flex-col gap-3 min-h-[160px] relative overflow-hidden">
+<div class="flex justify-between items-start">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-xl bg-secondary/10 flex items-center justify-center border border-secondary/30">
+<span class="material-symbols-outlined text-secondary">check_circle</span>
+</div>
+<div>
+<p class="mono text-[10px] text-secondary/70">APR-1102</p>
+<h3 class="text-on-surface font-bold text-base leading-tight">Wire Transfer</h3>
+</div>
+</div>
+<p class="mono text-[10px] text-secondary font-bold uppercase">COMPLETE</p>
+</div>
+<div class="flex justify-between items-end">
+<div>
+<p class="mono text-secondary text-lg font-bold">$12,000,000</p>
+<div class="flex items-center gap-2 mt-1">
+<img alt="User" class="w-5 h-5 rounded-full" data-alt="close-up profile of business executive with focus and confidence in professional setting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD9kUKakHnhvG2FicNL7hX3ZST3A18qP42YkvBrWPPiYapWZLQ-qJ4kjRIuCPBHT3tE4ijlIeSR1czBUU68Wp8fZCCTdFNEUNWliTgrCQxtWesDLqjOzAmGUGEZ6dQ8X-HqYJL60_i46aamwNAuH7-LVV4vVDGyrrOgUYXImTpsAH592LiVIJZFUhQscCunVz6vsYP1nbzWCW9q0RhHH-DTTjoEnBFHznS2bSS_AK_Vyaw9EszmYPasffECh717lutTUVvU6FnHd5jU"/>
+<span class="text-[11px] text-on-surface-variant">Initiated by <span class="font-bold text-on-surface">David K.</span></span>
+</div>
+</div>
+<div class="text-right">
+<p class="mono text-[10px] text-secondary mb-1 uppercase tracking-tighter">ALL SIGNED</p>
+<div class="flex gap-1 justify-end mb-2">
+<div class="w-2 h-2 rounded-full bg-secondary"></div>
+<div class="w-2 h-2 rounded-full bg-secondary"></div>
+<div class="w-2 h-2 rounded-full bg-secondary"></div>
+</div>
+<div class="text-secondary flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">verified</span>
+<span class="mono text-[10px] font-bold">VERIFIED</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Card 4 -->
+<div class="glass rounded-lg p-4 flex flex-col gap-3 min-h-[160px] relative overflow-hidden">
+<div class="flex justify-between items-start">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center border border-primary/20">
+<span class="material-symbols-outlined text-primary">speed</span>
+</div>
+<div>
+<p class="mono text-[10px] text-primary/70">APR-7764</p>
+<h3 class="text-on-surface font-bold text-base leading-tight">Limit Increase</h3>
+</div>
+</div>
+<p class="mono text-[10px] text-on-surface-variant">12H AGO</p>
+</div>
+<div class="flex justify-between items-end">
+<div>
+<p class="mono text-on-surface text-lg font-bold">Trading Desk</p>
+<div class="flex items-center gap-2 mt-1">
+<img alt="User" class="w-5 h-5 rounded-full" data-alt="headshot of corporate director in minimalist high-end office with natural light" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDNycFrVJ5veFeMJ_QJDozJW4msU5fLjoTLPOaoO0zmliw0CxfxrgjKMYaN-FailHsprc8gZKhYgRJZzZRxuHJ4pSzjNk2-U4riAdTYp_MWZbZSpBEaiyDuvYE7v0GRVOXkEuifN8ffZA56a8Eu5bD_z15FDQnCEW44S0c-M3rmzWuTk3iPkncWwQqNj7VUx-pMicJqfQUq79L1dYc95YZJmOLH5m2YncyqZYl6uNYgVQSNNKexGphXCxUwKGRSPoAVrHTs42-irpNI"/>
+<span class="text-[11px] text-on-surface-variant">Initiated by <span class="font-bold text-on-surface">Sarah L.</span></span>
+</div>
+</div>
+<div class="text-right">
+<p class="mono text-[10px] text-on-surface-variant mb-1 uppercase tracking-tighter">3/4 SIGNED</p>
+<div class="flex gap-1 justify-end mb-2">
+<div class="w-2 h-2 rounded-full bg-primary"></div>
+<div class="w-2 h-2 rounded-full bg-primary"></div>
+<div class="w-2 h-2 rounded-full bg-primary"></div>
+<div class="w-2 h-2 rounded-full border border-primary/40"></div>
+</div>
+<button class="bg-primary text-on-primary px-4 py-1.5 rounded-full text-[11px] font-bold uppercase transition-all active:scale-90">SIGN</button>
+</div>
+</div>
+</div>
+<!-- Card 5 -->
+<div class="glass rounded-lg p-4 flex flex-col gap-3 min-h-[160px] relative overflow-hidden">
+<div class="flex justify-between items-start">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center border border-primary/20">
+<span class="material-symbols-outlined text-primary">currency_exchange</span>
+</div>
+<div>
+<p class="mono text-[10px] text-primary/70">APR-9128</p>
+<h3 class="text-on-surface font-bold text-base leading-tight">OTC Trade</h3>
+</div>
+</div>
+<p class="mono text-[10px] text-on-surface-variant">1D AGO</p>
+</div>
+<div class="flex justify-between items-end">
+<div>
+<p class="mono text-primary text-lg font-bold">74.00 BTC</p>
+<div class="flex items-center gap-2 mt-1">
+<img alt="User" class="w-5 h-5 rounded-full" data-alt="portrait of serious institutional investor with sharp executive style" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC9nYhcDmXvpFOmHnvKqi5u0Tl9cdTnjKuKgwCArUdgA-UvehwXqPEv44yHvUW9ywtlmtZ_uSWE9ING7_9s5-ByVaxOQC4Pre6CGqHqlN_3rwkU7RcCt7ZnUqE1IJnY8PyAc16qjP3yreqvJjgfS346ujq5kf6nJkBRtYUOmXpIEadSESWvTK78gfcmaPHwWp7fZ-EQTu3QOVYB9drORghWNLLKH64Mvp1FkyKYWbm45IAIwqXzP88D3wdJLcRkj9qudoSWURWFC270"/>
+<span class="text-[11px] text-on-surface-variant">Initiated by <span class="font-bold text-on-surface">Rachel M.</span></span>
+</div>
+</div>
+<div class="text-right">
+<p class="mono text-[10px] text-on-surface-variant mb-1 uppercase tracking-tighter">1/2 SIGNED</p>
+<div class="flex gap-1 justify-end mb-2">
+<div class="w-2 h-2 rounded-full bg-primary"></div>
+<div class="w-2 h-2 rounded-full border border-primary/40"></div>
+</div>
+<button class="bg-primary text-on-primary px-4 py-1.5 rounded-full text-[11px] font-bold uppercase transition-all active:scale-90">SIGN</button>
+</div>
+</div>
+</div>
+<!-- Card 6 -->
+<div class="glass rounded-lg p-4 flex flex-col gap-3 min-h-[160px] relative overflow-hidden">
+<div class="flex justify-between items-start">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center border border-primary/20">
+<span class="material-symbols-outlined text-primary">person_add</span>
+</div>
+<div>
+<p class="mono text-[10px] text-primary/70">APR-4421</p>
+<h3 class="text-on-surface font-bold text-base leading-tight">New Signer</h3>
+</div>
+</div>
+<p class="mono text-[10px] text-on-surface-variant">2D AGO</p>
+</div>
+<div class="flex justify-between items-end">
+<div>
+<p class="mono text-on-surface text-lg font-bold">Add: J. Miller</p>
+<div class="flex items-center gap-2 mt-1">
+<img alt="User" class="w-5 h-5 rounded-full" data-alt="professional male portrait with high contrast studio lighting and cinematic aesthetic" src="https://lh3.googleusercontent.com/aida-public/AB6AXuApmEOoqTrVRiVGiVB4pKQyb635NnxRiw0GhzCx5FJkdmTGY1Uy53kcp0hNxYzHLVwZJclNlZ_Xsq-iNrct4bHbL7Trc2hvGPhijhMoyz1qrSbOuPt7rC-kWJk8MkaQkvSHwj-HHKjBQVwYb8E9i1jCpaO567ZvpIFe3p4pi3J0S-RVLGr5AlVxlLvDvpTblJSpC1HhuDpUrOM9q_dTEPOIHZRe23ses6BNiQk4HUfedCf7ZVCSdhhZKFNYtyxdIAIcuYPVukeML-Oy"/>
+<span class="text-[11px] text-on-surface-variant">Initiated by <span class="font-bold text-on-surface">Marcus V.</span></span>
+</div>
+</div>
+<div class="text-right">
+<p class="mono text-[10px] text-on-surface-variant mb-1 uppercase tracking-tighter">0/4 SIGNED</p>
+<div class="flex gap-1 justify-end mb-2">
+<div class="w-2 h-2 rounded-full border border-primary/40"></div>
+<div class="w-2 h-2 rounded-full border border-primary/40"></div>
+<div class="w-2 h-2 rounded-full border border-primary/40"></div>
+<div class="w-2 h-2 rounded-full border border-primary/40"></div>
+</div>
+<button class="bg-primary text-on-primary px-4 py-1.5 rounded-full text-[11px] font-bold uppercase transition-all active:scale-90">SIGN</button>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Fixed Sign All Action -->
+<div class="fixed bottom-20 left-0 w-full px-5 py-4 z-40 bg-gradient-to-t from-background via-background/95 to-transparent">
+<button class="w-full h-14 bg-primary rounded-full flex items-center justify-center gap-3 shadow-[0_0_30px_rgba(16,185,129,0.3)] active:scale-95 transition-all">
+<span class="font-bold text-on-primary uppercase tracking-widest text-sm">SIGN ALL (4)</span>
+<span class="material-symbols-outlined text-on-primary" style="font-variation-settings: 'FILL' 1;">draw</span>
+</button>
+</div>
+<!-- Bottom Navigation Bar -->
+<nav class="fixed bottom-0 left-0 w-full h-20 bg-emerald-950/60 backdrop-blur-2xl rounded-t-[32px] z-50 border-t border-emerald-500/10 shadow-[0_-10px_40px_rgba(16,185,129,0.08)] flex justify-around items-center px-4 pb-4">
+<div class="flex flex-col items-center justify-center text-emerald-700 opacity-60 hover:text-emerald-300 active:scale-90 transition-all">
+<span class="material-symbols-outlined">account_balance_wallet</span>
+<span class="font-['JetBrains_Mono'] text-[10px] uppercase font-bold">Vault</span>
+</div>
+<div class="flex flex-col items-center justify-center text-emerald-700 opacity-60 hover:text-emerald-300 active:scale-90 transition-all">
+<span class="material-symbols-outlined">swap_horiz</span>
+<span class="font-['JetBrains_Mono'] text-[10px] uppercase font-bold">Trade</span>
+</div>
+<div class="flex flex-col items-center justify-center text-emerald-700 opacity-60 hover:text-emerald-300 active:scale-90 transition-all">
+<span class="material-symbols-outlined">query_stats</span>
+<span class="font-['JetBrains_Mono'] text-[10px] uppercase font-bold">Flow</span>
+</div>
+<div class="flex flex-col items-center justify-center text-emerald-700 opacity-60 hover:text-emerald-300 active:scale-90 transition-all">
+<span class="material-symbols-outlined">verified_user</span>
+<span class="font-['JetBrains_Mono'] text-[10px] uppercase font-bold">Security</span>
+</div>
+<div class="flex flex-col items-center justify-center text-emerald-400 bg-emerald-500/10 rounded-full px-4 py-1 active:scale-90 transition-all">
+<span class="material-symbols-outlined">more_horiz</span>
+<span class="font-['JetBrains_Mono'] text-[10px] uppercase font-bold">More</span>
+</div>
+</nav>
+</body></html>

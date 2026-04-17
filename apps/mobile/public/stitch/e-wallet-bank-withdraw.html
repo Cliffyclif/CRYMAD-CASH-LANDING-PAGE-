@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>CRYMAD CA$H - Bank Withdrawal</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&amp;family=JetBrains+Mono:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary-fixed-dim": "#45dfa4",
+                        "tertiary": "#ffb95f",
+                        "primary": "#4edea3",
+                        "outline-variant": "#3c4a42",
+                        "on-primary": "#003824",
+                        "background": "#040d0a",
+                        "primary-fixed-dim": "#4edea3",
+                        "on-secondary-container": "#00452e",
+                        "error-container": "#93000a",
+                        "surface-container-high": "#222c29",
+                        "secondary-fixed": "#68fcbf",
+                        "surface-container-highest": "#2c3733",
+                        "surface-tint": "#4edea3",
+                        "secondary": "#45dfa4",
+                        "on-background": "#d9e5df",
+                        "surface-container-low": "#131e1a",
+                        "outline": "#86948a",
+                        "on-tertiary-container": "#523200",
+                        "tertiary-container": "#e29100",
+                        "on-secondary": "#003825",
+                        "surface-container-lowest": "#06100d",
+                        "tertiary-fixed": "#ffddb8",
+                        "tertiary-fixed-dim": "#ffb95f",
+                        "on-secondary-fixed": "#002114",
+                        "on-primary-fixed": "#002113",
+                        "inverse-on-surface": "#28332f",
+                        "on-primary-fixed-variant": "#005236",
+                        "surface-variant": "#2c3733",
+                        "on-primary-container": "#00422b",
+                        "on-surface-variant": "#bbcabf",
+                        "on-secondary-fixed-variant": "#005137",
+                        "on-error-container": "#ffdad6",
+                        "secondary-container": "#00bd85",
+                        "surface": "#040d0a",
+                        "primary-container": "#10b981",
+                        "on-tertiary-fixed": "#2a1700",
+                        "inverse-surface": "#d9e5df",
+                        "surface-container": "#17221e",
+                        "surface-dim": "#040d0a",
+                        "error": "#ffb4ab",
+                        "on-tertiary-fixed-variant": "#653e00",
+                        "on-tertiary": "#472a00",
+                        "inverse-primary": "#006c49",
+                        "primary-fixed": "#6ffbbe",
+                        "on-surface": "#d9e5df",
+                        "on-error": "#690005",
+                        "surface-bright": "#313b38"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "1rem",
+                        "lg": "2rem",
+                        "xl": "3rem",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Inter", "sans-serif"],
+                        "body": ["Inter", "sans-serif"],
+                        "label": ["Inter", "sans-serif"],
+                        "mono": ["JetBrains Mono", "monospace"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            background-color: #040d0a;
+            color: #d9e5df;
+            font-family: 'Inter', sans-serif;
+            overflow: hidden;
+        }
+        .glass-panel {
+            background: rgba(44, 55, 51, 0.4);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+        .ghost-border {
+            border: 1px solid rgba(16, 185, 129, 0.08);
+        }
+        .text-gradient-primary {
+            background: linear-gradient(to bottom, #10b981, #34d399);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .energy-lines {
+            background-image: repeating-linear-gradient(45deg, rgba(16, 185, 129, 0.05) 0px, rgba(16, 185, 129, 0.05) 1px, transparent 1px, transparent 10px);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="flex items-center justify-center min-h-screen">
+<!-- Mobile Container (iPhone 14 Pro Dimensions) -->
+<div class="relative w-[390px] h-[844px] bg-background overflow-hidden rounded-[48px] shadow-2xl border-[8px] border-surface-container-highest">
+<!-- Parent Screen (Background Blur/Dim) -->
+<div class="absolute inset-0 z-0 opacity-25 blur-sm energy-lines">
+<header class="flex justify-between items-center px-6 h-16 w-full">
+<span class="text-xl font-black bg-gradient-to-b from-emerald-400 to-teal-500 bg-clip-text text-transparent font-headline uppercase tracking-tighter">ARCHIVE</span>
+<div class="w-8 h-8 rounded-full bg-emerald-500/20 border border-emerald-500/20"></div>
+</header>
+<div class="px-6 mt-8 space-y-6">
+<div class="h-40 w-full bg-surface-container-low rounded-lg p-6">
+<div class="text-xs font-mono uppercase tracking-widest text-emerald-800">Total Balance</div>
+<div class="text-4xl font-mono mt-2">$12,450.00</div>
+</div>
+<div class="space-y-4">
+<div class="h-16 w-full bg-surface-container rounded-lg"></div>
+<div class="h-16 w-full bg-surface-container rounded-lg"></div>
+<div class="h-16 w-full bg-surface-container rounded-lg"></div>
+</div>
+</div>
+</div>
+<!-- Bioluminescent Blobs (Decorative) -->
+<div class="absolute top-1/4 -left-20 w-64 h-64 bg-primary/10 rounded-full blur-[80px]"></div>
+<div class="absolute bottom-1/4 -right-20 w-64 h-64 bg-secondary/10 rounded-full blur-[80px]"></div>
+<!-- Bottom Sheet Trigger/Overlay -->
+<div class="absolute inset-0 bg-black/40 z-10"></div>
+<!-- Bottom Sheet -->
+<div class="absolute bottom-0 left-0 right-0 h-[70%] glass-panel rounded-t-[28px] z-20 flex flex-col ghost-border shadow-[0_-10px_40px_rgba(16,185,129,0.1)]">
+<!-- Grab Handle -->
+<div class="flex justify-center pt-3 pb-6">
+<div class="w-12 h-1.5 bg-on-surface-variant/20 rounded-full"></div>
+</div>
+<div class="flex-1 px-6 overflow-y-auto pb-10">
+<!-- Header -->
+<div class="mb-8">
+<h1 class="text-2xl font-extrabold tracking-tighter text-gradient-primary font-headline">Withdraw to Bank</h1>
+<p class="font-mono text-[10px] tracking-widest text-secondary mt-1 uppercase">ACH TRANSFER</p>
+</div>
+<!-- Bank Selection -->
+<div class="mb-8">
+<div class="p-4 rounded-lg bg-surface-container-lowest/60 ghost-border flex items-center justify-between cursor-pointer active:scale-[0.98] transition-transform">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-white flex items-center justify-center overflow-hidden">
+<img alt="Chase Logo" class="w-6 h-6 object-contain" data-alt="Official blue logo of Chase bank on a clean white circular background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC2gKZAMbPMuXVQ0LpBsP1LljXVEFFB4ryhhQT5GlGiTyZSKaZkjOnXYCMHgak9uDTJ4IJZJZR3trF_3e0oEVm39AxM-6T36jdwUeVrFFnN8v7ypHhzRhZVuXAIzRe1E_FTyufvjScvp93ylrA3y8VSHkHfuvA_YFQQfLRxMc3_lAa3tk68kHIphb5wOpYf4ulWZu1EH7JZrD8LhiScBKGm0yezQLfLKKlmXPuHzU_OayZohCmAgM5pSU0VdD11drxd7omzaEqRzemV"/>
+</div>
+<div>
+<div class="text-sm font-semibold">Chase Bank</div>
+<div class="text-xs font-mono text-on-surface-variant tracking-wider">•••• 4421</div>
+</div>
+</div>
+<span class="material-symbols-outlined text-emerald-500">expand_more</span>
+</div>
+</div>
+<!-- Amount Input Display -->
+<div class="mb-8 text-center">
+<div class="inline-flex items-baseline gap-2">
+<span class="text-5xl font-mono font-bold tracking-tighter text-gradient-primary">$500.00</span>
+<span class="text-sm font-mono text-secondary-fixed-dim">USD</span>
+</div>
+<div class="mt-4 flex justify-center">
+<div class="px-3 py-1 bg-primary/10 rounded-full border border-primary/20">
+<p class="text-[10px] font-mono tracking-widest text-primary uppercase">ARRIVES: 1-2 BUSINESS DAYS</p>
+</div>
+</div>
+</div>
+<!-- Fee Breakdown Table -->
+<div class="mb-8 p-6 bg-surface-container-low/40 rounded-lg ghost-border space-y-4">
+<div class="flex justify-between items-center text-xs font-mono">
+<span class="text-on-surface-variant">Amount</span>
+<span class="text-on-surface">$500.00</span>
+</div>
+<div class="flex justify-between items-center text-xs font-mono">
+<span class="text-on-surface-variant">ACH Fee</span>
+<span class="text-error">-$2.00</span>
+</div>
+<div class="pt-3 border-t border-emerald-500/10 flex justify-between items-center">
+<span class="text-xs font-mono text-secondary-fixed-dim">Total Debit</span>
+<span class="text-lg font-mono font-bold text-primary">$502.00</span>
+</div>
+</div>
+<!-- Warning Strip -->
+<div class="mb-10 flex items-center gap-3 p-4 bg-tertiary-container/10 rounded-lg border border-tertiary/20">
+<span class="material-symbols-outlined text-tertiary text-xl" data-weight="fill">warning</span>
+<p class="text-xs text-tertiary/90 font-medium">Withdrawals are final once processed</p>
+</div>
+<!-- Actions -->
+<div class="space-y-4">
+<button class="w-full text-center py-2 text-sm font-mono tracking-widest text-on-surface-variant/60 hover:text-on-surface transition-colors">
+                        Cancel
+                    </button>
+<button class="w-full h-16 bg-primary text-on-primary rounded-full font-headline font-extrabold text-lg tracking-tight shadow-[0_10px_30px_rgba(16,185,129,0.3)] active:scale-95 transition-all uppercase">
+                        WITHDRAW
+                    </button>
+</div>
+</div>
+</div>
+<!-- Static Header (Over the modal for consistent UI) -->
+<header class="fixed top-0 w-[390px] z-50 flex justify-between items-center px-6 h-16 backdrop-blur-xl bg-emerald-950/40 border-b border-emerald-500/10">
+<span class="text-xl font-black bg-gradient-to-b from-emerald-400 to-teal-500 bg-clip-text text-transparent font-headline uppercase tracking-tighter">ARCHIVE</span>
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-emerald-400 text-xl">notifications</span>
+<div class="w-8 h-8 rounded-full border border-emerald-500/30 overflow-hidden">
+<img alt="User" class="w-full h-full object-cover" data-alt="professional profile portrait of a sleek tech professional in soft cinematic studio lighting with emerald accents" src="https://lh3.googleusercontent.com/aida-public/AB6AXuArIUqF2DtXrEXJE-OJfuEiBSo5b707zKf5Y59QT8JPddOxDWSTWnZTTi4J7ERhuN43YAkGXHkKKeXXvuGqTQnaBan3e7dn9xotoXWkoTi32MrUEr4z65Mb6iO2g67acqopOlgUW6blCHAiv8e2nX-HWkXO0cNM1j9VFNo1opUjkbxJHmUa4CNjHpo6qpwO_f5ut1V2mK-n-z5pKAauRWrL2cRaKs9N_J8rF3r_afBazHag5EeJzW4gAqbBYwThpBqAroetNs19BX9J"/>
+</div>
+</div>
+</header>
+<!-- Fixed Bottom Nav (Suppressed for transactional modal, but ghosted for visual context) -->
+<nav class="fixed bottom-0 w-[390px] z-50 flex justify-around items-center h-20 px-4 pb-4 backdrop-blur-xl bg-emerald-950/40 border-t border-emerald-500/10 rounded-t-[32px] opacity-10 pointer-events-none">
+<div class="flex flex-col items-center gap-1">
+<span class="material-symbols-outlined text-emerald-400">account_balance_wallet</span>
+<span class="font-mono text-[10px] uppercase tracking-widest">Vault</span>
+</div>
+<div class="flex flex-col items-center gap-1">
+<span class="material-symbols-outlined">swap_horiz</span>
+<span class="font-mono text-[10px] uppercase tracking-widest">Flow</span>
+</div>
+<div class="flex flex-col items-center gap-1">
+<span class="material-symbols-outlined">monitoring</span>
+<span class="font-mono text-[10px] uppercase tracking-widest">Pulse</span>
+</div>
+<div class="flex flex-col items-center gap-1">
+<span class="material-symbols-outlined">person</span>
+<span class="font-mono text-[10px] uppercase tracking-widest">Profile</span>
+</div>
+</nav>
+</div>
+</body></html>

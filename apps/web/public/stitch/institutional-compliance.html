@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>BIOLUMINESCENT LEDGER | Compliance Center</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800;900&amp;family=JetBrains+Mono:wght@400;700&amp;family=Space+Grotesk:wght@500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "surface-bright": "#313b38",
+            "on-secondary-container": "#00452e",
+            "inverse-primary": "#006c49",
+            "error-container": "#93000a",
+            "surface-container": "#17221e",
+            "on-secondary": "#003825",
+            "on-tertiary-fixed-variant": "#653e00",
+            "on-primary-fixed": "#002113",
+            "on-tertiary-fixed": "#2a1700",
+            "on-secondary-fixed-variant": "#005137",
+            "tertiary": "#ffb95f",
+            "surface-tint": "#4edea3",
+            "secondary-container": "#00bd85",
+            "primary-fixed-dim": "#4edea3",
+            "on-secondary-fixed": "#002114",
+            "tertiary-container": "#e29100",
+            "on-surface": "#d9e5df",
+            "outline-variant": "#3c4a42",
+            "surface-container-high": "#222c29",
+            "on-background": "#d9e5df",
+            "surface-dim": "#0b1512",
+            "tertiary-fixed-dim": "#ffb95f",
+            "primary": "#4edea3",
+            "on-tertiary": "#472a00",
+            "surface-container-low": "#131e1a",
+            "primary-fixed": "#6ffbbe",
+            "on-surface-variant": "#bbcabf",
+            "on-error-container": "#ffdad6",
+            "secondary-fixed": "#68fcbf",
+            "secondary": "#45dfa4",
+            "surface-variant": "#2c3733",
+            "inverse-surface": "#d9e5df",
+            "on-primary": "#003824",
+            "on-tertiary-container": "#523200",
+            "on-primary-fixed-variant": "#005236",
+            "error": "#ffb4ab",
+            "surface-container-lowest": "#06100d",
+            "on-error": "#690005",
+            "inverse-on-surface": "#28332f",
+            "surface-container-highest": "#2c3733",
+            "on-primary-container": "#00422b",
+            "tertiary-fixed": "#ffddb8",
+            "secondary-fixed-dim": "#45dfa4",
+            "primary-container": "#10b981",
+            "background": "#0b1512",
+            "outline": "#86948a",
+            "surface": "#0b1512"
+          },
+          "borderRadius": {
+            "DEFAULT": "1rem",
+            "lg": "2rem",
+            "xl": "3rem",
+            "full": "9999px"
+          },
+          "fontFamily": {
+            "headline": ["Inter"],
+            "body": ["Inter"],
+            "label": ["Space Grotesk"]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    body { background-color: #040d0a; color: #d9e5df; }
+    .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+    .glass-panel { background: rgba(44,55,51,0.4); backdrop-filter: blur(20px); border: 1px solid rgba(16,185,129,0.08); }
+    .bg-mesh { background-image: radial-gradient(at 0% 0%, rgba(78, 222, 163, 0.15) 0px, transparent 50%), radial-gradient(at 100% 100%, rgba(69, 223, 164, 0.1) 0px, transparent 50%); }
+    .scanline { background: linear-gradient(to bottom, transparent 50%, rgba(78, 222, 163, 0.03) 50%); background-size: 100% 4px; }
+  </style>
+</head>
+<body class="font-body selection:bg-primary/30 min-h-screen relative overflow-x-hidden">
+<div class="fixed inset-0 bg-mesh pointer-events-none"></div>
+<div class="fixed inset-0 scanline pointer-events-none opacity-20"></div>
+<!-- TopNavBar (Shared Component) -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-8 h-20 bg-[#0b1512]/90 backdrop-blur-2xl bg-[#2c3733]/40 border-b border-[#4edea3]/10 shadow-2xl shadow-black/20">
+<div class="flex items-center gap-8">
+<div class="text-2xl font-black tracking-tighter text-transparent bg-clip-text bg-gradient-to-r from-[#4edea3] to-[#45dfa4]">BIOLUMINESCENT LEDGER</div>
+<div class="hidden md:flex items-center space-x-6">
+<span class="text-emerald-800/70 font-medium hover:text-[#4edea3] font-['Inter'] font-extrabold tracking-tight text-sm uppercase transition-all duration-300 cursor-pointer">Ledger</span>
+<span class="text-[#4edea3] font-bold border-b-2 border-[#4edea3] font-['Inter'] font-extrabold tracking-tight text-sm uppercase transition-all duration-300 cursor-pointer">Compliance</span>
+<span class="text-emerald-800/70 font-medium hover:text-[#4edea3] font-['Inter'] font-extrabold tracking-tight text-sm uppercase transition-all duration-300 cursor-pointer">Audit</span>
+<span class="text-emerald-800/70 font-medium hover:text-[#4edea3] font-['Inter'] font-extrabold tracking-tight text-sm uppercase transition-all duration-300 cursor-pointer">Security</span>
+</div>
+</div>
+<div class="flex items-center space-x-4">
+<div class="px-4 py-1.5 glass-panel rounded-full text-[#4edea3] font-['Inter'] font-extrabold tracking-tight text-xs uppercase cursor-pointer hover:bg-[#4edea3]/5 transition-all">INSTITUTIONAL PORTAL</div>
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer hover:text-primary transition-colors">notifications</span>
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer hover:text-primary transition-colors">settings</span>
+</div>
+</header>
+<!-- SideNavBar (Shared Component) -->
+<aside class="fixed left-0 top-0 h-full flex flex-col pt-24 pb-12 bg-[#0b1512]/60 backdrop-blur-xl h-screen w-72 rounded-r-[3rem] shadow-[40px_0_60px_-15px_rgba(0,0,0,0.3)] z-40 hidden xl:flex">
+<div class="px-8 mb-10">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-2xl bg-surface-container-highest overflow-hidden border border-primary/20">
+<img alt="Node Operator" class="w-full h-full object-cover grayscale brightness-75 contrast-125" data-alt="Cyberpunk style profile avatar of a tech operative with neon lighting and data overlays" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA41i8dVuA38q7i0_Xrh-dKKshs8eiHj9aDmcUBe9WxVLfnl9fdJzLLYt3XODVLA2WNzNhiwKjCyVCqe9-Y8wuc2ISmERIi9NIkkGbqZjlywLfieCQWMmR5RSB4qDTwHoN0IL5K2hIPkQdOewSV8z3XTq4M40YhTRz8xPo1iKa52uxuVuFtC4yXjCzzIApTXkxlNZcciQBTu_BWfqR_C38xgOzt6awVYb5TDYRS7r8vQC7D8A1srYvJV40pU-QW0C3-WI_TsV8iBXk"/>
+</div>
+<div>
+<div class="font-['JetBrains_Mono'] text-[10px] uppercase tracking-widest text-[#4edea3]">NODE OPERATOR</div>
+<div class="font-['JetBrains_Mono'] text-[10px] text-emerald-900/60 uppercase">998-ALPHA-STABLE</div>
+</div>
+</div>
+</div>
+<nav class="flex-1 space-y-2">
+<div class="text-emerald-900/60 px-6 py-3 mx-4 font-['JetBrains_Mono'] text-[10px] uppercase tracking-widest hover:bg-white/5 hover:translate-x-2 transition-transform duration-300 cursor-pointer flex items-center gap-4 rounded-full">
+<span class="material-symbols-outlined text-lg">database</span> Ledger
+      </div>
+<div class="bg-[#4edea3]/10 text-[#4edea3] rounded-full mx-4 px-6 py-3 border-l-4 border-[#4edea3] font-['JetBrains_Mono'] text-[10px] uppercase tracking-widest cursor-pointer flex items-center gap-4">
+<span class="material-symbols-outlined text-lg">rule</span> Compliance
+      </div>
+<div class="text-emerald-900/60 px-6 py-3 mx-4 font-['JetBrains_Mono'] text-[10px] uppercase tracking-widest hover:bg-white/5 hover:translate-x-2 transition-transform duration-300 cursor-pointer flex items-center gap-4 rounded-full">
+<span class="material-symbols-outlined text-lg">history_edu</span> Audit
+      </div>
+<div class="text-emerald-900/60 px-6 py-3 mx-4 font-['JetBrains_Mono'] text-[10px] uppercase tracking-widest hover:bg-white/5 hover:translate-x-2 transition-transform duration-300 cursor-pointer flex items-center gap-4 rounded-full">
+<span class="material-symbols-outlined text-lg">shield</span> Security
+      </div>
+<div class="text-emerald-900/60 px-6 py-3 mx-4 font-['JetBrains_Mono'] text-[10px] uppercase tracking-widest hover:bg-white/5 hover:translate-x-2 transition-transform duration-300 cursor-pointer flex items-center gap-4 rounded-full">
+<span class="material-symbols-outlined text-lg">key</span> Vault
+      </div>
+</nav>
+<div class="px-8 mt-auto">
+<button class="w-full py-4 glass-panel rounded-2xl font-['JetBrains_Mono'] text-[11px] uppercase tracking-widest text-[#4edea3] hover:bg-[#4edea3]/10 transition-all border border-primary/20 animate-pulse">INITIATE AUDIT</button>
+</div>
+</aside>
+<!-- Main Canvas -->
+<main class="pt-28 pb-20 px-8 xl:ml-72 min-h-screen">
+<!-- Hero Header -->
+<section class="mb-12">
+<h1 class="text-5xl font-black tracking-tighter text-transparent bg-clip-text bg-gradient-to-r from-primary via-secondary to-primary-fixed-dim">
+        Compliance Center
+      </h1>
+<p class="font-['JetBrains_Mono'] text-xs tracking-[0.3em] text-emerald-700/80 mt-2">
+        AML · SANCTIONS · TRAVEL RULE
+      </p>
+</section>
+<!-- Stat Hero Cards -->
+<section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+<!-- Alerts -->
+<div class="glass-panel p-6 rounded-xl flex flex-col justify-between group transition-all hover:bg-surface-container-highest">
+<div class="flex justify-between items-start">
+<span class="material-symbols-outlined text-tertiary">warning</span>
+<div class="h-2 w-2 rounded-full bg-tertiary animate-ping"></div>
+</div>
+<div class="mt-8">
+<div class="font-['JetBrains_Mono'] text-4xl font-bold text-tertiary">7</div>
+<div class="font-['JetBrains_Mono'] text-[10px] tracking-widest text-on-surface-variant uppercase mt-1">AWAITING REVIEW</div>
+</div>
+</div>
+<!-- Screened -->
+<div class="glass-panel p-6 rounded-xl flex flex-col justify-between group transition-all hover:bg-surface-container-highest">
+<div class="flex justify-between items-start">
+<span class="material-symbols-outlined text-primary">visibility</span>
+<div class="h-1 w-8 bg-primary/20 rounded-full overflow-hidden">
+<div class="h-full bg-primary w-2/3"></div>
+</div>
+</div>
+<div class="mt-8">
+<div class="font-['JetBrains_Mono'] text-4xl font-bold text-on-surface">42,180</div>
+<div class="font-['JetBrains_Mono'] text-[10px] tracking-widest text-on-surface-variant uppercase mt-1">TRANSACTIONS</div>
+</div>
+</div>
+<!-- True Positives -->
+<div class="glass-panel p-6 rounded-xl flex flex-col justify-between group transition-all hover:bg-surface-container-highest">
+<div class="flex justify-between items-start">
+<span class="material-symbols-outlined text-secondary">verified</span>
+</div>
+<div class="mt-8">
+<div class="font-['JetBrains_Mono'] text-4xl font-bold text-secondary">0</div>
+<div class="font-['JetBrains_Mono'] text-[10px] tracking-widest text-on-surface-variant uppercase mt-1">TRUE POSITIVES · 30 DAYS</div>
+</div>
+</div>
+<!-- Risk Score -->
+<div class="glass-panel p-6 rounded-xl flex flex-col justify-between group transition-all hover:bg-surface-container-highest">
+<div class="flex justify-between items-start">
+<span class="material-symbols-outlined text-primary">analytics</span>
+</div>
+<div class="mt-8">
+<div class="font-['JetBrains_Mono'] text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">12/100</div>
+<div class="flex items-center gap-2 mt-1">
+<span class="px-2 py-0.5 rounded-full bg-primary/10 text-primary font-['JetBrains_Mono'] text-[9px] font-bold tracking-widest">LOW</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Alerts List -->
+<section class="mb-12">
+<div class="flex items-center justify-between mb-6">
+<h2 class="text-xl font-extrabold tracking-tight">Active Intelligence Queue</h2>
+<div class="flex gap-2">
+<button class="px-4 py-1.5 glass-panel rounded-full text-xs font-bold hover:bg-white/5 transition-all">FILTER</button>
+<button class="px-4 py-1.5 glass-panel rounded-full text-xs font-bold hover:bg-white/5 transition-all">EXPORT</button>
+</div>
+</div>
+<div class="space-y-4">
+<!-- Row 1: High coral -->
+<div class="glass-panel p-5 rounded-xl border-l-[6px] border-red-400 flex flex-col md:flex-row items-center justify-between gap-4 group hover:bg-surface-container-highest transition-all">
+<div class="flex items-center gap-4 flex-1">
+<div class="w-10 h-10 rounded-full bg-red-400/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-red-400 text-xl" style="font-variation-settings: 'FILL' 1;">error</span>
+</div>
+<div>
+<p class="text-sm font-semibold text-on-surface">Sanctions Hit - OFAC SDN list match on counterparty ABC Corp</p>
+<div class="flex items-center gap-3 mt-1">
+<span class="font-['JetBrains_Mono'] text-[10px] text-red-400 font-bold">CRITICAL</span>
+<span class="text-on-surface-variant text-[10px] uppercase font-bold tracking-widest">Entity: ABC Corp</span>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<span class="font-['JetBrains_Mono'] text-xs text-on-surface-variant">2H AGO</span>
+<button class="px-6 py-2 rounded-full border border-primary text-primary hover:bg-primary hover:text-on-primary font-bold text-xs tracking-widest transition-all">REVIEW</button>
+</div>
+</div>
+<!-- Row 2: Medium amber -->
+<div class="glass-panel p-5 rounded-xl border-l-[6px] border-amber-400 flex flex-col md:flex-row items-center justify-between gap-4 group hover:bg-surface-container-highest transition-all">
+<div class="flex items-center gap-4 flex-1">
+<div class="w-10 h-10 rounded-full bg-amber-400/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-amber-400 text-xl" style="font-variation-settings: 'FILL' 1;">warning</span>
+</div>
+<div>
+<p class="text-sm font-semibold text-on-surface">Threshold Breach - Single transaction $10.5M exceeds auto-approval threshold</p>
+<div class="flex items-center gap-3 mt-1">
+<span class="font-['JetBrains_Mono'] text-[10px] text-amber-400 font-bold">ELEVATED</span>
+<span class="text-on-surface-variant text-[10px] uppercase font-bold tracking-widest">Entity: Aurora Capital</span>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<span class="font-['JetBrains_Mono'] text-xs text-on-surface-variant">4H AGO</span>
+<button class="px-6 py-2 rounded-full border border-primary text-primary hover:bg-primary hover:text-on-primary font-bold text-xs tracking-widest transition-all">REVIEW</button>
+</div>
+</div>
+<!-- Row 3: Medium amber -->
+<div class="glass-panel p-5 rounded-xl border-l-[6px] border-amber-400 flex flex-col md:flex-row items-center justify-between gap-4 group hover:bg-surface-container-highest transition-all">
+<div class="flex items-center gap-4 flex-1">
+<div class="w-10 h-10 rounded-full bg-amber-400/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-amber-400 text-xl" style="font-variation-settings: 'FILL' 1;">trending_up</span>
+</div>
+<div>
+<p class="text-sm font-semibold text-on-surface">Velocity Alert - Counterparty Aurora: 12 trades in 1h, +280% above average</p>
+<div class="flex items-center gap-3 mt-1">
+<span class="font-['JetBrains_Mono'] text-[10px] text-amber-400 font-bold">ELEVATED</span>
+<span class="text-on-surface-variant text-[10px] uppercase font-bold tracking-widest">Entity: Aurora Capital</span>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<span class="font-['JetBrains_Mono'] text-xs text-on-surface-variant">5H AGO</span>
+<button class="px-6 py-2 rounded-full border border-primary text-primary hover:bg-primary hover:text-on-primary font-bold text-xs tracking-widest transition-all">REVIEW</button>
+</div>
+</div>
+<!-- Row 4: Low -->
+<div class="glass-panel p-5 rounded-xl border-l-[6px] border-surface-variant flex flex-col md:flex-row items-center justify-between gap-4 group hover:bg-surface-container-highest transition-all">
+<div class="flex items-center gap-4 flex-1">
+<div class="w-10 h-10 rounded-full bg-surface-variant flex items-center justify-center">
+<span class="material-symbols-outlined text-on-surface-variant text-xl">account_tree</span>
+</div>
+<div>
+<p class="text-sm font-semibold text-on-surface">Structuring Pattern - Possible structuring detected on wallet 0x7a2e...</p>
+<div class="flex items-center gap-3 mt-1">
+<span class="font-['JetBrains_Mono'] text-[10px] text-on-surface-variant font-bold">LOW</span>
+<span class="text-on-surface-variant text-[10px] uppercase font-bold tracking-widest">Network: Ethereum</span>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<span class="font-['JetBrains_Mono'] text-xs text-on-surface-variant">6H AGO</span>
+<button class="px-6 py-2 rounded-full border border-primary text-primary hover:bg-primary hover:text-on-primary font-bold text-xs tracking-widest transition-all">REVIEW</button>
+</div>
+</div>
+<!-- Row 5: Low -->
+<div class="glass-panel p-5 rounded-xl border-l-[6px] border-surface-variant flex flex-col md:flex-row items-center justify-between gap-4 group hover:bg-surface-container-highest transition-all">
+<div class="flex items-center gap-4 flex-1">
+<div class="w-10 h-10 rounded-full bg-surface-variant flex items-center justify-center">
+<span class="material-symbols-outlined text-on-surface-variant text-xl">person_search</span>
+</div>
+<div>
+<p class="text-sm font-semibold text-on-surface">PEP Match - UBO declared match to PEP list (Elena Rossi)</p>
+<div class="flex items-center gap-3 mt-1">
+<span class="font-['JetBrains_Mono'] text-[10px] text-on-surface-variant font-bold">LOW</span>
+<span class="text-on-surface-variant text-[10px] uppercase font-bold tracking-widest">Identity: Nebula Fund</span>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<span class="font-['JetBrains_Mono'] text-xs text-on-surface-variant">8H AGO</span>
+<button class="px-6 py-2 rounded-full border border-primary text-primary hover:bg-primary hover:text-on-primary font-bold text-xs tracking-widest transition-all">REVIEW</button>
+</div>
+</div>
+<!-- Row 6: Info -->
+<div class="glass-panel p-5 rounded-xl border-l-[6px] border-primary/40 flex flex-col md:flex-row items-center justify-between gap-4 group hover:bg-surface-container-highest transition-all">
+<div class="flex items-center gap-4 flex-1">
+<div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-xl">send_money</span>
+</div>
+<div>
+<p class="text-sm font-semibold text-on-surface">Travel Rule - VASP-to-VASP transfer requires originator data</p>
+<div class="flex items-center gap-3 mt-1">
+<span class="font-['JetBrains_Mono'] text-[10px] text-primary font-bold">INFO</span>
+<span class="text-on-surface-variant text-[10px] uppercase font-bold tracking-widest">Protocol: TRP</span>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<span class="font-['JetBrains_Mono'] text-xs text-on-surface-variant">12H AGO</span>
+<button class="px-6 py-2 rounded-full bg-surface-container-highest text-on-surface font-bold text-xs tracking-widest transition-all hover:bg-primary hover:text-on-primary">COMPLETE</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Bottom Side Cards Row -->
+<section class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+<!-- Sanctions Screening -->
+<div class="glass-panel p-8 rounded-xl flex items-center gap-6">
+<div class="relative">
+<div class="w-16 h-16 rounded-full border-4 border-primary/20 flex items-center justify-center">
+<span class="material-symbols-outlined text-3xl text-primary" style="font-variation-settings: 'FILL' 1;">security</span>
+</div>
+<div class="absolute -top-1 -right-1 h-4 w-4 bg-primary rounded-full border-2 border-background animate-pulse"></div>
+</div>
+<div>
+<h3 class="font-extrabold text-lg uppercase tracking-tight">SANCTIONS SCREENING</h3>
+<p class="font-['JetBrains_Mono'] text-xs text-on-surface-variant mt-1">
+            42,180 checks today <span class="mx-1">·</span> 0 hits
+          </p>
+<div class="mt-4 flex gap-1">
+<div class="h-1 w-full bg-primary rounded-full"></div>
+<div class="h-1 w-1/3 bg-primary/20 rounded-full"></div>
+<div class="h-1 w-1/4 bg-primary/20 rounded-full"></div>
+</div>
+</div>
+</div>
+<!-- Travel Rule -->
+<div class="glass-panel p-8 rounded-xl flex items-center gap-6">
+<div class="relative w-16 h-16">
+<svg class="w-16 h-16 -rotate-90">
+<circle class="text-primary/10" cx="32" cy="32" fill="transparent" r="28" stroke="currentColor" stroke-width="6"></circle>
+<circle class="text-primary" cx="32" cy="32" fill="transparent" r="28" stroke="currentColor" stroke-dasharray="175.9" stroke-dashoffset="3.5" stroke-width="6"></circle>
+</svg>
+<div class="absolute inset-0 flex items-center justify-center">
+<span class="font-['JetBrains_Mono'] text-[10px] font-bold">98%</span>
+</div>
+</div>
+<div>
+<h3 class="font-extrabold text-lg uppercase tracking-tight">TRAVEL RULE COMPLIANCE</h3>
+<p class="font-['JetBrains_Mono'] text-xs text-on-surface-variant mt-1">
+            98.2% coverage across active channels
+          </p>
+<button class="mt-3 text-[10px] font-['JetBrains_Mono'] text-primary flex items-center gap-1 hover:underline">
+            VIEW PROTOCOL LOGS <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</button>
+</div>
+</div>
+</section>
+<!-- Action Row -->
+<section class="flex flex-col sm:flex-row items-center justify-center gap-4 py-8 border-t border-primary/5">
+<button class="w-full sm:w-auto flex items-center justify-center gap-3 px-10 py-4 bg-gradient-to-r from-primary to-secondary text-on-primary font-black tracking-widest text-sm rounded-xl hover:scale-105 active:scale-95 transition-all shadow-xl shadow-primary/20">
+        FILE SAR REPORT <span class="material-symbols-outlined font-bold">arrow_forward</span>
+</button>
+<button class="w-full sm:w-auto flex items-center justify-center gap-3 px-10 py-4 glass-panel border border-primary/20 text-on-surface font-black tracking-widest text-sm rounded-xl hover:bg-white/5 transition-all">
+        GENERATE AML REPORT <span class="material-symbols-outlined">download</span>
+</button>
+</section>
+</main>
+<!-- Footer (Shared Component) -->
+<footer class="fixed bottom-0 left-0 w-full z-40 flex justify-between items-center px-12 bg-[#0b1512]/95 h-10 border-t border-[#4edea3]/5 font-['JetBrains_Mono'] text-[11px] font-bold tracking-widest text-emerald-700">
+<div>SYSTEM HEALTH: OPTIMAL</div>
+<div class="flex items-center space-x-6">
+<span class="hover:text-[#4edea3] transition-colors cursor-pointer">LATENCY: 12MS</span>
+<span class="hover:text-[#4edea3] transition-colors cursor-pointer">BLOCK: 8,239,102</span>
+<span class="text-[#4edea3]">ENCRYPTION: QUANTUM</span>
+</div>
+</footer>
+</body></html>

@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Edit Beneficiary | Bioluminescent Ledger</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&amp;family=JetBrains+Mono:wght@500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "surface-container-highest": "#1a2924",
+                        "outline-variant": "#3f4a46",
+                        "tertiary": "#ffc7c0",
+                        "tertiary-dim": "#efa69e",
+                        "tertiary-fixed": "#ffb4ab",
+                        "secondary-container": "#006c4a",
+                        "error-dim": "#d7383b",
+                        "on-background": "#f0fcf6",
+                        "tertiary-container": "#ffb4ab",
+                        "on-primary": "#005a3c",
+                        "inverse-surface": "#f0fcf6",
+                        "on-secondary": "#00583b",
+                        "secondary-dim": "#55e4a9",
+                        "surface-container-lowest": "#000000",
+                        "on-primary-fixed-variant": "#006544",
+                        "on-surface-variant": "#a2aea8",
+                        "primary-container": "#06b77f",
+                        "primary-fixed": "#69f6b8",
+                        "surface-bright": "#1f2f2a",
+                        "surface-container-high": "#15221e",
+                        "on-secondary-fixed-variant": "#006343",
+                        "on-secondary-container": "#e1ffec",
+                        "outline": "#6c7873",
+                        "on-tertiary": "#6f3a34",
+                        "surface-container": "#0f1c18",
+                        "surface-dim": "#06100d",
+                        "error-container": "#9f0519",
+                        "surface-variant": "#1a2924",
+                        "on-surface": "#f0fcf6",
+                        "on-tertiary-container": "#64312c",
+                        "on-error": "#490006",
+                        "surface-tint": "#69f6b8",
+                        "on-tertiary-fixed-variant": "#6f3a34",
+                        "secondary": "#65f3b6",
+                        "secondary-fixed-dim": "#55e4a9",
+                        "background": "#06100d",
+                        "primary-dim": "#58e7ab",
+                        "primary-fixed-dim": "#58e7ab",
+                        "surface": "#06100d",
+                        "inverse-on-surface": "#4c5753",
+                        "on-error-container": "#ffa8a3",
+                        "tertiary-fixed-dim": "#efa69e",
+                        "on-primary-fixed": "#00452d",
+                        "inverse-primary": "#006d4a",
+                        "primary": "#69f6b8",
+                        "on-tertiary-fixed": "#4c1e19",
+                        "on-primary-container": "#002919",
+                        "error": "#ff716c",
+                        "on-secondary-fixed": "#00432c",
+                        "secondary-fixed": "#65f3b6",
+                        "surface-container-low": "#0a1612"
+                    },
+                    borderRadius: {
+                        "DEFAULT": "1rem",
+                        "lg": "2rem",
+                        "xl": "3rem",
+                        "full": "9999px"
+                    },
+                    fontFamily: {
+                        "headline": ["Inter", "sans-serif"],
+                        "body": ["Inter", "sans-serif"],
+                        "label": ["Inter", "sans-serif"],
+                        "mono": ["JetBrains Mono", "monospace"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body { background-color: #040d0a; overflow: hidden; }
+        .organic-blob { position: absolute; filter: blur(80px); opacity: 0.3; border-radius: 50%; z-index: -1; }
+        .energy-lines { background-image: repeating-linear-gradient(45deg, rgba(16, 185, 129, 0.05) 0, rgba(16, 185, 129, 0.05) 1px, transparent 1px, transparent 20px); }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .glass-panel { background: rgba(44, 55, 51, 0.4); backdrop-filter: blur(20px); border: 1px solid rgba(105, 246, 184, 0.08); }
+        .glow-shadow { shadow-[0_40px_40px_rgba(105,246,184,0.06)]; }
+    </style>
+</head>
+<body class="font-body text-on-surface antialiased">
+<!-- Background Elements -->
+<div class="fixed inset-0 energy-lines pointer-events-none"></div>
+<div class="organic-blob bg-[#10b981] w-[500px] h-[500px] -top-48 -left-48"></div>
+<div class="organic-blob bg-[#34d399] w-[400px] h-[400px] top-1/2 -right-24"></div>
+<div class="organic-blob bg-[#06b77f] w-[600px] h-[600px] -bottom-48 left-1/4"></div>
+<div class="organic-blob bg-[#69f6b8] w-[300px] h-[300px] top-1/4 left-1/2"></div>
+<!-- Top Navigation Anchor (Shared Component Mapping) -->
+<header class="fixed top-0 w-full z-50 flex justify-between items-center px-8 py-4 bg-[#06100d]/80 backdrop-blur-xl border-b border-[#10b981]/10 shadow-[0_40px_40px_rgba(105,246,184,0.06)]">
+<div class="text-xl font-extrabold bg-gradient-to-r from-[#10b981] to-[#34d399] bg-clip-text text-transparent">Bioluminescent Ledger</div>
+<nav class="hidden md:flex items-center gap-8">
+<a class="text-[#d9e5df]/60 hover:text-[#d9e5df] transition-colors font-['Inter'] tracking-tight" href="#">Dashboard</a>
+<a class="text-[#69f6b8] border-b-2 border-[#69f6b8] pb-1 font-semibold font-['Inter'] tracking-tight" href="#">Wallets</a>
+<a class="text-[#d9e5df]/60 hover:text-[#d9e5df] transition-colors font-['Inter'] tracking-tight" href="#">Cards</a>
+<a class="text-[#d9e5df]/60 hover:text-[#d9e5df] transition-colors font-['Inter'] tracking-tight" href="#">Transactions</a>
+<a class="text-[#d9e5df]/60 hover:text-[#d9e5df] transition-colors font-['Inter'] tracking-tight" href="#">Banking</a>
+</nav>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-[#69f6b8]">notifications</span>
+<span class="material-symbols-outlined text-[#69f6b8]">settings</span>
+<div class="w-10 h-10 rounded-full overflow-hidden border border-[#10b981]/20">
+<img alt="User Profile Avatar" data-alt="high-quality minimalist profile avatar of a professional male with soft cinematic lighting and dark background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD_4rO2aMyy_HJLqEaUsWr6U9oUDxr80h8D8cjbJ8OLFm3dura6SXsK5OaEd3CPbcV4fFuUbYPoNL-7e9tpl00ZUGujSY-bQyZhmB2MIQs0285z9VGIpraxOWAH_Vx8nlDNNMIgTvtk-kklpPZ1uDkFTkPYgdXhRYq2oVyh0X5h12bBC00A2CvlsQZBCNGWbDmmiwc8z0Vihw93Z5tFE6NvMN9-9dOI8QDFZNtms5Vuy_hXokq9_HIkYu8a7QePu61VFtFkaxvyA-U"/>
+</div>
+</div>
+</header>
+<!-- Faint Parent Page Background (Beneficiaries List) -->
+<main class="pt-24 px-8 opacity-20 blur-sm pointer-events-none">
+<div class="max-w-5xl mx-auto space-y-8">
+<h1 class="text-4xl font-extrabold bg-gradient-to-r from-[#10b981] to-[#34d399] bg-clip-text text-transparent">Beneficiaries</h1>
+<div class="grid gap-4">
+<!-- Highlighted Row Placeholder Context -->
+<div class="p-6 rounded-xl glass-panel flex items-center justify-between border-primary/40 bg-primary/5">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center text-primary font-bold">AM</div>
+<div>
+<div class="text-on-surface font-semibold">Alex Morgan</div>
+<div class="text-on-surface-variant text-sm font-mono">CHASE BANK •••• 4421</div>
+</div>
+</div>
+<span class="material-symbols-outlined text-primary">edit</span>
+</div>
+<!-- Other Rows -->
+<div class="p-6 rounded-xl glass-panel flex items-center justify-between">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full bg-surface-container-highest flex items-center justify-center text-outline font-bold">JD</div>
+<div>
+<div class="text-on-surface font-semibold">Jordan Doe</div>
+<div class="text-on-surface-variant text-sm font-mono">WELLS FARGO •••• 9901</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Modal Overlay -->
+<div class="fixed inset-0 z-[60] flex items-center justify-center bg-black/40 backdrop-blur-sm px-4">
+<!-- Edit Beneficiary Modal -->
+<div class="w-full max-w-[620px] glass-panel rounded-xl glow-shadow overflow-hidden relative">
+<!-- Modal Header -->
+<div class="p-8 pb-4 flex justify-between items-start">
+<div>
+<h2 class="text-3xl font-extrabold bg-gradient-to-r from-[#10b981] to-[#34d399] bg-clip-text text-transparent">Edit Beneficiary</h2>
+<p class="font-mono text-xs font-bold uppercase tracking-widest text-primary/60 mt-1">UPDATE RECIPIENT DETAILS</p>
+</div>
+<div class="flex items-center gap-4">
+<!-- Verification Badge -->
+<div class="flex items-center gap-2 bg-primary/10 px-3 py-1 rounded-full border border-primary/20">
+<span class="w-1.5 h-1.5 rounded-full bg-primary animate-pulse"></span>
+<span class="font-mono text-[10px] font-bold text-primary tracking-tighter">VERIFIED ✓</span>
+</div>
+<button class="text-on-surface-variant hover:text-on-surface transition-colors">
+<span class="material-symbols-outlined">close</span>
+</button>
+</div>
+</div>
+<!-- Form Body -->
+<form class="p-8 pt-4 space-y-6">
+<div class="grid grid-cols-2 gap-6">
+<!-- Full Name -->
+<div class="space-y-1.5 col-span-2 md:col-span-1">
+<label class="font-mono text-[10px] font-bold uppercase tracking-widest text-on-surface-variant">Full Name</label>
+<input class="w-full bg-surface-container-lowest border-0 border-b border-[#10b981]/10 focus:border-primary focus:ring-0 text-on-surface p-0 pb-2 text-base transition-all bg-transparent outline-none" type="text" value="Alex Morgan"/>
+</div>
+<!-- Email -->
+<div class="space-y-1.5 col-span-2 md:col-span-1">
+<label class="font-mono text-[10px] font-bold uppercase tracking-widest text-on-surface-variant">Email</label>
+<input class="w-full bg-surface-container-lowest border-0 border-b border-[#10b981]/10 focus:border-primary focus:ring-0 text-on-surface p-0 pb-2 text-base transition-all bg-transparent outline-none" type="email" value="alex.morgan@example.com"/>
+</div>
+<!-- Bank Name Dropdown -->
+<div class="space-y-1.5 col-span-2 md:col-span-1">
+<label class="font-mono text-[10px] font-bold uppercase tracking-widest text-on-surface-variant">Bank Name</label>
+<div class="relative group">
+<input class="w-full cursor-pointer bg-surface-container-lowest border-0 border-b border-[#10b981]/10 group-hover:border-primary/40 focus:border-primary focus:ring-0 text-on-surface p-0 pb-2 text-base transition-all bg-transparent outline-none" readonly="" type="text" value="Chase Bank"/>
+<span class="material-symbols-outlined absolute right-0 top-0 text-on-surface-variant text-sm">expand_more</span>
+</div>
+</div>
+<!-- Routing Code -->
+<div class="space-y-1.5 col-span-2 md:col-span-1">
+<label class="font-mono text-[10px] font-bold uppercase tracking-widest text-on-surface-variant">Routing Code</label>
+<input class="font-mono w-full bg-surface-container-lowest border-0 border-b border-[#10b981]/10 focus:border-primary focus:ring-0 text-on-surface p-0 pb-2 text-base transition-all bg-transparent outline-none" type="text" value="021000021"/>
+</div>
+<!-- Locked Account Number -->
+<div class="space-y-1.5 col-span-2">
+<label class="font-mono text-[10px] font-bold uppercase tracking-widest text-on-surface-variant">Account Number</label>
+<div class="flex items-center gap-3 border-0 border-b border-[#10b981]/10 pb-2">
+<span class="material-symbols-outlined text-on-surface-variant text-sm">lock</span>
+<span class="font-mono text-on-surface/40 select-none">•••• 4421</span>
+</div>
+<p class="text-[10px] text-on-surface-variant/60">Account number cannot be edited for security</p>
+</div>
+<!-- Currency Selector -->
+<div class="space-y-3 col-span-2">
+<label class="font-mono text-[10px] font-bold uppercase tracking-widest text-on-surface-variant">CURRENCY</label>
+<div class="flex gap-2">
+<button class="px-4 py-1.5 rounded-full font-mono text-xs font-bold bg-primary text-on-primary border border-primary transition-all" type="button">USD</button>
+<button class="px-4 py-1.5 rounded-full font-mono text-xs font-bold border border-outline/20 text-on-surface-variant hover:border-primary/40 transition-all" type="button">EUR</button>
+<button class="px-4 py-1.5 rounded-full font-mono text-xs font-bold border border-outline/20 text-on-surface-variant hover:border-primary/40 transition-all" type="button">GBP</button>
+<button class="px-4 py-1.5 rounded-full font-mono text-xs font-bold border border-outline/20 text-on-surface-variant hover:border-primary/40 transition-all" type="button">NGN</button>
+</div>
+</div>
+<!-- Nickname -->
+<div class="space-y-1.5 col-span-2">
+<label class="font-mono text-[10px] font-bold uppercase tracking-widest text-on-surface-variant">Nickname</label>
+<input class="w-full bg-surface-container-lowest border-0 border-b border-[#10b981]/10 focus:border-primary focus:ring-0 text-on-surface p-0 pb-2 text-base transition-all bg-transparent outline-none" type="text" value="Alex (Rent)"/>
+</div>
+</div>
+<!-- Action Buttons -->
+<div class="flex items-center justify-end gap-6 pt-6">
+<button class="font-mono text-xs font-bold uppercase tracking-widest text-on-surface-variant hover:text-on-surface transition-colors decoration-primary underline-offset-4 hover:underline" type="button">
+                        CANCEL
+                    </button>
+<button class="group relative px-8 py-3 rounded-full border border-primary overflow-hidden transition-all hover:shadow-[0_0_20px_rgba(105,246,184,0.15)]" type="submit">
+<div class="absolute inset-0 bg-gradient-to-r from-primary/0 via-primary/5 to-primary/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700"></div>
+<span class="relative z-10 font-mono text-xs font-bold uppercase tracking-widest text-primary flex items-center gap-2">
+                            SAVE CHANGES <span class="text-base">→</span>
+</span>
+</button>
+</div>
+</form>
+</div>
+</div>
+<!-- Footer Anchor (Shared Component Mapping) -->
+<footer class="fixed bottom-0 w-full z-50 flex justify-between items-center px-8 py-3 bg-black/40 backdrop-blur-md border-t border-[#10b981]/10">
+<div class="font-['JetBrains_Mono'] text-xs font-bold uppercase tracking-widest text-[#d9e5df]/40">© 2024 Bioluminescent Ledger. All Systems Operational.</div>
+<div class="flex gap-6">
+<span class="font-['JetBrains_Mono'] text-xs font-bold uppercase tracking-widest text-[#4edea3]">BTC/USD: $64,210.00</span>
+<span class="font-['JetBrains_Mono'] text-xs font-bold uppercase tracking-widest text-[#4edea3]">ETH/USD: $3,450.12</span>
+<span class="font-['JetBrains_Mono'] text-xs font-bold uppercase tracking-widest text-[#4edea3]">SOL/USD: $142.88</span>
+</div>
+</footer>
+</body></html>

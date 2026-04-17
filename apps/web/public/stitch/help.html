@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Help Center | CRYMAD CA$H</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&amp;family=JetBrains+Mono:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #040d0a;
+            color: #d9e5df;
+            overflow-x: hidden;
+        }
+        .mono { font-family: 'JetBrains+Mono', monospace; }
+        .glass {
+            background: rgba(44, 55, 51, 0.4);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(16, 185, 129, 0.08);
+        }
+        .living-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: -1;
+            overflow: hidden;
+        }
+        .blob {
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(16, 185, 129, 0.15) 0%, rgba(0, 0, 0, 0) 70%);
+            filter: blur(80px);
+            border-radius: 50%;
+        }
+        .energy-lines {
+            position: absolute;
+            inset: 0;
+            background-image: repeating-linear-gradient(45deg, rgba(16, 185, 129, 0.05) 0px, rgba(16, 185, 129, 0.05) 1px, transparent 1px, transparent 100px);
+            pointer-events: none;
+        }
+        .gradient-text {
+            background: linear-gradient(to bottom, #10b981, #34d399);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-primary-container": "#00422b",
+                      "on-error-container": "#ffdad6",
+                      "on-primary-fixed": "#002113",
+                      "on-secondary-fixed": "#002114",
+                      "primary": "#4edea3",
+                      "on-tertiary-fixed": "#2a1700",
+                      "on-background": "#d9e5df",
+                      "surface-dim": "#0b1512",
+                      "on-error": "#690005",
+                      "surface-variant": "#2c3733",
+                      "on-secondary-container": "#00452e",
+                      "error-container": "#93000a",
+                      "on-primary-fixed-variant": "#005236",
+                      "secondary-container": "#00bd85",
+                      "primary-container": "#10b981",
+                      "on-secondary": "#003825",
+                      "inverse-primary": "#006c49",
+                      "surface-container-low": "#131e1a",
+                      "secondary": "#45dfa4",
+                      "tertiary": "#ffb95f",
+                      "primary-fixed": "#6ffbbe",
+                      "surface-container-lowest": "#06100d",
+                      "on-primary": "#003824",
+                      "tertiary-fixed": "#ffddb8",
+                      "background": "#0b1512",
+                      "surface-container": "#17221e",
+                      "on-tertiary": "#472a00",
+                      "surface": "#0b1512",
+                      "inverse-surface": "#d9e5df",
+                      "inverse-on-surface": "#28332f",
+                      "on-surface": "#d9e5df",
+                      "on-tertiary-fixed-variant": "#653e00",
+                      "tertiary-fixed-dim": "#ffb95f",
+                      "surface-container-highest": "#2c3733",
+                      "secondary-fixed-dim": "#45dfa4",
+                      "on-secondary-fixed-variant": "#005137",
+                      "secondary-fixed": "#68fcbf",
+                      "surface-tint": "#4edea3",
+                      "on-surface-variant": "#bbcabf",
+                      "error": "#ffb4ab",
+                      "outline-variant": "#3c4a42",
+                      "outline": "#86948a",
+                      "on-tertiary-container": "#523200",
+                      "surface-container-high": "#222c29",
+                      "surface-bright": "#313b38",
+                      "tertiary-container": "#e29100",
+                      "primary-fixed-dim": "#4edea3"
+              },
+              "borderRadius": {
+                      "DEFAULT": "1rem",
+                      "lg": "2rem",
+                      "xl": "3rem",
+                      "full": "9999px"
+              },
+              "fontFamily": {
+                      "headline": ["Inter"],
+                      "body": ["Inter"],
+                      "label": ["Inter"]
+              }
+            },
+          }
+        }
+      </script>
+</head>
+<body class="bg-background selection:bg-primary/30">
+<!-- Living Background -->
+<div class="living-bg">
+<div class="blob top-[-10%] left-[-5%]" style="opacity: 0.3;"></div>
+<div class="blob bottom-[10%] right-[-10%]" style="opacity: 0.2;"></div>
+<div class="blob top-[40%] left-[30%]" style="opacity: 0.15; background: radial-gradient(circle, #34d399 0%, rgba(0,0,0,0) 70%);"></div>
+<div class="energy-lines"></div>
+</div>
+<!-- TopNavBar Shell -->
+<nav class="fixed top-0 w-full h-16 z-50 bg-[#2c3733]/40 backdrop-blur-xl border-b border-[#10b981]/10 flex justify-between items-center px-8 shadow-[0_20px_40px_rgba(16,185,129,0.12)]">
+<div class="text-xl font-black bg-clip-text text-transparent bg-gradient-to-r from-[#10b981] to-[#34d399] tracking-tighter">
+            CRYMAD CA$H
+        </div>
+<div class="hidden md:flex items-center gap-8">
+<a class="text-[#d9e5df]/60 hover:text-[#d9e5df] transition-colors text-sm font-medium" href="#">Dashboard</a>
+<a class="text-[#d9e5df]/60 hover:text-[#d9e5df] transition-colors text-sm font-medium" href="#">Wallets</a>
+<a class="text-[#d9e5df]/60 hover:text-[#d9e5df] transition-colors text-sm font-medium" href="#">Cards</a>
+<a class="text-[#d9e5df]/60 hover:text-[#d9e5df] transition-colors text-sm font-medium" href="#">Transactions</a>
+<a class="text-[#d9e5df]/60 hover:text-[#d9e5df] transition-colors text-sm font-medium" href="#">Banking</a>
+<a class="text-[#10b981] font-bold border-b-2 border-[#10b981] pb-1 text-sm" href="#">Help</a>
+</div>
+<div class="flex items-center gap-4">
+<button class="material-symbols-outlined text-[#10b981] hover:bg-[#10b981]/10 p-2 rounded-full transition-all">notifications</button>
+<div class="w-8 h-8 rounded-full overflow-hidden border border-[#10b981]/20">
+<img alt="User Avatar" class="w-full h-full object-cover" data-alt="professional male headshot with neutral background, soft studio lighting, sharp focus on eyes" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCPt0EoKlPcuwSBVIQOQXWGshSmUJCXaJuEFGYdtZXr9PcSk_ZMnBqXceUMceo3nCg49tFMFuwn7sut6_ioJzbpkULUuIzq53s1LdqWVVgrDTl5FhimfLOxA-mWqnZzQJ7pEcDZARZsRx96CW2FxaGibeqaCql6CWkhj9VVz7ar6zpdRltVcLASL9mLFrwaqq513kXXNbD0P8mcodpCL237cgYZ8xxUfTH4KRd681U8_GlBX_Vi4S2o4JGvqrQyQms10jtrQkLbZUI"/>
+</div>
+</div>
+</nav>
+<!-- SideNavBar (Theme Toggle) -->
+<aside class="fixed right-0 top-1/2 -translate-y-1/2 w-16 bg-[#2c3733]/40 backdrop-blur-xl rounded-l-3xl z-40 flex flex-col items-center py-6 gap-4 shadow-xl shadow-[#10b981]/5">
+<div class="rotate-[-90deg] origin-center cursor-pointer flex flex-col items-center">
+<span class="mono text-[10px] uppercase tracking-tighter text-[#d9e5df]/40">THEME</span>
+</div>
+<div class="w-8 h-8 rounded-full border-2 border-[#10b981] scale-110 flex items-center justify-center cursor-pointer">
+<span class="material-symbols-outlined text-[#10b981] text-sm" style="font-variation-settings: 'FILL' 1;">circle</span>
+</div>
+<div class="w-8 h-8 rounded-full opacity-50 grayscale hover:grayscale-0 hover:opacity-100 transition-all hover:scale-110 cursor-pointer flex items-center justify-center">
+<span class="material-symbols-outlined text-[#34d399] text-sm">circle</span>
+</div>
+<div class="w-8 h-8 rounded-full opacity-50 grayscale hover:grayscale-0 hover:opacity-100 transition-all hover:scale-110 cursor-pointer flex items-center justify-center">
+<span class="material-symbols-outlined text-[#ffb95f] text-sm">circle</span>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="pt-32 pb-24 px-8 max-w-[1280px] mx-auto min-h-screen">
+<!-- Header Section -->
+<header class="mb-16">
+<h1 class="text-6xl font-black gradient-text tracking-tighter mb-4">How can we help?</h1>
+<p class="text-xl text-on-surface-variant max-w-2xl">Search or browse our bioluminescent knowledge base</p>
+</header>
+<!-- Search Bar Section -->
+<section class="glass rounded-xl p-6 mb-12 flex items-center gap-4">
+<div class="relative flex-grow">
+<span class="material-symbols-outlined absolute left-6 top-1/2 -translate-y-1/2 text-primary">search</span>
+<input class="w-full bg-surface-container-lowest border-none rounded-full py-5 pl-16 pr-8 mono text-primary focus:ring-2 focus:ring-primary/40 placeholder:text-primary/30 transition-all" placeholder="SEARCH HELP ARTICLES..." type="text"/>
+</div>
+<div class="hidden lg:flex gap-3">
+<span class="px-4 py-2 rounded-full glass border-primary/20 text-xs mono text-primary/80 hover:bg-primary/10 cursor-pointer transition-colors">#wallet</span>
+<span class="px-4 py-2 rounded-full glass border-primary/20 text-xs mono text-primary/80 hover:bg-primary/10 cursor-pointer transition-colors">#cards</span>
+<span class="px-4 py-2 rounded-full glass border-primary/20 text-xs mono text-primary/80 hover:bg-primary/10 cursor-pointer transition-colors">#crypto</span>
+</div>
+</section>
+<!-- Category Tabs -->
+<nav class="flex flex-wrap gap-4 mb-12">
+<button class="px-8 py-3 rounded-full glass border-b-2 border-primary text-primary font-bold transition-all">GENERAL</button>
+<button class="px-8 py-3 rounded-full glass border-transparent text-on-surface/60 hover:text-on-surface hover:border-primary/40 transition-all">E-WALLET</button>
+<button class="px-8 py-3 rounded-full glass border-transparent text-on-surface/60 hover:text-on-surface hover:border-primary/40 transition-all">BANKING</button>
+<button class="px-8 py-3 rounded-full glass border-transparent text-on-surface/60 hover:text-on-surface hover:border-primary/40 transition-all">CRYPTO</button>
+<button class="px-8 py-3 rounded-full glass border-transparent text-on-surface/60 hover:text-on-surface hover:border-primary/40 transition-all">CARDS</button>
+</nav>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+<!-- FAQ Accordion (Left Col) -->
+<div class="lg:col-span-8 space-y-6">
+<!-- Item 1: Expanded -->
+<article class="glass rounded-xl p-8 border-l-4 border-primary">
+<div class="flex items-start justify-between gap-6 mb-6">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary text-3xl">verified_user</span>
+<h3 class="text-xl font-bold">How do I activate my account?</h3>
+</div>
+<span class="material-symbols-outlined text-primary">remove</span>
+</div>
+<div class="space-y-4 text-on-surface/80 leading-relaxed border-t border-primary/10 pt-6">
+<p>To initiate the bioluminescent sync of your account, navigate to the <span class="mono text-primary">SECURE_ONBOARD</span> portal. You will need to provide a government-issued ID and complete the biometric facial scan.</p>
+<p class="mono text-sm bg-surface-container-lowest/50 p-4 rounded-lg border border-primary/5">
+                            Status: <span class="text-primary">PENDING_SYNC</span><br/>
+                            Action required: <span class="text-tertiary">IDENTITY_VERIFICATION</span>
+</p>
+<div class="flex items-center justify-between pt-4 border-t border-primary/10">
+<span class="text-xs uppercase mono tracking-widest text-on-surface/40">Was this helpful?</span>
+<div class="flex gap-4">
+<button class="flex items-center gap-2 px-3 py-1 rounded glass hover:bg-primary/10 transition-colors">
+<span class="material-symbols-outlined text-sm">thumb_up</span>
+<span class="mono text-xs">YES</span>
+</button>
+<button class="flex items-center gap-2 px-3 py-1 rounded glass hover:bg-error/10 transition-colors">
+<span class="material-symbols-outlined text-sm">thumb_down</span>
+<span class="mono text-xs text-error">NO</span>
+</button>
+</div>
+</div>
+</div>
+</article>
+<!-- Item 2-6: Collapsed -->
+<div class="space-y-4">
+<article class="glass rounded-xl p-6 flex items-center justify-between cursor-pointer hover:bg-primary/5 transition-all group">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary group-hover:scale-110 transition-transform">payments</span>
+<h3 class="font-bold">What fees does Crymad Cash charge?</h3>
+</div>
+<span class="material-symbols-outlined text-primary/40 group-hover:text-primary">add</span>
+</article>
+<article class="glass rounded-xl p-6 flex items-center justify-between cursor-pointer hover:bg-primary/5 transition-all group">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary group-hover:scale-110 transition-transform">security</span>
+<h3 class="font-bold">Is my money insured?</h3>
+</div>
+<span class="material-symbols-outlined text-primary/40 group-hover:text-primary">add</span>
+</article>
+<article class="glass rounded-xl p-6 flex items-center justify-between cursor-pointer hover:bg-primary/5 transition-all group">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary group-hover:scale-110 transition-transform">support_agent</span>
+<h3 class="font-bold">How do I contact support?</h3>
+</div>
+<span class="material-symbols-outlined text-primary/40 group-hover:text-primary">add</span>
+</article>
+<article class="glass rounded-xl p-6 flex items-center justify-between cursor-pointer hover:bg-primary/5 transition-all group">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary group-hover:scale-110 transition-transform">group_add</span>
+<h3 class="font-bold">Can I have multiple accounts?</h3>
+</div>
+<span class="material-symbols-outlined text-primary/40 group-hover:text-primary">add</span>
+</article>
+<article class="glass rounded-xl p-6 flex items-center justify-between cursor-pointer hover:bg-primary/5 transition-all group">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary group-hover:scale-110 transition-transform">public</span>
+<h3 class="font-bold">What countries are supported?</h3>
+</div>
+<span class="material-symbols-outlined text-primary/40 group-hover:text-primary">add</span>
+</article>
+</div>
+</div>
+<!-- Sidebar (Right Col) -->
+<aside class="lg:col-span-4 space-y-8">
+<section class="glass rounded-xl p-8 sticky top-24">
+<h3 class="text-xl font-bold mb-6 gradient-text">Contact Support</h3>
+<div class="flex -space-x-4 mb-6">
+<div class="w-12 h-12 rounded-full border-2 border-primary overflow-hidden">
+<img alt="Agent 1" class="w-full h-full object-cover" data-alt="portrait of a professional woman with a friendly smile, soft natural lighting, warm aesthetic" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDYJWSRZCYYhn04is3GBo6vhxElipTQtepCFRLntnDDjGKcJKjNbVTgey-6tdRfeqllIUDarr10P9RGmn3N7A1qqJxTNpbirevJNkxsL7-oysd67ZFGHm4hCq_qQxwjDSLVGuoOGxW-wWhem3Rg16dgoOuIUGZmCYBPnhqUVqBmbGxROnFnZGTD8XDVTD3JU0wdTlrlPHEgkY8bzADsSc_vEJPRrzY-iiHWBj2E6ImbQwmvPUQ3n5-F0J-m1Amo6v6noxFFDjGaYOA"/>
+</div>
+<div class="w-12 h-12 rounded-full border-2 border-primary overflow-hidden">
+<img alt="Agent 2" class="w-full h-full object-cover" data-alt="professional male portrait with confident expression, cool studio lighting, modern minimalist background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCUikWq91wxeZhAQpyxxx6ixFqRmsRMW3lpxkPU9_6XjyuSvjMzQs9vg0LdeLxCTzn_ZSvPOQtiHPKp6A3Y4UeBUyYhMlZi2PkkHRqdViYUya8sWOEHQ3eKjzblWBhjgiIOeC68fbZSWg0DS4GqL2oMMJHZD1IVfXqXvsEOdFzIrm_mQMVbFGvy5EDgSOrccYzrzzAFyR7rZbc1TXsiW9gHM8DA1T8r-cBkxkG1k6i0rBJd6sAJWyq0VeLNLc_4udFUoGW4q3nRjik"/>
+</div>
+<div class="w-12 h-12 rounded-full border-2 border-primary overflow-hidden">
+<img alt="Agent 3" class="w-full h-full object-cover" data-alt="friendly female support agent with headset, professional workspace setting, soft focus office background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBeiUIk81QIMgcMlqIDSTLERJhLgNa0mpUb4V4zScqArZV5DdRne7hDYjbwQeWFZw7XlVAgROnP7uQK0-J8Xi-F6nCqquSda46VR9wybv3nRg0upko2xhzRAcueXR668EP6-apxy4VWsrp4Xi8HE2o-u09wB0gi5sJq-3XmZw_E-oYL23umao0sdhwgb7tfhv8lY2bVJu9sqrE_cy00BKZRHzxxWBNmlSviN7xVYHjkQhUZspuLeSCX-dFveo_kSW_1zZG-DIy7aJ4"/>
+</div>
+<div class="w-12 h-12 rounded-full bg-surface-container flex items-center justify-center text-primary font-bold border-2 border-primary/20">
+                            +4
+                        </div>
+</div>
+<div class="mb-8">
+<span class="mono text-xs text-primary bg-primary/10 px-2 py-1 rounded">ONLINE</span>
+<p class="mono text-sm mt-3 text-on-surface/60">Average response: 3 min</p>
+</div>
+<button class="w-full py-4 bg-primary text-on-primary font-bold rounded-lg mb-6 shadow-[0_0_15px_rgba(16,185,129,0.4)] hover:scale-[1.02] transition-all flex items-center justify-center gap-2">
+                        START CHAT
+                        <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</button>
+<div class="pt-6 border-t border-primary/10 text-center">
+<p class="mono text-xs text-on-surface/40 mb-2">EMAIL US</p>
+<a class="mono text-primary hover:underline underline-offset-4" href="mailto:support@crymadcash.io">support@crymadcash.io</a>
+</div>
+</section>
+</aside>
+</div>
+</main>
+<!-- Footer -->
+<footer class="fixed bottom-0 w-full h-8 z-50 bg-[#2c3733]/40 backdrop-blur-lg border-t border-[#10b981]/10 flex justify-between items-center px-6">
+<div class="flex items-center gap-4">
+<div class="w-2 h-2 rounded-full bg-primary animate-pulse shadow-[0_0_8px_#10b981]"></div>
+<span class="mono text-[10px] tracking-widest text-[#10b981]">SYSTEM OPERATIONAL • LAST SYNC 12:00:01</span>
+</div>
+<div class="flex gap-6">
+<span class="mono text-[10px] text-[#4edea3] hover:text-[#10b981] cursor-default transition-colors">BTC: $64,231.00</span>
+<span class="mono text-[10px] text-[#d9e5df] hover:text-[#10b981] cursor-default transition-colors">ETH: $3,450.12</span>
+</div>
+</footer>
+</body></html>

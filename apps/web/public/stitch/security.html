@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Security Settings | CRYMAD CA$H</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&amp;family=JetBrains+Mono:wght@400;700&amp;family=Space+Grotesk:wght@500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        body {
+            background-color: #040d0a;
+            color: #d9e5df;
+            font-family: 'Inter', sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+        .font-mono { font-family: 'JetBrains Mono', monospace; }
+        .glass-panel {
+            background: rgba(44, 55, 51, 0.4);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(16, 185, 129, 0.08);
+        }
+        .glow-primary {
+            box-shadow: 0 0 20px rgba(78, 222, 163, 0.15);
+        }
+        .glow-text-primary {
+            text-shadow: 0 0 12px rgba(78, 222, 163, 0.4);
+        }
+        .organic-blob {
+            position: fixed;
+            filter: blur(80px);
+            z-index: -1;
+            border-radius: 50%;
+            background: #4edea3;
+            opacity: 0.03;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                "primary-fixed": "#6ffbbe",
+                "primary-fixed-dim": "#4edea3",
+                "secondary-fixed": "#68fcbf",
+                "error": "#ffb4ab",
+                "on-secondary-container": "#00452e",
+                "primary-container": "#10b981",
+                "tertiary-fixed-dim": "#ffb95f",
+                "outline": "#86948a",
+                "on-surface-variant": "#bbcabf",
+                "primary": "#4edea3",
+                "inverse-primary": "#006c49",
+                "surface-tint": "#4edea3",
+                "surface": "#0b1512",
+                "on-secondary-fixed-variant": "#005137",
+                "surface-bright": "#313b38",
+                "surface-container-lowest": "#06100d",
+                "outline-variant": "#3c4a42",
+                "on-secondary": "#003825",
+                "on-primary-fixed-variant": "#005236",
+                "error-container": "#93000a",
+                "on-error": "#690005",
+                "secondary-container": "#00bd85",
+                "tertiary": "#ffb95f",
+                "tertiary-container": "#e29100",
+                "on-primary": "#003824",
+                "surface-container-highest": "#2c3733",
+                "surface-variant": "#2c3733",
+                "on-error-container": "#ffdad6",
+                "surface-container-high": "#222c29",
+                "secondary-fixed-dim": "#45dfa4",
+                "surface-container": "#17221e",
+                "surface-dim": "#0b1512",
+                "on-tertiary-fixed": "#2a1700",
+                "surface-container-low": "#131e1a",
+                "on-surface": "#d9e5df",
+                "on-primary-fixed": "#002113",
+                "on-primary-container": "#00422b",
+                "secondary": "#45dfa4",
+                "on-secondary-fixed": "#002114",
+                "on-tertiary-fixed-variant": "#653e00",
+                "on-background": "#d9e5df",
+                "on-tertiary-container": "#523200",
+                "tertiary-fixed": "#ffddb8",
+                "background": "#0b1512",
+                "inverse-on-surface": "#28332f",
+                "on-tertiary": "#472a00",
+                "inverse-surface": "#d9e5df"
+              },
+              "borderRadius": {
+                "DEFAULT": "1rem",
+                "lg": "2rem",
+                "xl": "3rem",
+                "full": "9999px"
+              },
+              "fontFamily": {
+                "headline": ["Inter"],
+                "body": ["Inter"],
+                "label": ["Space Grotesk"]
+              }
+            },
+          }
+        }
+    </script>
+</head>
+<body class="bg-surface text-on-surface">
+<!-- Organic Background Elements -->
+<div class="organic-blob w-[500px] h-[500px] top-[-100px] left-[-100px]"></div>
+<div class="organic-blob w-[400px] h-[400px] bottom-[-50px] right-[-50px]"></div>
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full h-16 border-b border-primary-container/10 bg-[#0b1512]/40 backdrop-blur-xl flex justify-between items-center px-8 w-full max-w-full z-50 shadow-[0_0_20px_rgba(78,222,163,0.04)]">
+<div class="text-2xl font-black bg-gradient-to-r from-[#4edea3] to-[#10b981] bg-clip-text text-transparent">CRYMAD CA$H</div>
+<div class="hidden md:flex gap-8 items-center">
+<a class="text-emerald-500/60 font-medium hover:text-[#4edea3] transition-colors" href="#">Dashboard</a>
+<a class="text-emerald-500/60 font-medium hover:text-[#4edea3] transition-colors" href="#">Wallets</a>
+<a class="text-emerald-500/60 font-medium hover:text-[#4edea3] transition-colors" href="#">Cards</a>
+<a class="text-emerald-500/60 font-medium hover:text-[#4edea3] transition-colors" href="#">Transactions</a>
+<a class="text-emerald-500/60 font-medium hover:text-[#4edea3] transition-colors" href="#">Banking</a>
+<a class="text-[#4edea3] font-bold border-b-2 border-[#4edea3] pb-1" href="#">Help</a>
+</div>
+<div class="flex items-center gap-4">
+<button class="material-symbols-outlined text-primary hover:bg-[#10b981]/5 p-2 rounded-full transition-all">notifications</button>
+<div class="w-8 h-8 rounded-full border border-primary/20 bg-surface-container-highest overflow-hidden">
+<img alt="User profile avatar" data-alt="Close up portrait of a stylized digital avatar with soft green glowing highlights on high-tech gear" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCrYUZCVkdzVNfeiJPmSihgVoJhK7P282yWqPG971Ydkx35eMdKFnP3uQGiEGjuOz85HxHSNK8YMcb2JeRGW4EvRKAE8Y_P5-06Z02WHvg50MfUFzfYg4TdBqrjoIp_0c7qYjwM4r7e5rejn-Xz2e014HiX2OW7Ek70D_nGJ0b1hM2svFIU0KBByh8y9sdv0A-V-Esul4YdJ1Y02F254EE5TCJYimyE_ztxBE6C_cZboZA94moKI4YVmx7g3BIt_uWFh4_wnzaYXZU"/>
+</div>
+</div>
+</nav>
+<!-- SideNavBar (Vitals) -->
+<aside class="fixed right-0 top-1/2 -translate-y-1/2 w-16 rounded-l-3xl border-l border-y border-[#10b981]/10 bg-[#0b1512]/40 backdrop-blur-2xl flex flex-col items-center py-8 gap-6 z-40 shadow-[-10px_0_30px_rgba(0,0,0,0.5)]">
+<div class="flex flex-col items-center gap-1 mb-4">
+<span class="text-[8px] font-bold text-primary/40 font-mono tracking-tighter uppercase rotate-90 mb-4">THEME</span>
+</div>
+<button class="text-[#4edea3] scale-125 material-symbols-outlined hover:glow-primary cursor-pointer" data-icon="circle" style="font-variation-settings: 'FILL' 1;">circle</button>
+<button class="text-emerald-900 material-symbols-outlined hover:glow-primary cursor-pointer" data-icon="circle">circle</button>
+<button class="text-emerald-900 material-symbols-outlined hover:glow-primary cursor-pointer" data-icon="circle">circle</button>
+<button class="text-emerald-900 material-symbols-outlined hover:glow-primary cursor-pointer" data-icon="circle">circle</button>
+<button class="text-emerald-900 material-symbols-outlined hover:glow-primary cursor-pointer" data-icon="circle">circle</button>
+</aside>
+<main class="max-w-[1280px] mx-auto pt-[96px] pb-[64px] px-8 space-y-8">
+<!-- Header -->
+<header class="space-y-1">
+<h1 class="text-5xl font-black headline tracking-tighter bg-gradient-to-br from-white to-primary-fixed-dim bg-clip-text text-transparent uppercase">Security</h1>
+<p class="font-mono text-primary text-xs tracking-[0.2em] font-bold">PULSE-MONITORED PROTECTION</p>
+</header>
+<!-- Security Score Hero Card -->
+<section class="glass-panel rounded-xl p-8 flex flex-col md:flex-row justify-between items-center gap-8 shadow-[0_0_40px_rgba(78,222,163,0.05)]">
+<div class="space-y-4">
+<span class="font-mono text-xs text-on-surface-variant tracking-widest">YOUR SECURITY SCORE</span>
+<div class="flex items-baseline gap-4">
+<span class="text-7xl font-black font-mono bg-gradient-to-r from-primary to-primary-container bg-clip-text text-transparent leading-none">85/100</span>
+<span class="font-mono text-xl font-bold text-primary glow-text-primary">STRONG</span>
+</div>
+<div class="flex flex-wrap gap-3 pt-2">
+<span class="px-3 py-1 bg-primary/10 border border-primary/20 text-primary text-[10px] font-bold font-mono rounded-full">PASSWORD STRONG</span>
+<span class="px-3 py-1 bg-primary/10 border border-primary/20 text-primary text-[10px] font-bold font-mono rounded-full">2FA ENABLED</span>
+<span class="px-3 py-1 bg-surface-container-highest border border-outline-variant text-on-surface-variant text-[10px] font-bold font-mono rounded-full">BIOMETRICS OFF</span>
+<span class="px-3 py-1 bg-primary/10 border border-primary/20 text-primary text-[10px] font-bold font-mono rounded-full">BACKUP CODES READY</span>
+</div>
+</div>
+<div class="relative flex items-center justify-center">
+<svg class="w-[180px] h-[180px] -rotate-90">
+<circle class="text-surface-container-highest" cx="90" cy="90" fill="transparent" r="80" stroke="currentColor" stroke-width="8"></circle>
+<circle class="text-primary drop-shadow-[0_0_8px_rgba(78,222,163,0.5)]" cx="90" cy="90" fill="transparent" r="80" stroke="currentColor" stroke-dasharray="502.65" stroke-dashoffset="75.4" stroke-width="8"></circle>
+</svg>
+<div class="absolute inset-0 flex items-center justify-center">
+<div class="w-2 h-2 rounded-full bg-primary animate-pulse"></div>
+</div>
+</div>
+</section>
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+<!-- 2FA Section -->
+<section class="glass-panel rounded-xl p-8 flex flex-col justify-between space-y-6">
+<div class="flex justify-between items-start">
+<div class="space-y-2">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary text-3xl" style="font-variation-settings: 'FILL' 1;">shield_lock</span>
+<h2 class="text-2xl font-bold tracking-tight">Two-Factor Authentication</h2>
+</div>
+<p class="text-on-surface-variant text-sm">Secure your account with a time-based code from an authenticator app or hardware device.</p>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-14 h-7 bg-surface-container-highest peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-1 after:left-1 after:bg-on-surface-variant after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary-container peer-checked:after:bg-on-primary shadow-inner"></div>
+</label>
+</div>
+<div class="flex flex-col gap-3">
+<div class="flex justify-between items-center p-3 rounded-lg bg-surface-container-low border border-primary/20">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary">smartphone</span>
+<span class="font-mono text-xs font-bold uppercase tracking-wider">AUTHENTICATOR APP</span>
+</div>
+<span class="text-[10px] font-bold text-primary font-mono uppercase">ACTIVE</span>
+</div>
+<div class="flex justify-between items-center p-3 rounded-lg bg-surface-container-low border border-outline-variant">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-secondary">sms</span>
+<span class="font-mono text-xs font-bold uppercase tracking-wider">SMS CODES</span>
+</div>
+<span class="text-[10px] font-bold text-secondary font-mono uppercase">SECONDARY</span>
+</div>
+<div class="flex justify-between items-center p-3 rounded-lg bg-surface-container-low border border-outline-variant/30 opacity-60">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-on-surface-variant">usb</span>
+<span class="font-mono text-xs font-bold uppercase tracking-wider">HARDWARE KEY</span>
+</div>
+<button class="text-[10px] font-bold text-primary hover:underline font-mono uppercase">ACTIVATE</button>
+</div>
+</div>
+</section>
+<!-- Change Password Card -->
+<section class="glass-panel rounded-xl p-8 space-y-6">
+<div class="space-y-2">
+<h2 class="text-2xl font-bold tracking-tight">Access Credentials</h2>
+<p class="text-on-surface-variant text-sm">Update your system entry key. Requires manual confirmation via authenticated session.</p>
+</div>
+<form class="space-y-4">
+<div class="space-y-1">
+<label class="text-[10px] font-mono font-bold text-on-surface-variant uppercase tracking-widest">Current Key</label>
+<input class="w-full bg-transparent border-0 border-b border-outline-variant focus:ring-0 focus:border-primary transition-all py-2 font-mono" placeholder="••••••••••••" type="password"/>
+</div>
+<div class="space-y-1">
+<label class="text-[10px] font-mono font-bold text-on-surface-variant uppercase tracking-widest">New System Key</label>
+<input class="w-full bg-transparent border-0 border-b border-outline-variant focus:ring-0 focus:border-primary transition-all py-2 font-mono" placeholder="NEW PASSWORD" type="password"/>
+</div>
+<!-- Strength Meter -->
+<div class="h-1 w-full bg-surface-container-highest flex gap-1 rounded-full overflow-hidden">
+<div class="h-full bg-primary w-1/3"></div>
+<div class="h-full bg-primary w-1/3"></div>
+<div class="h-full bg-surface-container-highest w-1/3"></div>
+</div>
+<div class="space-y-1">
+<label class="text-[10px] font-mono font-bold text-on-surface-variant uppercase tracking-widest">Confirm Key</label>
+<input class="w-full bg-transparent border-0 border-b border-outline-variant focus:ring-0 focus:border-primary transition-all py-2 font-mono" placeholder="CONFIRM PASSWORD" type="password"/>
+</div>
+<button class="w-full mt-4 bg-gradient-to-r from-primary to-primary-container text-on-primary font-bold py-3 rounded-xl hover:scale-[0.98] transition-transform flex items-center justify-center gap-2">
+                        UPDATE PASSWORD <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</button>
+</form>
+</section>
+</div>
+<!-- Login Activity Card -->
+<section class="glass-panel rounded-xl overflow-hidden">
+<div class="p-8 pb-4">
+<h2 class="text-2xl font-bold tracking-tight">Login Activity</h2>
+<p class="text-on-surface-variant text-sm">Recent access nodes and session telemetry.</p>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left font-mono text-xs">
+<thead>
+<tr class="bg-surface-container-low border-y border-outline-variant/10 text-on-surface-variant uppercase tracking-widest">
+<th class="px-8 py-4 font-bold">DEVICE</th>
+<th class="px-8 py-4 font-bold">LOCATION</th>
+<th class="px-8 py-4 font-bold">IP</th>
+<th class="px-8 py-4 font-bold">LAST SEEN</th>
+<th class="px-8 py-4 font-bold">STATUS</th>
+<th class="px-8 py-4 font-bold text-right">ACTION</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant/5">
+<tr class="bg-primary/5">
+<td class="px-8 py-4 font-bold text-primary">Chrome · Windows</td>
+<td class="px-8 py-4">Lagos, NG</td>
+<td class="px-8 py-4">192.168.1.42</td>
+<td class="px-8 py-4">JUST NOW</td>
+<td class="px-8 py-4 text-primary font-bold">THIS DEVICE</td>
+<td class="px-8 py-4 text-right"></td>
+</tr>
+<tr>
+<td class="px-8 py-4 text-on-surface">Safari · iOS</td>
+<td class="px-8 py-4">New York, US</td>
+<td class="px-8 py-4">104.22.1.89</td>
+<td class="px-8 py-4">12M AGO</td>
+<td class="px-8 py-4 text-primary font-bold">ACTIVE</td>
+<td class="px-8 py-4 text-right">
+<button class="text-on-surface-variant hover:text-error transition-colors uppercase font-bold text-[10px]">REVOKE →</button>
+</td>
+</tr>
+<tr class="bg-surface-container-low/30">
+<td class="px-8 py-4 text-on-surface-variant">Firefox · macOS</td>
+<td class="px-8 py-4 text-on-surface-variant">Los Angeles, US</td>
+<td class="px-8 py-4 text-on-surface-variant">72.14.213.12</td>
+<td class="px-8 py-4 text-on-surface-variant">2D AGO</td>
+<td class="px-8 py-4 text-on-surface-variant opacity-50">SIGNED OUT</td>
+<td class="px-8 py-4 text-right"></td>
+</tr>
+<tr class="bg-error/5">
+<td class="px-8 py-4 text-error">Edge · Windows</td>
+<td class="px-8 py-4 text-error">London, UK</td>
+<td class="px-8 py-4 text-error">185.12.33.4</td>
+<td class="px-8 py-4 text-error">4D AGO</td>
+<td class="px-8 py-4 text-error font-bold">SUSPICIOUS</td>
+<td class="px-8 py-4 text-right">
+<button class="text-error hover:glow-text-primary transition-all uppercase font-bold text-[10px]">REVOKE →</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<!-- Danger Zone Card -->
+<section class="glass-panel rounded-xl p-8 border-l-4 border-error/50">
+<div class="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-8">
+<div class="space-y-2 max-w-2xl">
+<h2 class="text-2xl font-bold tracking-tight text-error">Disable Account</h2>
+<p class="text-on-surface-variant text-sm">Deactivating your account will freeze all current sessions, disable wallet transfers, and disconnect all hardware keys. This action is irreversible for 24 hours.</p>
+<div class="pt-2 flex flex-col gap-2">
+<span class="font-mono text-[10px] text-error/80 uppercase tracking-widest">Type DISABLE to confirm</span>
+<input class="bg-surface-container-low border border-error/20 rounded-lg px-4 py-2 font-mono text-sm focus:ring-1 focus:ring-error focus:border-error outline-none w-full max-w-xs transition-all" placeholder="DISABLE" type="text"/>
+</div>
+</div>
+<button class="px-8 py-4 border-2 border-error text-error hover:bg-error hover:text-on-error font-bold rounded-xl transition-all uppercase tracking-widest text-sm">
+                    DISABLE ACCOUNT
+                </button>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="fixed bottom-0 w-full h-8 border-t border-primary-container/10 bg-[#0b1512]/60 backdrop-blur-md flex justify-between items-center px-6 w-full z-50">
+<div class="flex items-center gap-2">
+<div class="w-1.5 h-1.5 rounded-full bg-primary animate-pulse"></div>
+<span class="font-mono text-[10px] tracking-widest text-primary font-bold uppercase">SYSTEM OPERATIONAL</span>
+</div>
+<div class="hidden md:flex gap-6 font-mono text-[10px] tracking-widest text-emerald-500/40">
+<span>BTC: $64,231</span>
+<span>ETH: $3,452</span>
+<span>LAST SYNC: 12:00:03</span>
+</div>
+</footer>
+</body></html>

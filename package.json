@@ -1,12 +1,29 @@
 {
-  "name": "crymadcash-stitch",
-  "version": "1.0.0",
-  "main": "index.js",
+  "name": "crymadcash",
+  "version": "0.1.0",
+  "private": true,
+  "packageManager": "pnpm@10.29.3",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "turbo run dev --parallel",
+    "dev:bff": "pnpm --filter @crymad/bff dev",
+    "dev:web": "pnpm --filter @crymad/web dev",
+    "dev:mobile": "pnpm --filter @crymad/mobile dev",
+    "build": "turbo run build",
+    "typecheck": "turbo run typecheck",
+    "lint": "turbo run lint",
+    "clean": "turbo run clean && rm -rf node_modules .turbo"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "description": ""
+  "devDependencies": {
+    "turbo": "^2.3.3",
+    "typescript": "^5.7.2"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "better-sqlite3",
+      "esbuild"
+    ]
+  }
 }

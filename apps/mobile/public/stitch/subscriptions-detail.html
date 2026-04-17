@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Subscription Detail - Bioluminescent Archive</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&amp;family=JetBrains+Mono:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "secondary": "#45dfa4",
+                    "on-secondary-container": "#00452e",
+                    "surface-container": "#17221e",
+                    "on-secondary": "#003825",
+                    "on-primary-fixed": "#002113",
+                    "tertiary-fixed": "#ffddb8",
+                    "surface": "#0b1512",
+                    "secondary-fixed": "#68fcbf",
+                    "inverse-on-surface": "#28332f",
+                    "on-tertiary-fixed": "#2a1700",
+                    "tertiary": "#ffb95f",
+                    "surface-tint": "#4edea3",
+                    "outline-variant": "#3c4a42",
+                    "on-surface": "#d9e5df",
+                    "surface-container-highest": "#2c3733",
+                    "on-error": "#690005",
+                    "on-surface-variant": "#bbcabf",
+                    "on-secondary-fixed-variant": "#005137",
+                    "on-tertiary-container": "#523200",
+                    "surface-container-lowest": "#06100d",
+                    "on-tertiary": "#472a00",
+                    "primary": "#4edea3",
+                    "secondary-fixed-dim": "#45dfa4",
+                    "surface-variant": "#2c3733",
+                    "on-secondary-fixed": "#002114",
+                    "on-background": "#d9e5df",
+                    "inverse-primary": "#006c49",
+                    "surface-container-low": "#131e1a",
+                    "inverse-surface": "#d9e5df",
+                    "secondary-container": "#00bd85",
+                    "tertiary-fixed-dim": "#ffb95f",
+                    "on-primary": "#003824",
+                    "on-tertiary-fixed-variant": "#653e00",
+                    "on-primary-fixed-variant": "#005236",
+                    "primary-fixed-dim": "#4edea3",
+                    "primary-container": "#10b981",
+                    "surface-dim": "#0b1512",
+                    "tertiary-container": "#e29100",
+                    "error-container": "#93000a",
+                    "on-error-container": "#ffdad6",
+                    "primary-fixed": "#6ffbbe",
+                    "surface-container-high": "#222c29",
+                    "surface-bright": "#313b38",
+                    "background": "#0b1512",
+                    "outline": "#86948a",
+                    "on-primary-container": "#00422b",
+                    "error": "#ffb4ab"
+            },
+            "borderRadius": {
+                    "DEFAULT": "1rem",
+                    "lg": "2rem",
+                    "xl": "3rem",
+                    "full": "9999px"
+            },
+            "fontFamily": {
+                    "headline": ["Inter"],
+                    "body": ["Inter"],
+                    "label": ["Inter"],
+                    "mono": ["JetBrains Mono"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-sheet {
+            background: rgba(44, 55, 51, 0.4);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(16, 185, 129, 0.08);
+        }
+        .premium-gradient {
+            background: linear-gradient(to bottom, #10b981, #34d399);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        ::-webkit-scrollbar { display: none; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface font-body overflow-hidden">
+<!-- Background Layer (Screen 24 - Subscriptions Activity) -->
+<div class="fixed inset-0 z-0 filter blur-md brightness-50 px-6 pt-16">
+<!-- Top App Bar -->
+<header class="flex justify-between items-center mb-8">
+<span class="text-2xl font-black premium-gradient tracking-tighter uppercase">Subscriptions</span>
+<div class="w-10 h-10 rounded-full border border-primary/20 p-1">
+<img alt="User" class="rounded-full w-full h-full" data-alt="close-up portrait of a tech-savvy professional with soft neon lighting reflections on their face" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCEYl5lnVs8HDqHD7RpBkQAV6FN6ooihFYs-LjwZKfEjp6hYsktSPUj_Mc_OZ4jkULSf8wekNWSQ3Zw272WIjWHQ6EYzlmytZT8I9E6okXopVjcegJnqMODRLlir_2g3oAteczCAf_ftGBeR2XQzRQehli7KRvqlbUZmRIMno1hdAQchs9dW9T8EUiUVw5IJWYgOhoBSA5J_c_n0_MMk8bs1eNCkFTyRqGXA1tyjDxNqo4gJV29HWPum1BQ1UbuGI2FFuW37sj5f4sV"/>
+</div>
+</header>
+<!-- Dummy Activity Content -->
+<div class="space-y-6">
+<div class="h-40 glass-sheet rounded-lg p-6">
+<div class="h-4 w-24 bg-primary/20 rounded mb-4"></div>
+<div class="h-8 w-48 bg-primary/40 rounded"></div>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div class="h-32 glass-sheet rounded-lg"></div>
+<div class="h-32 glass-sheet rounded-lg"></div>
+</div>
+<div class="space-y-3">
+<div class="h-16 glass-sheet rounded-lg"></div>
+<div class="h-16 glass-sheet rounded-lg"></div>
+<div class="h-16 glass-sheet rounded-lg"></div>
+</div>
+</div>
+</div>
+<!-- Bottom Sheet Interaction Overlay -->
+<div class="fixed inset-0 z-10 bg-surface/40 backdrop-blur-[2px]"></div>
+<!-- Bottom Sheet Container (90% Height) -->
+<main class="fixed bottom-0 left-0 right-0 h-[90%] z-20 glass-sheet rounded-t-[28px] flex flex-col overflow-hidden shadow-[0_-10px_40px_rgba(16,185,129,0.1)]">
+<!-- Grab Handle -->
+<div class="w-full flex justify-center pt-3 pb-5">
+<div class="w-12 h-1.5 bg-on-surface/20 rounded-full"></div>
+</div>
+<!-- Scrollable Content Canvas -->
+<div class="flex-1 overflow-y-auto px-6 pb-32">
+<!-- Header Section -->
+<div class="flex justify-between items-start mb-6">
+<div>
+<h1 class="text-3xl font-extrabold premium-gradient leading-tight">Spotify Premium</h1>
+<span class="inline-flex items-center px-3 py-0.5 rounded-full bg-primary/10 border border-primary/20 text-primary text-[10px] font-bold tracking-widest uppercase mt-2">
+                        Active
+                    </span>
+</div>
+<div class="relative">
+<div class="absolute -inset-2 bg-primary/20 blur-xl rounded-full"></div>
+<img alt="Spotify" class="w-14 h-14 relative z-10" data-alt="official spotify icon circular green and black minimalist logo" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCXZWtdFTNafIn3dUSF_cCBSPwH5KJV42e1Ef15YDQsxGywOvJMIoFNEQLmWJeyrtK-nJlGxdKLr5PGqIUNSWX1U4oG6BChHP_Cts2W_fL-QO2Y0Gpg0T9AVufSm_d7UXEZSM9LySrcQRNCMR_6_NGvqqEEjO9KBgGXGrUcyodmf3c27KCS4znJPYeprrj_l07Xdc0ygS4Yr4vrk_oKozvUED9zkmJixZrI9uk2mQjCvnwKYbaNsKXNNKEhkwCYx6uswS5FgUjP31Ar"/>
+</div>
+</div>
+<!-- Pricing & Next Date -->
+<div class="mb-8">
+<div class="flex items-baseline gap-2 font-mono">
+<span class="text-2xl font-bold text-on-surface">$9.99</span>
+<span class="text-on-surface-variant text-sm uppercase">/Month</span>
+</div>
+<div class="flex items-center gap-2 mt-1">
+<span class="material-symbols-outlined text-primary text-sm">calendar_today</span>
+<span class="text-primary font-mono text-xs tracking-wider uppercase">Next Apr 22, 2024</span>
+</div>
+</div>
+<!-- Metadata Card -->
+<section class="mb-8">
+<div class="bg-surface-container-low/60 rounded-lg p-5 border border-primary/5 space-y-4">
+<div class="flex justify-between items-center">
+<span class="text-on-surface-variant text-xs uppercase tracking-widest">Started</span>
+<span class="text-on-surface font-mono text-sm">JAN 12, 2024</span>
+</div>
+<div class="flex justify-between items-center">
+<span class="text-on-surface-variant text-xs uppercase tracking-widest">Card Used</span>
+<div class="bg-surface-container-highest px-3 py-1 rounded-full border border-primary/10">
+<span class="text-on-surface font-mono text-[10px] tracking-tight">PHYSICAL •••2049</span>
+</div>
+</div>
+<div class="flex justify-between items-center pt-2 border-t border-primary/5">
+<span class="text-on-surface-variant text-xs uppercase tracking-widest">Total Paid</span>
+<span class="text-primary font-mono font-bold text-lg">$29.97</span>
+</div>
+</div>
+</section>
+<!-- Payment History Timeline -->
+<section class="mb-6">
+<h2 class="text-on-surface-variant text-xs font-bold uppercase tracking-[0.2em] mb-4 pl-1">Payment History</h2>
+<div class="space-y-3">
+<!-- Invoice 1 -->
+<div class="flex items-center justify-between p-4 glass-sheet rounded-lg">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-secondary text-lg" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<div class="flex flex-col">
+<span class="text-xs font-mono text-on-surface">MAR 22, 2024</span>
+<span class="text-[10px] text-secondary font-bold uppercase tracking-tighter">Paid</span>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<span class="text-on-surface font-mono font-bold">$9.99</span>
+<span class="material-symbols-outlined text-on-surface/30 text-lg">receipt_long</span>
+</div>
+</div>
+<!-- Invoice 2 -->
+<div class="flex items-center justify-between p-4 glass-sheet rounded-lg">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-secondary text-lg" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<div class="flex flex-col">
+<span class="text-xs font-mono text-on-surface">FEB 22, 2024</span>
+<span class="text-[10px] text-secondary font-bold uppercase tracking-tighter">Paid</span>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<span class="text-on-surface font-mono font-bold">$9.99</span>
+<span class="material-symbols-outlined text-on-surface/30 text-lg">receipt_long</span>
+</div>
+</div>
+<!-- Invoice 3 -->
+<div class="flex items-center justify-between p-4 glass-sheet rounded-lg">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-secondary text-lg" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<div class="flex flex-col">
+<span class="text-xs font-mono text-on-surface">JAN 22, 2024</span>
+<span class="text-[10px] text-secondary font-bold uppercase tracking-tighter">Paid</span>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<span class="text-on-surface font-mono font-bold">$9.99</span>
+<span class="material-symbols-outlined text-on-surface/30 text-lg">receipt_long</span>
+</div>
+</div>
+<!-- Invoice 4-6 Simplified for visual variety -->
+<div class="opacity-60 space-y-3">
+<div class="flex items-center justify-between p-4 glass-sheet rounded-lg">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-on-surface/40 text-lg">check_circle</span>
+<span class="text-xs font-mono text-on-surface">DEC 22, 2023</span>
+</div>
+<span class="text-on-surface font-mono">$9.99</span>
+</div>
+<div class="flex items-center justify-between p-4 glass-sheet rounded-lg">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-on-surface/40 text-lg">check_circle</span>
+<span class="text-xs font-mono text-on-surface">NOV 22, 2023</span>
+</div>
+<span class="text-on-surface font-mono">$9.99</span>
+</div>
+<div class="flex items-center justify-between p-4 glass-sheet rounded-lg">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-on-surface/40 text-lg">check_circle</span>
+<span class="text-xs font-mono text-on-surface">OCT 22, 2023</span>
+</div>
+<span class="text-on-surface font-mono">$9.99</span>
+</div>
+</div>
+</div>
+</section>
+</div>
+<!-- Action Buttons Container (Fixed Bottom) -->
+<div class="absolute bottom-0 left-0 right-0 bg-surface/80 backdrop-blur-xl border-t border-primary/10 px-6 pt-6 pb-10 flex gap-3">
+<button class="flex-1 py-4 glass-sheet rounded-full text-on-surface-variant font-bold text-xs tracking-widest uppercase active:scale-95 transition-all">
+                Close
+            </button>
+<button class="flex-1 py-4 bg-tertiary/10 border border-tertiary/30 rounded-full text-tertiary font-bold text-xs tracking-widest uppercase active:scale-95 transition-all">
+                Pause
+            </button>
+<button class="flex-[1.5] py-4 bg-error rounded-full text-on-error font-bold text-xs tracking-widest uppercase flex items-center justify-center gap-2 active:scale-95 transition-all">
+                Cancel
+                <span class="material-symbols-outlined text-lg">arrow_forward</span>
+</button>
+</div>
+<!-- iOS Home Indicator -->
+<div class="absolute bottom-2 left-1/2 -translate-x-1/2 w-32 h-1 bg-on-surface/20 rounded-full"></div>
+</main>
+<!-- Global Decoration Background Blobs -->
+<div class="fixed top-[-10%] left-[-10%] w-[60%] h-[60%] bg-primary/10 blur-[100px] rounded-full pointer-events-none z-[-1]"></div>
+<div class="fixed bottom-[-10%] right-[-10%] w-[60%] h-[60%] bg-secondary/10 blur-[100px] rounded-full pointer-events-none z-[-1]"></div>
+</body></html>

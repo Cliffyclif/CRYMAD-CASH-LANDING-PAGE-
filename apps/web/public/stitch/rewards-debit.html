@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Debit User Reward - Emerald Pulse</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&amp;family=JetBrains+Mono:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #040d0a;
+            color: #d9e5df;
+        }
+        .mono {
+            font-family: 'JetBrains Mono', monospace;
+        }
+        .glass-panel {
+            background: rgba(44, 55, 51, 0.4);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(16, 185, 129, 0.08);
+        }
+        .emerald-gradient-text {
+            background: linear-gradient(to bottom, #10b981, #34d399);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .energy-lines {
+            background-image: linear-gradient(45deg, rgba(16, 185, 129, 0.05) 25%, transparent 25%, transparent 50%, rgba(16, 185, 129, 0.05) 50%, rgba(16, 185, 129, 0.05) 75%, transparent 75%, transparent);
+            background-size: 100px 100px;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary": "#bdc9c3",
+                        "surface-container": "#17221e",
+                        "surface": "#0b1512",
+                        "on-background": "#d9e5df",
+                        "tertiary-fixed-dim": "#4edea3",
+                        "on-primary-container": "#00422b",
+                        "inverse-primary": "#006c49",
+                        "inverse-surface": "#d9e5df",
+                        "on-error": "#690005",
+                        "on-surface-variant": "#bbcabf",
+                        "surface-variant": "#2c3733",
+                        "secondary-fixed": "#d9e5df",
+                        "on-secondary": "#28332f",
+                        "on-tertiary-container": "#00422b",
+                        "tertiary": "#4edea3",
+                        "on-secondary-fixed": "#131e1a",
+                        "tertiary-container": "#11b981",
+                        "on-secondary-fixed-variant": "#3e4945",
+                        "primary-container": "#10b981",
+                        "surface-container-high": "#222c29",
+                        "background": "#0b1512",
+                        "on-secondary-container": "#afbbb5",
+                        "on-surface": "#d9e5df",
+                        "inverse-on-surface": "#28332f",
+                        "secondary-container": "#404b47",
+                        "on-primary": "#003824",
+                        "primary-fixed": "#6ffbbe",
+                        "surface-tint": "#4edea3",
+                        "on-tertiary": "#003824",
+                        "on-primary-fixed-variant": "#005236",
+                        "surface-container-lowest": "#06100d",
+                        "primary": "#4edea3",
+                        "surface-bright": "#313b38",
+                        "secondary-fixed-dim": "#bdc9c3",
+                        "surface-container-low": "#131e1a",
+                        "error": "#ffb4ab",
+                        "on-error-container": "#ffdad6",
+                        "outline-variant": "#3c4a42",
+                        "surface-dim": "#0b1512",
+                        "primary-fixed-dim": "#4edea3",
+                        "outline": "#86948a",
+                        "tertiary-fixed": "#6ffbbe"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "1rem",
+                        "lg": "2rem",
+                        "xl": "3rem",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Inter"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    }
+                },
+            },
+        }
+    </script>
+</head>
+<body class="min-h-screen relative overflow-hidden flex flex-col items-center justify-center">
+<!-- Living Background Blobs -->
+<div class="fixed inset-0 -z-10 pointer-events-none">
+<div class="absolute top-[-10%] left-[-10%] w-[500px] h-[500px] rounded-full bg-emerald-500/30 blur-[80px]"></div>
+<div class="absolute bottom-[-10%] right-[-10%] w-[600px] h-[600px] rounded-full bg-teal-600/20 blur-[80px]"></div>
+<div class="absolute top-[20%] right-[10%] w-[400px] h-[400px] rounded-full bg-emerald-400/10 blur-[80px]"></div>
+<div class="absolute bottom-[30%] left-[5%] w-[450px] h-[450px] rounded-full bg-teal-500/15 blur-[80px]"></div>
+<div class="absolute inset-0 energy-lines opacity-[0.05]"></div>
+</div>
+<!-- Background Parent Screen Mockup (Blurred) -->
+<div class="fixed inset-0 z-0 opacity-20 blur-xl pointer-events-none scale-105">
+<header class="flex justify-between items-center px-8 h-20 w-full border-b border-emerald-500/10 bg-emerald-950/40">
+<div class="text-2xl font-black bg-gradient-to-b from-emerald-400 to-emerald-600 bg-clip-text text-transparent">Emerald Pulse</div>
+<div class="flex gap-8">
+<span class="text-emerald-400 border-b-2 border-emerald-400 pb-1">Dashboard</span>
+<span class="text-emerald-100/60">Users</span>
+<span class="text-emerald-100/60">Transactions</span>
+<span class="text-emerald-100/60">Ledger</span>
+</div>
+</header>
+<main class="p-12 grid grid-cols-3 gap-8">
+<div class="h-64 bg-surface-container rounded-xl"></div>
+<div class="h-64 bg-surface-container-high rounded-xl"></div>
+<div class="h-64 bg-surface-container-highest rounded-xl"></div>
+<div class="col-span-3 h-96 bg-surface-container rounded-xl"></div>
+</main>
+</div>
+<!-- Modal Container -->
+<div class="z-50 w-full max-w-[540px] px-4 animate-in fade-in zoom-in duration-300">
+<div class="glass-panel rounded-xl shadow-[0_20px_60px_rgba(4,13,10,0.5),0_0_40px_rgba(16,185,129,0.15)] p-8 relative overflow-hidden">
+<!-- Header Section -->
+<div class="flex justify-between items-start mb-6">
+<div>
+<h2 class="text-3xl font-extrabold tracking-tight emerald-gradient-text mb-2">Debit User Reward</h2>
+<div class="inline-flex items-center px-3 py-1 rounded-full border border-[#ffb95f]/30 bg-[#ffb95f]/10 text-[#ffb95f] text-[10px] font-bold tracking-widest uppercase shadow-[0_0_12px_rgba(255,185,95,0.1)]">
+                        ADMIN ACTION — REQUIRES REASON
+                    </div>
+</div>
+<button class="w-10 h-10 rounded-full flex items-center justify-center bg-white/5 hover:bg-white/10 transition-colors text-on-surface">
+<span class="material-symbols-outlined text-xl" data-icon="close">close</span>
+</button>
+</div>
+<!-- Form Content -->
+<div class="space-y-6">
+<!-- User Search & Preview -->
+<div class="space-y-3">
+<div class="relative">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-on-surface-variant text-lg" data-icon="search">search</span>
+<input class="w-full h-12 pl-12 pr-4 bg-surface-container-lowest/50 border border-outline-variant/30 rounded-full focus:ring-1 focus:ring-primary/40 focus:border-primary/40 transition-all text-sm outline-none" placeholder="Search user..." type="text"/>
+</div>
+<div class="glass-panel bg-surface-container/30 rounded-lg p-4 flex items-center gap-4">
+<img class="w-12 h-12 rounded-full border border-primary/20 object-cover" data-alt="close-up portrait of professional man in tech setting with soft emerald rim lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAtL1yxfjbr53wtZIdKAarTFq0_JRurRRoox4K3aL_Irs-HsIweGb8PseOzoc2dP0KJpAF7ELdeAlMazNW2gbMnhcTyRG64zSlUIFhmrWcXnKZysoNr-6y7Ak5jJuXwv9mlIUR2KeNVpVJIHiIULz6tVLOLpUQmmdBqCtek_41SEJHrOsRRn1--5oD4qHWSpotab_85amG7E-NUCIdwgGzvqBYsH6HdEZej0BlQ2LwPHxWlAocWtyN5fF4gUTV5Ut_CxZMQta02wng"/>
+<div class="flex-1 min-w-0">
+<div class="flex justify-between items-baseline">
+<h3 class="font-bold text-on-surface truncate">Marcus Holt</h3>
+<span class="mono text-[10px] text-on-surface-variant">ID: 88219-X</span>
+</div>
+<p class="mono text-xs text-on-surface-variant truncate">m.holt@biolum-sys.net</p>
+</div>
+</div>
+<div class="text-center">
+<span class="mono text-xs emerald-gradient-text font-bold tracking-tight">CURRENT BALANCE: $847.25</span>
+</div>
+</div>
+<!-- Amount Input -->
+<div class="relative group">
+<label class="block text-[10px] font-black text-on-surface-variant tracking-[0.2em] mb-1 ml-4">DEBIT AMOUNT</label>
+<div class="relative">
+<span class="absolute left-6 top-1/2 -translate-y-1/2 mono text-3xl font-bold text-error">$</span>
+<input class="w-full h-20 pl-14 pr-6 bg-surface-container-lowest/40 border-2 border-transparent focus:border-error/40 focus:ring-0 rounded-lg mono text-4xl font-bold text-error placeholder:text-error/20 transition-all outline-none" placeholder="0.00" type="text"/>
+<div class="absolute inset-0 -z-10 bg-error/0 group-focus-within:bg-error/5 blur-xl transition-all rounded-lg"></div>
+</div>
+</div>
+<!-- Reason & Notes -->
+<div class="space-y-4">
+<div class="flex flex-wrap gap-2">
+<button class="px-3 py-1.5 rounded-full text-[10px] font-bold mono bg-error/20 border border-error/40 text-error shadow-[0_0_15px_rgba(255,180,171,0.2)]">FRAUD</button>
+<button class="px-3 py-1.5 rounded-full text-[10px] font-bold mono bg-surface-container border border-outline-variant/30 text-on-surface-variant hover:text-on-surface hover:border-outline-variant transition-colors">CHARGEBACK</button>
+<button class="px-3 py-1.5 rounded-full text-[10px] font-bold mono bg-surface-container border border-outline-variant/30 text-on-surface-variant hover:text-on-surface hover:border-outline-variant transition-colors">ERROR</button>
+<button class="px-3 py-1.5 rounded-full text-[10px] font-bold mono bg-surface-container border border-outline-variant/30 text-on-surface-variant hover:text-on-surface hover:border-outline-variant transition-colors">POLICY VIOLATION</button>
+<button class="px-3 py-1.5 rounded-full text-[10px] font-bold mono bg-surface-container border border-outline-variant/30 text-on-surface-variant hover:text-on-surface hover:border-outline-variant transition-colors">OTHER</button>
+</div>
+<div class="relative">
+<textarea class="w-full p-5 bg-surface-container-lowest/50 border border-outline-variant/30 rounded-lg focus:ring-1 focus:ring-error/40 focus:border-error/40 transition-all text-sm outline-none resize-none" placeholder="Provide detailed explanation..." required="" rows="4"></textarea>
+<span class="absolute top-4 right-4 text-error font-bold">*</span>
+</div>
+</div>
+<!-- Audit Log Chip -->
+<div class="flex justify-center">
+<div class="flex items-center gap-2 px-4 py-2 rounded-full border border-primary/20 bg-primary/5">
+<span class="material-symbols-outlined text-sm text-primary" data-icon="lock" data-weight="fill" style="font-variation-settings: 'FILL' 1;">lock</span>
+<span class="mono text-[9px] font-bold text-primary tracking-widest uppercase">THIS ACTION WILL BE LOGGED</span>
+</div>
+</div>
+<!-- 2FA Verification -->
+<div class="space-y-3">
+<label class="block text-center text-[10px] font-bold text-on-surface-variant tracking-[0.2em] mono uppercase">ENTER 2FA CODE</label>
+<div class="flex justify-center gap-3">
+<div class="w-12 h-14 glass-panel rounded-lg flex items-center justify-center mono text-2xl font-bold border-white/10">4</div>
+<div class="w-12 h-14 glass-panel rounded-lg flex items-center justify-center mono text-2xl font-bold border-white/10">8</div>
+<div class="w-12 h-14 glass-panel rounded-lg flex items-center justify-center mono text-2xl font-bold border-primary/40 text-primary shadow-[0_0_15px_rgba(16,185,129,0.1)]">_</div>
+<div class="w-12 h-14 glass-panel rounded-lg flex items-center justify-center mono text-2xl font-bold border-white/10"></div>
+<div class="w-12 h-14 glass-panel rounded-lg flex items-center justify-center mono text-2xl font-bold border-white/10"></div>
+<div class="w-12 h-14 glass-panel rounded-lg flex items-center justify-center mono text-2xl font-bold border-white/10"></div>
+</div>
+</div>
+</div>
+<!-- Modal Footer Actions -->
+<div class="mt-10 pt-6 border-t border-emerald-500/10 flex items-center justify-between">
+<button class="px-6 py-2 text-[11px] font-bold mono text-on-surface-variant hover:text-on-surface transition-colors tracking-widest uppercase">
+                    CANCEL
+                </button>
+<button class="px-8 py-3 bg-error/10 border border-error text-error rounded-lg mono text-xs font-black tracking-widest uppercase hover:bg-error hover:text-on-error transition-all active:scale-95 shadow-[0_0_20px_rgba(255,180,171,0.15)]">
+                    DEBIT $0.00 →
+                </button>
+</div>
+</div>
+</div>
+<!-- Page Footer -->
+<footer class="fixed bottom-0 w-full z-40 flex justify-between items-center px-10 py-3 w-full bg-emerald-950/20 backdrop-blur-md">
+<div class="mono text-[10px] text-emerald-100/40 uppercase tracking-widest">© 2024 Emerald Pulse • BIOLUM-SYS v4.2</div>
+<div class="flex gap-6 mono text-[10px] uppercase tracking-widest">
+<span class="text-emerald-100/40">BTC: $64,231</span>
+<span class="text-emerald-100/40">ETH: $3,452</span>
+<span class="text-emerald-400 font-bold">SYNC: ACTIVE</span>
+</div>
+</footer>
+</body></html>

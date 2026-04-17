@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&amp;family=JetBrains+Mono:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-panel {
+            background: rgba(44, 55, 51, 0.4);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+        .ghost-border {
+            border: 1px solid rgba(16, 185, 129, 0.08);
+        }
+        body {
+            background-color: #040d0a;
+            color: #d9e5df;
+            font-family: 'Inter', sans-serif;
+            overflow: hidden;
+        }
+        .jetbrains {
+            font-family: 'JetBrains Mono', monospace;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "error-container": "#93000a",
+                        "on-error-container": "#ffdad6",
+                        "surface-container-lowest": "#06100d",
+                        "on-tertiary-fixed-variant": "#653e00",
+                        "tertiary-container": "#e29100",
+                        "tertiary-fixed": "#ffddb8",
+                        "background": "#0b1512",
+                        "tertiary": "#ffb95f",
+                        "on-surface": "#d9e5df",
+                        "secondary": "#45dfa4",
+                        "primary-fixed-dim": "#4edea3",
+                        "surface-container-low": "#131e1a",
+                        "surface-container-high": "#222c29",
+                        "on-secondary-fixed": "#002114",
+                        "inverse-on-surface": "#28332f",
+                        "surface-bright": "#313b38",
+                        "secondary-fixed-dim": "#45dfa4",
+                        "inverse-surface": "#d9e5df",
+                        "on-primary-container": "#00422b",
+                        "primary": "#4edea3",
+                        "on-secondary-fixed-variant": "#005137",
+                        "surface": "#0b1512",
+                        "error": "#ffb4ab",
+                        "secondary-container": "#00bd85",
+                        "tertiary-fixed-dim": "#ffb95f",
+                        "on-tertiary-container": "#523200",
+                        "on-primary-fixed": "#002113",
+                        "on-primary": "#003824",
+                        "secondary-fixed": "#68fcbf",
+                        "outline": "#86948a",
+                        "on-surface-variant": "#bbcabf",
+                        "surface-container": "#17221e",
+                        "on-tertiary": "#472a00",
+                        "primary-fixed": "#6ffbbe",
+                        "surface-dim": "#0b1512",
+                        "primary-container": "#10b981",
+                        "surface-tint": "#4edea3",
+                        "on-tertiary-fixed": "#2a1700",
+                        "surface-container-highest": "#2c3733",
+                        "on-error": "#690005",
+                        "on-background": "#d9e5df",
+                        "on-primary-fixed-variant": "#005236",
+                        "outline-variant": "#3c4a42",
+                        "surface-variant": "#2c3733",
+                        "on-secondary-container": "#00452e",
+                        "on-secondary": "#003825",
+                        "inverse-primary": "#006c49"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "1rem",
+                        "lg": "2rem",
+                        "xl": "3rem",
+                        "full": "9999px"
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="flex items-center justify-center min-h-screen">
+<!-- Mobile Device Container -->
+<div class="relative w-[390px] h-[844px] bg-background overflow-hidden border-[8px] border-surface-container-highest rounded-[48px] shadow-2xl">
+<!-- Ambient Background Blobs -->
+<div class="absolute top-[-10%] left-[-10%] w-64 h-64 bg-primary/20 rounded-full blur-[80px]"></div>
+<div class="absolute bottom-[20%] right-[-10%] w-80 h-80 bg-secondary/10 rounded-full blur-[100px]"></div>
+<!-- Parent Screen (Blurred Background) -->
+<div class="absolute inset-0 opacity-25 blur-sm scale-105 pointer-events-none">
+<header class="p-6 flex justify-between items-center">
+<div class="w-10 h-10 rounded-full bg-surface-container-highest flex items-center justify-center overflow-hidden">
+<img alt="User Profile" data-alt="High-tech biometric avatar scanning animation with green glowing lines and digital interface elements" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBMs-yjsHyAeVrt9rpPkErNpeutzqcrJTg84RE3dBgf0G1NMfJs1PHMkayIZkCGCHeuKIwoPZqjyIziOs0ivn9GGQXt4r1HQuQboGneKI0rTWkfMMUYy9ue9-iKOlEg1znumK7OU4x9vV09ZmDR17a3UVMpjRA3Zx44c8ORgpLp-5qn7nwcde4cMavyP5zdpjlSynVzFnflRMLX_iwUIFl50wRDkoCG9RmepwK1X-Ycsaf9JxYMCW1-wAHiYjLaCcmm6D2GKmIBbdVp"/>
+</div>
+<div class="text-xl font-black text-primary jetbrains">ARCHIVE</div>
+<span class="material-symbols-outlined text-on-surface-variant">settings</span>
+</header>
+<main class="px-6 mt-4">
+<div class="text-[10px] uppercase jetbrains tracking-widest text-on-surface-variant mb-2">Total Value</div>
+<div class="text-4xl font-bold jetbrains mb-8 text-primary">52,430.22</div>
+<div class="grid grid-cols-2 gap-4">
+<div class="h-32 rounded-lg bg-surface-container-high p-4 flex flex-col justify-between border border-primary/10">
+<span class="material-symbols-outlined text-secondary">account_balance_wallet</span>
+<div class="jetbrains text-sm">VAULT</div>
+</div>
+<div class="h-32 rounded-lg bg-surface-container-high p-4 flex flex-col justify-between border border-primary/10">
+<span class="material-symbols-outlined text-secondary">trending_up</span>
+<div class="jetbrains text-sm">GROWTH</div>
+</div>
+</div>
+</main>
+</div>
+<!-- Bottom Sheet Overlay Darkener -->
+<div class="absolute inset-0 bg-black/40"></div>
+<!-- BOTTOM SHEET -->
+<div class="absolute bottom-0 left-0 right-0 h-[75%] glass-panel rounded-t-[28px] ghost-border flex flex-col">
+<!-- Grab Handle -->
+<div class="flex justify-center py-4">
+<div class="w-9 h-1 bg-on-surface-variant/30 rounded-full"></div>
+</div>
+<!-- Close Icon -->
+<button class="absolute top-6 right-6 text-on-surface-variant hover:text-on-surface transition-colors">
+<span class="material-symbols-outlined">close</span>
+</button>
+<!-- Content Header -->
+<div class="px-8 mt-2">
+<h1 class="text-2xl font-extrabold uppercase tracking-tight bg-clip-text text-transparent bg-gradient-to-b from-primary to-secondary">
+                    Off-Ramp to Bank
+                </h1>
+<p class="jetbrains text-[10px] text-on-surface-variant tracking-[0.2em] mt-1">
+                    CRYPTO TO BANK ACCOUNT
+                </p>
+</div>
+<!-- Scrollable Content -->
+<div class="flex-1 overflow-y-auto px-8 mt-8 space-y-6">
+<!-- Asset Selection Dropdown -->
+<div class="space-y-2">
+<label class="text-[10px] uppercase font-bold text-on-surface-variant jetbrains">Source Asset</label>
+<div class="h-16 flex items-center justify-between bg-surface-container-highest/60 rounded-lg px-4 ghost-border">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-[#26A17B] flex items-center justify-center">
+<span class="material-symbols-outlined text-white text-sm" style="font-variation-settings: 'FILL' 1;">attach_money</span>
+</div>
+<div>
+<div class="font-bold text-sm">USDT</div>
+<div class="text-[10px] text-on-surface-variant jetbrains">Tether USD</div>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<span class="jetbrains font-bold text-primary">500</span>
+<span class="material-symbols-outlined text-on-surface-variant text-sm">expand_more</span>
+</div>
+</div>
+</div>
+<!-- Destination Pill -->
+<div class="space-y-2">
+<label class="text-[10px] uppercase font-bold text-on-surface-variant jetbrains">Destination</label>
+<div class="h-16 flex items-center bg-surface-container-highest/60 rounded-lg px-4 ghost-border gap-4">
+<div class="w-8 h-8 rounded-full bg-secondary/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-secondary text-sm">account_balance</span>
+</div>
+<div class="flex-1">
+<div class="font-bold text-sm">Chase Bank</div>
+<div class="text-[10px] text-on-surface-variant jetbrains tracking-tighter">•••• 4421</div>
+</div>
+</div>
+</div>
+<!-- Processing Timeline -->
+<div class="py-2">
+<label class="text-[10px] uppercase font-bold text-on-surface-variant jetbrains mb-4 block">Processing Pipeline</label>
+<div class="relative pl-6 space-y-6">
+<!-- Vertical Line -->
+<div class="absolute left-[7px] top-2 bottom-2 w-[1px] bg-primary/20"></div>
+<!-- Step 1 -->
+<div class="relative flex justify-between items-center">
+<div class="absolute left-[-23px] w-[15px] h-[15px] bg-primary rounded-full shadow-[0_0_10px_rgba(78,222,163,0.5)]"></div>
+<span class="text-[11px] font-bold tracking-widest text-on-surface">CONVERT</span>
+<span class="jetbrains text-[10px] text-primary">~2 MIN</span>
+</div>
+<!-- Step 2 -->
+<div class="relative flex justify-between items-center">
+<div class="absolute left-[-23px] w-[15px] h-[15px] bg-primary/40 rounded-full border border-primary/60"></div>
+<span class="text-[11px] font-bold tracking-widest text-on-surface/60">SETTLE</span>
+<span class="jetbrains text-[10px] text-on-surface-variant">~4 HR</span>
+</div>
+<!-- Step 3 -->
+<div class="relative flex justify-between items-center">
+<div class="absolute left-[-23px] w-[15px] h-[15px] bg-primary/10 rounded-full border border-primary/20"></div>
+<span class="text-[11px] font-bold tracking-widest text-on-surface/40">DEPOSIT</span>
+<span class="jetbrains text-[10px] text-on-surface-variant">~48 HR</span>
+</div>
+</div>
+</div>
+<!-- Arrival Chip -->
+<div class="flex justify-center">
+<div class="bg-secondary/20 border border-secondary/30 px-3 py-1 rounded-full flex items-center gap-2">
+<span class="material-symbols-outlined text-[14px] text-secondary">schedule</span>
+<span class="text-[10px] font-bold text-secondary uppercase tracking-tight">1-2 business days</span>
+</div>
+</div>
+</div>
+<!-- Footer & CTA -->
+<div class="px-8 pb-10 pt-4 bg-gradient-to-t from-surface-container-lowest via-transparent to-transparent">
+<div class="flex justify-between items-end mb-6">
+<div class="space-y-1">
+<div class="text-[10px] text-on-surface-variant jetbrains">Processing Fee</div>
+<div class="jetbrains text-sm">2.50 USDT</div>
+</div>
+<div class="text-right space-y-1">
+<div class="text-[10px] text-on-surface-variant jetbrains">Net Settlement</div>
+<div class="jetbrains text-2xl font-bold text-primary">497.50</div>
+</div>
+</div>
+<button class="w-full bg-primary py-4 rounded-lg flex justify-center items-center gap-2 shadow-[0_0_20px_rgba(78,222,163,0.3)] active:scale-95 transition-transform">
+<span class="font-black uppercase tracking-[0.2em] text-on-primary">Start Sync</span>
+<span class="material-symbols-outlined text-on-primary">arrow_forward</span>
+</button>
+</div>
+</div>
+<!-- System Home Indicator -->
+<div class="absolute bottom-2 left-1/2 -translate-x-1/2 w-32 h-1.5 bg-on-surface/20 rounded-full"></div>
+</div>
+</body></html>

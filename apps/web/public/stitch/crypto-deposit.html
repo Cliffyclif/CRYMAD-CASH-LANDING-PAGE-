@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&amp;family=JetBrains+Mono:wght@400;700&amp;family=Space+Grotesk:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-tertiary-fixed": "#2a1700",
+                    "inverse-surface": "#d9e5df",
+                    "on-tertiary-fixed-variant": "#653e00",
+                    "inverse-primary": "#006c49",
+                    "on-surface": "#d9e5df",
+                    "tertiary-fixed": "#ffddb8",
+                    "surface-bright": "#313b38",
+                    "on-primary": "#003824",
+                    "on-error-container": "#ffdad6",
+                    "primary-container": "#10b981",
+                    "on-error": "#690005",
+                    "primary": "#4edea3",
+                    "secondary": "#45dfa4",
+                    "surface-container-lowest": "#06100d",
+                    "primary-fixed": "#6ffbbe",
+                    "primary-fixed-dim": "#4edea3",
+                    "secondary-fixed": "#68fcbf",
+                    "on-primary-fixed-variant": "#005236",
+                    "on-primary-container": "#00422b",
+                    "tertiary-container": "#e29100",
+                    "inverse-on-surface": "#28332f",
+                    "surface-variant": "#2c3733",
+                    "on-tertiary-container": "#523200",
+                    "on-primary-fixed": "#002113",
+                    "secondary-fixed-dim": "#45dfa4",
+                    "surface-tint": "#4edea3",
+                    "surface-container-high": "#222c29",
+                    "on-background": "#d9e5df",
+                    "on-secondary-fixed-variant": "#005137",
+                    "on-secondary-fixed": "#002114",
+                    "on-secondary": "#003825",
+                    "tertiary-fixed-dim": "#ffb95f",
+                    "tertiary": "#ffb95f",
+                    "surface-container": "#17221e",
+                    "surface-dim": "#0b1512",
+                    "surface-container-low": "#131e1a",
+                    "background": "#0b1512",
+                    "surface-container-highest": "#2c3733",
+                    "error": "#ffb4ab",
+                    "outline": "#86948a",
+                    "surface": "#0b1512",
+                    "on-tertiary": "#472a00",
+                    "outline-variant": "#3c4a42",
+                    "on-surface-variant": "#bbcabf",
+                    "error-container": "#93000a",
+                    "on-secondary-container": "#00452e",
+                    "secondary-container": "#00bd85"
+            },
+            "borderRadius": {
+                    "DEFAULT": "1rem",
+                    "lg": "2rem",
+                    "xl": "3rem",
+                    "full": "9999px"
+            },
+            "fontFamily": {
+                    "headline": ["Inter"],
+                    "body": ["Inter"],
+                    "label": ["Space Grotesk"],
+                    "mono": ["JetBrains Mono"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            background-color: #040d0a;
+            color: #d9e5df;
+            font-family: 'Inter', sans-serif;
+            overflow: hidden;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .bioluminescent-blob {
+            position: absolute;
+            filter: blur(80px);
+            opacity: 0.15;
+            z-index: 0;
+            border-radius: 50%;
+        }
+        .energy-line {
+            position: absolute;
+            width: 200%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(16, 185, 129, 0.1), transparent);
+            transform: rotate(-45deg);
+            z-index: 0;
+        }
+        .text-gradient {
+            background: linear-gradient(to bottom, #10b981, #34d399);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    </style>
+</head>
+<body class="min-h-screen relative flex flex-col">
+<!-- Background Elements -->
+<div class="fixed inset-0 overflow-hidden pointer-events-none">
+<div class="bioluminescent-blob bg-primary w-[500px] h-[500px] -top-48 -left-48"></div>
+<div class="bioluminescent-blob bg-secondary w-[400px] h-[400px] bottom-0 right-0"></div>
+<div class="energy-line top-1/4 -left-1/4"></div>
+<div class="energy-line top-1/2 -left-1/3"></div>
+</div>
+<!-- TopNavBar -->
+<header class="fixed top-0 w-full z-50 flex justify-between items-center px-8 py-4 w-full bg-[#06100d]/40 backdrop-blur-xl border-b border-emerald-500/10 shadow-[0_0_20px_rgba(16,185,129,0.05)]">
+<div class="flex items-center gap-8">
+<span class="text-2xl font-black bg-gradient-to-r from-emerald-400 to-teal-400 bg-clip-text text-transparent font-['Inter'] uppercase tracking-wider">Crymad Cash</span>
+<nav class="hidden md:flex gap-6 items-center">
+<a class="text-emerald-100/60 hover:text-emerald-300 transition-colors duration-300 font-['Inter'] font-extrabold uppercase tracking-wider text-sm" href="#">Dashboard</a>
+<a class="text-emerald-400 border-b-2 border-emerald-400 pb-1 font-['Inter'] font-extrabold uppercase tracking-wider text-sm" href="#">Wallets</a>
+<a class="text-emerald-100/60 hover:text-emerald-300 transition-colors duration-300 font-['Inter'] font-extrabold uppercase tracking-wider text-sm" href="#">Transactions</a>
+<a class="text-emerald-100/60 hover:text-emerald-300 transition-colors duration-300 font-['Inter'] font-extrabold uppercase tracking-wider text-sm" href="#">Yield</a>
+<a class="text-emerald-100/60 hover:text-emerald-300 transition-colors duration-300 font-['Inter'] font-extrabold uppercase tracking-wider text-sm" href="#">Security</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<div class="flex items-center bg-surface-container-low px-4 py-2 rounded-full border border-outline-variant/10">
+<span class="material-symbols-outlined text-on-surface-variant mr-2" data-icon="search">search</span>
+<span class="text-on-surface-variant/40 text-xs font-mono uppercase">Search...</span>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer hover:text-primary transition-colors" data-icon="notifications">notifications</span>
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer hover:text-primary transition-colors" data-icon="settings">settings</span>
+<div class="w-8 h-8 rounded-full bg-surface-container-highest border border-primary/20 flex items-center justify-center overflow-hidden">
+<img alt="User profile" class="w-full h-full object-cover" data-alt="Cyberpunk avatar of a digital technician with neon green highlights and sleek futuristic visor" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDglBxQawjaAfbdlxXOEXY6Dit-Jx_votGd7Jxv8DJXn5x5LUt8mHEv9E6C0nLHS1Uq5HwlCQpfkqHjJgXqGv4pxgOPuOFTin-q2xKZMiEQlY8S5qYilVKKxkSWlcLLrZb-Y0knFgEAQ9fJi_SBNc8_cKObk6r-1uJXMyqpUek3_fJwc6zSUs_JQrGX-Tb4nX0d7szWYhBicRmKAxTBacstWXxqQDVNspwlIlzaxUHThZAH9AyLke9JsmYa-6pqdv2sfERsJ64ydVo"/>
+</div>
+</div>
+</header>
+<!-- Main Content (Blurred Background) -->
+<main class="flex-grow pt-24 px-8 blur-md opacity-20">
+<section class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
+<div class="col-span-2 space-y-8">
+<div class="h-64 rounded-xl bg-surface-container-low border border-outline-variant/5 p-8 relative overflow-hidden">
+<div class="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent"></div>
+<p class="font-mono text-xs text-primary mb-2">TOTAL NET WORTH</p>
+<h2 class="text-5xl font-black font-headline">$142,504.22</h2>
+</div>
+<div class="grid grid-cols-2 gap-6">
+<div class="h-32 rounded-xl bg-surface-variant/40 backdrop-blur-md p-6"></div>
+<div class="h-32 rounded-xl bg-surface-variant/40 backdrop-blur-md p-6"></div>
+</div>
+</div>
+<div class="space-y-6">
+<div class="h-full rounded-xl bg-surface-container-high border border-outline-variant/5 p-6"></div>
+</div>
+</section>
+</main>
+<!-- Modal Overlay -->
+<div class="fixed inset-0 z-[100] flex items-center justify-center p-4">
+<div class="absolute inset-0 bg-[#040d0a]/60 backdrop-blur-sm"></div>
+<!-- Deposit Crypto Modal -->
+<div class="relative w-full max-w-[560px] bg-surface-variant/40 backdrop-blur-[20px] rounded-xl border border-primary/10 shadow-[0_20px_60px_rgba(4,13,10,0.5),0_0_40px_rgba(16,185,129,0.15)] overflow-hidden">
+<!-- Close Button -->
+<button class="absolute top-6 right-6 text-on-surface-variant hover:text-primary transition-colors p-2">
+<span class="material-symbols-outlined" data-icon="close">close</span>
+</button>
+<!-- Modal Content -->
+<div class="p-10 flex flex-col items-center">
+<header class="text-center mb-8">
+<h1 class="text-4xl font-extrabold font-headline text-gradient tracking-tight mb-1">Deposit Crypto</h1>
+<p class="text-xs font-mono font-normal tracking-widest text-on-surface-variant/70 uppercase">RECEIVE CRYPTO TO WALLET</p>
+</header>
+<!-- Asset Dropdown -->
+<div class="w-full mb-8">
+<label class="text-[10px] font-mono text-primary/60 uppercase tracking-widest mb-2 block ml-1">Select Asset</label>
+<div class="flex items-center justify-between bg-surface-container-lowest/60 border border-outline-variant/10 rounded-lg px-6 py-4 cursor-pointer hover:bg-surface-container-lowest transition-all group">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-[#f7931a]/10 flex items-center justify-center border border-[#f7931a]/20">
+<span class="material-symbols-outlined text-[#f7931a]" data-icon="currency_bitcoin">currency_bitcoin</span>
+</div>
+<div>
+<p class="font-bold font-headline text-on-surface">Bitcoin</p>
+<p class="text-[10px] font-mono text-on-surface-variant/60 uppercase">BTC • Bitcoin Network</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors" data-icon="expand_more">expand_more</span>
+</div>
+</div>
+<!-- QR Code Section -->
+<div class="w-72 h-72 rounded-xl bg-surface-container-highest/30 backdrop-blur-md border border-outline-variant/20 p-4 mb-8 flex items-center justify-center relative">
+<div class="absolute inset-0 flex items-center justify-center opacity-10">
+<div class="w-full h-full bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-primary/30 via-transparent to-transparent"></div>
+</div>
+<div class="bg-white p-3 rounded-lg w-full h-full flex items-center justify-center overflow-hidden">
+<!-- Mock QR Code Representation -->
+<div class="w-full h-full flex flex-col gap-1">
+<div class="flex gap-1 h-1/5">
+<div class="bg-black w-4 h-4"></div><div class="bg-black w-4 h-4 ml-auto"></div>
+</div>
+<div class="flex-grow flex items-center justify-center">
+<img alt="QR Code" class="w-48 h-48 opacity-90" data-alt="stylized modern QR code for a bitcoin wallet address with clean black and white blocks on a solid background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCHJCsrQofoIVTeuc6dA9VmHuACk2mCsCj0oQclICc7oi4cLoVR6oCKDtJu373aHrjuZFxQcJBqyqb_ZSl6DPJgLzp1zxGfhtG4PmTpF0dE5gZY4RBXx1dPZziyVM6kCp6pI79nUvAO3Ia_FOtWwfAC3B_29GkjMNXFdv9eO9zE1HdFYrw0smVO485mM_upV5hG373m_RQpOvRMZBVlumpGUIM_TE32tHW0jLXzzDuWXJ-AiG6SIKsnFgCAdx3aw228KVIB-k4O9V8"/>
+</div>
+<div class="flex gap-1 h-1/5">
+<div class="bg-black w-4 h-4"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Wallet Address Section -->
+<div class="w-full space-y-3 mb-8">
+<div class="flex items-center justify-between bg-surface-container-low/80 border border-outline-variant/10 rounded-full pl-6 pr-1 py-1">
+<span class="font-mono text-sm text-on-surface tracking-tighter">bc1q7a2e...99fA3x</span>
+<button class="bg-primary/10 hover:bg-primary/20 text-primary text-[10px] font-black tracking-widest uppercase px-6 py-3 rounded-full border border-primary/20 transition-all flex items-center gap-2">
+<span class="material-symbols-outlined text-sm" data-icon="content_copy">content_copy</span>
+                            COPY
+                        </button>
+</div>
+<div class="flex items-center justify-center gap-4">
+<div class="flex items-center gap-2">
+<div class="w-2 h-2 rounded-full bg-primary animate-pulse"></div>
+<span class="text-[10px] font-mono text-on-surface-variant/80 uppercase">NETWORK: Bitcoin Mainnet</span>
+</div>
+<div class="h-3 w-[1px] bg-outline-variant/20"></div>
+<span class="text-[10px] font-mono text-on-surface-variant/80 uppercase">MINIMUM: 0.0001 BTC</span>
+</div>
+</div>
+<!-- Warning Alert -->
+<div class="w-full bg-tertiary-container/10 border border-tertiary/20 rounded-lg p-4 mb-10 flex items-start gap-4">
+<span class="material-symbols-outlined text-tertiary mt-0.5" data-icon="warning">warning</span>
+<p class="text-xs font-label text-tertiary/90 leading-relaxed uppercase tracking-tight">
+                        Only send BTC to this address. Other assets may result in permanent loss.
+                    </p>
+</div>
+<!-- Footer Actions -->
+<footer class="w-full flex gap-4">
+<button class="flex-1 py-4 font-mono text-xs tracking-widest text-on-surface-variant hover:text-on-surface transition-colors uppercase">
+                        CANCEL
+                    </button>
+<button class="flex-1 py-4 bg-primary/5 hover:bg-primary/20 border border-primary/30 rounded-lg font-headline font-black text-primary tracking-widest uppercase shadow-[0_0_20px_rgba(16,185,129,0.1)] transition-all">
+                        DONE
+                    </button>
+</footer>
+</div>
+</div>
+</div>
+</body></html>

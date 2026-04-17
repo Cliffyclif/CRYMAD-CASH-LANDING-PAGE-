@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>CRYMAD CASH | SWAP</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800;900&amp;family=JetBrains+Mono:wght@400;700&amp;family=Space+Grotesk:wght@500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-primary-fixed": "#00452d",
+                        "on-surface": "#f0fcf6",
+                        "on-primary-container": "#002919",
+                        "on-tertiary-container": "#64312c",
+                        "tertiary-fixed": "#ffb4ab",
+                        "on-tertiary-fixed-variant": "#6f3a34",
+                        "inverse-on-surface": "#4c5753",
+                        "secondary-dim": "#55e4a9",
+                        "surface-variant": "#1a2924",
+                        "tertiary-container": "#ffb4ab",
+                        "surface-container-highest": "#1a2924",
+                        "secondary-fixed-dim": "#55e4a9",
+                        "on-error-container": "#ffa8a3",
+                        "surface-container-high": "#15221e",
+                        "on-tertiary-fixed": "#4c1e19",
+                        "surface-container-low": "#0a1612",
+                        "surface-dim": "#06100d",
+                        "surface-container-lowest": "#000000",
+                        "outline-variant": "#3f4a46",
+                        "on-secondary": "#00583b",
+                        "on-error": "#490006",
+                        "primary-fixed": "#69f6b8",
+                        "error": "#ff716c",
+                        "secondary-fixed": "#65f3b6",
+                        "tertiary-fixed-dim": "#efa69e",
+                        "outline": "#6c7873",
+                        "on-secondary-container": "#e1ffec",
+                        "primary-container": "#06b77f",
+                        "error-dim": "#d7383b",
+                        "inverse-primary": "#006d4a",
+                        "secondary": "#65f3b6",
+                        "on-secondary-fixed": "#00432c",
+                        "on-background": "#f0fcf6",
+                        "background": "#06100d",
+                        "inverse-surface": "#f0fcf6",
+                        "on-tertiary": "#6f3a34",
+                        "secondary-container": "#006c4a",
+                        "tertiary": "#ffc7c0",
+                        "primary-dim": "#58e7ab",
+                        "on-primary": "#005a3c",
+                        "tertiary-dim": "#efa69e",
+                        "surface-container": "#0f1c18",
+                        "surface": "#06100d",
+                        "on-secondary-fixed-variant": "#006343",
+                        "surface-bright": "#1f2f2a",
+                        "error-container": "#9f0519",
+                        "on-primary-fixed-variant": "#006544",
+                        "primary-fixed-dim": "#58e7ab",
+                        "on-surface-variant": "#a2aea8",
+                        "surface-tint": "#69f6b8",
+                        "primary": "#69f6b8"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "1rem",
+                        "lg": "2rem",
+                        "xl": "3rem",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Inter"],
+                        "body": ["Inter"],
+                        "label": ["Space Grotesk"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            vertical-align: middle;
+        }
+        .glass-panel {
+            background: rgba(44, 55, 51, 0.4);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+        .text-gradient-emerald {
+            background: linear-gradient(to bottom, #10b981, #34d399);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .amber-glow {
+            box-shadow: 0 0 15px rgba(255, 185, 95, 0.4);
+        }
+        body {
+            background-color: #06100d;
+            color: #f0fcf6;
+        }
+    </style>
+</head>
+<body class="font-body selection:bg-primary selection:text-on-primary-container overflow-hidden">
+<!-- PARENT PAGE BACKGROUND (Blurred State) -->
+<div class="fixed inset-0 z-0 opacity-20 blur-xl pointer-events-none scale-105">
+<!-- TopNavBar Mock -->
+<nav class="flex justify-between items-center px-8 h-20 w-full bg-[#06100d]/80 backdrop-blur-xl fixed top-0 z-50">
+<div class="text-2xl font-black text-emerald-400 tracking-tighter">CRYMAD CASH</div>
+<div class="flex gap-8 items-center">
+<span class="text-emerald-100/60 font-['Inter'] tracking-tight headline-sm font-bold uppercase">Dashboard</span>
+<span class="text-emerald-400 border-b-2 border-emerald-400 pb-1 font-['Inter'] tracking-tight headline-sm font-bold uppercase">Wallets</span>
+<span class="text-emerald-100/60 font-['Inter'] tracking-tight headline-sm font-bold uppercase">Cards</span>
+</div>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-emerald-400">notifications</span>
+<span class="material-symbols-outlined text-emerald-400">settings</span>
+</div>
+</nav>
+<!-- Portfolio Dashboard Mockup -->
+<main class="pt-32 px-12 grid grid-cols-12 gap-8">
+<div class="col-span-12">
+<div class="font-label text-sm tracking-widest text-on-surface-variant uppercase">Total Portfolio</div>
+<div class="font-['JetBrains_Mono'] text-8xl font-bold mt-2">$242,504.12</div>
+</div>
+<div class="col-span-4 h-64 bg-surface-container-highest rounded-xl p-8 border border-outline-variant">
+<div class="flex justify-between items-start">
+<div class="font-label text-xs uppercase text-primary">Bitcoin</div>
+<span class="material-symbols-outlined text-primary">currency_bitcoin</span>
+</div>
+<div class="mt-8 font-['JetBrains_Mono'] text-4xl">1.24 BTC</div>
+</div>
+<div class="col-span-4 h-64 bg-surface-container-highest rounded-xl p-8 border border-outline-variant">
+<div class="flex justify-between items-start">
+<div class="font-label text-xs uppercase text-primary">Ethereum</div>
+<span class="material-symbols-outlined text-primary">token</span>
+</div>
+<div class="mt-8 font-['JetBrains_Mono'] text-4xl">42.15 ETH</div>
+</div>
+<div class="col-span-4 h-64 bg-surface-container-highest rounded-xl p-8 border border-outline-variant">
+<div class="flex justify-between items-start">
+<div class="font-label text-xs uppercase text-primary">Solana</div>
+<span class="material-symbols-outlined text-primary">animation</span>
+</div>
+<div class="mt-8 font-['JetBrains_Mono'] text-4xl">1,240.00 SOL</div>
+</div>
+</main>
+</div>
+<!-- MODAL OVERLAY -->
+<div class="fixed inset-0 z-50 flex items-center justify-center bg-black/40 backdrop-blur-md p-6">
+<!-- MODAL DIALOG -->
+<div class="glass-panel w-full max-w-[560px] rounded-xl border border-primary/20 shadow-[0_20px_60px_rgba(4,13,10,0.5),0_0_40px_rgba(16,185,129,0.15)] relative flex flex-col overflow-hidden">
+<!-- Close Action -->
+<button class="absolute top-6 right-6 p-2 text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined">close</span>
+</button>
+<!-- Header Section -->
+<div class="px-10 pt-10 pb-6 text-center">
+<h1 class="text-4xl font-black tracking-tighter text-gradient-emerald font-headline">Swap Crypto</h1>
+<p class="font-['JetBrains_Mono'] text-[10px] tracking-[0.2em] text-on-surface-variant mt-2">INSTANT ASSET EXCHANGE</p>
+</div>
+<!-- Body Section -->
+<div class="px-10 pb-8 space-y-4">
+<!-- FROM CARD -->
+<div class="bg-surface-container-lowest/50 rounded-lg p-6 border border-outline-variant/20 group hover:border-primary/30 transition-all duration-300">
+<div class="flex justify-between items-center mb-4">
+<span class="font-label text-[10px] tracking-widest text-on-surface-variant uppercase">YOU PAY</span>
+<div class="flex items-center gap-2 text-primary">
+<span class="material-symbols-outlined text-sm">wallet</span>
+<span class="font-['JetBrains_Mono'] text-[10px]">BAL: 0.12 BTC</span>
+</div>
+</div>
+<div class="flex justify-between items-center">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-3xl" data-icon="currency_bitcoin">currency_bitcoin</span>
+</div>
+<div class="font-['JetBrains_Mono'] text-2xl font-bold">0.05 BTC</div>
+</div>
+<div class="text-right">
+<div class="font-['JetBrains_Mono'] text-on-surface-variant text-sm">= $3,362.05</div>
+</div>
+</div>
+</div>
+<!-- SWAP BUTTON (Pulse Row) -->
+<div class="relative flex justify-center -my-6 z-10">
+<button class="w-12 h-12 rounded-full bg-[#ffb95f] amber-glow flex items-center justify-center text-[#06100d] hover:scale-110 active:scale-95 transition-transform duration-200">
+<span class="material-symbols-outlined font-bold">swap_vert</span>
+</button>
+</div>
+<!-- TO CARD -->
+<div class="bg-surface-container-lowest/50 rounded-lg p-6 border border-outline-variant/20 group hover:border-primary/30 transition-all duration-300">
+<div class="flex justify-between items-center mb-4">
+<span class="font-label text-[10px] tracking-widest text-on-surface-variant uppercase">YOU RECEIVE</span>
+</div>
+<div class="flex justify-between items-center">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-3xl" data-icon="token">token</span>
+</div>
+<div class="font-['JetBrains_Mono'] text-2xl font-bold">1.0234 ETH</div>
+</div>
+<div class="text-right">
+<div class="font-['JetBrains_Mono'] text-on-surface-variant text-sm">= $3,355.00</div>
+</div>
+</div>
+</div>
+<!-- EXCHANGE INFO & SETTINGS -->
+<div class="pt-4 space-y-4">
+<!-- Rate and Refresh -->
+<div class="flex justify-between items-center">
+<div class="flex items-center gap-2 text-on-surface-variant">
+<span class="material-symbols-outlined text-sm">info</span>
+<span class="font-['JetBrains_Mono'] text-xs">1 BTC = 20.468 ETH</span>
+</div>
+<button class="text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-sm">refresh</span>
+</button>
+</div>
+<!-- SLIPPAGE & IMPACT GRID -->
+<div class="grid grid-cols-2 gap-4">
+<div class="space-y-2">
+<span class="font-label text-[10px] tracking-widest text-on-surface-variant uppercase block">SLIPPAGE</span>
+<div class="flex gap-2">
+<button class="px-3 py-1 font-['JetBrains_Mono'] text-[10px] rounded-sm bg-surface-container-high border border-outline-variant/20 text-on-surface-variant hover:border-primary/40 transition-colors">0.1%</button>
+<button class="px-3 py-1 font-['JetBrains_Mono'] text-[10px] rounded-sm bg-primary/10 border border-primary/40 text-primary">0.5%</button>
+<button class="px-3 py-1 font-['JetBrains_Mono'] text-[10px] rounded-sm bg-surface-container-high border border-outline-variant/20 text-on-surface-variant hover:border-primary/40 transition-colors">1.0%</button>
+</div>
+</div>
+<div class="space-y-2 text-right">
+<span class="font-label text-[10px] tracking-widest text-on-surface-variant uppercase block">NETWORK</span>
+<div class="inline-flex items-center gap-1.5 px-3 py-1 bg-primary/5 rounded-sm border border-primary/10">
+<span class="w-1.5 h-1.5 rounded-full bg-primary animate-pulse"></span>
+<span class="font-['JetBrains_Mono'] text-[10px] text-primary">PRICE IMPACT: 0.02%</span>
+</div>
+</div>
+</div>
+<!-- Gas Fee -->
+<div class="flex justify-between items-center py-2 border-t border-outline-variant/10">
+<span class="font-['JetBrains_Mono'] text-xs text-on-surface-variant">ESTIMATED GAS</span>
+<span class="font-['JetBrains_Mono'] text-xs text-primary font-bold">GAS FEE $4.20</span>
+</div>
+</div>
+</div>
+<!-- Action Row -->
+<div class="px-10 pb-10 flex gap-4">
+<button class="flex-1 py-4 font-label tracking-widest uppercase text-xs border border-outline-variant text-on-surface-variant hover:bg-surface-variant transition-all duration-300 rounded-sm">
+                    CANCEL
+                </button>
+<button class="flex-[2] py-4 font-label tracking-widest uppercase text-xs border border-primary text-primary flex items-center justify-center gap-2 hover:bg-primary/5 transition-all group overflow-hidden relative rounded-sm">
+<span>CONFIRM SWAP</span>
+<span class="material-symbols-outlined text-sm group-hover:translate-x-1 transition-transform">arrow_forward</span>
+<!-- Hover Glow Effect -->
+<div class="absolute inset-0 bg-gradient-to-r from-transparent via-primary/5 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
+</button>
+</div>
+</div>
+</div>
+<!-- FOOTER MOCK (Shared Component Logic) -->
+<footer class="fixed bottom-0 w-full h-8 flex items-center bg-[#06100d] border-t border-emerald-500/10 px-6 z-50 justify-between">
+<div class="font-['JetBrains_Mono'] text-[10px] uppercase tracking-widest text-emerald-400">
+            SYSTEM STATUS: OPTIMAL
+        </div>
+<div class="flex gap-6">
+<span class="font-['JetBrains_Mono'] text-[10px] uppercase tracking-widest text-emerald-100/40 hover:text-emerald-200 cursor-pointer">BTC/USD $64,210.42</span>
+<span class="font-['JetBrains_Mono'] text-[10px] uppercase tracking-widest text-emerald-100/40 hover:text-emerald-200 cursor-pointer">ETH/USD $3,452.11</span>
+<span class="font-['JetBrains_Mono'] text-[10px] uppercase tracking-widest text-emerald-100/40 hover:text-emerald-200 cursor-pointer">SOL/USD $142.30</span>
+</div>
+</footer>
+</body></html>

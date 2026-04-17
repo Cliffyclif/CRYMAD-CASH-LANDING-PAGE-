@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Emerald Pulse | Subscription Detail</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&amp;family=JetBrains+Mono:wght@400;700&amp;family=Space+Grotesk:wght@500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary-fixed-dim": "#4edea3",
+                        "surface-container-high": "#222c29",
+                        "surface-bright": "#313b38",
+                        "tertiary-container": "#d79189",
+                        "on-tertiary-container": "#5c2b25",
+                        "outline": "#86948a",
+                        "outline-variant": "#3c4a42",
+                        "error": "#ffb4ab",
+                        "surface-tint": "#4edea3",
+                        "on-surface-variant": "#bbcabf",
+                        "secondary-fixed": "#ffddb8",
+                        "on-secondary-fixed-variant": "#653e00",
+                        "secondary-fixed-dim": "#ffb95f",
+                        "surface-container-highest": "#2c3733",
+                        "tertiary-fixed-dim": "#ffb4ab",
+                        "on-tertiary-fixed-variant": "#6c3832",
+                        "on-surface": "#d9e5df",
+                        "inverse-on-surface": "#28332f",
+                        "inverse-surface": "#d9e5df",
+                        "surface": "#0b1512",
+                        "on-tertiary": "#51221d",
+                        "surface-container": "#17221e",
+                        "background": "#0b1512",
+                        "tertiary-fixed": "#ffdad5",
+                        "on-primary": "#003824",
+                        "surface-container-lowest": "#06100d",
+                        "primary-fixed": "#6ffbbe",
+                        "tertiary": "#ffb4ab",
+                        "secondary": "#ffb95f",
+                        "surface-container-low": "#131e1a",
+                        "inverse-primary": "#006c4a",
+                        "on-secondary": "#472a00",
+                        "primary-container": "#11b981",
+                        "secondary-container": "#8f5a00",
+                        "on-primary-fixed-variant": "#005236",
+                        "on-secondary-container": "#ffdfbc",
+                        "error-container": "#93000a",
+                        "surface-variant": "#2c3733",
+                        "surface-dim": "#0b1512",
+                        "on-error": "#690005",
+                        "on-background": "#d9e5df",
+                        "on-tertiary-fixed": "#360e0a",
+                        "primary": "#4edea3",
+                        "on-error-container": "#ffdad6",
+                        "on-primary-fixed": "#002114",
+                        "on-secondary-fixed": "#2a1700",
+                        "on-primary-container": "#00422b"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "1rem",
+                        "lg": "2rem",
+                        "xl": "3rem",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Inter"],
+                        "body": ["Inter"],
+                        "label": ["Space Grotesk"],
+                        "mono": ["JetBrains Mono"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            background-color: #040d0a;
+            color: #d9e5df;
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-panel {
+            background: rgba(44, 55, 51, 0.4);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(60, 74, 66, 0.2);
+        }
+        .emerald-glow {
+            box-shadow: 0 24px 48px rgba(16, 185, 129, 0.08);
+        }
+        .organic-blob {
+            position: absolute;
+            filter: blur(80px);
+            z-index: -1;
+            opacity: 0.15;
+        }
+    </style>
+</head>
+<body class="bg-background min-h-screen relative">
+<!-- Living Background Elements -->
+<div class="organic-blob w-[500px] h-[500px] bg-primary rounded-full -top-48 -left-24"></div>
+<div class="organic-blob w-[400px] h-[400px] bg-primary-container rounded-full top-1/2 right-0"></div>
+<div class="fixed inset-0 pointer-events-none opacity-5 bg-[linear-gradient(45deg,transparent_25%,rgba(16,185,129,0.2)_50%,transparent_75%)] bg-[length:100px_100px]"></div>
+<!-- BACKGROUND CONTENT (Blurred/Dimmed) -->
+<div class="opacity-20 blur-sm pointer-events-none select-none">
+<!-- TopNavBar (Shared Component Placeholder Logic) -->
+<header class="fixed top-0 w-full z-50 bg-[#0b1512]/80 backdrop-blur-xl border-b border-[#3c4a42]/20 shadow-[0_24_48px_rgba(16,185,129,0.08)]">
+<div class="flex justify-between items-center px-8 py-4 w-full max-w-screen-2xl mx-auto">
+<span class="text-xl font-black bg-gradient-to-br from-[#10b981] to-[#4edea3] bg-clip-text text-transparent">Emerald Pulse</span>
+<nav class="flex gap-8">
+<span class="font-['Inter'] tracking-tight text-sm uppercase font-semibold text-[#bbcabf]">Dashboard</span>
+<span class="font-['Inter'] tracking-tight text-sm uppercase font-semibold text-emerald-400 border-b-2 border-emerald-500 pb-1">Subscriptions</span>
+<span class="font-['Inter'] tracking-tight text-sm uppercase font-semibold text-[#bbcabf]">Analytics</span>
+<span class="font-['Inter'] tracking-tight text-sm uppercase font-semibold text-[#bbcabf]">Settings</span>
+</nav>
+<div class="flex items-center gap-4 text-[#bbcabf]">
+<span class="material-symbols-outlined">notifications</span>
+<span class="material-symbols-outlined">account_circle</span>
+</div>
+</div>
+</header>
+<!-- Mock Grid -->
+<main class="pt-24 px-8 max-w-screen-2xl mx-auto grid grid-cols-3 gap-8">
+<div class="h-48 rounded-lg bg-surface-container-low border border-outline-variant/20 p-6"></div>
+<div class="h-48 rounded-lg bg-surface-container-low border border-outline-variant/20 p-6"></div>
+<div class="h-48 rounded-lg bg-surface-container-low border border-outline-variant/20 p-6"></div>
+<div class="h-48 rounded-lg bg-surface-container-low border border-outline-variant/20 p-6"></div>
+<div class="h-48 rounded-lg bg-surface-container-low border border-outline-variant/20 p-6"></div>
+<div class="h-48 rounded-lg bg-surface-container-low border border-outline-variant/20 p-6"></div>
+</main>
+</div>
+<!-- MODAL OVERLAY -->
+<div class="fixed inset-0 z-[100] flex items-center justify-center bg-[#040d0a]/60 backdrop-blur-sm p-4">
+<!-- MODAL DIALOG -->
+<div class="w-full max-w-[680px] glass-panel rounded-lg shadow-[0_20_60px_rgba(4,13,10,0.5),0_0_40px_rgba(16,185,129,0.15)] relative overflow-hidden flex flex-col max-h-[921px]">
+<!-- Close Button -->
+<button class="absolute top-6 right-8 text-on-surface-variant hover:text-on-surface transition-colors">
+<span class="material-symbols-outlined text-2xl">close</span>
+</button>
+<!-- Modal Header -->
+<div class="p-8 pb-4">
+<div class="flex items-center gap-4 mb-6">
+<div class="flex flex-col">
+<div class="flex items-center gap-3">
+<h1 class="text-3xl font-black bg-gradient-to-br from-[#10b981] to-[#34d399] bg-clip-text text-transparent font-headline tracking-tight">Spotify Premium</h1>
+<div class="flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-primary/10 border border-primary/20">
+<span class="w-1.5 h-1.5 rounded-full bg-primary animate-pulse"></span>
+<span class="text-[10px] font-mono font-bold text-primary tracking-widest">ACTIVE</span>
+</div>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-4 py-4 px-6 rounded-lg bg-surface-container-lowest/50 border border-outline-variant/10">
+<img class="w-12 h-12 rounded-full object-cover shadow-lg" data-alt="Spotify logo icon circular minimalist green and black color palette" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCqgX_fsTDv0G1p8PARlLASKR02J9kmw2zwjfaiTObjxxfk1WD6neLnpe7Ugm0qNHm6MZDLkiXx9gu_GfFVBjWBkyM7ZX5xEg9sOwD9n4wa77k_p7LWqwueR3Akg9AnXh5whwlzz535WCQaBGeCOyaJel36L2hUXwUqp83PsvWV8nsm-uhkpNEcBayZazEnuBSnBBZXXEx7caty0prrVU4MdVR9Bx15gIPkt0Khwb0NF2h2x6-JZ2jv0D9b5Xz1zmMVa82ZCWEEbMo"/>
+<div class="flex flex-col">
+<span class="font-mono text-sm tracking-widest text-on-surface-variant uppercase">Current Plan</span>
+<span class="font-mono text-lg font-bold text-on-surface tracking-tighter">$9.99/MONTH · NEXT: APR 22, 2026</span>
+</div>
+</div>
+</div>
+<!-- Modal Body (Scrollable) -->
+<div class="px-8 pb-8 overflow-y-auto space-y-8">
+<!-- Payment History Section -->
+<section>
+<h3 class="font-mono text-xs tracking-widest text-on-surface-variant uppercase mb-4 flex items-center gap-2">
+<span class="w-1 h-1 bg-primary rounded-full"></span> Payment History
+                    </h3>
+<div class="space-y-2">
+<!-- Invoice Rows -->
+<div class="flex items-center justify-between p-3 px-4 glass-panel rounded-full border-none bg-surface-container-high/30 hover:bg-surface-container-high/50 transition-colors group">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors">receipt_long</span>
+<span class="font-mono text-sm">MAR 22, 2026</span>
+</div>
+<div class="flex items-center gap-6">
+<span class="font-mono text-sm font-bold">$9.99</span>
+<span class="text-[10px] font-mono font-bold text-primary px-2 py-0.5 rounded-full bg-primary/10 border border-primary/20">PAID</span>
+</div>
+</div>
+<div class="flex items-center justify-between p-3 px-4 glass-panel rounded-full border-none bg-surface-container-high/30 hover:bg-surface-container-high/50 transition-colors">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-on-surface-variant">receipt_long</span>
+<span class="font-mono text-sm">FEB 22, 2026</span>
+</div>
+<div class="flex items-center gap-6">
+<span class="font-mono text-sm font-bold">$9.99</span>
+<span class="text-[10px] font-mono font-bold text-primary px-2 py-0.5 rounded-full bg-primary/10 border border-primary/20">PAID</span>
+</div>
+</div>
+<div class="flex items-center justify-between p-3 px-4 glass-panel rounded-full border-none bg-surface-container-high/30 hover:bg-surface-container-high/50 transition-colors">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-on-surface-variant">receipt_long</span>
+<span class="font-mono text-sm">JAN 22, 2026</span>
+</div>
+<div class="flex items-center gap-6">
+<span class="font-mono text-sm font-bold">$9.99</span>
+<span class="text-[10px] font-mono font-bold text-primary px-2 py-0.5 rounded-full bg-primary/10 border border-primary/20">PAID</span>
+</div>
+</div>
+<div class="flex items-center justify-between p-3 px-4 glass-panel rounded-full border-none bg-surface-container-high/30 opacity-60">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-on-surface-variant">receipt_long</span>
+<span class="font-mono text-sm">DEC 22, 2025</span>
+</div>
+<div class="flex items-center gap-6">
+<span class="font-mono text-sm font-bold">$9.99</span>
+<span class="text-[10px] font-mono font-bold text-primary px-2 py-0.5 rounded-full bg-primary/10 border border-primary/20">PAID</span>
+</div>
+</div>
+<div class="flex items-center justify-between p-3 px-4 glass-panel rounded-full border-none bg-surface-container-high/30 opacity-40">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-on-surface-variant">receipt_long</span>
+<span class="font-mono text-sm">NOV 22, 2025</span>
+</div>
+<div class="flex items-center gap-6">
+<span class="font-mono text-sm font-bold">$9.99</span>
+<span class="text-[10px] font-mono font-bold text-primary px-2 py-0.5 rounded-full bg-primary/10 border border-primary/20">PAID</span>
+</div>
+</div>
+<div class="flex items-center justify-between p-3 px-4 glass-panel rounded-full border-none bg-surface-container-high/30 opacity-20">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-on-surface-variant">receipt_long</span>
+<span class="font-mono text-sm">OCT 22, 2025</span>
+</div>
+<div class="flex items-center gap-6">
+<span class="font-mono text-sm font-bold">$9.99</span>
+<span class="text-[10px] font-mono font-bold text-primary px-2 py-0.5 rounded-full bg-primary/10 border border-primary/20">PAID</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Metadata Grid Section -->
+<section class="grid grid-cols-2 gap-4">
+<div class="p-4 rounded-lg bg-surface-container-low/50 border border-outline-variant/10">
+<span class="block font-mono text-[10px] tracking-widest text-on-surface-variant uppercase mb-1">Started</span>
+<span class="font-mono text-sm font-bold text-on-surface">Oct 22, 2025</span>
+</div>
+<div class="p-4 rounded-lg bg-surface-container-low/50 border border-outline-variant/10">
+<span class="block font-mono text-[10px] tracking-widest text-on-surface-variant uppercase mb-1">Card Used</span>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-xs">credit_card</span>
+<span class="font-mono text-sm font-bold text-on-surface">Physical •••2049</span>
+</div>
+</div>
+<div class="p-4 rounded-lg bg-surface-container-low/50 border border-outline-variant/10">
+<span class="block font-mono text-[10px] tracking-widest text-on-surface-variant uppercase mb-1">Billing Cycle</span>
+<span class="font-mono text-sm font-bold text-on-surface">Monthly</span>
+</div>
+<div class="p-4 rounded-lg bg-surface-container-low/50 border border-outline-variant/10">
+<span class="block font-mono text-[10px] tracking-widest text-on-surface-variant uppercase mb-1">Total Paid</span>
+<span class="font-mono text-sm font-bold bg-gradient-to-br from-[#10b981] to-[#34d399] bg-clip-text text-transparent">$59.94</span>
+</div>
+</section>
+</div>
+<!-- Bottom Action Row -->
+<div class="p-8 pt-4 flex items-center justify-between bg-surface-container-lowest/40 backdrop-blur-md border-t border-outline-variant/10">
+<button class="font-mono text-xs font-bold tracking-widest text-on-surface-variant hover:text-on-surface transition-colors">
+                    CLOSE
+                </button>
+<div class="flex items-center gap-3">
+<button class="px-6 py-3 rounded-full font-mono text-xs font-bold tracking-widest text-on-secondary-fixed bg-secondary hover:brightness-110 active:scale-95 transition-all">
+                        PAUSE
+                    </button>
+<button class="flex items-center gap-2 px-6 py-3 rounded-full font-mono text-xs font-bold tracking-widest text-on-tertiary-container bg-tertiary-container border border-tertiary/20 hover:brightness-110 active:scale-95 transition-all">
+                        CANCEL SUBSCRIPTION <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</body></html>

@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Emerald Pulse | Institutional Onboarding</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&amp;family=JetBrains+Mono:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "secondary-fixed-dim": "#57edb1",
+                    "on-primary": "#005a3c",
+                    "on-primary-fixed": "#00452d",
+                    "surface-container-high": "#15221e",
+                    "on-error-container": "#ffa8a3",
+                    "secondary-fixed": "#68fcbf",
+                    "surface-container-highest": "#1a2924",
+                    "surface-dim": "#06100d",
+                    "secondary": "#68fcbf",
+                    "tertiary-container": "#f8a010",
+                    "on-tertiary-container": "#4a2c00",
+                    "on-error": "#490006",
+                    "tertiary": "#ffb148",
+                    "surface-bright": "#1f2f2a",
+                    "primary-container": "#06b77f",
+                    "tertiary-fixed-dim": "#e79400",
+                    "tertiary-dim": "#e79400",
+                    "on-tertiary": "#573500",
+                    "primary": "#69f6b8",
+                    "primary-fixed-dim": "#58e7ab",
+                    "error": "#ff716c",
+                    "on-surface": "#f0fcf6",
+                    "background": "#06100d",
+                    "outline": "#6c7873",
+                    "on-secondary-container": "#e0ffec",
+                    "surface-container-lowest": "#000000",
+                    "tertiary-fixed": "#f8a010",
+                    "primary-dim": "#58e7ab",
+                    "inverse-primary": "#006d4a",
+                    "surface-variant": "#1a2924",
+                    "on-secondary-fixed": "#004931",
+                    "surface-tint": "#69f6b8",
+                    "primary-fixed": "#69f6b8",
+                    "on-secondary": "#005e40",
+                    "outline-variant": "#3f4a46",
+                    "on-primary-container": "#002919",
+                    "error-dim": "#d7383b",
+                    "secondary-container": "#006c4b",
+                    "error-container": "#9f0519",
+                    "on-secondary-fixed-variant": "#006948",
+                    "on-background": "#f0fcf6",
+                    "on-tertiary-fixed": "#2a1700",
+                    "on-tertiary-fixed-variant": "#563400",
+                    "secondary-dim": "#57edb1",
+                    "surface": "#06100d",
+                    "inverse-surface": "#f0fcf6",
+                    "on-primary-fixed-variant": "#006544",
+                    "surface-container-low": "#0a1612",
+                    "inverse-on-surface": "#4c5753",
+                    "on-surface-variant": "#a2aea8",
+                    "surface-container": "#0f1c18"
+            },
+            "borderRadius": {
+                    "DEFAULT": "1rem",
+                    "lg": "2rem",
+                    "xl": "3rem",
+                    "full": "9999px"
+            },
+            "fontFamily": {
+                    "headline": ["Inter"],
+                    "body": ["Inter"],
+                    "label": ["Inter"],
+                    "mono": ["JetBrains Mono"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; background-color: #06100d; overflow: hidden; }
+        .font-jetbrains-mono { font-family: 'JetBrains Mono', monospace; }
+        .glass-modal {
+            background: rgba(44,55,51,0.4);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(16,185,129,0.08);
+        }
+        .signature-gradient {
+            background: linear-gradient(135deg, #10b981 0%, #34d399 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .atmospheric-blob {
+            position: fixed;
+            width: 600px;
+            height: 600px;
+            border-radius: 50%;
+            filter: blur(120px);
+            opacity: 0.08;
+            pointer-events: none;
+            z-index: 0;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background">
+<!-- Background Atmospheric Elements -->
+<div class="atmospheric-blob bg-primary top-[-200px] left-[-100px]"></div>
+<div class="atmospheric-blob bg-secondary bottom-[-200px] right-[-100px]"></div>
+<!-- UI Shell: TopNavBar (Background State) -->
+<nav class="fixed top-0 w-full h-[64px] z-50 bg-[#2c3733]/40 backdrop-blur-xl border-b border-[#10b981]/10 shadow-[0_0_20px_rgba(16,185,129,0.05)] opacity-40 grayscale-[0.5]">
+<div class="flex items-center justify-between px-8 max-w-[1280px] mx-auto w-full h-full">
+<span class="text-xl font-bold bg-gradient-to-r from-[#10b981] to-[#34d399] bg-clip-text text-transparent">Emerald Pulse</span>
+<div class="hidden md:flex items-center gap-8 font-inter tracking-tight">
+<a class="text-[#d9e5df]/60 hover:text-[#d9e5df] transition-colors" href="#">Dashboard</a>
+<a class="text-[#d9e5df]/60 hover:text-[#d9e5df] transition-colors" href="#">Ledger</a>
+<a class="text-[#d9e5df]/60 hover:text-[#d9e5df] transition-colors" href="#">Audits</a>
+<a class="text-[#d9e5df]/60 hover:text-[#d9e5df] transition-colors" href="#">Network</a>
+</div>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-[#d9e5df]/60">notifications</span>
+<button class="bg-[#06b77f] text-[#002919] px-4 py-1.5 rounded-lg text-xs font-bold">INSTITUTIONAL PORTAL</button>
+</div>
+</div>
+</nav>
+<!-- Background Content Layer (Blurred Registration Page) -->
+<main class="pt-32 px-8 max-w-[1280px] mx-auto blur-md opacity-30 select-none">
+<header class="mb-12">
+<h1 class="text-6xl font-extrabold tracking-tighter signature-gradient mb-4">Institutional Enrollment</h1>
+<p class="text-on-surface-variant text-xl max-w-2xl">Initialize your organization's digital footprint on the living ledger. Complete the regulatory framework to enable institutional-grade custody.</p>
+</header>
+<div class="grid grid-cols-3 gap-8">
+<div class="h-48 bg-surface-container-low rounded-lg p-6 flex flex-col justify-between border border-outline-variant/10">
+<div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined text-primary">domain</span>
+</div>
+<div>
+<div class="text-on-surface-variant text-sm font-jetbrains-mono">ENTITY_ID</div>
+<div class="text-2xl font-bold font-jetbrains-mono">0x4F92...B31</div>
+</div>
+</div>
+<div class="h-48 bg-surface-container-low rounded-lg p-6 border border-outline-variant/10">
+<div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mb-4">
+<span class="material-symbols-outlined text-primary">verified_user</span>
+</div>
+<div class="text-on-surface font-semibold mb-1">Compliance Status</div>
+<div class="text-on-surface-variant text-sm italic">Verification Pending...</div>
+</div>
+<div class="h-48 bg-surface-container-low rounded-lg p-6 border border-outline-variant/10">
+<div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mb-4">
+<span class="material-symbols-outlined text-primary">hub</span>
+</div>
+<div class="text-on-surface font-semibold mb-1">Network Access</div>
+<div class="text-on-surface-variant text-sm">Synchronizing ledger protocols</div>
+</div>
+</div>
+</main>
+<!-- Overlay Shadow/Blur -->
+<div class="fixed inset-0 bg-black/20 backdrop-blur-sm z-[60]"></div>
+<!-- Modal Container -->
+<div class="fixed inset-0 z-[70] flex items-center justify-center p-4">
+<div class="glass-modal w-full max-w-[720px] rounded-lg shadow-2xl p-8 flex flex-col gap-8 relative overflow-hidden">
+<!-- Modal Header -->
+<div class="flex justify-between items-start">
+<div class="flex flex-col gap-1">
+<h2 class="text-3xl font-extrabold signature-gradient">Upload Documents</h2>
+<p class="text-on-surface-variant text-sm">Maintain the integrity of the ledger with institutional proof.</p>
+</div>
+<div class="flex flex-col items-end">
+<div class="font-jetbrains-mono text-primary text-sm font-bold mb-2">3/6 COMPLETE</div>
+<div class="w-32 h-1.5 bg-surface-container-highest rounded-full overflow-hidden">
+<div class="bg-primary w-1/2 h-full"></div>
+</div>
+</div>
+</div>
+<!-- Document Grid -->
+<div class="grid grid-cols-2 gap-4">
+<!-- 1. Certificate of Inc (UPLOADED) -->
+<div class="p-4 bg-primary/5 border border-primary/20 rounded-lg flex items-center gap-4 group transition-all">
+<div class="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">description</span>
+</div>
+<div class="flex-1 overflow-hidden">
+<div class="text-on-surface text-sm font-semibold truncate">Certificate of Inc</div>
+<div class="text-primary text-[10px] font-jetbrains-mono uppercase flex items-center gap-1">
+<span class="material-symbols-outlined text-[12px]">check_circle</span>
+                            Uploaded
+                        </div>
+</div>
+<button class="text-primary/40 hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-sm">visibility</span>
+</button>
+</div>
+<!-- 2. M&A (UPLOADED) -->
+<div class="p-4 bg-primary/5 border border-primary/20 rounded-lg flex items-center gap-4 group transition-all">
+<div class="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">description</span>
+</div>
+<div class="flex-1 overflow-hidden">
+<div class="text-on-surface text-sm font-semibold truncate">M&amp;A</div>
+<div class="text-primary text-[10px] font-jetbrains-mono uppercase flex items-center gap-1">
+<span class="material-symbols-outlined text-[12px]">check_circle</span>
+                            Uploaded
+                        </div>
+</div>
+<button class="text-primary/40 hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-sm">visibility</span>
+</button>
+</div>
+<!-- 3. Regulatory License (UPLOADED) -->
+<div class="p-4 bg-primary/5 border border-primary/20 rounded-lg flex items-center gap-4 group transition-all">
+<div class="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">verified</span>
+</div>
+<div class="flex-1 overflow-hidden">
+<div class="text-on-surface text-sm font-semibold truncate">Regulatory License</div>
+<div class="text-primary text-[10px] font-jetbrains-mono uppercase flex items-center gap-1">
+<span class="material-symbols-outlined text-[12px]">check_circle</span>
+                            Uploaded
+                        </div>
+</div>
+<button class="text-primary/40 hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-sm">visibility</span>
+</button>
+</div>
+<!-- 4. Audited Financials (REQUIRED) -->
+<div class="p-4 border-2 border-dashed border-tertiary/30 hover:border-tertiary/60 rounded-lg flex items-center gap-4 cursor-pointer transition-all bg-tertiary/5">
+<div class="w-10 h-10 bg-tertiary/10 rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-tertiary">upload</span>
+</div>
+<div class="flex-1">
+<div class="text-on-surface text-sm font-semibold">Audited Financials</div>
+<div class="text-tertiary text-[10px] font-jetbrains-mono uppercase font-bold tracking-tighter">TAP TO UPLOAD</div>
+</div>
+</div>
+<!-- 5. Proof of Address (REQUIRED) -->
+<div class="p-4 border-2 border-dashed border-tertiary/30 hover:border-tertiary/60 rounded-lg flex items-center gap-4 cursor-pointer transition-all bg-tertiary/5">
+<div class="w-10 h-10 bg-tertiary/10 rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-tertiary">home_pin</span>
+</div>
+<div class="flex-1">
+<div class="text-on-surface text-sm font-semibold">Proof of Address</div>
+<div class="text-tertiary text-[10px] font-jetbrains-mono uppercase font-bold tracking-tighter">TAP TO UPLOAD</div>
+</div>
+</div>
+<!-- 6. AML Policy (REQUIRED) -->
+<div class="p-4 border-2 border-dashed border-tertiary/30 hover:border-tertiary/60 rounded-lg flex items-center gap-4 cursor-pointer transition-all bg-tertiary/5">
+<div class="w-10 h-10 bg-tertiary/10 rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-tertiary">policy</span>
+</div>
+<div class="flex-1">
+<div class="text-on-surface text-sm font-semibold">AML Policy</div>
+<div class="text-tertiary text-[10px] font-jetbrains-mono uppercase font-bold tracking-tighter">TAP TO UPLOAD</div>
+</div>
+</div>
+</div>
+<!-- Modal Footer -->
+<div class="flex items-center justify-between pt-4 border-t border-outline-variant/10">
+<button class="text-on-surface-variant hover:text-on-surface flex items-center gap-2 text-sm font-semibold transition-colors">
+<span class="material-symbols-outlined text-sm">cancel</span>
+                    Cancel Onboarding
+                </button>
+<button class="bg-primary-container/20 text-on-primary-container/40 px-8 py-3 rounded-lg font-bold flex items-center gap-2 cursor-not-allowed border border-primary-container/10" disabled="">
+                    SUBMIT FOR REVIEW
+                    <span class="material-symbols-outlined">arrow_forward</span>
+</button>
+</div>
+<!-- Absolute Texture Detail -->
+<div class="absolute top-0 right-0 p-4 pointer-events-none opacity-20">
+<span class="font-jetbrains-mono text-[8px] text-primary">AUTH_STATUS: INCOMPLETE</span>
+</div>
+</div>
+</div>
+<!-- UI Shell: Footer -->
+<footer class="fixed bottom-0 w-full h-8 z-50 bg-[#06100d] border-t border-[#10b981]/20 flex items-center justify-between px-8 font-jetbrains-mono text-[10px] uppercase tracking-widest text-[#d9e5df]/50 select-none">
+<span class="text-[#10b981]">© 2024 Emerald Pulse Living Ledger</span>
+<div class="flex gap-6">
+<span class="hover:text-[#ffb148] transition-colors">Network: Stable</span>
+<span class="hover:text-[#ffb148] transition-colors">Sync: 100%</span>
+<span class="hover:text-[#ffb148] transition-colors">Latency: 12ms</span>
+<span class="hover:text-[#ffb148] transition-colors">Uptime: 99.9%</span>
+</div>
+</footer>
+</body></html>

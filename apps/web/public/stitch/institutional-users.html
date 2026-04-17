@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Emerald Pulse | Institutional Users</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&amp;family=JetBrains+Mono:wght@400;700&amp;family=Space+Grotesk:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-primary-fixed": "#002113",
+                        "secondary-container": "#00bd85",
+                        "tertiary-fixed-dim": "#ffb95f",
+                        "on-secondary-fixed-variant": "#005137",
+                        "on-error": "#690005",
+                        "on-surface": "#d9e5df",
+                        "inverse-surface": "#d9e5df",
+                        "outline-variant": "#3c4a42",
+                        "tertiary": "#ffb95f",
+                        "error": "#ffb4ab",
+                        "on-error-container": "#ffdad6",
+                        "on-primary-container": "#00422b",
+                        "inverse-primary": "#006c49",
+                        "inverse-on-surface": "#28332f",
+                        "primary-fixed": "#6ffbbe",
+                        "on-tertiary-fixed-variant": "#653e00",
+                        "secondary": "#45dfa4",
+                        "on-background": "#d9e5df",
+                        "primary-container": "#10b981",
+                        "tertiary-fixed": "#ffddb8",
+                        "surface-tint": "#4edea3",
+                        "error-container": "#93000a",
+                        "secondary-fixed": "#68fcbf",
+                        "surface-dim": "#0b1512",
+                        "on-primary-fixed-variant": "#005236",
+                        "background": "#0b1512",
+                        "primary-fixed-dim": "#4edea3",
+                        "surface": "#0b1512",
+                        "on-tertiary-container": "#523200",
+                        "surface-container-low": "#131e1a",
+                        "on-surface-variant": "#bbcabf",
+                        "on-tertiary": "#472a00",
+                        "secondary-fixed-dim": "#45dfa4",
+                        "tertiary-container": "#e29100",
+                        "surface-container": "#17221e",
+                        "on-primary": "#003824",
+                        "surface-bright": "#313b38",
+                        "surface-container-high": "#222c29",
+                        "surface-container-highest": "#2c3733",
+                        "outline": "#86948a",
+                        "surface-variant": "#2c3733",
+                        "on-secondary": "#003825",
+                        "surface-container-lowest": "#06100d",
+                        "on-secondary-fixed": "#002114",
+                        "on-tertiary-fixed": "#2a1700",
+                        "primary": "#4edea3",
+                        "on-secondary-container": "#00452e"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "1rem",
+                        "lg": "2rem",
+                        "xl": "3rem",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Inter"],
+                        "body": ["Inter"],
+                        "label": ["Space Grotesk"],
+                        "mono": ["JetBrains Mono"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            background-color: #040d0a;
+            color: #d9e5df;
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .bioluminescent-blob {
+            filter: blur(120px);
+            opacity: 0.15;
+            z-index: -1;
+        }
+        .glass-panel {
+            background: rgba(44, 55, 51, 0.4);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(16, 185, 129, 0.08);
+        }
+        .technical-grid {
+            background-image: linear-gradient(rgba(16, 185, 129, 0.03) 1px, transparent 1px),
+                              linear-gradient(90deg, rgba(16, 185, 129, 0.03) 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+    </style>
+</head>
+<body class="min-h-screen relative">
+<!-- Ambient Background -->
+<div class="fixed inset-0 technical-grid pointer-events-none"></div>
+<div class="fixed top-[-10%] left-[-10%] w-[600px] h-[600px] bg-primary rounded-full bioluminescent-blob"></div>
+<div class="fixed bottom-[-10%] right-[-10%] w-[500px] h-[500px] bg-secondary rounded-full bioluminescent-blob"></div>
+<!-- Top Navigation (Shared Component) -->
+<header class="sticky top-0 z-50 w-full bg-[#17221e]/40 backdrop-blur-xl border-b border-[#10b981]/10 shadow-[0_0_20px_rgba(16,185,129,0.05)]">
+<div class="flex justify-between items-center w-full px-8 h-[64px] max-w-[1280px] mx-auto">
+<div class="flex items-center gap-8">
+<span class="text-lg font-black tracking-tighter text-[#10b981]">INSTITUTIONAL PORTAL</span>
+<nav class="hidden md:flex gap-6">
+<a class="font-['Inter'] font-semibold tracking-tight text-[#d9e5df]/60 hover:text-[#d9e5df] transition-colors" href="#">Dashboard</a>
+<a class="font-['Inter'] font-semibold tracking-tight text-[#d9e5df]/60 hover:text-[#d9e5df] transition-colors" href="#">Analytics</a>
+<a class="font-['Inter'] font-semibold tracking-tight text-[#4edea3] border-b-2 border-[#4edea3] pb-1" href="#">Assets</a>
+<a class="font-['Inter'] font-semibold tracking-tight text-[#d9e5df]/60 hover:text-[#d9e5df] transition-colors" href="#">Research</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 text-[#d9e5df]/60 hover:text-[#10b981] transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="p-2 text-[#d9e5df]/60 hover:text-[#10b981] transition-colors">
+<span class="material-symbols-outlined">settings</span>
+</button>
+<div class="w-8 h-8 rounded-full overflow-hidden border border-[#10b981]/30">
+<img alt="Administrator Profile" class="w-full h-full object-cover" data-alt="Close up portrait of a professional male executive in a dark tech-focused environment with subtle green lighting reflections" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBQjDFobGaEtIJEEdWkcpu7EG7X2nU8GRybCnZ5o0QX5qtycJyOA39vtiCajACqZMq9MOOGAIV7SIkJKRVx6DTNm_fnnk2KnZeRklMBqUFbIHqSn-ipFjgR4CpTrMlKroWczsD2O6bJBsaFaeJhSldll2NahDqeEQWrI2MtSv_Kk1u64a4FM_AAqci9oorLXLdtrMUpj_WKSAE7QFiWT8WXRImGftAiaLtMqHqrtJMj7qkDNXK4TYhi4agIntnojB-AF8IBXgDqKng"/>
+</div>
+</div>
+</div>
+</header>
+<main class="max-w-[1280px] mx-auto px-8 py-12 relative">
+<!-- Header Section -->
+<div class="flex flex-col md:flex-row justify-between items-end gap-6 mb-12">
+<div class="space-y-2">
+<h1 class="text-5xl md:text-6xl font-black tracking-tighter bg-gradient-to-r from-[#10b981] to-[#34d399] bg-clip-text text-transparent">
+                    Institutional Users
+                </h1>
+<p class="font-mono text-xs tracking-[0.2em] text-on-surface-variant/70 uppercase">
+                    ROLES · DEPARTMENTS · APPROVAL THRESHOLDS
+                </p>
+</div>
+<div class="flex gap-4">
+<button class="bg-surface-variant hover:bg-surface-container-highest text-primary border border-primary/20 px-6 py-3 rounded-xl font-bold transition-all flex items-center gap-2">
+                    EXPORT ROSTER <span class="material-symbols-outlined text-sm">download</span>
+</button>
+<button class="bg-gradient-to-br from-primary to-primary-container text-on-primary-fixed px-6 py-3 rounded-xl font-black tracking-tight hover:scale-[1.02] active:scale-95 transition-all flex items-center gap-2">
+                    INVITE USER <span class="material-symbols-outlined">add</span>
+</button>
+</div>
+</div>
+<!-- Stats Row -->
+<div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-12">
+<div class="glass-panel p-6 rounded-lg relative group hover:bg-[#17221e]/60 transition-all">
+<div class="absolute top-4 right-4 font-mono text-[10px] text-primary/40">[ SYS: METRIC_01 ]</div>
+<p class="font-mono text-xs text-on-surface-variant/60 uppercase tracking-widest mb-1">Total Users</p>
+<p class="text-4xl font-black text-on-surface">28</p>
+</div>
+<div class="glass-panel p-6 rounded-lg relative group hover:bg-[#17221e]/60 transition-all">
+<div class="absolute top-4 right-4 font-mono text-[10px] text-primary/40">[ SYS: METRIC_02 ]</div>
+<p class="font-mono text-xs text-on-surface-variant/60 uppercase tracking-widest mb-1">Departments</p>
+<p class="text-4xl font-black text-on-surface">6</p>
+</div>
+<div class="glass-panel p-6 rounded-lg relative group hover:bg-[#17221e]/60 transition-all">
+<div class="absolute top-4 right-4 font-mono text-[10px] text-tertiary/40">[ SYS: METRIC_03 ]</div>
+<p class="font-mono text-xs text-on-surface-variant/60 uppercase tracking-widest mb-1">Pending Invites</p>
+<p class="text-4xl font-black text-tertiary">3</p>
+</div>
+<div class="glass-panel p-6 rounded-lg relative group hover:bg-[#17221e]/60 transition-all">
+<div class="absolute top-4 right-4 font-mono text-[10px] text-primary/40">[ SYS: METRIC_04 ]</div>
+<p class="font-mono text-xs text-on-surface-variant/60 uppercase tracking-widest mb-1">Active Now</p>
+<p class="text-4xl font-black text-secondary">12</p>
+</div>
+</div>
+<!-- Filter Section -->
+<div class="flex items-center gap-2 mb-8 overflow-x-auto pb-2 no-scrollbar">
+<span class="font-mono text-[10px] text-on-surface-variant/40 mr-4 tracking-widest">DEPT_FILTER:</span>
+<button class="px-6 py-2 rounded-full font-mono text-xs tracking-wider transition-all bg-surface-container-highest text-on-surface-variant hover:text-on-surface">ALL</button>
+<button class="px-6 py-2 rounded-full font-mono text-xs tracking-wider transition-all bg-surface-container-highest text-on-surface-variant hover:text-on-surface">EXECUTIVE</button>
+<button class="px-6 py-2 rounded-full font-mono text-xs tracking-wider transition-all bg-surface-container-highest text-on-surface-variant hover:text-on-surface">TRADING</button>
+<button class="px-6 py-2 rounded-full font-mono text-xs tracking-wider transition-all bg-surface-container-highest text-on-surface-variant hover:text-on-surface">TREASURY</button>
+<button class="px-6 py-2 rounded-full font-mono text-xs tracking-wider transition-all bg-primary text-on-primary-fixed font-bold shadow-[0_0_15px_rgba(16,185,129,0.2)]">COMPLIANCE</button>
+<button class="px-6 py-2 rounded-full font-mono text-xs tracking-wider transition-all bg-surface-container-highest text-on-surface-variant hover:text-on-surface">OPERATIONS</button>
+<button class="px-6 py-2 rounded-full font-mono text-xs tracking-wider transition-all bg-surface-container-highest text-on-surface-variant hover:text-on-surface">IT</button>
+</div>
+<!-- Users Table -->
+<div class="glass-panel rounded-xl overflow-hidden mb-20">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-lowest/50 border-b border-primary/10">
+<th class="p-6 font-mono text-[10px] uppercase tracking-widest text-on-surface-variant/50">Member</th>
+<th class="p-6 font-mono text-[10px] uppercase tracking-widest text-on-surface-variant/50">Dept</th>
+<th class="p-6 font-mono text-[10px] uppercase tracking-widest text-on-surface-variant/50">Role</th>
+<th class="p-6 font-mono text-[10px] uppercase tracking-widest text-on-surface-variant/50">Approval Tier</th>
+<th class="p-6 font-mono text-[10px] uppercase tracking-widest text-on-surface-variant/50">Last Seen</th>
+<th class="p-6 font-mono text-[10px] uppercase tracking-widest text-on-surface-variant/50">Status</th>
+<th class="p-6 font-mono text-[10px] uppercase tracking-widest text-on-surface-variant/50 text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="font-mono text-sm">
+<!-- Row 1 -->
+<tr class="hover:bg-primary/5 transition-colors border-b border-white/5 last:border-0 group">
+<td class="p-6">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full border border-primary/20 p-0.5">
+<img alt="User" class="w-full h-full rounded-full object-cover" data-alt="Portrait of a black male executive in his 40s looking professional and friendly, dark studio lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAQc7aCbWUqdHvFm3AiXmxWW9Zsh4fm5d5O0HBro6frP9dkFgUuw2e-Tol-fs5H6v2xSKWWTdpW8D1hD7AzSCLtlQWP-pOmL5ui4PX7wMZY4n5oVwYIwpRdvRRLSWvFOy3aqrYM1ciTns62TZHneOJiwv9MrCXB8la4CFWUzq-_G1DtmNcXs6SrjiSKYIx1h2qR_doO3FKy2amtjfXdGeH545u7bXFvzG0V5GLtofhk7Ni3j6GtIEoSyCWMY5WhUem9JZQ7Y-TCMSM"/>
+</div>
+<span class="font-headline font-bold text-on-surface tracking-tight">Joseph Obasi</span>
+</div>
+</td>
+<td class="p-6 text-on-surface-variant/80">EXEC</td>
+<td class="p-6 text-on-surface-variant/80">ADMIN</td>
+<td class="p-6"><span class="text-primary font-bold">$UNLIMITED</span></td>
+<td class="p-6 text-on-surface-variant/60">2m ago</td>
+<td class="p-6">
+<span class="flex items-center gap-2 text-primary font-bold text-[10px]"><span class="w-1.5 h-1.5 rounded-full bg-primary animate-pulse"></span> ACTIVE</span>
+</td>
+<td class="p-6 text-right">
+<div class="flex justify-end gap-3 opacity-40 group-hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined cursor-pointer hover:text-primary">edit</span>
+<span class="material-symbols-outlined cursor-pointer hover:text-primary">settings</span>
+<span class="material-symbols-outlined cursor-pointer hover:text-error">cancel</span>
+</div>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-primary/5 transition-colors border-b border-white/5 last:border-0 group">
+<td class="p-6">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full border border-primary/20 p-0.5">
+<img alt="User" class="w-full h-full rounded-full object-cover" data-alt="Portrait of an East Asian woman CFO in professional attire, soft cinematic green ambient lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC5s_nCi29-sUC3zLC3CbY1Tbypxs7fYICeVtreldKFzt-E6A87M9Ko_sh2EICHE-XTMOfzm7iOSrgdHZIaTAtZ-44NAllyZx76dzNbnt5I70j6f5yrhlyjoSLSNgBGG9ckODDBWRITDR2-2N8wT8vBhqVrS9sipyDCckqgoGpBzA6BOuir1DK8va02rEFFTV-bXXV1o5IXNgu8P2qm_D13FVAgGTx22Tfvjk8uqnwpOySq92Om-0swTN4R_Zcly2Fphj132XzcOdg"/>
+</div>
+<span class="font-headline font-bold text-on-surface tracking-tight">Sarah Chen</span>
+</div>
+</td>
+<td class="p-6 text-on-surface-variant/80">EXEC</td>
+<td class="p-6 text-on-surface-variant/80">CFO</td>
+<td class="p-6 text-on-surface">$100M</td>
+<td class="p-6 text-on-surface-variant/60">5m ago</td>
+<td class="p-6">
+<span class="flex items-center gap-2 text-primary font-bold text-[10px]"><span class="w-1.5 h-1.5 rounded-full bg-primary"></span> ACTIVE</span>
+</td>
+<td class="p-6 text-right">
+<div class="flex justify-end gap-3 opacity-40 group-hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined cursor-pointer hover:text-primary">edit</span>
+<span class="material-symbols-outlined cursor-pointer hover:text-primary">settings</span>
+<span class="material-symbols-outlined cursor-pointer hover:text-error">cancel</span>
+</div>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-primary/5 transition-colors border-b border-white/5 last:border-0 group">
+<td class="p-6">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full border border-primary/20 p-0.5">
+<img alt="User" class="w-full h-full rounded-full object-cover" data-alt="Portrait of a European man CRO in a dark business environment with neon green highlights" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDuXMaR9kemZI-KDRhL9AqyxM5mu3thetz3mfXxd5vitmabo1v0dV1nQtpa5kwg2Ao139_yGZ7y01CcLLGpXeJlCGMhNup0yg1JXYRaEBesscEaqp-vyMnLynCqhgpp63HUjRUNX5VCN0e4jgAWw9SPuFUv0VcmLM85bYTrYJph4tn29RkuvLfSPiThVtBg57Z1gz4HOPFb79W5T82JwihXAaqmLMH5r5ypQFlfRrM6xYGDBMICAh0j3YwSTCAJ5ny9QJ7n8Mu3VjA"/>
+</div>
+<span class="font-headline font-bold text-on-surface tracking-tight">Marcus Klein</span>
+</div>
+</td>
+<td class="p-6 text-on-surface-variant/80">EXEC</td>
+<td class="p-6 text-on-surface-variant/80">CRO</td>
+<td class="p-6 text-on-surface">$100M</td>
+<td class="p-6 text-on-surface-variant/60">1h ago</td>
+<td class="p-6">
+<span class="flex items-center gap-2 text-primary font-bold text-[10px]"><span class="w-1.5 h-1.5 rounded-full bg-primary"></span> ACTIVE</span>
+</td>
+<td class="p-6 text-right">
+<div class="flex justify-end gap-3 opacity-40 group-hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined cursor-pointer hover:text-primary">edit</span>
+<span class="material-symbols-outlined cursor-pointer hover:text-primary">settings</span>
+<span class="material-symbols-outlined cursor-pointer hover:text-error">cancel</span>
+</div>
+</td>
+</tr>
+<!-- Row 4 -->
+<tr class="hover:bg-primary/5 transition-colors border-b border-white/5 last:border-0 group">
+<td class="p-6">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full border border-tertiary/20 p-0.5">
+<img alt="User" class="w-full h-full rounded-full object-cover" data-alt="Close-up portrait of an Italian woman executive with focused expression, high tech corporate aesthetic" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD8SE5jzgSgjlivM-a2CK-fr5gm87m9s9hV0TqwQS8CLsGrN1eU1Tpb1o43SFKziQmbgt0_Q8LQAot1ulbLrxIoXFXJpY0Za8fgzpmXKBFZs5JoOV8EG3fKfHEFPjR8nguynJk2miwhKmX0jrLbqtN3K5C0xmfjwAV2fdS0uptePSa4uUHvMmliKk0BQzFjTMCNPWsMtKJZDA2hXYIAJVL3OR6fcrAycob7FovEX9CpVr52Dv5v4r78Dcby-xO9ju7lcQeISOB9HkM"/>
+</div>
+<span class="font-headline font-bold text-on-surface tracking-tight">Elena Rossi</span>
+</div>
+</td>
+<td class="p-6 text-on-surface-variant/80">COMPLIANCE</td>
+<td class="p-6 text-on-surface-variant/80">CCO</td>
+<td class="p-6 text-tertiary font-bold">READ-ONLY</td>
+<td class="p-6 text-on-surface-variant/60">12m ago</td>
+<td class="p-6">
+<span class="flex items-center gap-2 text-primary font-bold text-[10px]"><span class="w-1.5 h-1.5 rounded-full bg-primary"></span> ACTIVE</span>
+</td>
+<td class="p-6 text-right">
+<div class="flex justify-end gap-3 opacity-40 group-hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined cursor-pointer hover:text-primary">edit</span>
+<span class="material-symbols-outlined cursor-pointer hover:text-primary">settings</span>
+<span class="material-symbols-outlined cursor-pointer hover:text-error">cancel</span>
+</div>
+</td>
+</tr>
+<!-- Row 5 -->
+<tr class="hover:bg-primary/5 transition-colors border-b border-white/5 last:border-0 group">
+<td class="p-6">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full border border-primary/20 p-0.5">
+<img alt="User" class="w-full h-full rounded-full object-cover" data-alt="Portrait of an Indian woman treasurer, professional and confident, bioluminescent background aesthetic" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBbPlo3W40MBEFR9Duqh2qmroPqOMmC9mMuVL_emNBQQWqqxTW4zFK8tDtlZrlLBsEpq9GHvGfaoqmPfYLbk-JPl-bze8xlPT3d3WxBB6CqRaodYQfNTATZGD1tXMw-OrZA0MbuCH2nMsNtwewx9B68ShiqGVpq1CHh82tIgf6y1ShInsbRRUp5UA-5Lke4VtdXf7kwJaLgAOyv8uVJ0Zr1WUCjpNP-GsQ4BKMZWh8Mx35SQdPnkO91E_DL4-jm8UNWfkYyx0YZOMg"/>
+</div>
+<span class="font-headline font-bold text-on-surface tracking-tight">Priya Patel</span>
+</div>
+</td>
+<td class="p-6 text-on-surface-variant/80">TREASURY</td>
+<td class="p-6 text-on-surface-variant/80">TREASURER</td>
+<td class="p-6 text-primary">$25M</td>
+<td class="p-6 text-on-surface-variant/60">3h ago</td>
+<td class="p-6">
+<span class="flex items-center gap-2 text-primary font-bold text-[10px]"><span class="w-1.5 h-1.5 rounded-full bg-primary"></span> ACTIVE</span>
+</td>
+<td class="p-6 text-right">
+<div class="flex justify-end gap-3 opacity-40 group-hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined cursor-pointer hover:text-primary">edit</span>
+<span class="material-symbols-outlined cursor-pointer hover:text-primary">settings</span>
+<span class="material-symbols-outlined cursor-pointer hover:text-error">cancel</span>
+</div>
+</td>
+</tr>
+<!-- Row 6 -->
+<tr class="hover:bg-primary/5 transition-colors border-b border-white/5 last:border-0 group">
+<td class="p-6">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full border border-primary/20 p-0.5">
+<img alt="User" class="w-full h-full rounded-full object-cover" data-alt="Headshot of a West African male head trader, serious expression, technical dark lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBZa-dkxn6DVdPVAevhaPgp7yC72TTg-H5XRv7a4gwrkHK-u1K7l-so44GfcrFIfklM-2uTVVun4g6bvfqROL3A2bGcqvDEeI5P1YF_e1mF2nKKsfRZv_WZyEERq6ylNrQnEab6GjY_WDesOqGaGiZfmQX66LXotzQZ5HAdSNkD87xLoWSu0STHuFqIYSAeYY6Mtzm4z3EERHuwC4lB_uQGG19h1AdoX0Ia02oljjX0XJvX2vVtywqIROXUJwbNzx1QFNTQc0tEmCE"/>
+</div>
+<span class="font-headline font-bold text-on-surface tracking-tight">David Osei</span>
+</div>
+</td>
+<td class="p-6 text-on-surface-variant/80">TRADING</td>
+<td class="p-6 text-on-surface-variant/80">HEAD TRADER</td>
+<td class="p-6 text-primary">$10M</td>
+<td class="p-6 text-on-surface-variant/60">1m ago</td>
+<td class="p-6">
+<span class="flex items-center gap-2 text-primary font-bold text-[10px]"><span class="w-1.5 h-1.5 rounded-full bg-primary animate-pulse"></span> ACTIVE</span>
+</td>
+<td class="p-6 text-right">
+<div class="flex justify-end gap-3 opacity-40 group-hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined cursor-pointer hover:text-primary">edit</span>
+<span class="material-symbols-outlined cursor-pointer hover:text-primary">settings</span>
+<span class="material-symbols-outlined cursor-pointer hover:text-error">cancel</span>
+</div>
+</td>
+</tr>
+<!-- Row 7 -->
+<tr class="hover:bg-primary/5 transition-colors border-b border-white/5 last:border-0 group">
+<td class="p-6">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full border border-outline/20 p-0.5">
+<img alt="User" class="w-full h-full rounded-full object-cover" data-alt="Chinese male trader in front of digital displays, neon green glow reflections on face" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB_Tl7gWpz3SRMd8vXtJiVO5NU8RawuPU5L6Zp9jq2XGgbZcD19OcgfzwdqrYsqeBO4bpHgwwREMlAFR3CpXCfco470I18aApuVMmKL8sGukhJNPkPV4uxJlb2lN6m4pMQdqnzKQ_EUfeVIJXI-ClJNBDCoxIMUAtKA86uuFST7vCSqIJYku0eD17b4ENpVsgIKgFp1kvl1PKUMAJhF7Yv66ivlkULgSiKbXowooKo14z-9cTbgqrcLR3FWHXOn2nBlRo16cukSi_w"/>
+</div>
+<span class="font-headline font-bold text-on-surface tracking-tight">Chen Wei</span>
+</div>
+</td>
+<td class="p-6 text-on-surface-variant/80">TRADING</td>
+<td class="p-6 text-on-surface-variant/80">TRADER</td>
+<td class="p-6 text-on-surface-variant/60">$2M</td>
+<td class="p-6 text-on-surface-variant/60">30m ago</td>
+<td class="p-6">
+<span class="flex items-center gap-2 text-primary font-bold text-[10px]"><span class="w-1.5 h-1.5 rounded-full bg-primary"></span> ACTIVE</span>
+</td>
+<td class="p-6 text-right">
+<div class="flex justify-end gap-3 opacity-40 group-hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined cursor-pointer hover:text-primary">edit</span>
+<span class="material-symbols-outlined cursor-pointer hover:text-primary">settings</span>
+<span class="material-symbols-outlined cursor-pointer hover:text-error">cancel</span>
+</div>
+</td>
+</tr>
+<!-- Row 8 -->
+<tr class="hover:bg-primary/5 transition-colors border-b border-white/5 last:border-0 group">
+<td class="p-6">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full border border-tertiary/20 p-0.5 grayscale">
+<img alt="User" class="w-full h-full rounded-full object-cover" data-alt="Portrait of a young Korean woman auditor, muted lighting, calm and professional demeanor" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCPxNmCV-iFxv6usPjVpGpEZTGMmxjY2XqVqq0Tyq3iB6x_cxIHBjJ4xAXdHrQtaAWDKu7Y_NUU3GoFrQG7OofyZbVHQ3tUOz_D4axpthJleCWsUqQ0dLDjIlEh4DWEpKHMctCFg3A1DyfcrMolHeu4aCfPP2wPy0UFVhY0zfsFVzdKVzyaKz-AEwINYPlD3-tMpbkSjE3KyojQfmJD-H0LtrpIMJG5gaaHv4Dl1YpDkHwq5WebXOLrfRZMe_Wl25fpXutPPPZQbLU"/>
+</div>
+<span class="font-headline font-bold text-on-surface-variant/50 tracking-tight">Rachel Kim</span>
+</div>
+</td>
+<td class="p-6 text-on-surface-variant/40">COMPLIANCE</td>
+<td class="p-6 text-on-surface-variant/40">AUDITOR</td>
+<td class="p-6 text-tertiary/60 font-bold">READ-ONLY</td>
+<td class="p-6 text-on-surface-variant/30">NEVER</td>
+<td class="p-6">
+<span class="flex items-center gap-2 text-tertiary font-bold text-[10px] tracking-widest">INVITED</span>
+</td>
+<td class="p-6 text-right">
+<div class="flex justify-end gap-3 opacity-40 group-hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined cursor-pointer hover:text-primary">send</span>
+<span class="material-symbols-outlined cursor-pointer hover:text-error">delete</span>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</main>
+<!-- Side Navigation Theme Engine (Shared Component) -->
+<aside class="fixed right-0 top-0 h-full z-40 flex flex-col bg-[#17221e]/60 backdrop-blur-2xl w-80 border-l border-[#10b981]/10 shadow-[-10px_0_30px_rgba(11,21,18,0.5)] translate-x-full lg:translate-x-0 transition-transform duration-500 ease-in-out">
+<div class="p-8 space-y-6">
+<div class="space-y-1">
+<h2 class="text-[#4edea3] font-bold font-mono text-xs uppercase tracking-widest">THEME ENGINE</h2>
+<p class="font-['JetBrains_Mono'] text-[10px] uppercase tracking-widest text-[#d9e5df]/40">V3.4 Bioluminescent</p>
+</div>
+<div class="space-y-2">
+<div class="flex items-center gap-4 p-3 rounded-lg bg-[#10b981]/10 text-[#4edea3] border-r-2 border-[#4edea3] font-mono text-xs uppercase tracking-widest transition-all">
+<span class="material-symbols-outlined text-sm">palette</span>
+                    Visual Settings
+                </div>
+<div class="flex items-center gap-4 p-3 rounded-lg text-[#d9e5df]/40 hover:bg-[#2c3733] font-mono text-xs uppercase tracking-widest transition-all cursor-pointer">
+<span class="material-symbols-outlined text-sm">dns</span>
+                    Environment
+                </div>
+<div class="flex items-center gap-4 p-3 rounded-lg text-[#d9e5df]/40 hover:bg-[#2c3733] font-mono text-xs uppercase tracking-widest transition-all cursor-pointer">
+<span class="material-symbols-outlined text-sm">dynamic_feed</span>
+                    Data Feed
+                </div>
+<div class="flex items-center gap-4 p-3 rounded-lg text-[#d9e5df]/40 hover:bg-[#2c3733] font-mono text-xs uppercase tracking-widest transition-all cursor-pointer">
+<span class="material-symbols-outlined text-sm">verified_user</span>
+                    Security
+                </div>
+</div>
+<div class="pt-10 space-y-4">
+<div class="p-4 rounded-xl glass-panel bg-primary/5 border border-primary/10">
+<div class="flex items-center gap-3 mb-3">
+<img alt="System Operator" class="w-8 h-8 rounded-full border border-primary/40 object-cover" data-alt="Abstract cinematic portrait of a professional woman operator with green neon data reflections on her face" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCunuLmLa8hKUhFE-YhWdgKN2BtF72fOqcreSz9eaUo2_OanfFNuPYJj4yK4nKwSAhPd8YU22NtWYmiMLyDWj2OaG-_36FIGFzKrVSEb0-AO-FFOC9rUds5LbFS8QlVIOiMPQ5RRo2eCOgi1zanohIPg_P5aJy7491FisZliX4HrhmGrnU33_u4N5cbE-2mRnp4SBMdH1bDNpBDSxVcVvLjy3yf6qH8TTtt2QxsZLQ1lyuAo__9hpKoNas-FXyrQRki5SM-1Mj-9NE"/>
+<div>
+<p class="font-mono text-[10px] font-bold text-on-surface">SYS_ADMIN_01</p>
+<p class="font-mono text-[8px] text-primary/60 uppercase">ACTIVE PROTOCOL</p>
+</div>
+</div>
+<button class="w-full bg-primary text-on-primary-fixed py-2 rounded-lg font-black font-mono text-[10px] tracking-widest uppercase active:scale-95 transition-all">
+                        Apply Changes
+                    </button>
+</div>
+</div>
+</div>
+<div class="mt-auto p-8 border-t border-primary/5 space-y-2">
+<div class="flex items-center gap-4 p-2 text-[#d9e5df]/40 hover:text-primary transition-colors cursor-pointer">
+<span class="material-symbols-outlined text-sm">help</span>
+<span class="font-mono text-[10px] uppercase tracking-widest">Help</span>
+</div>
+<div class="flex items-center gap-4 p-2 text-[#d9e5df]/40 hover:text-primary transition-colors cursor-pointer">
+<span class="material-symbols-outlined text-sm">terminal</span>
+<span class="font-mono text-[10px] uppercase tracking-widest">Logs</span>
+</div>
+</div>
+</aside>
+<!-- Bottom Status Bar (Shared Component) -->
+<footer class="fixed bottom-0 left-0 w-full z-50 flex justify-center items-center gap-12 px-8 bg-[#0b1512]/80 backdrop-blur-md border-t border-[#10b981]/5 h-10">
+<div class="flex items-center gap-2 text-[#4edea3] font-['JetBrains_Mono'] text-[10px] font-bold">
+<span class="material-symbols-outlined text-sm">speed</span>
+            Latency: 14ms
+        </div>
+<div class="flex items-center gap-2 text-[#d9e5df]/50 font-['JetBrains_Mono'] text-[10px] font-bold hover:text-[#4edea3] transition-colors cursor-default">
+<span class="material-symbols-outlined text-sm">currency_bitcoin</span>
+            BTC: $64,201
+        </div>
+<div class="flex items-center gap-2 text-[#d9e5df]/50 font-['JetBrains_Mono'] text-[10px] font-bold hover:text-[#4edea3] transition-colors cursor-default">
+<span class="material-symbols-outlined text-sm">sync</span>
+            Sync: Live
+        </div>
+</footer>
+</body></html>

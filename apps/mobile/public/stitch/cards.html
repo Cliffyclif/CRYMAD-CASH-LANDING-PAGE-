@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Finance Archive - Cards</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&amp;family=JetBrains+Mono:wght@400;700&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "primary": "#4edea3",
+                    "surface-tint": "#4edea3",
+                    "on-primary-fixed": "#002113",
+                    "on-tertiary-fixed-variant": "#653e00",
+                    "secondary-container": "#00bd85",
+                    "surface-container-highest": "#2c3733",
+                    "primary-fixed-dim": "#4edea3",
+                    "on-error-container": "#ffdad6",
+                    "outline": "#86948a",
+                    "surface-container-high": "#222c29",
+                    "outline-variant": "#3c4a42",
+                    "on-tertiary-fixed": "#2a1700",
+                    "on-primary-container": "#00422b",
+                    "secondary-fixed-dim": "#45dfa4",
+                    "on-secondary-fixed-variant": "#005137",
+                    "on-secondary-container": "#00452e",
+                    "tertiary-container": "#e29100",
+                    "error": "#ffb4ab",
+                    "tertiary-fixed-dim": "#ffb95f",
+                    "primary-container": "#10b981",
+                    "on-tertiary-container": "#523200",
+                    "on-surface": "#d9e5df",
+                    "surface-container-lowest": "#06100d",
+                    "surface-dim": "#0b1512",
+                    "surface-container-low": "#131e1a",
+                    "background": "#0b1512",
+                    "on-secondary": "#003825",
+                    "on-tertiary": "#472a00",
+                    "on-background": "#d9e5df",
+                    "error-container": "#93000a",
+                    "tertiary-fixed": "#ffddb8",
+                    "surface": "#0b1512",
+                    "primary-fixed": "#6ffbbe",
+                    "surface-container": "#17221e",
+                    "secondary": "#45dfa4",
+                    "secondary-fixed": "#68fcbf",
+                    "on-error": "#690005",
+                    "on-surface-variant": "#bbcabf",
+                    "on-primary-fixed-variant": "#005236",
+                    "surface-variant": "#2c3733",
+                    "surface-bright": "#313b38",
+                    "on-secondary-fixed": "#002114",
+                    "inverse-primary": "#006c49",
+                    "inverse-surface": "#d9e5df",
+                    "tertiary": "#ffb95f",
+                    "on-primary": "#003824",
+                    "inverse-on-surface": "#28332f"
+            },
+            "borderRadius": {
+                    "DEFAULT": "1rem",
+                    "lg": "2rem",
+                    "xl": "3rem",
+                    "full": "9999px"
+            },
+            "fontFamily": {
+                    "headline": ["Inter"],
+                    "body": ["Inter"],
+                    "label": ["Inter"],
+                    "mono": ["JetBrains Mono"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .bg-living {
+            background-color: #040d0a;
+            position: relative;
+            overflow: hidden;
+        }
+        .blob {
+            position: absolute;
+            width: 150px;
+            height: 150px;
+            background: #10b981;
+            filter: blur(60px);
+            opacity: 0.15;
+            z-index: 0;
+        }
+        .energy-lines {
+            position: absolute;
+            inset: 0;
+            background-image: repeating-linear-gradient(45deg, transparent, transparent 40px, rgba(16, 185, 129, 0.03) 40px, rgba(16, 185, 129, 0.03) 41px);
+            z-index: 0;
+        }
+        .glass-panel {
+            background: rgba(44, 55, 51, 0.4);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(16, 185, 129, 0.08);
+        }
+        .mastercard-shimmer {
+            background: linear-gradient(135deg, #0b1512 0%, #10b981 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        .mastercard-shimmer::after {
+            content: "";
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            transform: rotate(30deg);
+            pointer-events: none;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-living font-body text-on-surface min-h-screen flex flex-col items-center select-none">
+<!-- Living Background Elements -->
+<div class="energy-lines"></div>
+<div class="blob top-[-20px] left-[-20px]"></div>
+<div class="blob bottom-[20%] right-[-40px] scale-150"></div>
+<div class="blob top-[40%] right-[10%] opacity-10"></div>
+<div class="blob bottom-0 left-[20%] scale-110"></div>
+<!-- Top App Bar -->
+<header class="fixed top-0 w-full px-6 py-4 flex items-center justify-between z-50 bg-emerald-950/40 backdrop-blur-[20px] rounded-b-[28px] border-b border-emerald-500/10 shadow-[0_0_40px_rgba(16,185,129,0.08)]">
+<div class="w-10 h-10 flex items-center justify-start hover:bg-emerald-500/10 transition-all duration-300 rounded-full cursor-pointer active:scale-90">
+<span class="material-symbols-outlined text-emerald-500">chevron_left</span>
+</div>
+<h1 class="font-['Inter'] font-extrabold uppercase tracking-widest bg-gradient-to-b from-[#10b981] to-[#34d399] bg-clip-text text-transparent text-lg">CARDS</h1>
+<div class="w-10 h-10 flex items-center justify-end hover:bg-emerald-500/10 transition-all duration-300 rounded-full cursor-pointer active:scale-90">
+<span class="material-symbols-outlined text-emerald-500">add</span>
+</div>
+</header>
+<!-- Main Canvas -->
+<main class="flex-1 w-full max-w-[390px] pt-24 pb-32 px-6 flex flex-col gap-8 relative z-10">
+<!-- KYC Progress -->
+<section class="glass-panel rounded-[24px] p-3 flex flex-col gap-3">
+<div class="flex justify-between items-center px-2">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[14px] text-primary" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span class="text-[10px] font-bold text-on-surface/80">IDENTITY</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[14px] text-primary" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span class="text-[10px] font-bold text-on-surface/80">ADDRESS</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[14px] text-tertiary animate-pulse">pending</span>
+<span class="text-[10px] font-bold text-tertiary">FINANCIAL</span>
+</div>
+</div>
+<div class="h-1 w-full bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full w-[72%] bg-gradient-to-r from-primary to-tertiary rounded-full"></div>
+</div>
+</section>
+<!-- Hero Card Visual -->
+<section class="flex flex-col items-center gap-6">
+<div class="relative w-full aspect-[340/215] max-w-[340px] perspective-1000">
+<div class="mastercard-shimmer w-full h-full rounded-[24px] p-6 flex flex-col justify-between shadow-[0_20px_50px_rgba(16,185,129,0.3)] border border-emerald-400/20 transform rotate-x-6">
+<div class="flex justify-between items-start">
+<div class="font-mono text-lg font-bold bg-gradient-to-br from-white to-emerald-200 bg-clip-text text-transparent italic tracking-tighter">
+                            CRYMAD CA$H
+                        </div>
+<span class="material-symbols-outlined text-white/80">contactless</span>
+</div>
+<div class="flex flex-col gap-1">
+<div class="font-mono text-[16px] tracking-[4px] text-white/90 drop-shadow-md">
+                            5421 •••• •••• 2049
+                        </div>
+</div>
+<div class="flex justify-between items-end">
+<div class="flex flex-col">
+<span class="text-[8px] uppercase tracking-widest text-emerald-100/50 mb-1">Card Holder</span>
+<span class="font-mono text-[12px] font-bold text-white uppercase">JOSEPH OBASI</span>
+</div>
+<div class="flex flex-col items-end gap-2">
+<span class="font-mono text-[10px] text-white/70">11/29</span>
+<div class="flex">
+<div class="w-6 h-6 rounded-full bg-[#eb001b]/80"></div>
+<div class="w-6 h-6 rounded-full bg-[#f79e1b]/80 -ml-3"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Card Shadow Glow -->
+<div class="absolute inset-0 bg-emerald-500/20 blur-[60px] -z-10 rounded-full opacity-50"></div>
+</div>
+<!-- Page Dots -->
+<div class="flex gap-2">
+<div class="w-4 h-1 bg-primary rounded-full"></div>
+<div class="w-1.5 h-1 bg-surface-container-highest rounded-full"></div>
+</div>
+<!-- Balance Pill -->
+<div class="glass-panel px-6 py-2 rounded-full border-emerald-500/20">
+<span class="font-mono text-emerald-400 text-sm font-bold tracking-tight">BALANCE: $2,450.00 USD</span>
+</div>
+</section>
+<!-- Action Buttons -->
+<section class="grid grid-cols-4 gap-2 w-full">
+<div class="flex flex-col items-center gap-2 group cursor-pointer active:scale-95 transition-transform">
+<div class="w-14 h-14 glass-panel rounded-full flex items-center justify-center group-hover:bg-emerald-500/10 border-emerald-500/20">
+<span class="material-symbols-outlined text-emerald-400">add_card</span>
+</div>
+<span class="font-mono text-[10px] text-emerald-100/60 uppercase">LOAD</span>
+</div>
+<div class="flex flex-col items-center gap-2 group cursor-pointer active:scale-95 transition-transform">
+<div class="w-14 h-14 glass-panel rounded-full flex items-center justify-center group-hover:bg-emerald-500/10 border-emerald-500/20">
+<span class="material-symbols-outlined text-emerald-400">lock_open</span>
+</div>
+<span class="font-mono text-[10px] text-emerald-100/60 uppercase">LOCK</span>
+</div>
+<div class="flex flex-col items-center gap-2 group cursor-pointer active:scale-95 transition-transform">
+<div class="w-14 h-14 glass-panel rounded-full flex items-center justify-center group-hover:bg-emerald-500/10 border-emerald-500/20">
+<span class="material-symbols-outlined text-emerald-400">bolt</span>
+</div>
+<span class="font-mono text-[10px] text-emerald-100/60 uppercase">ACTIVATE</span>
+</div>
+<div class="flex flex-col items-center gap-2 group cursor-pointer active:scale-95 transition-transform">
+<div class="w-14 h-14 glass-panel rounded-full flex items-center justify-center group-hover:bg-emerald-500/10 border-emerald-500/20">
+<span class="material-symbols-outlined text-emerald-400">info</span>
+</div>
+<span class="font-mono text-[10px] text-emerald-100/60 uppercase">DETAILS</span>
+</div>
+</section>
+<!-- Recent Transactions -->
+<section class="flex flex-col gap-4">
+<h2 class="font-headline font-extrabold text-sm uppercase tracking-[0.2em] bg-gradient-to-r from-emerald-500 to-emerald-200 bg-clip-text text-transparent px-2">Recent</h2>
+<div class="flex flex-col gap-2">
+<!-- Transaction Item -->
+<div class="glass-panel p-4 rounded-[20px] flex items-center justify-between border-emerald-500/5">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-surface-container-highest flex items-center justify-center overflow-hidden">
+<img class="w-full h-full object-cover opacity-80" data-alt="spotify logo emblem minimal green and black" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAHy-ckDhuM2_phGypLEbRCDKpwOy1VOfdYUHsU1oNARcE7M96dxTN8I0oeNBBWhnhtAFkTujJQetGffFk3elIm4fng6Naztnq8boyvf2sqZ9JZCjhNSk0XYWD7S4M8TpSoCclcHngmjlHSD77m20xtuevIn07LDYzDklBFAiZqgknK34y22ngf2tC8GkEEBjs2gFkMUV8-Kdj6te1N3sIWOudgCm555z9dA9p6YLF6dQiTeJJlahztWMaoPFWG3236UMlKctA8lTN9"/>
+</div>
+<div class="flex flex-col">
+<span class="font-bold text-on-surface text-sm">Spotify</span>
+<span class="text-[10px] text-on-surface/40 font-mono">Today, 10:45 AM</span>
+</div>
+</div>
+<span class="font-mono text-error font-bold text-sm">-$9.99</span>
+</div>
+<div class="glass-panel p-4 rounded-[20px] flex items-center justify-between border-emerald-500/5">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-surface-container-highest flex items-center justify-center text-white/50">
+<span class="material-symbols-outlined">shopping_bag</span>
+</div>
+<div class="flex flex-col">
+<span class="font-bold text-on-surface text-sm">Amazon</span>
+<span class="text-[10px] text-on-surface/40 font-mono">Yesterday, 4:12 PM</span>
+</div>
+</div>
+<span class="font-mono text-error font-bold text-sm">-$45.20</span>
+</div>
+<div class="glass-panel p-4 rounded-[20px] flex items-center justify-between border-emerald-500/5">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-surface-container-highest flex items-center justify-center text-white/50">
+<span class="material-symbols-outlined">local_taxi</span>
+</div>
+<div class="flex flex-col">
+<span class="font-bold text-on-surface text-sm">Uber</span>
+<span class="text-[10px] text-on-surface/40 font-mono">Oct 12, 08:30 PM</span>
+</div>
+</div>
+<span class="font-mono text-error font-bold text-sm">-$18.30</span>
+</div>
+<div class="glass-panel p-4 rounded-[20px] flex items-center justify-between border-emerald-500/5">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-surface-container-highest flex items-center justify-center text-white/50">
+<span class="material-symbols-outlined">laptop_mac</span>
+</div>
+<div class="flex flex-col">
+<span class="font-bold text-on-surface text-sm">Apple</span>
+<span class="text-[10px] text-on-surface/40 font-mono">Oct 11, 09:12 AM</span>
+</div>
+</div>
+<span class="font-mono text-error font-bold text-sm">-$0.99</span>
+</div>
+</div>
+</section>
+</main>
+<!-- Bottom Navigation -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 py-3 pb-8 bg-[#2c3733]/40 backdrop-blur-[20px] rounded-t-[28px] border-t border-emerald-500/10 shadow-[0_-10px_40px_rgba(16,185,129,0.1)]">
+<div class="flex flex-col items-center justify-center text-emerald-100/40 p-2 hover:text-emerald-300 transition-colors duration-300 active:scale-95">
+<span class="material-symbols-outlined text-[24px]">home</span>
+<span class="font-['Inter'] font-semibold text-[10px] tracking-tight">HOME</span>
+</div>
+<div class="flex flex-col items-center justify-center text-emerald-100/40 p-2 hover:text-emerald-300 transition-colors duration-300 active:scale-95">
+<span class="material-symbols-outlined text-[24px]">account_balance_wallet</span>
+<span class="font-['Inter'] font-semibold text-[10px] tracking-tight">WALLETS</span>
+</div>
+<!-- Active Tab: CARDS -->
+<div class="flex flex-col items-center justify-center bg-emerald-500/20 text-emerald-400 rounded-full p-2 relative after:content-[''] after:absolute after:top-0 after:right-0 after:w-2 after:h-2 after:bg-emerald-400 after:rounded-full after:animate-pulse active:scale-95 transition-transform duration-200">
+<span class="material-symbols-outlined text-[24px]" style="font-variation-settings: 'FILL' 1;">credit_card</span>
+<span class="font-['Inter'] font-semibold text-[10px] tracking-tight">CARDS</span>
+</div>
+<div class="flex flex-col items-center justify-center text-emerald-100/40 p-2 hover:text-emerald-300 transition-colors duration-300 active:scale-95">
+<span class="material-symbols-outlined text-[24px]">receipt_long</span>
+<span class="font-['Inter'] font-semibold text-[10px] tracking-tight">ACTIVITY</span>
+</div>
+<div class="flex flex-col items-center justify-center text-emerald-100/40 p-2 hover:text-emerald-300 transition-colors duration-300 active:scale-95">
+<span class="material-symbols-outlined text-[24px]">more_horiz</span>
+<span class="font-['Inter'] font-semibold text-[10px] tracking-tight">MORE</span>
+</div>
+</nav>
+<!-- Home Indicator -->
+<div class="fixed bottom-1 w-full flex justify-center pointer-events-none z-[60]">
+<div class="w-[134px] h-[5px] bg-white/20 rounded-full"></div>
+</div>
+</body></html>

@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Archive Nucleus | Batch Import</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&amp;family=JetBrains+Mono:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-panel {
+            background: rgba(44, 55, 51, 0.4);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+        .ghost-border {
+            border: 1px solid rgba(16, 185, 129, 0.08);
+        }
+        .glow-primary {
+            box-shadow: 0 0 20px rgba(78, 222, 163, 0.15);
+        }
+        body {
+            background-color: #040d0a;
+            color: #d9e5df;
+            font-family: 'Inter', sans-serif;
+            overflow: hidden;
+        }
+        .mono {
+            font-family: 'JetBrains Mono', monospace;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary": "#4edea3",
+                        "secondary": "#45dfa4",
+                        "tertiary": "#ffb95f",
+                        "background": "#0b1512",
+                        "surface": "#0b1512",
+                        "surface-container-low": "#131e1a",
+                        "surface-container": "#17221e",
+                        "surface-container-high": "#222c29",
+                        "surface-container-highest": "#2c3733",
+                        "on-surface": "#d9e5df",
+                        "on-surface-variant": "#bbcabf",
+                        "primary-container": "#10b981",
+                        "error": "#ffb4ab",
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "1rem",
+                        "lg": "2rem",
+                        "xl": "3rem",
+                        "full": "9999px"
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="antialiased text-on-surface">
+<!-- Background Layer: Dimmed Team Management Page -->
+<main class="fixed inset-0 z-0 opacity-20 scale-95 origin-top filter blur-[2px]">
+<!-- TopAppBar Placeholder -->
+<header class="fixed top-0 w-full z-50 bg-emerald-950/40 backdrop-blur-xl border-b border-emerald-500/10 shadow-[0_0_40px_rgba(16,185,129,0.05)]">
+<div class="flex justify-between items-center px-6 h-16 w-full max-w-screen-2xl mx-auto">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-surface-container-highest flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-sm">person</span>
+</div>
+<span class="text-xl font-black bg-gradient-to-b from-emerald-400 to-teal-500 bg-clip-text text-transparent font-['Inter'] font-extrabold tracking-tight uppercase">Archive Nucleus</span>
+</div>
+<span class="material-symbols-outlined text-emerald-800">settings</span>
+</div>
+</header>
+<!-- Team Content Mockup -->
+<div class="pt-24 px-6 space-y-6">
+<div class="space-y-2">
+<h2 class="text-3xl font-extrabold text-primary">Team Members</h2>
+<p class="mono text-xs opacity-50 uppercase tracking-widest">Managing 148 entities</p>
+</div>
+<div class="grid grid-cols-1 gap-4">
+<div class="h-32 rounded-lg bg-surface-container-low border border-white/5 p-4 flex items-center gap-4">
+<div class="w-12 h-12 rounded-full bg-emerald-500/20"></div>
+<div class="flex-1 h-4 bg-emerald-500/10 rounded"></div>
+</div>
+<div class="h-32 rounded-lg bg-surface-container-low border border-white/5 p-4 flex items-center gap-4">
+<div class="w-12 h-12 rounded-full bg-emerald-500/20"></div>
+<div class="flex-1 h-4 bg-emerald-500/10 rounded"></div>
+</div>
+</div>
+</div>
+</main>
+<!-- Bottom Sheet Overlay (Scrim) -->
+<div class="fixed inset-0 bg-[#040d0a]/60 backdrop-blur-sm z-10"></div>
+<!-- Batch Import Bottom Sheet -->
+<section class="fixed bottom-0 left-0 right-0 h-[85%] z-50 glass-panel rounded-t-[28px] border-t border-emerald-500/20 shadow-[0_-20px_60px_rgba(0,0,0,0.5)] flex flex-col overflow-hidden">
+<!-- Grab Handle -->
+<div class="w-full flex justify-center py-3">
+<div class="w-12 h-1.5 bg-emerald-500/20 rounded-full"></div>
+</div>
+<div class="flex-1 overflow-y-auto px-6 pb-32 space-y-8">
+<!-- Header Section -->
+<div class="text-center pt-2">
+<h1 class="text-2xl font-black bg-gradient-to-r from-emerald-400 to-teal-300 bg-clip-text text-transparent uppercase tracking-tight">Batch Import Members</h1>
+<p class="mono text-[10px] text-emerald-500/60 tracking-[0.2em] mt-1 font-bold">INVITE MULTIPLE AT ONCE</p>
+</div>
+<!-- Upload Zone -->
+<div class="relative group">
+<div class="h-[200pt] w-full rounded-lg border-2 border-dashed border-emerald-500/30 bg-emerald-500/5 flex flex-col items-center justify-center gap-4 group-hover:bg-emerald-500/10 transition-colors">
+<div class="w-16 h-16 rounded-full bg-emerald-500/10 flex items-center justify-center text-primary glow-primary">
+<span class="material-symbols-outlined text-4xl" data-weight="fill" style="font-variation-settings: 'FILL' 1;">cloud_upload</span>
+</div>
+<div class="text-center">
+<p class="mono text-sm font-bold text-primary tracking-tight uppercase">TAP TO UPLOAD CSV</p>
+<p class="text-xs text-on-surface-variant mt-1">or drag &amp; drop file here</p>
+</div>
+</div>
+</div>
+<!-- Template Link -->
+<div class="flex justify-center">
+<a class="mono text-[11px] text-primary font-bold tracking-widest flex items-center gap-2 hover:opacity-80 transition-opacity" href="#">
+                    DOWNLOAD CSV TEMPLATE <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</a>
+</div>
+<!-- Parsed Preview -->
+<div class="space-y-3">
+<p class="mono text-[10px] uppercase text-emerald-500/40 font-bold px-1">STAGED FOR IMPORT (3/24)</p>
+<div class="glass-panel ghost-border rounded-lg p-1 space-y-1">
+<!-- Preview Row -->
+<div class="grid grid-cols-3 gap-2 p-3 bg-white/5 rounded-lg items-center">
+<span class="text-[10px] truncate">alex.v@nucleus.io</span>
+<span class="mono text-[10px] text-center bg-emerald-500/10 text-emerald-400 py-1 rounded">ADMIN</span>
+<span class="text-[10px] text-right font-semibold">Alex V.</span>
+</div>
+<!-- Preview Row -->
+<div class="grid grid-cols-3 gap-2 p-3 bg-white/5 rounded-lg items-center">
+<span class="text-[10px] truncate">sarah.k@nucleus.io</span>
+<span class="mono text-[10px] text-center bg-emerald-500/10 text-emerald-400 py-1 rounded">EDITOR</span>
+<span class="text-[10px] text-right font-semibold">Sarah K.</span>
+</div>
+<!-- Preview Row -->
+<div class="grid grid-cols-3 gap-2 p-3 bg-white/5 rounded-lg items-center">
+<span class="text-[10px] truncate">m.chen@nucleus.io</span>
+<span class="mono text-[10px] text-center bg-emerald-500/10 text-emerald-400 py-1 rounded">VIEWER</span>
+<span class="text-[10px] text-right font-semibold">M. Chen</span>
+</div>
+</div>
+</div>
+<!-- Role Selection -->
+<div class="space-y-3">
+<div class="flex justify-between items-center px-1">
+<label class="mono text-[10px] uppercase text-emerald-500/40 font-bold">DEFAULT ROLE: VIEWER</label>
+<span class="material-symbols-outlined text-emerald-500/40 text-sm">info</span>
+</div>
+<div class="glass-panel ghost-border rounded-lg h-14 flex items-center justify-between px-5">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary">shield_person</span>
+<span class="font-semibold text-sm">Viewer Access</span>
+</div>
+<span class="material-symbols-outlined text-emerald-800">expand_more</span>
+</div>
+</div>
+<!-- Error Strip -->
+<div class="bg-tertiary/20 border border-tertiary/30 rounded-lg p-4 flex items-center justify-between">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-tertiary">warning</span>
+<span class="mono text-xs font-bold text-tertiary">2 ROWS HAVE ISSUES</span>
+</div>
+<span class="material-symbols-outlined text-tertiary">unfold_more</span>
+</div>
+</div>
+<!-- Sticky Footer CTA -->
+<div class="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-[#040d0a] to-transparent pt-12">
+<button class="w-full h-16 bg-primary-container text-on-primary-container rounded-full font-black flex items-center justify-center gap-3 shadow-[0_10px_30px_rgba(16,185,129,0.3)] active:scale-95 transition-all">
+<span class="mono text-lg font-black uppercase tracking-tighter">IMPORT 24 MEMBERS</span>
+<span class="material-symbols-outlined font-bold">arrow_forward</span>
+</button>
+<!-- Home Indicator Space -->
+<div class="h-6"></div>
+</div>
+</section>
+<!-- Bottom Nav (Hidden for focused task as per mandate) -->
+<!-- Suppressed to prioritize the Import canvas -->
+</body></html>

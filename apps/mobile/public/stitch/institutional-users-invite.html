@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>The Bioluminescent Archive | Invite Institutional User</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&amp;family=JetBrains+Mono:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-secondary-fixed-variant": "#005137",
+                        "surface-container-highest": "#2c3733",
+                        "primary-container": "#10b981",
+                        "error": "#ffb4ab",
+                        "background": "#0b1512",
+                        "surface-container": "#17221e",
+                        "inverse-primary": "#006c49",
+                        "on-secondary": "#003825",
+                        "primary-fixed": "#6ffbbe",
+                        "on-surface": "#d9e5df",
+                        "on-secondary-container": "#00452e",
+                        "on-primary-fixed": "#002113",
+                        "surface-dim": "#0b1512",
+                        "outline": "#86948a",
+                        "on-tertiary-fixed": "#2a1700",
+                        "inverse-on-surface": "#28332f",
+                        "tertiary-fixed": "#ffddb8",
+                        "tertiary-container": "#e29100",
+                        "surface-container-lowest": "#06100d",
+                        "inverse-surface": "#d9e5df",
+                        "secondary-fixed-dim": "#45dfa4",
+                        "surface-container-high": "#222c29",
+                        "surface-tint": "#4edea3",
+                        "secondary-container": "#00bd85",
+                        "on-tertiary-fixed-variant": "#653e00",
+                        "tertiary": "#ffb95f",
+                        "on-tertiary": "#472a00",
+                        "secondary-fixed": "#68fcbf",
+                        "on-tertiary-container": "#523200",
+                        "on-error-container": "#ffdad6",
+                        "tertiary-fixed-dim": "#ffb95f",
+                        "secondary": "#45dfa4",
+                        "primary": "#4edea3",
+                        "on-background": "#d9e5df",
+                        "on-surface-variant": "#bbcabf",
+                        "surface-bright": "#313b38",
+                        "outline-variant": "#3c4a42",
+                        "on-primary": "#003824",
+                        "surface": "#0b1512",
+                        "error-container": "#93000a",
+                        "on-primary-fixed-variant": "#005236",
+                        "primary-fixed-dim": "#4edea3",
+                        "on-secondary-fixed": "#002114",
+                        "on-error": "#690005",
+                        "on-primary-container": "#00422b",
+                        "surface-variant": "#2c3733",
+                        "surface-container-low": "#131e1a"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "1rem",
+                        "lg": "2rem",
+                        "xl": "3rem",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Inter"],
+                        "body": ["Inter"],
+                        "label": ["Inter"],
+                        "mono": ["JetBrains Mono"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            background-color: #0b1512;
+            color: #d9e5df;
+            font-family: 'Inter', sans-serif;
+            overflow: hidden;
+        }
+        .glass-panel {
+            background: rgba(44, 55, 51, 0.4);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(16, 185, 129, 0.08);
+        }
+        .bioluminescent-glow {
+            box-shadow: 0 0 40px rgba(16, 185, 129, 0.15);
+        }
+        .primary-gradient-text {
+            background: linear-gradient(180deg, #10b981 0%, #34d399 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .inset-glass {
+            background: rgba(6, 16, 13, 0.6);
+            box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(16, 185, 129, 0.05);
+        }
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: rgba(16, 185, 129, 0.2) !important;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="min-h-screen relative flex items-end justify-center">
+<!-- Parent Screen: Dimmed Background (Institutional Users List) -->
+<div class="absolute inset-0 z-0 opacity-20 pointer-events-none p-8">
+<div class="flex justify-between items-center mb-8">
+<h1 class="text-4xl font-extrabold tracking-tighter uppercase primary-gradient-text">ARCHIVE ACCESS</h1>
+<div class="w-10 h-10 rounded-full bg-surface-container-highest"></div>
+</div>
+<div class="grid grid-cols-1 gap-4">
+<div class="h-20 glass-panel rounded-lg w-full"></div>
+<div class="h-20 glass-panel rounded-lg w-full"></div>
+<div class="h-20 glass-panel rounded-lg w-full"></div>
+<div class="h-20 glass-panel rounded-lg w-full"></div>
+<div class="h-20 glass-panel rounded-lg w-full"></div>
+<div class="h-20 glass-panel rounded-lg w-full"></div>
+</div>
+<!-- Organic Blobs -->
+<div class="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/10 blur-[100px] rounded-full"></div>
+<div class="absolute bottom-1/4 right-1/4 w-80 h-80 bg-secondary/10 blur-[100px] rounded-full"></div>
+</div>
+<!-- Bottom Sheet Overlay Backdrop -->
+<div class="absolute inset-0 bg-background/80 z-10"></div>
+<!-- Bottom Sheet Content -->
+<div class="relative z-20 w-[92%] max-w-4xl bg-surface-container-low rounded-t-[28px] glass-panel bioluminescent-glow overflow-hidden flex flex-col h-[795px]">
+<!-- Grab Handle -->
+<div class="w-full flex justify-center py-3">
+<div class="w-12 h-1.5 bg-surface-container-highest rounded-full"></div>
+</div>
+<div class="px-8 pb-8 flex-1 overflow-y-auto space-y-8">
+<!-- Header Section -->
+<div class="flex justify-between items-start">
+<div class="space-y-1">
+<h2 class="text-3xl font-extrabold tracking-tight primary-gradient-text">Invite Institutional User</h2>
+<p class="text-on-surface-variant text-sm font-label">Register new authorized personnel to the secure vault.</p>
+</div>
+<div class="bg-primary/10 text-primary px-4 py-1.5 rounded-full border border-primary/20 flex items-center gap-2">
+<span class="text-[10px] font-mono font-bold tracking-widest uppercase">AUTO-INITIATED</span>
+<span class="material-symbols-outlined text-sm">check_circle</span>
+</div>
+</div>
+<!-- Form Section: Identity -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="space-y-2">
+<label class="text-[10px] uppercase tracking-widest font-mono text-primary font-bold px-2">Full Name</label>
+<input class="w-full h-14 px-6 rounded-lg inset-glass text-on-surface placeholder-on-surface-variant/30 border-transparent transition-all" placeholder="e.g. Alexander Vance" type="text"/>
+</div>
+<div class="space-y-2">
+<label class="text-[10px] uppercase tracking-widest font-mono text-primary font-bold px-2">Institutional Email</label>
+<input class="w-full h-14 px-6 rounded-lg inset-glass text-on-surface placeholder-on-surface-variant/30 border-transparent transition-all" placeholder="vance@mercury-capital.inst" type="email"/>
+</div>
+<div class="space-y-2">
+<label class="text-[10px] uppercase tracking-widest font-mono text-primary font-bold px-2">Department</label>
+<select class="w-full h-14 px-6 rounded-lg inset-glass text-on-surface border-transparent appearance-none">
+<option>Trading</option>
+<option>Executive</option>
+<option>Treasury</option>
+<option>Compliance</option>
+<option>Ops</option>
+<option>IT</option>
+</select>
+</div>
+<div class="space-y-2">
+<label class="text-[10px] uppercase tracking-widest font-mono text-primary font-bold px-2">Role Type</label>
+<select class="w-full h-14 px-6 rounded-lg inset-glass text-on-surface border-transparent appearance-none">
+<option>Senior Manager</option>
+<option>Analyst</option>
+<option>Chief Officer</option>
+<option>Super Admin</option>
+</select>
+</div>
+</div>
+<!-- Approval Tier Slider -->
+<div class="space-y-6">
+<div class="flex justify-between items-center px-2">
+<label class="text-[10px] uppercase tracking-widest font-mono text-primary font-bold">Withdrawal Approval Tier</label>
+<span class="font-mono text-secondary text-sm font-bold tracking-tighter">$10,000,000 LIMIT</span>
+</div>
+<div class="relative h-12 flex items-center px-2">
+<div class="absolute inset-0 h-2 my-auto bg-surface-container-highest rounded-full w-full"></div>
+<div class="absolute inset-0 h-2 my-auto bg-primary rounded-full w-[40%] shadow-[0_0_15px_rgba(16,185,129,0.4)]"></div>
+<div class="w-full flex justify-between relative z-10 font-mono text-[10px] text-on-surface-variant font-bold">
+<span class="bg-background px-3 py-1 rounded-full text-on-surface">NONE</span>
+<span class="bg-background px-3 py-1 rounded-full text-on-surface">$1M</span>
+<span class="bg-primary text-on-primary px-4 py-2 -mt-1.5 rounded-full ring-4 ring-primary/20 scale-110">$10M</span>
+<span class="bg-background px-3 py-1 rounded-full">$25M</span>
+<span class="bg-background px-3 py-1 rounded-full">$100M</span>
+<span class="bg-background px-3 py-1 rounded-full">UNLIMITED</span>
+</div>
+</div>
+</div>
+<!-- Permissions Grid -->
+<div class="space-y-4">
+<label class="text-[10px] uppercase tracking-widest font-mono text-primary font-bold px-2">Vault Permissions Matrix</label>
+<div class="glass-panel p-6 rounded-lg grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+<!-- Pill Items -->
+<label class="flex items-center gap-3 p-3 rounded-xl bg-surface-container-highest/30 cursor-pointer hover:bg-primary/10 transition-all border border-transparent hover:border-primary/20">
+<input checked="" class="w-5 h-5 rounded border-outline bg-transparent text-primary focus:ring-0" type="checkbox"/>
+<span class="text-sm font-label text-on-surface">View Portfolio</span>
+</label>
+<label class="flex items-center gap-3 p-3 rounded-xl bg-surface-container-highest/30 cursor-pointer hover:bg-primary/10 transition-all border border-transparent hover:border-primary/20">
+<input checked="" class="w-5 h-5 rounded border-outline bg-transparent text-primary focus:ring-0" type="checkbox"/>
+<span class="text-sm font-label text-on-surface">Execute Trades</span>
+</label>
+<label class="flex items-center gap-3 p-3 rounded-xl bg-surface-container-highest/30 cursor-pointer hover:bg-primary/10 transition-all border border-transparent hover:border-primary/20">
+<input class="w-5 h-5 rounded border-outline bg-transparent text-primary focus:ring-0" type="checkbox"/>
+<span class="text-sm font-label text-on-surface">Approve Withdrawals</span>
+</label>
+<label class="flex items-center gap-3 p-3 rounded-xl bg-surface-container-highest/30 cursor-pointer hover:bg-primary/10 transition-all border border-transparent hover:border-primary/20">
+<input class="w-5 h-5 rounded border-outline bg-transparent text-primary focus:ring-0" type="checkbox"/>
+<span class="text-sm font-label text-on-surface">Manage Team</span>
+</label>
+<label class="flex items-center gap-3 p-3 rounded-xl bg-surface-container-highest/30 cursor-pointer hover:bg-primary/10 transition-all border border-transparent hover:border-primary/20">
+<input checked="" class="w-5 h-5 rounded border-outline bg-transparent text-primary focus:ring-0" type="checkbox"/>
+<span class="text-sm font-label text-on-surface">Compliance</span>
+</label>
+<label class="flex items-center gap-3 p-3 rounded-xl bg-surface-container-highest/30 cursor-pointer hover:bg-primary/10 transition-all border border-transparent hover:border-primary/20">
+<input checked="" class="w-5 h-5 rounded border-outline bg-transparent text-primary focus:ring-0" type="checkbox"/>
+<span class="text-sm font-label text-on-surface">Audit Logs</span>
+</label>
+<label class="flex items-center gap-3 p-3 rounded-xl bg-surface-container-highest/30 cursor-pointer hover:bg-primary/10 transition-all border border-transparent hover:border-primary/20">
+<input class="w-5 h-5 rounded border-outline bg-transparent text-primary focus:ring-0" type="checkbox"/>
+<span class="text-sm font-label text-on-surface">Reports</span>
+</label>
+<label class="flex items-center gap-3 p-3 rounded-xl bg-surface-container-highest/30 cursor-pointer hover:bg-primary/10 transition-all border border-transparent hover:border-primary/20">
+<input class="w-5 h-5 rounded border-outline bg-transparent text-primary focus:ring-0" type="checkbox"/>
+<span class="text-sm font-label text-on-surface">Change Limits</span>
+</label>
+<label class="flex items-center gap-3 p-3 rounded-xl bg-surface-container-highest/30 cursor-pointer hover:bg-primary/10 transition-all border border-transparent hover:border-primary/20">
+<input class="w-5 h-5 rounded border-outline bg-transparent text-primary focus:ring-0" type="checkbox"/>
+<span class="text-sm font-label text-on-surface">System Config</span>
+</label>
+<label class="flex items-center gap-3 p-3 rounded-xl bg-surface-container-highest/30 cursor-pointer hover:bg-primary/10 transition-all border border-transparent hover:border-primary/20">
+<input checked="" class="w-5 h-5 rounded border-outline bg-transparent text-primary focus:ring-0" type="checkbox"/>
+<span class="text-sm font-label text-on-surface">External Sync</span>
+</label>
+<label class="flex items-center gap-3 p-3 rounded-xl bg-surface-container-highest/30 cursor-pointer hover:bg-primary/10 transition-all border border-transparent hover:border-primary/20">
+<input checked="" class="w-5 h-5 rounded border-outline bg-transparent text-primary focus:ring-0" type="checkbox"/>
+<span class="text-sm font-label text-on-surface">Node Monitoring</span>
+</label>
+<label class="flex items-center gap-3 p-3 rounded-xl bg-surface-container-highest/30 cursor-pointer hover:bg-primary/10 transition-all border border-transparent hover:border-primary/20">
+<input class="w-5 h-5 rounded border-outline bg-transparent text-primary focus:ring-0" type="checkbox"/>
+<span class="text-sm font-label text-on-surface">API Access</span>
+</label>
+</div>
+</div>
+<!-- Security Toggles & Extra -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<div class="space-y-4">
+<label class="text-[10px] uppercase tracking-widest font-mono text-primary font-bold px-2">Security Enforcement</label>
+<div class="space-y-3">
+<div class="flex items-center justify-between p-4 rounded-xl inset-glass">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary">key</span>
+<span class="text-sm font-label">Physical Hardware Key</span>
+</div>
+<div class="w-12 h-6 bg-primary rounded-full relative flex items-center px-1">
+<div class="w-4 h-4 bg-on-primary rounded-full ml-auto"></div>
+</div>
+</div>
+<div class="flex items-center justify-between p-4 rounded-xl inset-glass">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary">security</span>
+<span class="text-sm font-label">Biometric 2FA Required</span>
+</div>
+<div class="w-12 h-6 bg-primary rounded-full relative flex items-center px-1">
+<div class="w-4 h-4 bg-on-primary rounded-full ml-auto"></div>
+</div>
+</div>
+</div>
+</div>
+<div class="space-y-4">
+<label class="text-[10px] uppercase tracking-widest font-mono text-primary font-bold px-2">Onboarding Schedule</label>
+<div class="space-y-3">
+<input class="w-full h-12 px-6 rounded-xl inset-glass text-on-surface border-transparent font-mono text-xs" type="date" value="2024-11-20"/>
+<textarea class="w-full h-24 p-4 rounded-xl inset-glass text-on-surface placeholder-on-surface-variant/30 border-transparent resize-none text-sm font-label" placeholder="Welcome message to be included in the secure invite protocol..."></textarea>
+</div>
+</div>
+</div>
+</div>
+<!-- Sticky Footer CTA -->
+<div class="p-8 glass-panel border-t border-primary/10">
+<button class="w-full bg-primary hover:bg-secondary text-on-primary h-16 rounded-full font-extrabold tracking-tighter text-lg flex items-center justify-center gap-3 shadow-[0_0_30px_rgba(16,185,129,0.3)] transition-all active:scale-95 group">
+                SEND INVITE
+                <span class="material-symbols-outlined group-hover:translate-x-2 transition-transform">arrow_forward</span>
+</button>
+</div>
+</div>
+</body></html>

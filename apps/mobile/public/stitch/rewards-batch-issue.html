@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Issue Rewards - The Bioluminescent Archive</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&amp;family=JetBrains+Mono:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container-low": "#131e1a",
+                        "secondary-fixed-dim": "#45dfa4",
+                        "surface-variant": "#2c3733",
+                        "on-secondary-fixed": "#002114",
+                        "on-background": "#d9e5df",
+                        "inverse-primary": "#006c49",
+                        "surface-container-lowest": "#06100d",
+                        "on-tertiary": "#472a00",
+                        "primary": "#4edea3",
+                        "on-surface-variant": "#bbcabf",
+                        "on-secondary-fixed-variant": "#005137",
+                        "on-tertiary-container": "#523200",
+                        "tertiary": "#ffb95f",
+                        "surface-tint": "#4edea3",
+                        "outline-variant": "#3c4a42",
+                        "on-surface": "#d9e5df",
+                        "surface-container-highest": "#2c3733",
+                        "on-error": "#690005",
+                        "on-secondary": "#003825",
+                        "on-primary-fixed": "#002113",
+                        "tertiary-fixed": "#ffddb8",
+                        "surface": "#0b1512",
+                        "secondary-fixed": "#68fcbf",
+                        "inverse-on-surface": "#28332f",
+                        "on-tertiary-fixed": "#2a1700",
+                        "surface-container": "#17221e",
+                        "secondary": "#45dfa4",
+                        "on-secondary-container": "#00452e",
+                        "surface-bright": "#313b38",
+                        "background": "#0b1512",
+                        "outline": "#86948a",
+                        "on-primary-container": "#00422b",
+                        "error": "#ffb4ab",
+                        "surface-container-high": "#222c29",
+                        "tertiary-container": "#e29100",
+                        "error-container": "#93000a",
+                        "on-error-container": "#ffdad6",
+                        "primary-fixed": "#6ffbbe",
+                        "on-primary-fixed-variant": "#005236",
+                        "primary-fixed-dim": "#4edea3",
+                        "primary-container": "#10b981",
+                        "surface-dim": "#0b1512",
+                        "tertiary-fixed-dim": "#ffb95f",
+                        "on-primary": "#003824",
+                        "on-tertiary-fixed-variant": "#653e00",
+                        "secondary-container": "#00bd85",
+                        "inverse-surface": "#d9e5df"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "1rem",
+                        "lg": "2rem",
+                        "xl": "3rem",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Inter"],
+                        "body": ["Inter"],
+                        "label": ["Inter"],
+                        "mono": ["JetBrains Mono"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .glass-panel {
+            background: rgba(44, 55, 51, 0.4);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(16, 185, 129, 0.08);
+        }
+        .text-gradient {
+            background: linear-gradient(to bottom, #10b981, #34d399);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .energy-lines {
+            background-image: repeating-linear-gradient(45deg, rgba(16, 185, 129, 0.03) 0px, rgba(16, 185, 129, 0.03) 1px, transparent 1px, transparent 10px);
+        }
+        .custom-scrollbar::-webkit-scrollbar { width: 4px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: rgba(16, 185, 129, 0.2); border-radius: 10px; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background font-body selection:bg-primary/30 min-h-[844px] w-[390px] mx-auto overflow-hidden relative shadow-2xl">
+<!-- Background Decoration -->
+<div class="fixed inset-0 z-0 bg-[#040d0a] overflow-hidden">
+<div class="absolute top-[-10%] left-[-10%] w-72 h-72 bg-primary/10 rounded-full blur-[80px]"></div>
+<div class="absolute bottom-[20%] right-[-10%] w-80 h-80 bg-secondary/10 rounded-full blur-[100px]"></div>
+<div class="absolute top-[40%] right-[10%] w-60 h-60 bg-tertiary/5 rounded-full blur-[80px]"></div>
+<div class="absolute bottom-[-10%] left-[5%] w-96 h-96 bg-primary/10 rounded-full blur-[120px]"></div>
+<div class="absolute inset-0 energy-lines opacity-40"></div>
+</div>
+<!-- Parent Screen (Dimmed Background) -->
+<div class="relative z-10 p-6 opacity-40 grayscale-[0.5]">
+<header class="flex justify-between items-center mb-8">
+<div>
+<h2 class="text-xs font-mono uppercase tracking-[0.2em] text-primary">Overview</h2>
+<h1 class="text-3xl font-headline font-extrabold tracking-tight">Vault Balance</h1>
+</div>
+<div class="w-12 h-12 rounded-full border border-primary/20 bg-surface-container-highest flex items-center justify-center">
+<span class="material-symbols-outlined text-primary">account_balance_wallet</span>
+</div>
+</header>
+<div class="glass-panel p-6 rounded-lg mb-6">
+<div class="text-4xl font-mono font-bold mb-2">$42,850.00</div>
+<div class="text-sm opacity-60">Available for rewards</div>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div class="glass-panel h-32 rounded-lg"></div>
+<div class="glass-panel h-32 rounded-lg"></div>
+</div>
+</div>
+<!-- Bottom Sheet Overlay (Dimmer) -->
+<div class="fixed inset-0 z-20 bg-background/60 backdrop-blur-sm"></div>
+<!-- Bottom Sheet Content -->
+<main class="fixed bottom-0 left-0 w-full h-[92%] z-30 glass-panel rounded-t-[32px] flex flex-col overflow-hidden shadow-[0_-20px_60px_rgba(16,185,129,0.15)]">
+<!-- Grab Handle -->
+<div class="w-full flex justify-center py-4">
+<div class="w-12 h-1.5 bg-on-surface-variant/20 rounded-full"></div>
+</div>
+<!-- Top App Bar (Shared Comp Logic) -->
+<nav class="flex justify-between items-center px-6 h-12 w-full mb-2">
+<button class="w-8 h-8 flex items-center justify-center rounded-full hover:bg-emerald-500/10 transition-all active:scale-95 duration-300">
+<span class="material-symbols-outlined text-primary text-xl">close</span>
+</button>
+<h1 class="font-['Inter'] font-extrabold tracking-tight uppercase text-gradient text-sm">Issue Rewards</h1>
+<div class="w-8"></div> <!-- Spacer for centering -->
+</nav>
+<div class="flex-1 overflow-y-auto px-6 pb-32 custom-scrollbar">
+<h2 class="text-2xl font-headline font-extrabold text-gradient mb-6">Batch Issue Rewards</h2>
+<!-- CSV Dropzone -->
+<div class="glass-panel h-[180px] rounded-lg border-dashed border-primary/30 flex flex-col items-center justify-center gap-4 mb-6 group active:scale-[0.98] transition-transform">
+<div class="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-primary text-4xl" style="font-variation-settings: 'FILL' 0;">cloud_upload</span>
+</div>
+<div class="text-center px-8">
+<p class="text-on-surface font-semibold">Drop CSV here or tap to browse</p>
+<p class="text-xs text-on-surface-variant mt-1">Supports .csv, .xlsx up to 10MB</p>
+</div>
+</div>
+<!-- Parsed Preview -->
+<div class="mb-8">
+<div class="flex justify-between items-center mb-4">
+<h3 class="text-xs font-mono uppercase tracking-widest text-primary">Previewing Batch (5/48)</h3>
+<span class="text-[10px] font-mono text-primary/60">View All</span>
+</div>
+<div class="space-y-3">
+<!-- Row 1: Valid -->
+<div class="flex items-center gap-4 p-4 rounded-lg bg-surface-container-low/50 border border-primary/5">
+<div class="flex-1 min-w-0">
+<p class="font-mono text-sm truncate text-on-surface">alex.chen@cyber.eth</p>
+<p class="text-[10px] uppercase tracking-tighter text-on-surface-variant">Core Contributor</p>
+</div>
+<div class="text-right">
+<p class="font-mono font-bold text-primary">$450.00</p>
+<div class="flex items-center justify-end gap-1">
+<span class="material-symbols-outlined text-[14px] text-primary" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span class="text-[10px] text-primary">Valid</span>
+</div>
+</div>
+</div>
+<!-- Row 2: Warning -->
+<div class="flex items-center gap-4 p-4 rounded-lg bg-surface-container-low/50 border border-tertiary/10">
+<div class="flex-1 min-w-0">
+<p class="font-mono text-sm truncate text-on-surface">marcus_v@internal.dev</p>
+<p class="text-[10px] uppercase tracking-tighter text-on-surface-variant">Engineering</p>
+</div>
+<div class="text-right">
+<p class="font-mono font-bold text-primary">$1,200.00</p>
+<div class="flex items-center justify-end gap-1">
+<span class="material-symbols-outlined text-[14px] text-tertiary" style="font-variation-settings: 'FILL' 1;">warning</span>
+<span class="text-[10px] text-tertiary">Duplicate?</span>
+</div>
+</div>
+</div>
+<!-- Row 3: Valid -->
+<div class="flex items-center gap-4 p-4 rounded-lg bg-surface-container-low/50 border border-primary/5">
+<div class="flex-1 min-w-0">
+<p class="font-mono text-sm truncate text-on-surface">s.rodriguez@vault.io</p>
+<p class="text-[10px] uppercase tracking-tighter text-on-surface-variant">Community Lead</p>
+</div>
+<div class="text-right">
+<p class="font-mono font-bold text-primary">$150.00</p>
+<div class="flex items-center justify-end gap-1">
+<span class="material-symbols-outlined text-[14px] text-primary" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span class="text-[10px] text-primary">Valid</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Reason Field -->
+<div class="mb-8">
+<label class="text-xs font-mono uppercase tracking-widest text-primary block mb-3 ml-1">Default Issuance Reason</label>
+<div class="bg-surface-container-lowest/80 rounded-lg p-4 border border-primary/5 shadow-inner">
+<textarea class="w-full bg-transparent border-none focus:ring-0 text-on-surface font-body text-sm resize-none h-20 placeholder:text-on-surface-variant/40" placeholder="e.g. Q3 Performance Milestones and Community Contributions..."></textarea>
+</div>
+</div>
+<!-- Running Totals Card -->
+<div class="glass-panel p-6 rounded-lg mb-8 relative overflow-hidden">
+<div class="absolute top-0 right-0 p-4 opacity-10">
+<span class="material-symbols-outlined text-6xl">analytics</span>
+</div>
+<div class="space-y-4 relative z-10">
+<div class="flex justify-between items-center">
+<span class="text-[10px] font-mono uppercase tracking-widest opacity-60">Total Recipients</span>
+<span class="font-mono font-bold text-on-surface">48 Units</span>
+</div>
+<div class="flex justify-between items-center">
+<span class="text-[10px] font-mono uppercase tracking-widest opacity-60">Total Rewards</span>
+<span class="font-mono font-bold text-2xl text-gradient">$2,400.00</span>
+</div>
+<div class="h-px bg-primary/10"></div>
+<div class="flex justify-between items-center">
+<span class="text-[10px] font-mono uppercase tracking-widest opacity-60">Balance After</span>
+<span class="font-mono font-bold text-secondary">$1,850.00</span>
+</div>
+</div>
+</div>
+<!-- Confirmation -->
+<label class="flex items-center gap-3 px-2 mb-4 group cursor-pointer">
+<div class="relative w-6 h-6 flex items-center justify-center">
+<input class="peer hidden" type="checkbox"/>
+<div class="w-6 h-6 rounded bg-surface-container-highest border border-primary/20 peer-checked:bg-primary peer-checked:border-primary transition-all"></div>
+<span class="material-symbols-outlined text-on-primary text-sm absolute opacity-0 peer-checked:opacity-100 transition-opacity">check</span>
+</div>
+<span class="text-sm text-on-surface-variant group-active:text-on-surface transition-colors">I confirm this batch action</span>
+</label>
+</div>
+<!-- Sticky Footer CTA -->
+<div class="absolute bottom-0 left-0 w-full p-6 bg-emerald-950/80 backdrop-blur-xl border-t border-primary/10">
+<button class="w-full h-14 bg-primary text-on-primary font-headline font-extrabold rounded-full flex items-center justify-center gap-2 shadow-[0_0_20px_rgba(16,185,129,0.3)] active:scale-95 transition-all">
+                ISSUE ALL REWARDS
+                <span class="material-symbols-outlined">arrow_forward</span>
+</button>
+</div>
+</main>
+<!-- Bottom Nav Bar (Shared Comp Logic - Hidden on this focused sub-page but structure kept for design consistency) -->
+<div class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center pt-3 pb-8 px-4 bg-emerald-950/60 backdrop-blur-2xl border-t border-emerald-500/10 rounded-t-[32px] opacity-0 pointer-events-none">
+<div class="flex flex-col items-center justify-center text-emerald-700/50">
+<span class="material-symbols-outlined">account_balance_wallet</span>
+<span class="font-['JetBrains_Mono'] text-[10px] uppercase tracking-widest">Vault</span>
+</div>
+<div class="flex flex-col items-center justify-center text-emerald-700/50">
+<span class="material-symbols-outlined">swap_horiz</span>
+<span class="font-['JetBrains_Mono'] text-[10px] uppercase tracking-widest">Flow</span>
+</div>
+<div class="flex flex-col items-center justify-center text-emerald-400 bg-emerald-500/10 rounded-full px-4 py-1">
+<span class="material-symbols-outlined">auto_awesome</span>
+<span class="font-['JetBrains_Mono'] text-[10px] uppercase tracking-widest">Rewards</span>
+</div>
+<div class="flex flex-col items-center justify-center text-emerald-700/50">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-['JetBrains_Mono'] text-[10px] uppercase tracking-widest">Settings</span>
+</div>
+</div>
+</body></html>

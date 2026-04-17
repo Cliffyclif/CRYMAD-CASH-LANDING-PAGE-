@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Notifications Center | The Bioluminescent Archive</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&amp;family=JetBrains+Mono:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-container-low": "#131e1a",
+                    "on-tertiary-fixed": "#2a1700",
+                    "surface-dim": "#0b1512",
+                    "surface-container": "#17221e",
+                    "secondary-fixed-dim": "#45dfa4",
+                    "surface-container-high": "#222c29",
+                    "on-error-container": "#ffdad6",
+                    "surface-variant": "#2c3733",
+                    "surface-container-highest": "#2c3733",
+                    "on-primary": "#003824",
+                    "tertiary-container": "#e29100",
+                    "tertiary": "#ffb95f",
+                    "secondary-container": "#00bd85",
+                    "inverse-surface": "#d9e5df",
+                    "on-tertiary": "#472a00",
+                    "inverse-on-surface": "#28332f",
+                    "background": "#0b1512",
+                    "tertiary-fixed": "#ffddb8",
+                    "on-tertiary-container": "#523200",
+                    "on-tertiary-fixed-variant": "#653e00",
+                    "on-background": "#d9e5df",
+                    "secondary": "#45dfa4",
+                    "on-secondary-fixed": "#002114",
+                    "on-primary-container": "#00422b",
+                    "on-surface": "#d9e5df",
+                    "on-primary-fixed": "#002113",
+                    "surface-tint": "#4edea3",
+                    "inverse-primary": "#006c49",
+                    "primary": "#4edea3",
+                    "outline": "#86948a",
+                    "on-surface-variant": "#bbcabf",
+                    "tertiary-fixed-dim": "#ffb95f",
+                    "primary-container": "#10b981",
+                    "on-secondary-container": "#00452e",
+                    "error": "#ffb4ab",
+                    "secondary-fixed": "#68fcbf",
+                    "primary-fixed-dim": "#4edea3",
+                    "primary-fixed": "#6ffbbe",
+                    "on-error": "#690005",
+                    "error-container": "#93000a",
+                    "on-primary-fixed-variant": "#005236",
+                    "surface-container-lowest": "#06100d",
+                    "outline-variant": "#3c4a42",
+                    "on-secondary": "#003825",
+                    "surface-bright": "#313b38",
+                    "on-secondary-fixed-variant": "#005137",
+                    "surface": "#0b1512"
+            },
+            "borderRadius": {
+                    "DEFAULT": "1rem",
+                    "lg": "2rem",
+                    "xl": "3rem",
+                    "full": "9999px"
+            },
+            "fontFamily": {
+                    "headline": ["Inter"],
+                    "body": ["Inter"],
+                    "label": ["Inter"],
+                    "mono": ["JetBrains Mono"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            background-color: #040d0a;
+            color: #d9e5df;
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .bg-blobs {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+        .blob {
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            background: #10b981;
+            filter: blur(80px);
+            opacity: 0.15;
+            border-radius: 50%;
+        }
+        .diagonal-lines {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background-image: repeating-linear-gradient(45deg, rgba(16, 185, 129, 0.05) 0px, rgba(16, 185, 129, 0.05) 1px, transparent 1px, transparent 10px);
+        }
+        .glass-card {
+            background: rgba(44, 55, 51, 0.4);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(16, 185, 129, 0.08);
+        }
+        .bell-pulse {
+            animation: bell-glow 2s infinite ease-in-out;
+        }
+        @keyframes bell-glow {
+            0%, 100% { filter: drop-shadow(0 0 2px #10b981); opacity: 0.8; }
+            50% { filter: drop-shadow(0 0 10px #10b981); opacity: 1; }
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background min-h-screen pb-32">
+<!-- Ambient Background Elements -->
+<div class="bg-blobs">
+<div class="blob -top-20 -left-20"></div>
+<div class="blob top-1/2 -right-20"></div>
+<div class="blob -bottom-20 left-1/3"></div>
+<div class="blob top-1/4 right-1/4" style="background: #34d399;"></div>
+</div>
+<div class="diagonal-lines"></div>
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-[#040d0a]/80 backdrop-blur-xl border-b border-emerald-500/10 shadow-[0_10px_40px_rgba(16,185,129,0.05)] flex items-center justify-between px-6 h-16 w-full">
+<div class="flex items-center gap-4">
+<button class="text-emerald-500 active:scale-95 transition-transform hover:bg-emerald-500/10 p-2 rounded-full">
+<span class="material-symbols-outlined" data-icon="arrow_back">arrow_back</span>
+</button>
+<h1 class="font-['Inter'] font-extrabold uppercase tracking-wider text-transparent bg-clip-text bg-gradient-to-b from-[#10b981] to-[#34d399] text-xl">
+                Notifications
+            </h1>
+</div>
+<div class="flex items-center gap-6">
+<div class="bell-pulse text-emerald-500">
+<span class="material-symbols-outlined" data-icon="notifications" style="font-variation-settings: 'FILL' 1;">notifications</span>
+</div>
+<button class="font-['Inter'] font-bold text-xs tracking-widest text-emerald-500/80 hover:text-emerald-400 transition-colors uppercase">
+                MARK READ
+            </button>
+</div>
+</header>
+<main class="pt-24 px-6 max-w-2xl mx-auto">
+<!-- Sub-header -->
+<div class="mb-8">
+<p class="font-mono text-[10px] tracking-[0.2em] text-emerald-500/60 uppercase">
+                ALL PULSES FROM YOUR ECOSYSTEM
+            </p>
+</div>
+<!-- Filter Tabs -->
+<div class="flex gap-2 p-1.5 glass-card rounded-full mb-8">
+<button class="flex-1 py-2 px-4 rounded-full text-xs font-bold tracking-wider transition-all bg-primary-container text-on-primary-container">
+                ALL
+            </button>
+<button class="flex-1 py-2 px-4 rounded-full text-xs font-bold tracking-wider transition-all text-emerald-500/60 hover:text-emerald-400 flex items-center justify-center gap-2">
+                UNREAD
+                <span class="bg-emerald-500 text-on-primary text-[10px] px-1.5 py-0.5 rounded-full">3</span>
+</button>
+<button class="flex-1 py-2 px-4 rounded-full text-xs font-bold tracking-wider transition-all text-emerald-500/60 hover:text-emerald-400">
+                READ
+            </button>
+</div>
+<!-- Notification List -->
+<div class="space-y-4">
+<!-- 1. PAYOUT (Expanded) -->
+<div class="glass-card rounded-lg overflow-hidden relative border-l-4 border-jade-500" style="border-left-color: #4edea3;">
+<div class="p-6">
+<div class="flex justify-between items-start mb-2">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-emerald-500/10 flex items-center justify-center text-emerald-400">
+<span class="material-symbols-outlined" data-icon="check_circle">check_circle</span>
+</div>
+<div>
+<h3 class="font-bold text-on-background">Payout Received</h3>
+<p class="text-sm text-on-surface-variant">$1,500 deposited</p>
+</div>
+</div>
+<div class="flex flex-col items-end gap-2">
+<span class="font-mono text-[10px] text-emerald-500/40">2 min ago</span>
+<div class="w-2 h-2 rounded-full bg-emerald-400 shadow-[0_0_8px_#4edea3]"></div>
+</div>
+</div>
+<div class="mt-4 pt-4 border-t border-emerald-500/5 space-y-3">
+<div class="flex justify-between text-xs font-mono">
+<span class="text-emerald-500/40">SOURCE</span>
+<span class="text-emerald-400">EXTERNAL_NODE_0x44</span>
+</div>
+<div class="flex justify-between text-xs font-mono">
+<span class="text-emerald-500/40">STATUS</span>
+<span class="text-emerald-400 uppercase">Settled</span>
+</div>
+<a class="inline-flex items-center gap-2 text-emerald-400 font-bold text-xs tracking-widest mt-2 hover:gap-3 transition-all" href="#">
+                            OPEN TRANSACTION <span class="material-symbols-outlined text-sm" data-icon="arrow_forward">arrow_forward</span>
+</a>
+</div>
+</div>
+</div>
+<!-- 2. CARD -->
+<div class="glass-card rounded-lg p-5 relative border-l-4" style="border-left-color: #34d399;">
+<div class="flex justify-between items-center">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-surface-variant flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined" data-icon="credit_card">credit_card</span>
+</div>
+<h3 class="font-semibold text-on-background">Virtual Card Active</h3>
+</div>
+<span class="font-mono text-[10px] text-emerald-500/40">15 min ago</span>
+</div>
+</div>
+<!-- 3. KYC -->
+<div class="glass-card rounded-lg p-5 relative border-l-4 border-amber-500" style="border-left-color: #f59e0b;">
+<div class="flex justify-between items-center">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-tertiary/10 flex items-center justify-center text-tertiary">
+<span class="material-symbols-outlined" data-icon="shield">shield</span>
+</div>
+<h3 class="font-semibold text-on-background">KYC Review Pending</h3>
+</div>
+<span class="font-mono text-[10px] text-emerald-500/40">1 hour ago</span>
+</div>
+</div>
+<!-- 4. SECURITY -->
+<div class="glass-card rounded-lg p-5 relative border-l-4 border-error" style="border-left-color: #ffb4ab;">
+<div class="flex justify-between items-center">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-error/10 flex items-center justify-center text-error">
+<span class="material-symbols-outlined" data-icon="warning">warning</span>
+</div>
+<h3 class="font-semibold text-on-background">New Login Detected</h3>
+</div>
+<span class="font-mono text-[10px] text-emerald-500/40">3 hours ago</span>
+</div>
+</div>
+<!-- 5. SYSTEM -->
+<div class="glass-card rounded-lg p-5 relative border-l-4 border-outline" style="border-left-color: #86948a;">
+<div class="flex justify-between items-center">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-surface-variant flex items-center justify-center text-outline">
+<span class="material-symbols-outlined" data-icon="info">info</span>
+</div>
+<h3 class="font-semibold text-on-background">Scheduled Maintenance</h3>
+</div>
+<span class="font-mono text-[10px] text-emerald-500/40">Yesterday</span>
+</div>
+</div>
+<!-- 6. CRYPTO -->
+<div class="glass-card rounded-lg p-5 relative border-l-4 border-jade-500" style="border-left-color: #4edea3;">
+<div class="flex justify-between items-center">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-emerald-500/10 flex items-center justify-center text-emerald-400">
+<span class="material-symbols-outlined" data-icon="link">link</span>
+</div>
+<div>
+<h3 class="font-semibold text-on-background text-sm">USDT Deposit Confirmed</h3>
+<p class="font-mono text-[10px] text-emerald-500/60 truncate w-32 md:w-full">0x7a2e...99fA</p>
+</div>
+</div>
+<span class="font-mono text-[10px] text-emerald-500/40">2 days ago</span>
+</div>
+</div>
+</div>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pt-3 pb-6 bg-[#040d0a]/40 backdrop-blur-2xl rounded-t-[32px] border-t border-emerald-500/10 shadow-[0_-10px_40px_rgba(16,185,129,0.08)]">
+<div class="flex flex-col items-center justify-center text-emerald-900/40 hover:text-emerald-300 transition-all active:scale-90 duration-200">
+<span class="material-symbols-outlined text-2xl" data-icon="home">home</span>
+<span class="font-['JetBrains_Mono'] text-[10px] tracking-widest font-bold mt-1">HOME</span>
+</div>
+<div class="flex flex-col items-center justify-center text-emerald-900/40 hover:text-emerald-300 transition-all active:scale-90 duration-200">
+<span class="material-symbols-outlined text-2xl" data-icon="account_balance_wallet">account_balance_wallet</span>
+<span class="font-['JetBrains_Mono'] text-[10px] tracking-widest font-bold mt-1">WALLETS</span>
+</div>
+<div class="flex flex-col items-center justify-center text-emerald-900/40 hover:text-emerald-300 transition-all active:scale-90 duration-200">
+<span class="material-symbols-outlined text-2xl" data-icon="credit_card">credit_card</span>
+<span class="font-['JetBrains_Mono'] text-[10px] tracking-widest font-bold mt-1">CARDS</span>
+</div>
+<div class="flex flex-col items-center justify-center text-emerald-900/40 hover:text-emerald-300 transition-all active:scale-90 duration-200">
+<span class="material-symbols-outlined text-2xl" data-icon="query_stats">query_stats</span>
+<span class="font-['JetBrains_Mono'] text-[10px] tracking-widest font-bold mt-1">ACTIVITY</span>
+</div>
+<div class="flex flex-col items-center justify-center text-emerald-400 bg-emerald-500/10 rounded-full px-4 py-1 active:scale-90 duration-200">
+<span class="material-symbols-outlined text-2xl" data-icon="more_horiz" style="font-variation-settings: 'FILL' 1;">more_horiz</span>
+<span class="font-['JetBrains_Mono'] text-[10px] tracking-widest font-bold mt-1">MORE</span>
+</div>
+</nav>
+</body></html>

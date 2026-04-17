@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&amp;family=JetBrains+Mono:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary": "#4edea3",
+                        "surface-container-lowest": "#06100d",
+                        "primary-fixed": "#6ffbbe",
+                        "secondary": "#45dfa4",
+                        "primary-fixed-dim": "#4edea3",
+                        "on-primary-fixed-variant": "#005236",
+                        "secondary-fixed": "#68fcbf",
+                        "inverse-primary": "#006c49",
+                        "on-tertiary-fixed-variant": "#653e00",
+                        "on-tertiary-fixed": "#2a1700",
+                        "inverse-surface": "#d9e5df",
+                        "on-primary": "#003824",
+                        "surface-bright": "#313b38",
+                        "tertiary-fixed": "#ffddb8",
+                        "on-surface": "#d9e5df",
+                        "on-error-container": "#ffdad6",
+                        "primary-container": "#10b981",
+                        "on-error": "#690005",
+                        "surface-container-low": "#131e1a",
+                        "surface-dim": "#0b1512",
+                        "surface-container": "#17221e",
+                        "surface-container-highest": "#2c3733",
+                        "error": "#ffb4ab",
+                        "background": "#0b1512",
+                        "outline-variant": "#3c4a42",
+                        "on-surface-variant": "#bbcabf",
+                        "error-container": "#93000a",
+                        "surface": "#0b1512",
+                        "on-tertiary": "#472a00",
+                        "outline": "#86948a",
+                        "secondary-container": "#00bd85",
+                        "on-secondary-container": "#00452e",
+                        "surface-variant": "#2c3733",
+                        "on-tertiary-container": "#523200",
+                        "tertiary-container": "#e29100",
+                        "inverse-on-surface": "#28332f",
+                        "on-primary-container": "#00422b",
+                        "secondary-fixed-dim": "#45dfa4",
+                        "on-primary-fixed": "#002113",
+                        "on-background": "#d9e5df",
+                        "surface-container-high": "#222c29",
+                        "surface-tint": "#4edea3",
+                        "tertiary-fixed-dim": "#ffb95f",
+                        "tertiary": "#ffb95f",
+                        "on-secondary": "#003825",
+                        "on-secondary-fixed-variant": "#005137",
+                        "on-secondary-fixed": "#002114"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "1rem",
+                        "lg": "2rem",
+                        "xl": "3rem",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Inter"],
+                        "body": ["Inter"],
+                        "label": ["Inter"],
+                        "mono": ["JetBrains Mono"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .glass-sheet {
+            background: rgba(44, 55, 51, 0.4);
+            backdrop-filter: blur(20px);
+            border-top: 1px solid rgba(16, 185, 129, 0.08);
+            border-left: 1px solid rgba(16, 185, 129, 0.08);
+            border-right: 1px solid rgba(16, 185, 129, 0.08);
+        }
+        .bioluminescent-glow {
+            background: radial-gradient(circle at 50% 50%, rgba(16, 185, 129, 0.15) 0%, transparent 70%);
+        }
+        .text-gradient {
+            background: linear-gradient(to bottom, #10b981, #34d399);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-[#040d0a] text-on-surface font-body min-h-screen overflow-hidden">
+<!-- Parent Screen Backdrop (Simulated /banking route) -->
+<div class="fixed inset-0 z-0 opacity-40 p-6 flex flex-col gap-6 pointer-events-none">
+<header class="flex justify-between items-center py-4">
+<div class="h-10 w-32 bg-surface-container-highest rounded-lg"></div>
+<div class="h-10 w-10 bg-surface-container-highest rounded-full"></div>
+</header>
+<div class="grid grid-cols-2 gap-4">
+<div class="h-32 bg-surface-container-low rounded-lg"></div>
+<div class="h-32 bg-surface-container-low rounded-lg"></div>
+</div>
+<div class="h-64 bg-surface-container-low rounded-lg w-full"></div>
+</div>
+<!-- Dark Overlay -->
+<div class="fixed inset-0 bg-black/60 z-10"></div>
+<!-- Bottom Sheet Container -->
+<div class="fixed inset-x-0 bottom-0 z-20 flex flex-col items-center justify-end h-[85%]">
+<!-- The Bottom Sheet -->
+<div class="glass-sheet w-full h-full rounded-t-[28px] flex flex-col overflow-hidden relative">
+<!-- Grab Handle -->
+<div class="flex justify-center pt-4 pb-2">
+<div class="w-12 h-1.5 bg-on-surface-variant/20 rounded-full"></div>
+</div>
+<!-- Content Area -->
+<div class="flex-1 overflow-y-auto px-6 pb-24">
+<!-- Header Section -->
+<div class="mt-4 mb-8 text-center">
+<p class="font-mono text-xs tracking-[0.2em] text-secondary/60 mb-2">JOIN PERSONAL BANKING</p>
+<h1 class="text-3xl font-extrabold text-gradient leading-tight">Activate Banking</h1>
+</div>
+<!-- Pricing Glass Card -->
+<div class="bg-surface-container-lowest/60 border border-primary/10 rounded-lg p-6 mb-8 text-center relative overflow-hidden">
+<div class="absolute inset-0 bioluminescent-glow"></div>
+<div class="relative z-10">
+<div class="flex items-baseline justify-center gap-1">
+<span class="text-gradient text-5xl font-extrabold tracking-tighter">$9.00</span>
+</div>
+<p class="font-mono text-[10px] text-on-surface-variant mt-2 tracking-widest uppercase">+$4.95 MONTHLY MAINTENANCE</p>
+</div>
+</div>
+<!-- Benefits List -->
+<div class="space-y-4 mb-10">
+<div class="flex items-center gap-4 group">
+<div class="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-lg" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+<span class="text-on-surface-variant font-semibold">Receive deposits</span>
+</div>
+<div class="flex items-center gap-4">
+<div class="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-lg" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+<span class="text-on-surface-variant font-semibold">Send wires</span>
+</div>
+<div class="flex items-center gap-4">
+<div class="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-lg" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+<span class="text-on-surface-variant font-semibold">Treasury yield</span>
+</div>
+<div class="flex items-center gap-4">
+<div class="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-lg" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+<span class="text-on-surface-variant font-semibold">Real-time ACH</span>
+</div>
+<div class="flex items-center gap-4">
+<div class="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-lg" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+<span class="text-on-surface-variant font-semibold">Global payments</span>
+</div>
+<div class="flex items-center gap-4">
+<div class="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-lg" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+<span class="text-on-surface-variant font-semibold">Tax reporting</span>
+</div>
+</div>
+<!-- Terms -->
+<div class="flex items-center gap-3 px-2 mb-8">
+<div class="relative flex items-center">
+<input checked="" class="w-6 h-6 rounded bg-surface-container-highest border-primary/20 text-primary focus:ring-primary focus:ring-offset-background cursor-pointer" type="checkbox"/>
+</div>
+<label class="text-sm text-on-surface-variant/80">I agree to Banking Terms</label>
+</div>
+<!-- Funding Pill -->
+<div class="flex justify-center mb-8">
+<div class="inline-flex items-center gap-3 bg-surface-container-highest/80 px-6 py-3 rounded-full border border-primary/5">
+<span class="material-symbols-outlined text-primary-fixed text-lg">account_balance_wallet</span>
+<span class="font-mono text-sm text-primary-fixed">Pay from E-Wallet <span class="font-bold">$12,458.32</span></span>
+</div>
+</div>
+</div>
+<!-- CTA Bottom Area -->
+<div class="absolute bottom-0 w-full p-6 bg-gradient-to-t from-[#0b1512] to-transparent pt-10">
+<button class="w-full bg-primary py-5 rounded-lg flex items-center justify-center gap-3 hover:brightness-110 active:scale-95 transition-all shadow-[0_0_30px_rgba(78,222,163,0.3)] group">
+<span class="text-on-primary font-black uppercase tracking-widest">ACTIVATE BANKING</span>
+<span class="material-symbols-outlined text-on-primary group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Universal Design Elements (Background Blobs) -->
+<div class="fixed top-[-10%] left-[-10%] w-[50%] h-[50%] bg-primary/10 blur-[100px] -z-10 rounded-full"></div>
+<div class="fixed bottom-[-10%] right-[-10%] w-[50%] h-[50%] bg-secondary/10 blur-[100px] -z-10 rounded-full"></div>
+</body></html>

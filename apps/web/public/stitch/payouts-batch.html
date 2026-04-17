@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>BIO-PULSE | Batch Payout</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&amp;family=JetBrains+Mono:wght@400;700&amp;family=Space+Grotesk:wght@300;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-panel {
+            background: rgba(44, 55, 51, 0.4);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(16, 185, 129, 0.08);
+        }
+        .text-gradient {
+            background: linear-gradient(to right, #10b981, #34d399);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        body {
+            background-color: #06100d;
+            color: #d9e5df;
+            overflow: hidden;
+        }
+        .living-bg-blob {
+            position: absolute;
+            filter: blur(80px);
+            opacity: 0.3;
+            z-index: -1;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "surface-dim": "#06100d",
+                      "inverse-surface": "#f0fcf6",
+                      "surface-variant": "#1a2924",
+                      "on-tertiary": "#6f3a34",
+                      "surface": "#06100d",
+                      "primary-container": "#06b77f",
+                      "on-tertiary-fixed": "#4c1e19",
+                      "surface-container": "#0f1c18",
+                      "inverse-primary": "#006d4a",
+                      "primary-dim": "#58e7ab",
+                      "primary-fixed": "#69f6b8",
+                      "surface-container-lowest": "#000000",
+                      "error": "#ff716c",
+                      "outline": "#6c7873",
+                      "on-error-container": "#ffa8a3",
+                      "surface-container-low": "#0a1612",
+                      "tertiary": "#ffc7c0",
+                      "on-tertiary-fixed-variant": "#6f3a34",
+                      "secondary-dim": "#55e4a9",
+                      "tertiary-dim": "#efa69e",
+                      "on-primary-fixed-variant": "#006544",
+                      "surface-container-high": "#15221e",
+                      "on-surface": "#f0fcf6",
+                      "secondary": "#65f3b6",
+                      "primary": "#69f6b8",
+                      "on-secondary-fixed-variant": "#006343",
+                      "on-primary-fixed": "#00452d",
+                      "outline-variant": "#3f4a46",
+                      "on-secondary-container": "#e1ffec",
+                      "background": "#06100d",
+                      "secondary-fixed": "#65f3b6",
+                      "tertiary-fixed": "#ffb4ab",
+                      "error-dim": "#d7383b",
+                      "surface-bright": "#1f2f2a",
+                      "on-tertiary-container": "#64312c",
+                      "tertiary-fixed-dim": "#efa69e",
+                      "surface-container-highest": "#1a2924",
+                      "secondary-fixed-dim": "#55e4a9",
+                      "on-background": "#f0fcf6",
+                      "on-primary-container": "#002919",
+                      "tertiary-container": "#ffb4ab",
+                      "on-primary": "#005a3c",
+                      "surface-tint": "#69f6b8",
+                      "on-surface-variant": "#a2aea8",
+                      "on-secondary-fixed": "#00432c",
+                      "secondary-container": "#006c4a",
+                      "inverse-on-surface": "#4c5753",
+                      "error-container": "#9f0519",
+                      "on-secondary": "#00583b",
+                      "on-error": "#490006",
+                      "primary-fixed-dim": "#58e7ab"
+              },
+              "borderRadius": {
+                      "DEFAULT": "1rem",
+                      "lg": "2rem",
+                      "xl": "3rem",
+                      "full": "9999px"
+              },
+              "fontFamily": {
+                      "headline": ["Inter"],
+                      "body": ["Inter"],
+                      "label": ["Space Grotesk"]
+              }
+            },
+          }
+        }
+    </script>
+</head>
+<body class="font-body selection:bg-primary selection:text-on-primary-container">
+<!-- Living Background -->
+<div class="fixed inset-0 overflow-hidden -z-10 pointer-events-none">
+<div class="living-bg-blob bg-primary w-[500px] h-[500px] top-[-10%] left-[-10%]"></div>
+<div class="living-bg-blob bg-secondary w-[600px] h-[600px] bottom-[-20%] right-[-10%]"></div>
+<div class="absolute inset-0 opacity-[0.03]" style="background-image: linear-gradient(45deg, #10b981 1px, transparent 1px), linear-gradient(-45deg, #10b981 1px, transparent 1px); background-size: 60px 60px;"></div>
+</div>
+<!-- Parent Page Content (Dimmed) -->
+<div class="opacity-20 blur-sm pointer-events-none transition-all duration-700">
+<!-- TopNavBar Execution -->
+<header class="fixed top-0 w-full z-50 flex justify-between items-center px-8 h-20 w-full max-w-none bg-[#2c3733]/40 backdrop-blur-xl border-b border-emerald-500/10 shadow-[0_0_40px_rgba(16,185,129,0.05)]">
+<div class="text-2xl font-black bg-gradient-to-r from-[#10b981] to-[#34d399] bg-clip-text text-transparent font-['Inter'] uppercase tracking-tighter">BIO-PULSE</div>
+<nav class="hidden md:flex gap-8 items-center">
+<a class="text-[#d9e5df] opacity-70 hover:text-emerald-300 transition-colors duration-300 font-['Inter'] font-extrabold uppercase tracking-tighter" href="#">Dashboard</a>
+<a class="text-[#d9e5df] opacity-70 hover:text-emerald-300 transition-colors duration-300 font-['Inter'] font-extrabold uppercase tracking-tighter" href="#">Wallets</a>
+<a class="text-[#d9e5df] opacity-70 hover:text-emerald-300 transition-colors duration-300 font-['Inter'] font-extrabold uppercase tracking-tighter" href="#">Cards</a>
+<a class="text-emerald-400 border-b-2 border-emerald-500 pb-1 font-['Inter'] font-extrabold uppercase tracking-tighter" href="#">Transactions</a>
+<a class="text-[#d9e5df] opacity-70 hover:text-emerald-300 transition-colors duration-300 font-['Inter'] font-extrabold uppercase tracking-tighter" href="#">Banking</a>
+</nav>
+<div class="flex items-center gap-6">
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer hover:text-primary transition-colors">notifications</span>
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer hover:text-primary transition-colors">settings</span>
+<div class="w-10 h-10 rounded-full bg-surface-container-high border border-outline-variant flex items-center justify-center overflow-hidden">
+<img alt="User profile" data-alt="close up professional headshot of a person with neutral lighting and minimalist background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBG238kgSIxKTDU1jY8Kmeb0c2bdn8PkOp6GYxWJa1BO44FZOKnVW7TEovtXCUc-RQmLj-GlP7eacM-cW0hsZb-Gq1v1LEtEWLQoHvU0O9KL8AmmNa-YQwT6aCgMEZ04EIQO7lHEqUGe03-3OF4ddfjOJuCZxFiCi3tJ5IGWGJ1NrvTnyMaN_HMXLIWBffbUXQ1hwoj0rNTqm7GxHrsULymPYedNcO83urpWk0EWcDY02p2Zc88DLYsZI78hf6f2olfwKMBVykLlz0"/>
+</div>
+</div>
+</header>
+<!-- Main Content Background (Grid Layout) -->
+<main class="pt-32 px-12 max-w-7xl mx-auto space-y-12">
+<h1 class="text-6xl font-black text-on-surface opacity-50 font-headline uppercase tracking-tight">Payout History</h1>
+<div class="grid grid-cols-4 gap-8">
+<div class="h-64 rounded-xl bg-surface-container-low border border-outline-variant/10"></div>
+<div class="h-64 rounded-xl bg-surface-container-low border border-outline-variant/10"></div>
+<div class="h-64 rounded-xl bg-surface-container-low border border-outline-variant/10"></div>
+<div class="h-64 rounded-xl bg-surface-container-low border border-outline-variant/10"></div>
+</div>
+<div class="space-y-4">
+<div class="h-20 w-full rounded-lg bg-surface-container-low/50"></div>
+<div class="h-20 w-full rounded-lg bg-surface-container-low/50"></div>
+<div class="h-20 w-full rounded-lg bg-surface-container-low/50"></div>
+</div>
+</main>
+</div>
+<!-- Modal Backdrop -->
+<div class="fixed inset-0 z-[60] flex items-center justify-center p-6 bg-black/40 backdrop-blur-md">
+<!-- MODAL DIALOG -->
+<div class="relative w-full max-w-[720px] glass-panel rounded-xl overflow-hidden shadow-[0_20px_60px_rgba(4,13,10,0.5),0_0_40px_rgba(16,185,129,0.15)] animate-in fade-in zoom-in duration-500" style="border-radius: 32px;">
+<!-- Close Button -->
+<button class="absolute top-6 right-8 text-on-surface-variant hover:text-primary transition-colors active:scale-95 duration-200">
+<span class="material-symbols-outlined text-3xl">close</span>
+</button>
+<!-- Header -->
+<div class="pt-10 px-10 pb-6 space-y-1">
+<h2 class="text-5xl font-black text-gradient font-headline uppercase tracking-tighter">Batch Payout</h2>
+<p class="font-['JetBrains_Mono'] text-xs text-on-surface-variant tracking-[0.3em] font-bold">PAY MULTIPLE RECIPIENTS AT ONCE</p>
+</div>
+<!-- Body -->
+<div class="px-10 pb-10 space-y-8">
+<!-- 1. CSV Dropzone -->
+<div class="group relative flex flex-col items-center justify-center border-2 border-dashed border-primary/30 rounded-lg p-10 bg-primary/5 hover:bg-primary/10 transition-all duration-300 cursor-pointer">
+<span class="material-symbols-outlined text-4xl text-primary mb-4">cloud_upload</span>
+<p class="font-['JetBrains_Mono'] text-sm text-primary tracking-widest font-bold">DRAG &amp; DROP CSV FILE</p>
+<p class="font-label text-[10px] text-on-surface-variant mt-2 uppercase">or click to browse local directory</p>
+</div>
+<!-- 2. Preview Table -->
+<div class="glass-panel border-0 bg-surface-container-lowest/40 rounded-lg overflow-hidden">
+<table class="w-full text-left border-collapse">
+<thead class="bg-surface-container-highest/60 border-b border-primary/10">
+<tr>
+<th class="py-4 px-5 font-['JetBrains_Mono'] text-[10px] text-primary tracking-widest uppercase">Name</th>
+<th class="py-4 px-5 font-['JetBrains_Mono'] text-[10px] text-primary tracking-widest uppercase">Bank</th>
+<th class="py-4 px-5 font-['JetBrains_Mono'] text-[10px] text-primary tracking-widest uppercase">Amount</th>
+<th class="py-4 px-5 font-['JetBrains_Mono'] text-[10px] text-primary tracking-widest uppercase">Method</th>
+<th class="py-4 px-5 font-['JetBrains_Mono'] text-[10px] text-primary tracking-widest uppercase text-center">Status</th>
+</tr>
+</thead>
+<tbody class="text-xs divide-y divide-primary/5">
+<tr class="hover:bg-primary/5 transition-colors group">
+<td class="py-4 px-5 text-on-surface font-semibold">Acme Co</td>
+<td class="py-4 px-5 text-on-surface-variant">CHASE •••4421</td>
+<td class="py-4 px-5 font-['JetBrains_Mono'] text-primary font-bold">$3,200.00</td>
+<td class="py-4 px-5 text-on-surface-variant">ACH</td>
+<td class="py-4 px-5 text-center"><span class="material-symbols-outlined text-jade-500 text-lg" style="color: #4edea3">check_circle</span></td>
+</tr>
+<tr class="hover:bg-primary/5 transition-colors group">
+<td class="py-4 px-5 text-on-surface font-semibold">John Doe</td>
+<td class="py-4 px-5 text-on-surface-variant">WELLS •••9102</td>
+<td class="py-4 px-5 font-['JetBrains_Mono'] text-primary font-bold">$1,500.00</td>
+<td class="py-4 px-5 text-on-surface-variant">ACH</td>
+<td class="py-4 px-5 text-center"><span class="material-symbols-outlined text-jade-500 text-lg" style="color: #4edea3">check_circle</span></td>
+</tr>
+<tr class="hover:bg-primary/5 transition-colors group">
+<td class="py-4 px-5 text-on-surface font-semibold">Supplier Ltd</td>
+<td class="py-4 px-5 text-on-surface-variant">BOA •••7788</td>
+<td class="py-4 px-5 font-['JetBrains_Mono'] text-primary font-bold">$5,040.00</td>
+<td class="py-4 px-5 text-on-surface-variant">WIRE</td>
+<td class="py-4 px-5 text-center"><span class="material-symbols-outlined text-jade-500 text-lg" style="color: #4edea3">check_circle</span></td>
+</tr>
+<tr class="hover:bg-primary/5 transition-colors group">
+<td class="py-4 px-5 text-on-surface font-semibold">Tech Vendor</td>
+<td class="py-4 px-5 text-on-surface-variant">CITI •••3321</td>
+<td class="py-4 px-5 font-['JetBrains_Mono'] text-primary font-bold">$2,800.00</td>
+<td class="py-4 px-5 text-on-surface-variant">ACH</td>
+<td class="py-4 px-5 text-center"><span class="material-symbols-outlined text-amber-500 text-lg" style="color: #ffb95f">warning</span></td>
+</tr>
+<tr class="hover:bg-primary/5 transition-colors group">
+<td class="py-4 px-5 text-on-surface font-semibold">Dev Agency</td>
+<td class="py-4 px-5 text-on-surface-variant">HSBC •••1199</td>
+<td class="py-4 px-5 font-['JetBrains_Mono'] text-primary font-bold">$5,700.00</td>
+<td class="py-4 px-5 text-on-surface-variant">WIRE</td>
+<td class="py-4 px-5 text-center"><span class="material-symbols-outlined text-jade-500 text-lg" style="color: #4edea3">check_circle</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- 3. Totals Row -->
+<div class="flex justify-between items-center px-6 py-4 rounded-full bg-surface-container-high/40 border border-primary/10">
+<div class="font-['JetBrains_Mono'] text-[10px] text-on-surface-variant tracking-wider uppercase">
+                        TOTAL RECIPIENTS: <span class="text-primary">24</span>
+</div>
+<div class="font-['JetBrains_Mono'] text-[10px] text-on-surface-variant tracking-wider uppercase">
+                        TOTAL AMOUNT: <span class="text-primary">$18,240.00</span>
+</div>
+<div class="font-['JetBrains_Mono'] text-[10px] text-on-surface-variant tracking-wider uppercase">
+                        TOTAL FEES: <span class="text-primary">$12.00</span>
+</div>
+</div>
+<!-- 4. Authorization -->
+<label class="flex items-center gap-4 cursor-pointer group">
+<div class="relative flex items-center justify-center">
+<input checked="" class="peer appearance-none w-6 h-6 border-2 border-primary/40 rounded bg-transparent checked:bg-primary/20 checked:border-primary transition-all" type="checkbox"/>
+<span class="material-symbols-outlined text-primary absolute opacity-0 peer-checked:opacity-100 transition-opacity pointer-events-none">check</span>
+</div>
+<span class="text-sm font-label text-on-surface opacity-80 group-hover:opacity-100 transition-opacity">
+                        I authorize this batch payout of <span class="font-['JetBrains_Mono'] text-primary font-bold">$18,252.00</span>
+</span>
+</label>
+<!-- BOTTOM ACTIONS -->
+<div class="flex items-center justify-end gap-6 pt-4">
+<button class="font-['JetBrains_Mono'] text-xs tracking-widest text-on-surface-variant hover:text-on-surface transition-colors uppercase py-3 px-8">
+                        CANCEL
+                    </button>
+<button class="relative overflow-hidden group flex items-center gap-3 font-['JetBrains_Mono'] text-sm tracking-tighter text-on-primary-container font-bold bg-transparent border-2 border-primary rounded-full px-10 py-4 transition-all duration-300">
+<div class="absolute inset-0 bg-gradient-to-r from-primary to-secondary opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+<span class="relative z-10 uppercase">EXECUTE BATCH</span>
+<span class="material-symbols-outlined relative z-10 group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- BottomNavBar Execution -->
+<footer class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-12 bg-[#06100d] h-10 border-t border-emerald-500/5">
+<div class="text-emerald-400 flex items-center gap-2 font-['JetBrains_Mono'] text-xs uppercase tracking-widest">
+<span class="material-symbols-outlined text-sm">trending_up</span>
+            BTC: $64,210
+        </div>
+<div class="text-[#d9e5df] opacity-50 flex items-center gap-2 font-['JetBrains_Mono'] text-xs uppercase tracking-widest hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-sm">leaderboard</span>
+            ETH: $3,450
+        </div>
+<div class="text-[#d9e5df] opacity-50 flex items-center gap-2 font-['JetBrains_Mono'] text-xs uppercase tracking-widest hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-sm">sensors</span>
+            Network: Optimal
+        </div>
+<div class="text-[#d9e5df] opacity-50 flex items-center gap-2 font-['JetBrains_Mono'] text-xs uppercase tracking-widest hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-sm">check_circle</span>
+            Sync: 100%
+        </div>
+</footer>
+</body></html>

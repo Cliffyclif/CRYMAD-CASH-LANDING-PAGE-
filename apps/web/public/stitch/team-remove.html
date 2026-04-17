@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800&amp;family=JetBrains+Mono:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "inverse-on-surface": "#4c5753",
+                    "surface-container-lowest": "#000000",
+                    "on-surface-variant": "#a2aea8",
+                    "tertiary-dim": "#efa69e",
+                    "tertiary-fixed-dim": "#efa69e",
+                    "primary-fixed": "#69f6b8",
+                    "on-primary-container": "#002919",
+                    "secondary-dim": "#55e4a9",
+                    "surface": "#06100d",
+                    "primary-fixed-dim": "#58e7ab",
+                    "secondary": "#65f3b6",
+                    "on-primary": "#005a3c",
+                    "error": "#ff716c",
+                    "primary-container": "#06b77f",
+                    "on-secondary": "#00583b",
+                    "error-container": "#9f0519",
+                    "on-primary-fixed-variant": "#006544",
+                    "surface-tint": "#69f6b8",
+                    "on-secondary-container": "#e1ffec",
+                    "on-tertiary-container": "#64312c",
+                    "secondary-fixed": "#65f3b6",
+                    "surface-variant": "#1a2924",
+                    "on-tertiary-fixed-variant": "#6f3a34",
+                    "on-secondary-fixed-variant": "#006343",
+                    "on-error": "#490006",
+                    "surface-dim": "#06100d",
+                    "surface-container-highest": "#1a2924",
+                    "on-primary-fixed": "#00452d",
+                    "inverse-surface": "#f0fcf6",
+                    "surface-container-low": "#0a1612",
+                    "surface-bright": "#1f2f2a",
+                    "error-dim": "#d7383b",
+                    "tertiary": "#ffc7c0",
+                    "inverse-primary": "#006d4a",
+                    "outline-variant": "#3f4a46",
+                    "surface-container-high": "#15221e",
+                    "on-secondary-fixed": "#00432c",
+                    "tertiary-fixed": "#ffb4ab",
+                    "on-tertiary": "#6f3a34",
+                    "secondary-container": "#006c4a",
+                    "secondary-fixed-dim": "#55e4a9",
+                    "primary-dim": "#58e7ab",
+                    "surface-container": "#0f1c18",
+                    "background": "#06100d",
+                    "primary": "#69f6b8",
+                    "on-background": "#f0fcf6",
+                    "outline": "#6c7873",
+                    "on-error-container": "#ffa8a3",
+                    "on-surface": "#f0fcf6",
+                    "on-tertiary-fixed": "#4c1e19",
+                    "tertiary-container": "#ffb4ab"
+            },
+            "borderRadius": {
+                    "DEFAULT": "1rem",
+                    "lg": "2rem",
+                    "xl": "3rem",
+                    "full": "9999px"
+            },
+            "fontFamily": {
+                    "headline": ["Inter"],
+                    "body": ["Inter"],
+                    "label": ["Inter"],
+                    "mono": ["JetBrains Mono"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .bioluminescent-blob {
+            position: fixed;
+            border-radius: 50%;
+            filter: blur(80px);
+            z-index: -1;
+            opacity: 0.2;
+            background: #06b77f;
+        }
+        .text-gradient-emerald {
+            background: linear-gradient(to right, #10b981, #34d399);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body min-h-screen selection:bg-primary selection:text-on-primary-container overflow-hidden">
+<!-- Background Animation Layer -->
+<div class="bioluminescent-blob w-[500px] h-[500px] -top-20 -left-20"></div>
+<div class="bioluminescent-blob w-[400px] h-[400px] bottom-0 right-0 opacity-10"></div>
+<!-- PARENT PAGE (Team Dashboard - Dimmed & Blurred) -->
+<div class="opacity-20 blur-md pointer-events-none select-none">
+<!-- TopNavBar -->
+<header class="bg-[#06100d]/80 backdrop-blur-2xl border-b border-[#10b981]/10 shadow-[0_0_50px_-12px_rgba(105,246,184,0.1)] flex justify-between items-center w-full px-8 py-4 sticky top-0 z-10">
+<div class="flex items-center gap-8">
+<span class="font-['Inter'] font-extrabold uppercase tracking-tight text-2xl font-black bg-gradient-to-r from-[#10b981] to-[#34d399] bg-clip-text text-transparent">VITALITY OPS</span>
+<nav class="hidden md:flex gap-6">
+<a class="text-[#a2aea8] hover:text-[#69f6b8] transition-all duration-300" href="#">Dashboard</a>
+<a class="text-[#69f6b8] border-b-2 border-[#69f6b8] pb-1 transition-all duration-300" href="#">Team</a>
+<a class="text-[#a2aea8] hover:text-[#69f6b8] transition-all duration-300" href="#">Resources</a>
+<a class="text-[#a2aea8] hover:text-[#69f6b8] transition-all duration-300" href="#">Analytics</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-[#a2aea8]">notifications</span>
+<span class="material-symbols-outlined text-[#a2aea8]">settings</span>
+<img alt="Lead Scientist Profile" class="w-8 h-8 rounded-full border border-primary/20" data-alt="close up of a professional researcher wearing sleek modern lab glasses and a tactical charcoal uniform in a high tech bioluminescent facility" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB-mfER1smfri-qviGv5QXXKMymeP6GAwjQHj-I1pX4s5Yg30GLLX0NuZ05EMugQe4iWicG-3aJ_58LOddJAFbmB5cEgeIPfd4BETLmsQ3lkZGz0v4iUH-SuFap_wMP482KZGRP08b3IwfbeTxm84qf9BvbZW5v3JppA_Tzub2WFVLYxdJuu_FT-a0CxoFodWC5k5SnctTSv0tfp4T7GDMzVKv_CUK2XfgEJGNXvo9G_-emKR0X3uj1E3_QZ1F7wcSTB9Rzn4Ew8Wk"/>
+</div>
+</header>
+<!-- Main Content (Team Dashboard Skeleton) -->
+<main class="p-12 space-y-8">
+<div class="flex justify-between items-end">
+<div>
+<h1 class="text-4xl font-extrabold text-gradient-emerald">Team Management</h1>
+<p class="text-on-surface-variant font-mono mt-2 uppercase tracking-widest text-sm">TOTAL NODES ACTIVE: 12</p>
+</div>
+</div>
+<!-- Bento Grid Team Members -->
+<div class="grid grid-cols-3 gap-6">
+<!-- Sarah Chen Card (Faintly visible) -->
+<div class="bg-surface-container-high rounded-xl p-6 border border-primary/5">
+<div class="flex items-center gap-4 mb-4">
+<img alt="Sarah Chen" class="w-12 h-12 rounded-full" data-alt="Portrait of a young asian woman with a cybernetic ear implant and emerald glowing biological patterns on her neck, cinematic bioluminescent lab lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCI1eAa8StFNyvAAueNS372LuPwcaOlfgNgfNKtXNCnRBXOEaLRFwhvlrvIhGMdjS_Vm0RXQ5NEUAJZxqHQR1xhO5ItLdueTq2WzFt8LEgiDe60U750li-ADqO1KTxupywWLNm9K5_5o5t0Qo677iSuL7zDWr98lesQsa0N9i9yGkVpsrqQhcWGegnW5vtBFlKKjeP16wamxBnvfkQsz723TsVulLhKYUw8bU4ahbec4XCnZpcpPxbwdv1JrhGj0zitbQG1690T0yY"/>
+<div>
+<p class="font-bold">Sarah Chen</p>
+<p class="font-mono text-xs text-on-surface-variant">sarah@crymad.io</p>
+</div>
+</div>
+</div>
+<!-- Repeat cards... -->
+<div class="bg-surface-container-high rounded-xl p-6 border border-primary/5 opacity-50"></div>
+<div class="bg-surface-container-high rounded-xl p-6 border border-primary/5 opacity-50"></div>
+</div>
+</main>
+<!-- BottomNavBar -->
+<footer class="bg-[#06100d]/90 backdrop-blur-md fixed bottom-0 w-full h-10 border-t border-[#10b981]/10 flex justify-start items-center px-6 gap-8 z-50">
+<div class="flex items-center gap-2 text-[#69f6b8]">
+<span class="material-symbols-outlined text-[12px]" data-weight="fill">lens</span>
+<span class="font-['JetBrains_Mono'] text-[10px] uppercase tracking-widest">System Live</span>
+</div>
+<div class="flex items-center gap-2 text-[#a2aea8]/50">
+<span class="material-symbols-outlined text-[12px]">lan</span>
+<span class="font-['JetBrains_Mono'] text-[10px] uppercase tracking-widest">Network Stable</span>
+</div>
+<div class="flex items-center gap-2 text-[#a2aea8]/50">
+<span class="material-symbols-outlined text-[12px]">sync_alt</span>
+<span class="font-['JetBrains_Mono'] text-[10px] uppercase tracking-widest">Active Sync</span>
+</div>
+</footer>
+</div>
+<!-- REMOVE MEMBER MODAL OVERLAY -->
+<div class="fixed inset-0 z-[100] flex items-center justify-center p-4">
+<!-- Overlay backdrop -->
+<div class="absolute inset-0 bg-surface/60 backdrop-blur-sm"></div>
+<!-- CENTERED GLASS MODAL -->
+<div class="relative w-full max-w-[460px] bg-[#2c3733]/40 backdrop-blur-[20px] rounded-xl border border-[#10b981]/10 shadow-[0_20px_60px_rgba(4,13,10,0.5),0_0_40px_rgba(16,185,129,0.15)] overflow-hidden">
+<!-- Close Icon -->
+<button class="absolute top-6 right-6 text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined">close</span>
+</button>
+<!-- Modal Header -->
+<div class="pt-10 pb-6 px-8 text-center space-y-1">
+<h2 class="text-3xl font-extrabold text-gradient-emerald">Remove Sarah Chen?</h2>
+<p class="font-mono text-[#d9e5df] text-xs tracking-[0.2em] uppercase">THIS ACTION REQUIRES CONFIRMATION</p>
+</div>
+<!-- Body Content -->
+<div class="px-8 pb-10 space-y-8">
+<!-- Large Warning Icon -->
+<div class="flex justify-center">
+<div class="relative">
+<div class="absolute inset-0 blur-2xl bg-tertiary-container/30 rounded-full"></div>
+<span class="material-symbols-outlined text-[80px] text-tertiary relative z-10">warning</span>
+</div>
+</div>
+<!-- Member Preview Card (Inner Glass) -->
+<div class="bg-surface-container-high/60 rounded-lg p-4 border border-white/5 flex items-center justify-between">
+<div class="flex items-center gap-4">
+<div class="relative h-10 w-10">
+<img alt="Sarah Chen" class="rounded-full h-full w-full object-cover grayscale" data-alt="Portrait of a young asian woman with a cybernetic ear implant and emerald glowing biological patterns on her neck, cinematic bioluminescent lab lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD5zKPRuPq-uMIYVi2uEwc8thjB-VqxL_tpFsBeXkDkmzVw9hWKB-u4IXplh0jBJdSmLBpasxNUjF9M_NdFCvKUjS1KrU8naLjppdmfz_AJVPiIFePo6I1AjPzQA5BtTM3rKFJ2fT9Rjxstz_Un3F2vFYc2LnDOT1gtGJOv9vkPaYMG86Ek-sljbvgshBsK2N1z_MS12kgtN9T58SbDdzaDnoK3mEE7DzG8fvePf_j3gJRpdqkQ1b5Nt-9Rkyzx5fh1CJ0RBc_ahwk"/>
+<div class="absolute -bottom-1 -right-1 w-3 h-3 bg-tertiary border-2 border-surface rounded-full"></div>
+</div>
+<div>
+<p class="font-semibold text-on-surface">Sarah Chen</p>
+<p class="font-mono text-xs text-on-surface-variant">sarah@crymad.io</p>
+</div>
+</div>
+<span class="px-3 py-1 bg-surface-variant text-primary text-[10px] font-mono tracking-widest rounded-full border border-primary/10">MANAGER</span>
+</div>
+<!-- Description -->
+<p class="text-[#d9e5df] text-center text-sm leading-relaxed px-4">
+                    This will immediately revoke Sarah's access to your organization. Their audit log history will be preserved.
+                </p>
+<!-- Checkbox -->
+<label class="flex items-center gap-3 cursor-pointer group px-4 justify-center">
+<div class="relative flex items-center">
+<input checked="" class="peer appearance-none w-5 h-5 border border-primary/30 rounded bg-surface-container-highest checked:bg-primary transition-all" type="checkbox"/>
+<span class="material-symbols-outlined absolute text-on-primary-container text-sm scale-0 peer-checked:scale-100 transition-transform left-0.5 top-0.5 pointer-events-none">check</span>
+</div>
+<span class="text-xs font-label text-on-surface-variant group-hover:text-on-surface transition-colors">Also revoke their active API tokens</span>
+</label>
+</div>
+<!-- Footer Actions -->
+<div class="flex border-t border-white/5">
+<button class="flex-1 py-6 px-4 text-xs font-mono tracking-widest text-on-surface-variant hover:text-on-surface hover:bg-white/5 transition-all uppercase">
+                    CANCEL
+                </button>
+<button class="flex-1 py-6 px-4 bg-transparent border-l border-white/5 text-tertiary font-mono tracking-widest uppercase hover:bg-tertiary hover:text-on-tertiary transition-all flex items-center justify-center gap-2 group">
+                    REMOVE MEMBER
+                    <span class="material-symbols-outlined text-sm group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+</body></html>

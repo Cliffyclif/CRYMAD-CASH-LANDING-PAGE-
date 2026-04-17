@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&amp;family=JetBrains+Mono:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-variant": "#2c3733",
+                    "inverse-surface": "#d9e5df",
+                    "on-primary": "#003824",
+                    "on-error-container": "#ffdad6",
+                    "secondary-fixed": "#68fcbf",
+                    "secondary": "#45dfa4",
+                    "inverse-on-surface": "#28332f",
+                    "on-tertiary-container": "#523200",
+                    "on-primary-fixed-variant": "#005236",
+                    "error": "#ffb4ab",
+                    "surface-container-lowest": "#06100d",
+                    "on-error": "#690005",
+                    "tertiary-fixed": "#ffddb8",
+                    "secondary-fixed-dim": "#45dfa4",
+                    "surface-container-highest": "#2c3733",
+                    "on-primary-container": "#00422b",
+                    "outline": "#86948a",
+                    "surface": "#0b1512",
+                    "primary-container": "#10b981",
+                    "background": "#0b1512",
+                    "surface-container": "#17221e",
+                    "on-secondary": "#003825",
+                    "on-tertiary-fixed-variant": "#653e00",
+                    "surface-bright": "#313b38",
+                    "on-secondary-container": "#00452e",
+                    "inverse-primary": "#006c49",
+                    "error-container": "#93000a",
+                    "on-secondary-fixed-variant": "#005137",
+                    "tertiary": "#ffb95f",
+                    "surface-tint": "#4edea3",
+                    "on-primary-fixed": "#002113",
+                    "on-tertiary-fixed": "#2a1700",
+                    "on-surface": "#d9e5df",
+                    "outline-variant": "#3c4a42",
+                    "surface-container-high": "#222c29",
+                    "on-background": "#d9e5df",
+                    "secondary-container": "#00bd85",
+                    "primary-fixed-dim": "#4edea3",
+                    "on-secondary-fixed": "#002114",
+                    "tertiary-container": "#e29100",
+                    "surface-container-low": "#131e1a",
+                    "primary-fixed": "#6ffbbe",
+                    "on-surface-variant": "#bbcabf",
+                    "surface-dim": "#0b1512",
+                    "tertiary-fixed-dim": "#ffb95f",
+                    "primary": "#4edea3",
+                    "on-tertiary": "#472a00"
+            },
+            "borderRadius": {
+                    "DEFAULT": "1rem",
+                    "lg": "2rem",
+                    "xl": "3rem",
+                    "full": "9999px"
+            },
+            "fontFamily": {
+                    "headline": ["Inter", "sans-serif"],
+                    "body": ["Inter", "sans-serif"],
+                    "label": ["Inter", "sans-serif"],
+                    "mono": ["JetBrains Mono", "monospace"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; background-color: #040d0a; color: #d9e5df; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .glass-sheet { background: rgba(44, 55, 51, 0.4); backdrop-filter: blur(20px); border: 1px solid rgba(16, 185, 129, 0.08); }
+        .diagonal-lines { background-image: repeating-linear-gradient(45deg, rgba(16, 185, 129, 0.05) 0px, rgba(16, 185, 129, 0.05) 1px, transparent 1px, transparent 10px); }
+        .bg-blob { position: fixed; width: 300px; height: 300px; border-radius: 50%; filter: blur(60px); opacity: 0.2; z-index: -1; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="flex items-center justify-center min-h-screen overflow-hidden">
+<!-- Bioluminescent Background Blobs -->
+<div class="bg-blob bg-[#10b981] top-[-10%] left-[-10%] animate-pulse"></div>
+<div class="bg-blob bg-[#34d399] bottom-[-5%] right-[-5%]"></div>
+<div class="bg-blob bg-[#f59e0b] top-[40%] right-[-15%] opacity-10"></div>
+<div class="bg-blob bg-[#10b981] bottom-[20%] left-[10%] opacity-10"></div>
+<div class="fixed inset-0 diagonal-lines pointer-events-none"></div>
+<!-- Parent Screen Wrapper (Simulated Mobile Container) -->
+<main class="relative w-[390px] h-[844px] bg-[#040d0a] overflow-hidden shadow-2xl">
+<!-- Background Mock UI (Dimmed) -->
+<div class="opacity-30 flex flex-col h-full pointer-events-none">
+<!-- TopAppBar Placeholder -->
+<header class="flex items-center justify-between px-6 h-16 w-full border-b border-emerald-500/10">
+<span class="material-symbols-outlined text-emerald-900/60" data-icon="arrow_back">arrow_back</span>
+<h1 class="text-emerald-500 font-['Inter'] font-extrabold tracking-tight uppercase">PAYOUT STATUS</h1>
+<span class="material-symbols-outlined text-emerald-900/60" data-icon="more_vert">more_vert</span>
+</header>
+<!-- Dashboard Content Mock -->
+<div class="p-6 space-y-6">
+<div class="h-32 bg-surface-container rounded-lg"></div>
+<div class="h-64 bg-surface-container rounded-lg"></div>
+<div class="h-32 bg-surface-container rounded-lg"></div>
+</div>
+<!-- BottomNavBar Placeholder -->
+<nav class="fixed bottom-0 w-full rounded-t-[32px] flex justify-around items-center px-4 py-3 pb-8 bg-[#040d0a]/40 border-t border-emerald-500/10">
+<div class="flex flex-col items-center text-emerald-900/50"><span class="material-symbols-outlined">inventory_2</span><span class="text-[10px] font-mono mt-1">ARCHIVE</span></div>
+<div class="flex flex-col items-center bg-emerald-500/10 text-emerald-400 rounded-full px-5 py-2"><span class="material-symbols-outlined">swap_horiz</span><span class="text-[10px] font-mono mt-1">FLOW</span></div>
+<div class="flex flex-col items-center text-emerald-900/50"><span class="material-symbols-outlined">account_balance_wallet</span><span class="text-[10px] font-mono mt-1">VAULT</span></div>
+<div class="flex flex-col items-center text-emerald-900/50"><span class="material-symbols-outlined">monitoring</span><span class="text-[10px] font-mono mt-1">PULSE</span></div>
+</nav>
+</div>
+<!-- Dimming Overlay -->
+<div class="absolute inset-0 bg-black/60 backdrop-blur-sm z-40"></div>
+<!-- Bottom Sheet -->
+<div class="absolute bottom-0 left-0 right-0 h-[90%] glass-sheet rounded-t-[28px] z-50 flex flex-col overflow-hidden">
+<!-- Grab Handle -->
+<div class="w-full flex justify-center py-3">
+<div class="w-12 h-1 bg-surface-variant rounded-full"></div>
+</div>
+<!-- Header Section -->
+<div class="px-6 pb-6 pt-2 flex items-center justify-between">
+<h2 class="text-2xl font-['Inter'] font-extrabold tracking-tight bg-gradient-to-r from-[#10b981] to-[#34d399] bg-clip-text text-transparent">
+                    Payout PO-8821
+                </h2>
+<div class="bg-primary/20 text-primary border border-primary/20 px-3 py-1 rounded-full text-[10px] font-bold tracking-widest uppercase">
+                    COMPLETED
+                </div>
+</div>
+<!-- Scrollable Content -->
+<div class="flex-1 overflow-y-auto px-6 space-y-6 pb-32">
+<!-- Recipient Card -->
+<div class="glass-sheet p-5 rounded-lg flex items-center gap-4">
+<img class="w-16 h-16 rounded-full border-2 border-emerald-500/20 object-cover" data-alt="close-up portrait of professional man in soft focus with tech-inspired teal lighting overlay" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCSS_arKTWKZ-KKhYGurNLHMbn9il6hTp64b4ZEuO1HNCJ8p-TF6cB2FG3KqvshdmpIS8SeCYDchqKXZofkB4FE-PuIIG6fzdKSAZvuB6lWHNIZHwXFdjrqK6FRLxwris34D0dve7gri007XSTyOx3sVmP3IW7eNXwWuv9Zpj6-eNAA7cOcvVi6vrXzBCv1GHcdp4A7xk5wZ3HHSs1hl5l1fxxslYUBOlZ2RVekt3_B38EuuRRx9JePYINvN9KZWtNniwmzH6KER7As"/>
+<div>
+<div class="text-lg font-bold text-on-surface">Alex Morgan</div>
+<div class="font-mono text-xs text-emerald-500/60 uppercase tracking-tighter mt-0.5">CHASE BANK •••• 4492</div>
+</div>
+</div>
+<!-- Amount Display -->
+<div class="flex flex-col items-center justify-center py-6">
+<div class="font-mono text-5xl font-bold text-[#F87171] tracking-tighter">-$1,200.00</div>
+<div class="font-mono text-[10px] text-emerald-500/40 uppercase tracking-[0.2em] mt-2">USD CURRENCY</div>
+</div>
+<!-- Status Timeline -->
+<div class="space-y-6 pl-4 border-l border-emerald-500/10">
+<div class="relative flex items-center gap-6">
+<div class="absolute -left-[21px] w-2.5 h-2.5 rounded-full glass-sheet bg-emerald-500/20 border border-emerald-500/30"></div>
+<div class="text-xs font-bold text-on-surface/60">CREATED</div>
+<div class="font-mono text-[11px] text-emerald-500/40">10:12 AM</div>
+</div>
+<div class="relative flex items-center gap-6">
+<div class="absolute -left-[21px] w-2.5 h-2.5 rounded-full glass-sheet bg-emerald-500/20 border border-emerald-500/30"></div>
+<div class="text-xs font-bold text-on-surface/60">APPROVED</div>
+<div class="font-mono text-[11px] text-emerald-500/40">10:15 AM</div>
+</div>
+<div class="relative flex items-center gap-6">
+<div class="absolute -left-[21px] w-2.5 h-2.5 rounded-full glass-sheet bg-emerald-500/20 border border-emerald-500/30"></div>
+<div class="text-xs font-bold text-on-surface/60">PROCESSING</div>
+<div class="font-mono text-[11px] text-emerald-500/40">10:20 AM</div>
+</div>
+<div class="relative flex items-center gap-6">
+<div class="absolute -left-[21px] w-2.5 h-2.5 rounded-full glass-sheet bg-emerald-500/20 border border-emerald-500/30"></div>
+<div class="text-xs font-bold text-on-surface/60">SENT</div>
+<div class="font-mono text-[11px] text-emerald-500/40">12:44 PM</div>
+</div>
+<div class="relative flex items-center gap-6">
+<div class="absolute -left-[21px] w-2.5 h-2.5 rounded-full bg-emerald-400 shadow-[0_0_12px_rgba(78,222,163,0.5)]"></div>
+<div class="text-xs font-bold text-emerald-400">CONFIRMED</div>
+<div class="font-mono text-[11px] text-emerald-400">12:45 PM</div>
+</div>
+</div>
+<!-- Metadata Section -->
+<div class="glass-sheet p-5 rounded-lg space-y-4">
+<div class="flex justify-between items-center">
+<span class="text-[10px] font-bold text-emerald-500/40 uppercase tracking-widest">TX ID</span>
+<span class="font-mono text-xs text-on-surface">0x82f...a12c</span>
+</div>
+<div class="flex justify-between items-center">
+<span class="text-[10px] font-bold text-emerald-500/40 uppercase tracking-widest">Method</span>
+<span class="font-mono text-xs text-on-surface">ACH</span>
+</div>
+<div class="flex justify-between items-center">
+<span class="text-[10px] font-bold text-emerald-500/40 uppercase tracking-widest">Fee</span>
+<span class="font-mono text-xs text-on-surface">$2.50</span>
+</div>
+<div class="flex justify-between items-center">
+<span class="text-[10px] font-bold text-emerald-500/40 uppercase tracking-widest">Processing Time</span>
+<span class="font-mono text-xs text-on-surface">2h 33m</span>
+</div>
+<div class="flex justify-between items-center">
+<span class="text-[10px] font-bold text-emerald-500/40 uppercase tracking-widest">Authorized By</span>
+<span class="font-mono text-xs text-on-surface">System (Auto)</span>
+</div>
+</div>
+<!-- Small Dispute Link -->
+<div class="flex justify-center pt-2">
+<button class="text-tertiary text-[10px] font-bold font-mono tracking-widest uppercase hover:underline">
+                        DISPUTE TRANSACTION
+                    </button>
+</div>
+</div>
+<!-- Sticky Actions -->
+<div class="absolute bottom-0 left-0 right-0 px-6 py-8 bg-[#040d0a]/80 backdrop-blur-xl border-t border-emerald-500/5">
+<div class="flex gap-4">
+<button class="flex-1 h-14 rounded-full glass-sheet font-bold text-xs tracking-widest uppercase text-on-surface active:scale-95 transition-all">
+                        CLOSE
+                    </button>
+<button class="flex-[1.5] h-14 rounded-full bg-primary text-on-primary font-extrabold text-xs tracking-widest uppercase flex items-center justify-center gap-2 shadow-[0_0_20px_rgba(78,222,163,0.3)] active:scale-95 transition-all">
+                        DOWNLOAD RECEIPT <span class="material-symbols-outlined text-lg">download</span>
+</button>
+</div>
+<!-- iOS Home Indicator -->
+<div class="mt-6 flex justify-center">
+<div class="w-32 h-1 bg-on-surface/20 rounded-full"></div>
+</div>
+</div>
+</div>
+</main>
+</body></html>

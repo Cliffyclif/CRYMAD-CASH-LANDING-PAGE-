@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=390, height=844, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&amp;family=JetBrains+Mono:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-error": "#690005",
+                    "surface-bright": "#313b38",
+                    "error": "#ffb4ab",
+                    "primary-fixed": "#6ffbbe",
+                    "on-surface": "#d9e5df",
+                    "on-tertiary-fixed-variant": "#653e00",
+                    "on-tertiary": "#472a00",
+                    "inverse-primary": "#006c49",
+                    "surface-container": "#17221e",
+                    "surface-dim": "#0b1512",
+                    "surface": "#0b1512",
+                    "primary-container": "#10b981",
+                    "secondary-container": "#00bd85",
+                    "inverse-surface": "#d9e5df",
+                    "on-tertiary-fixed": "#2a1700",
+                    "on-surface-variant": "#bbcabf",
+                    "on-secondary-fixed-variant": "#005137",
+                    "on-error-container": "#ffdad6",
+                    "on-primary-container": "#00422b",
+                    "on-primary-fixed-variant": "#005236",
+                    "surface-variant": "#2c3733",
+                    "surface-container-lowest": "#06100d",
+                    "tertiary-fixed-dim": "#ffb95f",
+                    "on-secondary-fixed": "#002114",
+                    "on-primary-fixed": "#002113",
+                    "inverse-on-surface": "#28332f",
+                    "tertiary-fixed": "#ffddb8",
+                    "tertiary-container": "#e29100",
+                    "on-secondary": "#003825",
+                    "on-tertiary-container": "#523200",
+                    "secondary": "#45dfa4",
+                    "on-background": "#d9e5df",
+                    "surface-tint": "#4edea3",
+                    "surface-container-low": "#131e1a",
+                    "outline": "#86948a",
+                    "surface-container-highest": "#2c3733",
+                    "primary-fixed-dim": "#4edea3",
+                    "on-secondary-container": "#00452e",
+                    "error-container": "#93000a",
+                    "secondary-fixed": "#68fcbf",
+                    "surface-container-high": "#222c29",
+                    "on-primary": "#003824",
+                    "background": "#0b1512",
+                    "outline-variant": "#3c4a42",
+                    "secondary-fixed-dim": "#45dfa4",
+                    "tertiary": "#ffb95f",
+                    "primary": "#4edea3"
+            },
+            "borderRadius": {
+                    "DEFAULT": "1rem",
+                    "lg": "2rem",
+                    "xl": "3rem",
+                    "full": "9999px"
+            },
+            "fontFamily": {
+                    "headline": ["Inter"],
+                    "body": ["Inter"],
+                    "label": ["Inter"],
+                    "mono": ["JetBrains Mono"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            background-color: #040d0a;
+            color: #d9e5df;
+            font-family: 'Inter', sans-serif;
+            overflow: hidden;
+            width: 390px;
+            height: 844px;
+        }
+        .glass-sheet {
+            background: rgba(44, 55, 51, 0.4);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+        .ghost-border {
+            border: 1px solid rgba(16, 185, 129, 0.08);
+        }
+        .gradient-text {
+            background: linear-gradient(to right, #10b981, #34d399);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .bg-pulse {
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            filter: blur(80px);
+            opacity: 0.15;
+            border-radius: 100%;
+            z-index: -1;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="relative flex flex-col items-center justify-start border-[8px] border-surface-container-highest rounded-[48px] shadow-2xl">
+<!-- Background Elements -->
+<div class="bg-pulse bg-primary top-20 left-0"></div>
+<div class="bg-pulse bg-secondary bottom-40 right-0"></div>
+<!-- 44pt Status Bar -->
+<div class="w-full h-[44px] px-8 flex justify-between items-center text-[14px] font-bold z-10">
+<span class="font-mono">9:41</span>
+<div class="flex gap-1.5 items-center">
+<span class="material-symbols-outlined text-[18px]">signal_cellular_alt</span>
+<span class="material-symbols-outlined text-[18px]">wifi</span>
+<span class="material-symbols-outlined text-[18px]">battery_very_low</span>
+</div>
+</div>
+<!-- 56pt Header (Shared Component: TopAppBar Proxy) -->
+<header class="w-full h-[56px] px-6 flex items-center justify-between z-10 border-b border-primary/5">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary">menu</span>
+<h1 class="font-headline font-black tracking-tighter text-primary">OTC ARCHIVE</h1>
+</div>
+<div class="flex items-center gap-2">
+<div class="bg-tertiary/10 text-tertiary px-2 py-0.5 rounded-full flex items-center gap-1.5">
+<span class="w-1.5 h-1.5 bg-tertiary rounded-full animate-pulse"></span>
+<span class="font-mono text-[10px] font-bold tracking-widest uppercase">INST</span>
+</div>
+<div class="w-8 h-8 rounded-full bg-surface-container-highest flex items-center justify-center ghost-border">
+<span class="material-symbols-outlined text-[18px]">person</span>
+</div>
+</div>
+</header>
+<!-- Background Main Content (OTC Desk View) -->
+<main class="w-full flex-grow px-6 pt-6 opacity-30 select-none">
+<div class="flex flex-col gap-4">
+<div class="h-32 w-full bg-surface-container rounded-lg ghost-border p-4">
+<div class="w-24 h-4 bg-surface-variant rounded mb-2"></div>
+<div class="w-48 h-8 bg-surface-variant rounded"></div>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div class="h-24 bg-surface-container rounded-lg ghost-border"></div>
+<div class="h-24 bg-surface-container rounded-lg ghost-border"></div>
+</div>
+</div>
+</main>
+<!-- Bottom Sheet Mask (Overlay) -->
+<div class="absolute inset-0 bg-black/40 z-20"></div>
+<!-- RFQ Bottom Sheet (75% Height) -->
+<section class="absolute bottom-0 w-full h-[75%] glass-sheet rounded-t-[28px] ghost-border z-30 flex flex-col shadow-[0_-10px_60px_rgba(16,185,129,0.15)]">
+<!-- Grab Handle -->
+<div class="w-full flex justify-center py-3">
+<div class="w-10 h-1 bg-on-surface-variant/30 rounded-full"></div>
+</div>
+<div class="px-6 flex flex-col gap-6 overflow-y-auto pb-32">
+<!-- Title -->
+<h2 class="text-2xl font-headline font-black gradient-text uppercase tracking-tight">Request for Quote</h2>
+<!-- Pair Selector -->
+<div class="flex gap-2 p-1 bg-surface-container-lowest rounded-full ghost-border">
+<button class="flex-1 py-2 rounded-full bg-primary-container/20 text-primary font-bold text-xs uppercase tracking-wider">BTC/USD</button>
+<button class="flex-1 py-2 rounded-full text-on-surface-variant font-semibold text-xs uppercase tracking-wider">ETH/USD</button>
+<button class="flex-1 py-2 rounded-full text-on-surface-variant font-semibold text-xs uppercase tracking-wider">USDT/USD</button>
+</div>
+<!-- Side Toggle -->
+<div class="flex w-full bg-surface-container-lowest rounded-xl p-1.5 ghost-border">
+<button class="flex-1 py-3 bg-[#4edea3] text-on-primary rounded-lg font-black tracking-widest text-sm">BUY</button>
+<button class="flex-1 py-3 text-on-surface-variant font-bold tracking-widest text-sm">SELL</button>
+</div>
+<!-- Notional Input Section -->
+<div class="flex flex-col gap-2">
+<label class="font-mono text-[10px] text-primary/60 uppercase tracking-[0.2em]">Notional Amount</label>
+<div class="flex items-center gap-3">
+<div class="flex-grow flex items-baseline gap-1">
+<span class="font-mono text-4xl font-black gradient-text">$5,000,000</span>
+</div>
+<div class="px-3 py-1.5 bg-primary/10 border border-primary/20 rounded-full">
+<span class="font-mono text-primary text-xs font-bold">$5M</span>
+</div>
+</div>
+</div>
+<!-- Execution Stats Pill -->
+<div class="w-full py-2.5 px-4 bg-surface-container-high rounded-full ghost-border flex justify-center items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-[16px]">info</span>
+<span class="font-mono text-[11px] text-on-surface/80">≈ 74.35 BTC @ $67,241</span>
+</div>
+<!-- Settlement Grid -->
+<div class="flex flex-col gap-3">
+<label class="font-mono text-[10px] text-primary/60 uppercase tracking-[0.2em]">Settlement</label>
+<div class="flex gap-3">
+<button class="px-4 py-2 bg-surface-container rounded-lg ghost-border font-mono text-xs">T+0</button>
+<button class="px-4 py-2 bg-primary/20 border border-primary/40 rounded-lg font-mono text-xs text-primary font-bold">T+1</button>
+<button class="px-4 py-2 bg-surface-container rounded-lg ghost-border font-mono text-xs">T+2</button>
+</div>
+</div>
+<!-- Fields Grid -->
+<div class="grid grid-cols-2 gap-4">
+<div class="flex flex-col gap-2">
+<label class="font-mono text-[10px] text-primary/60 uppercase tracking-[0.2em]">Counterparty</label>
+<div class="bg-surface-container rounded-xl p-3 flex justify-between items-center ghost-border">
+<span class="font-headline font-bold text-sm">ANY</span>
+<span class="material-symbols-outlined text-primary text-[18px]">expand_more</span>
+</div>
+</div>
+<div class="flex flex-col gap-2">
+<label class="font-mono text-[10px] text-primary/60 uppercase tracking-[0.2em]">Max Slippage</label>
+<div class="bg-surface-container rounded-xl p-3 flex justify-between items-center ghost-border">
+<span class="font-mono font-bold text-sm">0.05%</span>
+</div>
+</div>
+</div>
+<!-- Quote Validity Alert -->
+<div class="w-full bg-tertiary/10 border border-tertiary/20 rounded-xl px-4 py-3 flex items-center gap-3">
+<span class="material-symbols-outlined text-tertiary text-[20px]">timer</span>
+<span class="font-mono text-xs text-tertiary font-bold tracking-wide">QUOTE VALIDITY: 30 SECONDS</span>
+</div>
+<!-- CTA Button -->
+<button class="w-full py-5 bg-primary text-on-primary rounded-full font-headline font-black text-lg tracking-tighter shadow-[0_0_30px_rgba(16,185,129,0.3)] active:scale-95 transition-transform flex items-center justify-center gap-2">
+                REQUEST QUOTE
+                <span class="material-symbols-outlined font-bold">arrow_forward</span>
+</button>
+</div>
+</section>
+<!-- 83pt Bottom Tab Bar (Shared Component: BottomNavBar Proxy) -->
+<nav class="absolute bottom-0 w-full h-[83px] glass-sheet rounded-t-[32px] ghost-border z-40 flex justify-around items-center px-4 pb-6">
+<div class="flex flex-col items-center text-emerald-700 gap-1">
+<span class="material-symbols-outlined">swap_horizontal_circle</span>
+<span class="font-mono text-[9px] uppercase tracking-tighter">Trade</span>
+</div>
+<div class="flex flex-col items-center text-emerald-700 gap-1">
+<span class="material-symbols-outlined">history_edu</span>
+<span class="font-mono text-[9px] uppercase tracking-tighter">History</span>
+</div>
+<div class="flex flex-col items-center text-emerald-700 gap-1">
+<span class="material-symbols-outlined">account_balance_wallet</span>
+<span class="font-mono text-[9px] uppercase tracking-tighter">Vault</span>
+</div>
+<div class="flex flex-col items-center text-emerald-400 font-bold bg-emerald-500/10 rounded-full px-4 py-1 gap-1">
+<span class="material-symbols-outlined">more_horiz</span>
+<span class="font-mono text-[9px] uppercase tracking-tighter">More</span>
+</div>
+</nav>
+<!-- Home Indicator -->
+<div class="absolute bottom-2 w-32 h-1 bg-on-surface-variant/20 rounded-full z-50"></div>
+</body></html>

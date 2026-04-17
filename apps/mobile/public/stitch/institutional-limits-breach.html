@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Bio-Secure Terminal | Alert Breach</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&amp;family=JetBrains+Mono:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-surface-variant": "#bbcabf",
+                        "tertiary-fixed": "#ffddb8",
+                        "secondary-container": "#00bd85",
+                        "primary-fixed": "#6ffbbe",
+                        "on-tertiary-fixed": "#2a1700",
+                        "on-secondary-fixed-variant": "#005137",
+                        "error": "#ffb4ab",
+                        "primary": "#4edea3",
+                        "outline-variant": "#3c4a42",
+                        "on-error": "#690005",
+                        "tertiary-fixed-dim": "#ffb95f",
+                        "inverse-surface": "#d9e5df",
+                        "background": "#0b1512",
+                        "on-tertiary-container": "#523200",
+                        "surface-bright": "#313b38",
+                        "primary-container": "#10b981",
+                        "tertiary-container": "#e29100",
+                        "on-primary-container": "#00422b",
+                        "error-container": "#93000a",
+                        "surface-dim": "#0b1512",
+                        "surface": "#0b1512",
+                        "on-tertiary": "#472a00",
+                        "surface-container-lowest": "#06100d",
+                        "primary-fixed-dim": "#4edea3",
+                        "on-background": "#d9e5df",
+                        "inverse-on-surface": "#28332f",
+                        "surface-container": "#17221e",
+                        "on-secondary-fixed": "#002114",
+                        "secondary-fixed-dim": "#45dfa4",
+                        "on-primary": "#003824",
+                        "surface-tint": "#4edea3",
+                        "on-surface": "#d9e5df",
+                        "surface-container-highest": "#2c3733",
+                        "secondary": "#45dfa4",
+                        "on-error-container": "#ffdad6",
+                        "on-primary-fixed": "#002113",
+                        "tertiary": "#ffb95f",
+                        "surface-container-high": "#222c29",
+                        "on-primary-fixed-variant": "#005236",
+                        "outline": "#86948a",
+                        "surface-variant": "#2c3733",
+                        "on-secondary": "#003825",
+                        "on-secondary-container": "#00452e",
+                        "secondary-fixed": "#68fcbf",
+                        "surface-container-low": "#131e1a",
+                        "on-tertiary-fixed-variant": "#653e00",
+                        "inverse-primary": "#006c49"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "1rem",
+                        "lg": "2rem",
+                        "xl": "3rem",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Inter"],
+                        "body": ["Inter"],
+                        "label": ["Inter"],
+                        "mono": ["JetBrains Mono"]
+                    }
+                },
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .bg-energy-lines {
+            background-image: repeating-linear-gradient(45deg, rgba(16, 185, 129, 0.05) 0px, rgba(16, 185, 129, 0.05) 1px, transparent 1px, transparent 10px);
+        }
+        .glass-sheet {
+            background: rgba(44, 55, 51, 0.4);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(16, 185, 129, 0.08);
+        }
+        @keyframes pulse-coral {
+            0% { border-color: rgba(248, 113, 113, 0.2); box-shadow: 0 0 0 0 rgba(248, 113, 113, 0.4); }
+            50% { border-color: rgba(248, 113, 113, 1); box-shadow: 0 0 20px 2px rgba(248, 113, 113, 0.2); }
+            100% { border-color: rgba(248, 113, 113, 0.2); box-shadow: 0 0 0 0 rgba(248, 113, 113, 0); }
+        }
+        .animate-pulse-coral {
+            animation: pulse-coral 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+        @keyframes pulse-soft {
+            0%, 100% { opacity: 0.15; transform: scale(1); }
+            50% { opacity: 0.3; transform: scale(1.1); }
+        }
+        .animate-pulse-soft {
+            animation: pulse-soft 4s ease-in-out infinite;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface font-body overflow-hidden h-screen w-screen flex flex-col justify-end">
+<!-- Parent Institutional Background (Dimmed) -->
+<div class="fixed inset-0 z-0 bg-energy-lines">
+<div class="absolute top-[-10%] left-[-10%] w-[60%] h-[60%] rounded-full bg-primary/20 blur-[100px] animate-pulse-soft"></div>
+<div class="absolute bottom-[-10%] right-[-10%] w-[50%] h-[50%] rounded-full bg-secondary/10 blur-[120px] animate-pulse-soft" style="animation-delay: 1s"></div>
+<!-- Mock Background UI -->
+<div class="p-6 opacity-20 pointer-events-none">
+<div class="h-8 w-48 bg-surface-container-highest rounded-full mb-8"></div>
+<div class="grid grid-cols-2 gap-4">
+<div class="h-32 glass-sheet rounded-lg"></div>
+<div class="h-32 glass-sheet rounded-lg"></div>
+<div class="h-48 glass-sheet rounded-lg col-span-2"></div>
+</div>
+</div>
+<div class="absolute inset-0 bg-black/60"></div>
+</div>
+<!-- Bottom Sheet Container -->
+<div class="relative z-10 w-full h-[85%] bg-surface-container-lowest border-t-[3px] border-error animate-pulse-coral rounded-t-[28px] flex flex-col overflow-hidden shadow-[0_-20px_60px_rgba(248,113,113,0.15)]">
+<!-- Grab Handle -->
+<div class="w-full flex justify-center py-3">
+<div class="w-12 h-1 bg-outline-variant rounded-full opacity-50"></div>
+</div>
+<!-- Scrollable Content -->
+<div class="flex-1 overflow-y-auto px-6 pb-24">
+<!-- Alert Icon Section -->
+<div class="flex flex-col items-center justify-center mt-4 mb-6">
+<div class="relative flex items-center justify-center">
+<div class="absolute w-24 h-24 rounded-full border border-error/30 animate-ping"></div>
+<div class="absolute w-20 h-20 rounded-full border border-error/50"></div>
+<span class="material-symbols-outlined text-[100px] text-error" style="font-variation-settings: 'FILL' 1;">warning</span>
+</div>
+<h1 class="text-2xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-[#f87171] to-white mt-4 uppercase tracking-tight text-center">
+                    LIMIT BREACH DETECTED
+                </h1>
+<div class="flex items-center gap-2 mt-1">
+<span class="font-mono text-xs font-bold text-on-surface-variant tracking-widest bg-surface-container-highest px-2 py-0.5 rounded">BREACH-8821</span>
+<span class="text-[10px] text-error uppercase font-bold">2 min ago</span>
+</div>
+</div>
+<!-- Hero Breach Card -->
+<div class="glass-sheet rounded-lg p-5 border-l-4 border-error mb-6">
+<div class="flex justify-between items-start mb-3">
+<p class="text-on-surface text-sm font-semibold">Galaxy Digital exposure exceeded limit</p>
+<span class="material-symbols-outlined text-error text-lg">arrow_upward</span>
+</div>
+<div class="font-mono mb-4">
+<div class="flex justify-between text-[11px] text-on-surface-variant mb-1">
+<span>CURRENT</span>
+<span>LIMIT</span>
+</div>
+<div class="flex justify-between items-baseline">
+<span class="text-xl font-bold text-error">$55.2M</span>
+<span class="text-sm text-on-surface-variant">$50M</span>
+</div>
+<div class="text-[10px] text-error font-bold mt-1 tracking-wider">+10.4% OVER THRESHOLD</div>
+</div>
+<!-- Mini Bar Chart -->
+<div class="relative h-2 w-full bg-surface-container rounded-full overflow-hidden flex">
+<div class="h-full bg-primary" style="width: 80%"></div>
+<div class="h-full bg-error" style="width: 20%"></div>
+<div class="absolute left-[80%] top-0 w-0.5 h-full bg-white z-10 shadow-[0_0_8px_white]"></div>
+</div>
+</div>
+<!-- Root Cause -->
+<div class="mb-6">
+<div class="flex items-center gap-2 mb-2">
+<span class="material-symbols-outlined text-sm text-on-surface-variant">info</span>
+<span class="text-[10px] font-bold text-on-surface-variant uppercase tracking-widest">Root Cause Analysis</span>
+</div>
+<p class="font-mono text-sm text-on-surface bg-surface-container-low p-3 rounded-lg border border-outline-variant/30">
+                    New trade <span class="text-primary">TRD-9941</span> pushed exposure above safety threshold.
+                </p>
+</div>
+<!-- Auto-Actions List -->
+<div class="mb-6">
+<h3 class="text-[10px] font-bold text-on-surface-variant uppercase tracking-widest mb-3">Protocol Execution Log</h3>
+<div class="space-y-3">
+<div class="flex items-center justify-between py-2 border-b border-outline-variant/10">
+<span class="text-sm">Trading PAUSED</span>
+<span class="material-symbols-outlined text-primary text-lg" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+<div class="flex items-center justify-between py-2 border-b border-outline-variant/10">
+<span class="text-sm">CRO notified</span>
+<span class="material-symbols-outlined text-primary text-lg" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+<div class="flex items-center justify-between py-2">
+<span class="text-sm">Hedge triggered</span>
+<div class="w-4 h-4 border-2 border-primary border-t-transparent rounded-full animate-spin"></div>
+</div>
+</div>
+</div>
+<!-- Response Radio Pills -->
+<div class="mb-6">
+<h3 class="text-[10px] font-bold text-on-surface-variant uppercase tracking-widest mb-3">Proposed Countermeasures</h3>
+<div class="grid grid-cols-2 gap-2">
+<button class="glass-sheet px-3 py-2.5 rounded-full text-[10px] font-bold text-on-surface border-outline hover:bg-surface-container-highest transition-all uppercase">Reduce Pos</button>
+<button class="glass-sheet px-3 py-2.5 rounded-full text-[10px] font-bold text-on-surface border-outline hover:bg-surface-container-highest transition-all uppercase">Increase Limit</button>
+<button class="glass-sheet px-3 py-2.5 rounded-full text-[10px] font-bold text-on-surface border-outline hover:bg-surface-container-highest transition-all uppercase">Close CP</button>
+<button class="glass-sheet px-3 py-2.5 rounded-full text-[10px] font-bold text-on-surface border-outline hover:bg-surface-container-highest transition-all uppercase text-tertiary">Override</button>
+</div>
+</div>
+<!-- Assignment & SLA -->
+<div class="flex items-center justify-between bg-surface-container-low p-4 rounded-xl mb-4 border border-outline-variant/30">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-surface-container-highest flex items-center justify-center overflow-hidden border border-primary/20">
+<img class="w-full h-full object-cover" data-alt="professional male risk officer profile portrait, serious expression, dark studio background, high-end corporate style" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDOb-any7u-x_x9xhWnTDVdp14-o0A0QVYOFEdg-IyOI_le8qggh39JqRO1tG31tLVgjv-5cMVoQR264X0be-fteOvTbqCNocGh3RWQNuvOdwUJG9i_eOeNfBL7GAwguDFCQwEltvPbdJjC6DW3KLFHY7TBdPUUSohWtzmh8iU8ZfENrJZ4vJBmmvrobZ8vTNnQMKa9bbzUt0tNeXUWqfdMAnlXPdJAXPxWasF41SkQOLIhfRUCXbpKz504kqwa5Gmhf3pfxErWeHks"/>
+</div>
+<div>
+<div class="text-[10px] text-on-surface-variant font-bold uppercase tracking-tighter">Assignee</div>
+<div class="text-sm font-semibold">CRO Marcus Klein</div>
+</div>
+</div>
+<div class="text-right">
+<div class="text-[10px] text-on-surface-variant font-bold uppercase tracking-tighter">SLA Breach In</div>
+<div class="font-mono text-lg font-bold text-tertiary animate-pulse">00:08:42</div>
+</div>
+</div>
+</div>
+<!-- Footer Button -->
+<div class="absolute bottom-0 left-0 w-full p-6 glass-sheet border-t border-primary/10">
+<button class="w-full bg-primary py-4 rounded-full text-on-primary font-bold text-sm uppercase tracking-widest flex items-center justify-center gap-2 shadow-[0_0_20px_rgba(16,185,129,0.3)] active:scale-95 transition-transform">
+                ACKNOWLEDGE &amp; RESPOND
+                <span class="material-symbols-outlined text-lg">arrow_forward</span>
+</button>
+</div>
+</div>
+<!-- Navigation Shell Placeholder (Suppressed as per rules for focus/task screen) -->
+</body></html>

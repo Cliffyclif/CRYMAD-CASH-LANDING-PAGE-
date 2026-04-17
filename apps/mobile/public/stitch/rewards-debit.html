@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&amp;family=JetBrains+Mono:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-tint": "#4edea3",
+                        "surface-container-high": "#222c29",
+                        "on-background": "#d9e5df",
+                        "on-secondary-fixed-variant": "#005137",
+                        "on-secondary-fixed": "#002114",
+                        "on-secondary": "#003825",
+                        "tertiary-fixed-dim": "#ffb95f",
+                        "tertiary": "#ffb95f",
+                        "on-primary-container": "#00422b",
+                        "tertiary-container": "#e29100",
+                        "inverse-on-surface": "#28332f",
+                        "surface-variant": "#2c3733",
+                        "on-tertiary-container": "#523200",
+                        "on-primary-fixed": "#002113",
+                        "secondary-fixed-dim": "#45dfa4",
+                        "outline": "#86948a",
+                        "surface": "#0b1512",
+                        "on-tertiary": "#472a00",
+                        "outline-variant": "#3c4a42",
+                        "on-surface-variant": "#bbcabf",
+                        "error-container": "#93000a",
+                        "on-secondary-container": "#00452e",
+                        "secondary-container": "#00bd85",
+                        "surface-container": "#17221e",
+                        "surface-dim": "#0b1512",
+                        "surface-container-low": "#131e1a",
+                        "background": "#0b1512",
+                        "surface-container-highest": "#2c3733",
+                        "error": "#ffb4ab",
+                        "on-error-container": "#ffdad6",
+                        "primary-container": "#10b981",
+                        "on-error": "#690005",
+                        "on-tertiary-fixed": "#2a1700",
+                        "inverse-surface": "#d9e5df",
+                        "on-tertiary-fixed-variant": "#653e00",
+                        "inverse-primary": "#006c49",
+                        "on-surface": "#d9e5df",
+                        "tertiary-fixed": "#ffddb8",
+                        "surface-bright": "#313b38",
+                        "on-primary": "#003824",
+                        "primary-fixed-dim": "#4edea3",
+                        "secondary-fixed": "#68fcbf",
+                        "on-primary-fixed-variant": "#005236",
+                        "primary": "#4edea3",
+                        "secondary": "#45dfa4",
+                        "surface-container-lowest": "#06100d",
+                        "primary-fixed": "#6ffbbe"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "1rem",
+                        "lg": "2rem",
+                        "xl": "3rem",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Inter"],
+                        "body": ["Inter"],
+                        "label": ["Inter"],
+                        "mono": ["JetBrains Mono"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; background-color: #040d0a; overflow: hidden; }
+        .glass { background: rgba(44, 55, 51, 0.4); backdrop-filter: blur(20px); border: 1px solid rgba(16, 185, 129, 0.08); }
+        .inset-glass { background: rgba(11, 21, 18, 0.6); box-shadow: inset 0 2px 4px rgba(0,0,0,0.4); border: 1px solid rgba(16, 185, 129, 0.05); }
+        .gradient-heading { background: linear-gradient(to bottom, #10b981, #34d399); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .bg-living {
+            background: 
+                radial-gradient(circle at 10% 10%, rgba(16, 185, 129, 0.15) 0%, transparent 40%),
+                radial-gradient(circle at 90% 20%, rgba(52, 211, 153, 0.1) 0%, transparent 40%),
+                radial-gradient(circle at 50% 80%, rgba(245, 158, 11, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 0% 100%, rgba(16, 185, 129, 0.12) 0%, transparent 40%);
+        }
+        .energy-lines {
+            background-image: repeating-linear-gradient(45deg, transparent, transparent 40px, rgba(16, 185, 129, 0.03) 40px, rgba(16, 185, 129, 0.03) 41px);
+        }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="text-on-background antialiased flex items-center justify-center min-h-screen">
+<!-- Mobile Canvas 390x844 -->
+<div class="relative w-[390px] h-[844px] bg-[#040d0a] overflow-hidden shadow-2xl rounded-[40px] border border-surface-container-high">
+<!-- Living Background -->
+<div class="absolute inset-0 bg-living energy-lines pointer-events-none"></div>
+<!-- Background Content (Dimmed Rewards Page) -->
+<div class="absolute inset-0 opacity-20 transition-opacity">
+<!-- Shared TopAppBar (Dummy state) -->
+<header class="fixed top-0 w-full z-50 flex justify-between items-center px-6 h-16 border-b border-emerald-500/10 bg-emerald-950/40 backdrop-blur-xl">
+<span class="material-symbols-outlined text-emerald-500" data-icon="arrow_back">arrow_back</span>
+<h1 class="font-['Inter'] font-extrabold tracking-tight uppercase text-emerald-500">Rewards</h1>
+<span class="material-symbols-outlined text-emerald-500" data-icon="settings_input_component">settings_input_component</span>
+</header>
+<!-- Background Content Mockup -->
+<div class="pt-24 px-6 space-y-6">
+<div class="glass h-40 rounded-lg p-6">
+<div class="h-4 w-32 bg-surface-variant rounded mb-4"></div>
+<div class="h-8 w-48 bg-surface-variant rounded"></div>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div class="glass h-32 rounded-lg"></div>
+<div class="glass h-32 rounded-lg"></div>
+</div>
+</div>
+</div>
+<!-- Dimmer Overlay -->
+<div class="absolute inset-0 bg-black/60 backdrop-blur-[2px]"></div>
+<!-- Bottom Sheet Container -->
+<div class="absolute bottom-0 w-full h-[85%] glass rounded-t-[28px] flex flex-col overflow-hidden shadow-[0_-10px_40px_rgba(16,185,129,0.12)]">
+<!-- Grab Handle -->
+<div class="flex justify-center pt-4 pb-2">
+<div class="w-12 h-1.5 bg-surface-variant rounded-full opacity-40"></div>
+</div>
+<!-- Content Scrollable Area -->
+<div class="flex-1 overflow-y-auto px-6 pb-24">
+<!-- Heading Group -->
+<div class="mt-4 space-y-2">
+<h2 class="text-2xl font-black font-headline tracking-tight gradient-heading leading-tight uppercase">
+                        Debit User Reward
+                    </h2>
+<div class="inline-flex items-center px-3 py-1 rounded-full bg-tertiary/10 border border-tertiary/20">
+<span class="text-[10px] font-mono font-bold text-tertiary tracking-widest uppercase">
+                            ADMIN ACTION — REQUIRES REASON
+                        </span>
+</div>
+</div>
+<!-- User Search -->
+<div class="mt-8 space-y-2">
+<label class="text-[10px] font-bold text-on-surface-variant/60 tracking-widest uppercase ml-4">Find Account</label>
+<div class="inset-glass rounded-lg px-4 py-3 flex items-center gap-3">
+<span class="material-symbols-outlined text-outline" data-icon="person_search">person_search</span>
+<input class="bg-transparent border-none text-on-surface focus:ring-0 w-full placeholder:text-outline-variant font-medium" placeholder="Felix" type="text"/>
+</div>
+</div>
+<!-- User Preview Card -->
+<div class="mt-6 glass p-4 rounded-lg flex items-center gap-4 relative overflow-hidden group">
+<div class="relative">
+<img alt="Felix Avatar" class="w-14 h-14 rounded-full bg-surface-container-highest border border-primary/20" data-alt="Stylized 3D character avatar with friendly features, wearing a minimalist digital headset against a dark tech background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDV2Wdf2X4OSqJDsxEDuDxzjoiWv5bHJoKHIRTDlIJLi4jSezYjFCzmAXbwdfAM0rUbUlKWTER1jbm522hOmHkLWvQDRSjIazFZFL7heB1FEvveJd5GJ3Mbwfx7RkZsUURIHPemeICdL3DN7M3SaAJwxZ0vD22N-z59NYkhurk01DSNbOpI0QQLK_6pizGiuIfI2YeuLdHxB3tPHIZUXY1mJAcEcX9W5TLK_gEbNLZ_t1L0lcPokFFz8KtGWJtLYWbstxG1K0Wb7SrP"/>
+<div class="absolute -bottom-1 -right-1 w-5 h-5 bg-primary rounded-full border-4 border-surface-container flex items-center justify-center">
+<span class="material-symbols-outlined text-[10px] text-on-primary font-bold" data-icon="check" data-weight="fill">check</span>
+</div>
+</div>
+<div class="flex-1">
+<div class="text-sm font-bold text-on-surface uppercase tracking-tight">Felix Van Dyke</div>
+<div class="font-mono text-primary text-xs tracking-tighter mt-1">
+                            BALANCE: <span class="text-sm">$1,250.00</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline/30" data-icon="chevron_right">chevron_right</span>
+</div>
+<!-- Amount Input -->
+<div class="mt-10 text-center space-y-2">
+<div class="text-[10px] font-bold text-error/60 tracking-widest uppercase">Debit Amount</div>
+<div class="font-mono text-5xl font-bold text-error tracking-tighter tabular-nums drop-shadow-[0_0_15px_rgba(255,180,171,0.2)]">
+                        $0.00
+                    </div>
+</div>
+<!-- Reason Selection -->
+<div class="mt-10 space-y-4">
+<div class="text-[10px] font-bold text-on-surface-variant/60 tracking-widest uppercase ml-4">Debit Reason</div>
+<div class="flex flex-wrap gap-2">
+<button class="px-4 py-2 rounded-full glass border-primary/30 text-primary text-xs font-bold transition-all duration-300">Fraud</button>
+<button class="px-4 py-2 rounded-full inset-glass text-outline text-xs font-medium hover:text-on-surface transition-colors">Chargeback</button>
+<button class="px-4 py-2 rounded-full inset-glass text-outline text-xs font-medium">Error</button>
+<button class="px-4 py-2 rounded-full inset-glass text-outline text-xs font-medium">Policy Violation</button>
+<button class="px-4 py-2 rounded-full inset-glass text-outline text-xs font-medium">Other</button>
+</div>
+</div>
+<!-- Detailed Notes -->
+<div class="mt-6 space-y-2">
+<label class="text-[10px] font-bold text-on-surface-variant/60 tracking-widest uppercase ml-4">Internal Documentation</label>
+<textarea class="w-full inset-glass rounded-lg p-4 text-on-surface text-sm focus:ring-1 ring-primary/20 min-h-[100px] border-none resize-none placeholder:text-outline-variant" placeholder="Enter detailed audit trail notes..."></textarea>
+</div>
+<!-- Audit Info -->
+<div class="mt-6 flex items-center justify-center">
+<div class="glass px-4 py-2 rounded-full flex items-center gap-2 border-primary/5">
+<span class="material-symbols-outlined text-primary text-sm" data-icon="lock" data-weight="fill">lock</span>
+<span class="text-[10px] font-mono font-bold text-primary/80 tracking-widest uppercase">THIS ACTION WILL BE LOGGED</span>
+</div>
+</div>
+<!-- 2FA Verification -->
+<div class="mt-10 space-y-6">
+<div class="text-center">
+<div class="text-[10px] font-bold text-on-surface-variant/60 tracking-widest uppercase">Admin 2FA Authorization</div>
+</div>
+<div class="flex justify-between gap-2 max-w-[280px] mx-auto">
+<div class="w-10 h-12 glass rounded-lg flex items-center justify-center font-mono text-lg text-primary border-primary/20">6</div>
+<div class="w-10 h-12 glass rounded-lg flex items-center justify-center font-mono text-lg text-primary border-primary/20">4</div>
+<div class="w-10 h-12 glass rounded-lg flex items-center justify-center font-mono text-lg text-outline-variant/30">•</div>
+<div class="w-10 h-12 glass rounded-lg flex items-center justify-center font-mono text-lg text-outline-variant/30">•</div>
+<div class="w-10 h-12 glass rounded-lg flex items-center justify-center font-mono text-lg text-outline-variant/30">•</div>
+<div class="w-10 h-12 glass rounded-lg flex items-center justify-center font-mono text-lg text-outline-variant/30">•</div>
+</div>
+</div>
+</div>
+<!-- Footer Action Button -->
+<div class="absolute bottom-0 w-full p-6 pt-2 bg-gradient-to-t from-[#040d0a] to-transparent">
+<button class="w-full py-5 rounded-full bg-error text-on-error font-black uppercase tracking-widest text-sm flex items-center justify-center gap-2 shadow-[0_10px_30px_rgba(255,180,171,0.3)] active:scale-95 transition-transform">
+<span>DEBIT $0.00</span>
+<span class="material-symbols-outlined font-black" data-icon="trending_down">trending_down</span>
+</button>
+</div>
+</div>
+<!-- System Home Indicator -->
+<div class="absolute bottom-1.5 left-1/2 -translate-x-1/2 w-32 h-1 bg-white/10 rounded-full z-[100]"></div>
+</div>
+</body></html>

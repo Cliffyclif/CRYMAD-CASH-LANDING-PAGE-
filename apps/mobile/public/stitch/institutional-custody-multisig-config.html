@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=390, height=844, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&amp;family=JetBrains+Mono:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container-lowest": "#06100d",
+                        "tertiary-fixed": "#ffddb8",
+                        "tertiary-fixed-dim": "#ffb95f",
+                        "on-secondary-fixed": "#002114",
+                        "on-primary-fixed": "#002113",
+                        "inverse-on-surface": "#28332f",
+                        "on-tertiary-container": "#523200",
+                        "tertiary-container": "#e29100",
+                        "on-secondary": "#003825",
+                        "surface-tint": "#4edea3",
+                        "secondary": "#45dfa4",
+                        "on-background": "#d9e5df",
+                        "surface-container-low": "#131e1a",
+                        "outline": "#86948a",
+                        "surface-container-highest": "#2c3733",
+                        "primary-fixed-dim": "#4edea3",
+                        "on-secondary-container": "#00452e",
+                        "error-container": "#93000a",
+                        "surface-container-high": "#222c29",
+                        "secondary-fixed": "#68fcbf",
+                        "outline-variant": "#3c4a42",
+                        "on-primary": "#003824",
+                        "background": "#0b1512",
+                        "secondary-fixed-dim": "#45dfa4",
+                        "tertiary": "#ffb95f",
+                        "primary": "#4edea3",
+                        "on-error": "#690005",
+                        "surface-bright": "#313b38",
+                        "error": "#ffb4ab",
+                        "on-tertiary-fixed-variant": "#653e00",
+                        "on-tertiary": "#472a00",
+                        "inverse-primary": "#006c49",
+                        "primary-fixed": "#6ffbbe",
+                        "on-surface": "#d9e5df",
+                        "surface-container": "#17221e",
+                        "surface-dim": "#0b1512",
+                        "secondary-container": "#00bd85",
+                        "surface": "#0b1512",
+                        "primary-container": "#10b981",
+                        "on-tertiary-fixed": "#2a1700",
+                        "inverse-surface": "#d9e5df",
+                        "on-surface-variant": "#bbcabf",
+                        "on-secondary-fixed-variant": "#005137",
+                        "on-error-container": "#ffdad6",
+                        "on-primary-container": "#00422b",
+                        "on-primary-fixed-variant": "#005236",
+                        "surface-variant": "#2c3733"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "1rem",
+                        "lg": "2rem",
+                        "xl": "3rem",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Inter"],
+                        "body": ["Inter"],
+                        "label": ["Inter"],
+                        "mono": ["JetBrains Mono"]
+                    }
+                },
+            }
+        }
+    </script>
+<style>
+        .glass {
+            background: rgba(44, 55, 51, 0.4);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(16, 185, 129, 0.08);
+        }
+        .text-gradient {
+            background: linear-gradient(to bottom, #10b981, #34d399);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .active-pulse {
+            box-shadow: 0 0 15px rgba(78, 222, 163, 0.3);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface font-body selection:bg-primary/30">
+<!-- Background Layer (Dimmed Institutional View) -->
+<main class="fixed inset-0 w-[390px] h-[844px] overflow-hidden bg-surface-dim">
+<!-- Background Organic Blobs -->
+<div class="absolute top-[-10%] left-[-10%] w-64 h-64 bg-primary/10 blur-[80px] rounded-full"></div>
+<div class="absolute bottom-[-10%] right-[-10%] w-80 h-80 bg-secondary/10 blur-[90px] rounded-full"></div>
+<!-- Top App Bar Mockup -->
+<header class="flex justify-between items-center px-6 h-16 fixed top-0 w-full z-10 bg-[#040d0a]/80 backdrop-blur-xl border-b border-emerald-500/10">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-emerald-500">menu</span>
+<h1 class="font-headline font-extrabold uppercase tracking-widest text-emerald-500">Custody Hub</h1>
+</div>
+<div class="w-8 h-8 rounded-full bg-surface-container-highest border border-primary/20 flex items-center justify-center">
+<span class="material-symbols-outlined text-xs">person</span>
+</div>
+</header>
+<!-- Mock Content Behind Sheet -->
+<div class="pt-24 px-6 opacity-20">
+<div class="glass p-6 rounded-lg mb-4">
+<div class="h-4 w-24 bg-surface-variant rounded mb-2"></div>
+<div class="h-8 w-48 bg-surface-variant rounded"></div>
+</div>
+<div class="glass p-6 rounded-lg h-64">
+<div class="flex gap-2 h-full items-end">
+<div class="flex-1 bg-primary/20 rounded-t-lg h-[40%]"></div>
+<div class="flex-1 bg-primary/20 rounded-t-lg h-[70%]"></div>
+<div class="flex-1 bg-primary/40 rounded-t-lg h-[90%] active-pulse"></div>
+<div class="flex-1 bg-primary/20 rounded-t-lg h-[50%]"></div>
+</div>
+</div>
+</div>
+<!-- Dimming Overlay -->
+<div class="absolute inset-0 bg-black/60 z-20"></div>
+<!-- Bottom Sheet -->
+<section class="absolute bottom-0 w-full h-[92%] bg-[#06100d] rounded-t-[28px] z-30 shadow-[0_-10px_40px_rgba(16,185,129,0.15)] flex flex-col border-t border-primary/20">
+<!-- Grab Handle -->
+<div class="flex justify-center py-4">
+<div class="w-12 h-1.5 bg-surface-container-highest rounded-full"></div>
+</div>
+<!-- Content Container -->
+<div class="px-6 pb-24 overflow-y-auto flex-1 space-y-6">
+<!-- Header -->
+<header>
+<h2 class="text-2xl font-headline font-extrabold text-gradient leading-tight">Multi-Sig Configuration</h2>
+<p class="font-mono text-[10px] tracking-[0.2em] text-on-surface-variant mt-2">SIGNER THRESHOLDS</p>
+</header>
+<!-- Threshold Card -->
+<article class="glass p-5 rounded-lg">
+<div class="flex items-center justify-between mb-6">
+<span class="font-mono text-sm text-on-surface-variant">M OF N</span>
+<div class="flex gap-1.5">
+<div class="w-2.5 h-2.5 rounded-full bg-primary active-pulse"></div>
+<div class="w-2.5 h-2.5 rounded-full bg-primary active-pulse"></div>
+<div class="w-2.5 h-2.5 rounded-full bg-primary active-pulse"></div>
+<div class="w-2.5 h-2.5 rounded-full bg-surface-container-highest border border-primary/20"></div>
+<div class="w-2.5 h-2.5 rounded-full bg-surface-container-highest border border-primary/20"></div>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<!-- Stepper M -->
+<div class="flex-1 bg-surface-container-lowest border border-primary/10 rounded-xl p-3 flex items-center justify-between">
+<span class="material-symbols-outlined text-primary text-sm">remove</span>
+<span class="font-mono text-2xl font-bold">3</span>
+<span class="material-symbols-outlined text-primary text-sm">add</span>
+</div>
+<span class="font-mono text-on-surface-variant">/</span>
+<!-- Stepper N -->
+<div class="flex-1 bg-surface-container-lowest border border-primary/10 rounded-xl p-3 flex items-center justify-between">
+<span class="material-symbols-outlined text-primary text-sm">remove</span>
+<span class="font-mono text-2xl font-bold">5</span>
+<span class="material-symbols-outlined text-primary text-sm">add</span>
+</div>
+</div>
+</article>
+<!-- Signers Section -->
+<section class="space-y-3">
+<div class="flex justify-between items-center px-1">
+<p class="font-mono text-[10px] tracking-[0.2em] text-on-surface-variant">SIGNERS</p>
+<button class="font-mono text-[10px] text-primary flex items-center gap-1 uppercase font-bold">
+<span class="material-symbols-outlined text-xs">add_circle</span> ADD SIGNER
+                        </button>
+</div>
+<!-- Signer Rows -->
+<div class="space-y-2">
+<!-- Signer 1 -->
+<div class="glass flex items-center p-3 rounded-full gap-3">
+<img class="w-10 h-10 rounded-full object-cover border border-primary/30" data-alt="professional headshot of a mature executive man with warm lighting and dark green background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBR8yGAif2mml2rFK5fl3iN7lrsvPq8HBp3GkWWSfwHoL3LxHCw1qUGSRIa-FBDeNoJLVsFA2eBrc636KEodiSrAif5FhLdX5Lw8D3Ih0ecE0RYz4MuRQmZL3tsN7kDGtBj5MwMo5jJCiBqHWa4sDnrTcQt6F-MiPOunY7PKitnUq2oIpxx3r61T2bFNnTMtuBP4_ZcdKULuWXG88YlnrBmJCRXJPwtJsAK_qlM4S2-JGU3UuWgLN-HR20docLV7rZmd55IVdqNVAZ9"/>
+<div class="flex-1 min-w-0">
+<h4 class="text-sm font-semibold truncate">Joseph Obasi</h4>
+<p class="text-[10px] text-on-surface-variant uppercase tracking-wider">CEO · Admin</p>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-lg" style="font-variation-settings: 'FILL' 1;">verified_user</span>
+<span class="material-symbols-outlined text-on-surface-variant text-lg">smartphone</span>
+</div>
+</div>
+<!-- Signer 2 -->
+<div class="glass flex items-center p-3 rounded-full gap-3">
+<img class="w-10 h-10 rounded-full object-cover border border-primary/30" data-alt="headshot of a confident professional woman with glasses and modern office aesthetic" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDTjazYM5XbUxVlrr81Kz4s_Ozp7VlJo9Iowe5g0ZVO8RJNPKRT08A9Hrqkjmor_5yZWtG1UrPAI6zWnM8Wp_1QsXrSzr5MchvJMB6uPY8QLl6Nv8ZgNuoj2yofdXgmcyDKzVtrekEnvttALPsb_-sZq76WqDJKb-DitgUmDzVapj5p_75j7zlEa-OIhoQAq2RfMb8XY239LadxJm9iZooizJNelfxN9iAhYzh8m9vNsJWyuX07MwSw0kzUslLU7W3ksrbiXJsF2qxq"/>
+<div class="flex-1 min-w-0">
+<h4 class="text-sm font-semibold truncate">Sarah Chen</h4>
+<p class="text-[10px] text-on-surface-variant uppercase tracking-wider">CFO · Approver</p>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-lg" style="font-variation-settings: 'FILL' 1;">verified_user</span>
+<span class="material-symbols-outlined text-on-surface-variant text-lg">laptop_mac</span>
+</div>
+</div>
+<!-- Signer 3 -->
+<div class="glass flex items-center p-3 rounded-full gap-3">
+<img class="w-10 h-10 rounded-full object-cover border border-primary/30" data-alt="portrait of a tech professional man looking focused with moody blue and green studio lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC-VVVkOh7B-buD4QyjV1tXEQfoogLbbg3xr0GeawDC7XYPfUFidJ-C3qEhi0gD9NxczlYTx6V9EgGz46YFQzjvExHnHXbdF-qXcp0Zvm_dxhP7leBwX3IL41UVMXOIkkTA4KYyzsUJAr5lr6QybFuqSYi1PKac9vnno_aOevAfgmQ8S7bWNFlq-JwSadLNlz2HM87GtkgsQFgdqa6WwjDYYbgFSR2Ks9Wj_-xwLWRafTo6RjFf57VsIsYgO78oh63AjX6d8x3IzdJx"/>
+<div class="flex-1 min-w-0">
+<h4 class="text-sm font-semibold truncate">Marcus Klein</h4>
+<p class="text-[10px] text-on-surface-variant uppercase tracking-wider">CTO · Approver</p>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-lg" style="font-variation-settings: 'FILL' 1;">verified_user</span>
+<span class="material-symbols-outlined text-on-surface-variant text-lg">key</span>
+</div>
+</div>
+<!-- Signer 4 -->
+<div class="glass flex items-center p-3 rounded-full gap-3">
+<img class="w-10 h-10 rounded-full object-cover border border-primary/30" data-alt="portrait of a woman in business attire with elegant bioluminescent light reflections" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAm-xbs1ApGYM3JR41cRsriUB1iIk5sq2JYnaL7d9D3LjOpEjX3KvvRnNSXKOG4F2MDvOVBwf-rVwiHPSQ12Z8J9imOtDokC6CKDWi2L5JVYxKfNvel3TvhS13NGz5YI8wrIMbvUL5zWAcIOMTTaie0RiCBZqlMgbDQBy7UG391K0AYQ-mS5UVRRwkbBR1rv69KzquHiApCQeLZpZnYjd92dgpl-IuZm5X2p5Dy1OjMCZiLGoHIjNTL3xoKzEgqYjCT2ZFwLL1C6fTN"/>
+<div class="flex-1 min-w-0">
+<h4 class="text-sm font-semibold truncate">Elena Rossi</h4>
+<p class="text-[10px] text-on-surface-variant uppercase tracking-wider">Compliance · Auditor</p>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-lg" style="font-variation-settings: 'FILL' 1;">verified_user</span>
+<span class="material-symbols-outlined text-on-surface-variant text-lg">shield</span>
+</div>
+</div>
+<!-- Signer 5 (Offline) -->
+<div class="glass flex items-center p-3 rounded-full gap-3 opacity-60">
+<img class="w-10 h-10 rounded-full object-cover grayscale border border-on-surface-variant/20" data-alt="professional male portrait with soft shadows and dark emerald lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD5x6rXIXWYbOYyjoMQqevVZNqNAufBPqoigq3tgdTqJsqZ_PVJo2IrEXREYJ8mVSfiOUzcNCpSWjj9wDvFFjDWF885j6iNXQH2YjOk-Icuq8JUG-wBZ9HHfwrApnBLmf6Dnz4aj6mVOYOitW9XAimdScBltd3RYuZf7mfBdRcKAYCh17MWYqZl3m81tur-wx6gC9mdoXhrEEx-CcNpHmuYXVQvyk8bV3q4YDSu4kgOx2c54v1hy-PD_F_BI6hvc0cib4wnY-lU9_sQ"/>
+<div class="flex-1 min-w-0">
+<h4 class="text-sm font-semibold truncate">David Osei</h4>
+<p class="text-[10px] text-on-surface-variant uppercase tracking-wider">Ops · Backup</p>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-error text-lg">cloud_off</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Rules Section -->
+<article class="glass p-5 rounded-lg space-y-4">
+<p class="font-mono text-[10px] tracking-[0.2em] text-on-surface-variant">OPERATION RULES</p>
+<div class="font-mono text-xs grid grid-cols-2 gap-y-3 gap-x-2 text-primary">
+<div class="bg-primary/5 p-2 rounded-lg border border-primary/10">Cold <span class="text-on-surface">3/5</span></div>
+<div class="bg-primary/5 p-2 rounded-lg border border-primary/10">Hot <span class="text-on-surface">2/5</span></div>
+<div class="bg-primary/5 p-2 rounded-lg border border-primary/10">Trades <span class="text-on-surface">2/5</span></div>
+<div class="bg-primary/5 p-2 rounded-lg border border-primary/10">Limits <span class="text-on-surface">4/5</span></div>
+</div>
+<div class="flex justify-between items-center pt-2">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">schedule</span>
+<span class="text-sm font-semibold text-on-surface">4h Timelock</span>
+</div>
+<div class="w-10 h-5 bg-primary rounded-full flex items-center px-0.5 relative active-pulse">
+<div class="w-4 h-4 bg-on-primary rounded-full absolute right-0.5 shadow-sm"></div>
+</div>
+</div>
+</article>
+<!-- Spacer for Footer -->
+<div class="h-8"></div>
+</div>
+<!-- Footer Action -->
+<footer class="absolute bottom-0 w-full p-6 bg-[#06100d]/90 backdrop-blur-md">
+<button class="w-full bg-primary hover:bg-secondary text-on-primary font-headline font-extrabold py-5 rounded-full transition-all active:scale-[0.98] shadow-[0_10px_30px_rgba(16,185,129,0.2)] uppercase tracking-widest text-sm">
+                    Save Configuration
+                </button>
+</footer>
+</section>
+<!-- Fixed Bottom Nav Component (Suppressed per Rules as focused task) -->
+</main>
+</body></html>

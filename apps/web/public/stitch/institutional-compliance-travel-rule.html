@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Travel Rule Data | Institutional Portal</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=JetBrains+Mono:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-tertiary-fixed": "#2a1700",
+                        "on-surface": "#d9e5df",
+                        "secondary": "#45dfa4",
+                        "on-tertiary": "#472a00",
+                        "surface-container-low": "#131e1a",
+                        "on-secondary-fixed": "#002114",
+                        "on-primary-fixed": "#002113",
+                        "tertiary-container": "#e29100",
+                        "surface-bright": "#313b38",
+                        "surface": "#0b1512",
+                        "error": "#ffb4ab",
+                        "error-container": "#93000a",
+                        "primary-fixed": "#6ffbbe",
+                        "on-surface-variant": "#bbcabf",
+                        "background": "#0b1512",
+                        "on-error-container": "#ffdad6",
+                        "primary-container": "#10b981",
+                        "surface-variant": "#2c3733",
+                        "on-primary-fixed-variant": "#005236",
+                        "outline-variant": "#3c4a42",
+                        "on-primary": "#003824",
+                        "tertiary-fixed": "#ffddb8",
+                        "surface-container": "#17221e",
+                        "inverse-surface": "#d9e5df",
+                        "secondary-fixed": "#68fcbf",
+                        "inverse-on-surface": "#28332f",
+                        "on-primary-container": "#00422b",
+                        "surface-container-high": "#222c29",
+                        "outline": "#86948a",
+                        "surface-tint": "#4edea3",
+                        "on-background": "#d9e5df",
+                        "secondary-container": "#00bd85",
+                        "surface-container-lowest": "#06100d",
+                        "tertiary": "#ffb95f",
+                        "primary-fixed-dim": "#4edea3",
+                        "primary": "#4edea3",
+                        "on-tertiary-container": "#523200",
+                        "tertiary-fixed-dim": "#ffb95f",
+                        "on-secondary": "#003825",
+                        "on-tertiary-fixed-variant": "#653e00",
+                        "on-secondary-fixed-variant": "#005137",
+                        "surface-dim": "#0b1512",
+                        "on-error": "#690005",
+                        "inverse-primary": "#006c49",
+                        "secondary-fixed-dim": "#45dfa4",
+                        "on-secondary-container": "#00452e",
+                        "surface-container-highest": "#2c3733"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "1rem",
+                        "lg": "2rem",
+                        "xl": "3rem",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Inter"],
+                        "body": ["Inter"],
+                        "label": ["JetBrains Mono"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .bioluminescent-gradient {
+            background: linear-gradient(90deg, #10b981 0%, #34d399 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .glass-panel {
+            background: rgba(44, 55, 51, 0.4);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(16, 185, 129, 0.08);
+        }
+        .pulse-line {
+            border-left: 2px solid #45dfa4;
+            box-shadow: -4px 0 12px rgba(69, 223, 164, 0.2);
+        }
+        input::placeholder {
+            color: rgba(187, 202, 191, 0.3);
+        }
+    </style>
+</head>
+<body class="bg-[#0b1512] font-body text-on-surface selection:bg-primary/30 selection:text-primary min-h-screen flex items-center justify-center p-6 overflow-hidden">
+<!-- Background Content (Dimmed Parent) -->
+<div class="fixed inset-0 opacity-20 pointer-events-none z-0">
+<header class="h-[64px] w-full px-6 flex items-center justify-between border-b border-emerald-500/10">
+<div class="font-headline font-bold text-lg tracking-widest text-emerald-400 uppercase">INSTITUTIONAL PORTAL</div>
+<div class="flex gap-8 text-sm font-medium uppercase tracking-tighter">
+<span>Dashboard</span>
+<span>Ledger</span>
+<span class="text-emerald-400 border-b-2 border-emerald-500 pb-1">Audits</span>
+<span>Resources</span>
+</div>
+<div class="flex gap-4">
+<span class="material-symbols-outlined">sensors</span>
+<span class="material-symbols-outlined">settings</span>
+</div>
+</header>
+<main class="max-w-[1280px] mx-auto p-12 grid grid-cols-12 gap-8">
+<div class="col-span-8 space-y-12">
+<div class="h-64 bg-surface-container-low rounded-lg"></div>
+<div class="h-96 bg-surface-container-low rounded-lg"></div>
+</div>
+<div class="col-span-4 space-y-12">
+<div class="h-full bg-surface-container-low rounded-lg"></div>
+</div>
+</main>
+</div>
+<!-- Modal Backdrop Blur Overlay -->
+<div class="fixed inset-0 bg-[#040d0a]/60 backdrop-blur-sm z-10"></div>
+<!-- Central Web Modal -->
+<div class="relative z-20 w-full max-w-[680px] glass-panel rounded-xl shadow-[0_0_64px_rgba(16,185,129,0.04)] flex flex-col max-h-[921px]">
+<!-- Header -->
+<div class="p-8 pb-4">
+<div class="flex justify-between items-start mb-1">
+<h1 class="text-3xl font-headline font-extrabold tracking-tight bioluminescent-gradient">Travel Rule Data</h1>
+<button class="text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined">close</span>
+</button>
+</div>
+<p class="font-label text-xs tracking-widest text-on-surface-variant/60 uppercase">VASP-TO-VASP · FATF R.16</p>
+</div>
+<!-- Scrollable Content Container -->
+<div class="px-8 pb-8 space-y-6 overflow-y-auto custom-scrollbar">
+<!-- Transaction Summary Card -->
+<div class="glass-panel rounded-lg p-5 flex items-center justify-between border-l-2 border-emerald-500">
+<div class="font-label text-xs space-y-1">
+<div class="flex items-center gap-2">
+<span class="text-primary-fixed">TX-9921</span>
+<span class="text-on-surface-variant/40">·</span>
+<span class="text-on-surface">25 BTC</span>
+<span class="text-on-surface-variant/40">·</span>
+<span class="text-secondary">$1,681,025</span>
+</div>
+<div class="text-on-surface-variant">TO Binance Institutional</div>
+</div>
+<div class="flex items-center gap-2 px-3 py-1 bg-primary/10 rounded-full">
+<span class="material-symbols-outlined text-[16px] text-primary" data-weight="fill">verified</span>
+<span class="font-label text-[10px] text-primary uppercase">Broadcast Ready</span>
+</div>
+</div>
+<!-- Originator Section -->
+<div class="space-y-3">
+<div class="flex items-center justify-between">
+<h3 class="font-label text-[10px] tracking-widest text-on-surface-variant/80 uppercase">Originator Information</h3>
+<span class="material-symbols-outlined text-primary text-sm" data-weight="fill">check_circle</span>
+</div>
+<div class="glass-panel rounded-lg p-5 space-y-4">
+<div class="flex justify-between items-start">
+<div>
+<div class="text-on-surface font-semibold mb-0.5">Aurora Capital Management</div>
+<div class="font-label text-[11px] text-on-surface-variant/60">LEI: 549300V5M9J2S8K1L042</div>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-4 pt-4 border-t border-emerald-500/5">
+<div class="space-y-1">
+<span class="font-label text-[9px] text-on-surface-variant/40 uppercase">Physical Address</span>
+<div class="text-[12px] leading-snug">1120 Avenue of the Americas, Floor 4, New York, NY 10036</div>
+</div>
+<div class="space-y-1">
+<span class="font-label text-[9px] text-on-surface-variant/40 uppercase">Account Number</span>
+<div class="font-label text-[12px] text-primary">ACC_00192837465</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Beneficiary Section (Editable) -->
+<div class="space-y-3">
+<div class="flex items-center justify-between">
+<h3 class="font-label text-[10px] tracking-widest text-on-surface-variant/80 uppercase">Beneficiary Information</h3>
+<span class="material-symbols-outlined text-secondary text-sm animate-spin-slow">refresh</span>
+</div>
+<div class="glass-panel rounded-lg p-6 space-y-5">
+<div class="grid grid-cols-2 gap-5">
+<div class="space-y-1.5">
+<label class="font-label text-[10px] text-on-surface-variant/60 uppercase">Legal Entity Name *</label>
+<input class="w-full bg-surface-container-highest border-0 focus:ring-1 focus:ring-primary/40 rounded-md text-sm py-2 px-3 text-on-surface font-headline placeholder:font-headline" placeholder="Enter Full Legal Name" type="text" value=""/>
+</div>
+<div class="space-y-1.5 opacity-80">
+<label class="font-label text-[10px] text-on-surface-variant/60 uppercase">Receiving VASP</label>
+<input class="w-full bg-surface-container-low border-0 rounded-md text-sm py-2 px-3 text-on-surface-variant font-headline cursor-not-allowed" disabled="" type="text" value="Binance Institutional"/>
+</div>
+</div>
+<div class="space-y-1.5">
+<label class="font-label text-[10px] text-on-surface-variant/60 uppercase">Physical Address</label>
+<input class="w-full bg-surface-container-highest border-0 focus:ring-1 focus:ring-primary/40 rounded-md text-sm py-2 px-3 text-on-surface font-headline placeholder:font-headline" placeholder="Street, Suite, City, Country" type="text"/>
+</div>
+<div class="grid grid-cols-2 gap-5">
+<div class="space-y-1.5">
+<label class="font-label text-[10px] text-on-surface-variant/60 uppercase">Account Number</label>
+<input class="w-full bg-surface-container-highest border-0 focus:ring-1 focus:ring-primary/40 rounded-md text-[12px] py-2 px-3 text-on-surface font-label" type="text" value="0x71C7656EC7ab88b098defB751B7401B5f6d8976F"/>
+</div>
+<div class="space-y-1.5">
+<label class="font-label text-[10px] text-on-surface-variant/60 uppercase">Customer ID</label>
+<input class="w-full bg-surface-container-highest border-0 focus:ring-1 focus:ring-primary/40 rounded-md text-[12px] py-2 px-3 text-on-surface font-label" placeholder="CID-XXXX-XXXX" type="text"/>
+</div>
+</div>
+</div>
+</div>
+<!-- Controls: Purpose -->
+<div class="space-y-3">
+<div class="flex items-center justify-between">
+<h3 class="font-label text-[10px] tracking-widest text-on-surface-variant/80 uppercase">Transaction Purpose</h3>
+<span class="material-symbols-outlined text-secondary text-sm">refresh</span>
+</div>
+<div class="relative">
+<select class="w-full bg-surface-container-highest border-0 focus:ring-1 focus:ring-primary/40 rounded-md text-sm py-3 px-4 text-on-surface font-headline appearance-none">
+<option>Inter-institution Settlement</option>
+<option>Client Liquidity Provision</option>
+<option>OTC Desk Rebalancing</option>
+<option>Proprietary Asset Transfer</option>
+</select>
+<div class="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none">
+<span class="material-symbols-outlined text-on-surface-variant/60">expand_more</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Footer -->
+<div class="p-8 pt-4 border-t border-emerald-500/5">
+<div class="flex items-center justify-between gap-6">
+<div class="flex items-center gap-3">
+<div class="flex gap-0.5">
+<div class="w-1 h-3 bg-primary/20 rounded-full"></div>
+<div class="w-1 h-3 bg-primary/40 rounded-full"></div>
+<div class="w-1 h-3 bg-primary/60 rounded-full"></div>
+</div>
+<span class="font-label text-[10px] tracking-[0.2em] text-on-surface-variant/60 uppercase">Sumsub Travel Rule Encryption Active</span>
+</div>
+<button class="bg-primary hover:bg-secondary text-on-primary font-headline font-bold py-3 px-8 rounded-md flex items-center gap-3 transition-all duration-300 shadow-[0_0_12px_rgba(16,185,129,0.3)] active:scale-95">
+                    SUBMIT TRAVEL RULE DATA
+                    <span class="material-symbols-outlined text-lg">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Aesthetic Ambient Glow -->
+<div class="fixed bottom-[-10%] right-[-5%] w-[500px] h-[500px] bg-primary/5 blur-[120px] rounded-full pointer-events-none"></div>
+<div class="fixed top-[-10%] left-[-5%] w-[400px] h-[400px] bg-primary/5 blur-[100px] rounded-full pointer-events-none"></div>
+</body></html>

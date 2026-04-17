@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800;900&amp;family=JetBrains+Mono:wght@400;500;700&amp;family=Space+Grotesk:wght@500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-surface-variant": "#bbcabf",
+                    "surface-tint": "#4edea3",
+                    "secondary-fixed": "#68fcbf",
+                    "on-secondary-fixed-variant": "#005137",
+                    "secondary-fixed-dim": "#45dfa4",
+                    "surface-container-highest": "#2c3733",
+                    "outline": "#86948a",
+                    "outline-variant": "#3c4a42",
+                    "error": "#ffb4ab",
+                    "on-tertiary-container": "#523200",
+                    "primary-fixed-dim": "#4edea3",
+                    "tertiary-container": "#e29100",
+                    "surface-bright": "#313b38",
+                    "surface-container-high": "#222c29",
+                    "surface-container-lowest": "#06100d",
+                    "on-primary": "#003824",
+                    "surface": "#0b1512",
+                    "on-tertiary": "#472a00",
+                    "surface-container": "#17221e",
+                    "background": "#0b1512",
+                    "tertiary-fixed": "#ffddb8",
+                    "inverse-on-surface": "#28332f",
+                    "inverse-surface": "#d9e5df",
+                    "tertiary-fixed-dim": "#ffb95f",
+                    "on-tertiary-fixed-variant": "#653e00",
+                    "on-surface": "#d9e5df",
+                    "primary-container": "#10b981",
+                    "secondary-container": "#00bd85",
+                    "on-primary-fixed-variant": "#005236",
+                    "on-secondary": "#003825",
+                    "tertiary": "#ffb95f",
+                    "secondary": "#45dfa4",
+                    "surface-container-low": "#131e1a",
+                    "inverse-primary": "#006c49",
+                    "primary-fixed": "#6ffbbe",
+                    "on-error-container": "#ffdad6",
+                    "on-primary-fixed": "#002113",
+                    "on-secondary-fixed": "#002114",
+                    "on-primary-container": "#00422b",
+                    "on-tertiary-fixed": "#2a1700",
+                    "primary": "#4edea3",
+                    "surface-dim": "#0b1512",
+                    "on-error": "#690005",
+                    "on-background": "#d9e5df",
+                    "on-secondary-container": "#00452e",
+                    "error-container": "#93000a",
+                    "surface-variant": "#2c3733"
+            },
+            "borderRadius": {
+                    "DEFAULT": "1rem",
+                    "lg": "2rem",
+                    "xl": "3rem",
+                    "full": "9999px"
+            },
+            "fontFamily": {
+                    "headline": ["Inter"],
+                    "body": ["Inter"],
+                    "label": ["Space Grotesk"],
+                    "mono": ["JetBrains Mono"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body { background-color: #0b1512; }
+        .glass-panel {
+            background: rgba(44, 55, 51, 0.4);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(78, 222, 163, 0.1);
+        }
+        .text-gradient {
+            background: linear-gradient(to right, #4edea3, #10b981);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .energy-line {
+            background: linear-gradient(90deg, transparent, rgba(78, 222, 163, 0.05), transparent);
+            height: 1px;
+            width: 100%;
+            transform: rotate(-45deg);
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="font-body text-on-surface selection:bg-primary selection:text-on-primary min-h-screen overflow-x-hidden">
+<!-- Living Background -->
+<div class="fixed inset-0 pointer-events-none z-0 overflow-hidden">
+<div class="absolute top-[-10%] left-[-10%] w-[500px] h-[500px] bg-primary/30 rounded-full blur-[80px]"></div>
+<div class="absolute bottom-[-10%] right-[-10%] w-[600px] h-[600px] bg-secondary/30 rounded-full blur-[80px]"></div>
+<div class="absolute top-[20%] right-[15%] w-[400px] h-[400px] bg-primary-container/20 rounded-full blur-[80px]"></div>
+<div class="absolute bottom-[30%] left-[10%] w-[450px] h-[450px] bg-emerald-900/30 rounded-full blur-[80px]"></div>
+<!-- Energy Lines -->
+<div class="absolute inset-0 opacity-20">
+<div class="energy-line absolute top-1/4 -left-1/4 scale-150"></div>
+<div class="energy-line absolute top-1/2 -left-1/3 scale-150"></div>
+<div class="energy-line absolute top-3/4 -left-1/4 scale-150"></div>
+</div>
+</div>
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full h-16 z-50 bg-emerald-950/40 backdrop-blur-xl flex justify-between items-center px-8 w-full shadow-[0_0_40px_rgba(16,185,129,0.05)]">
+<div class="text-2xl font-black italic bg-clip-text text-transparent bg-gradient-to-r from-emerald-400 to-emerald-600">CRYMAD CA$H</div>
+<div class="hidden md:flex items-center space-x-8">
+<a class="font-['Inter'] font-medium text-sm tracking-tight text-emerald-100/60 hover:text-emerald-300 transition-colors duration-300" href="#">Dashboard</a>
+<a class="font-['Inter'] font-medium text-sm tracking-tight text-emerald-100/60 hover:text-emerald-300 transition-colors duration-300" href="#">Wallets</a>
+<a class="font-['Inter'] font-medium text-sm tracking-tight text-emerald-100/60 hover:text-emerald-300 transition-colors duration-300" href="#">Cards</a>
+<a class="font-['Inter'] font-medium text-sm tracking-tight text-emerald-100/60 hover:text-emerald-300 transition-colors duration-300" href="#">Transactions</a>
+<a class="font-['Inter'] font-medium text-sm tracking-tight text-emerald-400 border-b-2 border-emerald-400 pb-1 hover:text-emerald-300 transition-colors duration-300" href="#">Banking</a>
+<a class="font-['Inter'] font-medium text-sm tracking-tight text-emerald-100/60 hover:text-emerald-300 transition-colors duration-300" href="#">Help</a>
+</div>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-emerald-400 cursor-pointer">notifications</span>
+<div class="w-8 h-8 rounded-full overflow-hidden border border-emerald-400/20">
+<img alt="User Profile Avatar" class="w-full h-full object-cover" data-alt="close-up portrait of a professional user avatar silhouette with soft bioluminescent rim lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDuMyv_8e6KDwQrVtEVzq8tMlBGBmI6rJIkmscLeFNJo7qyNqDGXmJSK4GydWCu3Zh25JbTXBCEMIucBEnFfjCEJ9zMOZwCRZcrdxOveg_Dp9yNg_V061s7Y6B5noVYqmgpRruTLfKoitIhrAqrGunhjEAtaQppYgRag6DQJxqeWAn-qEkqzfaW_Hz-L4L3YYF68ucPFxiCYDJZ-5F9wgxbu9vk2-pm1spmnOgP_3gefpwYm3q3UI_xDku-tgbBJ2Ac6Bp-gUlKI48"/>
+</div>
+</div>
+</nav>
+<!-- SideNavBar (Theme Switcher) -->
+<aside class="fixed right-0 top-0 h-full w-20 z-40 bg-emerald-950/20 backdrop-blur-lg flex flex-col items-center justify-center space-y-8 py-12 shadow-[-10px_0_30px_rgba(4,13,10,0.5)]">
+<div class="font-['JetBrains_Mono'] text-[10px] tracking-[0.2em] uppercase text-emerald-400 rotate-90 mb-8 whitespace-nowrap">THEME</div>
+<div class="flex flex-col items-center space-y-6">
+<div class="w-3 h-3 text-emerald-400 ring-2 ring-emerald-400 ring-offset-2 ring-offset-emerald-950 rounded-full cursor-pointer hover:opacity-100 hover:scale-110 transition-all"></div>
+<div class="w-3 h-3 text-emerald-800 opacity-40 rounded-full cursor-pointer hover:opacity-100 hover:scale-110 transition-all bg-emerald-800"></div>
+<div class="w-3 h-3 text-emerald-800 opacity-40 rounded-full cursor-pointer hover:opacity-100 hover:scale-110 transition-all bg-emerald-800"></div>
+<div class="w-3 h-3 text-emerald-800 opacity-40 rounded-full cursor-pointer hover:opacity-100 hover:scale-110 transition-all bg-emerald-800"></div>
+<div class="w-3 h-3 text-emerald-800 opacity-40 rounded-full cursor-pointer hover:opacity-100 hover:scale-110 transition-all bg-emerald-800"></div>
+</div>
+</aside>
+<main class="relative z-10 pt-24 pb-20 px-6 max-w-[1280px] mx-auto space-y-12">
+<!-- Subscription Modal Preview (Floating) -->
+<div class="hidden lg:block absolute -top-4 right-8 z-30 animate-bounce-slow">
+<div class="glass-panel p-6 rounded-lg shadow-2xl border-primary/20 w-72">
+<div class="font-label text-xs tracking-widest text-primary mb-4">PENDING ACTIVATION</div>
+<div class="space-y-3 font-mono text-xs">
+<div class="flex justify-between">
+<span class="opacity-60">Activation Fee:</span>
+<span class="text-on-surface">$9.00</span>
+</div>
+<div class="flex justify-between">
+<span class="opacity-60">Monthly Maintenance:</span>
+<span class="text-on-surface">$4.95</span>
+</div>
+<div class="h-px bg-outline-variant/20 my-2"></div>
+<div class="flex justify-between font-bold text-sm">
+<span class="text-primary">Total Today:</span>
+<span class="text-primary">$9.00</span>
+</div>
+</div>
+<button class="mt-6 w-full py-3 bg-gradient-to-r from-primary to-primary-container text-on-primary font-bold text-xs rounded-full uppercase tracking-widest hover:brightness-110 transition-all">
+                    AGREE &amp; ACTIVATE →
+                </button>
+</div>
+</div>
+<!-- HERO CARD -->
+<section class="glass-panel rounded-xl overflow-hidden p-8 md:p-16 flex flex-col md:flex-row items-center justify-between gap-12 border-primary/10">
+<div class="flex-1 space-y-8 text-center md:text-left">
+<div class="space-y-4">
+<h1 class="text-5xl md:text-7xl lg:text-8xl font-black leading-tight tracking-tighter text-gradient">
+                        Welcome to<br/>Personal Banking
+                    </h1>
+<p class="font-mono text-sm tracking-[0.2em] text-on-surface-variant uppercase">
+                        YOUR BIOLUMINESCENT ACCESS TO TRADITIONAL FINANCE
+                    </p>
+</div>
+<div class="flex flex-col md:flex-row items-center gap-6">
+<div class="px-6 py-2 rounded-full border border-primary/30 font-mono text-xs text-primary bg-primary/5">
+                        $9.00 ACTIVATION + $4.95/MO
+                    </div>
+<button class="px-8 py-4 bg-gradient-to-r from-primary to-primary-container text-on-primary font-black rounded-full hover:scale-105 transition-transform shadow-[0_0_20px_rgba(78,222,163,0.3)]">
+                        ACTIVATE BANKING →
+                    </button>
+</div>
+</div>
+<div class="relative w-64 h-64 md:w-96 md:h-96 flex items-center justify-center">
+<!-- Circular Orb Animation Mockup -->
+<div class="absolute inset-0 rounded-full border border-primary/20 animate-[ping_3s_linear_infinite] opacity-20"></div>
+<div class="absolute inset-4 rounded-full border border-primary/40 animate-[ping_4s_linear_infinite] opacity-10"></div>
+<div class="absolute inset-8 rounded-full border border-primary/60 animate-[ping_5s_linear_infinite] opacity-5"></div>
+<div class="w-48 h-48 md:w-64 md:h-64 rounded-full bg-gradient-to-br from-primary/20 to-surface-container-highest flex items-center justify-center backdrop-blur-3xl shadow-[inset_0_0_50px_rgba(78,222,163,0.2)]">
+<span class="material-symbols-outlined text-7xl md:text-9xl text-primary font-light" style="font-variation-settings: 'opsz' 48;">account_balance</span>
+</div>
+</div>
+</section>
+<!-- BENEFIT GRID -->
+<section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+<!-- Payable -->
+<div class="glass-panel p-8 rounded-lg space-y-6 hover:bg-surface-container-highest/40 transition-colors group">
+<div class="flex justify-between items-start">
+<div class="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">send</span>
+</div>
+<span class="font-mono text-[10px] tracking-widest text-primary px-3 py-1 bg-primary/10 rounded-full">ACH / WIRE / SEPA</span>
+</div>
+<div class="space-y-2">
+<h3 class="text-xl font-bold uppercase tracking-wide">PAYABLE</h3>
+<p class="text-on-surface-variant text-sm leading-relaxed">Send ACH &amp; Wire transfers globally with professional-grade security infrastructure.</p>
+</div>
+</div>
+<!-- Receivable -->
+<div class="glass-panel p-8 rounded-lg space-y-6 hover:bg-surface-container-highest/40 transition-colors group">
+<div class="flex justify-between items-start">
+<div class="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">download</span>
+</div>
+<span class="font-mono text-[10px] tracking-widest text-primary px-3 py-1 bg-primary/10 rounded-full">ROUTING + ACCOUNT #</span>
+</div>
+<div class="space-y-2">
+<h3 class="text-xl font-bold uppercase tracking-wide">RECEIVABLE</h3>
+<p class="text-on-surface-variant text-sm leading-relaxed">Receive payments directly to your dedicated routing and account numbers.</p>
+</div>
+</div>
+<!-- Treasury -->
+<div class="glass-panel p-8 rounded-lg space-y-6 hover:bg-surface-container-highest/40 transition-colors group">
+<div class="flex justify-between items-start">
+<div class="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">cached</span>
+</div>
+<span class="font-mono text-[10px] tracking-widest text-primary px-3 py-1 bg-primary/10 rounded-full">4.2% APY</span>
+</div>
+<div class="space-y-2">
+<h3 class="text-xl font-bold uppercase tracking-wide">TREASURY</h3>
+<p class="text-on-surface-variant text-sm leading-relaxed">High-yield treasury management for your idle capital with instant liquidity.</p>
+</div>
+</div>
+<!-- On/Off Ramp -->
+<div class="glass-panel p-8 rounded-lg space-y-6 hover:bg-surface-container-highest/40 transition-colors group">
+<div class="flex justify-between items-start">
+<div class="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">swap_horiz</span>
+</div>
+<span class="font-mono text-[10px] tracking-widest text-primary px-3 py-1 bg-primary/10 rounded-full">INSTANT CONVERSION</span>
+</div>
+<div class="space-y-2">
+<h3 class="text-xl font-bold uppercase tracking-wide">ON/OFF RAMP</h3>
+<p class="text-on-surface-variant text-sm leading-relaxed">Seamlessly convert between fiat and digital assets within seconds.</p>
+</div>
+</div>
+<!-- Remittance -->
+<div class="glass-panel p-8 rounded-lg space-y-6 hover:bg-surface-container-highest/40 transition-colors group">
+<div class="flex justify-between items-start">
+<div class="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">public</span>
+</div>
+<span class="font-mono text-[10px] tracking-widest text-primary px-3 py-1 bg-primary/10 rounded-full">120+ COUNTRIES</span>
+</div>
+<div class="space-y-2">
+<h3 class="text-xl font-bold uppercase tracking-wide">REMITTANCE</h3>
+<p class="text-on-surface-variant text-sm leading-relaxed">Cross-border transfers settled in under 60 seconds across the globe.</p>
+</div>
+</div>
+<!-- Global Payments -->
+<div class="glass-panel p-8 rounded-lg space-y-6 hover:bg-surface-container-highest/40 transition-colors group">
+<div class="flex justify-between items-start">
+<div class="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">credit_card</span>
+</div>
+<span class="font-mono text-[10px] tracking-widest text-primary px-3 py-1 bg-primary/10 rounded-full">USD / EUR / GBP</span>
+</div>
+<div class="space-y-2">
+<h3 class="text-xl font-bold uppercase tracking-wide">GLOBAL PAYMENTS</h3>
+<p class="text-on-surface-variant text-sm leading-relaxed">International vendor payments in multiple major global currencies.</p>
+</div>
+</div>
+</section>
+<!-- FAQ ACCORDION -->
+<section class="max-w-3xl mx-auto space-y-4">
+<h2 class="text-3xl font-black text-gradient text-center mb-8 uppercase tracking-widest">System Protocols</h2>
+<div class="glass-panel rounded-lg overflow-hidden border-outline-variant/10">
+<button class="w-full px-8 py-6 flex items-center justify-between text-left hover:bg-white/5 transition-colors">
+<span class="font-label uppercase tracking-widest text-sm">How long does activation take?</span>
+<span class="material-symbols-outlined text-primary">add</span>
+</button>
+</div>
+<div class="glass-panel rounded-lg overflow-hidden border-outline-variant/10">
+<button class="w-full px-8 py-6 flex items-center justify-between text-left hover:bg-white/5 transition-colors">
+<span class="font-label uppercase tracking-widest text-sm">Are funds FDIC insured?</span>
+<span class="material-symbols-outlined text-primary">add</span>
+</button>
+</div>
+<div class="glass-panel rounded-lg overflow-hidden border-outline-variant/10">
+<button class="w-full px-8 py-6 flex items-center justify-between text-left hover:bg-white/5 transition-colors">
+<span class="font-label uppercase tracking-widest text-sm">What are the daily transaction limits?</span>
+<span class="material-symbols-outlined text-primary">add</span>
+</button>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="fixed bottom-0 w-full h-10 z-50 bg-emerald-950/60 backdrop-blur-md flex items-center justify-center px-12 gap-8 w-full border-t border-emerald-400/10 shadow-[0_-4px_20px_rgba(16,185,129,0.1)]">
+<div class="flex items-center gap-2">
+<div class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></div>
+<p class="font-['JetBrains_Mono'] text-[11px] tracking-wider uppercase text-emerald-400">SYSTEM OPERATIONAL • BTC/USD 64,210.50 • ETH/USD 3,420.15 • LAST SYNC: 14:02:11</p>
+</div>
+<div class="flex items-center gap-4">
+<a class="font-['JetBrains_Mono'] text-[11px] tracking-wider uppercase text-emerald-100/80 hover:text-white transition-colors" href="#">PULSE_DOT</a>
+</div>
+</footer>
+</body></html>

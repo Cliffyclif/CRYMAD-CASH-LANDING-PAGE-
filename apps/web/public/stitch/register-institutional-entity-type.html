@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Emerald Pulse | Select Entity Type</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=JetBrains+Mono:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary-container": "#10b981",
+                        "on-tertiary": "#472a00",
+                        "on-error": "#690005",
+                        "primary-fixed": "#6ffbbe",
+                        "on-surface-variant": "#bbcabf",
+                        "tertiary-fixed-dim": "#ffb95f",
+                        "surface-tint": "#4edea3",
+                        "inverse-primary": "#006c49",
+                        "on-tertiary-fixed": "#2a1700",
+                        "tertiary-fixed": "#ffddb8",
+                        "tertiary-container": "#e29100",
+                        "secondary-fixed": "#68fcbf",
+                        "surface-container-high": "#222c29",
+                        "surface-container-highest": "#2c3733",
+                        "inverse-surface": "#d9e5df",
+                        "primary-fixed-dim": "#4edea3",
+                        "error-container": "#93000a",
+                        "surface": "#0b1512",
+                        "on-tertiary-container": "#523200",
+                        "error": "#ffb4ab",
+                        "on-surface": "#d9e5df",
+                        "primary": "#4edea3",
+                        "on-error-container": "#ffdad6",
+                        "outline": "#86948a",
+                        "on-primary-fixed-variant": "#005236",
+                        "on-secondary-fixed": "#002114",
+                        "background": "#0b1512",
+                        "inverse-on-surface": "#28332f",
+                        "on-primary-container": "#00422b",
+                        "surface-container-low": "#131e1a",
+                        "surface-dim": "#0b1512",
+                        "surface-container-lowest": "#06100d",
+                        "on-primary": "#003824",
+                        "on-background": "#d9e5df",
+                        "secondary-container": "#00bd85",
+                        "secondary-fixed-dim": "#45dfa4",
+                        "tertiary": "#ffb95f",
+                        "on-secondary-container": "#00452e",
+                        "on-secondary-fixed-variant": "#005137",
+                        "on-secondary": "#003825",
+                        "on-primary-fixed": "#002113",
+                        "secondary": "#45dfa4",
+                        "surface-container": "#17221e",
+                        "on-tertiary-fixed-variant": "#653e00",
+                        "outline-variant": "#3c4a42",
+                        "surface-bright": "#313b38",
+                        "surface-variant": "#2c3733"
+                    },
+                    borderRadius: {
+                        "DEFAULT": "1rem",
+                        "lg": "2rem",
+                        "xl": "3rem",
+                        "full": "9999px"
+                    },
+                    fontFamily: {
+                        "headline": ["Inter"],
+                        "body": ["Inter"],
+                        "label": ["JetBrains Mono"],
+                        "mono": ["JetBrains Mono"]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .glass-modal {
+            background: rgba(44, 55, 51, 0.4);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(16, 185, 129, 0.08);
+        }
+        .bioluminescent-glow {
+            box-shadow: 0px 8px 32px rgba(16, 185, 129, 0.15);
+        }
+        .diagonal-lines {
+            background-image: repeating-linear-gradient(45deg, rgba(16, 185, 129, 0.03) 0px, rgba(16, 185, 129, 0.03) 1px, transparent 1px, transparent 10px);
+        }
+        .active-ring {
+            box-shadow: 0 0 0 2px #4edea3, 0 0 20px rgba(78, 222, 163, 0.4);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body min-h-screen overflow-hidden">
+<!-- Background Blobs -->
+<div class="fixed inset-0 overflow-hidden pointer-events-none">
+<div class="absolute -top-[10%] -left-[10%] w-[50%] h-[50%] bg-primary/5 rounded-full blur-[120px]"></div>
+<div class="absolute bottom-[0%] right-[0%] w-[40%] h-[40%] bg-secondary/5 rounded-full blur-[100px]"></div>
+</div>
+<!-- Parent Page Content (Dimmed) -->
+<div class="opacity-20 blur-sm pointer-events-none select-none">
+<!-- TopNavBar Mock -->
+<header class="fixed top-0 w-full h-16 bg-emerald-950/40 backdrop-blur-xl z-50">
+<div class="flex items-center justify-between px-8 w-full max-w-[1280px] mx-auto h-full">
+<div class="text-xl font-bold bg-gradient-to-r from-emerald-500 to-emerald-300 bg-clip-text text-transparent font-headline">Emerald Pulse</div>
+<div class="bg-tertiary px-4 py-1 rounded-full text-on-tertiary font-mono text-[10px] font-bold tracking-widest flex items-center gap-2">
+<span class="w-1.5 h-1.5 bg-on-tertiary rounded-full animate-pulse"></span>
+                    INSTITUTIONAL PORTAL
+                </div>
+</div>
+</header>
+<main class="max-w-[1280px] mx-auto px-8 pt-32 grid grid-cols-12 gap-8">
+<div class="col-span-8 space-y-12">
+<div class="h-64 bg-surface-container-low rounded-xl border border-emerald-500/10"></div>
+<div class="grid grid-cols-2 gap-8">
+<div class="h-48 bg-surface-container-low rounded-xl border border-emerald-500/10"></div>
+<div class="h-48 bg-surface-container-low rounded-xl border border-emerald-500/10"></div>
+</div>
+</div>
+<div class="col-span-4 h-[600px] bg-surface-container-low rounded-xl border border-emerald-500/10"></div>
+</main>
+</div>
+<!-- Modal Overlay -->
+<div class="fixed inset-0 bg-background/60 backdrop-blur-md z-[100] flex items-center justify-center p-4">
+<!-- Modal Container -->
+<div class="glass-modal w-full max-w-[720px] rounded-xl overflow-hidden bioluminescent-glow relative diagonal-lines">
+<!-- Header Section -->
+<div class="p-8 pb-4 text-center">
+<h1 class="text-4xl font-headline font-bold bg-gradient-to-r from-[#10b981] to-[#34d399] bg-clip-text text-transparent tracking-tight">
+                    Select Entity Type
+                </h1>
+<p class="font-mono text-[10px] tracking-[0.2em] text-emerald-500/60 mt-2 uppercase">
+                    CHOOSE YOUR LEGAL STRUCTURE
+                </p>
+</div>
+<!-- Grid Section -->
+<div class="p-8 grid grid-cols-3 gap-4">
+<!-- Card 1: Corporation -->
+<button class="flex flex-col text-left p-4 bg-surface-container-highest/40 hover:bg-surface-container-highest/80 border border-emerald-500/5 rounded-lg transition-all duration-300 group">
+<span class="material-symbols-outlined text-emerald-500 mb-3 group-hover:scale-110 transition-transform" data-icon="corporate_fare">corporate_fare</span>
+<span class="font-bold text-sm tracking-tight mb-1">CORPORATION</span>
+<span class="text-[11px] text-on-surface-variant leading-tight mb-4 flex-grow">Standard legal entity for commercial operations.</span>
+<span class="font-mono text-[9px] text-emerald-500/70 border-t border-emerald-500/10 pt-2">$10M+ AUM</span>
+</button>
+<!-- Card 2: LLC -->
+<button class="flex flex-col text-left p-4 bg-surface-container-highest/40 hover:bg-surface-container-highest/80 border border-emerald-500/5 rounded-lg transition-all duration-300 group">
+<span class="material-symbols-outlined text-emerald-500 mb-3 group-hover:scale-110 transition-transform" data-icon="gavel">gavel</span>
+<span class="font-bold text-sm tracking-tight mb-1">LLC</span>
+<span class="text-[11px] text-on-surface-variant leading-tight mb-4 flex-grow">Flexible structure for smaller scale or local ventures.</span>
+<span class="font-mono text-[9px] text-emerald-500/70 border-t border-emerald-500/10 pt-2">$1M-$50M AUM</span>
+</button>
+<!-- Card 3: Hedge Fund (Active) -->
+<button class="flex flex-col text-left p-4 bg-surface-container-highest/60 active-ring border border-primary rounded-lg transition-all duration-300 group relative overflow-hidden">
+<div class="absolute top-0 right-0 p-1">
+<span class="material-symbols-outlined text-primary text-xs" data-icon="check_circle" data-weight="fill" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+<span class="material-symbols-outlined text-primary mb-3 scale-110" data-icon="insights">insights</span>
+<span class="font-bold text-sm tracking-tight mb-1">HEDGE FUND</span>
+<span class="text-[11px] text-on-surface leading-tight mb-4 flex-grow">Alternative investments utilizing pooled funds.</span>
+<span class="font-mono text-[9px] text-primary border-t border-primary/20 pt-2">$50M-$10B AUM</span>
+</button>
+<!-- Card 4: Family Office -->
+<button class="flex flex-col text-left p-4 bg-surface-container-highest/40 hover:bg-surface-container-highest/80 border border-emerald-500/5 rounded-lg transition-all duration-300 group">
+<span class="material-symbols-outlined text-emerald-500 mb-3 group-hover:scale-110 transition-transform" data-icon="house">house</span>
+<span class="font-bold text-sm tracking-tight mb-1">FAMILY OFFICE</span>
+<span class="text-[11px] text-on-surface-variant leading-tight mb-4 flex-grow">Private wealth management for high-net-worth families.</span>
+<span class="font-mono text-[9px] text-emerald-500/70 border-t border-emerald-500/10 pt-2">$100M+ AUM</span>
+</button>
+<!-- Card 5: Fund -->
+<button class="flex flex-col text-left p-4 bg-surface-container-highest/40 hover:bg-surface-container-highest/80 border border-emerald-500/5 rounded-lg transition-all duration-300 group">
+<span class="material-symbols-outlined text-emerald-500 mb-3 group-hover:scale-110 transition-transform" data-icon="account_balance_wallet">account_balance_wallet</span>
+<span class="font-bold text-sm tracking-tight mb-1">FUND</span>
+<span class="text-[11px] text-on-surface-variant leading-tight mb-4 flex-grow">General investment vehicle for capital allocation.</span>
+<span class="font-mono text-[9px] text-emerald-500/70 border-t border-emerald-500/10 pt-2">$1M+ AUM</span>
+</button>
+<!-- Card 6: Bank -->
+<button class="flex flex-col text-left p-4 bg-surface-container-highest/40 hover:bg-surface-container-highest/80 border border-emerald-500/5 rounded-lg transition-all duration-300 group">
+<span class="material-symbols-outlined text-emerald-500 mb-3 group-hover:scale-110 transition-transform" data-icon="account_balance">account_balance</span>
+<span class="font-bold text-sm tracking-tight mb-1">BANK</span>
+<span class="text-[11px] text-on-surface-variant leading-tight mb-4 flex-grow">Institutional banking and liquidity management.</span>
+<span class="font-mono text-[9px] text-emerald-500/70 border-t border-emerald-500/10 pt-2">$1B+ AUM</span>
+</button>
+<!-- Card 7: Broker-Dealer -->
+<button class="flex flex-col text-left p-4 bg-surface-container-highest/40 hover:bg-surface-container-highest/80 border border-emerald-500/5 rounded-lg transition-all duration-300 group">
+<span class="material-symbols-outlined text-emerald-500 mb-3 group-hover:scale-110 transition-transform" data-icon="handshake">handshake</span>
+<span class="font-bold text-sm tracking-tight mb-1">BROKER-DEALER</span>
+<span class="text-[11px] text-on-surface-variant leading-tight mb-4 flex-grow">Executing trades and providing investment advice.</span>
+<span class="font-mono text-[9px] text-emerald-500/70 border-t border-emerald-500/10 pt-2">$5M+ AUM</span>
+</button>
+<!-- Card 8: DAO Treasury -->
+<button class="flex flex-col text-left p-4 bg-surface-container-highest/40 hover:bg-surface-container-highest/80 border border-emerald-500/5 rounded-lg transition-all duration-300 group">
+<span class="material-symbols-outlined text-emerald-500 mb-3 group-hover:scale-110 transition-transform" data-icon="token">token</span>
+<span class="font-bold text-sm tracking-tight mb-1">DAO TREASURY</span>
+<span class="text-[11px] text-on-surface-variant leading-tight mb-4 flex-grow">Decentralized governance of digital assets.</span>
+<span class="font-mono text-[9px] text-emerald-500/70 border-t border-emerald-500/10 pt-2">$500K+ AUM</span>
+</button>
+<!-- Card 9: Other -->
+<button class="flex flex-col text-left p-4 bg-surface-container-highest/40 hover:bg-surface-container-highest/80 border border-emerald-500/5 rounded-lg transition-all duration-300 group">
+<span class="material-symbols-outlined text-emerald-500 mb-3 group-hover:scale-110 transition-transform" data-icon="more_horiz">more_horiz</span>
+<span class="font-bold text-sm tracking-tight mb-1">OTHER</span>
+<span class="text-[11px] text-on-surface-variant leading-tight mb-4 flex-grow">Bespoke legal structures or unlisted entities.</span>
+<span class="font-mono text-[9px] text-emerald-500/70 border-t border-emerald-500/10 pt-2">VARIABLE AUM</span>
+</button>
+</div>
+<!-- Footer Action -->
+<div class="p-8 pt-0 flex flex-col items-center gap-4">
+<button class="w-full h-14 bg-[#10b981] hover:bg-[#10b981]/90 text-on-primary-container font-bold rounded-full transition-all duration-300 transform hover:scale-[1.02] active:scale-[0.98] flex items-center justify-center gap-2 bioluminescent-glow shadow-primary/20">
+                    SELECT HEDGE FUND
+                    <span class="material-symbols-outlined" data-icon="arrow_forward">arrow_forward</span>
+</button>
+<button class="text-sm font-medium text-emerald-500/60 hover:text-emerald-400 transition-colors">
+                    Cancel
+                </button>
+</div>
+<!-- Decorative Technical Details -->
+<div class="absolute bottom-4 left-6 pointer-events-none">
+<div class="font-mono text-[8px] text-emerald-500/20 uppercase tracking-widest">System Protocol: PULSE-99</div>
+</div>
+<div class="absolute bottom-4 right-6 pointer-events-none">
+<div class="font-mono text-[8px] text-emerald-500/20 uppercase tracking-widest">L-AUDIT ACTIVE</div>
+</div>
+</div>
+</div>
+<!-- Bottom Status Bar (From Shared Components) -->
+<nav class="fixed bottom-0 w-full h-8 z-50 bg-emerald-950/60 backdrop-blur-lg flex justify-between items-center px-12 border-t border-emerald-500/20">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-emerald-600 text-[14px]" data-icon="currency_bitcoin">currency_bitcoin</span>
+<span class="font-mono text-[10px] tracking-widest text-emerald-600">BTC: $64,231</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-emerald-600 text-[14px]" data-icon="sync_alt">sync_alt</span>
+<span class="font-mono text-[10px] tracking-widest text-emerald-600">SYNC: 99.9%</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-emerald-600 text-[14px]" data-icon="speed">speed</span>
+<span class="font-mono text-[10px] tracking-widest text-emerald-600">LATENCY: 14MS</span>
+</div>
+</nav>
+</body></html>

@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&amp;family=JetBrains+Mono:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-variant": "#1a2924",
+                    "on-error-container": "#ffa8a3",
+                    "on-error": "#490006",
+                    "error": "#ff716c",
+                    "on-tertiary-container": "#5c3800",
+                    "secondary-fixed-dim": "#55e4a9",
+                    "surface-container-highest": "#1a2924",
+                    "background": "#06100d",
+                    "on-tertiary-fixed-variant": "#684000",
+                    "surface-container": "#0f1c18",
+                    "on-secondary-container": "#e1ffec",
+                    "surface-bright": "#1f2f2a",
+                    "surface-tint": "#69f6b8",
+                    "tertiary": "#ffcb8e",
+                    "on-secondary-fixed-variant": "#006343",
+                    "tertiary-dim": "#efab53",
+                    "on-primary-fixed": "#00452d",
+                    "surface-container-high": "#15221e",
+                    "on-background": "#f0fcf6",
+                    "on-secondary-fixed": "#00432c",
+                    "secondary-dim": "#55e4a9",
+                    "primary-fixed": "#69f6b8",
+                    "on-tertiary": "#684000",
+                    "primary-dim": "#58e7ab",
+                    "on-primary": "#005a3c",
+                    "inverse-surface": "#f0fcf6",
+                    "secondary": "#65f3b6",
+                    "secondary-fixed": "#65f3b6",
+                    "inverse-on-surface": "#4c5753",
+                    "surface-container-lowest": "#000000",
+                    "on-primary-fixed-variant": "#006544",
+                    "tertiary-fixed": "#ffb95f",
+                    "on-primary-container": "#002919",
+                    "surface": "#06100d",
+                    "outline": "#6c7873",
+                    "primary-container": "#06b77f",
+                    "on-secondary": "#00583b",
+                    "inverse-primary": "#006d4a",
+                    "error-container": "#9f0519",
+                    "on-tertiary-fixed": "#412600",
+                    "error-dim": "#d7383b",
+                    "outline-variant": "#3f4a46",
+                    "on-surface": "#f0fcf6",
+                    "tertiary-container": "#ffb95f",
+                    "primary-fixed-dim": "#58e7ab",
+                    "secondary-container": "#006c4a",
+                    "on-surface-variant": "#a2aea8",
+                    "surface-container-low": "#0a1612",
+                    "tertiary-fixed-dim": "#efab53",
+                    "primary": "#69f6b8",
+                    "surface-dim": "#06100d"
+            },
+            "borderRadius": {
+                    "DEFAULT": "1rem",
+                    "lg": "2rem",
+                    "xl": "3rem",
+                    "full": "9999px"
+            },
+            "fontFamily": {
+                    "headline": ["Inter"],
+                    "body": ["Inter"],
+                    "label": ["Inter"],
+                    "mono": ["JetBrains Mono"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .bg-living-organic {
+            background-color: #040d0a;
+            overflow: hidden;
+            position: relative;
+        }
+        .organic-blob {
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            background: #10b981;
+            filter: blur(80px);
+            opacity: 0.15;
+            border-radius: 50%;
+        }
+        .energy-lines {
+            background-image: repeating-linear-gradient(45deg, transparent, transparent 40px, rgba(16, 185, 129, 0.05) 40px, rgba(16, 185, 129, 0.05) 41px);
+        }
+        .glass-panel {
+            background: rgba(44, 55, 51, 0.4);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(16, 185, 129, 0.08);
+        }
+        .text-gradient-primary {
+            background: linear-gradient(to bottom, #10b981, #34d399);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .bioluminescent-pulse {
+            box-shadow: 0 0 0 0 rgba(105, 246, 184, 0.7);
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(105, 246, 184, 0.7); }
+            70% { transform: scale(1); box-shadow: 0 0 0 10px rgba(105, 246, 184, 0); }
+            100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(105, 246, 184, 0); }
+        }
+    </style>
+</head>
+<body class="bg-living-organic font-body text-on-background min-h-screen selection:bg-primary/30">
+<!-- Background Elements -->
+<div class="fixed inset-0 z-0 pointer-events-none">
+<div class="organic-blob top-[-10%] left-[-10%]"></div>
+<div class="organic-blob bottom-[-20%] right-[-10%]"></div>
+<div class="organic-blob top-[40%] right-[20%]"></div>
+<div class="organic-blob bottom-[10%] left-[30%]"></div>
+<div class="energy-lines absolute inset-0"></div>
+</div>
+<!-- Faint Dashboard Backdrop -->
+<div class="fixed inset-0 z-0 opacity-20 blur-sm pointer-events-none flex flex-col">
+<!-- Mock Top Bar -->
+<div class="flex justify-between items-center w-full px-8 py-4 bg-[#2c3733]/40 backdrop-blur-xl">
+<span class="text-2xl font-black text-primary tracking-tighter">CRYMAD CA$H</span>
+<div class="flex gap-6 text-[#d9e5df]">
+<span>Dashboard</span>
+<span>Wallets</span>
+<span>Cards</span>
+</div>
+</div>
+<!-- Mock Content -->
+<div class="p-12 grid grid-cols-3 gap-8">
+<div class="h-64 glass-panel rounded-xl"></div>
+<div class="h-64 glass-panel rounded-xl"></div>
+<div class="h-64 glass-panel rounded-xl"></div>
+</div>
+</div>
+<!-- Modal Overlay Container -->
+<main class="relative z-10 min-h-screen flex items-center justify-center p-4">
+<!-- Load Card Modal -->
+<div class="glass-panel w-full max-w-[560px] rounded-xl shadow-[0_40px_60px_rgba(105,246,184,0.04)] relative overflow-hidden flex flex-col">
+<!-- Close Button -->
+<button class="absolute top-6 right-6 text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined">close</span>
+</button>
+<!-- Header -->
+<div class="px-10 pt-10 pb-6">
+<h1 class="text-4xl font-extrabold text-gradient-primary tracking-tighter mb-2">Load Card</h1>
+<p class="font-mono text-[10px] tracking-[0.2em] text-on-surface-variant uppercase">Transfer from e-wallet to card</p>
+</div>
+<!-- Form Body -->
+<div class="px-10 pb-10 space-y-8">
+<!-- Card Picker Section -->
+<div class="space-y-4">
+<label class="font-mono text-[11px] tracking-widest text-on-surface-variant uppercase">Select Card</label>
+<div class="grid grid-cols-2 gap-4">
+<!-- Active Physical Card -->
+<div class="relative p-5 rounded-lg border border-primary/40 bg-primary/5 cursor-pointer group transition-all duration-300">
+<div class="flex justify-between items-start mb-6">
+<div class="w-2 h-2 rounded-full bg-primary bioluminescent-pulse"></div>
+<span class="material-symbols-outlined text-primary text-sm">contactless</span>
+</div>
+<div class="space-y-1">
+<p class="font-mono text-[10px] text-primary/80">Physical Card</p>
+<p class="font-mono text-sm font-bold text-primary">CRYMAD •••• 2049</p>
+</div>
+</div>
+<!-- Inactive Virtual Card -->
+<div class="p-5 rounded-lg border border-white/5 bg-white/5 opacity-40 hover:opacity-100 hover:bg-white/10 cursor-pointer transition-all duration-300">
+<div class="flex justify-between items-start mb-6">
+<div class="w-2 h-2 rounded-full bg-on-surface-variant"></div>
+<span class="material-symbols-outlined text-on-surface-variant text-sm">shield</span>
+</div>
+<div class="space-y-1">
+<p class="font-mono text-[10px] text-on-surface-variant">Virtual Card</p>
+<p class="font-mono text-sm font-bold text-on-surface">CRYMAD •••• 9921</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Amount Input Section -->
+<div class="py-6 border-y border-white/5 text-center">
+<label class="font-mono text-[11px] tracking-widest text-on-surface-variant uppercase mb-4 block">Enter Amount</label>
+<div class="flex items-baseline justify-center gap-2 group">
+<span class="text-4xl font-headline font-extrabold text-primary">$</span>
+<input class="bg-transparent border-none p-0 text-5xl font-mono font-bold text-on-background focus:ring-0 w-[200px] text-center" type="text" value="500.00"/>
+<span class="font-mono text-xl text-on-surface-variant">USD</span>
+</div>
+</div>
+<!-- Summary Row -->
+<div class="glass-panel py-4 px-6 rounded-lg bg-surface-container-low/30 border-none">
+<div class="flex items-center justify-between font-mono text-[11px] text-on-surface-variant">
+<div class="flex flex-col gap-1">
+<span>FROM E-WALLET</span>
+<span class="text-on-surface font-bold">$12,458.32</span>
+</div>
+<span class="material-symbols-outlined text-primary/60">trending_flat</span>
+<div class="flex flex-col gap-1 text-right">
+<span>TO CARD PHYSICAL</span>
+<span class="text-on-surface font-bold">••••2049</span>
+</div>
+</div>
+</div>
+<!-- Fee Indicator -->
+<div class="flex justify-between items-center px-2">
+<span class="font-mono text-[11px] text-on-surface-variant">TRANSACTION FEE</span>
+<span class="font-mono text-[11px] text-[#4edea3] font-bold">Fee — $0.00 (FREE)</span>
+</div>
+</div>
+<!-- Bottom Actions -->
+<div class="p-10 bg-surface-container-high/20 flex gap-4">
+<button class="flex-1 py-4 font-mono text-[12px] tracking-widest border border-outline-variant rounded-lg text-on-surface-variant hover:text-on-background hover:border-on-surface-variant transition-all uppercase">
+                    Cancel
+                </button>
+<button class="flex-[2] py-4 font-mono text-[12px] font-bold tracking-widest bg-transparent border border-primary text-primary rounded-lg hover:bg-primary hover:text-on-primary transition-all duration-300 ease-out-quint uppercase group flex items-center justify-center gap-2">
+                    Load Card
+                    <span class="material-symbols-outlined text-sm group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</button>
+</div>
+</div>
+</main>
+<!-- Footer Stats (Global Shell) -->
+<footer class="fixed bottom-0 left-0 w-full px-12 py-6 flex justify-between items-center z-20 pointer-events-none">
+<div class="flex items-center gap-2">
+<div class="w-1.5 h-1.5 rounded-full bg-[#4edea3] bioluminescent-pulse"></div>
+<span class="font-mono text-[10px] tracking-widest text-[#4edea3]">SYSTEM STATUS: OPERATIONAL</span>
+</div>
+<div class="flex gap-8 font-mono text-[10px] tracking-widest text-on-surface-variant">
+<span class="hover:text-tertiary cursor-crosshair transition-colors pointer-events-auto">BTC: $64,231.10</span>
+<span class="hover:text-tertiary cursor-crosshair transition-colors pointer-events-auto">ETH: $3,452.12</span>
+<span class="hover:text-tertiary cursor-crosshair transition-colors pointer-events-auto">NETWORK: 12MS</span>
+</div>
+</footer>
+</body></html>

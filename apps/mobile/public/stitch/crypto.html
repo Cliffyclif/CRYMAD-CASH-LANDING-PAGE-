@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>CRYMAD CA$H - Crypto Wallet</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&amp;family=JetBrains+Mono:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container-low": "#131e1a",
+                        "on-error-container": "#ffdad6",
+                        "surface-container-highest": "#2c3733",
+                        "on-tertiary-fixed-variant": "#653e00",
+                        "on-tertiary-fixed": "#2a1700",
+                        "primary-container": "#10b981",
+                        "on-surface": "#d9e5df",
+                        "on-primary-container": "#00422b",
+                        "primary-fixed-dim": "#4edea3",
+                        "on-primary-fixed-variant": "#005236",
+                        "on-background": "#d9e5df",
+                        "surface-tint": "#4edea3",
+                        "surface-dim": "#0b1512",
+                        "surface-container-lowest": "#06100d",
+                        "secondary-container": "#00bd85",
+                        "on-surface-variant": "#bbcabf",
+                        "error": "#ffb4ab",
+                        "tertiary-fixed-dim": "#ffb95f",
+                        "outline": "#86948a",
+                        "on-secondary-container": "#00452e",
+                        "tertiary-fixed": "#ffddb8",
+                        "on-primary": "#003824",
+                        "inverse-surface": "#d9e5df",
+                        "surface": "#0b1512",
+                        "tertiary": "#ffb95f",
+                        "surface-container": "#17221e",
+                        "surface-bright": "#313b38",
+                        "on-tertiary-container": "#523200",
+                        "surface-variant": "#2c3733",
+                        "on-secondary-fixed": "#002114",
+                        "inverse-primary": "#006c49",
+                        "on-error": "#690005",
+                        "secondary": "#45dfa4",
+                        "secondary-fixed-dim": "#45dfa4",
+                        "outline-variant": "#3c4a42",
+                        "on-tertiary": "#472a00",
+                        "surface-container-high": "#222c29",
+                        "on-secondary-fixed-variant": "#005137",
+                        "on-secondary": "#003825",
+                        "on-primary-fixed": "#002113",
+                        "secondary-fixed": "#68fcbf",
+                        "background": "#0b1512",
+                        "inverse-on-surface": "#28332f",
+                        "primary-fixed": "#6ffbbe",
+                        "primary": "#4edea3",
+                        "tertiary-container": "#e29100",
+                        "error-container": "#93000a"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "1rem",
+                        "lg": "2rem",
+                        "xl": "3rem",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Inter", "sans-serif"],
+                        "body": ["Inter", "sans-serif"],
+                        "label": ["Inter", "sans-serif"],
+                        "mono": ["JetBrains Mono", "monospace"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            background-color: #040d0a;
+            color: #d9e5df;
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+        }
+        .glass-panel {
+            background: rgba(44, 55, 51, 0.4);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(16, 185, 129, 0.08);
+        }
+        .gradient-text {
+            background: linear-gradient(to bottom, #10b981, #34d399);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .bioluminescent-blob {
+            position: absolute;
+            width: 250px;
+            height: 250px;
+            filter: blur(80px);
+            opacity: 0.2;
+            z-index: -1;
+            border-radius: 50%;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="flex justify-center items-start min-h-screen">
+<!-- Ambient Background Blobs -->
+<div class="fixed inset-0 overflow-hidden pointer-events-none">
+<div class="bioluminescent-blob bg-primary top-[-50px] left-[-50px]"></div>
+<div class="bioluminescent-blob bg-secondary bottom-[-100px] right-[-50px]"></div>
+<div class="bioluminescent-blob bg-emerald-500 top-[40%] right-[-100px]"></div>
+<div class="bioluminescent-blob bg-teal-400 bottom-[20%] left-[-80px]"></div>
+</div>
+<!-- Main Mobile Canvas (iPhone 14 Pro Dimensions) -->
+<main class="relative w-[390px] min-h-[844px] bg-[#040d0a] shadow-2xl flex flex-col overflow-hidden">
+<!-- Header: TopAppBar (Shared Component Implementation) -->
+<header class="fixed top-0 w-[390px] z-50 bg-emerald-950/40 backdrop-blur-xl border-b border-emerald-500/10 shadow-[0_0_40px_rgba(16,185,129,0.08)] flex justify-between items-center px-6 h-16">
+<div class="active:scale-95 duration-300 ease-in-out cursor-pointer flex items-center">
+<span class="material-symbols-outlined text-emerald-500">arrow_back</span>
+</div>
+<h1 class="font-extrabold text-transparent bg-clip-text bg-gradient-to-b from-[#10b981] to-[#34d399] tracking-tight text-xl uppercase">Crypto</h1>
+<div class="active:scale-95 duration-300 ease-in-out cursor-pointer flex items-center">
+<span class="material-symbols-outlined text-emerald-500">refresh</span>
+</div>
+</header>
+<!-- Scrollable Content -->
+<div class="flex-1 mt-20 mb-24 px-5 space-y-6 overflow-y-auto">
+<!-- Portfolio Hero Card -->
+<section class="glass-panel rounded-lg p-6 relative overflow-hidden">
+<div class="flex justify-between items-start mb-4">
+<div class="space-y-1">
+<span class="font-mono text-[10px] tracking-widest text-secondary uppercase">CRYPTO PORTFOLIO</span>
+<h2 class="text-4xl font-mono font-bold gradient-text">$48,291.55</h2>
+</div>
+<div class="relative w-16 h-16 flex items-center justify-center">
+<div class="absolute inset-0 border-4 border-primary/20 rounded-full"></div>
+<div class="absolute inset-0 border-t-4 border-primary rounded-full animate-spin [animation-duration:3s]"></div>
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">link</span>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<span class="bg-[#4edea3]/10 text-[#4edea3] px-3 py-1 rounded-full text-xs font-mono font-bold">+12.4% 24H</span>
+<span class="bg-surface-container-highest/60 text-on-surface-variant px-3 py-1 rounded-full text-[10px] font-mono border border-emerald-500/10">CW-5580-221Z</span>
+</div>
+<!-- Abstract Energy Line Decoration -->
+<div class="absolute -bottom-2 -right-2 opacity-10">
+<svg fill="none" height="80" viewbox="0 0 120 80" width="120" xmlns="http://www.w3.org/2000/svg">
+<path d="M0 60C30 40 60 80 120 20" stroke="url(#paint0_linear)" stroke-width="2"></path>
+<defs>
+<lineargradient gradientunits="userSpaceOnUse" id="paint0_linear" x1="0" x2="120" y1="60" y2="20">
+<stop stop-color="#10b981"></stop>
+<stop offset="1" stop-color="#34d399"></stop>
+</lineargradient>
+</defs>
+</svg>
+</div>
+</section>
+<!-- Action Grid (2x4) -->
+<section class="grid grid-cols-4 gap-3">
+<!-- Row 1 -->
+<div class="glass-panel rounded-lg flex flex-col items-center justify-center p-3 aspect-square active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-primary mb-1">arrow_downward</span>
+<span class="text-[9px] font-mono text-on-surface">DEPOSIT</span>
+</div>
+<div class="glass-panel rounded-lg flex flex-col items-center justify-center p-3 aspect-square active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-primary mb-1">arrow_upward</span>
+<span class="text-[9px] font-mono text-on-surface">WITHDRAW</span>
+</div>
+<div class="glass-panel rounded-lg flex flex-col items-center justify-center p-3 aspect-square active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-primary mb-1">shopping_cart</span>
+<span class="text-[9px] font-mono text-on-surface">BUY</span>
+</div>
+<div class="glass-panel rounded-lg flex flex-col items-center justify-center p-3 aspect-square active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-primary mb-1">swap_horiz</span>
+<span class="text-[9px] font-mono text-on-surface">SWAP</span>
+</div>
+<!-- Row 2 -->
+<div class="glass-panel rounded-lg flex flex-col items-center justify-center p-3 aspect-square active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-primary mb-1">credit_card</span>
+<span class="text-[9px] font-mono text-on-surface">SYNC CARD</span>
+</div>
+<div class="glass-panel rounded-lg flex flex-col items-center justify-center p-3 aspect-square active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-primary mb-1">account_balance</span>
+<span class="text-[9px] font-mono text-on-surface">SYNC BANK</span>
+</div>
+<div class="glass-panel rounded-lg flex flex-col items-center justify-center p-3 aspect-square active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-primary mb-1">token</span>
+<span class="text-[9px] font-mono text-on-surface">STAKE</span>
+</div>
+<div class="glass-panel rounded-lg flex flex-col items-center justify-center p-3 aspect-square active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-primary mb-1">history</span>
+<span class="text-[9px] font-mono text-on-surface">HISTORY</span>
+</div>
+</section>
+<!-- Coin List Section -->
+<section class="space-y-4">
+<h3 class="text-xl font-extrabold gradient-text tracking-tight px-1">Your Assets</h3>
+<div class="space-y-3 pb-8">
+<!-- BTC -->
+<div class="glass-panel rounded-lg p-4 flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">currency_bitcoin</span>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-center">
+<span class="font-bold text-sm">Bitcoin</span>
+<span class="font-mono text-sm text-on-surface">$36,405</span>
+</div>
+<div class="flex justify-between items-center">
+<span class="font-mono text-xs text-on-surface-variant">0.5421 BTC</span>
+<span class="font-mono text-[10px] text-jade-400 text-primary">+2.45%</span>
+</div>
+</div>
+<div class="w-16 h-8 opacity-40">
+<svg class="w-full h-full" viewbox="0 0 100 40"><path d="M0,30 Q10,10 20,25 T40,15 T60,20 T80,5 T100,20" fill="none" stroke="#4edea3" stroke-width="2"></path></svg>
+</div>
+</div>
+<!-- ETH -->
+<div class="glass-panel rounded-lg p-4 flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">universal_currency</span>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-center">
+<span class="font-bold text-sm">Ethereum</span>
+<span class="font-mono text-sm text-on-surface">$7,241</span>
+</div>
+<div class="flex justify-between items-center">
+<span class="font-mono text-xs text-on-surface-variant">2.12 ETH</span>
+<span class="font-mono text-[10px] text-primary">+1.12%</span>
+</div>
+</div>
+<div class="w-16 h-8 opacity-40">
+<svg class="w-full h-full" viewbox="0 0 100 40"><path d="M0,35 Q20,20 40,30 T70,10 T100,15" fill="none" stroke="#4edea3" stroke-width="2"></path></svg>
+</div>
+</div>
+<!-- USDT -->
+<div class="glass-panel rounded-lg p-4 flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">attach_money</span>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-center">
+<span class="font-bold text-sm">Tether</span>
+<span class="font-mono text-sm text-on-surface">$1,200</span>
+</div>
+<div class="flex justify-between items-center">
+<span class="font-mono text-xs text-on-surface-variant">1,200 USDT</span>
+<span class="font-mono text-[10px] text-primary">+0.01%</span>
+</div>
+</div>
+<div class="w-16 h-8 opacity-40">
+<svg class="w-full h-full" viewbox="0 0 100 40"><path d="M0,20 L100,20" fill="none" stroke="#4edea3" stroke-width="2"></path></svg>
+</div>
+</div>
+<!-- USDC -->
+<div class="glass-panel rounded-lg p-4 flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">payments</span>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-center">
+<span class="font-bold text-sm">USD Coin</span>
+<span class="font-mono text-sm text-on-surface">$800</span>
+</div>
+<div class="flex justify-between items-center">
+<span class="font-mono text-xs text-on-surface-variant">800 USDC</span>
+<span class="font-mono text-[10px] text-primary">+0.00%</span>
+</div>
+</div>
+<div class="w-16 h-8 opacity-40">
+<svg class="w-full h-full" viewbox="0 0 100 40"><path d="M0,20 L100,20" fill="none" stroke="#4edea3" stroke-width="2"></path></svg>
+</div>
+</div>
+<!-- SOL -->
+<div class="glass-panel rounded-lg p-4 flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">blur_circular</span>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-center">
+<span class="font-bold text-sm">Solana</span>
+<span class="font-mono text-sm text-on-surface">$2,250</span>
+</div>
+<div class="flex justify-between items-center">
+<span class="font-mono text-xs text-on-surface-variant">15 SOL</span>
+<span class="font-mono text-[10px] text-primary">+5.82%</span>
+</div>
+</div>
+<div class="w-16 h-8 opacity-40">
+<svg class="w-full h-full" viewbox="0 0 100 40"><path d="M0,38 Q30,5 50,25 T100,2" fill="none" stroke="#4edea3" stroke-width="2"></path></svg>
+</div>
+</div>
+<!-- BNB -->
+<div class="glass-panel rounded-lg p-4 flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">hexagon</span>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-center">
+<span class="font-bold text-sm">Binance</span>
+<span class="font-mono text-sm text-on-surface">$980</span>
+</div>
+<div class="flex justify-between items-center">
+<span class="font-mono text-xs text-on-surface-variant">3.2 BNB</span>
+<span class="font-mono text-[10px] text-primary">+0.42%</span>
+</div>
+</div>
+<div class="w-16 h-8 opacity-40">
+<svg class="w-full h-full" viewbox="0 0 100 40"><path d="M0,25 Q20,30 40,20 T70,15 T100,5" fill="none" stroke="#4edea3" stroke-width="2"></path></svg>
+</div>
+</div>
+</div>
+</section>
+</div>
+<!-- Bottom Navigation Bar (Shared Component Implementation) -->
+<nav class="fixed bottom-0 w-[390px] h-20 bg-emerald-950/60 backdrop-blur-2xl rounded-t-[32px] border-t border-emerald-500/10 shadow-[0_-10px_40px_rgba(16,185,129,0.1)] flex justify-around items-center px-4 pb-4 z-50">
+<!-- HOME -->
+<button class="flex flex-col items-center justify-center text-emerald-800 hover:text-emerald-300 transition-all active:scale-90 duration-300">
+<span class="material-symbols-outlined text-2xl">home</span>
+<span class="font-mono text-[10px] uppercase tracking-widest mt-1">HOME</span>
+</button>
+<!-- WALLETS - ACTIVE -->
+<button class="flex flex-col items-center justify-center text-emerald-400 font-bold drop-shadow-[0_0_8px_rgba(16,185,129,0.5)] active:scale-90 duration-300">
+<span class="material-symbols-outlined text-2xl" style="font-variation-settings: 'FILL' 1;">account_balance_wallet</span>
+<span class="font-mono text-[10px] uppercase tracking-widest mt-1">WALLETS</span>
+</button>
+<!-- CARDS -->
+<button class="flex flex-col items-center justify-center text-emerald-800 hover:text-emerald-300 transition-all active:scale-90 duration-300">
+<span class="material-symbols-outlined text-2xl">credit_card</span>
+<span class="font-mono text-[10px] uppercase tracking-widest mt-1">CARDS</span>
+</button>
+<!-- ACTIVITY -->
+<button class="flex flex-col items-center justify-center text-emerald-800 hover:text-emerald-300 transition-all active:scale-90 duration-300">
+<span class="material-symbols-outlined text-2xl">receipt_long</span>
+<span class="font-mono text-[10px] uppercase tracking-widest mt-1">ACTIVITY</span>
+</button>
+<!-- MORE -->
+<button class="flex flex-col items-center justify-center text-emerald-800 hover:text-emerald-300 transition-all active:scale-90 duration-300">
+<span class="material-symbols-outlined text-2xl">more_horiz</span>
+<span class="font-mono text-[10px] uppercase tracking-widest mt-1">MORE</span>
+</button>
+</nav>
+</main>
+</body></html>

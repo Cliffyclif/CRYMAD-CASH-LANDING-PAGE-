@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800;900&amp;family=JetBrains+Mono:wght@400;700&amp;family=Space+Grotesk:wght@700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-bright": "#1f2f2a",
+                        "secondary-dim": "#55e4a9",
+                        "surface-tint": "#69f6b8",
+                        "tertiary": "#ffcb8e",
+                        "outline": "#6c7873",
+                        "surface-container-lowest": "#000000",
+                        "primary-dim": "#58e7ab",
+                        "secondary-container": "#006c4a",
+                        "surface-dim": "#06100d",
+                        "surface": "#06100d",
+                        "tertiary-container": "#ffb95f",
+                        "primary-fixed-dim": "#58e7ab",
+                        "inverse-on-surface": "#4c5753",
+                        "surface-container-low": "#0a1612",
+                        "primary": "#69f6b8",
+                        "outline-variant": "#3f4a46",
+                        "error-container": "#9f0519",
+                        "inverse-surface": "#f0fcf6",
+                        "secondary": "#65f3b6",
+                        "on-error-container": "#ffa8a3",
+                        "inverse-primary": "#006d4a",
+                        "secondary-fixed": "#65f3b6",
+                        "on-secondary": "#00583b",
+                        "secondary-fixed-dim": "#55e4a9",
+                        "error-dim": "#d7383b",
+                        "on-primary-container": "#002919",
+                        "on-tertiary-container": "#5c3800",
+                        "on-tertiary-fixed-variant": "#684000",
+                        "on-primary-fixed": "#00452d",
+                        "on-secondary-container": "#e1ffec",
+                        "on-error": "#490006",
+                        "error": "#ff716c",
+                        "tertiary-dim": "#efab53",
+                        "surface-container-highest": "#1a2924",
+                        "surface-container-high": "#15221e",
+                        "surface-variant": "#1a2924",
+                        "on-tertiary-fixed": "#412600",
+                        "primary-fixed": "#69f6b8",
+                        "on-primary-fixed-variant": "#006544",
+                        "on-secondary-fixed-variant": "#006343",
+                        "surface-container": "#0f1c18",
+                        "on-surface-variant": "#a2aea8",
+                        "primary-container": "#06b77f",
+                        "tertiary-fixed-dim": "#efab53",
+                        "on-tertiary": "#684000",
+                        "background": "#06100d",
+                        "on-background": "#f0fcf6",
+                        "on-primary": "#005a3c",
+                        "on-secondary-fixed": "#00432c",
+                        "tertiary-fixed": "#ffb95f",
+                        "on-surface": "#f0fcf6"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "1rem",
+                        "lg": "2rem",
+                        "xl": "3rem",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Inter"],
+                        "body": ["Inter"],
+                        "label": ["Space Grotesk"],
+                        "mono": ["JetBrains Mono"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body { background-color: #040d0a; }
+        .bg-energy-lines {
+            background-image: repeating-linear-gradient(45deg, rgba(105, 246, 184, 0.05) 0px, rgba(105, 246, 184, 0.05) 1px, transparent 1px, transparent 10px);
+        }
+        .glowing-text {
+            background: linear-gradient(to bottom, #10b981, #34d399);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .ghost-border {
+            border: 1px solid rgba(16, 185, 129, 0.08);
+        }
+        .coral-glow {
+            filter: drop-shadow(0 0 12px rgba(255, 180, 171, 0.4));
+        }
+        .glow-shadow {
+            box-shadow: 0 20px 40px rgba(16, 185, 129, 0.12);
+        }
+    </style>
+</head>
+<body class="font-body text-on-background min-h-screen relative overflow-hidden">
+<!-- Living Background Blobs -->
+<div class="fixed inset-0 overflow-hidden pointer-events-none">
+<div class="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] bg-primary/10 blur-[120px] rounded-full"></div>
+<div class="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-primary-container/10 blur-[100px] rounded-full"></div>
+<div class="absolute top-[20%] right-[15%] w-[30%] h-[30%] bg-secondary-container/10 blur-[80px] rounded-full"></div>
+<div class="absolute bottom-[20%] left-[10%] w-[35%] h-[35%] bg-primary/10 blur-[110px] rounded-full"></div>
+</div>
+<!-- Background Layer (The /subscriptions page) -->
+<div class="relative w-full min-h-screen bg-energy-lines opacity-20 blur-[2px] select-none pointer-events-none">
+<!-- TopNavBar (Shared Component Identity) -->
+<header class="flex justify-between items-center w-full px-8 py-4 max-w-full docked full-width top-0 bg-emerald-950/20 backdrop-blur-xl shadow-[0_20px_40px_rgba(16,185,129,0.12)]">
+<div class="text-2xl font-black tracking-tighter text-transparent bg-clip-text bg-gradient-to-b from-emerald-400 to-emerald-600 font-['Inter'] uppercase">BIOLUME</div>
+<nav class="hidden md:flex items-center gap-8 font-['Inter'] font-extrabold tracking-tight uppercase">
+<a class="text-emerald-800/60 hover:text-emerald-400/80 transition-colors" href="#">Dashboard</a>
+<a class="text-emerald-800/60 hover:text-emerald-400/80 transition-colors" href="#">Wallets</a>
+<a class="text-emerald-400 border-b-2 border-emerald-400 pb-1 font-bold" href="#">Cards</a>
+<a class="text-emerald-800/60 hover:text-emerald-400/80 transition-colors" href="#">Transactions</a>
+<a class="text-emerald-800/60 hover:text-emerald-400/80 transition-colors" href="#">Banking</a>
+<a class="text-emerald-800/60 hover:text-emerald-400/80 transition-colors" href="#">Help</a>
+</nav>
+<div class="flex items-center gap-4">
+<div class="material-symbols-outlined text-emerald-400">account_circle</div>
+</div>
+</header>
+<!-- Main Content (Faded) -->
+<main class="max-w-7xl mx-auto px-8 py-12">
+<div class="flex justify-between items-end mb-12">
+<h1 class="text-4xl font-black font-headline tracking-tighter uppercase text-primary">Manage Subscriptions</h1>
+<div class="font-mono text-sm tracking-widest text-on-surface-variant">4 ACTIVE SERVICES</div>
+</div>
+<!-- Bento Grid Mock -->
+<div class="grid grid-cols-12 gap-6">
+<div class="col-span-8 h-80 bg-surface-variant rounded-xl glass-panel"></div>
+<div class="col-span-4 h-80 bg-surface-variant rounded-xl glass-panel"></div>
+<div class="col-span-4 h-64 bg-surface-variant rounded-xl glass-panel"></div>
+<div class="col-span-8 h-64 bg-surface-variant rounded-xl glass-panel"></div>
+</div>
+</main>
+<!-- BottomNavBar (Status Strip) -->
+<footer class="fixed bottom-0 w-full z-50 flex justify-start gap-8 px-6 py-2 bg-[#040d0a] border-t border-emerald-500/10">
+<div class="text-emerald-400 flex items-center gap-2 font-['JetBrains_Mono'] text-[10px] uppercase tracking-widest">
+<span class="material-symbols-outlined text-sm">currency_bitcoin</span> BTC: $64,210
+            </div>
+<div class="text-emerald-900 flex items-center gap-2 font-['JetBrains_Mono'] text-[10px] uppercase tracking-widest">
+<span class="material-symbols-outlined text-sm">eco</span> ETH: $3,450
+            </div>
+<div class="text-emerald-900 flex items-center gap-2 font-['JetBrains_Mono'] text-[10px] uppercase tracking-widest">
+<span class="material-symbols-outlined text-sm">sync</span> SYNC: 100%
+            </div>
+<div class="text-emerald-900 flex items-center gap-2 font-['JetBrains_Mono'] text-[10px] uppercase tracking-widest">
+<span class="material-symbols-outlined text-sm">check_circle</span> STATUS: ACTIVE
+            </div>
+</footer>
+</div>
+<!-- Modal Overlay -->
+<div class="fixed inset-0 z-[100] flex items-center justify-center bg-background/80 backdrop-blur-md">
+<!-- Cancel Modal -->
+<div class="w-[460px] bg-[rgba(44,55,51,0.4)] backdrop-blur-xl rounded-xl ghost-border glow-shadow relative p-8 flex flex-col items-center">
+<!-- Close Icon -->
+<button class="absolute -top-4 -right-4 w-10 h-10 flex items-center justify-center text-primary hover:text-primary-dim transition-colors">
+<span class="material-symbols-outlined text-3xl">close</span>
+</button>
+<!-- Alert Icon -->
+<div class="mb-6 coral-glow">
+<span class="material-symbols-outlined text-6xl text-error">warning</span>
+</div>
+<!-- Title -->
+<h2 class="text-3xl font-black font-headline text-center mb-2 glowing-text tracking-tight">Cancel Spotify Premium?</h2>
+<!-- Subtitle -->
+<div class="font-mono text-[11px] font-bold tracking-[0.2em] text-error mb-8 uppercase text-center">
+                YOU'LL LOSE ACCESS ON APR 22, 2026
+            </div>
+<!-- Body -->
+<p class="text-on-surface-variant text-center text-sm leading-relaxed mb-8">
+                You'll lose access to premium features including offline downloads, ad-free listening, and high-quality audio. Your playlists will remain saved but playback will be limited.
+            </p>
+<!-- Subscription Preview Pill -->
+<div class="w-full bg-surface-container-high/50 backdrop-blur-sm rounded-lg p-4 flex items-center justify-between mb-4 ghost-border">
+<div class="flex items-center gap-3">
+<img class="w-10 h-10 object-contain" data-alt="Official Spotify logo with green circular icon and black sound waves on a clean dark background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAjIU7Ptjr7FZeHzA0Dvw2wlqD9B580269Suy1ffZtWwR0NfQqh_tfnWPJ6TSEXb5Un4suqw0rRxgNgdhtDCwLOM2oaj9zM_KmDSztQ454VsC8orVUjNJPkXPmGb6ZuMao8x-Er_4Qepfu_UX0sQM11_5Xgab3bVbkm4xiIVnAH_vS64a2qsaGzEmrgRrAdhEo4ki1BYsY3ftpjoUMDJ0CfJhyKcqZLXOyzqX4xHkFp2PgJRm5gp70riehdV-EgrSkz3nlgX4EZ3DE"/>
+<span class="font-bold text-on-surface">Spotify Premium</span>
+</div>
+<div class="text-right">
+<div class="font-mono text-[10px] text-on-surface-variant uppercase tracking-wider mb-0.5">NEXT BILLING</div>
+<div class="font-mono text-xs text-primary">APR 22, 2026</div>
+</div>
+</div>
+<!-- Dropdown Pill -->
+<div class="w-full mb-8">
+<label class="block font-mono text-[10px] text-on-surface-variant tracking-[0.15em] mb-2 px-1 uppercase font-bold">WHY ARE YOU CANCELLING? (OPTIONAL)</label>
+<div class="relative">
+<select class="w-full bg-surface-container-high/50 backdrop-blur-sm rounded-lg py-3 px-4 text-sm text-on-surface-variant appearance-none ghost-border focus:ring-1 focus:ring-primary focus:outline-none cursor-pointer">
+<option value="">Select reason...</option>
+<option value="expensive">Too expensive</option>
+<option value="switching">Switching to another service</option>
+<option value="not_using">I don't use it enough</option>
+<option value="technical">Technical issues</option>
+</select>
+<span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 text-primary pointer-events-none">expand_more</span>
+</div>
+</div>
+<!-- Change Mind Link -->
+<a class="text-xs font-bold text-primary tracking-widest border-b border-primary/40 pb-0.5 mb-10 hover:border-primary transition-all duration-300" href="#">
+                ← I CHANGED MY MIND, KEEP IT
+            </a>
+<!-- Action Row -->
+<div class="flex gap-4 w-full">
+<button class="flex-1 py-4 font-mono text-xs font-bold tracking-widest ghost-border text-on-surface hover:bg-primary/10 transition-all rounded-sm uppercase">
+                    KEEP SUBSCRIPTION
+                </button>
+<button class="flex-1 py-4 font-mono text-xs font-bold tracking-widest border border-error text-error hover:bg-error hover:text-on-error transition-all rounded-sm uppercase flex items-center justify-center gap-2">
+                    CANCEL SUBSCRIPTION <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+</body></html>

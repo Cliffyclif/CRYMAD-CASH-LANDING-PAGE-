@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Buy Crypto | Crymad Cash</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800;900&amp;family=JetBrains+Mono:wght@400;500;700&amp;family=Space+Grotesk:wght@300;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "primary": "#4edea3",
+                    "surface-container-lowest": "#06100d",
+                    "primary-fixed": "#6ffbbe",
+                    "secondary": "#45dfa4",
+                    "primary-fixed-dim": "#4edea3",
+                    "on-primary-fixed-variant": "#005236",
+                    "secondary-fixed": "#68fcbf",
+                    "inverse-primary": "#006c49",
+                    "on-tertiary-fixed-variant": "#005236",
+                    "inverse-surface": "#d9e5df",
+                    "on-tertiary-fixed": "#002114",
+                    "on-primary": "#003824",
+                    "surface-bright": "#313b38",
+                    "tertiary-fixed": "#6ffbbe",
+                    "on-surface": "#d9e5df",
+                    "on-error-container": "#ffdad6",
+                    "on-error": "#690005",
+                    "primary-container": "#10b981",
+                    "surface-container-low": "#131e1a",
+                    "surface-dim": "#0b1512",
+                    "surface-container": "#17221e",
+                    "error": "#ffb4ab",
+                    "surface-container-highest": "#2c3733",
+                    "background": "#0b1512",
+                    "outline-variant": "#3c4a42",
+                    "on-surface-variant": "#bbcabf",
+                    "error-container": "#93000a",
+                    "surface": "#0b1512",
+                    "on-tertiary": "#003824",
+                    "outline": "#86948a",
+                    "secondary-container": "#00bd85",
+                    "on-secondary-container": "#00452e",
+                    "on-tertiary-container": "#00422b",
+                    "surface-variant": "#2c3733",
+                    "inverse-on-surface": "#28332f",
+                    "tertiary-container": "#11b981",
+                    "on-primary-container": "#00422b",
+                    "secondary-fixed-dim": "#45dfa4",
+                    "on-primary-fixed": "#002113",
+                    "on-background": "#d9e5df",
+                    "surface-container-high": "#222c29",
+                    "surface-tint": "#4edea3",
+                    "tertiary": "#4edea3",
+                    "tertiary-fixed-dim": "#4edea3",
+                    "on-secondary": "#003825",
+                    "on-secondary-fixed": "#002114",
+                    "on-secondary-fixed-variant": "#005137"
+            },
+            "borderRadius": {
+                    "DEFAULT": "1rem",
+                    "lg": "2rem",
+                    "xl": "3rem",
+                    "full": "9999px"
+            },
+            "fontFamily": {
+                    "headline": ["Inter"],
+                    "body": ["Inter"],
+                    "label": ["Space Grotesk"],
+                    "mono": ["JetBrains Mono"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            background-color: #040d0a;
+            color: #d9e5df;
+            font-family: 'Inter', sans-serif;
+            overflow: hidden;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .bioluminescent-blob {
+            filter: blur(80px);
+            opacity: 0.3;
+            position: absolute;
+            z-index: -1;
+        }
+        .energy-line {
+            background: linear-gradient(90deg, transparent, rgba(78, 222, 163, 0.05), transparent);
+            height: 1px;
+            width: 100%;
+            position: absolute;
+            transform: rotate(-45deg);
+        }
+        .text-gradient-primary {
+            background: linear-gradient(to bottom, #10b981, #34d399);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .glass-panel {
+            background: rgba(44, 55, 51, 0.4);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(16, 185, 129, 0.08);
+        }
+        .ping-dot {
+            width: 8px;
+            height: 8px;
+            background-color: #4edea3;
+            border-radius: 50%;
+            display: inline-block;
+            box-shadow: 0 0 10px #4edea3;
+        }
+    </style>
+</head>
+<body class="relative min-h-screen">
+<!-- Organic Background Blobs -->
+<div class="bioluminescent-blob bg-[#4edea3] w-[400px] h-[400px] top-[-10%] left-[-5%]"></div>
+<div class="bioluminescent-blob bg-[#11b981] w-[350px] h-[350px] bottom-[10%] right-[5%]"></div>
+<div class="bioluminescent-blob bg-[#45dfa4] w-[300px] h-[300px] top-[20%] right-[20%]"></div>
+<div class="bioluminescent-blob bg-[#10b981] w-[500px] h-[500px] bottom-[-10%] left-[15%]"></div>
+<!-- Energy Lines -->
+<div class="energy-line top-1/4"></div>
+<div class="energy-line top-1/2"></div>
+<div class="energy-line top-3/4"></div>
+<!-- Parent UI Faintly Behind (Background Content) -->
+<div class="fixed inset-0 opacity-20 blur-[2px] pointer-events-none select-none">
+<!-- TopNavBar Mockup -->
+<nav class="flex justify-between items-center px-8 h-20 w-full max-w-none bg-[#040d0a]/80 backdrop-blur-xl border-b border-emerald-500/10 shadow-[0px_20px_40px_rgba(16,185,129,0.08)]">
+<div class="text-2xl font-black text-[#4edea3] tracking-tighter">Crymad Cash</div>
+<div class="flex gap-8">
+<span class="text-[#bbcabf] font-mono">Dashboard</span>
+<span class="text-[#4edea3] border-b-2 border-[#4edea3] pb-1 font-['Inter'] font-extrabold tracking-tighter uppercase text-sm">Wallets</span>
+<span class="text-[#bbcabf] font-mono">Cards</span>
+<span class="text-[#bbcabf] font-mono">Transactions</span>
+<span class="text-[#bbcabf] font-mono">Banking</span>
+<span class="text-[#bbcabf] font-mono">Help</span>
+</div>
+<div class="flex gap-4">
+<span class="material-symbols-outlined text-[#bbcabf]">notifications</span>
+<span class="material-symbols-outlined text-[#bbcabf]">account_circle</span>
+</div>
+</nav>
+<!-- Main Content Hint -->
+<main class="p-12 max-w-7xl mx-auto space-y-12">
+<div class="flex justify-between items-end">
+<div>
+<h2 class="font-headline font-extrabold text-6xl tracking-tighter">Portfolio</h2>
+<p class="font-mono text-primary mt-2">TOTAL VALUE: $48,290.42</p>
+</div>
+<div class="flex gap-4">
+<div class="w-16 h-16 rounded-full bg-surface-container-highest"></div>
+<div class="w-16 h-16 rounded-full bg-surface-container-highest"></div>
+</div>
+</div>
+<div class="grid grid-cols-3 gap-8">
+<div class="h-64 glass-panel rounded-xl"></div>
+<div class="h-64 glass-panel rounded-xl"></div>
+<div class="h-64 glass-panel rounded-xl"></div>
+</div>
+</main>
+<!-- Bottom Status Strip Mockup -->
+<div class="fixed bottom-0 w-full z-50 flex justify-around items-center px-6 pb-4 pt-2 bg-[#2c3733]/40 backdrop-blur-3xl border-t border-emerald-500/10">
+<div class="text-[10px] font-mono text-on-surface-variant uppercase tracking-widest">
+                System Status: Operational | BTC: $64,210 | ETH: $3,450 | Sync: 2ms
+            </div>
+</div>
+</div>
+<!-- Centered Modal Overlay -->
+<div class="fixed inset-0 flex items-center justify-center z-[100] px-4">
+<div class="glass-panel w-full max-w-[560px] rounded-xl p-8 relative shadow-[0_20px_60px_rgba(4,13,10,0.5),0_0_40px_rgba(16,185,129,0.15)]">
+<!-- Close Button -->
+<button class="absolute top-6 right-6 text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined">close</span>
+</button>
+<!-- Header -->
+<div class="text-center mb-10">
+<h1 class="text-gradient-primary font-headline font-black text-5xl tracking-tighter">Buy Crypto</h1>
+<p class="font-mono text-xs tracking-widest text-on-surface-variant mt-2">FIAT TO CRYPTO EXCHANGE</p>
+</div>
+<!-- Exchange Interface -->
+<div class="space-y-4">
+<!-- YOU PAY Card -->
+<div class="bg-surface-container-lowest rounded-lg p-6 border border-outline-variant/10">
+<div class="flex justify-between items-center mb-2">
+<span class="font-mono text-[10px] text-on-surface-variant tracking-widest uppercase">You Pay</span>
+<div class="flex items-center gap-2 bg-surface-container-highest px-3 py-1 rounded-full cursor-pointer hover:bg-surface-container-high transition-colors">
+<img alt="US Flag" class="w-5 h-5 rounded-full object-cover" data-alt="close-up of the United States national flag with vibrant colors and sharp detail" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCCFgvzHQMXGmEpQO_T_G6-eclQmafTFXRfdMtT71jWzEdWBIqLEEg5aAIjc6JV7ugrhygt6uBKop3WTdIflQ0dUHeQeVuv3OUbt_2YkWVtqGSDsBP-Ulkl327b2dUwIOS7X1pTmC7vr6vCDSyq3QwyQ92oSMZw5QDyTSfEBxt5NnzEDcE__ggiJj0T1BXMa1PTGYdwxMFWCgTu6IJINq79i_Q7sqFtBwZk-YWd-ykzW4iDmr0XqNuR5mJxmy8Q9x7jiSUVRzzl29g"/>
+<span class="font-mono text-sm font-bold">USD</span>
+<span class="material-symbols-outlined text-sm">expand_more</span>
+</div>
+</div>
+<div class="flex items-center">
+<span class="font-mono text-4xl text-on-surface-variant mr-2">$</span>
+<input class="w-full bg-transparent border-none text-4xl font-mono focus:ring-0 text-on-surface" spellcheck="false" type="text" value="100.00"/>
+</div>
+</div>
+<!-- Circular Divider Icon -->
+<div class="relative h-4 flex items-center justify-center">
+<div class="w-10 h-10 glass-panel rounded-full flex items-center justify-center z-10 border border-primary/20">
+<span class="material-symbols-outlined text-primary">arrow_downward</span>
+</div>
+<div class="absolute w-full h-px bg-outline-variant/10"></div>
+</div>
+<!-- YOU RECEIVE Card -->
+<div class="bg-surface-container-lowest rounded-lg p-6 border border-outline-variant/10">
+<div class="flex justify-between items-center mb-2">
+<span class="font-mono text-[10px] text-on-surface-variant tracking-widest uppercase">You Receive</span>
+<div class="flex items-center gap-2 bg-surface-container-highest px-3 py-1 rounded-full cursor-pointer hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined text-amber-500" style="font-variation-settings: 'FILL' 1;">currency_bitcoin</span>
+<span class="font-mono text-sm font-bold">BTC</span>
+<span class="material-symbols-outlined text-sm">expand_more</span>
+</div>
+</div>
+<div class="text-4xl font-mono text-primary truncate">0.00149 BTC</div>
+</div>
+<!-- Rate line -->
+<div class="flex items-center justify-center gap-2 py-2">
+<span class="font-mono text-[11px] text-on-surface-variant">1 BTC = $67,241.30</span>
+<span class="ping-dot"></span>
+</div>
+<!-- Funding Source -->
+<div class="flex items-center justify-center">
+<div class="glass-panel px-6 py-3 rounded-full flex items-center gap-3 border border-primary/10">
+<span class="material-symbols-outlined text-primary">account_balance_wallet</span>
+<span class="font-mono text-xs text-on-surface">E-Wallet Balance <span class="font-bold text-primary">$12,458.32</span></span>
+</div>
+</div>
+<!-- Fee Breakdown -->
+<div class="bg-surface-container-lowest/50 rounded-lg p-4 border border-outline-variant/5">
+<div class="flex justify-between items-center mb-2">
+<span class="font-mono text-[10px] text-on-surface-variant uppercase">Fee</span>
+<span class="font-mono text-xs text-on-surface">$1.00</span>
+</div>
+<div class="flex justify-between items-center">
+<span class="font-mono text-[10px] text-on-surface-variant uppercase">Spent on Crypto</span>
+<span class="font-mono text-xs text-on-surface">$99.00</span>
+</div>
+</div>
+<!-- Bottom Row Actions -->
+<div class="flex gap-4 pt-6">
+<button class="flex-1 font-mono text-xs tracking-widest text-on-surface-variant hover:text-on-surface transition-all uppercase">
+                        Cancel
+                    </button>
+<button class="flex-[2] py-4 bg-primary/5 border border-primary/20 rounded-lg font-mono text-sm font-bold tracking-widest text-primary hover:bg-primary/10 active:scale-[0.98] transition-all uppercase flex items-center justify-center gap-2">
+                        Buy Now
+                        <span class="material-symbols-outlined text-lg">arrow_right_alt</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</body></html>

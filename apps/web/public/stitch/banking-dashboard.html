@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>CRYMAD CA$H - Banking Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;family=JetBrains+Mono:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-container-lowest": "#06100d",
+                    "on-primary-fixed": "#002113",
+                    "on-secondary-fixed": "#002114",
+                    "tertiary-fixed-dim": "#ffb95f",
+                    "inverse-on-surface": "#28332f",
+                    "tertiary-fixed": "#ffddb8",
+                    "tertiary-container": "#e29100",
+                    "on-secondary": "#003825",
+                    "on-tertiary-container": "#523200",
+                    "secondary": "#45dfa4",
+                    "on-background": "#d9e5df",
+                    "surface-tint": "#4edea3",
+                    "surface-container-low": "#131e1a",
+                    "outline": "#86948a",
+                    "surface-container-highest": "#2c3733",
+                    "primary-fixed-dim": "#4edea3",
+                    "error-container": "#93000a",
+                    "on-secondary-container": "#00452e",
+                    "secondary-fixed": "#68fcbf",
+                    "surface-container-high": "#222c29",
+                    "background": "#0b1512",
+                    "on-primary": "#003824",
+                    "outline-variant": "#3c4a42",
+                    "secondary-fixed-dim": "#45dfa4",
+                    "primary": "#4edea3",
+                    "tertiary": "#ffb95f",
+                    "on-error": "#690005",
+                    "surface-bright": "#313b38",
+                    "error": "#ffb4ab",
+                    "on-surface": "#d9e5df",
+                    "primary-fixed": "#6ffbbe",
+                    "inverse-primary": "#006c49",
+                    "on-tertiary": "#472a00",
+                    "on-tertiary-fixed-variant": "#653e00",
+                    "surface-container": "#17221e",
+                    "surface-dim": "#0b1512",
+                    "primary-container": "#10b981",
+                    "surface": "#0b1512",
+                    "secondary-container": "#00bd85",
+                    "inverse-surface": "#d9e5df",
+                    "on-tertiary-fixed": "#2a1700",
+                    "on-surface-variant": "#bbcabf",
+                    "on-error-container": "#ffdad6",
+                    "on-secondary-fixed-variant": "#005137",
+                    "on-primary-container": "#00422b",
+                    "on-primary-fixed-variant": "#005236",
+                    "surface-variant": "#2c3733"
+            },
+            "borderRadius": {
+                    "DEFAULT": "1rem",
+                    "lg": "2rem",
+                    "xl": "3rem",
+                    "full": "9999px"
+            },
+            "fontFamily": {
+                    "headline": ["Inter", "sans-serif"],
+                    "body": ["Inter", "sans-serif"],
+                    "label": ["Inter", "sans-serif"],
+                    "mono": ["JetBrains Mono", "monospace"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            background-color: #040d0a;
+            background-image: 
+                radial-gradient(circle at 20% 30%, rgba(16, 185, 129, 0.08) 0%, transparent 40%),
+                radial-gradient(circle at 80% 70%, rgba(69, 223, 164, 0.08) 0%, transparent 40%);
+            color: #d9e5df;
+        }
+        .glass-panel {
+            background: rgba(44, 55, 51, 0.4);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(16, 185, 129, 0.08);
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .energy-lines {
+            background-image: repeating-linear-gradient(45deg, rgba(16, 185, 129, 0.03) 0px, rgba(16, 185, 129, 0.03) 1px, transparent 1px, transparent 20px);
+        }
+    </style>
+</head>
+<body class="font-body min-h-screen relative overflow-x-hidden energy-lines">
+<!-- TopNavBar -->
+<header class="fixed top-0 w-full h-16 z-50 bg-emerald-950/40 backdrop-blur-xl border-b border-emerald-500/10 flex justify-between items-center px-8 shadow-[0_0_15px_rgba(16,185,129,0.1)]">
+<div class="text-2xl font-black bg-gradient-to-r from-emerald-500 to-teal-300 bg-clip-text text-transparent tracking-tight font-headline">CRYMAD CA$H</div>
+<nav class="hidden md:flex items-center gap-8 h-full">
+<a class="text-emerald-100/60 font-medium hover:text-emerald-300 transition-colors" href="#">Dashboard</a>
+<a class="text-emerald-100/60 font-medium hover:text-emerald-300 transition-colors" href="#">Wallets</a>
+<a class="text-emerald-100/60 font-medium hover:text-emerald-300 transition-colors" href="#">Cards</a>
+<a class="text-emerald-100/60 font-medium hover:text-emerald-300 transition-colors" href="#">Transactions</a>
+<a class="text-emerald-400 font-bold border-b-2 border-emerald-500 pb-1" href="#">Banking</a>
+<a class="text-emerald-100/60 font-medium hover:text-emerald-300 transition-colors" href="#">Help</a>
+</nav>
+<div class="flex items-center gap-4">
+<button class="p-2 text-emerald-400 hover:bg-emerald-400/5 transition-all duration-300 rounded-full active:scale-95">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<div class="w-8 h-8 rounded-full overflow-hidden border border-emerald-500/20">
+<img alt="User Avatar" class="w-full h-full object-cover" data-alt="close-up portrait of a professional man with neutral expression in soft studio lighting against a dark background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBsA1pQB8qFfUkgPetdbl_AQlNsP3AXKY5HVxESzSWdhaUbWZpKfjyYL2eH6Ehu02Aqeek4aWz6w9BvPzajbHUrKzOjfJr-MAfPw_8o72iXwqY84LXiMT3ucxNqoEBB_7IoCRim_INpR0T3R_jwrtsvqeGQkLb63vD66bq2IdP1h9WyMgPiv5zr_b5YiepznUxSCkMhip5tqikl_Mvq6f7Bwf19LezAJDB0NyY9SQcdr6Rbw7JMcrGK-rM6eMIhaKjv7YNIPwhzgl0"/>
+</div>
+</div>
+</header>
+<!-- SideNavBar (Theme Toggle Anchor) -->
+<aside class="fixed right-0 top-1/2 -translate-y-1/2 w-12 rounded-l-full py-6 flex flex-col items-center gap-4 z-40 bg-emerald-950/40 backdrop-blur-xl border-l border-emerald-500/10 shadow-[-4px_0_20px_rgba(0,0,0,0.4)]">
+<button class="w-8 h-8 flex items-center justify-center rounded-full bg-emerald-500 ring-2 ring-emerald-500/20 hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-on-primary text-sm" data-icon="palette">palette</span>
+</button>
+<span class="font-mono uppercase text-[10px] tracking-tighter text-emerald-400 rotate-90 mt-8 whitespace-nowrap">THEME</span>
+</aside>
+<!-- Main Content Canvas -->
+<main class="pt-24 pb-20 px-8 max-w-7xl mx-auto">
+<!-- Header Section -->
+<header class="mb-12">
+<h1 class="text-5xl md:text-6xl font-black bg-gradient-to-r from-emerald-400 to-teal-300 bg-clip-text text-transparent font-headline tracking-tighter mb-2">Banking Dashboard</h1>
+<p class="font-mono text-emerald-500 tracking-widest text-sm flex items-center gap-2">
+                ACCOUNT ACTIVATED <span class="material-symbols-outlined text-xs" style="font-variation-settings: 'wght' 700">check</span>
+</p>
+</header>
+<!-- Top Grid: Info & Balance -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-8">
+<!-- 1. ACCOUNT INFO CARD -->
+<section class="lg:col-span-8 glass-panel rounded-xl p-8 flex flex-col md:flex-row justify-between gap-8">
+<div class="flex-1 space-y-6">
+<div class="group flex flex-col gap-1">
+<span class="text-[10px] font-mono text-emerald-500/50 uppercase tracking-widest">Account Number</span>
+<div class="flex items-center gap-3">
+<span class="font-mono text-xl text-on-surface tracking-tighter">••••4421 7789</span>
+<button class="text-emerald-500/40 hover:text-emerald-400 transition-colors">
+<span class="material-symbols-outlined text-sm" data-icon="content_copy">content_copy</span>
+</button>
+</div>
+</div>
+<div class="group flex flex-col gap-1">
+<span class="text-[10px] font-mono text-emerald-500/50 uppercase tracking-widest">Routing Number</span>
+<div class="flex items-center gap-3">
+<span class="font-mono text-xl text-on-surface tracking-tighter">021000089</span>
+<button class="text-emerald-500/40 hover:text-emerald-400 transition-colors">
+<span class="material-symbols-outlined text-sm" data-icon="content_copy">content_copy</span>
+</button>
+</div>
+</div>
+<div class="group flex flex-col gap-1">
+<span class="text-[10px] font-mono text-emerald-500/50 uppercase tracking-widest">SWIFT/BIC</span>
+<div class="flex items-center gap-3">
+<span class="font-mono text-xl text-on-surface tracking-tighter">CRMDUS33</span>
+<button class="text-emerald-500/40 hover:text-emerald-400 transition-colors">
+<span class="material-symbols-outlined text-sm" data-icon="content_copy">content_copy</span>
+</button>
+</div>
+</div>
+</div>
+<div class="md:w-48 flex flex-col items-center justify-center gap-4 bg-emerald-500/5 rounded-lg border border-emerald-500/10 p-6">
+<div class="relative w-32 h-32 glass-panel flex items-center justify-center rounded-lg border border-emerald-500/20">
+<!-- Simulated QR Structure -->
+<div class="grid grid-cols-3 gap-1 opacity-40">
+<div class="w-4 h-4 border-2 border-emerald-400"></div>
+<div class="w-4 h-4 border-2 border-emerald-400"></div>
+<div class="w-4 h-4 border-2 border-emerald-400"></div>
+</div>
+<div class="absolute inset-0 flex items-center justify-center">
+<span class="material-symbols-outlined text-emerald-400/20 text-5xl" data-icon="qr_code_2">qr_code_2</span>
+</div>
+</div>
+<span class="font-mono text-[10px] text-emerald-500 text-center tracking-widest">RECEIVE VIA QR</span>
+</div>
+</section>
+<!-- 2. BALANCE CARD -->
+<section class="lg:col-span-4 glass-panel rounded-xl p-8 flex flex-col justify-center border-l-4 border-emerald-500/40">
+<span class="font-mono text-[10px] text-emerald-500/50 uppercase tracking-widest mb-4">Available Balance</span>
+<div class="flex flex-col gap-2">
+<h2 class="font-mono text-4xl md:text-5xl font-bold text-on-surface tracking-tighter">$8,945.22 <span class="text-xl text-emerald-500/40">USD</span></h2>
+<div class="flex">
+<span class="bg-emerald-500/10 text-emerald-400 text-[10px] font-mono px-2 py-1 rounded-full flex items-center gap-1 border border-emerald-500/20">
+<span class="material-symbols-outlined text-xs" data-icon="trending_up" style="font-variation-settings: 'FILL' 1">trending_up</span>
+                            +2.1% THIS WEEK
+                        </span>
+</div>
+</div>
+<div class="mt-8 flex gap-2">
+<button class="flex-1 bg-emerald-500 hover:bg-emerald-400 text-on-primary font-bold py-3 rounded-full transition-all active:scale-95 shadow-[0_0_15px_rgba(16,185,129,0.4)]">
+                        Add Funds
+                    </button>
+</div>
+</section>
+</div>
+<!-- 3. FEATURE CARDS GRID -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+<!-- Wire Transfer (Active) -->
+<div class="glass-panel p-6 rounded-xl hover:bg-emerald-500/5 transition-all group cursor-pointer border-t border-emerald-500/20">
+<div class="flex justify-between items-start mb-6">
+<div class="w-12 h-12 rounded-lg bg-emerald-500/10 flex items-center justify-center text-emerald-400">
+<span class="material-symbols-outlined text-3xl" data-icon="account_balance">account_balance</span>
+</div>
+</div>
+<h3 class="text-xl font-bold text-on-surface mb-1">WIRE TRANSFER</h3>
+<p class="font-mono text-[10px] text-emerald-500/60 uppercase tracking-widest">Domestic Wires</p>
+</div>
+<!-- ACH Pull (Coming Soon) -->
+<div class="glass-panel p-6 rounded-xl opacity-60 relative overflow-hidden group">
+<div class="absolute inset-0 bg-surface-container-lowest/20"></div>
+<div class="flex justify-between items-start mb-6">
+<div class="w-12 h-12 rounded-lg bg-emerald-500/5 flex items-center justify-center text-emerald-500/40">
+<span class="material-symbols-outlined text-3xl" data-icon="input">input</span>
+</div>
+<span class="bg-tertiary/10 text-tertiary text-[8px] font-mono px-2 py-1 rounded-full border border-tertiary/20 tracking-tighter">COMING SOON</span>
+</div>
+<h3 class="text-xl font-bold text-on-surface/40 mb-1">ACH PULL</h3>
+<p class="font-mono text-[10px] text-emerald-500/30 uppercase tracking-widest">Direct Debit</p>
+</div>
+<!-- Bill Pay (Coming Soon) -->
+<div class="glass-panel p-6 rounded-xl opacity-60 relative overflow-hidden group">
+<div class="absolute inset-0 bg-surface-container-lowest/20"></div>
+<div class="flex justify-between items-start mb-6">
+<div class="w-12 h-12 rounded-lg bg-emerald-500/5 flex items-center justify-center text-emerald-500/40">
+<span class="material-symbols-outlined text-3xl" data-icon="receipt_long">receipt_long</span>
+</div>
+<span class="bg-tertiary/10 text-tertiary text-[8px] font-mono px-2 py-1 rounded-full border border-tertiary/20 tracking-tighter">COMING SOON</span>
+</div>
+<h3 class="text-xl font-bold text-on-surface/40 mb-1">BILL PAY</h3>
+<p class="font-mono text-[10px] text-emerald-500/30 uppercase tracking-widest">Global Utilities</p>
+</div>
+<!-- Treasury Yield (Coming Soon) -->
+<div class="glass-panel p-6 rounded-xl opacity-60 relative overflow-hidden group">
+<div class="absolute inset-0 bg-surface-container-lowest/20"></div>
+<div class="flex justify-between items-start mb-6">
+<div class="w-12 h-12 rounded-lg bg-emerald-500/5 flex items-center justify-center text-emerald-500/40">
+<span class="material-symbols-outlined text-3xl" data-icon="monitoring">monitoring</span>
+</div>
+<span class="bg-tertiary/10 text-tertiary text-[8px] font-mono px-2 py-1 rounded-full border border-tertiary/20 tracking-tighter">COMING SOON</span>
+</div>
+<h3 class="text-xl font-bold text-on-surface/40 mb-1">TREASURY YIELD</h3>
+<p class="font-mono text-[10px] text-emerald-500/30 uppercase tracking-widest">5.2% APR Fixed</p>
+</div>
+<!-- Vendor Invoices (Coming Soon) -->
+<div class="glass-panel p-6 rounded-xl opacity-60 relative overflow-hidden group">
+<div class="absolute inset-0 bg-surface-container-lowest/20"></div>
+<div class="flex justify-between items-start mb-6">
+<div class="w-12 h-12 rounded-lg bg-emerald-500/5 flex items-center justify-center text-emerald-500/40">
+<span class="material-symbols-outlined text-3xl" data-icon="request_quote">request_quote</span>
+</div>
+<span class="bg-tertiary/10 text-tertiary text-[8px] font-mono px-2 py-1 rounded-full border border-tertiary/20 tracking-tighter">COMING SOON</span>
+</div>
+<h3 class="text-xl font-bold text-on-surface/40 mb-1">VENDOR INVOICES</h3>
+<p class="font-mono text-[10px] text-emerald-500/30 uppercase tracking-widest">B2B Settlements</p>
+</div>
+<!-- Remittance (Active) -->
+<div class="glass-panel p-6 rounded-xl hover:bg-emerald-500/5 transition-all group cursor-pointer border-t border-emerald-500/20">
+<div class="flex justify-between items-start mb-6">
+<div class="w-12 h-12 rounded-lg bg-emerald-500/10 flex items-center justify-center text-emerald-400">
+<span class="material-symbols-outlined text-3xl" data-icon="public">public</span>
+</div>
+</div>
+<h3 class="text-xl font-bold text-on-surface mb-1">REMITTANCE</h3>
+<p class="font-mono text-[10px] text-emerald-500/60 uppercase tracking-widest">International</p>
+</div>
+</div>
+<!-- 4. RECENT ACTIVITY -->
+<section class="glass-panel rounded-xl overflow-hidden">
+<div class="p-8 border-b border-emerald-500/10 flex justify-between items-center">
+<h2 class="text-2xl font-bold font-headline tracking-tight text-on-surface">Recent Activity</h2>
+<button class="text-emerald-400 font-mono text-[10px] uppercase tracking-widest hover:underline">Download Statements</button>
+</div>
+<div class="p-0">
+<!-- Timeline Container -->
+<div class="relative">
+<!-- Vertical Line -->
+<div class="absolute left-10 top-0 bottom-0 w-px bg-emerald-500/10"></div>
+<!-- Row 1 -->
+<div class="relative flex items-center gap-8 px-8 py-6 hover:bg-emerald-400/5 transition-colors group">
+<div class="w-4 h-4 rounded-full bg-emerald-500 shadow-[0_0_8px_rgba(16,185,129,0.8)] z-10 flex items-center justify-center">
+<div class="w-2 h-2 rounded-full bg-emerald-950"></div>
+</div>
+<div class="w-10 h-10 rounded-lg glass-panel flex items-center justify-center text-emerald-400">
+<span class="material-symbols-outlined text-xl" data-icon="account_balance_wallet">account_balance_wallet</span>
+</div>
+<div class="flex-1 flex flex-col md:flex-row md:items-center justify-between gap-2">
+<div>
+<p class="font-mono text-sm text-on-surface">Transfer to CRYMAD Vault</p>
+<p class="font-mono text-[10px] text-emerald-500/40 uppercase">Internal Transaction</p>
+</div>
+<div class="text-right">
+<p class="font-mono text-sm text-error font-bold">-$2,500.00</p>
+<p class="font-mono text-[10px] text-emerald-500/40 uppercase">Today, 14:22</p>
+</div>
+</div>
+</div>
+<!-- Row 2 -->
+<div class="relative flex items-center gap-8 px-8 py-6 hover:bg-emerald-400/5 transition-colors group">
+<div class="w-4 h-4 rounded-full bg-emerald-500 shadow-[0_0_8px_rgba(16,185,129,0.8)] z-10 flex items-center justify-center">
+<div class="w-2 h-2 rounded-full bg-emerald-950"></div>
+</div>
+<div class="w-10 h-10 rounded-lg glass-panel flex items-center justify-center text-emerald-400">
+<span class="material-symbols-outlined text-xl" data-icon="person_add">person_add</span>
+</div>
+<div class="flex-1 flex flex-col md:flex-row md:items-center justify-between gap-2">
+<div>
+<p class="font-mono text-sm text-on-surface">P2P Received: @Satoshi_J</p>
+<p class="font-mono text-[10px] text-emerald-500/40 uppercase">Incoming Transfer</p>
+</div>
+<div class="text-right">
+<p class="font-mono text-sm text-emerald-400 font-bold">+$850.40</p>
+<p class="font-mono text-[10px] text-emerald-500/40 uppercase">Today, 09:15</p>
+</div>
+</div>
+</div>
+<!-- Row 3 -->
+<div class="relative flex items-center gap-8 px-8 py-6 hover:bg-emerald-400/5 transition-colors group">
+<div class="w-4 h-4 rounded-full bg-emerald-500/20 z-10 flex items-center justify-center">
+<div class="w-2 h-2 rounded-full bg-emerald-500/40"></div>
+</div>
+<div class="w-10 h-10 rounded-lg glass-panel flex items-center justify-center text-emerald-500/40">
+<span class="material-symbols-outlined text-xl" data-icon="shopping_bag">shopping_bag</span>
+</div>
+<div class="flex-1 flex flex-col md:flex-row md:items-center justify-between gap-2">
+<div>
+<p class="font-mono text-sm text-on-surface/80">AWS Cloud Services</p>
+<p class="font-mono text-[10px] text-emerald-500/40 uppercase">Merchant Payment</p>
+</div>
+<div class="text-right">
+<p class="font-mono text-sm text-error/80 font-bold">-$142.12</p>
+<p class="font-mono text-[10px] text-emerald-500/40 uppercase">Yesterday, 23:01</p>
+</div>
+</div>
+</div>
+<!-- Row 4 -->
+<div class="relative flex items-center gap-8 px-8 py-6 hover:bg-emerald-400/5 transition-colors group">
+<div class="w-4 h-4 rounded-full bg-emerald-500/20 z-10 flex items-center justify-center">
+<div class="w-2 h-2 rounded-full bg-emerald-500/40"></div>
+</div>
+<div class="w-10 h-10 rounded-lg glass-panel flex items-center justify-center text-emerald-500/40">
+<span class="material-symbols-outlined text-xl" data-icon="call_made">call_made</span>
+</div>
+<div class="flex-1 flex flex-col md:flex-row md:items-center justify-between gap-2">
+<div>
+<p class="font-mono text-sm text-on-surface/80">Wire Transfer: Apex Holding</p>
+<p class="font-mono text-[10px] text-emerald-500/40 uppercase">External Settlement</p>
+</div>
+<div class="text-right">
+<p class="font-mono text-sm text-error/80 font-bold">-$12,400.00</p>
+<p class="font-mono text-[10px] text-emerald-500/40 uppercase">Oct 24, 11:30</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="fixed bottom-0 w-full py-2 z-50 bg-emerald-950/20 backdrop-blur-md border-t border-emerald-500/5 flex justify-center items-center gap-8 font-mono text-[10px] tracking-widest text-emerald-400">
+<span class="text-emerald-500">SYSTEM OPERATIONAL</span>
+<div class="flex gap-8">
+<span class="text-emerald-500/50">BTC $64,231</span>
+<span class="text-emerald-500/50">ETH $3,421</span>
+<span class="text-emerald-500/50">LAST SYNC: 2m ago</span>
+</div>
+</footer>
+</body></html>

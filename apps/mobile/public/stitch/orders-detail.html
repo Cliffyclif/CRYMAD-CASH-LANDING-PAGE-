@@ -1,0 +1,238 @@
+<html class="dark"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&amp;family=JetBrains+Mono:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-variant": "#2c3733",
+                        "on-tertiary": "#472a00",
+                        "secondary-fixed": "#68fcbf",
+                        "background": "#0b1512",
+                        "inverse-surface": "#d9e5df",
+                        "surface-dim": "#0b1512",
+                        "on-secondary-container": "#00452e",
+                        "outline-variant": "#3c4a42",
+                        "on-primary-fixed": "#002113",
+                        "on-secondary-fixed-variant": "#005137",
+                        "primary": "#4edea3",
+                        "tertiary-fixed-dim": "#ffb95f",
+                        "surface-bright": "#313b38",
+                        "on-tertiary-container": "#523200",
+                        "inverse-primary": "#006c49",
+                        "tertiary-fixed": "#ffddb8",
+                        "surface-container": "#17221e",
+                        "on-tertiary-fixed": "#2a1700",
+                        "surface": "#0b1512",
+                        "primary-container": "#10b981",
+                        "on-error-container": "#ffdad6",
+                        "tertiary-container": "#e29100",
+                        "on-primary-container": "#00422b",
+                        "on-background": "#d9e5df",
+                        "outline": "#86948a",
+                        "error": "#ffb4ab",
+                        "surface-container-lowest": "#06100d",
+                        "secondary-fixed-dim": "#45dfa4",
+                        "surface-container-highest": "#2c3733",
+                        "primary-fixed": "#6ffbbe",
+                        "secondary": "#45dfa4",
+                        "on-surface": "#d9e5df",
+                        "surface-container-high": "#222c29",
+                        "primary-fixed-dim": "#4edea3",
+                        "on-primary-fixed-variant": "#005236",
+                        "on-error": "#690005",
+                        "on-secondary": "#003825",
+                        "error-container": "#93000a",
+                        "inverse-on-surface": "#28332f",
+                        "secondary-container": "#00bd85",
+                        "on-tertiary-fixed-variant": "#653e00",
+                        "on-surface-variant": "#bbcabf",
+                        "on-secondary-fixed": "#002114",
+                        "surface-tint": "#4edea3",
+                        "tertiary": "#ffb95f",
+                        "surface-container-low": "#131e1a",
+                        "on-primary": "#003824"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "1rem",
+                        "lg": "2rem",
+                        "xl": "3rem",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Inter"],
+                        "body": ["Inter"],
+                        "label": ["Inter"],
+                        "mono": ["JetBrains Mono"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .glass-panel {
+            background: rgba(44, 55, 51, 0.4);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(16, 185, 129, 0.08);
+        }
+        .text-gradient {
+            background: linear-gradient(to bottom, #10b981, #34d399);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .bioluminescent-blob {
+            filter: blur(60px);
+            opacity: 0.25;
+            position: absolute;
+            z-index: -1;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background font-body text-on-surface antialiased overflow-hidden h-[844px] w-[390px] relative mx-auto border-x border-surface-variant">
+<!-- Background Mock: Order History Screen (Dimmed/Blurred) -->
+<div class="absolute inset-0 opacity-40 blur-sm pointer-events-none p-6">
+<header class="flex justify-between items-center mb-8">
+<div class="w-10 h-10 rounded-full bg-surface-container"></div>
+<div class="h-6 w-32 bg-surface-container rounded-full"></div>
+<div class="w-10 h-10 rounded-full bg-surface-container"></div>
+</header>
+<div class="space-y-6">
+<div class="h-24 w-full bg-surface-container-high rounded-lg"></div>
+<div class="h-24 w-full bg-surface-container-high rounded-lg"></div>
+<div class="h-24 w-full bg-surface-container-high rounded-lg"></div>
+<div class="h-24 w-full bg-surface-container-high rounded-lg"></div>
+<div class="h-24 w-full bg-surface-container-high rounded-lg"></div>
+</div>
+</div>
+<!-- Animated Blobs -->
+<div class="bioluminescent-blob w-64 h-64 bg-primary top-1/4 -left-20"></div>
+<div class="bioluminescent-blob w-48 h-48 bg-secondary bottom-1/4 -right-10"></div>
+<!-- Bottom Sheet Wrapper -->
+<div class="absolute inset-x-0 bottom-0 top-[10%] glass-panel rounded-t-[28px] flex flex-col z-50">
+<!-- 1. Grab Handle -->
+<div class="flex justify-center py-4">
+<div class="w-12 h-1.5 bg-surface-variant rounded-full opacity-50"></div>
+</div>
+<div class="flex-1 overflow-y-auto px-6 pb-24 scrollbar-hide">
+<!-- 2 & 3. Title & Status -->
+<div class="mb-8">
+<h1 class="text-2xl font-extrabold text-gradient uppercase tracking-tight">Order #ORD-9821</h1>
+<p class="font-mono text-xs font-bold text-primary tracking-widest mt-1">COMPLETED ✓</p>
+</div>
+<!-- 4. Merchant Header -->
+<div class="flex items-center gap-4 mb-8">
+<div class="w-12 h-12 rounded-full glass-panel flex items-center justify-center p-2">
+<img alt="Amazon" class="w-full h-auto opacity-80" data-alt="minimalist white amazon smile logo on a clean dark circular background with soft emerald glow" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAmd7CqRGZFb7MNT494vCLML3w6sC4fZiZupJNVxn8CnxSAoc4fcL7ITBhqXsdN-ZEyjUyqAaq6PCywYB5fKDDgTU5Hc9M7V7t4WQwDWGXhpiLJhMsXSpJodBdkoO01KMQpEUdxm21Y3wg_PPqSnGhzCGzBR7qVjoxDlrwAuY_d9ggDWZQQ1YiSxlxb0FtyMn1uoJm9ZrB9NnJ4Nu2hU0BiUC9h1F3QKDL6nXc9iHKdezDzLKJZBKYMmDbbwsyF_hiVYnrCDpnXY78C"/>
+</div>
+<div>
+<p class="font-extrabold text-lg">Amazon</p>
+<p class="font-mono text-[10px] text-on-surface-variant uppercase tracking-tighter">Oct 24, 2023</p>
+</div>
+</div>
+<!-- 5. Items List (3 glass pill rows) -->
+<div class="space-y-3 mb-8">
+<div class="flex items-center justify-between p-3 glass-panel rounded-full group hover:bg-primary/5 transition-all">
+<div class="flex items-center gap-3">
+<img alt="Product" class="w-10 h-10 rounded-full object-cover border border-primary/10" data-alt="close-up of sleek professional wireless over-ear headphones in matte black finish with metallic accents" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDXxKnbybfsQG92ReECY1yLeUh8PrDp7bEQGCDra4rqAvR7KYLOCCZFZYQk5sWSR1XOWw1tiYoQTWOSDTMUn834zzMtWs3SNQYC_hARhIt4ecC6cILks5B2C_VOJSijJnruKZO094flUpVy7k0J6xs7H-zXwVRxLhOGgi-ZQh4JHmkJAHpLLWLZN396fza10GfXEgSiRZU-UjT0f7r__YMdu7N7CoIwFvMBN5QDNollW66x-IR9pBD4DpQHKDWWloVXaNOqmsV647kw"/>
+<span class="text-sm font-semibold truncate max-w-[140px]">Audio-Technica M50x</span>
+</div>
+<span class="font-mono text-primary font-bold">$15.00</span>
+</div>
+<div class="flex items-center justify-between p-3 glass-panel rounded-full group hover:bg-primary/5 transition-all">
+<div class="flex items-center gap-3">
+<img alt="Product" class="w-10 h-10 rounded-full object-cover border border-primary/10" data-alt="modern minimalist laptop stand made of brushed aluminum on a dark clean workspace" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCHv634gSZa91chwqsiUB9-sZQWKBfx_uHvCjiWu3pbtbZ0WOuRwJFZOFt6PjqE1z20wIAXU1wAx9YB9OVwHecYj9lsD3U2SfadjvorgZxCC4w3wY70OzjP0atcaQ8dnBVFLMHGZdsqr7ilishU5rS-jGmyp6GdJ52pUGgJJFMhW3cgFQbujQn0qO9a6ZWx7wPh4dnwPZbKjZftLWuwSfHhsrNJDfQrseNTCaKRNicixg_KfqSvbHbSFuMqH7yPKv7xi8j19ypB7gYS"/>
+<span class="text-sm font-semibold truncate max-w-[140px]">Aluminum Laptop Stand</span>
+</div>
+<span class="font-mono text-primary font-bold">$20.00</span>
+</div>
+<div class="flex items-center justify-between p-3 glass-panel rounded-full group hover:bg-primary/5 transition-all">
+<div class="flex items-center gap-3">
+<img alt="Product" class="w-10 h-10 rounded-full object-cover border border-primary/10" data-alt="braided nylon usb-c charging cable with reinforced metallic connectors coiled on dark surface" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBSKs4zQRS2XMAD5QimUY4cot8F81FEjKNC29wI-GB-y_vpbUgkOAtSt6bt0cQUF-0FK903VRXVKSJ4y8Pzp9nm9zs9ulZDzkUboHy8XGRhBpmw2A-v41iOAo_RMPkK14KYg4MFnTqLZOEMoxunGpSCN-xM6g5FupZ7HZ8DXejsv4WMj-AspDOG-mwgTA3C06-AjpR3od04nE3LmU8FIHaB1kaltM6XinrMCh7aT8myPm2qZbwmyNci4DyjKnJWX-yw6N_6S5JHBYO_"/>
+<span class="text-sm font-semibold truncate max-w-[140px]">Braided USB-C Cable</span>
+</div>
+<span class="font-mono text-primary font-bold">$10.20</span>
+</div>
+</div>
+<!-- 6. Totals Section -->
+<div class="glass-panel rounded-lg p-5 mb-8 space-y-3">
+<div class="flex justify-between items-center text-sm">
+<span class="text-on-surface-variant">Subtotal</span>
+<span class="font-mono font-bold">$45.20</span>
+</div>
+<div class="flex justify-between items-center text-sm">
+<span class="text-on-surface-variant">Service Fees</span>
+<span class="font-mono font-bold">$2.50</span>
+</div>
+<div class="flex justify-between items-center text-sm">
+<span class="text-on-surface-variant">Priority Shipping</span>
+<span class="font-mono font-bold text-secondary">$0.00</span>
+</div>
+<div class="pt-3 border-t border-primary/10 flex justify-between items-center">
+<span class="text-lg font-extrabold uppercase tracking-tight">TOTAL</span>
+<span class="text-lg font-extrabold text-gradient font-mono tracking-tighter">$47.70</span>
+</div>
+</div>
+<!-- 7. Payment Timeline -->
+<div class="pl-2 mb-10">
+<p class="text-[10px] font-bold text-on-surface-variant uppercase tracking-widest mb-6">Execution Log</p>
+<div class="relative space-y-8 border-l border-primary/20 ml-2">
+<div class="relative flex items-center">
+<div class="absolute -left-[5px] w-2.5 h-2.5 rounded-full bg-primary shadow-[0_0_10px_rgba(78,222,163,0.6)]"></div>
+<div class="pl-6 flex flex-col">
+<span class="text-xs font-bold uppercase tracking-tight">ORDERED</span>
+<span class="font-mono text-[9px] text-on-surface-variant">2023-10-24 09:12:44</span>
+</div>
+</div>
+<div class="relative flex items-center">
+<div class="absolute -left-[5px] w-2.5 h-2.5 rounded-full bg-primary shadow-[0_0_10px_rgba(78,222,163,0.6)]"></div>
+<div class="pl-6 flex flex-col">
+<span class="text-xs font-bold uppercase tracking-tight">PAID</span>
+<span class="font-mono text-[9px] text-on-surface-variant">2023-10-24 09:13:02</span>
+</div>
+</div>
+<div class="relative flex items-center">
+<div class="absolute -left-[5px] w-2.5 h-2.5 rounded-full bg-primary shadow-[0_0_10px_rgba(78,222,163,0.6)]"></div>
+<div class="pl-6 flex flex-col">
+<span class="text-xs font-bold uppercase tracking-tight">CONFIRMED</span>
+<span class="font-mono text-[9px] text-on-surface-variant">2023-10-24 11:45:12</span>
+</div>
+</div>
+<div class="relative flex items-center">
+<div class="absolute -left-[5px] w-2.5 h-2.5 rounded-full bg-primary shadow-[0_0_10px_rgba(78,222,163,0.6)]"></div>
+<div class="pl-6 flex flex-col">
+<span class="text-xs font-bold uppercase tracking-tight">SHIPPED</span>
+<span class="font-mono text-[9px] text-on-surface-variant">2023-10-25 14:20:00</span>
+</div>
+</div>
+<div class="relative flex items-center">
+<div class="absolute -left-[5px] w-2.5 h-2.5 rounded-full bg-primary shadow-[0_0_10px_rgba(78,222,163,0.6)]"></div>
+<div class="pl-6 flex flex-col">
+<span class="text-xs font-bold uppercase tracking-tight">DELIVERED</span>
+<span class="font-mono text-[9px] text-on-surface-variant">2023-10-27 16:30:11</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- 8. Footer Buttons -->
+<div class="absolute bottom-0 inset-x-0 p-6 glass-panel flex gap-4">
+<button class="flex-1 py-4 glass-panel rounded-full text-xs font-extrabold uppercase tracking-widest text-on-surface active:scale-95 transition-all">
+                CLOSE
+            </button>
+<button class="flex-1 py-4 bg-tertiary rounded-full text-xs font-extrabold uppercase tracking-widest text-on-tertiary active:scale-95 transition-all shadow-[0_0_20px_rgba(245,158,11,0.2)]">
+                REQUEST REFUND
+            </button>
+</div>
+</div>
+</body></html>

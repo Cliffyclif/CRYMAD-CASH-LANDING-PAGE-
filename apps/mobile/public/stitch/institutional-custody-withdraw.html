@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Institutional Withdrawal - Bioluminescent Archive</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&amp;family=JetBrains+Mono:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "secondary-fixed-dim": "#45dfa4",
+                    "outline-variant": "#3c4a42",
+                    "secondary": "#45dfa4",
+                    "error-container": "#93000a",
+                    "tertiary-container": "#e29100",
+                    "primary-fixed": "#6ffbbe",
+                    "primary": "#4edea3",
+                    "inverse-on-surface": "#28332f",
+                    "background": "#0b1512",
+                    "secondary-fixed": "#68fcbf",
+                    "surface-container-high": "#222c29",
+                    "on-secondary-fixed-variant": "#005137",
+                    "on-secondary": "#003825",
+                    "on-primary-fixed": "#002113",
+                    "on-tertiary": "#472a00",
+                    "surface": "#0b1512",
+                    "inverse-surface": "#d9e5df",
+                    "tertiary-fixed": "#ffddb8",
+                    "on-primary": "#003824",
+                    "on-error": "#690005",
+                    "inverse-primary": "#006c49",
+                    "on-secondary-fixed": "#002114",
+                    "surface-variant": "#2c3733",
+                    "tertiary": "#ffb95f",
+                    "surface-container": "#17221e",
+                    "surface-bright": "#313b38",
+                    "on-tertiary-container": "#523200",
+                    "surface-dim": "#0b1512",
+                    "surface-tint": "#4edea3",
+                    "on-background": "#d9e5df",
+                    "on-primary-fixed-variant": "#005236",
+                    "primary-fixed-dim": "#4edea3",
+                    "on-secondary-container": "#00452e",
+                    "outline": "#86948a",
+                    "tertiary-fixed-dim": "#ffb95f",
+                    "error": "#ffb4ab",
+                    "surface-container-lowest": "#06100d",
+                    "secondary-container": "#00bd85",
+                    "on-surface-variant": "#bbcabf",
+                    "surface-container-highest": "#2c3733",
+                    "on-tertiary-fixed-variant": "#653e00",
+                    "on-tertiary-fixed": "#2a1700",
+                    "surface-container-low": "#131e1a",
+                    "on-error-container": "#ffdad6",
+                    "on-primary-container": "#00422b",
+                    "on-surface": "#d9e5df",
+                    "primary-container": "#10b981"
+            },
+            "borderRadius": {
+                    "DEFAULT": "1rem",
+                    "lg": "2rem",
+                    "xl": "3rem",
+                    "full": "9999px"
+            },
+            "fontFamily": {
+                    "headline": ["Inter"],
+                    "body": ["Inter"],
+                    "label": ["Inter"],
+                    "mono": ["JetBrains Mono"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-panel {
+            background: rgba(44, 55, 51, 0.4);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(16, 185, 129, 0.08);
+        }
+        .text-gradient-emerald {
+            background: linear-gradient(to bottom, #10b981, #34d399);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .glow-emerald {
+            box-shadow: 0 0 20px rgba(16, 185, 129, 0.1);
+        }
+        body {
+            background-color: #040d0a;
+            color: #d9e5df;
+            overflow: hidden;
+        }
+        /* Background decorative blobs */
+        .blob {
+            position: fixed;
+            border-radius: 50%;
+            filter: blur(60px);
+            opacity: 0.15;
+            z-index: -1;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="font-body selection:bg-primary selection:text-on-primary">
+<!-- Background Blobs -->
+<div class="blob w-96 h-96 bg-primary top-[-10%] left-[-10%]"></div>
+<div class="blob w-80 h-80 bg-secondary bottom-[20%] right-[-5%]"></div>
+<div class="blob w-[500px] h-[500px] bg-surface-container-high top-[40%] left-[30%]"></div>
+<!-- Parent Screen Mockup (Dimmed) -->
+<main class="fixed inset-0 opacity-40 grayscale-[0.5] flex flex-col p-6 space-y-6">
+<header class="flex justify-between items-center py-4">
+<h1 class="text-2xl font-extrabold tracking-widest text-primary">CUSTODY</h1>
+<span class="material-symbols-outlined text-primary">security</span>
+</header>
+<div class="glass-panel p-8 rounded-lg">
+<div class="h-4 bg-surface-container-highest w-1/3 rounded mb-4"></div>
+<div class="h-32 bg-surface-container-highest w-full rounded mb-6"></div>
+<div class="grid grid-cols-2 gap-4">
+<div class="h-24 bg-surface-container-highest rounded"></div>
+<div class="h-24 bg-surface-container-highest rounded"></div>
+</div>
+</div>
+<div class="glass-panel p-8 rounded-lg flex-1">
+<div class="h-4 bg-surface-container-highest w-1/4 rounded mb-8"></div>
+<div class="space-y-4">
+<div class="h-12 bg-surface-container-highest rounded-full"></div>
+<div class="h-12 bg-surface-container-highest rounded-full"></div>
+<div class="h-12 bg-surface-container-highest rounded-full"></div>
+</div>
+</div>
+</main>
+<!-- Overlay Dimmer -->
+<div class="fixed inset-0 bg-[#040d0a]/80 backdrop-blur-sm z-40"></div>
+<!-- Bottom Sheet Container -->
+<section class="fixed bottom-0 left-0 right-0 h-[90%] bg-surface-container-low z-50 rounded-t-[28px] border-t border-primary/10 flex flex-col shadow-[0_-20px_60px_rgba(4,13,10,0.8)]">
+<!-- Grab Handle -->
+<div class="w-full flex justify-center py-4">
+<div class="w-12 h-1 bg-surface-variant rounded-full"></div>
+</div>
+<!-- Scrollable Content Area -->
+<div class="flex-1 overflow-y-auto px-6 pb-32">
+<!-- Header Section -->
+<header class="mb-8">
+<h2 class="text-3xl font-extrabold text-gradient-emerald tracking-tight">Withdrawal Request</h2>
+<p class="font-mono text-xs tracking-[0.2em] text-secondary/60 mt-1">REQUIRES MULTI-SIG</p>
+</header>
+<div class="space-y-8">
+<!-- Source Selection -->
+<div class="space-y-3">
+<label class="text-xs font-bold uppercase tracking-widest text-on-surface-variant ml-2">Source Vault</label>
+<div class="glass-panel rounded-full px-6 py-4 flex items-center justify-between cursor-pointer hover:bg-white/5 transition-colors border-primary/5">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">ac_unit</span>
+<div>
+<p class="text-sm font-semibold">Cold Storage · BTC</p>
+<p class="font-mono text-[10px] text-on-surface-variant">5,421.20 available</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant">expand_more</span>
+</div>
+</div>
+<!-- Amount Section -->
+<div class="text-center py-4">
+<label class="text-xs font-bold uppercase tracking-widest text-on-surface-variant block mb-4">Transfer Amount</label>
+<h3 class="font-mono text-4xl md:text-5xl font-bold text-gradient-emerald mb-3">50.0000 BTC</h3>
+<div class="inline-block glass-panel rounded-full px-4 py-1 border-primary/10">
+<span class="text-[10px] font-mono text-secondary-fixed-dim">approx $3,362,050</span>
+</div>
+</div>
+<!-- Destination Section -->
+<div class="space-y-3">
+<label class="text-xs font-bold uppercase tracking-widest text-on-surface-variant ml-2">Destination Address</label>
+<div class="glass-panel rounded-lg p-5 border-primary/10 relative overflow-hidden">
+<div class="flex justify-between items-start">
+<div class="space-y-1">
+<p class="font-mono text-sm tracking-tighter text-on-surface">0x7a2e...99fA</p>
+<p class="text-xs font-semibold text-secondary">Aurora Op</p>
+<p class="text-[10px] text-on-surface-variant pt-2">Whitelisted Apr 1</p>
+</div>
+<div class="flex items-center gap-1 bg-secondary-container/20 text-primary px-3 py-1 rounded-full border border-primary/20">
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">verified</span>
+<span class="text-[9px] font-bold tracking-widest">VERIFIED</span>
+</div>
+</div>
+<!-- Micro-glow texture -->
+<div class="absolute -right-4 -bottom-4 w-16 h-16 bg-primary/5 blur-2xl rounded-full"></div>
+</div>
+</div>
+<!-- Purpose Section -->
+<div class="space-y-3">
+<label class="text-xs font-bold uppercase tracking-widest text-on-surface-variant ml-2">Purpose of Funds</label>
+<div class="glass-panel rounded-full px-6 py-4 flex items-center justify-between border-primary/5 cursor-pointer">
+<span class="text-sm">Trading Desk Funding</span>
+<span class="material-symbols-outlined text-on-surface-variant">expand_more</span>
+</div>
+</div>
+<!-- Required Signers Section -->
+<div class="space-y-4">
+<div class="flex justify-between items-end ml-2">
+<label class="text-xs font-bold uppercase tracking-widest text-on-surface-variant">Signer Quorum</label>
+<span class="font-mono text-lg font-bold text-primary tracking-tighter">3/5 REQUIRED</span>
+</div>
+<div class="glass-panel rounded-lg p-6 border-primary/10">
+<!-- Progress Visual -->
+<div class="flex gap-3 justify-center mb-8">
+<div class="w-10 h-10 rounded-full border-2 border-primary bg-primary/20 flex items-center justify-center shadow-[0_0_15px_rgba(16,185,129,0.3)]">
+<span class="material-symbols-outlined text-primary text-sm" style="font-variation-settings: 'FILL' 1;">check</span>
+</div>
+<div class="w-10 h-10 rounded-full border-2 border-primary bg-primary/20 flex items-center justify-center shadow-[0_0_15px_rgba(16,185,129,0.3)]">
+<span class="material-symbols-outlined text-primary text-sm" style="font-variation-settings: 'FILL' 1;">check</span>
+</div>
+<div class="w-10 h-10 rounded-full border-2 border-outline-variant bg-surface-container-highest"></div>
+<div class="w-10 h-10 rounded-full border-2 border-outline-variant bg-surface-container-highest"></div>
+<div class="w-10 h-10 rounded-full border-2 border-outline-variant bg-surface-container-highest"></div>
+</div>
+<!-- Signer List -->
+<div class="space-y-4">
+<!-- Signer 1 -->
+<div class="flex items-center justify-between py-2 border-b border-primary/5">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full overflow-hidden border border-primary/20">
+<img class="w-full h-full object-cover" data-alt="portrait of a professional black man in a dark turtleneck looking confident in a corporate setting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD_2DrTEezgum2gz0skimT1OmpxuI47GBhmIqDGbxO9efBXqq6zJ3StEXGITq-Ufx-fmRFWJbc38cKluCKIZ37uQhjx6rwMTXi3pmDjX3-mx53Z2gziGmB4pIHDyykzGdWEEg84rgIEId2q9c9APbFxUrNx4THAuL4614dx3CI8Qlz1wXY5ELzk_UQRlwSamYvazsnxQr5GjSwo9CVQxGt2U8IEY7DTX1anDVWWIpraeQneoEvsYIt1XrpkNY1r0-woxkZm1RXvfikv"/>
+</div>
+<div>
+<p class="text-xs font-bold">Joseph Obasi</p>
+<p class="text-[9px] text-on-surface-variant uppercase tracking-wider">Treasury Lead</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-primary text-sm" style="font-variation-settings: 'FILL' 1;">verified</span>
+</div>
+<!-- Signer 2 -->
+<div class="flex items-center justify-between py-2 border-b border-primary/5">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full overflow-hidden border border-primary/20">
+<img class="w-full h-full object-cover" data-alt="portrait of an asian business woman with professional attire and soft neutral lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAtLiHqNYAXcQ9cF4fKB03-ewHN8j_j1ZJKB_wjR1LXe-LG0PupfQVNqRpev2-G_deCHgEQCnH2XzLV5xh_M9mKsBNrHHCylZwI0xN-kndNDsihQbASYdfHXgOmBk0dcC59ZQ0eIL0rD9YIm-ExekB3P7Kj3cv5nw-1Wgwi9TEPmytfU0qqZdmEaadjgYVVoGqVOrHVOlIu3qR7Uz_nLIHy4k2tKzKB-qUqEteiot1GquMK4EYVuaVM8-S7421CZhCgCgmhfJQH_REA"/>
+</div>
+<div>
+<p class="text-xs font-bold">Sarah Chen</p>
+<p class="text-[9px] text-on-surface-variant uppercase tracking-wider">COO</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-primary text-sm" style="font-variation-settings: 'FILL' 1;">verified</span>
+</div>
+<!-- Signer 3 -->
+<div class="flex items-center justify-between py-2 border-b border-primary/5">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full overflow-hidden border border-outline-variant">
+<img class="w-full h-full object-cover" data-alt="middle aged white man with glasses and professional look in a blurred office background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCe-TOBgi6EYQq8zFSkwAvgHyp4q-tmgVoo8nhmbTf4apUQlx7RpPnHN77AHaodbGh6aW7neT2BI5AVeQkedywNiWuoZJFGMIjvayjba7EWCjQWGths8ibO61pf3u92SffOxT1zdEWhJMFXODdPuUcAtxEN-DLW286p7UPUD-MHqxxLz2yDCpJZDn68bXXiL3MoAhDd2cADBNFnOB8Y_xn1tWBpN4Y92JdGS3b4F0_0oUgIlCp1huvOJG6VHpZhcCRlA9yUSHsHDWEm"/>
+</div>
+<div>
+<p class="text-xs font-bold">Marcus Klein</p>
+<p class="text-[9px] text-on-surface-variant uppercase tracking-wider">Compliance Officer</p>
+</div>
+</div>
+<button class="text-[9px] font-bold text-primary px-3 py-1 rounded-full border border-primary/20 hover:bg-primary/5 transition-colors">NOTIFY</button>
+</div>
+<!-- Signer 4 -->
+<div class="flex items-center justify-between py-2 border-b border-primary/5">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full overflow-hidden border border-outline-variant">
+<img class="w-full h-full object-cover" data-alt="smiling hispanic woman in business attire looking towards camera in high-end studio lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBPfHkzZZie6zX1FFY-8SBgk4tWP3BbKiF9Lxv-knPTgNjTu02w_m1JCLqQWBzywvA5r48NOR7iWXINw7en2YYNcLtgOEVxtCUk41mEwtNjbskied438bmRKJhlgz154euyBhBTz7AvOGdgubFf1G3J_D7FMiStXS36yDNlKKFs1KLJu8rORK4Z6jajyGpCv_eUT8zu5JHclbLgmEWYhXQp8yO1WqJtzlv9u48lOOXsqS3KZNwL3Zi7_wLieWipv4kSegazWeJ8-Ua2"/>
+</div>
+<div>
+<p class="text-xs font-bold">Elena Rossi</p>
+<p class="text-[9px] text-on-surface-variant uppercase tracking-wider">Risk Analyst</p>
+</div>
+</div>
+<button class="text-[9px] font-bold text-primary px-3 py-1 rounded-full border border-primary/20 hover:bg-primary/5 transition-colors">NOTIFY</button>
+</div>
+<!-- Signer 5 -->
+<div class="flex items-center justify-between py-2">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full overflow-hidden border border-outline-variant">
+<img class="w-full h-full object-cover" data-alt="indian woman professional portrait with gentle lighting and emerald tinted background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBX4EmRQzsUM9yV4ZWf0_OmFmg2u9rUwtJTeRfFNXf_fkZn09lLkozfvNgQi7Xwy5-UQB16t1G3n3DDyoX-K611xvUmlWcV9A4mJeqttiMwZaQ-3V5j8Eeq2Mh6oul_7GQwM2RN-pvwbHEJkLdEI_nVHohqa89mDHGfbIVCyGBbObYHqzo8fUiFGsE1w-24CBzKj3ic06SBl7S_YEhYXC1YM6NdVR_qIY-DxnCKvZhMejak4g4kpxX_QBKGu-5W6Xqtozw7lvQMbutx"/>
+</div>
+<div>
+<p class="text-xs font-bold">Priya Patel</p>
+<p class="text-[9px] text-on-surface-variant uppercase tracking-wider">Board Director</p>
+</div>
+</div>
+<button class="text-[9px] font-bold text-primary px-3 py-1 rounded-full border border-primary/20 hover:bg-primary/5 transition-colors">NOTIFY</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Sticky Bottom Actions -->
+<div class="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-surface-container-low via-surface-container-low to-transparent pt-10">
+<!-- Timelock Strip -->
+<div class="bg-tertiary-container/10 border border-tertiary/20 rounded-full py-2 px-4 mb-4 flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-tertiary text-sm">schedule</span>
+<span class="text-[10px] font-bold text-tertiary uppercase tracking-widest">4-hour timelock after final signature</span>
+</div>
+<button class="w-full bg-primary text-on-primary py-4 rounded-full font-extrabold tracking-widest uppercase text-sm hover:brightness-110 active:scale-[0.98] transition-all shadow-[0_10px_30px_rgba(16,185,129,0.2)]">
+                SUBMIT FOR APPROVAL
+            </button>
+</div>
+</section>
+<!-- App Shell Shared Components Integration -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-8 pb-8 pt-4 bg-[#2c3733]/40 backdrop-blur-md border-t border-emerald-500/10 shadow-[0_-10px_40px_rgba(16,185,129,0.08)] rounded-t-[32px] pointer-events-none opacity-20">
+<div class="text-emerald-700/60 p-3"><span class="material-symbols-outlined">account_balance_wallet</span></div>
+<div class="text-emerald-700/60 p-3"><span class="material-symbols-outlined">swap_horiz</span></div>
+<div class="text-emerald-700/60 p-3"><span class="material-symbols-outlined">history</span></div>
+<div class="bg-emerald-500/20 text-emerald-400 rounded-full p-3 shadow-[0_0_15px_rgba(16,185,129,0.3)]"><span class="material-symbols-outlined">settings</span></div>
+</nav>
+<!-- Top App Bar Shared Component Implementation -->
+<div class="fixed top-0 w-full z-50 flex items-center justify-between px-6 h-16 bg-[#040d0a]/80 backdrop-blur-xl border-b border-emerald-500/10 shadow-[0_0_40px_rgba(16,185,129,0.05)]">
+<div class="flex items-center gap-2 hover:bg-emerald-500/5 transition-colors p-2 rounded-lg cursor-pointer active:scale-95 duration-300">
+<span class="material-symbols-outlined text-emerald-500">arrow_back</span>
+<span class="font-['JetBrains_Mono'] text-sm tracking-tighter uppercase text-emerald-900">WITHDRAWAL_AUTH</span>
+</div>
+<div class="text-emerald-400 font-extrabold tracking-widest text-emerald-400">
+<span class="material-symbols-outlined">security</span>
+</div>
+</div>
+</body></html>

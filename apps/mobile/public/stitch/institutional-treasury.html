@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+<title>Treasury - Institutional</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&amp;family=JetBrains+Mono:wght@400;700&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-primary-fixed": "#002113",
+                        "secondary-container": "#00bd85",
+                        "on-tertiary-fixed-variant": "#653e00",
+                        "primary": "#4edea3",
+                        "surface-tint": "#4edea3",
+                        "surface-container-high": "#222c29",
+                        "outline-variant": "#3c4a42",
+                        "on-error-container": "#ffdad6",
+                        "surface-container-highest": "#2c3733",
+                        "primary-fixed-dim": "#4edea3",
+                        "outline": "#86948a",
+                        "on-secondary-container": "#00452e",
+                        "tertiary-fixed-dim": "#ffb95f",
+                        "tertiary-container": "#e29100",
+                        "error": "#ffb4ab",
+                        "on-tertiary-fixed": "#2a1700",
+                        "on-primary-container": "#00422b",
+                        "on-secondary-fixed-variant": "#005137",
+                        "secondary-fixed-dim": "#45dfa4",
+                        "surface-dim": "#0b1512",
+                        "primary-container": "#10b981",
+                        "on-tertiary-container": "#523200",
+                        "on-surface": "#d9e5df",
+                        "surface-container-lowest": "#06100d",
+                        "on-tertiary": "#472a00",
+                        "on-secondary": "#003825",
+                        "background": "#040d0a",
+                        "surface-container-low": "#131e1a",
+                        "tertiary-fixed": "#ffddb8",
+                        "surface": "#0b1512",
+                        "primary-fixed": "#6ffbbe",
+                        "secondary": "#45dfa4",
+                        "surface-container": "#17221e",
+                        "on-background": "#d9e5df",
+                        "error-container": "#93000a",
+                        "on-secondary-fixed": "#002114",
+                        "inverse-primary": "#006c49",
+                        "secondary-fixed": "#68fcbf",
+                        "on-error": "#690005",
+                        "surface-variant": "#2c3733",
+                        "surface-bright": "#313b38",
+                        "on-surface-variant": "#bbcabf",
+                        "on-primary-fixed-variant": "#005236",
+                        "on-primary": "#003824",
+                        "inverse-on-surface": "#28332f",
+                        "inverse-surface": "#d9e5df",
+                        "tertiary": "#ffb95f"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "1rem",
+                        "lg": "2rem",
+                        "xl": "3rem",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Inter"],
+                        "body": ["Inter"],
+                        "label": ["Inter"],
+                        "mono": ["JetBrains Mono"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .glass {
+            background: rgba(44, 55, 51, 0.4);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(16, 185, 129, 0.08);
+        }
+        .bioluminescent-bg {
+            background: radial-gradient(circle at 50% 20%, rgba(16, 185, 129, 0.15) 0%, rgba(4, 13, 10, 1) 70%);
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        ::-webkit-scrollbar { display: none; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface font-body min-h-screen selection:bg-primary/30">
+<!-- Top Navigation -->
+<header class="fixed top-0 w-full z-50 bg-emerald-950/40 backdrop-blur-xl border-b border-emerald-500/10 flex justify-between items-center px-6 h-16 w-full">
+<div class="flex items-center gap-3">
+<button class="material-symbols-outlined text-emerald-500 active:scale-95 duration-200">arrow_back</button>
+<h1 class="font-headline font-extrabold text-transparent bg-clip-text bg-gradient-to-b from-emerald-400 to-emerald-600 text-xl tracking-tight">Treasury</h1>
+</div>
+<div class="flex items-center gap-2 px-3 py-1 bg-tertiary/10 border border-tertiary/20 rounded-full">
+<span class="w-2 h-2 rounded-full bg-tertiary animate-pulse"></span>
+<span class="font-mono text-[10px] font-bold text-tertiary tracking-widest">INST</span>
+</div>
+</header>
+<main class="pt-20 pb-32 px-5 bioluminescent-bg">
+<!-- Hero Section -->
+<section class="glass rounded-lg p-6 mb-6 shadow-[0_8px_32px_rgba(16,185,129,0.08)]">
+<p class="font-mono text-xs tracking-[0.2em] text-on-surface-variant mb-2">TOTAL TREASURY</p>
+<div class="flex justify-between items-end">
+<h2 class="text-4xl font-headline font-extrabold text-transparent bg-clip-text bg-gradient-to-b from-emerald-300 to-emerald-600">
+                    $284.5M
+                </h2>
+<div class="flex flex-col items-end">
+<span class="bg-primary/10 text-primary font-mono text-[10px] px-2 py-1 rounded-full mb-1">
+                        +$14.2k/24h
+                    </span>
+<span class="text-primary font-mono text-[10px] font-bold">4.25% APY</span>
+</div>
+</div>
+</section>
+<!-- Allocation Chart -->
+<section class="mb-8 relative flex justify-center items-center">
+<div class="absolute text-center">
+<p class="font-mono text-[10px] text-on-surface-variant">LIQUIDITY</p>
+<p class="font-mono text-lg font-bold text-primary">82.4%</p>
+</div>
+<svg class="w-48 h-48 -rotate-90">
+<circle cx="96" cy="96" fill="transparent" r="80" stroke="rgba(16, 185, 129, 0.05)" stroke-width="14"></circle>
+<!-- Simplified visualization of currency segments -->
+<circle class="transition-all duration-1000" cx="96" cy="96" fill="transparent" r="80" stroke="#10b981" stroke-dasharray="502" stroke-dashoffset="300" stroke-width="14"></circle>
+<circle class="transition-all duration-1000" cx="96" cy="96" fill="transparent" r="80" stroke="#34d399" stroke-dasharray="502" stroke-dashoffset="400" stroke-width="14"></circle>
+<circle class="transition-all duration-1000" cx="96" cy="96" fill="transparent" r="80" stroke="#f59e0b" stroke-dasharray="502" stroke-dashoffset="480" stroke-width="14"></circle>
+</svg>
+</section>
+<!-- Action Row -->
+<div class="flex overflow-x-auto gap-3 mb-8 no-scrollbar -mx-5 px-5">
+<button class="whitespace-nowrap px-4 py-2 glass rounded-full text-[10px] font-mono font-bold text-primary-fixed-dim hover:bg-emerald-500/10 transition-colors active:scale-95">NEW ALLOCATION</button>
+<button class="whitespace-nowrap px-4 py-2 glass rounded-full text-[10px] font-mono font-bold text-on-surface hover:bg-emerald-500/10 transition-colors active:scale-95">REBALANCE</button>
+<button class="whitespace-nowrap px-4 py-2 glass rounded-full text-[10px] font-mono font-bold text-on-surface hover:bg-emerald-500/10 transition-colors active:scale-95">HEDGE</button>
+<button class="whitespace-nowrap px-4 py-2 glass rounded-full text-[10px] font-mono font-bold text-on-surface hover:bg-emerald-500/10 transition-colors active:scale-95">EXPORT</button>
+</div>
+<!-- FX Positions -->
+<section class="space-y-3 mb-8">
+<h3 class="font-mono text-[10px] tracking-widest text-on-surface-variant px-1 uppercase">Live Positions</h3>
+<!-- USD -->
+<div class="glass px-5 py-4 rounded-lg flex items-center justify-between">
+<div class="flex items-center gap-4">
+<div class="w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center text-primary font-bold text-xs">US</div>
+<div>
+<p class="font-mono text-sm font-bold">USD</p>
+<p class="font-mono text-[10px] text-on-surface-variant">$113.8M</p>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<div class="w-12 h-6 flex items-end gap-[2px]">
+<div class="bg-primary/40 w-1 h-[40%] rounded-full"></div>
+<div class="bg-primary/40 w-1 h-[60%] rounded-full"></div>
+<div class="bg-primary/40 w-1 h-[80%] rounded-full"></div>
+<div class="bg-primary w-1 h-[100%] rounded-full"></div>
+</div>
+<span class="font-mono text-xs text-primary font-bold">+0.04%</span>
+</div>
+</div>
+<!-- EUR -->
+<div class="glass px-5 py-4 rounded-lg flex items-center justify-between">
+<div class="flex items-center gap-4">
+<div class="w-8 h-8 rounded-full bg-secondary/20 flex items-center justify-center text-secondary font-bold text-xs">EU</div>
+<div>
+<p class="font-mono text-sm font-bold">EUR</p>
+<p class="font-mono text-[10px] text-on-surface-variant">€38.5M <span class="opacity-50">($41.2M)</span></p>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<div class="w-12 h-6 flex items-end gap-[2px]">
+<div class="bg-primary/40 w-1 h-[30%] rounded-full"></div>
+<div class="bg-primary/40 w-1 h-[50%] rounded-full"></div>
+<div class="bg-primary/40 w-1 h-[70%] rounded-full"></div>
+<div class="bg-primary w-1 h-[90%] rounded-full"></div>
+</div>
+<span class="font-mono text-xs text-primary font-bold">+1.2%</span>
+</div>
+</div>
+<!-- GBP -->
+<div class="glass px-5 py-4 rounded-lg flex items-center justify-between">
+<div class="flex items-center gap-4">
+<div class="w-8 h-8 rounded-full bg-error/10 flex items-center justify-center text-error font-bold text-xs">UK</div>
+<div>
+<p class="font-mono text-sm font-bold">GBP</p>
+<p class="font-mono text-[10px] text-on-surface-variant">£18.2M <span class="opacity-50">($22.9M)</span></p>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<div class="w-12 h-6 flex items-start gap-[2px]">
+<div class="bg-error w-1 h-[100%] rounded-full"></div>
+<div class="bg-error/40 w-1 h-[80%] rounded-full"></div>
+<div class="bg-error/40 w-1 h-[60%] rounded-full"></div>
+<div class="bg-error/40 w-1 h-[40%] rounded-full"></div>
+</div>
+<span class="font-mono text-xs text-error font-bold">-0.8%</span>
+</div>
+</div>
+<!-- USDC -->
+<div class="glass px-5 py-4 rounded-lg flex items-center justify-between">
+<div class="flex items-center gap-4">
+<div class="w-8 h-8 rounded-full bg-outline/20 flex items-center justify-center text-on-surface font-bold text-xs">USDC</div>
+<div>
+<p class="font-mono text-sm font-bold">USDC</p>
+<p class="font-mono text-[10px] text-on-surface-variant">34.1M</p>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<div class="w-12 h-1 bg-outline/20 rounded-full"></div>
+<span class="font-mono text-xs text-on-surface-variant font-bold">STABLE</span>
+</div>
+</div>
+<!-- BTC -->
+<div class="glass px-5 py-4 rounded-lg flex items-center justify-between">
+<div class="flex items-center gap-4">
+<div class="w-8 h-8 rounded-full bg-tertiary/20 flex items-center justify-center text-tertiary font-bold text-xs">BTC</div>
+<div>
+<p class="font-mono text-sm font-bold">BTC</p>
+<p class="font-mono text-[10px] text-on-surface-variant">212 BTC <span class="opacity-50">($14.2M)</span></p>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<div class="w-12 h-6 flex items-end gap-[2px]">
+<div class="bg-primary/40 w-1 h-[20%] rounded-full"></div>
+<div class="bg-primary/40 w-1 h-[40%] rounded-full"></div>
+<div class="bg-primary/40 w-1 h-[70%] rounded-full"></div>
+<div class="bg-primary w-1 h-[100%] rounded-full"></div>
+</div>
+<span class="font-mono text-xs text-primary font-bold">+2.4%</span>
+</div>
+</div>
+</section>
+<!-- Cash Maturity Ladder -->
+<section class="mb-8">
+<h3 class="font-mono text-[10px] tracking-widest text-on-surface-variant px-1 uppercase mb-4">Cash Maturity Ladder</h3>
+<div class="glass p-5 rounded-lg">
+<div class="flex items-end justify-between gap-2 h-24 mb-4">
+<div class="flex flex-col items-center flex-1">
+<div class="bg-primary w-full rounded-t-md transition-all" style="height: 35%;"></div>
+<p class="font-mono text-[8px] mt-2 text-on-surface-variant">DEMAND</p>
+</div>
+<div class="flex flex-col items-center flex-1">
+<div class="bg-primary/60 w-full rounded-t-md transition-all" style="height: 22%;"></div>
+<p class="font-mono text-[8px] mt-2 text-on-surface-variant">1-7D</p>
+</div>
+<div class="flex flex-col items-center flex-1">
+<div class="bg-primary/40 w-full rounded-t-md transition-all" style="height: 18%;"></div>
+<p class="font-mono text-[8px] mt-2 text-on-surface-variant">8-30D</p>
+</div>
+<div class="flex flex-col items-center flex-1">
+<div class="bg-primary/20 w-full rounded-t-md transition-all" style="height: 15%;"></div>
+<p class="font-mono text-[8px] mt-2 text-on-surface-variant">31-90D</p>
+</div>
+<div class="flex flex-col items-center flex-1">
+<div class="bg-primary/10 w-full rounded-t-md transition-all" style="height: 10%;"></div>
+<p class="font-mono text-[8px] mt-2 text-on-surface-variant">90D+</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Yield Strategies -->
+<section class="mb-12">
+<h3 class="font-mono text-[10px] tracking-widest text-on-surface-variant px-1 uppercase mb-4">Active Yield Strategies</h3>
+<div class="grid grid-cols-2 gap-3">
+<div class="glass p-4 rounded-lg flex flex-col gap-1">
+<span class="font-headline font-bold text-xs">Aave V3</span>
+<span class="font-mono text-sm text-on-surface">4.1%</span>
+</div>
+<div class="glass p-4 rounded-lg flex flex-col gap-1">
+<span class="font-headline font-bold text-xs">Compound</span>
+<span class="font-mono text-sm text-on-surface">3.8%</span>
+</div>
+<div class="glass p-4 rounded-lg flex flex-col gap-1 border-emerald-500/30">
+<span class="font-headline font-bold text-xs">T-Bills</span>
+<span class="font-mono text-sm text-primary">5.2%</span>
+</div>
+<div class="glass p-4 rounded-lg flex flex-col gap-1">
+<span class="font-headline font-bold text-xs">Curve</span>
+<span class="font-mono text-sm text-on-surface">4.9%</span>
+</div>
+</div>
+</section>
+</main>
+<!-- FAB -->
+<button class="fixed bottom-28 right-6 bg-primary text-on-primary-container px-6 h-14 rounded-full font-headline font-extrabold flex items-center gap-2 shadow-[0_10px_20px_rgba(16,185,129,0.3)] active:scale-95 transition-transform z-40">
+<span class="material-symbols-outlined">add</span>
+<span class="text-xs uppercase tracking-widest">New Allocation</span>
+</button>
+<!-- Bottom Navigation -->
+<nav class="fixed bottom-0 left-0 w-full z-50 rounded-t-[32px] bg-emerald-950/60 backdrop-blur-2xl border-t border-emerald-500/10 h-24 pt-3 pb-8">
+<div class="flex justify-around items-center px-4 w-full h-full">
+<div class="flex flex-col items-center justify-center text-emerald-700 active:scale-90 duration-300">
+<span class="material-symbols-outlined">shield</span>
+<span class="font-mono text-[10px] uppercase tracking-widest mt-1">Vault</span>
+</div>
+<div class="flex flex-col items-center justify-center text-emerald-700 active:scale-90 duration-300">
+<span class="material-symbols-outlined">account_balance</span>
+<span class="font-mono text-[10px] uppercase tracking-widest mt-1">Treasury</span>
+</div>
+<div class="flex flex-col items-center justify-center text-emerald-700 active:scale-90 duration-300">
+<span class="material-symbols-outlined">swap_horiz</span>
+<span class="font-mono text-[10px] uppercase tracking-widest mt-1">Swap</span>
+</div>
+<div class="flex flex-col items-center justify-center text-emerald-700 active:scale-90 duration-300">
+<span class="material-symbols-outlined">query_stats</span>
+<span class="font-mono text-[10px] uppercase tracking-widest mt-1">Yield</span>
+</div>
+<div class="flex flex-col items-center justify-center text-emerald-400 bg-emerald-500/10 rounded-full px-4 py-2 active:scale-90 duration-300">
+<span class="material-symbols-outlined">history_edu</span>
+<span class="font-mono text-[10px] uppercase tracking-widest mt-1">Audit</span>
+</div>
+</div>
+<!-- Home Indicator -->
+<div class="absolute bottom-1.5 left-1/2 -translate-x-1/2 w-32 h-1.5 bg-on-surface/20 rounded-full"></div>
+</nav>
+</body></html>
