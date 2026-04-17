@@ -37,8 +37,8 @@ app.onError((err, c) => {
   return c.json({ error: err.message ?? "internal error" }, 500);
 });
 
-const port = env.BFF_PORT;
-serve({ fetch: app.fetch, port }, (info) => {
+const port = env.PORT ? Number(env.PORT) : env.BFF_PORT;
+serve({ fetch: app.fetch, port, hostname: "0.0.0.0" }, (info) => {
   console.log(`\n  🟢 Crymad BFF ready → http://localhost:${info.port}`);
   console.log(`     GET  /health`);
   console.log(`     POST /auth/login   {email}`);

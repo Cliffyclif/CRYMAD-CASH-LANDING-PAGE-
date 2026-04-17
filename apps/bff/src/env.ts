@@ -23,6 +23,8 @@ const envSchema = z.object({
   TYGAPAY_AUTH_URL: z.string().url(),
   TYGAPAY_REWARDS_URL: z.string().url(),
   TYGAPAY_REPORTING_URL: z.string().url(),
+  // Railway / most PaaS providers inject PORT — prefer it over BFF_PORT.
+  PORT: z.string().optional(),
   BFF_PORT: z.string().default("8787").transform(Number),
   BFF_SESSION_SECRET: z.string().min(16),
   BFF_DATABASE_URL: z.string().default("file:./data/crymad.db"),
