@@ -10,6 +10,7 @@ import { walletRoutes } from "./routes/wallet.js";
 import { webhookRoutes } from "./routes/webhooks.js";
 import { diagnosticsRoutes } from "./routes/diagnostics.js";
 import { meRoutes } from "./routes/me.js";
+import { tygaProxyRoutes } from "./routes/tyga-proxy.js";
 
 const app = new Hono();
 
@@ -30,6 +31,7 @@ app.route("/dashboard", dashboardRoutes);
 app.route("/wallet", walletRoutes);
 app.route("/webhooks", webhookRoutes);
 app.route("/diagnostics", diagnosticsRoutes);
+app.route("/tyga", tygaProxyRoutes);
 
 app.notFound((c) => c.json({ error: "not found", path: c.req.path }, 404));
 app.onError((err, c) => {

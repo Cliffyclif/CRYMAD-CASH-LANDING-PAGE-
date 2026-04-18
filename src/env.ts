@@ -29,6 +29,10 @@ const envSchema = z.object({
   BFF_SESSION_SECRET: z.string().min(16),
   BFF_DATABASE_URL: z.string().default("file:./data/crymad.db"),
   BFF_CORS_ORIGIN: z.string().default("http://localhost:5173,http://localhost:5174"),
+  // Shared secret between BFF and downstream Next.js dashboard for the /tyga/* egress proxy.
+  // When set, the dashboard calls BFF with x-internal-secret instead of hitting TygaBank directly,
+  // so TygaBank only ever sees BFF's whitelisted static IP.
+  TYGA_PROXY_SECRET: z.string().min(16).optional(),
 });
 
 export const env = envSchema.parse(process.env);
