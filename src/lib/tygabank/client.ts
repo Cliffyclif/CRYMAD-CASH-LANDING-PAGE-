@@ -62,6 +62,14 @@ async function request<T = unknown>(
     body?: unknown;
   } = {},
 ): Promise<T> {
+  // BFF proxy mode: route every TygaBank call through BFF's static-IP service.
+  // TygaBank production only accepts traffic from BFF's whitelisted IP, so in prod
+  // we MUST NOT call TygaBank directly from this Next.js process.
+  const bffBase = process.env.BFF_BASE_URL;
+  if (bffBase) {
+    return requestViaBff<T>(svc, method, path, opts);
+  }
+
   const url = baseUrl(svc);
   // Always add timestamp (query for GET, body for POST/PUT)
   const ts = now();
@@ -102,6 +110,49 @@ async function request<T = unknown>(
     throw new TygaBankError(res.status, data, `${method} ${path} failed: ${res.status}`);
   }
   return data as T;
+}
+
+async function requestViaBff<T>(
+  svc: ServiceName,
+  method: "GET" | "POST" | "PUT" | "DELETE",
+  path: string,
+  opts: { query?: Record<string, string | number | undefined>; body?: unknown },
+): Promise<T> {
+  const base = process.env.BFF_BASE_URL!.replace(/\/+$/, "");
+  const secret = process.env.TYGA_PROXY_SECRET;
+  if (!secret) throw new Error("TYGA_PROXY_SECRET is not set (required when BFF_BASE_URL is set)");
+
+  const qsParts: string[] = [];
+  for (const [k, v] of Object.entries(opts.query ?? {})) {
+    if (v === undefined || v === null || v === "") continue;
+    qsParts.push(`${encodeURIComponent(k)}=${encodeURIComponent(String(v))}`);
+  }
+  const qs = qsParts.join("&");
+  const proxyPath = path.startsWith("/") ? path : `/${path}`;
+  const fullUrl = `${base}/tyga/${svc}${proxyPath}${qs ? `?${qs}` : ""}`;
+
+  const res = await fetch(fullUrl, {
+    method,
+    headers: {
+      "content-type": "application/json",
+      "x-internal-secret": secret,
+    },
+    body: opts.body !== undefined && method !== "GET" && method !== "DELETE"
+      ? JSON.stringify(opts.body)
+      : undefined,
+    cache: "no-store",
+  });
+
+  const text = await res.text();
+  let envelope: { ok?: boolean; data?: unknown; error?: string; status?: number; raw?: unknown } | string = text;
+  try { envelope = JSON.parse(text); } catch { /* non-JSON */ }
+
+  if (!res.ok || (typeof envelope === "object" && envelope.ok === false)) {
+    const upstreamStatus = typeof envelope === "object" && envelope.status ? envelope.status : res.status;
+    const raw = typeof envelope === "object" ? envelope.raw : envelope;
+    throw new TygaBankError(upstreamStatus, raw, `${method} ${path} via BFF failed: ${upstreamStatus}`);
+  }
+  return (typeof envelope === "object" ? (envelope.data as T) : (envelope as T));
 }
 
 // ─── Types (partial, from real API responses) ──────────────────────────────
