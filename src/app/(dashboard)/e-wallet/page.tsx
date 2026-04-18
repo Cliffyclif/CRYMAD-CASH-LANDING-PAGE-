@@ -1081,7 +1081,7 @@ export default function EWalletPage() {
     .reduce((s, t) => s + (t.side === "debit" || t.amount < 0 ? -Math.abs(t.amount) : Math.abs(t.amount)), 0);
   const todayUp = todayNet >= 0;
 
-  const accountId = (w?.externalId || w?.id || "").toString().toUpperCase().slice(0, 10) || "—";
+  const accountId = (w?.id || "").toString().toUpperCase().slice(0, 10) || "—";
 
   // Pagination
   const pageSize = 7;
