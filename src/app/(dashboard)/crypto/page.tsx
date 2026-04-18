@@ -1814,7 +1814,7 @@ export default function CryptoPage() {
     );
   }
 
-  const walletId = (cryptoWallet?.externalId || cryptoWallet?.id || "").toString().slice(0, 12).toUpperCase() || "—";
+  const walletId = (cryptoWallet?.id || "").toString().slice(0, 12).toUpperCase() || "—";
   const portfolioUp = portfolio.change24h >= 0;
 
   return (
