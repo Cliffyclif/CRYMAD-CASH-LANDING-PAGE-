@@ -1,0 +1,36 @@
+{
+  "name": "new-dashboard-ui",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint"
+  },
+  "dependencies": {
+    "bcryptjs": "^3.0.3",
+    "html5-qrcode": "^2.3.8",
+    "jose": "^6.2.2",
+    "next": "16.2.3",
+    "nodemailer": "^8.0.5",
+    "pg": "^8.20.0",
+    "qrcode": "^1.5.4",
+    "react": "19.2.4",
+    "react-dom": "19.2.4",
+    "resend": "^6.12.0",
+    "zod": "^4.3.6"
+  },
+  "devDependencies": {
+    "@types/bcryptjs": "^2.4.6",
+    "@types/node": "^20",
+    "@types/nodemailer": "^8.0.0",
+    "@types/pg": "^8.20.0",
+    "@types/qrcode": "^1.5.6",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "eslint": "^9",
+    "eslint-config-next": "16.2.3",
+    "typescript": "^5"
+  }
+}

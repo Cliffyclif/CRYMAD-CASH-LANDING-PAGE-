@@ -1,0 +1,1382 @@
+{
+  "directed": false,
+  "multigraph": false,
+  "graph": {},
+  "nodes": [
+    {
+      "label": "page.tsx",
+      "file_type": "code",
+      "source_file": "src\\app\\(auth)\\forgot-password\\page.tsx",
+      "source_location": "L1",
+      "id": "src_app_auth_forgot_password_page_tsx",
+      "community": null
+    },
+    {
+      "label": "handleSubmit()",
+      "file_type": "code",
+      "source_file": "src\\app\\(dashboard)\\cards\\setup\\page.tsx",
+      "source_location": "L88",
+      "id": "page_handlesubmit",
+      "community": null
+    },
+    {
+      "label": "layout.tsx",
+      "file_type": "code",
+      "source_file": "src\\app\\(auth)\\layout.tsx",
+      "source_location": "L1",
+      "id": "src_app_auth_layout_tsx",
+      "community": null
+    },
+    {
+      "label": "page.tsx",
+      "file_type": "code",
+      "source_file": "src\\app\\(auth)\\login\\page.tsx",
+      "source_location": "L1",
+      "id": "src_app_auth_login_page_tsx",
+      "community": null
+    },
+    {
+      "label": "page.tsx",
+      "file_type": "code",
+      "source_file": "src\\app\\(auth)\\login\\verify-2fa\\page.tsx",
+      "source_location": "L1",
+      "id": "src_app_auth_login_verify_2fa_page_tsx",
+      "community": null
+    },
+    {
+      "label": "handleChange()",
+      "file_type": "code",
+      "source_file": "src\\app\\(auth)\\login\\verify-2fa\\page.tsx",
+      "source_location": "L28",
+      "id": "page_handlechange",
+      "community": null
+    },
+    {
+      "label": "handleKeyDown()",
+      "file_type": "code",
+      "source_file": "src\\app\\(auth)\\login\\verify-2fa\\page.tsx",
+      "source_location": "L41",
+      "id": "page_handlekeydown",
+      "community": null
+    },
+    {
+      "label": "handlePaste()",
+      "file_type": "code",
+      "source_file": "src\\app\\(auth)\\login\\verify-2fa\\page.tsx",
+      "source_location": "L47",
+      "id": "page_handlepaste",
+      "community": null
+    },
+    {
+      "label": "handleVerify()",
+      "file_type": "code",
+      "source_file": "src\\app\\(dashboard)\\cards\\page.tsx",
+      "source_location": "L761",
+      "id": "page_handleverify",
+      "community": null
+    },
+    {
+      "label": "handleResend()",
+      "file_type": "code",
+      "source_file": "src\\app\\(auth)\\register\\verify-email\\page.tsx",
+      "source_location": "L19",
+      "id": "page_handleresend",
+      "community": null
+    },
+    {
+      "label": "page.tsx",
+      "file_type": "code",
+      "source_file": "src\\app\\(auth)\\register\\complete\\page.tsx",
+      "source_location": "L1",
+      "id": "src_app_auth_register_complete_page_tsx",
+      "community": null
+    },
+    {
+      "label": "page.tsx",
+      "file_type": "code",
+      "source_file": "src\\app\\(auth)\\register\\kyc\\page.tsx",
+      "source_location": "L1",
+      "id": "src_app_auth_register_kyc_page_tsx",
+      "community": null
+    },
+    {
+      "label": "page.tsx",
+      "file_type": "code",
+      "source_file": "src\\app\\(auth)\\register\\page.tsx",
+      "source_location": "L1",
+      "id": "src_app_auth_register_page_tsx",
+      "community": null
+    },
+    {
+      "label": "getPasswordStrength()",
+      "file_type": "code",
+      "source_file": "src\\app\\(auth)\\register\\page.tsx",
+      "source_location": "L6",
+      "id": "page_getpasswordstrength",
+      "community": null
+    },
+    {
+      "label": "page.tsx",
+      "file_type": "code",
+      "source_file": "src\\app\\(auth)\\register\\verify-email\\page.tsx",
+      "source_location": "L1",
+      "id": "src_app_auth_register_verify_email_page_tsx",
+      "community": null
+    },
+    {
+      "label": "page.tsx",
+      "file_type": "code",
+      "source_file": "src\\app\\(dashboard)\\banking\\dashboard\\page.tsx",
+      "source_location": "L1",
+      "id": "src_app_dashboard_banking_dashboard_page_tsx",
+      "community": null
+    },
+    {
+      "label": "page.tsx",
+      "file_type": "code",
+      "source_file": "src\\app\\(dashboard)\\banking\\page.tsx",
+      "source_location": "L1",
+      "id": "src_app_dashboard_banking_page_tsx",
+      "community": null
+    },
+    {
+      "label": "page.tsx",
+      "file_type": "code",
+      "source_file": "src\\app\\(dashboard)\\cards\\fees\\page.tsx",
+      "source_location": "L1",
+      "id": "src_app_dashboard_cards_fees_page_tsx",
+      "community": null
+    },
+    {
+      "label": "page.tsx",
+      "file_type": "code",
+      "source_file": "src\\app\\(dashboard)\\cards\\order\\page.tsx",
+      "source_location": "L1",
+      "id": "src_app_dashboard_cards_order_page_tsx",
+      "community": null
+    },
+    {
+      "label": "handleOrder()",
+      "file_type": "code",
+      "source_file": "src\\app\\(dashboard)\\cards\\order\\page.tsx",
+      "source_location": "L101",
+      "id": "page_handleorder",
+      "community": null
+    },
+    {
+      "label": "page.tsx",
+      "file_type": "code",
+      "source_file": "src\\app\\(dashboard)\\cards\\page.tsx",
+      "source_location": "L1",
+      "id": "src_app_dashboard_cards_page_tsx",
+      "community": null
+    },
+    {
+      "label": "MastercardLogo()",
+      "file_type": "code",
+      "source_file": "src\\app\\(dashboard)\\cards\\page.tsx",
+      "source_location": "L50",
+      "id": "page_mastercardlogo",
+      "community": null
+    },
+    {
+      "label": "reset()",
+      "file_type": "code",
+      "source_file": "src\\app\\(dashboard)\\cards\\page.tsx",
+      "source_location": "L364",
+      "id": "page_reset",
+      "community": null
+    },
+    {
+      "label": "handleClose()",
+      "file_type": "code",
+      "source_file": "src\\app\\(dashboard)\\cards\\page.tsx",
+      "source_location": "L372",
+      "id": "page_handleclose",
+      "community": null
+    },
+    {
+      "label": "formatCard()",
+      "file_type": "code",
+      "source_file": "src\\app\\(dashboard)\\cards\\page.tsx",
+      "source_location": "L668",
+      "id": "page_formatcard",
+      "community": null
+    },
+    {
+      "label": "page.tsx",
+      "file_type": "code",
+      "source_file": "src\\app\\(dashboard)\\cards\\setup\\page.tsx",
+      "source_location": "L1",
+      "id": "src_app_dashboard_cards_setup_page_tsx",
+      "community": null
+    },
+    {
+      "label": "update()",
+      "file_type": "code",
+      "source_file": "src\\app\\(dashboard)\\cards\\setup\\page.tsx",
+      "source_location": "L85",
+      "id": "page_update",
+      "community": null
+    },
+    {
+      "label": "page.tsx",
+      "file_type": "code",
+      "source_file": "src\\app\\(dashboard)\\crypto\\page.tsx",
+      "source_location": "L1",
+      "id": "src_app_dashboard_crypto_page_tsx",
+      "community": null
+    },
+    {
+      "label": "statusBadge()",
+      "file_type": "code",
+      "source_file": "src\\app\\(dashboard)\\rewards\\page.tsx",
+      "source_location": "L131",
+      "id": "page_statusbadge",
+      "community": null
+    },
+    {
+      "label": "page.tsx",
+      "file_type": "code",
+      "source_file": "src\\app\\(dashboard)\\dashboard\\page.tsx",
+      "source_location": "L1",
+      "id": "src_app_dashboard_dashboard_page_tsx",
+      "community": null
+    },
+    {
+      "label": "page.tsx",
+      "file_type": "code",
+      "source_file": "src\\app\\(dashboard)\\e-wallet\\beneficiaries\\page.tsx",
+      "source_location": "L1",
+      "id": "src_app_dashboard_e_wallet_beneficiaries_page_tsx",
+      "community": null
+    },
+    {
+      "label": "page.tsx",
+      "file_type": "code",
+      "source_file": "src\\app\\(dashboard)\\e-wallet\\page.tsx",
+      "source_location": "L1",
+      "id": "src_app_dashboard_e_wallet_page_tsx",
+      "community": null
+    },
+    {
+      "label": "page.tsx",
+      "file_type": "code",
+      "source_file": "src\\app\\(dashboard)\\help\\page.tsx",
+      "source_location": "L1",
+      "id": "src_app_dashboard_help_page_tsx",
+      "community": null
+    },
+    {
+      "label": "layout.tsx",
+      "file_type": "code",
+      "source_file": "src\\app\\(dashboard)\\layout.tsx",
+      "source_location": "L1",
+      "id": "src_app_dashboard_layout_tsx",
+      "community": null
+    },
+    {
+      "label": "toggleMode()",
+      "file_type": "code",
+      "source_file": "src\\app\\(dashboard)\\layout.tsx",
+      "source_location": "L30",
+      "id": "layout_togglemode",
+      "community": null
+    },
+    {
+      "label": "page.tsx",
+      "file_type": "code",
+      "source_file": "src\\app\\(dashboard)\\notifications\\page.tsx",
+      "source_location": "L1",
+      "id": "src_app_dashboard_notifications_page_tsx",
+      "community": null
+    },
+    {
+      "label": "markAllRead()",
+      "file_type": "code",
+      "source_file": "src\\app\\(dashboard)\\notifications\\page.tsx",
+      "source_location": "L81",
+      "id": "page_markallread",
+      "community": null
+    },
+    {
+      "label": "toggleExpand()",
+      "file_type": "code",
+      "source_file": "src\\app\\(dashboard)\\notifications\\page.tsx",
+      "source_location": "L85",
+      "id": "page_toggleexpand",
+      "community": null
+    },
+    {
+      "label": "page.tsx",
+      "file_type": "code",
+      "source_file": "src\\app\\(dashboard)\\orders\\page.tsx",
+      "source_location": "L1",
+      "id": "src_app_dashboard_orders_page_tsx",
+      "community": null
+    },
+    {
+      "label": "openRefund()",
+      "file_type": "code",
+      "source_file": "src\\app\\(dashboard)\\orders\\page.tsx",
+      "source_location": "L60",
+      "id": "page_openrefund",
+      "community": null
+    },
+    {
+      "label": "page.tsx",
+      "file_type": "code",
+      "source_file": "src\\app\\(dashboard)\\payouts\\page.tsx",
+      "source_location": "L1",
+      "id": "src_app_dashboard_payouts_page_tsx",
+      "community": null
+    },
+    {
+      "label": "tabPill()",
+      "file_type": "code",
+      "source_file": "src\\app\\(dashboard)\\settings\\api\\page.tsx",
+      "source_location": "L109",
+      "id": "page_tabpill",
+      "community": null
+    },
+    {
+      "label": "currencyBadge()",
+      "file_type": "code",
+      "source_file": "src\\app\\(dashboard)\\payouts\\page.tsx",
+      "source_location": "L143",
+      "id": "page_currencybadge",
+      "community": null
+    },
+    {
+      "label": "SendIcon()",
+      "file_type": "code",
+      "source_file": "src\\app\\(dashboard)\\payouts\\page.tsx",
+      "source_location": "L154",
+      "id": "page_sendicon",
+      "community": null
+    },
+    {
+      "label": "SpinnerIcon()",
+      "file_type": "code",
+      "source_file": "src\\app\\(dashboard)\\payouts\\page.tsx",
+      "source_location": "L160",
+      "id": "page_spinnericon",
+      "community": null
+    },
+    {
+      "label": "page.tsx",
+      "file_type": "code",
+      "source_file": "src\\app\\(dashboard)\\recurring-payments\\page.tsx",
+      "source_location": "L1",
+      "id": "src_app_dashboard_recurring_payments_page_tsx",
+      "community": null
+    },
+    {
+      "label": "RepeatIcon()",
+      "file_type": "code",
+      "source_file": "src\\app\\(dashboard)\\recurring-payments\\page.tsx",
+      "source_location": "L101",
+      "id": "page_repeaticon",
+      "community": null
+    },
+    {
+      "label": "cycleBadge()",
+      "file_type": "code",
+      "source_file": "src\\app\\(dashboard)\\recurring-payments\\page.tsx",
+      "source_location": "L126",
+      "id": "page_cyclebadge",
+      "community": null
+    },
+    {
+      "label": "walletBadge()",
+      "file_type": "code",
+      "source_file": "src\\app\\(dashboard)\\recurring-payments\\page.tsx",
+      "source_location": "L136",
+      "id": "page_walletbadge",
+      "community": null
+    },
+    {
+      "label": "pulseDot()",
+      "file_type": "code",
+      "source_file": "src\\app\\(dashboard)\\recurring-payments\\page.tsx",
+      "source_location": "L146",
+      "id": "page_pulsedot",
+      "community": null
+    },
+    {
+      "label": "togglePause()",
+      "file_type": "code",
+      "source_file": "src\\app\\(dashboard)\\recurring-payments\\page.tsx",
+      "source_location": "L236",
+      "id": "page_togglepause",
+      "community": null
+    },
+    {
+      "label": "page.tsx",
+      "file_type": "code",
+      "source_file": "src\\app\\(dashboard)\\reports\\page.tsx",
+      "source_location": "L1",
+      "id": "src_app_dashboard_reports_page_tsx",
+      "community": null
+    },
+    {
+      "label": "typeBadgeColor()",
+      "file_type": "code",
+      "source_file": "src\\app\\(dashboard)\\reports\\page.tsx",
+      "source_location": "L25",
+      "id": "page_typebadgecolor",
+      "community": null
+    },
+    {
+      "label": "statusBadgeColor()",
+      "file_type": "code",
+      "source_file": "src\\app\\(dashboard)\\reports\\page.tsx",
+      "source_location": "L36",
+      "id": "page_statusbadgecolor",
+      "community": null
+    },
+    {
+      "label": "walletBadgeColor()",
+      "file_type": "code",
+      "source_file": "src\\app\\(dashboard)\\reports\\page.tsx",
+      "source_location": "L45",
+      "id": "page_walletbadgecolor",
+      "community": null
+    },
+    {
+      "label": "page.tsx",
+      "file_type": "code",
+      "source_file": "src\\app\\(dashboard)\\rewards\\page.tsx",
+      "source_location": "L1",
+      "id": "src_app_dashboard_rewards_page_tsx",
+      "community": null
+    },
+    {
+      "label": "typeBadge()",
+      "file_type": "code",
+      "source_file": "src\\app\\(dashboard)\\rewards\\page.tsx",
+      "source_location": "L141",
+      "id": "page_typebadge",
+      "community": null
+    },
+    {
+      "label": "StarIcon()",
+      "file_type": "code",
+      "source_file": "src\\app\\(dashboard)\\rewards\\page.tsx",
+      "source_location": "L152",
+      "id": "page_staricon",
+      "community": null
+    },
+    {
+      "label": "addRow()",
+      "file_type": "code",
+      "source_file": "src\\app\\(dashboard)\\rewards\\page.tsx",
+      "source_location": "L215",
+      "id": "page_addrow",
+      "community": null
+    },
+    {
+      "label": "updateRow()",
+      "file_type": "code",
+      "source_file": "src\\app\\(dashboard)\\rewards\\page.tsx",
+      "source_location": "L216",
+      "id": "page_updaterow",
+      "community": null
+    },
+    {
+      "label": "page.tsx",
+      "file_type": "code",
+      "source_file": "src\\app\\(dashboard)\\settings\\api\\page.tsx",
+      "source_location": "L1",
+      "id": "src_app_dashboard_settings_api_page_tsx",
+      "community": null
+    },
+    {
+      "label": "TerminalIcon()",
+      "file_type": "code",
+      "source_file": "src\\app\\(dashboard)\\settings\\api\\page.tsx",
+      "source_location": "L123",
+      "id": "page_terminalicon",
+      "community": null
+    },
+    {
+      "label": "toggleEvent()",
+      "file_type": "code",
+      "source_file": "src\\app\\(dashboard)\\settings\\api\\page.tsx",
+      "source_location": "L439",
+      "id": "page_toggleevent",
+      "community": null
+    },
+    {
+      "label": "copyKey()",
+      "file_type": "code",
+      "source_file": "src\\app\\(dashboard)\\settings\\api\\page.tsx",
+      "source_location": "L445",
+      "id": "page_copykey",
+      "community": null
+    },
+    {
+      "label": "testWebhook()",
+      "file_type": "code",
+      "source_file": "src\\app\\(dashboard)\\settings\\api\\page.tsx",
+      "source_location": "L450",
+      "id": "page_testwebhook",
+      "community": null
+    },
+    {
+      "label": "page.tsx",
+      "file_type": "code",
+      "source_file": "src\\app\\(dashboard)\\subscriptions\\page.tsx",
+      "source_location": "L1",
+      "id": "src_app_dashboard_subscriptions_page_tsx",
+      "community": null
+    },
+    {
+      "label": "openCancel()",
+      "file_type": "code",
+      "source_file": "src\\app\\(dashboard)\\subscriptions\\page.tsx",
+      "source_location": "L82",
+      "id": "page_opencancel",
+      "community": null
+    },
+    {
+      "label": "page.tsx",
+      "file_type": "code",
+      "source_file": "src\\app\\(dashboard)\\team\\page.tsx",
+      "source_location": "L1",
+      "id": "src_app_dashboard_team_page_tsx",
+      "community": null
+    },
+    {
+      "label": "roleBadge()",
+      "file_type": "code",
+      "source_file": "src\\app\\(dashboard)\\team\\page.tsx",
+      "source_location": "L119",
+      "id": "page_rolebadge",
+      "community": null
+    },
+    {
+      "label": "statusDot()",
+      "file_type": "code",
+      "source_file": "src\\app\\(dashboard)\\team\\page.tsx",
+      "source_location": "L138",
+      "id": "page_statusdot",
+      "community": null
+    },
+    {
+      "label": "UsersIcon()",
+      "file_type": "code",
+      "source_file": "src\\app\\(dashboard)\\team\\page.tsx",
+      "source_location": "L175",
+      "id": "page_usersicon",
+      "community": null
+    },
+    {
+      "label": "toggle()",
+      "file_type": "code",
+      "source_file": "src\\app\\(dashboard)\\team\\page.tsx",
+      "source_location": "L187",
+      "id": "page_toggle",
+      "community": null
+    },
+    {
+      "label": "page.tsx",
+      "file_type": "code",
+      "source_file": "src\\app\\(dashboard)\\transactions\\page.tsx",
+      "source_location": "L1",
+      "id": "src_app_dashboard_transactions_page_tsx",
+      "community": null
+    },
+    {
+      "label": "layout.tsx",
+      "file_type": "code",
+      "source_file": "src\\app\\layout.tsx",
+      "source_location": "L1",
+      "id": "src_app_layout_tsx",
+      "community": null
+    },
+    {
+      "label": "RootLayout()",
+      "file_type": "code",
+      "source_file": "src\\app\\layout.tsx",
+      "source_location": "L9",
+      "id": "layout_rootlayout",
+      "community": null
+    },
+    {
+      "label": "page.tsx",
+      "file_type": "code",
+      "source_file": "src\\app\\page.tsx",
+      "source_location": "L1",
+      "id": "src_app_page_tsx",
+      "community": null
+    },
+    {
+      "label": "Home()",
+      "file_type": "code",
+      "source_file": "src\\app\\page.tsx",
+      "source_location": "L3",
+      "id": "page_home",
+      "community": null
+    },
+    {
+      "label": "TabBar.tsx",
+      "file_type": "code",
+      "source_file": "src\\components\\dashboard\\TabBar.tsx",
+      "source_location": "L1",
+      "id": "src_components_dashboard_tabbar_tsx",
+      "community": null
+    },
+    {
+      "label": "TabPill()",
+      "file_type": "code",
+      "source_file": "src\\components\\dashboard\\TabBar.tsx",
+      "source_location": "L44",
+      "id": "tabbar_tabpill",
+      "community": null
+    },
+    {
+      "label": "ProfileModal.tsx",
+      "file_type": "code",
+      "source_file": "src\\components\\modals\\ProfileModal.tsx",
+      "source_location": "L1",
+      "id": "src_components_modals_profilemodal_tsx",
+      "community": null
+    },
+    {
+      "label": "SecurityModal.tsx",
+      "file_type": "code",
+      "source_file": "src\\components\\modals\\SecurityModal.tsx",
+      "source_location": "L1",
+      "id": "src_components_modals_securitymodal_tsx",
+      "community": null
+    },
+    {
+      "label": "FilterDropdown.tsx",
+      "file_type": "code",
+      "source_file": "src\\components\\ui\\FilterDropdown.tsx",
+      "source_location": "L1",
+      "id": "src_components_ui_filterdropdown_tsx",
+      "community": null
+    },
+    {
+      "label": "FilterDropdown()",
+      "file_type": "code",
+      "source_file": "src\\components\\ui\\FilterDropdown.tsx",
+      "source_location": "L9",
+      "id": "filterdropdown_filterdropdown",
+      "community": null
+    }
+  ],
+  "links": [
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\app\\(auth)\\forgot-password\\page.tsx",
+      "source_location": "L12",
+      "weight": 1.0,
+      "_src": "src_app_auth_forgot_password_page_tsx",
+      "_tgt": "page_handlesubmit",
+      "source": "src_app_auth_forgot_password_page_tsx",
+      "target": "page_handlesubmit",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\app\\(auth)\\login\\page.tsx",
+      "source_location": "L13",
+      "weight": 1.0,
+      "_src": "src_app_auth_login_page_tsx",
+      "_tgt": "page_handlesubmit",
+      "source": "page_handlesubmit",
+      "target": "src_app_auth_login_page_tsx",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\app\\(auth)\\register\\page.tsx",
+      "source_location": "L34",
+      "weight": 1.0,
+      "_src": "src_app_auth_register_page_tsx",
+      "_tgt": "page_handlesubmit",
+      "source": "page_handlesubmit",
+      "target": "src_app_auth_register_page_tsx",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\app\\(dashboard)\\cards\\page.tsx",
+      "source_location": "L377",
+      "weight": 1.0,
+      "_src": "src_app_dashboard_cards_page_tsx",
+      "_tgt": "page_handlesubmit",
+      "source": "page_handlesubmit",
+      "target": "src_app_dashboard_cards_page_tsx",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\app\\(dashboard)\\cards\\setup\\page.tsx",
+      "source_location": "L88",
+      "weight": 1.0,
+      "_src": "src_app_dashboard_cards_setup_page_tsx",
+      "_tgt": "page_handlesubmit",
+      "source": "page_handlesubmit",
+      "target": "src_app_dashboard_cards_setup_page_tsx",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\app\\(auth)\\login\\verify-2fa\\page.tsx",
+      "source_location": "L28",
+      "weight": 1.0,
+      "_src": "src_app_auth_login_verify_2fa_page_tsx",
+      "_tgt": "page_handlechange",
+      "source": "src_app_auth_login_verify_2fa_page_tsx",
+      "target": "page_handlechange",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\app\\(auth)\\login\\verify-2fa\\page.tsx",
+      "source_location": "L41",
+      "weight": 1.0,
+      "_src": "src_app_auth_login_verify_2fa_page_tsx",
+      "_tgt": "page_handlekeydown",
+      "source": "src_app_auth_login_verify_2fa_page_tsx",
+      "target": "page_handlekeydown",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\app\\(auth)\\login\\verify-2fa\\page.tsx",
+      "source_location": "L47",
+      "weight": 1.0,
+      "_src": "src_app_auth_login_verify_2fa_page_tsx",
+      "_tgt": "page_handlepaste",
+      "source": "src_app_auth_login_verify_2fa_page_tsx",
+      "target": "page_handlepaste",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\app\\(auth)\\login\\verify-2fa\\page.tsx",
+      "source_location": "L61",
+      "weight": 1.0,
+      "_src": "src_app_auth_login_verify_2fa_page_tsx",
+      "_tgt": "page_handleverify",
+      "source": "src_app_auth_login_verify_2fa_page_tsx",
+      "target": "page_handleverify",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\app\\(auth)\\login\\verify-2fa\\page.tsx",
+      "source_location": "L75",
+      "weight": 1.0,
+      "_src": "src_app_auth_login_verify_2fa_page_tsx",
+      "_tgt": "page_handleresend",
+      "source": "src_app_auth_login_verify_2fa_page_tsx",
+      "target": "page_handleresend",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\app\\(dashboard)\\cards\\page.tsx",
+      "source_location": "L761",
+      "weight": 1.0,
+      "_src": "src_app_dashboard_cards_page_tsx",
+      "_tgt": "page_handleverify",
+      "source": "page_handleverify",
+      "target": "src_app_dashboard_cards_page_tsx",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\app\\(auth)\\register\\verify-email\\page.tsx",
+      "source_location": "L19",
+      "weight": 1.0,
+      "_src": "src_app_auth_register_verify_email_page_tsx",
+      "_tgt": "page_handleresend",
+      "source": "page_handleresend",
+      "target": "src_app_auth_register_verify_email_page_tsx",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\app\\(auth)\\register\\page.tsx",
+      "source_location": "L6",
+      "weight": 1.0,
+      "_src": "src_app_auth_register_page_tsx",
+      "_tgt": "page_getpasswordstrength",
+      "source": "src_app_auth_register_page_tsx",
+      "target": "page_getpasswordstrength",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\app\\(dashboard)\\cards\\order\\page.tsx",
+      "source_location": "L101",
+      "weight": 1.0,
+      "_src": "src_app_dashboard_cards_order_page_tsx",
+      "_tgt": "page_handleorder",
+      "source": "src_app_dashboard_cards_order_page_tsx",
+      "target": "page_handleorder",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\app\\(dashboard)\\cards\\page.tsx",
+      "source_location": "L50",
+      "weight": 1.0,
+      "_src": "src_app_dashboard_cards_page_tsx",
+      "_tgt": "page_mastercardlogo",
+      "source": "src_app_dashboard_cards_page_tsx",
+      "target": "page_mastercardlogo",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\app\\(dashboard)\\cards\\page.tsx",
+      "source_location": "L749",
+      "weight": 1.0,
+      "_src": "src_app_dashboard_cards_page_tsx",
+      "_tgt": "page_reset",
+      "source": "src_app_dashboard_cards_page_tsx",
+      "target": "page_reset",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\app\\(dashboard)\\cards\\page.tsx",
+      "source_location": "L756",
+      "weight": 1.0,
+      "_src": "src_app_dashboard_cards_page_tsx",
+      "_tgt": "page_handleclose",
+      "source": "src_app_dashboard_cards_page_tsx",
+      "target": "page_handleclose",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\app\\(dashboard)\\cards\\page.tsx",
+      "source_location": "L668",
+      "weight": 1.0,
+      "_src": "src_app_dashboard_cards_page_tsx",
+      "_tgt": "page_formatcard",
+      "source": "src_app_dashboard_cards_page_tsx",
+      "target": "page_formatcard",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\app\\(dashboard)\\cards\\page.tsx",
+      "source_location": "L373",
+      "weight": 1.0,
+      "_src": "page_handleclose",
+      "_tgt": "page_reset",
+      "source": "page_reset",
+      "target": "page_handleclose",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\app\\(dashboard)\\cards\\setup\\page.tsx",
+      "source_location": "L85",
+      "weight": 1.0,
+      "_src": "src_app_dashboard_cards_setup_page_tsx",
+      "_tgt": "page_update",
+      "source": "src_app_dashboard_cards_setup_page_tsx",
+      "target": "page_update",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\app\\(dashboard)\\crypto\\page.tsx",
+      "source_location": "L80",
+      "weight": 1.0,
+      "_src": "src_app_dashboard_crypto_page_tsx",
+      "_tgt": "page_statusbadge",
+      "source": "src_app_dashboard_crypto_page_tsx",
+      "target": "page_statusbadge",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\app\\(dashboard)\\e-wallet\\beneficiaries\\page.tsx",
+      "source_location": "L90",
+      "weight": 1.0,
+      "_src": "src_app_dashboard_e_wallet_beneficiaries_page_tsx",
+      "_tgt": "page_statusbadge",
+      "source": "page_statusbadge",
+      "target": "src_app_dashboard_e_wallet_beneficiaries_page_tsx",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\app\\(dashboard)\\e-wallet\\page.tsx",
+      "source_location": "L71",
+      "weight": 1.0,
+      "_src": "src_app_dashboard_e_wallet_page_tsx",
+      "_tgt": "page_statusbadge",
+      "source": "page_statusbadge",
+      "target": "src_app_dashboard_e_wallet_page_tsx",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\app\\(dashboard)\\rewards\\page.tsx",
+      "source_location": "L131",
+      "weight": 1.0,
+      "_src": "src_app_dashboard_rewards_page_tsx",
+      "_tgt": "page_statusbadge",
+      "source": "page_statusbadge",
+      "target": "src_app_dashboard_rewards_page_tsx",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\app\\(dashboard)\\layout.tsx",
+      "source_location": "L30",
+      "weight": 1.0,
+      "_src": "src_app_dashboard_layout_tsx",
+      "_tgt": "layout_togglemode",
+      "source": "src_app_dashboard_layout_tsx",
+      "target": "layout_togglemode",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\app\\(dashboard)\\notifications\\page.tsx",
+      "source_location": "L81",
+      "weight": 1.0,
+      "_src": "src_app_dashboard_notifications_page_tsx",
+      "_tgt": "page_markallread",
+      "source": "src_app_dashboard_notifications_page_tsx",
+      "target": "page_markallread",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\app\\(dashboard)\\notifications\\page.tsx",
+      "source_location": "L85",
+      "weight": 1.0,
+      "_src": "src_app_dashboard_notifications_page_tsx",
+      "_tgt": "page_toggleexpand",
+      "source": "src_app_dashboard_notifications_page_tsx",
+      "target": "page_toggleexpand",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\app\\(dashboard)\\orders\\page.tsx",
+      "source_location": "L60",
+      "weight": 1.0,
+      "_src": "src_app_dashboard_orders_page_tsx",
+      "_tgt": "page_openrefund",
+      "source": "src_app_dashboard_orders_page_tsx",
+      "target": "page_openrefund",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\app\\(dashboard)\\payouts\\page.tsx",
+      "source_location": "L130",
+      "weight": 1.0,
+      "_src": "src_app_dashboard_payouts_page_tsx",
+      "_tgt": "page_tabpill",
+      "source": "src_app_dashboard_payouts_page_tsx",
+      "target": "page_tabpill",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\app\\(dashboard)\\payouts\\page.tsx",
+      "source_location": "L143",
+      "weight": 1.0,
+      "_src": "src_app_dashboard_payouts_page_tsx",
+      "_tgt": "page_currencybadge",
+      "source": "src_app_dashboard_payouts_page_tsx",
+      "target": "page_currencybadge",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\app\\(dashboard)\\payouts\\page.tsx",
+      "source_location": "L154",
+      "weight": 1.0,
+      "_src": "src_app_dashboard_payouts_page_tsx",
+      "_tgt": "page_sendicon",
+      "source": "src_app_dashboard_payouts_page_tsx",
+      "target": "page_sendicon",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\app\\(dashboard)\\payouts\\page.tsx",
+      "source_location": "L160",
+      "weight": 1.0,
+      "_src": "src_app_dashboard_payouts_page_tsx",
+      "_tgt": "page_spinnericon",
+      "source": "src_app_dashboard_payouts_page_tsx",
+      "target": "page_spinnericon",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\app\\(dashboard)\\rewards\\page.tsx",
+      "source_location": "L118",
+      "weight": 1.0,
+      "_src": "src_app_dashboard_rewards_page_tsx",
+      "_tgt": "page_tabpill",
+      "source": "page_tabpill",
+      "target": "src_app_dashboard_rewards_page_tsx",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\app\\(dashboard)\\settings\\api\\page.tsx",
+      "source_location": "L109",
+      "weight": 1.0,
+      "_src": "src_app_dashboard_settings_api_page_tsx",
+      "_tgt": "page_tabpill",
+      "source": "page_tabpill",
+      "target": "src_app_dashboard_settings_api_page_tsx",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\app\\(dashboard)\\recurring-payments\\page.tsx",
+      "source_location": "L101",
+      "weight": 1.0,
+      "_src": "src_app_dashboard_recurring_payments_page_tsx",
+      "_tgt": "page_repeaticon",
+      "source": "src_app_dashboard_recurring_payments_page_tsx",
+      "target": "page_repeaticon",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\app\\(dashboard)\\recurring-payments\\page.tsx",
+      "source_location": "L126",
+      "weight": 1.0,
+      "_src": "src_app_dashboard_recurring_payments_page_tsx",
+      "_tgt": "page_cyclebadge",
+      "source": "src_app_dashboard_recurring_payments_page_tsx",
+      "target": "page_cyclebadge",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\app\\(dashboard)\\recurring-payments\\page.tsx",
+      "source_location": "L289",
+      "weight": 1.0,
+      "_src": "src_app_dashboard_recurring_payments_page_tsx",
+      "_tgt": "page_walletbadge",
+      "source": "src_app_dashboard_recurring_payments_page_tsx",
+      "target": "page_walletbadge",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\app\\(dashboard)\\recurring-payments\\page.tsx",
+      "source_location": "L146",
+      "weight": 1.0,
+      "_src": "src_app_dashboard_recurring_payments_page_tsx",
+      "_tgt": "page_pulsedot",
+      "source": "src_app_dashboard_recurring_payments_page_tsx",
+      "target": "page_pulsedot",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\app\\(dashboard)\\recurring-payments\\page.tsx",
+      "source_location": "L236",
+      "weight": 1.0,
+      "_src": "src_app_dashboard_recurring_payments_page_tsx",
+      "_tgt": "page_togglepause",
+      "source": "src_app_dashboard_recurring_payments_page_tsx",
+      "target": "page_togglepause",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\app\\(dashboard)\\reports\\page.tsx",
+      "source_location": "L25",
+      "weight": 1.0,
+      "_src": "src_app_dashboard_reports_page_tsx",
+      "_tgt": "page_typebadgecolor",
+      "source": "src_app_dashboard_reports_page_tsx",
+      "target": "page_typebadgecolor",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\app\\(dashboard)\\reports\\page.tsx",
+      "source_location": "L36",
+      "weight": 1.0,
+      "_src": "src_app_dashboard_reports_page_tsx",
+      "_tgt": "page_statusbadgecolor",
+      "source": "src_app_dashboard_reports_page_tsx",
+      "target": "page_statusbadgecolor",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\app\\(dashboard)\\reports\\page.tsx",
+      "source_location": "L45",
+      "weight": 1.0,
+      "_src": "src_app_dashboard_reports_page_tsx",
+      "_tgt": "page_walletbadgecolor",
+      "source": "src_app_dashboard_reports_page_tsx",
+      "target": "page_walletbadgecolor",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\app\\(dashboard)\\rewards\\page.tsx",
+      "source_location": "L141",
+      "weight": 1.0,
+      "_src": "src_app_dashboard_rewards_page_tsx",
+      "_tgt": "page_typebadge",
+      "source": "src_app_dashboard_rewards_page_tsx",
+      "target": "page_typebadge",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\app\\(dashboard)\\rewards\\page.tsx",
+      "source_location": "L152",
+      "weight": 1.0,
+      "_src": "src_app_dashboard_rewards_page_tsx",
+      "_tgt": "page_staricon",
+      "source": "src_app_dashboard_rewards_page_tsx",
+      "target": "page_staricon",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\app\\(dashboard)\\rewards\\page.tsx",
+      "source_location": "L215",
+      "weight": 1.0,
+      "_src": "src_app_dashboard_rewards_page_tsx",
+      "_tgt": "page_addrow",
+      "source": "src_app_dashboard_rewards_page_tsx",
+      "target": "page_addrow",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\app\\(dashboard)\\rewards\\page.tsx",
+      "source_location": "L216",
+      "weight": 1.0,
+      "_src": "src_app_dashboard_rewards_page_tsx",
+      "_tgt": "page_updaterow",
+      "source": "src_app_dashboard_rewards_page_tsx",
+      "target": "page_updaterow",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\app\\(dashboard)\\settings\\api\\page.tsx",
+      "source_location": "L123",
+      "weight": 1.0,
+      "_src": "src_app_dashboard_settings_api_page_tsx",
+      "_tgt": "page_terminalicon",
+      "source": "src_app_dashboard_settings_api_page_tsx",
+      "target": "page_terminalicon",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\app\\(dashboard)\\settings\\api\\page.tsx",
+      "source_location": "L439",
+      "weight": 1.0,
+      "_src": "src_app_dashboard_settings_api_page_tsx",
+      "_tgt": "page_toggleevent",
+      "source": "src_app_dashboard_settings_api_page_tsx",
+      "target": "page_toggleevent",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\app\\(dashboard)\\settings\\api\\page.tsx",
+      "source_location": "L445",
+      "weight": 1.0,
+      "_src": "src_app_dashboard_settings_api_page_tsx",
+      "_tgt": "page_copykey",
+      "source": "src_app_dashboard_settings_api_page_tsx",
+      "target": "page_copykey",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\app\\(dashboard)\\settings\\api\\page.tsx",
+      "source_location": "L450",
+      "weight": 1.0,
+      "_src": "src_app_dashboard_settings_api_page_tsx",
+      "_tgt": "page_testwebhook",
+      "source": "src_app_dashboard_settings_api_page_tsx",
+      "target": "page_testwebhook",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\app\\(dashboard)\\subscriptions\\page.tsx",
+      "source_location": "L82",
+      "weight": 1.0,
+      "_src": "src_app_dashboard_subscriptions_page_tsx",
+      "_tgt": "page_opencancel",
+      "source": "src_app_dashboard_subscriptions_page_tsx",
+      "target": "page_opencancel",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\app\\(dashboard)\\team\\page.tsx",
+      "source_location": "L119",
+      "weight": 1.0,
+      "_src": "src_app_dashboard_team_page_tsx",
+      "_tgt": "page_rolebadge",
+      "source": "src_app_dashboard_team_page_tsx",
+      "target": "page_rolebadge",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\app\\(dashboard)\\team\\page.tsx",
+      "source_location": "L138",
+      "weight": 1.0,
+      "_src": "src_app_dashboard_team_page_tsx",
+      "_tgt": "page_statusdot",
+      "source": "src_app_dashboard_team_page_tsx",
+      "target": "page_statusdot",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\app\\(dashboard)\\team\\page.tsx",
+      "source_location": "L175",
+      "weight": 1.0,
+      "_src": "src_app_dashboard_team_page_tsx",
+      "_tgt": "page_usersicon",
+      "source": "src_app_dashboard_team_page_tsx",
+      "target": "page_usersicon",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\app\\(dashboard)\\team\\page.tsx",
+      "source_location": "L187",
+      "weight": 1.0,
+      "_src": "src_app_dashboard_team_page_tsx",
+      "_tgt": "page_toggle",
+      "source": "src_app_dashboard_team_page_tsx",
+      "target": "page_toggle",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\app\\layout.tsx",
+      "source_location": "L9",
+      "weight": 1.0,
+      "_src": "src_app_layout_tsx",
+      "_tgt": "layout_rootlayout",
+      "source": "src_app_layout_tsx",
+      "target": "layout_rootlayout",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\app\\page.tsx",
+      "source_location": "L3",
+      "weight": 1.0,
+      "_src": "src_app_page_tsx",
+      "_tgt": "page_home",
+      "source": "src_app_page_tsx",
+      "target": "page_home",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\dashboard\\TabBar.tsx",
+      "source_location": "L44",
+      "weight": 1.0,
+      "_src": "src_components_dashboard_tabbar_tsx",
+      "_tgt": "tabbar_tabpill",
+      "source": "src_components_dashboard_tabbar_tsx",
+      "target": "tabbar_tabpill",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\ui\\FilterDropdown.tsx",
+      "source_location": "L9",
+      "weight": 1.0,
+      "_src": "src_components_ui_filterdropdown_tsx",
+      "_tgt": "filterdropdown_filterdropdown",
+      "source": "src_components_ui_filterdropdown_tsx",
+      "target": "filterdropdown_filterdropdown",
+      "confidence_score": 1.0
+    }
+  ],
+  "hyperedges": []
+}
