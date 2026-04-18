@@ -2,7 +2,7 @@ import { serve } from "@hono/node-server";
 import { Hono } from "hono";
 import { cors } from "hono/cors";
 import { logger } from "hono/logger";
-import { env } from "./env.js";
+import { env, tygaConfig } from "./env.js";
 import "./db.js"; // initialize schema
 import { authRoutes } from "./routes/auth.js";
 import { dashboardRoutes } from "./routes/dashboard.js";
@@ -23,7 +23,12 @@ app.use(
   }),
 );
 
-app.get("/health", (c) => c.json({ ok: true, service: "bff", time: new Date().toISOString() }));
+app.get("/health", (c) => c.json({
+  ok: true,
+  service: "bff",
+  tygaMode: tygaConfig.mode,
+  time: new Date().toISOString(),
+}));
 
 app.route("/auth", authRoutes);
 app.route("/me", meRoutes);
