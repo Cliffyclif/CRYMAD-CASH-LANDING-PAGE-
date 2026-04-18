@@ -31,7 +31,7 @@ export function QRScannerModal({ onScan, onClose }: Props) {
         await instance!.start(
           { facingMode: "environment" },
           { fps: 10, qrbox: { width: 240, height: 240 } },
-          (decoded) => {
+          (decoded: string) => {
             onScan(decoded);
           },
           () => {},
