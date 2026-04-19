@@ -58,7 +58,7 @@ export async function sendEmail(args: {
 export async function sendOtpEmail(args: {
   to: string;
   code: string;
-  purpose: "register" | "login" | "email_verify";
+  purpose: "register" | "login" | "email_verify" | "reset";
   firstName?: string;
 }): Promise<SendResult> {
   const action =
@@ -66,12 +66,16 @@ export async function sendOtpEmail(args: {
       ? "verify your email"
       : args.purpose === "login"
         ? "sign in"
-        : "verify your email";
+        : args.purpose === "reset"
+          ? "reset your password"
+          : "verify your email";
 
   const subject =
     args.purpose === "login"
       ? `${args.code} is your Crymad Cash sign-in code`
-      : `${args.code} is your Crymad Cash verification code`;
+      : args.purpose === "reset"
+        ? `${args.code} is your Crymad Cash password reset code`
+        : `${args.code} is your Crymad Cash verification code`;
 
   const greeting = args.firstName ? `Hi ${args.firstName},` : "Hi there,";
 

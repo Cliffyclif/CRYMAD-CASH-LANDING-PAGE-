@@ -14,7 +14,7 @@ import { sendOtpEmail } from "@/lib/email/send";
 
 const Schema = z.object({
   email: z.string().email(),
-  purpose: z.enum(["login", "register", "email_verify"]).default("login"),
+  purpose: z.enum(["login", "register", "email_verify", "reset"]).default("login"),
 });
 
 export async function POST(req: NextRequest) {
@@ -22,7 +22,7 @@ export async function POST(req: NextRequest) {
     const data = Schema.parse(await req.json());
     const email = data.email.toLowerCase();
 
-    if (data.purpose === "login") {
+    if (data.purpose === "login" || data.purpose === "reset") {
       const user = await queryOne<{ id: string; tygapay_user_id: string }>(
         `SELECT id, tygapay_user_id FROM users WHERE email = $1`,
         [email],
@@ -31,11 +31,11 @@ export async function POST(req: NextRequest) {
         // Do not reveal that the user doesn't exist
         return NextResponse.json({ ok: true });
       }
-      const code = await createOtp(email, "login");
+      const code = await createOtp(email, data.purpose);
       if (process.env.NODE_ENV !== "production") {
-        console.log(`[OTP][login] ${email} → ${code}`);
+        console.log(`[OTP][${data.purpose}] ${email} → ${code}`);
       }
-      const sent = await sendOtpEmail({ to: email, code, purpose: "login" });
+      const sent = await sendOtpEmail({ to: email, code, purpose: data.purpose });
       if (!sent.ok) console.warn("[send-otp][email]", sent.error);
       return NextResponse.json({
         ok: true,

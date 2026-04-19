@@ -11,7 +11,7 @@ import { query, queryOne } from "@/lib/db";
 const TTL_MINUTES = 10;
 const MAX_ATTEMPTS = 5;
 
-export type OtpPurpose = "login" | "register" | "email_verify";
+export type OtpPurpose = "login" | "register" | "email_verify" | "reset";
 
 export function generateCode(): string {
   // 6-digit numeric, crypto-strong
