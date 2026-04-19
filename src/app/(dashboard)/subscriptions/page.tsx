@@ -86,7 +86,7 @@ export default function SubscriptionsPage() {
         </div>
       </div>
 
-      {/* Coming soon banner */}
+      {/* Info banner — provider limitation */}
       <div style={{
         ...glass,
         padding: 16,
@@ -95,11 +95,13 @@ export default function SubscriptionsPage() {
         borderColor: "rgba(var(--primary-rgb),0.25)",
         display: "flex", gap: 12, alignItems: "center",
       }}>
-        <div style={{ fontSize: 22 }}>🧪</div>
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ flexShrink: 0 }}>
+          <circle cx="12" cy="12" r="10" /><line x1="12" y1="16" x2="12" y2="12" /><line x1="12" y1="8" x2="12.01" y2="8" />
+        </svg>
         <div>
-          <div style={{ fontSize: 13, fontWeight: 700, color: "var(--text)" }}>Coming Soon — Subscription Management</div>
+          <div style={{ fontSize: 13, fontWeight: 700, color: "var(--text)" }}>Subscription Lookup</div>
           <div style={{ fontSize: 12, color: "var(--text-muted)" }}>
-            A full list view is on the way. For now, look up a subscription by ID to view and manage it.
+            Enter a subscription ID below to view or cancel it. Full list-by-user is pending upstream provider support.
           </div>
         </div>
       </div>
@@ -152,12 +154,15 @@ export default function SubscriptionsPage() {
 
       {/* Empty state per tab */}
       <div style={{ ...glass, padding: 60, textAlign: "center" }}>
-        <div style={{ fontSize: 56, marginBottom: 12 }}>🔔</div>
+        <svg width="54" height="54" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" style={{ margin: "0 auto 16px", display: "block", opacity: 0.6 }}>
+          <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9" />
+          <path d="M13.73 21a2 2 0 0 1-3.46 0" />
+        </svg>
         <div style={{ fontSize: 17, fontWeight: 700, color: "var(--text)", marginBottom: 6 }}>
-          Subscription listing is coming soon
+          No {tab.toLowerCase()} subscriptions yet
         </div>
         <div style={{ fontSize: 13, color: "var(--text-muted)", maxWidth: 480, margin: "0 auto" }}>
-          Your {tab.toLowerCase()} subscriptions will be shown here. In the meantime, use the lookup above to fetch any subscription by its ID.
+          Use the lookup above to fetch any subscription by its ID.
         </div>
       </div>
 

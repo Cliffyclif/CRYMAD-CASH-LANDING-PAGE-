@@ -93,9 +93,7 @@ const actionPill: React.CSSProperties = {
   color: "var(--text)",
 };
 
-// Accepted tokens per TygaBank schema (sandbox + prod).
-const SUPPORTED_TOKENS = ["BTC", "ETH", "SOL", "XRP", "BNB", "LTT"];
-const SUPPORTED_NETWORKS = ["ETH", "TRON", "BSC", "MATIC"];
+// Supported lists live inside ActivateAssetsModal (NETWORK_META / CUSTODIAL_META).
 
 type CustodialWallet = {
   id?: string;
@@ -256,109 +254,346 @@ function AssetPicker({ value, onChange }: { value: string; onChange: (s: string)
 }
 
 /* ─── Modals ─── */
-function ComingSoonModal({ title, onClose }: { title: string; onClose: () => void }) {
-  return (
-    <Modal title={title} onClose={onClose}>
-      <div style={{ padding: "20px 0", textAlign: "center" }}>
-        <div style={{ fontSize: 15, color: "var(--text-secondary)", marginBottom: 20 }}>
-          This feature is coming soon.
-        </div>
-        <button onClick={onClose} style={primaryBtn}>OK</button>
-      </div>
-    </Modal>
-  );
-}
 
-function ClaimAddressModal({ onClose, onClaimed }: { onClose: () => void; onClaimed: () => void }) {
-  const [network, setNetwork] = useState(SUPPORTED_NETWORKS[0]);
-  const [busy, setBusy] = useState(false);
+/* Activate all supported networks + custodial tokens in one panel.
+   Shows each asset as a row: icon + name/subtitle + "Active" pill (if already
+   claimed/created) or an "Activate" button that POSTs to the right endpoint. */
+const NETWORK_META: Record<string, { name: string; sub: string; tokens: string[] }> = {
+  ETH:   { name: "Ethereum",  sub: "ERC-20 network",   tokens: ["USDT", "USDC"] },
+  TRON:  { name: "Tron",      sub: "TRC-20 network",   tokens: ["USDT", "USDC"] },
+  BSC:   { name: "BNB Chain", sub: "BEP-20 network",   tokens: ["USDT", "USDC"] },
+  MATIC: { name: "Polygon",   sub: "Polygon network",  tokens: ["USDT", "USDC"] },
+};
+
+const CUSTODIAL_META: Record<string, { name: string; sub: string }> = {
+  BTC: { name: "Bitcoin",       sub: "Native BTC wallet" },
+  SOL: { name: "Solana",        sub: "Native SOL wallet" },
+  XRP: { name: "Ripple",        sub: "Native XRP wallet" },
+  BNB: { name: "Binance Coin",  sub: "Native BNB wallet" },
+  LTT: { name: "LTT Token",     sub: "Native LTT wallet" },
+};
+
+function ActivateAssetsModal({
+  addresses, wallets, onClose, onActivated,
+}: {
+  addresses: DepositAddress[];
+  wallets: CustodialWallet[];
+  onClose: () => void;
+  onActivated: () => void;
+}) {
+  const [busyKey, setBusyKey] = useState<string | null>(null);
   const [err, setErr] = useState<string | null>(null);
 
-  const submit = async () => {
-    setBusy(true); setErr(null);
-    try {
-      const r = await fetch("/api/crypto/claim-address", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ network }) });
-      if (!r.ok) throw new Error((await r.json()).error || r.status.toString());
-      onClaimed();
-      onClose();
-    } catch (e) {
-      setErr((e as Error).message);
-    } finally { setBusy(false); }
-  };
-
-  return (
-    <Modal title="Claim Deposit Address" onClose={onClose}>
-      <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
-        <div>
-          <label style={labelStyle}>Network</label>
-          <select style={inputStyle} value={network} onChange={(e) => setNetwork(e.target.value)}>
-            {SUPPORTED_NETWORKS.map((n) => <option key={n} value={n}>{n}</option>)}
-          </select>
-        </div>
-        {err && <div style={{ color: "var(--danger)", fontSize: 13 }}>{err}</div>}
-        <div style={{ display: "flex", gap: 12, justifyContent: "flex-end" }}>
-          <button style={ghostBtn} onClick={onClose}>Cancel</button>
-          <button style={primaryBtn} disabled={busy} onClick={submit}>{busy ? "Claiming…" : "Claim Address"}</button>
-        </div>
-      </div>
-    </Modal>
+  const claimedNetworks = new Set(
+    addresses.map((a) => String(a.network || "").toUpperCase()),
   );
-}
+  const createdTokens = new Set(
+    wallets.map((w) => String(w.token || w.symbol || w.currency || "").toUpperCase()),
+  );
 
-function CreateWalletModal({ onClose, onCreated }: { onClose: () => void; onCreated: () => void }) {
-  const [token, setToken] = useState(SUPPORTED_TOKENS[0]);
-  const [busy, setBusy] = useState(false);
-  const [err, setErr] = useState<string | null>(null);
-
-  const submit = async () => {
-    setBusy(true); setErr(null);
+  const activateNetwork = async (network: string) => {
+    setBusyKey(`net:${network}`); setErr(null);
     try {
-      const r = await fetch("/api/crypto/create-wallet", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ token }) });
+      const r = await fetch("/api/crypto/claim-address", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ network }),
+      });
       const j = await r.json().catch(() => ({}));
-      if (!r.ok) throw new Error(j.message || j.error || r.status.toString());
-      onCreated();
-      onClose();
+      if (!r.ok) throw new Error(j.message || j.error || `Failed (${r.status})`);
+      onActivated();
     } catch (e) {
       setErr((e as Error).message);
-    } finally { setBusy(false); }
+    } finally {
+      setBusyKey(null);
+    }
   };
 
+  const activateCustodial = async (token: string) => {
+    setBusyKey(`tok:${token}`); setErr(null);
+    try {
+      const r = await fetch("/api/crypto/create-wallet", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ token }),
+      });
+      const j = await r.json().catch(() => ({}));
+      if (!r.ok) throw new Error(j.message || j.error || `Failed (${r.status})`);
+      onActivated();
+    } catch (e) {
+      setErr((e as Error).message);
+    } finally {
+      setBusyKey(null);
+    }
+  };
+
+  const row = (opts: {
+    symbol: string;
+    name: string;
+    sub: string;
+    active: boolean;
+    busy: boolean;
+    onActivate: () => void;
+  }) => (
+    <div
+      key={opts.symbol}
+      style={{
+        display: "flex", alignItems: "center", gap: 14,
+        padding: "14px 16px",
+        borderRadius: 14,
+        background: "var(--surface)",
+        border: `1px solid ${opts.active ? "rgba(var(--primary-rgb), 0.35)" : "var(--glass-border)"}`,
+      }}
+    >
+      <img src={tokenIcon(opts.symbol)} alt={opts.symbol} width={36} height={36} style={{ borderRadius: "50%" }} />
+      <div style={{ flex: 1, minWidth: 0 }}>
+        <div style={{ color: "var(--text)", fontSize: 14, fontWeight: 700 }}>
+          {opts.name} <span style={{ color: "var(--text-muted)", fontWeight: 500 }}>· {opts.symbol}</span>
+        </div>
+        <div style={{ color: "var(--text-muted)", fontSize: 11 }}>{opts.sub}</div>
+      </div>
+      {opts.active ? (
+        <span
+          style={{
+            display: "inline-flex", alignItems: "center", gap: 6,
+            padding: "6px 12px", borderRadius: 999,
+            background: "rgba(var(--primary-rgb), 0.12)",
+            border: "1px solid rgba(var(--primary-rgb), 0.35)",
+            color: "var(--primary)",
+            fontSize: 10, fontWeight: 700, letterSpacing: 1.5, textTransform: "uppercase",
+          }}
+        >
+          <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12" /></svg>
+          Active
+        </span>
+      ) : (
+        <button
+          type="button"
+          disabled={opts.busy}
+          onClick={opts.onActivate}
+          style={{
+            padding: "8px 16px", borderRadius: 999,
+            border: "1px solid var(--primary)",
+            background: "transparent",
+            color: "var(--primary)",
+            fontSize: 10, fontWeight: 700, letterSpacing: 1.5, textTransform: "uppercase",
+            cursor: opts.busy ? "not-allowed" : "pointer",
+            fontFamily: "inherit",
+          }}
+        >
+          {opts.busy ? "Activating…" : "Activate"}
+        </button>
+      )}
+    </div>
+  );
+
   return (
-    <Modal title="Create Custodial Wallet" onClose={onClose}>
-      <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
+    <FancyModal title="Activate Assets" subtitle="Deposit Networks + Custodial Wallets" onClose={onClose} maxWidth={540}>
+      <div style={{ display: "flex", flexDirection: "column", gap: 22 }}>
+        {/* Deposit Networks */}
         <div>
-          <label style={labelStyle}>Token</label>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 8 }}>
-            {SUPPORTED_TOKENS.map((t) => {
-              const active = token === t;
-              return (
-                <button
-                  key={t}
-                  type="button"
-                  onClick={() => setToken(t)}
-                  style={{
-                    display: "flex", alignItems: "center", gap: 8,
-                    padding: "10px 12px", borderRadius: 12,
-                    background: active ? "rgba(var(--primary-rgb), 0.12)" : "var(--surface)",
-                    border: `1px solid ${active ? "var(--primary)" : "var(--glass-border)"}`,
-                    color: "var(--text)", fontSize: 13, fontWeight: 600, cursor: "pointer",
-                    fontFamily: "inherit", transition: "all 0.15s",
-                  }}
-                >
-                  <img src={tokenIcon(t)} alt={t} width={22} height={22} style={{ borderRadius: "50%" }} />
-                  {t}
-                </button>
-              );
-            })}
+          <div style={{ ...smallLabel, marginBottom: 10 }}>
+            ◆ Deposit Networks (USDT / USDC)
+          </div>
+          <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
+            {Object.entries(NETWORK_META).map(([net, meta]) =>
+              row({
+                symbol: net === "MATIC" ? "MATIC" : net,
+                name: meta.name,
+                sub: `${meta.sub} · Accepts ${meta.tokens.join(" / ")}`,
+                active: claimedNetworks.has(net),
+                busy: busyKey === `net:${net}`,
+                onActivate: () => activateNetwork(net),
+              })
+            )}
+          </div>
+          <p style={{ fontSize: 11, color: "var(--text-muted)", marginTop: 10, lineHeight: 1.5 }}>
+            Each active network gives you a deposit address for receiving USDT and USDC on that chain.
+          </p>
+        </div>
+
+        {/* Custodial Wallets */}
+        <div>
+          <div style={{ ...smallLabel, marginBottom: 10 }}>
+            ◆ Native Crypto Wallets
+          </div>
+          <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
+            {Object.entries(CUSTODIAL_META).map(([tok, meta]) =>
+              row({
+                symbol: tok,
+                name: meta.name,
+                sub: meta.sub,
+                active: createdTokens.has(tok),
+                busy: busyKey === `tok:${tok}`,
+                onActivate: () => activateCustodial(tok),
+              })
+            )}
           </div>
         </div>
-        {err && <div style={{ color: "var(--danger)", fontSize: 13 }}>{err}</div>}
-        <div style={{ display: "flex", gap: 12, justifyContent: "flex-end" }}>
-          <button style={ghostBtn} onClick={onClose}>Cancel</button>
-          <button style={primaryBtn} disabled={busy} onClick={submit}>{busy ? "Creating…" : "Create"}</button>
-        </div>
+
+        {err && (
+          <div
+            style={{
+              color: "var(--danger)", fontSize: 12,
+              padding: "10px 14px", borderRadius: 10,
+              background: "rgba(239, 68, 68, 0.1)",
+              border: "1px solid rgba(239, 68, 68, 0.2)",
+            }}
+          >
+            {err}
+          </div>
+        )}
       </div>
-    </Modal>
+    </FancyModal>
+  );
+}
+
+/* Load a card from crypto wallet — fetches user's cards, picks one, sends OTP,
+   then POSTs /api/cards/:cardId/load with walletType=crypto. */
+function CryptoToCardModal({ onClose }: { onClose: () => void }) {
+  const [cards, setCards] = useState<Array<{ id: string; last4?: string; type?: string }>>([]);
+  const [cardId, setCardId] = useState<string>("");
+  const [amount, setAmount] = useState("");
+  const [otp, setOtp] = useState("");
+  const [otpSent, setOtpSent] = useState(false);
+  const [busy, setBusy] = useState(false);
+  const [err, setErr] = useState<string | null>(null);
+  const [done, setDone] = useState(false);
+
+  useEffect(() => {
+    fetch("/api/cards/account")
+      .then((r) => r.ok ? r.json() : null)
+      .then((j) => {
+        const list = (j?.data?.cards ?? j?.cards ?? []) as Array<Record<string, unknown>>;
+        const normalized = list.map((c) => ({
+          id: String(c.id ?? ""),
+          last4: String(c.cardNumber ?? "").slice(-4),
+          type: String(c.type ?? ""),
+        })).filter((c) => c.id);
+        setCards(normalized);
+        if (normalized[0]) setCardId(normalized[0].id);
+      })
+      .catch(() => setCards([]));
+  }, []);
+
+  const sendOtp = async () => {
+    setBusy(true); setErr(null);
+    try {
+      const r = await fetch("/api/cards/send-otp", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ type: "load_card", walletType: "crypto" }),
+      });
+      if (!r.ok) {
+        const j = await r.json().catch(() => ({}));
+        throw new Error(j.error || `OTP failed (${r.status})`);
+      }
+      setOtpSent(true);
+    } catch (e) {
+      setErr((e as Error).message);
+    } finally {
+      setBusy(false);
+    }
+  };
+
+  const submit = async () => {
+    const amt = Number(amount);
+    if (!cardId) { setErr("Select a card"); return; }
+    if (!amt || amt <= 0) { setErr("Enter a valid amount"); return; }
+    if (!otp || otp.length < 4) { setErr("Enter the OTP sent to your email"); return; }
+    setBusy(true); setErr(null);
+    try {
+      const r = await fetch(`/api/cards/${cardId}/load`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ amount: amt, walletType: "crypto", otp }),
+      });
+      const j = await r.json().catch(() => ({}));
+      if (!r.ok) throw new Error(j.details?.message || j.error || `Load failed (${r.status})`);
+      setDone(true);
+    } catch (e) {
+      setErr((e as Error).message);
+    } finally {
+      setBusy(false);
+    }
+  };
+
+  if (done) {
+    return (
+      <FancyModal title="Card Loaded" onClose={onClose} maxWidth={420}>
+        <div style={{ textAlign: "center", padding: "14px 0 8px" }}>
+          <div style={{ fontSize: 36, marginBottom: 10 }}>✓</div>
+          <p style={{ fontSize: 13, color: "var(--text-muted)", margin: "0 0 20px" }}>
+            ${amount} will arrive on your card shortly.
+          </p>
+          <button style={primaryBtn} onClick={onClose}>Done</button>
+        </div>
+      </FancyModal>
+    );
+  }
+
+  return (
+    <FancyModal title="Withdraw to Card" subtitle="Crypto → Card" onClose={onClose} maxWidth={440}>
+      <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
+        <div>
+          <label style={smallLabel}>Card</label>
+          {cards.length === 0 ? (
+            <div style={{ fontSize: 12, color: "var(--text-muted)", padding: "10px 0" }}>
+              No card yet. <a href="/cards/order" style={{ color: "var(--primary)" }}>Order one →</a>
+            </div>
+          ) : (
+            <select
+              style={inputStyle}
+              value={cardId}
+              onChange={(e) => setCardId(e.target.value)}
+            >
+              {cards.map((c) => (
+                <option key={c.id} value={c.id}>
+                  {(c.type || "card").replace("_", " ")} •••• {c.last4 || "…"}
+                </option>
+              ))}
+            </select>
+          )}
+        </div>
+        <div>
+          <label style={smallLabel}>Amount (USD)</label>
+          <input
+            type="number"
+            style={inputStyle}
+            value={amount}
+            onChange={(e) => setAmount(e.target.value)}
+            placeholder="100.00"
+            inputMode="decimal"
+          />
+        </div>
+
+        {!otpSent ? (
+          <button style={primaryBtn} disabled={busy || !cardId || !amount} onClick={sendOtp}>
+            {busy ? "Sending…" : "Send OTP"}
+          </button>
+        ) : (
+          <>
+            <div>
+              <label style={smallLabel}>Enter 6-Digit OTP</label>
+              <input
+                type="text"
+                inputMode="numeric"
+                maxLength={6}
+                style={{ ...inputStyle, letterSpacing: 8, textAlign: "center", fontFamily: "var(--font-mono)", fontSize: 18 }}
+                value={otp}
+                onChange={(e) => setOtp(e.target.value.replace(/\D/g, "").slice(0, 6))}
+                placeholder="000000"
+              />
+            </div>
+            <button style={primaryBtn} disabled={busy || !otp} onClick={submit}>
+              {busy ? "Loading…" : "Confirm Withdrawal"}
+            </button>
+          </>
+        )}
+
+        {err && <div style={{ color: "var(--danger)", fontSize: 12 }}>{err}</div>}
+      </div>
+    </FancyModal>
   );
 }
 
@@ -1921,7 +2156,6 @@ function CryptoPageInner() {
           { label: "Send to Card", onClick: () => setShowCardLoad(true), icon: (<><rect x="1" y="4" width="22" height="16" rx="2" /><line x1="1" y1="10" x2="23" y2="10" /></>) },
           { label: "Send to Bank", onClick: () => setShowBankWithdraw(true), icon: (<><path d="M3 21h18M3 10h18M5 6l7-3 7 3M4 10v11M20 10v11M8 14v3M12 14v3M16 14v3" /></>) },
           { label: "Swap", onClick: () => setShowSwap(true), icon: (<><polyline points="17 1 21 5 17 9" /><path d="M3 11V9a4 4 0 0 1 4-4h14" /><polyline points="7 23 3 19 7 15" /><path d="M21 13v2a4 4 0 0 1-4 4H3" /></>) },
-          { label: "Stake", onClick: () => alert("Staking coming soon"), icon: (<><rect x="3" y="11" width="18" height="11" rx="2" /><path d="M7 11V7a5 5 0 0 1 10 0v4" /></>) },
         ].map((a) => (
           <button
             key={a.label}
@@ -1988,11 +2222,17 @@ function CryptoPageInner() {
       {showDeposit && <DepositModal addresses={addresses || []} onClose={() => setShowDeposit(false)} />}
       {showWithdraw && <WithdrawModal onClose={() => setShowWithdraw(false)} />}
       {showSwap && <SwapModal onClose={() => setShowSwap(false)} />}
-      {showBuy && <ComingSoonModal title="Buy Crypto" onClose={() => setShowBuy(false)} />}
-      {showCardLoad && <ComingSoonModal title="Withdraw to Card" onClose={() => setShowCardLoad(false)} />}
+      {showBuy && <SwapModal onClose={() => setShowBuy(false)} />}
+      {showCardLoad && <CryptoToCardModal onClose={() => setShowCardLoad(false)} />}
       {showBankWithdraw && <OffRampToBankModal wallets={wallets || []} onClose={() => setShowBankWithdraw(false)} />}
-      {showClaim && <ClaimAddressModal onClose={() => setShowClaim(false)} onClaimed={loadAddresses} />}
-      {showCreateWallet && <CreateWalletModal onClose={() => setShowCreateWallet(false)} onCreated={loadWallets} />}
+      {(showClaim || showCreateWallet) && (
+        <ActivateAssetsModal
+          addresses={addresses || []}
+          wallets={wallets || []}
+          onClose={() => { setShowClaim(false); setShowCreateWallet(false); }}
+          onActivated={() => { loadAddresses(); loadWallets(); }}
+        />
+      )}
     </>
   );
 }

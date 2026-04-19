@@ -32,7 +32,6 @@ const TABS: TabItem[] = [
   { label: "Subscriptions", href: "/subscriptions" },
   { label: "More", href: "#", subs: [
     { label: "Reports", href: "/reports" },
-    { label: "Banking", href: "/banking" },
     { label: "Notifications", href: "/notifications" },
     { label: "Help / FAQs", href: "/help" },
     { label: "Ecosystem", href: "/ecosystem" },

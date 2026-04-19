@@ -14,7 +14,6 @@ const NAV_ITEMS = [
   { label: "Orders", href: "/orders" },
   { label: "Transactions", href: "/transactions" },
   { label: "Reports", href: "/reports" },
-  { label: "Banking", href: "/banking" },
 ];
 
 export function TopNav() {

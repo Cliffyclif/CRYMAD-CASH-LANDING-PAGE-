@@ -58,27 +58,15 @@ export default function RecurringPaymentsPage() {
         <button onClick={() => setCreateOpen(true)} style={primaryBtn}>+ Create Recurring Payment</button>
       </div>
 
-      {note && (
-        <div style={{
-          ...glass,
-          padding: "14px 18px",
-          marginBottom: 18,
-          background: "rgba(var(--primary-rgb), 0.08)",
-          borderColor: "rgba(var(--primary-rgb), 0.3)",
-          display: "flex", alignItems: "center", gap: 10,
-        }}>
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" strokeWidth="2" strokeLinecap="round">
-            <circle cx="12" cy="12" r="10" /><line x1="12" y1="16" x2="12" y2="12" /><line x1="12" y1="8" x2="12.01" y2="8" />
-          </svg>
-          <span style={{ color: "var(--text)", fontSize: 13 }}>{note}</span>
-        </div>
-      )}
-
       <div style={{ ...glass, padding: 60, textAlign: "center" }}>
-        <div style={{ fontSize: 68, marginBottom: 18 }}>📅</div>
-        <h2 style={{ margin: 0, fontSize: 20, color: "var(--text)", fontWeight: 700 }}>No recurring payments set up</h2>
+        <svg width="68" height="68" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" style={{ margin: "0 auto 18px", display: "block", opacity: 0.7 }}>
+          <polyline points="17 1 21 5 17 9" /><path d="M3 11V9a4 4 0 0 1 4-4h14" />
+          <polyline points="7 23 3 19 7 15" /><path d="M21 13v2a4 4 0 0 1-4 4H3" />
+        </svg>
+        <h2 style={{ margin: 0, fontSize: 20, color: "var(--text)", fontWeight: 700 }}>Set up your first recurring payment</h2>
         <p style={{ color: "var(--text-muted)", margin: "10px auto 24px", fontSize: 14, maxWidth: 460 }}>
-          Schedule automatic payouts to recipients on a weekly, monthly, or custom cadence. Set it up once and let Crymad handle the rest.
+          Schedule automatic payouts to recipients on a weekly, monthly, or custom cadence.
+          {note ? ` ${note}` : ""}
         </p>
         <button onClick={() => setCreateOpen(true)} style={primaryBtn}>+ Create Recurring Payment</button>
       </div>

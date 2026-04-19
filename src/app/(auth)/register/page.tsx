@@ -168,7 +168,7 @@ export default function RegisterPage() {
         }}
       >
         {(["personal", "business"] as const).map((type) => {
-          const disabled = type === "business";
+          const disabled = false;
           return (
             <button
               key={type}
