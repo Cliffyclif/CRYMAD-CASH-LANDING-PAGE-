@@ -216,7 +216,7 @@ export function Hero() {
               {/* CTA buttons */}
               <div className="mt-8 flex flex-col sm:flex-row items-center gap-3 lg:justify-start justify-center">
                 <motion.a
-                  href="https://production-crmdx.web.app/sign-up"
+                  href="https://app.crymadcash.com/register"
                   target="_blank"
                   rel="noopener noreferrer"
                   whileHover={{ scale: 1.03, boxShadow: "0 0 30px rgba(0,232,157,0.3), 0 0 60px rgba(0,232,157,0.15)" }}

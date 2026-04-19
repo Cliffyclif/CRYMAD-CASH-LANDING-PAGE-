@@ -84,7 +84,7 @@ export function Navbar() {
             <LanguageSwitcher />
             <ThemeToggle />
             <a
-              href="https://production-crmdx.web.app/login"
+              href="https://app.crymadcash.com/login"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex min-h-[40px] items-center justify-center rounded-lg border border-[var(--glass-border)] bg-[var(--glass-bg)] px-5 py-2 text-[13px] font-semibold text-[var(--text-secondary)] hover:bg-[var(--primary)]/10 hover:border-[var(--primary)]/30 backdrop-blur-sm focus:outline-none focus:ring-2 focus:ring-[var(--primary)] transition-all duration-200"
@@ -92,7 +92,7 @@ export function Navbar() {
               {t("nav.signIn")}
             </a>
             <a
-              href="https://production-crmdx.web.app/sign-up"
+              href="https://app.crymadcash.com/register"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex min-h-[40px] items-center justify-center rounded-lg bg-[var(--primary)] px-5 py-2 text-[13px] font-bold text-white hover:brightness-110 active:brightness-90 focus:outline-none focus:ring-2 focus:ring-[var(--primary)] transition-all duration-300 shadow-[0_0_15px_rgba(0,232,157,0.2)]"
@@ -146,7 +146,7 @@ export function Navbar() {
               })}
               <div className="pt-3 mt-2 border-t border-[var(--glass-border)] flex flex-col gap-2">
                 <a
-                  href="https://production-crmdx.web.app/login"
+                  href="https://app.crymadcash.com/login"
                   target="_blank"
                   rel="noopener noreferrer"
                   onClick={() => setMobileOpen(false)}
@@ -155,7 +155,7 @@ export function Navbar() {
                   {t("nav.signIn")}
                 </a>
                 <a
-                  href="https://production-crmdx.web.app/sign-up"
+                  href="https://app.crymadcash.com/register"
                   target="_blank"
                   rel="noopener noreferrer"
                   onClick={() => setMobileOpen(false)}

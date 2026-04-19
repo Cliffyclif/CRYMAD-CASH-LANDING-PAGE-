@@ -425,7 +425,7 @@ export default function SecurityPage() {
               </p>
               <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
                 <a
-                  href="https://production-crmdx.web.app/sign-up"
+                  href="https://app.crymadcash.com/register"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 rounded-xl bg-[var(--primary)] px-8 py-3.5 text-sm font-bold text-white hover:brightness-110 transition-all shadow-lg shadow-[var(--primary)]/25"

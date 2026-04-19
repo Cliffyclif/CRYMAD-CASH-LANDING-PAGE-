@@ -63,7 +63,7 @@ export function CTA() {
 
           <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
             <a
-              href="https://production-crmdx.web.app/sign-up"
+              href="https://app.crymadcash.com/register"
               target="_blank"
               rel="noopener noreferrer"
               className="w-full sm:w-auto inline-flex min-h-[52px] items-center justify-center rounded-xl bg-[var(--primary)] px-8 py-3.5 text-[15px] font-bold text-white hover:brightness-110 focus:outline-none focus:ring-2 focus:ring-[var(--primary)] transition-all duration-300 gap-2 shadow-[0_0_20px_rgba(0,232,157,0.2),0_0_40px_rgba(0,232,157,0.1)] hover:shadow-[0_0_30px_rgba(0,232,157,0.3),0_0_60px_rgba(0,232,157,0.15)]"

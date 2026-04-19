@@ -8,8 +8,8 @@ const footerSections = [
   {
     titleKey: "footer.products",
     links: [
-      { labelKey: "footer.personalAccounts", href: "https://production-crmdx.web.app/login" },
-      { labelKey: "footer.businessAccounts", href: "https://production-crmdx.web.app/login" },
+      { labelKey: "footer.personalAccounts", href: "https://app.crymadcash.com/login" },
+      { labelKey: "footer.businessAccounts", href: "https://app.crymadcash.com/login" },
       { labelKey: "footer.globalPayments", href: "#contact-business" },
       { labelKey: "footer.cryptoIntegration", href: "#contact-business" },
     ],
