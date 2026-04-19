@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { Suspense, useCallback, useEffect, useMemo, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import QRCode from "qrcode";
 import { useUser, formatMoney } from "@/components/providers/UserProvider";
@@ -1699,6 +1699,14 @@ function OffRampToBankModal({ wallets, onClose }: { wallets: CustodialWalletLite
 
 /* ─── Main Page ─── */
 export default function CryptoPage() {
+  return (
+    <Suspense fallback={null}>
+      <CryptoPageInner />
+    </Suspense>
+  );
+}
+
+function CryptoPageInner() {
   const { walletsByType, loading: userLoading, refresh } = useUser();
   const cryptoWallet = walletsByType.crypto;
 
