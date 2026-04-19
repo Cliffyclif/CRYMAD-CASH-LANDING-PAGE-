@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { formatMoney, useUser } from "@/components/providers/UserProvider";
 import { tokenIcon } from "@/lib/tokens/icons";
+import { useLanguage } from "@/i18n/LanguageContext";
 
 type Tx = {
   id: string;
@@ -1042,6 +1043,7 @@ function ComingSoonModal({ title, onClose }: { title: string; onClose: () => voi
 // ───────────────────────── Page ─────────────────────────
 
 export default function EWalletPage() {
+  const { t } = useLanguage();
   const { walletsByType, loading } = useUser();
   const w = walletsByType.ewallet;
 
@@ -1201,10 +1203,10 @@ export default function EWalletPage() {
       {/* ─── Action Grid ─── */}
       <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 12, marginBottom: 24 }}>
         {[
-          { label: "Transfer", onClick: () => setShowTransfer(true), icon: <><line x1="22" y1="2" x2="11" y2="13" /><polygon points="22 2 15 22 11 13 2 9 22 2" /></> },
-          { label: "Bank Withdraw", onClick: () => setShowBank(true), icon: <><path d="M3 21h18M3 10h18M5 6l7-3 7 3M4 10v11M20 10v11M8 14v3M12 14v3M16 14v3" /></> },
-          { label: "Crypto Swap", onClick: () => setShowCrypto(true), icon: <><polyline points="17 1 21 5 17 9" /><path d="M3 11V9a4 4 0 0 1 4-4h14" /><polyline points="7 23 3 19 7 15" /><path d="M21 13v2a4 4 0 0 1-4 4H3" /></> },
-          { label: "Card Load", onClick: () => setShowCard(true), icon: <><rect x="1" y="4" width="22" height="16" rx="2" /><line x1="1" y1="10" x2="23" y2="10" /></> },
+          { label: t("app.ewallet.actions.transfer"), onClick: () => setShowTransfer(true), icon: <><line x1="22" y1="2" x2="11" y2="13" /><polygon points="22 2 15 22 11 13 2 9 22 2" /></> },
+          { label: t("app.ewallet.actions.bankWithdraw"), onClick: () => setShowBank(true), icon: <><path d="M3 21h18M3 10h18M5 6l7-3 7 3M4 10v11M20 10v11M8 14v3M12 14v3M16 14v3" /></> },
+          { label: t("app.ewallet.actions.cryptoSwap"), onClick: () => setShowCrypto(true), icon: <><polyline points="17 1 21 5 17 9" /><path d="M3 11V9a4 4 0 0 1 4-4h14" /><polyline points="7 23 3 19 7 15" /><path d="M21 13v2a4 4 0 0 1-4 4H3" /></> },
+          { label: t("app.ewallet.actions.cardLoad"), onClick: () => setShowCard(true), icon: <><rect x="1" y="4" width="22" height="16" rx="2" /><line x1="1" y1="10" x2="23" y2="10" /></> },
         ].map((a) => (
           <button
             key={a.label}

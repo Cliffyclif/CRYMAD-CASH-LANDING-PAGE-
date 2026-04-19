@@ -2,6 +2,7 @@
 
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { formatMoney } from "@/components/providers/UserProvider";
+import { useLanguage } from "@/i18n/LanguageContext";
 
 const glass = {
   background: "var(--glass-bg)",
@@ -86,6 +87,7 @@ function truncate(s: string | undefined, head = 6, tail = 4): string {
 }
 
 export default function OrdersPage() {
+  const { t } = useLanguage();
   const [tab, setTab] = useState<TabKey>("PENDING");
   const [rows, setRows] = useState<Tx[]>([]);
   const [loading, setLoading] = useState(false);
@@ -154,7 +156,7 @@ export default function OrdersPage() {
           </svg>
         </div>
         <div>
-          <h1 style={{ fontSize: 26, fontWeight: 700, color: "var(--text)", margin: 0 }}>Orders</h1>
+          <h1 style={{ fontSize: 26, fontWeight: 700, color: "var(--text)", margin: 0 }}>{t("app.orders.title")}</h1>
           <p style={{ fontSize: 13, color: "var(--text-muted)", margin: 0 }}>Track your payment orders</p>
         </div>
       </div>
@@ -254,8 +256,8 @@ export default function OrdersPage() {
                 <tr>
                   <td colSpan={7} style={{ ...td, textAlign: "center", padding: 60 }}>
                     <div style={{ fontSize: 46, marginBottom: 10 }}>🧾</div>
-                    <div style={{ fontSize: 15, fontWeight: 700, color: "var(--text)", marginBottom: 4 }}>No orders yet</div>
-                    <div style={{ fontSize: 12, color: "var(--text-muted)" }}>Your orders will appear here.</div>
+                    <div style={{ fontSize: 15, fontWeight: 700, color: "var(--text)", marginBottom: 4 }}>{t("app.orders.empty")}</div>
+                    <div style={{ fontSize: 12, color: "var(--text-muted)" }}>{t("app.orders.emptyBody")}</div>
                   </td>
                 </tr>
               )}

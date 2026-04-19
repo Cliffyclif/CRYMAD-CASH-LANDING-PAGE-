@@ -2,6 +2,7 @@
 
 import { useEffect, useMemo, useState } from "react";
 import { formatMoney } from "@/components/providers/UserProvider";
+import { useLanguage } from "@/i18n/LanguageContext";
 
 type Status = "PENDING APPROVAL" | "PROCESSING" | "COMPLETED" | "CANCELLED";
 
@@ -57,6 +58,7 @@ const TABS: Status[] = ["PENDING APPROVAL", "PROCESSING", "COMPLETED", "CANCELLE
 const CURRENCIES = ["USD", "EUR", "JPY", "CAD"];
 
 export default function PayoutsPage() {
+  const { t } = useLanguage();
   const [tab, setTab] = useState<Status>("PENDING APPROVAL");
   const [rows, setRows] = useState<Payout[]>([]);
   const [loading, setLoading] = useState(true);
@@ -118,7 +120,7 @@ export default function PayoutsPage() {
     <div style={{ padding: 24, maxWidth: 1400, margin: "0 auto" }}>
       <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 24, gap: 12, flexWrap: "wrap" }}>
         <div>
-          <h1 style={{ fontSize: 26, fontWeight: 700, margin: 0, color: "var(--text)" }}>Payouts</h1>
+          <h1 style={{ fontSize: 26, fontWeight: 700, margin: 0, color: "var(--text)" }}>{t("app.payouts.title")}</h1>
           <p style={{ color: "var(--text-muted)", margin: "6px 0 0", fontSize: 14 }}>
             Manage outgoing payments across your recipient network.
           </p>

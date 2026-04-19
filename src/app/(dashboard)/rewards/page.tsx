@@ -2,6 +2,7 @@
 
 import { useEffect, useMemo, useState } from "react";
 import { useUser } from "@/components/providers/UserProvider";
+import { useLanguage } from "@/i18n/LanguageContext";
 
 interface Tx {
   id: string;
@@ -32,6 +33,7 @@ function fmtPts(n: number): string {
 }
 
 export default function RewardsPage() {
+  const { t } = useLanguage();
   const { walletsByType } = useUser();
   const rewardsWallet = walletsByType.rewards;
 
@@ -77,7 +79,7 @@ export default function RewardsPage() {
           <svg width="24" height="24" viewBox="0 0 24 24" fill="var(--primary)"><polygon points="12,2 15,8.5 22,9.3 17,14.1 18.2,21 12,17.8 5.8,21 7,14.1 2,9.3 9,8.5"/></svg>
         </div>
         <div>
-          <h1 style={{ fontSize: 26, fontWeight: 700, margin: 0, color: "var(--text)" }}>Rewards</h1>
+          <h1 style={{ fontSize: 26, fontWeight: 700, margin: 0, color: "var(--text)" }}>{t("app.rewards.title")}</h1>
           <p style={{ color: "var(--text-muted)", margin: "4px 0 0", fontSize: 13 }}>
             Issue, debit, and track rewards points for your users.
           </p>

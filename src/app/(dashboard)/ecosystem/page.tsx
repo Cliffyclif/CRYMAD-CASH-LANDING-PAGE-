@@ -1,5 +1,7 @@
 "use client";
 
+import { useLanguage } from "@/i18n/LanguageContext";
+
 type Segment = {
   id: string;
   name: string;
@@ -98,6 +100,7 @@ const TOOLTIP_POS: Record<0 | 1 | 2 | 3, "left" | "right" | "left-bottom" | "rig
 };
 
 export default function EcosystemPage() {
+  const { t } = useLanguage();
   return (
     <div style={{ maxWidth: 1080, margin: "0 auto" }}>
       <style>{`
@@ -294,7 +297,7 @@ export default function EcosystemPage() {
           }}
         >
           <span style={{ width: 4, height: 4, borderRadius: "50%", background: "var(--primary)", boxShadow: "0 0 8px var(--primary)" }} />
-          Cryptomadness Financial Ecosystem
+          {t("app.ecosystem.badge")}
         </div>
         <h1
           style={{
@@ -306,9 +309,9 @@ export default function EcosystemPage() {
             lineHeight: 1.05,
           }}
         >
-          Five Platforms.{" "}
+          {t("app.ecosystem.title1")}{" "}
           <span style={{ color: "var(--primary)", textShadow: "0 0 30px rgba(var(--primary-rgb), 0.4)" }}>
-            One Ecosystem.
+            {t("app.ecosystem.title2")}
           </span>
         </h1>
         <p
@@ -320,7 +323,7 @@ export default function EcosystemPage() {
             lineHeight: 1.6,
           }}
         >
-          Hover over any segment to explore. Click to jump in.
+          {t("app.ecosystem.hint")}
         </p>
       </div>
 
@@ -464,7 +467,7 @@ function Tooltip({ s }: { s: Segment }) {
           fontWeight: 700,
         }}
       >
-        Visit Platform
+        {t("app.ecosystem.visitPlatform")}
         <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
           <line x1="5" y1="12" x2="19" y2="12" />
           <polyline points="12 5 19 12 12 19" />

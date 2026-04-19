@@ -7,6 +7,7 @@ import { useUser, formatMoney } from "@/components/providers/UserProvider";
 import { tokenIcon } from "@/lib/tokens/icons";
 import { QRScannerModal } from "@/components/modals/QRScannerModal";
 import { AssetCard } from "@/components/dashboard/AssetCard";
+import { useLanguage } from "@/i18n/LanguageContext";
 
 type MarketPrice = { symbol: string; name: string; price: number; change24h: number; sparkline: number[] };
 
@@ -1958,6 +1959,7 @@ export default function CryptoPage() {
 }
 
 function CryptoPageInner() {
+  const { t } = useLanguage();
   const { walletsByType, loading: userLoading, refresh } = useUser();
   const cryptoWallet = walletsByType.crypto;
 
@@ -2101,10 +2103,7 @@ function CryptoPageInner() {
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--warning)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ flexShrink: 0 }}>
             <circle cx="12" cy="12" r="10" /><line x1="12" y1="8" x2="12" y2="12" /><line x1="12" y1="16" x2="12.01" y2="16" />
           </svg>
-          <span>
-            <strong style={{ color: "var(--warning)" }}>Sandbox mode.</strong>{" "}
-            Custodial wallets are read-only in TygaBank sandbox. Create/send operations will work in production.
-          </span>
+          <span>{t("app.crypto.sandboxNotice")}</span>
         </div>
       )}
 
@@ -2123,7 +2122,7 @@ function CryptoPageInner() {
             <div style={{
               fontSize: 11, letterSpacing: 2, color: "var(--primary)",
               textTransform: "uppercase", fontWeight: 600, marginBottom: 10,
-            }}>Crypto Portfolio</div>
+            }}>{t("app.crypto.portfolio")}</div>
             <div style={{ display: "flex", alignItems: "center", gap: 14, flexWrap: "wrap" }}>
               <div style={{
                 fontSize: 52, fontWeight: 800, color: "var(--primary)",
@@ -2185,13 +2184,13 @@ function CryptoPageInner() {
         display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 12, marginBottom: 28,
       }}>
         {[
-          { label: "Deposit", onClick: () => setShowDeposit(true), icon: (<><line x1="12" y1="5" x2="12" y2="19" /><polyline points="19 12 12 19 5 12" /></>) },
-          { label: "Withdraw", onClick: () => setShowWithdraw(true), icon: (<><line x1="12" y1="19" x2="12" y2="5" /><polyline points="5 12 12 5 19 12" /></>) },
-          { label: "Buy", onClick: () => setShowBuy(true), icon: (<><circle cx="9" cy="21" r="1" /><circle cx="20" cy="21" r="1" /><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6" /></>) },
-          { label: syncing ? "Syncing…" : "Sync", onClick: sync, icon: (<><polyline points="23 4 23 10 17 10" /><polyline points="1 20 1 14 7 14" /><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15" /></>) },
-          { label: "Send to Card", onClick: () => setShowCardLoad(true), icon: (<><rect x="1" y="4" width="22" height="16" rx="2" /><line x1="1" y1="10" x2="23" y2="10" /></>) },
-          { label: "Send to Bank", onClick: () => setShowBankWithdraw(true), icon: (<><path d="M3 21h18M3 10h18M5 6l7-3 7 3M4 10v11M20 10v11M8 14v3M12 14v3M16 14v3" /></>) },
-          { label: "Swap", onClick: () => setShowSwap(true), icon: (<><polyline points="17 1 21 5 17 9" /><path d="M3 11V9a4 4 0 0 1 4-4h14" /><polyline points="7 23 3 19 7 15" /><path d="M21 13v2a4 4 0 0 1-4 4H3" /></>) },
+          { label: t("app.crypto.actions.deposit"), onClick: () => setShowDeposit(true), icon: (<><line x1="12" y1="5" x2="12" y2="19" /><polyline points="19 12 12 19 5 12" /></>) },
+          { label: t("app.crypto.actions.withdraw"), onClick: () => setShowWithdraw(true), icon: (<><line x1="12" y1="19" x2="12" y2="5" /><polyline points="5 12 12 5 19 12" /></>) },
+          { label: t("app.crypto.actions.buy"), onClick: () => setShowBuy(true), icon: (<><circle cx="9" cy="21" r="1" /><circle cx="20" cy="21" r="1" /><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6" /></>) },
+          { label: syncing ? t("app.crypto.actions.syncing") : t("app.crypto.actions.sync"), onClick: sync, icon: (<><polyline points="23 4 23 10 17 10" /><polyline points="1 20 1 14 7 14" /><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15" /></>) },
+          { label: t("app.crypto.actions.sendToCard"), onClick: () => setShowCardLoad(true), icon: (<><rect x="1" y="4" width="22" height="16" rx="2" /><line x1="1" y1="10" x2="23" y2="10" /></>) },
+          { label: t("app.crypto.actions.sendToBank"), onClick: () => setShowBankWithdraw(true), icon: (<><path d="M3 21h18M3 10h18M5 6l7-3 7 3M4 10v11M20 10v11M8 14v3M12 14v3M16 14v3" /></>) },
+          { label: t("app.crypto.actions.swap"), onClick: () => setShowSwap(true), icon: (<><polyline points="17 1 21 5 17 9" /><path d="M3 11V9a4 4 0 0 1 4-4h14" /><polyline points="7 23 3 19 7 15" /><path d="M21 13v2a4 4 0 0 1-4 4H3" /></>) },
         ].map((a) => (
           <button
             key={a.label}

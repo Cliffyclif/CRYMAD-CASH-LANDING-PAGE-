@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
+import { useLanguage } from "@/i18n/LanguageContext";
 
 interface Notification {
   id: string;
@@ -68,6 +69,7 @@ function iconForKind(kind: string): React.ReactNode {
 }
 
 export default function NotificationsPage() {
+  const { t } = useLanguage();
   const [rows, setRows] = useState<Notification[]>([]);
   const [loading, setLoading] = useState(true);
   const [filter, setFilter] = useState<Filter>("all");
@@ -137,7 +139,7 @@ export default function NotificationsPage() {
             )}
           </div>
           <div>
-            <h1 style={{ fontSize: 26, fontWeight: 700, margin: 0, color: "var(--text)" }}>Notifications</h1>
+            <h1 style={{ fontSize: 26, fontWeight: 700, margin: 0, color: "var(--text)" }}>{t("app.notifications.title")}</h1>
             <p style={{ color: "var(--text-muted)", margin: "4px 0 0", fontSize: 13 }}>
               {unreadCount > 0 ? `${unreadCount} unread` : "All caught up"}
             </p>
@@ -150,7 +152,7 @@ export default function NotificationsPage() {
             <option value="read">Read</option>
           </select>
           <button onClick={markAllRead} disabled={unreadCount === 0} style={{ ...ghostBtn, opacity: unreadCount === 0 ? 0.5 : 1 }}>
-            Mark all as read
+            {t("app.notifications.markAllRead")}
           </button>
         </div>
       </div>

@@ -2,6 +2,7 @@
 
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { formatMoney } from "@/components/providers/UserProvider";
+import { useLanguage } from "@/i18n/LanguageContext";
 
 const glass = {
   background: "var(--glass-bg)",
@@ -105,6 +106,7 @@ function daysAgoIso(n: number): string {
 }
 
 export default function ReportsPage() {
+  const { t } = useLanguage();
   const [startDate, setStartDate] = useState<string>(daysAgoIso(30));
   const [endDate, setEndDate] = useState<string>(todayIso());
   const [txType, setTxType] = useState<string>("");
@@ -186,8 +188,8 @@ export default function ReportsPage() {
           </svg>
         </div>
         <div>
-          <h1 style={{ fontSize: 26, fontWeight: 700, color: "var(--text)", margin: 0 }}>Reports</h1>
-          <p style={{ fontSize: 13, color: "var(--text-muted)", margin: 0 }}>Generate transaction reports & export CSVs</p>
+          <h1 style={{ fontSize: 26, fontWeight: 700, color: "var(--text)", margin: 0 }}>{t("app.reports.title")}</h1>
+          <p style={{ fontSize: 13, color: "var(--text-muted)", margin: 0 }}>{t("app.reports.subtitle")}</p>
         </div>
       </div>
 
@@ -243,7 +245,7 @@ export default function ReportsPage() {
               cursor: loading ? "wait" : "pointer",
             }}
           >
-            {loading ? "Generating…" : "Generate Report"}
+            {loading ? t("app.reports.generating") : t("app.reports.generate")}
           </button>
           <button
             onClick={exportCsv}
@@ -254,17 +256,17 @@ export default function ReportsPage() {
               color: "var(--text)", opacity: !ran || rows.length === 0 ? 0.5 : 1,
             }}
           >
-            Export CSV
+            {t("app.reports.exportCsv")}
           </button>
         </div>
       </div>
 
       {/* Summary cards */}
       <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: 14, marginBottom: 20 }}>
-        <SummaryCard label="Total Inflow" value={`+${formatMoney(summary.inflow)}`} color="var(--success)" />
-        <SummaryCard label="Total Outflow" value={`${summary.outflow < 0 ? "-" : ""}${formatMoney(Math.abs(summary.outflow))}`} color="var(--danger)" />
-        <SummaryCard label="Net Balance" value={`${summary.net >= 0 ? "+" : "-"}${formatMoney(Math.abs(summary.net))}`} color={summary.net >= 0 ? "var(--success)" : "var(--danger)"} />
-        <SummaryCard label="Count" value={String(summary.count)} color="var(--text)" />
+        <SummaryCard label={t("app.reports.totalInflow")} value={`+${formatMoney(summary.inflow)}`} color="var(--success)" />
+        <SummaryCard label={t("app.reports.totalOutflow")} value={`${summary.outflow < 0 ? "-" : ""}${formatMoney(Math.abs(summary.outflow))}`} color="var(--danger)" />
+        <SummaryCard label={t("app.reports.netBalance")} value={`${summary.net >= 0 ? "+" : "-"}${formatMoney(Math.abs(summary.net))}`} color={summary.net >= 0 ? "var(--success)" : "var(--danger)"} />
+        <SummaryCard label={t("app.reports.count")} value={String(summary.count)} color="var(--text)" />
       </div>
 
       {/* Table */}

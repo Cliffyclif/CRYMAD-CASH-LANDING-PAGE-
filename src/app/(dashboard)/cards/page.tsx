@@ -4,6 +4,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { useUser, formatMoney } from "@/components/providers/UserProvider";
 import { ActivityFeed } from "@/components/dashboard/ActivityFeed";
+import { useLanguage } from "@/i18n/LanguageContext";
 
 /* ───── styles ───── */
 const glass: React.CSSProperties = {
@@ -900,6 +901,7 @@ type AccountResp = {
 } | null;
 
 export default function CardsPage() {
+  const { t } = useLanguage();
   const { user, fullName } = useUser();
   const [account, setAccount] = useState<AccountResp>(null);
   const [kyc, setKyc] = useState<{ status?: string; [key: string]: unknown } | null>(null);
@@ -964,7 +966,7 @@ export default function CardsPage() {
         </div>
         <div style={{ display: "flex", gap: 10 }}>
           <Link href="/cards/fees" style={{ ...btnGhost, textDecoration: "none" }}>Fee Schedule</Link>
-          <Link href="/cards/order" style={{ ...btnPrimary, textDecoration: "none", display: "inline-block" }}>Order New Card</Link>
+          <Link href="/cards/order" style={{ ...btnPrimary, textDecoration: "none", display: "inline-block" }}>{t("app.cards.orderFirstCard")}</Link>
         </div>
       </div>
 
@@ -999,9 +1001,9 @@ export default function CardsPage() {
         </div>
       ) : isApproved ? (
         <div style={{ ...glass, padding: 40, textAlign: "center", marginBottom: 28 }}>
-          <h3 style={{ color: "var(--text)", margin: "0 0 12px" }}>No cards yet</h3>
-          <p style={{ color: "var(--text-secondary)", margin: "0 0 20px", fontSize: 14 }}>Order your first Crymad card.</p>
-          <Link href="/cards/order" style={{ ...btnPrimary, display: "inline-block", textDecoration: "none" }}>Order New Card</Link>
+          <h3 style={{ color: "var(--text)", margin: "0 0 12px" }}>{t("app.cards.noCardsYet")}</h3>
+          <p style={{ color: "var(--text-secondary)", margin: "0 0 20px", fontSize: 14 }}>{t("app.cards.noCardsBody")}</p>
+          <Link href="/cards/order" style={{ ...btnPrimary, display: "inline-block", textDecoration: "none" }}>{t("app.cards.orderFirstCard")}</Link>
         </div>
       ) : null}
 

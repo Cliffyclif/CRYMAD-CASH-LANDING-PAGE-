@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { useLanguage } from "@/i18n/LanguageContext";
 
 const glass: React.CSSProperties = {
   background: "var(--glass-bg)",
@@ -23,6 +24,7 @@ const WALLET_TYPES = [
 ];
 
 export default function RecurringPaymentsPage() {
+  const { t } = useLanguage();
   const [note, setNote] = useState<string | null>(null);
   const [createOpen, setCreateOpen] = useState(false);
 
@@ -49,13 +51,13 @@ export default function RecurringPaymentsPage() {
             </svg>
           </div>
           <div>
-            <h1 style={{ fontSize: 26, fontWeight: 700, margin: 0, color: "var(--text)" }}>Recurring Payments</h1>
+            <h1 style={{ fontSize: 26, fontWeight: 700, margin: 0, color: "var(--text)" }}>{t("app.recurring.title")}</h1>
             <p style={{ color: "var(--text-muted)", margin: "4px 0 0", fontSize: 13 }}>
-              Automate payouts on a schedule you choose.
+              {t("app.recurring.subtitle")}
             </p>
           </div>
         </div>
-        <button onClick={() => setCreateOpen(true)} style={primaryBtn}>+ Create Recurring Payment</button>
+        <button onClick={() => setCreateOpen(true)} style={primaryBtn}>+ {t("app.recurring.createCta")}</button>
       </div>
 
       <div style={{ ...glass, padding: 60, textAlign: "center" }}>
@@ -63,12 +65,12 @@ export default function RecurringPaymentsPage() {
           <polyline points="17 1 21 5 17 9" /><path d="M3 11V9a4 4 0 0 1 4-4h14" />
           <polyline points="7 23 3 19 7 15" /><path d="M21 13v2a4 4 0 0 1-4 4H3" />
         </svg>
-        <h2 style={{ margin: 0, fontSize: 20, color: "var(--text)", fontWeight: 700 }}>Set up your first recurring payment</h2>
+        <h2 style={{ margin: 0, fontSize: 20, color: "var(--text)", fontWeight: 700 }}>{t("app.recurring.emptyTitle")}</h2>
         <p style={{ color: "var(--text-muted)", margin: "10px auto 24px", fontSize: 14, maxWidth: 460 }}>
-          Schedule automatic payouts to recipients on a weekly, monthly, or custom cadence.
+          {t("app.recurring.emptyBody")}
           {note ? ` ${note}` : ""}
         </p>
-        <button onClick={() => setCreateOpen(true)} style={primaryBtn}>+ Create Recurring Payment</button>
+        <button onClick={() => setCreateOpen(true)} style={primaryBtn}>+ {t("app.recurring.createCta")}</button>
       </div>
 
       {createOpen && <CreateModal onClose={() => setCreateOpen(false)} />}

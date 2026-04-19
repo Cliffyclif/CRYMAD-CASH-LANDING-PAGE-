@@ -358,7 +358,38 @@
       "signOut": "Sign Out",
       "help": "Help",
       "settings": "Settings",
-      "profile": "Profile"
+      "profile": "Profile",
+      "available": "Available",
+      "total": "Total",
+      "balance": "Balance",
+      "fee": "Fee",
+      "recipient": "Recipient",
+      "note": "Note",
+      "reference": "Reference",
+      "network": "Network",
+      "address": "Address",
+      "noteOptional": "Note (optional)",
+      "insufficient": "Insufficient balance",
+      "thisMonth": "This month",
+      "thisWeek": "This week",
+      "today": "Today",
+      "yesterday": "Yesterday",
+      "all": "All",
+      "filter": "Filter",
+      "export": "Export",
+      "refresh": "Refresh",
+      "approve": "Approve",
+      "decline": "Decline",
+      "pending": "Pending",
+      "completed": "Completed",
+      "failed": "Failed",
+      "cancelled": "Cancelled",
+      "processing": "Processing",
+      "success": "Success",
+      "tryAgain": "Try again",
+      "page": "Page",
+      "of": "of",
+      "previous": "Previous"
     },
     "nav": {
       "dashboard": "Dashboard",
@@ -507,7 +538,10 @@
     },
     "ewallet": {
       "hero": {
-        "available": "Available Balance"
+        "available": "Available Balance",
+        "today": "Today",
+        "net": "Net",
+        "accountId": "Account ID"
       },
       "transfer": {
         "title": "Send Money",
@@ -516,7 +550,11 @@
         "note": "Note (optional)",
         "fee": "Fee",
         "total": "Total",
-        "confirm": "Send"
+        "confirm": "Send",
+        "subtitle": "Transfer to another user",
+        "recipientPlaceholder": "Email or user ID",
+        "sending": "Sending…",
+        "success": "Transfer sent"
       },
       "bankWithdraw": {
         "title": "Bank Withdrawal",
@@ -531,13 +569,62 @@
         "title": "Buy Crypto",
         "youPay": "YOU PAY",
         "youReceive": "YOU RECEIVE",
-        "confirm": "Buy Now"
+        "confirm": "Buy Now",
+        "processing": "Processing…"
       },
       "syncToCard": {
         "title": "Sync to Card",
         "card": "Card",
         "amount": "Amount",
         "confirm": "Transfer to Card"
+      },
+      "actions": {
+        "transfer": "Transfer",
+        "bankWithdraw": "Bank Withdraw",
+        "cryptoSwap": "Crypto Swap",
+        "cardLoad": "Card Load"
+      },
+      "bank": {
+        "title": "Bank Withdrawal",
+        "subtitle": "Withdraw to your bank",
+        "selectBank": "Select Bank",
+        "accountNumber": "Account Number",
+        "amount": "Amount",
+        "fee": "Fee",
+        "total": "You Receive",
+        "confirm": "Withdraw",
+        "warning": "Withdrawals typically complete within 1–2 business days.",
+        "processing": "Processing…"
+      },
+      "syncCard": {
+        "title": "Sync to Card",
+        "subtitle": "E-Wallet → Card",
+        "selectCard": "Select Card",
+        "amount": "Amount",
+        "confirm": "Transfer to Card",
+        "noCard": "No card yet.",
+        "orderOne": "Order one →"
+      },
+      "activity": {
+        "title": "Transaction History",
+        "empty": "No transactions yet",
+        "emptyBody": "Your transfers and withdrawals will appear here.",
+        "exportCsv": "Export CSV"
+      },
+      "beneficiaries": {
+        "title": "Saved Beneficiaries",
+        "addNew": "Add Beneficiary",
+        "empty": "No saved beneficiaries",
+        "emptyBody": "Save bank details for fast repeat transfers.",
+        "fullName": "Full Name",
+        "bankName": "Bank Name",
+        "accountNumber": "Account Number",
+        "swiftBic": "SWIFT / BIC",
+        "iban": "IBAN",
+        "currency": "Currency",
+        "country": "Country",
+        "save": "Save Beneficiary",
+        "delete": "Delete"
       }
     },
     "crypto": {
@@ -550,14 +637,26 @@
         "title": "Deposit",
         "selectAsset": "Select Asset",
         "depositAddress": "Deposit Address",
-        "warning": "Only send {symbol} on the {network} network"
+        "warning": "Only send {symbol} on the {network} network",
+        "subtitle": "Receive crypto",
+        "scanTitle": "Scan or Copy",
+        "warningTitle": "Only send {symbol} on the {network} network",
+        "warningBody": "Sending any other asset or using a different network will result in permanent loss of funds."
       },
       "withdraw": {
         "title": "Withdraw",
         "recipientAddress": "Recipient Address",
         "amount": "Amount",
         "networkFee": "Network Fee",
-        "confirm": "Withdraw"
+        "confirm": "Withdraw",
+        "subtitle": "Send crypto off-platform",
+        "amountLabel": "Amount",
+        "total": "Total",
+        "otpLabel": "Enter 6-Digit OTP",
+        "sendOtp": "Send OTP",
+        "sending": "Sending…",
+        "processing": "Processing…",
+        "success": "Withdrawal initiated"
       },
       "swap": {
         "title": "Swap",
@@ -567,7 +666,11 @@
         "slippage": "Slippage",
         "priceImpact": "Price Impact",
         "fee": "Fee",
-        "confirm": "Swap"
+        "confirm": "Swap",
+        "subtitle": "Exchange between assets",
+        "flipDirection": "Flip direction",
+        "estimating": "Estimating…",
+        "calculatedOnConfirm": "Calculated on confirmation"
       },
       "buy": {
         "title": "Buy Crypto"
@@ -576,7 +679,11 @@
         "title": "Withdraw to Card"
       },
       "offRamp": {
-        "title": "Off-Ramp to Bank"
+        "title": "Off-Ramp to Bank",
+        "subtitle": "Crypto → Bank ACH",
+        "step1": "Amount",
+        "step2": "Destination",
+        "step3": "Confirm"
       },
       "activate": {
         "title": "Activate Assets",
@@ -588,7 +695,48 @@
         "activeLabel": "Active",
         "description": "Each active network gives you a deposit address for receiving USDT and USDC on that chain."
       },
-      "sandboxNotice": "Sandbox mode. Custodial wallets are read-only in TygaBank sandbox. Create/send operations will work in production."
+      "sandboxNotice": "Sandbox mode. Custodial wallets are read-only in TygaBank sandbox. Create/send operations will work in production.",
+      "portfolio": "Crypto Portfolio",
+      "walletId": "Wallet ID",
+      "change24h": "24H",
+      "actions": {
+        "deposit": "Deposit",
+        "withdraw": "Withdraw",
+        "buy": "Buy",
+        "sync": "Sync",
+        "syncing": "Syncing…",
+        "sendToCard": "Send to Card",
+        "sendToBank": "Send to Bank",
+        "swap": "Swap"
+      },
+      "receive": {
+        "title": "Receive Assets",
+        "selectAsset": "Select Asset",
+        "depositAddress": "Deposit Address",
+        "noAddresses": "No deposit addresses claimed yet.",
+        "activateFirst": "Activate Your First Asset",
+        "activateButton": "Activate Assets"
+      },
+      "latestActivity": "Latest Activity",
+      "createWalletPrompt": "Create Crypto Wallet",
+      "createWalletBody": "Before you can deposit or swap, initialize your crypto wallet.",
+      "creatingWallet": "Creating…",
+      "createCrypto": "Create Crypto Wallet",
+      "cardLoadModal": {
+        "title": "Withdraw to Card",
+        "subtitle": "Crypto → Card",
+        "cardLabel": "Card",
+        "amountLabel": "Amount (USD)",
+        "noCard": "No card yet.",
+        "orderOne": "Order one →",
+        "sendOtp": "Send OTP",
+        "sending": "Sending…",
+        "otpLabel": "Enter 6-Digit OTP",
+        "confirm": "Confirm Withdrawal",
+        "loading": "Loading…",
+        "success": "Card Loaded",
+        "successBody": "${amount} will arrive on your card shortly."
+      }
     },
     "cards": {
       "title": "Cards",
@@ -620,6 +768,90 @@
         "sampleWarning": "Sample fees shown. Your tenant's fee schedule hasn't been provisioned by TygaBank yet. The numbers below are illustrative — contact support for actual pricing.",
         "needHelp": "Need Help?",
         "contactSupport": "Contact Support"
+      },
+      "noCardsYet": "No cards yet",
+      "noCardsBody": "Order a virtual or physical card to get started.",
+      "orderFirstCard": "Order Your First Card",
+      "activate": "Activate",
+      "activating": "Activating…",
+      "load": {
+        "title": "Load Card",
+        "subtitle": "Add funds to your card",
+        "quickAmounts": "Quick Amounts",
+        "customAmount": "Custom Amount",
+        "source": "Source Wallet",
+        "otpSent": "OTP sent to your email",
+        "resendIn": "Resend in {seconds}s",
+        "resendNow": "Resend now",
+        "confirm": "Confirm Load",
+        "processing": "Processing…"
+      },
+      "lock": "Lock",
+      "unlock": "Unlock",
+      "viewDetails": "View Details",
+      "order": {
+        "title": "Order Card",
+        "choosePlan": "Choose Your Plan",
+        "virtualCard": "Virtual Card",
+        "physicalCard": "Physical Card",
+        "instantAccess": "Instant digital activation",
+        "shipping": "Standard delivery (7–10 days)",
+        "orderSummary": "Order Summary",
+        "feeBreakdown": "Fee Breakdown",
+        "totalCost": "Total Cost",
+        "placeOrder": "Place Order",
+        "sendingOtp": "Sending OTP…",
+        "enterOtp": "Enter 6-Digit OTP",
+        "confirmOrder": "Confirm Order"
+      },
+      "lockModal": {
+        "title": "Lock Card",
+        "body": "Temporarily disable transactions on this card.",
+        "reason": "Reason",
+        "canUnlock": "You can unlock anytime from your dashboard.",
+        "confirm": "Lock Card"
+      },
+      "details": {
+        "title": "Card Details",
+        "cardNumber": "Card Number",
+        "expires": "Expires",
+        "cvv": "CVV",
+        "autoHide": "Auto-hides in {seconds}s",
+        "pciDss": "PCI-DSS Compliant",
+        "copy": "Copy"
+      },
+      "kyc": {
+        "required": "Identity verification required",
+        "body": "Complete KYC to order a card.",
+        "startVerification": "Start Verification",
+        "pending": "Verification in progress",
+        "pendingBody": "We'll email you when your identity check completes."
+      },
+      "setup": {
+        "title": "Card Setup",
+        "subtitle": "Tell us about yourself to enable card services",
+        "firstName": "First Name",
+        "middleName": "Middle Name",
+        "lastName": "Last Name",
+        "cardHolderFirst": "Card Holder First Name",
+        "cardHolderLast": "Card Holder Last Name",
+        "gender": "Gender",
+        "male": "Male",
+        "female": "Female",
+        "notSpecified": "Not specified",
+        "dateOfBirth": "Date of Birth",
+        "placeOfBirth": "Place of Birth (Country)",
+        "occupation": "Occupation",
+        "phoneNumber": "Phone Number",
+        "phoneCountry": "Country Code",
+        "addressLine1": "Address Line 1",
+        "addressLine2": "Address Line 2",
+        "city": "City",
+        "subdivision": "State / Province",
+        "postalCode": "Postal Code",
+        "country": "Country",
+        "submit": "Save & Continue",
+        "saving": "Saving…"
       }
     },
     "ecosystem": {
@@ -628,12 +860,159 @@
       "title2": "One Ecosystem.",
       "hint": "Hover over any segment to explore. Click to jump in.",
       "visitPlatform": "Visit Platform",
-      "brainOfEcosystem": "Brain of the Ecosystem"
+      "brainOfEcosystem": "Brain of the Ecosystem",
+      "brain": "◆ Brain of the Ecosystem ◆",
+      "visitCryptomadness": "Visit Cryptomadness",
+      "connected": "Connected",
+      "fourPlatforms": "4 Platforms",
+      "status": "Status",
+      "active": "Active",
+      "power": "Power",
+      "hubTagline": "The central intelligence powering the financial ecosystem"
     },
     "activity": {
       "title": "Recent Activity",
       "empty": "No activity yet",
       "emptyBody": "Your transactions will appear here."
+    },
+    "orders": {
+      "title": "Orders",
+      "subtitle": "Your order history",
+      "empty": "No orders yet",
+      "emptyBody": "Payment requests and merchant orders will show here.",
+      "orderNumber": "Order #",
+      "customer": "Customer",
+      "amount": "Amount",
+      "status": "Status",
+      "created": "Created",
+      "viewDetails": "View Details"
+    },
+    "transactions": {
+      "title": "Transactions",
+      "subtitle": "All activity across your wallets",
+      "empty": "No transactions",
+      "emptyBody": "When you send or receive, it'll appear here.",
+      "filterByWallet": "Filter by wallet",
+      "filterByType": "Filter by type",
+      "filterByStatus": "Filter by status",
+      "search": "Search by reference or email",
+      "exportCsv": "Export CSV"
+    },
+    "subscriptions": {
+      "title": "Subscriptions",
+      "subtitle": "Recurring payments & product subscriptions",
+      "lookupTitle": "Subscription Lookup",
+      "lookupNote": "Enter a subscription ID below to view or cancel it. Full list-by-user is pending upstream provider support.",
+      "enterId": "Enter subscription ID…",
+      "lookupCta": "Look Up",
+      "lookingUp": "Looking up…",
+      "tabs": {
+        "pending": "PENDING",
+        "active": "ACTIVE",
+        "completed": "COMPLETED"
+      },
+      "emptyTitle": "No {tab} subscriptions yet",
+      "emptyBody": "Use the lookup above to fetch any subscription by its ID.",
+      "detailsTitle": "Subscription Details",
+      "cancelCta": "Cancel Subscription",
+      "cancelling": "Cancelling…",
+      "cancelConfirm": "Cancel this subscription? This cannot be undone.",
+      "cancelSuccess": "Subscription cancelled successfully.",
+      "cancelFailed": "Failed to cancel"
+    },
+    "reports": {
+      "title": "Reports",
+      "subtitle": "Generate transaction reports & export CSVs",
+      "startDate": "Start Date",
+      "endDate": "End Date",
+      "txType": "Transaction Type",
+      "walletType": "Wallet Type",
+      "allTypes": "All Types",
+      "allWallets": "All Wallets",
+      "generate": "Generate Report",
+      "generating": "Generating…",
+      "exportCsv": "Export CSV",
+      "totalInflow": "Total Inflow",
+      "totalOutflow": "Total Outflow",
+      "netBalance": "Net Balance",
+      "count": "Count",
+      "noResults": "No results",
+      "noResultsBody": "Try widening your date range or changing filters.",
+      "failed": "Failed to generate report"
+    },
+    "notifications": {
+      "title": "Notifications",
+      "subtitle": "Account updates & transaction alerts",
+      "empty": "You're all caught up",
+      "emptyBody": "When something happens, we'll tell you here.",
+      "markAllRead": "Mark all as read",
+      "viewAll": "View all"
+    },
+    "help": {
+      "title": "Help & FAQs",
+      "subtitle": "Answers to common questions",
+      "contactSupport": "Contact Support",
+      "search": "Search help articles…"
+    },
+    "payouts": {
+      "title": "Payouts",
+      "subtitle": "Scheduled and completed payouts",
+      "empty": "No payouts yet",
+      "emptyBody": "Your disbursements will appear here.",
+      "newPayout": "New Payout"
+    },
+    "recurring": {
+      "title": "Recurring Payments",
+      "subtitle": "Automate payouts on a schedule you choose",
+      "emptyTitle": "Set up your first recurring payment",
+      "emptyBody": "Schedule automatic payouts to recipients on a weekly, monthly, or custom cadence.",
+      "createCta": "Create Recurring Payment",
+      "recipientUserId": "Recipient User ID",
+      "amount": "Amount",
+      "cycle": "Cycle",
+      "walletType": "Wallet Type",
+      "startDate": "Start Date",
+      "endDate": "End Date (optional)",
+      "creating": "Creating…",
+      "success": "Recurring payment created."
+    },
+    "rewards": {
+      "title": "Rewards",
+      "subtitle": "Earn points on every transaction",
+      "balance": "Points Balance",
+      "empty": "No rewards yet",
+      "emptyBody": "Start transacting to earn points.",
+      "redeem": "Redeem"
+    },
+    "profileModal": {
+      "title": "Your Profile",
+      "editProfile": "Edit Profile",
+      "security": "Security",
+      "signOut": "Sign Out",
+      "accountType": "Account Type",
+      "tygaBankUserId": "TygaBank User ID",
+      "memberSince": "Member Since",
+      "languageSettings": "Language"
+    },
+    "completeProfile": {
+      "title": "Complete Your Profile",
+      "subtitle": "A few details before you continue.",
+      "step1": "Basic Info",
+      "step2": "Address",
+      "step3": "Verification",
+      "firstName": "First Name",
+      "lastName": "Last Name",
+      "dob": "Date of Birth",
+      "phone": "Phone Number",
+      "addressLine1": "Address Line 1",
+      "addressLine2": "Address Line 2",
+      "city": "City",
+      "subdivision": "State / Province",
+      "postalCode": "Postal Code",
+      "country": "Country",
+      "continue": "Continue",
+      "saving": "Saving…",
+      "finish": "Finish"
     }
   }
 }
