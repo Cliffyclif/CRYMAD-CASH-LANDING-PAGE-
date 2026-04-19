@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import { useLanguage } from "@/i18n/LanguageContext";
 
 function getStrengthScore(pw: string): 0 | 1 | 2 | 3 {
   if (!pw) return 0;
@@ -23,6 +24,7 @@ function strengthLabel(score: 0 | 1 | 2 | 3): string {
 
 export default function RegisterPage() {
   const router = useRouter();
+  const { t } = useLanguage();
   const [accountType, setAccountType] = useState<"personal" | "business">("personal");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -41,23 +43,23 @@ export default function RegisterPage() {
     e.preventDefault();
     setError("");
     if (!email || !password || !confirmPassword) {
-      setError("Please fill in all required fields.");
+      setError(t("app.auth.register.fillRequired"));
       return;
     }
     if (password.length < 8) {
-      setError("Password must be at least 8 characters.");
+      setError(t("app.auth.register.passwordTooShort"));
       return;
     }
     if (password !== confirmPassword) {
-      setError("Passwords do not match.");
+      setError(t("app.auth.register.passwordsDontMatch"));
       return;
     }
     if (!agreeTerms || !agreePrivacy) {
-      setError("You must agree to the Terms and Privacy Policy.");
+      setError(t("app.auth.register.agreeRequired"));
       return;
     }
     if (accountType === "business" && !corpId) {
-      setError("Please provide your Corp ID.");
+      setError(t("app.auth.register.corpIdRequired"));
       return;
     }
     setLoading(true);
@@ -75,17 +77,17 @@ export default function RegisterPage() {
       if (!res.ok) {
         setError(
           j.error === "Email already registered"
-            ? "This email is already registered. Try signing in instead."
+            ? t("app.auth.register.emailTaken")
             : j.error === "tygabank_error"
-              ? "Could not create your account. Please try again later."
-              : "Registration failed. Try again."
+              ? t("app.auth.register.cantCreate")
+              : t("app.auth.register.registerFailed")
         );
         return;
       }
       const url = `/register/verify-email?email=${encodeURIComponent(email)}${j.devCode ? `&devCode=${j.devCode}` : ""}`;
       router.push(url);
     } catch {
-      setError("Network error. Try again.");
+      setError(t("app.auth.login.networkError"));
     } finally {
       setLoading(false);
     }
@@ -141,7 +143,7 @@ export default function RegisterPage() {
           textShadow: "0 0 30px rgba(var(--primary-rgb), 0.35)",
         }}
       >
-        Create Account
+        {t("app.auth.register.title")}
       </h1>
       <p
         style={{
@@ -151,7 +153,7 @@ export default function RegisterPage() {
           textAlign: "center",
         }}
       >
-        Join the digital finance platform
+        {t("app.auth.register.subtitle")}
       </p>
 
       {/* PERSONAL / BUSINESS tabs */}
@@ -197,7 +199,7 @@ export default function RegisterPage() {
                 gap: 8,
               }}
             >
-              {type}
+              {type === "personal" ? t("app.auth.register.personal") : t("app.auth.register.business")}
               {disabled && (
                 <span
                   style={{
@@ -211,7 +213,7 @@ export default function RegisterPage() {
                     color: "var(--primary)",
                   }}
                 >
-                  SOON
+                  {t("app.auth.register.soon")}
                 </span>
               )}
             </button>
@@ -222,10 +224,10 @@ export default function RegisterPage() {
       <form onSubmit={handleSubmit}>
         {/* Email */}
         <div style={{ marginBottom: 22 }}>
-          <label style={labelStyle}>Email Address</label>
+          <label style={labelStyle}>{t("app.common.emailAddress")}</label>
           <input
             type="email"
-            placeholder="operator@crymad.cash"
+            placeholder={t("app.auth.register.emailPlaceholder")}
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             style={underlineInput}
@@ -236,10 +238,10 @@ export default function RegisterPage() {
 
         {/* Access Key */}
         <div style={{ marginBottom: 6 }}>
-          <label style={labelStyle}>Password</label>
+          <label style={labelStyle}>{t("app.auth.register.passwordLabel")}</label>
           <input
             type="password"
-            placeholder="••••••••••••"
+            placeholder={t("app.auth.register.passwordPlaceholder")}
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             style={underlineInput}
@@ -264,7 +266,7 @@ export default function RegisterPage() {
         </div>
         <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 22, minHeight: 16 }}>
           <span style={{ fontSize: 10, letterSpacing: 2, color: "var(--text-muted)", textTransform: "uppercase" }}>
-            {password ? `Strength: ${strengthLabel(score)}` : ""}
+            {password ? `${t("app.auth.register.strengthPrefix")} ${t(`app.auth.register.strength${strengthLabel(score)}`)}` : ""}
           </span>
           {score === 3 && (
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -276,11 +278,11 @@ export default function RegisterPage() {
 
         {/* Re-Entry Key */}
         <div style={{ marginBottom: 22 }}>
-          <label style={labelStyle}>Confirm Password</label>
+          <label style={labelStyle}>{t("app.auth.register.confirmPasswordLabel")}</label>
           <div style={{ position: "relative" }}>
             <input
               type="password"
-              placeholder="••••••••••••"
+              placeholder={t("app.auth.register.passwordPlaceholder")}
               value={confirmPassword}
               onChange={(e) => setConfirmPassword(e.target.value)}
               style={{ ...underlineInput, paddingRight: 30 }}
@@ -348,8 +350,8 @@ export default function RegisterPage() {
         {/* Agreement pills */}
         <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 10, marginBottom: 22 }}>
           {[
-            { label: "Terms of Service", checked: agreeTerms, set: setAgreeTerms },
-            { label: "Privacy Policy", checked: agreePrivacy, set: setAgreePrivacy },
+            { label: t("app.auth.register.termsOfService"), checked: agreeTerms, set: setAgreeTerms },
+            { label: t("app.auth.register.privacyPolicy"), checked: agreePrivacy, set: setAgreePrivacy },
           ].map((opt) => (
             <button
               key={opt.label}
@@ -447,7 +449,7 @@ export default function RegisterPage() {
             e.currentTarget.style.boxShadow = "0 0 20px rgba(var(--primary-rgb), 0.15)";
           }}
         >
-          {loading ? "Creating Account…" : "Create Account"}
+          {loading ? t("app.auth.register.creating") : t("app.auth.register.createCta")}
           {!loading && (
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
               <line x1="5" y1="12" x2="19" y2="12" />
@@ -468,12 +470,12 @@ export default function RegisterPage() {
           color: "var(--text-muted)",
         }}
       >
-        Already have an account?{" "}
+        {t("app.auth.register.alreadyHaveAccount")}{" "}
         <Link
           href="/login"
           style={{ color: "var(--primary)", textDecoration: "none", fontWeight: 700, marginLeft: 6 }}
         >
-          Sign In →
+          {t("app.auth.register.signInLink")}
         </Link>
       </div>
     </div>

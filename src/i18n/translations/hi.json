@@ -1,0 +1,639 @@
+{
+  "nav": {
+    "home": "होम",
+    "personalAccounts": "व्यक्तिगत खाते",
+    "businessAccounts": "व्यावसायिक खाते",
+    "security": "सुरक्षा",
+    "faq": "FAQ",
+    "contact": "संपर्क",
+    "about": "हमारे बारे में",
+    "signIn": "साइन इन",
+    "openAccount": "खाता खोलें"
+  },
+  "hero": {
+    "badge": "डिजिटल वित्त का भविष्य",
+    "title": "Crymad Cash",
+    "subtitle": "डिजिटल वित्त का भविष्य",
+    "description": "बहु-मुद्रा खाते प्रबंधित करें, वैश्विक भुगतान भेजें, डिजिटल वॉलेट एक्सेस करें, और क्रिप्टो सुविधाओं को एकीकृत करें — सब एक सुरक्षित प्लेटफॉर्म से।",
+    "openAccount": "खाता खोलें",
+    "businessSolutions": "व्यावसायिक समाधान",
+    "bankGradeEncryption": "बैंक-स्तरीय एन्क्रिप्शन",
+    "physicalVirtualCards": "भौतिक और वर्चुअल कार्ड",
+    "cryptoIntegration": "क्रिप्टो एकीकरण",
+    "countries": "देश",
+    "currencies": "मुद्राएँ",
+    "support": "सहायता"
+  },
+  "features": {
+    "whyChooseUs": "हमें क्यों चुनें",
+    "allInOneTitle": "ऑल-इन-वन वित्तीय",
+    "allInOneTitleHighlight": "प्लेटफॉर्म",
+    "allInOneDesc": "Crymad Cash आवश्यक वित्तीय सेवाओं को एक ही प्लेटफॉर्म पर लाता है। भुगतान, डिजिटल वॉलेट और वैश्विक ट्रांसफर को बिना जटिलता के प्रबंधित करें।",
+    "multiCurrency": "बहु-मुद्रा",
+    "instantTransfers": "तत्काल ट्रांसफर",
+    "cryptoReady": "क्रिप्टो तैयार",
+    "bankGradeSecurity": "बैंक-स्तरीय सुरक्षा",
+    "globalReach": "वैश्विक पहुँच",
+    "apiPowered": "API संचालित",
+    "globalPayments": "वैश्विक भुगतान",
+    "globalPaymentsDesc": "कई मुद्राओं के समर्थन के साथ दुनिया भर में पैसे भेजें और प्राप्त करें।",
+    "worldwide": "विश्वव्यापी",
+    "cryptoIntegration": "क्रिप्टो एकीकरण",
+    "cryptoIntegrationDesc": "अपने वॉलेट से सीधे डिजिटल संपत्ति कार्यक्षमता एक्सेस करें।",
+    "digitalAssets": "डिजिटल संपत्तियाँ",
+    "builtForBusiness": "व्यवसाय के लिए निर्मित",
+    "builtForBusinessDesc": "API कनेक्टिविटी के साथ व्यवसायों के लिए स्केलेबल वित्तीय समाधान।",
+    "enterprise": "एंटरप्राइज़",
+    "secureByDesign": "डिज़ाइन से सुरक्षित",
+    "secureByDesignDesc": "एन्क्रिप्शन और मल्टी-फैक्टर ऑथेंटिकेशन सहित उन्नत सुरक्षा।",
+    "protected": "सुरक्षित",
+    "sendMoney": "पैसे भेजें",
+    "anywhereInTheWorld": "दुनिया में कहीं भी",
+    "globalPaymentsFullDesc": "कई मुद्राओं के समर्थन के साथ दुनिया भर में पैसे भेजें और प्राप्त करें, अनावश्यक विनिमय लागत को कम करने और अंतर्राष्ट्रीय लेनदेन को सरल बनाने में मदद करें।",
+    "instantCrossBorder": "तत्काल सीमा-पार ट्रांसफर",
+    "multiCurrencyAccounts": "बहु-मुद्रा खाते",
+    "competitiveRates": "प्रतिस्पर्धी विनिमय दरें",
+    "fiftyPlusCountries": "50+ देश",
+    "sendMoneyWorldwide": "तुरंत दुनिया भर में पैसे भेजें",
+    "traditionalDigital": "पारंपरिक और डिजिटल संपत्तियाँ,",
+    "oneWallet": "एक वॉलेट",
+    "cryptoFullDesc": "अपने वॉलेट से सीधे डिजिटल संपत्ति कार्यक्षमता एक्सेस करें। Bitcoin, Ethereum, USDT और USDC सहित पारंपरिक मुद्राओं और क्रिप्टोकरेंसी दोनों का प्रबंधन करें।",
+    "realTimeCryptoPortfolio": "रियल-टाइम क्रिप्टो पोर्टफोलियो",
+    "buySellHold": "डिजिटल संपत्तियाँ खरीदें, बेचें और रखें",
+    "secureColdStorage": "सुरक्षित कोल्ड स्टोरेज",
+    "cryptoEnabled": "क्रिप्टो सक्षम",
+    "btcEthMore": "BTC, ETH, USDT और अधिक",
+    "cardsWallet": "कार्ड और वॉलेट",
+    "virtualPhysical": "वर्चुअल और भौतिक",
+    "cardsForEveryNeed": "हर ज़रूरत के लिए कार्ड",
+    "cardsDesc": "ऑनलाइन खर्च के लिए तत्काल वर्चुअल कार्ड और स्टोर में खरीदारी के लिए भौतिक कार्ड प्राप्त करें। आपके सभी कार्ड एक सुरक्षित डिजिटल वॉलेट में व्यवस्थित।",
+    "hoverToFlip": "कार्ड पलटने के लिए होवर करें",
+    "instantVirtualCard": "तत्काल वर्चुअल कार्ड निर्माण",
+    "generateNewCard": "सेकंडों में एक नया वर्चुअल कार्ड बनाएँ",
+    "spendAnyCurrency": "किसी भी मुद्रा में खर्च करें",
+    "automaticConversion": "प्रतिस्पर्धी दरों पर स्वचालित रूपांतरण",
+    "freezeUnfreeze": "तुरंत फ्रीज़ और अनफ्रीज़ करें",
+    "fullControl": "किसी भी समय अपने ऐप से पूर्ण नियंत्रण",
+    "forBusiness": "व्यवसाय के लिए",
+    "financialInfrastructure": "वित्तीय बुनियादी ढाँचा",
+    "modernBusiness": "आधुनिक व्यवसाय के लिए",
+    "businessFullDesc": "Crymad Cash व्यावसायिक खाते वैश्विक संचालन के लिए डिज़ाइन किए गए शक्तिशाली वित्तीय उपकरण प्रदान करते हैं। पेआउट सक्षम करें, भुगतान एकीकृत करें, और बड़े पैमाने पर बहु-मुद्रा खातों का प्रबंधन करें।",
+    "globalPayouts": "टीमों और भागीदारों को वैश्विक पेआउट",
+    "secureApi": "सुरक्षित API और भुगतान एकीकरण",
+    "acceptCrypto": "क्रिप्टो भुगतान स्वीकार करें",
+    "apiReady": "API तैयार",
+    "seamlessIntegration": "निर्बाध व्यावसायिक एकीकरण",
+    "cardProperty": "यह कार्ड Crymad Cash Ltd. की संपत्ति है।",
+    "cardAgreement": "उपयोग कार्डधारक समझौते के अधीन है।",
+    "validThru": "वैध तक",
+    "cardHolder": "कार्डधारक"
+  },
+  "glassFeatures": {
+    "badge": "प्लेटफॉर्म सुविधाएँ",
+    "title": "आपको जो कुछ भी चाहिए,",
+    "titleHighlight": "एक प्लेटफॉर्म",
+    "description": "बहु-मुद्रा खातों से लेकर क्रिप्टो उपकरणों तक — अपने संपूर्ण वित्तीय जीवन को एक ही स्थान पर प्रबंधित करें।",
+    "multiCurrency": "बहु-मुद्रा",
+    "multiCurrencyDesc": "कई मुद्राओं में धन रखें और प्रबंधित करें, जिससे अंतर्राष्ट्रीय भुगतान भेजना और प्राप्त करना आसान हो।",
+    "digitalEWallets": "डिजिटल ई-वॉलेट",
+    "digitalEWalletsDesc": "धन प्रबंधित करने, पैसे ट्रांसफर करने और रियल टाइम में लेनदेन ट्रैक करने के लिए सुरक्षित ई-वॉलेट एक्सेस करें।",
+    "globalPayments": "वैश्विक भुगतान और ट्रांसफर",
+    "globalPaymentsDesc": "कई मुद्राओं के समर्थन के साथ दुनिया भर में पैसे भेजें और प्राप्त करें।",
+    "cryptoTools": "क्रिप्टो-सक्षम उपकरण",
+    "cryptoToolsDesc": "अपने वॉलेट से सीधे डिजिटल संपत्ति कार्यक्षमता एक्सेस करें।",
+    "virtualPhysicalCards": "वर्चुअल और भौतिक कार्ड",
+    "virtualPhysicalCardsDesc": "ऑनलाइन और स्टोर में खरीदारी, और ATM निकासी के लिए वर्चुअल और भौतिक कार्ड।",
+    "realTimeMonitoring": "रियल-टाइम निगरानी",
+    "realTimeMonitoringDesc": "आपके खाते और वित्तीय गतिविधि की सुरक्षा में मदद के लिए रियल-टाइम लेनदेन निगरानी।",
+    "bankGradeSecurity": "बैंक-स्तरीय सुरक्षा",
+    "bankGradeSecurityDesc": "उन्नत एन्क्रिप्शन, प्रमाणीकरण प्रणालियाँ, और लेनदेन निगरानी।"
+  },
+  "accounts": {
+    "badge": "खाता प्रकार",
+    "title": "अपना चुनें",
+    "titleHighlight": "खाता",
+    "description": "चाहे आप व्यक्ति हों या व्यवसाय, Crymad Cash के पास आपके लिए सही उपकरण हैं।",
+    "personal": "व्यक्तिगत",
+    "individualAccount": "पर्सनल खाता",
+    "personalDesc": "उन व्यक्तियों के लिए जो सभी आवश्यक उपकरणों के साथ तेज़, लचीली और वैश्विक वित्तीय पहुँच चाहते हैं।",
+    "personalFeatures": [
+      "10+ मुद्राओं में बहु-मुद्रा खाते",
+      "सुरक्षित डिजिटल ई-वॉलेट",
+      "50+ देशों में वैश्विक ट्रांसफर",
+      "क्रिप्टो एकीकरण (BTC, ETH, USDT, USDC)",
+      "वर्चुअल और भौतिक डेबिट कार्ड"
+    ],
+    "business": "व्यवसाय",
+    "businessAccount": "व्यावसायिक खाता",
+    "businessDesc": "वैश्विक संचालन और बढ़ती कंपनियों के लिए डिज़ाइन किए गए शक्तिशाली वित्तीय उपकरण।",
+    "businessFeatures": [
+      "विक्रेताओं और भागीदारों को वैश्विक पेआउट",
+      "बहु-मुद्रा व्यावसायिक खाते",
+      "सुरक्षित API भुगतान एकीकरण",
+      "क्रिप्टो भुगतान स्वीकार करें",
+      "टीम प्रबंधन और अनुमतियाँ"
+    ]
+  },
+  "security": {
+    "badge": "सुरक्षा",
+    "title": "आपका पैसा,",
+    "titleHighlight": "सुरक्षित",
+    "description": "हम अपने उपयोगकर्ताओं और उनके धन की हर समय सुरक्षा के लिए उन्नत वित्तीय प्रौद्योगिकी और उद्योग-मानक सुरक्षा प्रथाओं का उपयोग करते हैं।",
+    "items": [
+      "बैंक-स्तरीय एन्क्रिप्शन (AES-256)",
+      "मल्टी-फैक्टर ऑथेंटिकेशन",
+      "रियल-टाइम लेनदेन निगरानी",
+      "उन्नत धोखाधड़ी पहचान प्रणालियाँ",
+      "अंतर्राष्ट्रीय वित्तीय मानक अनुपालन"
+    ]
+  },
+  "faq": {
+    "badge": "FAQ",
+    "title": "अक्सर पूछे जाने वाले",
+    "titleHighlight": "प्रश्न",
+    "items": [
+      {
+        "question": "क्या Crymad Cash एक बैंक है?",
+        "answer": "Crymad Cash एक वित्तीय प्रौद्योगिकी प्लेटफॉर्म है जो लाइसेंस प्राप्त वित्तीय भागीदारों के माध्यम से डिजिटल वित्तीय सेवाओं तक पहुँच प्रदान करता है। हम एक बैंक नहीं हैं, लेकिन हम सुरक्षित और अनुपालन बैंकिंग-जैसी सेवाएँ प्रदान करने के लिए विनियमित वित्तीय संस्थानों के साथ काम करते हैं।"
+      },
+      {
+        "question": "कौन खाता खोल सकता है?",
+        "answer": "व्यक्ति और व्यवसाय दोनों पहचान सत्यापन और अनुपालन जाँच के अधीन Crymad Cash खाते खोल सकते हैं। हम दुनिया भर के 50+ देशों के ग्राहकों का समर्थन करते हैं।"
+      },
+      {
+        "question": "कौन सी मुद्राएँ समर्थित हैं?",
+        "answer": "Crymad Cash USD, EUR, GBP और अन्य सहित 100+ फिएट मुद्राओं के साथ-साथ Bitcoin (BTC), Ethereum (ETH), Tether (USDT), और USD Coin (USDC) जैसी लोकप्रिय क्रिप्टोकरेंसी का समर्थन करता है।"
+      },
+      {
+        "question": "क्या मेरा धन सुरक्षित है?",
+        "answer": "हाँ। Crymad Cash आपके खाते की सुरक्षा के लिए AES-256 एन्क्रिप्शन, मल्टी-फैक्टर ऑथेंटिकेशन और रियल-टाइम लेनदेन निगरानी का उपयोग करता है। हम अंतर्राष्ट्रीय वित्तीय मानकों का पालन करते हैं और उन्नत धोखाधड़ी पहचान प्रणालियों का उपयोग करते हैं।"
+      },
+      {
+        "question": "क्या मैं अंतर्राष्ट्रीय भुगतान भेज सकता हूँ?",
+        "answer": "बिल्कुल। Crymad Cash सभी समर्थित मुद्राओं में प्रतिस्पर्धी विनिमय दरों और तेज़ प्रोसेसिंग समय के साथ 50+ देशों में वैश्विक ट्रांसफर और सीमा-पार भुगतान सक्षम करता है।"
+      }
+    ]
+  },
+  "cta": {
+    "badge": "शुरू करें",
+    "title": "इसमें शामिल होने के लिए तैयार हैं",
+    "titleHighlight": "वित्त का भविष्य",
+    "description": "आज ही अपना Crymad Cash खाता खोलें और सीमाहीन, डिजिटल-फर्स्ट वित्तीय सेवाओं का अनुभव करें।",
+    "openPersonalAccount": "व्यक्तिगत खाता खोलें",
+    "businessSolutions": "व्यावसायिक समाधान"
+  },
+  "footer": {
+    "brandDesc": "व्यक्तियों और व्यवसायों के लिए विश्वव्यापी बैंकिंग समाधान प्रदान करने वाला आधुनिक वित्तीय प्रौद्योगिकी प्लेटफॉर्म।",
+    "products": "उत्पाद",
+    "personalAccounts": "व्यक्तिगत खाते",
+    "businessAccounts": "व्यावसायिक खाते",
+    "globalPayments": "वैश्विक भुगतान",
+    "cryptoIntegration": "क्रिप्टो एकीकरण",
+    "company": "कंपनी",
+    "about": "हमारे बारे में",
+    "security": "सुरक्षा",
+    "faq": "FAQ",
+    "support": "सहायता",
+    "contact": "संपर्क",
+    "legal": "कानूनी",
+    "termsOfService": "सेवा की शर्तें",
+    "privacyPolicy": "गोपनीयता नीति",
+    "amlPolicy": "AML नीति",
+    "riskDisclosure": "जोखिम प्रकटीकरण",
+    "partnerDisclosures": "भागीदार प्रकटीकरण",
+    "copyright": "Crymad Cash. सर्वाधिकार सुरक्षित।",
+    "disclaimer": "Crymad Cash एक वित्तीय प्रौद्योगिकी प्लेटफॉर्म है। बैंकिंग और भुगतान सेवाएँ लाइसेंस प्राप्त वित्तीय संस्थानों और विनियमित भागीदारों द्वारा प्रदान की जाती हैं। Crymad Cash सीधे ग्राहक जमा नहीं रखता है।"
+  },
+  "contact": {
+    "support": {
+      "title": "संपर्क करें",
+      "description": "हम आपसे सुनना चाहेंगे",
+      "subjects": [
+        "व्यक्तिगत खाता पूछताछ",
+        "कार्ड सेवाएँ",
+        "तकनीकी सहायता",
+        "सामान्य प्रश्न",
+        "अन्य"
+      ]
+    },
+    "business": {
+      "title": "व्यावसायिक पूछताछ",
+      "description": "आइए जानें कि Crymad Cash आपके व्यवसाय को कैसे सशक्त बना सकता है",
+      "subjects": [
+        "व्यावसायिक समाधान",
+        "व्यावसायिक खाता सेटअप",
+        "वैश्विक भुगतान",
+        "क्रिप्टो एकीकरण",
+        "साझेदारी का अवसर",
+        "API और डेवलपर एक्सेस",
+        "अन्य"
+      ]
+    },
+    "compliance": {
+      "title": "अनुपालन और कानूनी",
+      "description": "हमारी नीतियों और नियामक अनुपालन के बारे में प्रश्न",
+      "subjects": [
+        "AML नीति",
+        "सेवा की शर्तें",
+        "गोपनीयता नीति",
+        "जोखिम प्रकटीकरण",
+        "भागीदार प्रकटीकरण",
+        "KYC / पहचान सत्यापन",
+        "नियामक पूछताछ",
+        "अन्य"
+      ]
+    },
+    "whyBusiness": "व्यवसाय के लिए Crymad Cash क्यों",
+    "countriesLabel": "50+ देश",
+    "countriesDesc": "प्रतिस्पर्धी FX दरों के साथ विश्व स्तर पर भुगतान भेजें और प्राप्त करें",
+    "multiCurrencyTitle": "बहु-मुद्रा खाते",
+    "multiCurrencyDesc": "10+ फिएट और क्रिप्टो मुद्राओं को रखें, परिवर्तित करें और प्रबंधित करें",
+    "enterpriseSecurity": "एंटरप्राइज़ सुरक्षा",
+    "enterpriseSecurityDesc": "AES-256 एन्क्रिप्शन, MFA, और रियल-टाइम धोखाधड़ी निगरानी",
+    "instantSettlement": "तत्काल निपटान",
+    "instantSettlementDesc": "पारदर्शी शुल्क के साथ लगभग तत्काल सीमा-पार ट्रांसफर",
+    "trustedBy": "व्यवसायों द्वारा विश्वसनीय",
+    "fiftyPlusCountries": "50+ देशों",
+    "salesTeamHelp": " में। हमारी समर्पित बिक्री टीम आपकी ज़रूरतों के लिए सही समाधान खोजने में मदद करेगी।",
+    "wellBeInTouch": "हम संपर्क करेंगे!",
+    "messageSent": "संदेश भेजा गया!",
+    "businessSuccessMsg": "हमारी बिक्री टीम का एक सदस्य आपकी व्यावसायिक ज़रूरतों पर चर्चा करने के लिए 24 घंटों के भीतर संपर्क करेगा।",
+    "supportSuccessMsg": "संपर्क करने के लिए धन्यवाद। हम 24 घंटों के भीतर आपसे संपर्क करेंगे।",
+    "done": "हो गया",
+    "fullName": "पूरा नाम",
+    "name": "नाम",
+    "workEmail": "कार्य ईमेल",
+    "email": "ईमेल",
+    "interestedIn": "मुझे इसमें रुचि है",
+    "subject": "विषय",
+    "selectTopic": "एक विषय चुनें",
+    "message": "संदेश",
+    "businessPlaceholderName": "राहुल शर्मा",
+    "supportPlaceholderName": "आपका नाम",
+    "businessPlaceholderEmail": "you@company.com",
+    "supportPlaceholderEmail": "you@example.com",
+    "businessPlaceholderMsg": "हमें अपने व्यवसाय और अपनी आवश्यकताओं के बारे में बताएँ...",
+    "supportPlaceholderMsg": "हम आपकी कैसे मदद कर सकते हैं?",
+    "sending": "भेजा जा रहा है...",
+    "talkToSales": "बिक्री टीम से बात करें",
+    "sendMessage": "संदेश भेजें",
+    "networkError": "नेटवर्क त्रुटि। कृपया अपना कनेक्शन जाँचें और पुनः प्रयास करें।",
+    "genericError": "कुछ गलत हो गया। कृपया पुनः प्रयास करें।"
+  },
+  "about": {
+    "badge": "हमारे बारे में",
+    "title": "पुनर्परिभाषित",
+    "titleHighlight": "डिजिटल वित्त",
+    "description": "Crymad Cash एक वित्तीय प्रौद्योगिकी प्लेटफॉर्म है जो विश्वव्यापी व्यक्तियों और व्यवसायों के लिए आधुनिक बैंकिंग समाधान प्रदान करता है।",
+    "description2": "पारंपरिक वित्तीय प्रणालियों को डिजिटल नवाचार के साथ जोड़कर, Crymad Cash का लक्ष्य वैश्विक वित्त को तेज़, स्मार्ट और अधिक सुलभ बनाना है।",
+    "ourMission": "हमारा मिशन",
+    "ourMissionDesc": "नवीन प्रौद्योगिकी के माध्यम से सुलभ और सुरक्षित डिजिटल वित्तीय सेवाएँ प्रदान करके वैश्विक वित्त को सरल बनाना।",
+    "innovation": "नवाचार",
+    "innovationDesc": "वित्त को तेज़, स्मार्ट और अधिक सुलभ बनाने के लिए पारंपरिक वित्तीय प्रणालियों को डिजिटल नवाचार के साथ जोड़ना।",
+    "globalReach": "वैश्विक पहुँच",
+    "globalReachDesc": "उपयोगकर्ता वैश्विक अर्थव्यवस्था के लिए डिज़ाइन किए गए डिजिटल वित्तीय उपकरणों का उपयोग करके धन प्रबंधित कर सकते हैं, अंतर्राष्ट्रीय भुगतान कर सकते हैं।",
+    "compliance": "अनुपालन",
+    "complianceDesc": "हम सुरक्षित और अनुपालन वित्तीय सेवाएँ प्रदान करने के लिए लाइसेंस प्राप्त वित्तीय भागीदारों और प्रौद्योगिकी प्रदाताओं के साथ काम करते हैं।",
+    "countriesStat": "50+",
+    "countriesLabel": "देश",
+    "supportStat": "24/7",
+    "supportLabel": "सहायता",
+    "digitalStat": "100%",
+    "digitalLabel": "डिजिटल"
+  },
+  "mobileApp": {
+    "badge": "मोबाइल ऐप",
+    "title": "आपकी वित्तीय सेवाएँ",
+    "titleHighlight": "आपकी जेब में",
+    "description": "Crymad Cash ऐप डाउनलोड करें और अपने खाते प्रबंधित करें, भुगतान भेजें, और क्रिप्टो एक्सेस करें — कभी भी, कहीं भी।",
+    "feature1": "तत्काल सुरक्षित पहुँच के लिए बायोमेट्रिक लॉगिन",
+    "feature2": "रियल-टाइम सूचनाएँ और लेनदेन ट्रैकिंग",
+    "feature3": "चलते-फिरते विश्व स्तर पर पैसे भेजें और प्राप्त करें",
+    "feature4": "कार्ड, क्रिप्टो और बहु-मुद्रा वॉलेट प्रबंधित करें",
+    "downloadOn": "पर डाउनलोड करें",
+    "getItOn": "पर प्राप्त करें"
+  },
+  "languageSwitcher": {
+    "label": "भाषा"
+  },
+  "app": {
+    "common": {
+      "cancel": "Cancel",
+      "confirm": "Confirm",
+      "save": "Save",
+      "close": "Close",
+      "done": "Done",
+      "continue": "Continue",
+      "back": "Back",
+      "next": "Next",
+      "submit": "Submit",
+      "send": "Send",
+      "receive": "Receive",
+      "loading": "Loading…",
+      "saving": "Saving…",
+      "sending": "Sending…",
+      "error": "Something went wrong",
+      "retry": "Retry",
+      "copy": "Copy",
+      "copied": "Copied",
+      "yes": "Yes",
+      "no": "No",
+      "search": "Search",
+      "viewAll": "View all",
+      "learnMore": "Learn more",
+      "comingSoon": "Coming soon",
+      "active": "Active",
+      "activate": "Activate",
+      "required": "Required",
+      "optional": "Optional",
+      "emailAddress": "Email Address",
+      "password": "Password",
+      "amount": "Amount",
+      "description": "Description",
+      "status": "Status",
+      "date": "Date",
+      "type": "Type",
+      "from": "From",
+      "to": "To",
+      "signOut": "Sign Out",
+      "help": "Help",
+      "settings": "Settings",
+      "profile": "Profile"
+    },
+    "nav": {
+      "dashboard": "Dashboard",
+      "ewallet": "E-Wallet",
+      "crypto": "Crypto",
+      "cards": "Cards",
+      "orders": "Orders",
+      "transactions": "Transactions",
+      "subscriptions": "Subscriptions",
+      "reports": "Reports",
+      "more": "More",
+      "notifications": "Notifications",
+      "help": "Help / FAQs",
+      "ecosystem": "Ecosystem",
+      "payouts": "Payouts",
+      "recurringPayments": "Recurring Payments",
+      "rewards": "Rewards",
+      "overview": "Overview",
+      "beneficiaries": "Beneficiaries",
+      "deposit": "Deposit",
+      "withdraw": "Withdraw",
+      "swap": "Swap",
+      "buy": "Buy",
+      "myCards": "My Cards",
+      "orderCard": "Order Card",
+      "cardSetup": "Card Setup",
+      "feeSchedule": "Fee Schedule"
+    },
+    "auth": {
+      "biometric": "Biometric Protocol v2.4",
+      "login": {
+        "title": "Welcome Back",
+        "subtitle": "Sign in to your account",
+        "tabPassword": "Password",
+        "tabEmailCode": "Email Code",
+        "passwordLabel": "Password",
+        "passwordPlaceholder": "Enter your password",
+        "sendCode": "Send Code to Email",
+        "verifyCode": "Verify & Sign In",
+        "enterCode": "6-Digit Code",
+        "useDifferentEmail": "Use different email",
+        "forgotPassword": "Forgot Password?",
+        "signInCta": "Sign In",
+        "newHere": "New to our platform?",
+        "createAccount": "Create Account",
+        "invalidCredentials": "Incorrect email or password.",
+        "loginFailed": "Login failed. Try again.",
+        "codeInvalid": "Invalid or expired code.",
+        "verifyFailed": "Verification failed.",
+        "networkError": "Network error. Try again.",
+        "fillAllFields": "Please fill in all fields.",
+        "enterSixDigit": "Enter the 6-digit code.",
+        "enterEmailFirst": "Enter your email first.",
+        "couldNotSendCode": "Could not send code."
+      },
+      "register": {
+        "title": "Create Account",
+        "subtitle": "Join the digital finance platform",
+        "personal": "Personal",
+        "business": "Business",
+        "soon": "SOON",
+        "passwordLabel": "Password",
+        "confirmPasswordLabel": "Confirm Password",
+        "strengthWeak": "Weak",
+        "strengthMedium": "Medium",
+        "strengthStrong": "Strong",
+        "strengthPrefix": "Strength:",
+        "termsOfService": "Terms of Service",
+        "privacyPolicy": "Privacy Policy",
+        "createCta": "Create Account",
+        "creating": "Creating Account…",
+        "alreadyHaveAccount": "Already have an account?",
+        "signInLink": "Sign In →",
+        "emailPlaceholder": "operator@crymad.cash",
+        "passwordPlaceholder": "••••••••••••",
+        "agreeRequired": "You must agree to the Terms and Privacy Policy.",
+        "passwordsDontMatch": "Passwords do not match.",
+        "passwordTooShort": "Password must be at least 8 characters.",
+        "fillRequired": "Please fill in all required fields.",
+        "corpIdRequired": "Please provide your Corp ID.",
+        "emailTaken": "This email is already registered. Try signing in instead.",
+        "registerFailed": "Registration failed. Try again.",
+        "cantCreate": "Could not create your account. Please try again later."
+      },
+      "verifyEmail": {
+        "title": "Verify Your Email",
+        "subtitle": "Enter the 6-digit code we sent to {email}",
+        "verify": "Verify",
+        "resend": "Resend code",
+        "codeSent": "Code sent",
+        "wrongEmail": "Wrong email? Go back"
+      },
+      "forgot": {
+        "title": "Forgot Password",
+        "subtitle": "Enter your email and we'll send you a reset code",
+        "sendReset": "Send Reset Code",
+        "backToSignIn": "Back to sign in"
+      },
+      "footer": {
+        "copyright": "© 2026 CRYMAD CA$H · ALL RIGHTS RESERVED",
+        "terms": "Terms",
+        "privacy": "Privacy",
+        "security": "Security"
+      }
+    },
+    "dashboard": {
+      "quickActions": {
+        "send": "Send",
+        "receive": "Receive",
+        "swap": "Swap",
+        "pay": "Pay"
+      },
+      "recentActivity": "Recent Activity",
+      "welcome": {
+        "title": "Welcome to Crymad Cash",
+        "body": "Your digital finance ecosystem is ready. Secure your assets with hardware-grade encryption and real-time monitoring.",
+        "completeSetup": "Complete Your Setup"
+      },
+      "securityScore": {
+        "label": "Security Score",
+        "outOf": "/100"
+      },
+      "profile": {
+        "memberSince": "Member Since",
+        "accountTier": "Account Tier",
+        "personalAccount": "Personal Account",
+        "businessAccount": "Business Account",
+        "kycVerified": "KYC Verified",
+        "kycPending": "Verification Pending",
+        "kycNotStarted": "Verify Identity"
+      }
+    },
+    "wallet": {
+      "ewallet": "E-Wallet",
+      "crypto": "Crypto",
+      "card": "Card",
+      "rewards": "Rewards",
+      "primaryWallet": "Primary Wallet",
+      "notYetCreated": "Not yet created",
+      "noCardYet": "No card yet",
+      "view": "View →",
+      "create": "Create →",
+      "order": "Order →",
+      "totalBalance": "Total Balance (USD wallets):",
+      "rewardPoints": "reward points"
+    },
+    "ewallet": {
+      "hero": {
+        "available": "Available Balance"
+      },
+      "transfer": {
+        "title": "Send Money",
+        "recipient": "Recipient",
+        "amount": "Amount",
+        "note": "Note (optional)",
+        "fee": "Fee",
+        "total": "Total",
+        "confirm": "Send"
+      },
+      "bankWithdraw": {
+        "title": "Bank Withdrawal",
+        "bank": "Bank",
+        "account": "Account",
+        "amount": "Amount",
+        "fee": "Fee",
+        "total": "Total",
+        "confirm": "Withdraw"
+      },
+      "buyCrypto": {
+        "title": "Buy Crypto",
+        "youPay": "YOU PAY",
+        "youReceive": "YOU RECEIVE",
+        "confirm": "Buy Now"
+      },
+      "syncToCard": {
+        "title": "Sync to Card",
+        "card": "Card",
+        "amount": "Amount",
+        "confirm": "Transfer to Card"
+      }
+    },
+    "crypto": {
+      "hero": {
+        "portfolio": "Crypto Portfolio",
+        "walletId": "Wallet ID",
+        "change24h": "24H"
+      },
+      "deposit": {
+        "title": "Deposit",
+        "selectAsset": "Select Asset",
+        "depositAddress": "Deposit Address",
+        "warning": "Only send {symbol} on the {network} network"
+      },
+      "withdraw": {
+        "title": "Withdraw",
+        "recipientAddress": "Recipient Address",
+        "amount": "Amount",
+        "networkFee": "Network Fee",
+        "confirm": "Withdraw"
+      },
+      "swap": {
+        "title": "Swap",
+        "youPay": "YOU PAY",
+        "youReceive": "YOU RECEIVE",
+        "rate": "Rate",
+        "slippage": "Slippage",
+        "priceImpact": "Price Impact",
+        "fee": "Fee",
+        "confirm": "Swap"
+      },
+      "buy": {
+        "title": "Buy Crypto"
+      },
+      "cardLoad": {
+        "title": "Withdraw to Card"
+      },
+      "offRamp": {
+        "title": "Off-Ramp to Bank"
+      },
+      "activate": {
+        "title": "Activate Assets",
+        "subtitle": "Deposit Networks + Custodial Wallets",
+        "depositNetworks": "Deposit Networks (USDT / USDC)",
+        "custodialWallets": "Native Crypto Wallets",
+        "activatingCta": "Activating…",
+        "activateCta": "Activate",
+        "activeLabel": "Active",
+        "description": "Each active network gives you a deposit address for receiving USDT and USDC on that chain."
+      },
+      "sandboxNotice": "Sandbox mode. Custodial wallets are read-only in TygaBank sandbox. Create/send operations will work in production."
+    },
+    "cards": {
+      "title": "Cards",
+      "myCards": "My Cards",
+      "noCard": "No cards yet",
+      "orderCard": "Order Card",
+      "physical": "Physical",
+      "virtual": "Virtual",
+      "loadCard": "Load Card",
+      "lockCard": "Lock Card",
+      "unlockCard": "Unlock Card",
+      "cardDetails": "Card Details",
+      "cardNumber": "Card Number",
+      "expiry": "Expires",
+      "cvv": "CVV",
+      "autoHide": "Auto-hides in {seconds}s",
+      "orderQuote": "Order Summary",
+      "feeBreakdown": "Fee Breakdown",
+      "kycRequired": "KYC Required",
+      "kycRequiredBody": "Complete identity verification to order a card.",
+      "startKyc": "Start Verification",
+      "feeSchedule": {
+        "title": "Fee Schedule",
+        "subtitle": "Transparent pricing. Engineered for high-frequency financial fluidity.",
+        "orderFees": "Order Fees",
+        "loadFees": "Load Fees",
+        "transactionFees": "Transaction Fees",
+        "otherFees": "Other Fees",
+        "sampleWarning": "Sample fees shown. Your tenant's fee schedule hasn't been provisioned by TygaBank yet. The numbers below are illustrative — contact support for actual pricing.",
+        "needHelp": "Need Help?",
+        "contactSupport": "Contact Support"
+      }
+    },
+    "ecosystem": {
+      "badge": "Cryptomadness Financial Ecosystem",
+      "title1": "Five Platforms.",
+      "title2": "One Ecosystem.",
+      "hint": "Hover over any segment to explore. Click to jump in.",
+      "visitPlatform": "Visit Platform",
+      "brainOfEcosystem": "Brain of the Ecosystem"
+    },
+    "activity": {
+      "title": "Recent Activity",
+      "empty": "No activity yet",
+      "emptyBody": "Your transactions will appear here."
+    }
+  }
+}

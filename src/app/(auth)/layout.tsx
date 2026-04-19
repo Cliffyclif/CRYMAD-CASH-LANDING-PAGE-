@@ -3,8 +3,11 @@
 import { useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { LanguageSwitcher } from "@/components/dashboard/LanguageSwitcher";
+import { useLanguage } from "@/i18n/LanguageContext";
 
 export default function AuthLayout({ children }: { children: React.ReactNode }) {
+  const { t } = useLanguage();
   useEffect(() => {
     const saved = localStorage.getItem("crymad-mode");
     const theme = saved === "light" ? "light" : "dark";
@@ -49,35 +52,44 @@ export default function AuthLayout({ children }: { children: React.ReactNode }) 
         </span>
       </Link>
 
-      {/* Top-right help */}
-      <Link
-        href="/help"
-        aria-label="Help"
+      {/* Top-right cluster: language + help */}
+      <div
         style={{
           position: "fixed",
           top: 24,
           right: 32,
           zIndex: 10,
-          width: 34,
-          height: 34,
-          borderRadius: "50%",
-          border: "1px solid var(--glass-border)",
-          background: "var(--glass-bg)",
-          backdropFilter: "blur(14px)",
-          WebkitBackdropFilter: "blur(14px)",
           display: "inline-flex",
           alignItems: "center",
-          justifyContent: "center",
-          color: "var(--text-secondary)",
-          textDecoration: "none",
+          gap: 10,
         }}
       >
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-          <circle cx="12" cy="12" r="10" />
-          <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3" />
-          <line x1="12" y1="17" x2="12.01" y2="17" />
-        </svg>
-      </Link>
+        <LanguageSwitcher compact />
+        <Link
+          href="/help"
+          aria-label={t("app.common.help")}
+          style={{
+            width: 34,
+            height: 34,
+            borderRadius: "50%",
+            border: "1px solid var(--glass-border)",
+            background: "var(--glass-bg)",
+            backdropFilter: "blur(14px)",
+            WebkitBackdropFilter: "blur(14px)",
+            display: "inline-flex",
+            alignItems: "center",
+            justifyContent: "center",
+            color: "var(--text-secondary)",
+            textDecoration: "none",
+          }}
+        >
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <circle cx="12" cy="12" r="10" />
+            <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3" />
+            <line x1="12" y1="17" x2="12.01" y2="17" />
+          </svg>
+        </Link>
+      </div>
 
       {/* Centered Auth Container */}
       <div
@@ -175,12 +187,16 @@ export default function AuthLayout({ children }: { children: React.ReactNode }) 
         }}
       >
         <span style={{ color: "var(--text-muted)", fontSize: 10, letterSpacing: 2, textTransform: "uppercase" }}>
-          © 2026 CRYMAD CA$H &nbsp;·&nbsp; ALL RIGHTS RESERVED
+          {t("app.auth.footer.copyright")}
         </span>
         <span style={{ display: "inline-flex", gap: 24, pointerEvents: "auto" }}>
-          {["Terms", "Privacy", "Security"].map((l) => (
+          {[
+            { key: "terms", label: t("app.auth.footer.terms") },
+            { key: "privacy", label: t("app.auth.footer.privacy") },
+            { key: "security", label: t("app.auth.footer.security") },
+          ].map((l) => (
             <Link
-              key={l}
+              key={l.key}
               href="#"
               style={{
                 color: "var(--text-muted)",
@@ -190,7 +206,7 @@ export default function AuthLayout({ children }: { children: React.ReactNode }) 
                 textDecoration: "none",
               }}
             >
-              {l}
+              {l.label}
             </Link>
           ))}
         </span>

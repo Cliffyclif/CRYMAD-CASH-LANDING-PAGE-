@@ -4,9 +4,11 @@ import { ProfileCard } from "@/components/dashboard/ProfileCard";
 import { WalletCapsules } from "@/components/dashboard/WalletCapsules";
 import { ActivityFeed } from "@/components/dashboard/ActivityFeed";
 import { useUser } from "@/components/providers/UserProvider";
+import { useLanguage } from "@/i18n/LanguageContext";
 import Link from "next/link";
 
 export default function DashboardPage() {
+  const { t } = useLanguage();
   return (
     <>
       <ProfileCard />
@@ -26,16 +28,12 @@ export default function DashboardPage() {
         {[
           {
             href: "/e-wallet",
-            label: "Send",
-            icon: (
-              <>
-                <polygon points="22 2 15 22 11 13 2 9 22 2" />
-              </>
-            ),
+            label: t("app.dashboard.quickActions.send"),
+            icon: (<><polygon points="22 2 15 22 11 13 2 9 22 2" /></>),
           },
           {
             href: "/crypto",
-            label: "Receive",
+            label: t("app.dashboard.quickActions.receive"),
             icon: (
               <>
                 <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
@@ -46,7 +44,7 @@ export default function DashboardPage() {
           },
           {
             href: "/crypto",
-            label: "Swap",
+            label: t("app.dashboard.quickActions.swap"),
             icon: (
               <>
                 <polyline points="17 1 21 5 17 9" />
@@ -58,7 +56,7 @@ export default function DashboardPage() {
           },
           {
             href: "/orders",
-            label: "Pay",
+            label: t("app.dashboard.quickActions.pay"),
             icon: (
               <>
                 <rect x="1" y="4" width="22" height="16" rx="2" ry="2" />
@@ -145,6 +143,7 @@ export default function DashboardPage() {
 }
 
 function WelcomeCard() {
+  const { t } = useLanguage();
   return (
     <div
       style={{
@@ -162,7 +161,7 @@ function WelcomeCard() {
           margin: "0 0 10px",
         }}
       >
-        Welcome to Crymad Cash
+        {t("app.dashboard.welcome.title")}
       </h3>
       <p
         style={{
@@ -172,8 +171,7 @@ function WelcomeCard() {
           margin: "0 0 20px",
         }}
       >
-        Your digital finance ecosystem is ready. Secure your assets with
-        hardware-grade encryption and real-time monitoring.
+        {t("app.dashboard.welcome.body")}
       </p>
 
       <div
@@ -237,7 +235,7 @@ function WelcomeCard() {
           e.currentTarget.style.background = "transparent";
         }}
       >
-        Complete Your Setup
+        {t("app.dashboard.welcome.completeSetup")}
       </Link>
     </div>
   );
@@ -245,6 +243,7 @@ function WelcomeCard() {
 
 function SecurityScoreCard() {
   const { user } = useUser();
+  const { t } = useLanguage();
   // Derived from observable security signals: email verified, KYC, registration,
   // account presence. 2FA/hardware keys can add more when wired.
   let score = 0;
@@ -276,7 +275,7 @@ function SecurityScoreCard() {
             marginBottom: 6,
           }}
         >
-          Security Score
+          {t("app.dashboard.securityScore.label")}
         </div>
         <div
           style={{
@@ -296,7 +295,7 @@ function SecurityScoreCard() {
               marginLeft: 2,
             }}
           >
-            /100
+            {t("app.dashboard.securityScore.outOf")}
           </span>
         </div>
       </div>

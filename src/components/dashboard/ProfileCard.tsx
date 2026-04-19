@@ -1,12 +1,14 @@
 "use client";
 
 import { useUser } from "@/components/providers/UserProvider";
+import { useLanguage } from "@/i18n/LanguageContext";
 import Link from "next/link";
 
 const MONTHS = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
 
 export function ProfileCard() {
   const { user, initials, fullName, loading } = useUser();
+  const { t } = useLanguage();
 
   if (loading) {
     return (
@@ -14,7 +16,7 @@ export function ProfileCard() {
         <div className="profile-left">
           <div className="profile-avatar-ring"><div className="profile-avatar">…</div></div>
           <div className="profile-info">
-            <h3 style={{ opacity: 0.5 }}>Loading…</h3>
+            <h3 style={{ opacity: 0.5 }}>{t("app.common.loading")}</h3>
             <p style={{ opacity: 0.5 }}>&nbsp;</p>
           </div>
         </div>
@@ -26,13 +28,15 @@ export function ProfileCard() {
   const d = user.createdAt ? new Date(user.createdAt) : null;
   const joined = d ? `${MONTHS[d.getMonth()]} ${d.getFullYear()}` : "";
   const kycLabel = {
-    not_started: "Not Verified",
-    pending: "Verification Pending",
-    approved: "Verified",
-    rejected: "Verification Failed",
+    not_started: t("app.dashboard.profile.kycNotStarted"),
+    pending: t("app.dashboard.profile.kycPending"),
+    approved: t("app.dashboard.profile.kycVerified"),
+    rejected: t("app.dashboard.profile.kycNotStarted"),
   }[user.kycStatus];
 
-  const accountTypeLabel = user.accountType === "business" ? "BUSINESS ACCOUNT" : "PERSONAL ACCOUNT";
+  const accountTypeLabel = user.accountType === "business"
+    ? t("app.dashboard.profile.businessAccount").toUpperCase()
+    : t("app.dashboard.profile.personalAccount").toUpperCase();
 
   return (
     <div className="profile-card">

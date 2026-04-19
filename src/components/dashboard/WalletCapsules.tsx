@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { formatMoney, useUser } from "@/components/providers/UserProvider";
+import { useLanguage } from "@/i18n/LanguageContext";
 
 function fmtBalance(amount: number, currency: string) {
   if (currency === "POINTS") return `${amount.toLocaleString()} pts`;
@@ -10,6 +11,7 @@ function fmtBalance(amount: number, currency: string) {
 
 export function WalletCapsules() {
   const { walletsByType, wallets, loading } = useUser();
+  const { t } = useLanguage();
 
   const ewallet = walletsByType.ewallet;
   const crypto = walletsByType.crypto;
@@ -41,12 +43,12 @@ export function WalletCapsules() {
               <div className="capsule-balance">
                 {skeleton ? "…" : fmtBalance(ewallet?.balance ?? 0, ewallet?.currency ?? "USD")}
               </div>
-              <div className="capsule-name">E-Wallet</div>
+              <div className="capsule-name">{t("app.wallet.ewallet")}</div>
             </div>
           </div>
           <div className="capsule-subtitle">
-            <span>{ewallet?.name ?? "Primary Wallet"}</span>
-            <span className="capsule-link">View →</span>
+            <span>{ewallet?.name ?? t("app.wallet.primaryWallet")}</span>
+            <span className="capsule-link">{t("app.wallet.view")}</span>
           </div>
         </Link>
 
@@ -66,12 +68,12 @@ export function WalletCapsules() {
               <div className="capsule-balance">
                 {skeleton ? "…" : crypto ? fmtBalance(crypto.balance, crypto.currency) : "$0.00"}
               </div>
-              <div className="capsule-name">Crypto</div>
+              <div className="capsule-name">{t("app.wallet.crypto")}</div>
             </div>
           </div>
           <div className="capsule-subtitle">
-            <span>{crypto ? crypto.name : "Not yet created"}</span>
-            <span className="capsule-link">{crypto ? "View →" : "Create →"}</span>
+            <span>{crypto ? crypto.name : t("app.wallet.notYetCreated")}</span>
+            <span className="capsule-link">{crypto ? t("app.wallet.view") : t("app.wallet.create")}</span>
           </div>
         </Link>
 
@@ -89,23 +91,23 @@ export function WalletCapsules() {
               <div className="capsule-balance">
                 {skeleton ? "…" : card ? fmtBalance(card.balance, card.currency) : "$0.00"}
               </div>
-              <div className="capsule-name">Card</div>
+              <div className="capsule-name">{t("app.wallet.card")}</div>
             </div>
           </div>
           <div className="capsule-subtitle">
-            <span>{card ? card.name : "No card yet"}</span>
-            <span className="capsule-link">{card ? "View →" : "Order →"}</span>
+            <span>{card ? card.name : t("app.wallet.noCardYet")}</span>
+            <span className="capsule-link">{card ? t("app.wallet.view") : t("app.wallet.order")}</span>
           </div>
         </Link>
       </div>
 
       {/* Total */}
       <div className="total-balance-bar">
-        <span className="label">Total Balance (USD wallets):</span>
+        <span className="label">{t("app.wallet.totalBalance")}</span>
         <span className="amount">{skeleton ? "…" : formatMoney(totalUsd, "USD")}</span>
         {rewards && (
           <span style={{ marginLeft: 16, fontSize: 12, opacity: 0.7 }}>
-            · {rewards.balance.toLocaleString()} reward points
+            · {rewards.balance.toLocaleString()} {t("app.wallet.rewardPoints")}
           </span>
         )}
       </div>

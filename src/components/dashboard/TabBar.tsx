@@ -4,45 +4,47 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
+import { useLanguage } from "@/i18n/LanguageContext";
 
-interface SubItem { label: string; href: string; }
-interface TabItem { label: string; href: string; subs?: SubItem[]; }
+interface SubItem { key: string; href: string; }
+interface TabItem { key: string; href: string; subs?: SubItem[]; }
 
 const TABS: TabItem[] = [
-  { label: "Dashboard", href: "/dashboard" },
-  { label: "E-Wallet", href: "/e-wallet", subs: [
-    { label: "Overview", href: "/e-wallet" },
-    { label: "Beneficiaries", href: "/e-wallet/beneficiaries" },
+  { key: "dashboard", href: "/dashboard" },
+  { key: "ewallet", href: "/e-wallet", subs: [
+    { key: "overview", href: "/e-wallet" },
+    { key: "beneficiaries", href: "/e-wallet/beneficiaries" },
   ]},
-  { label: "Crypto", href: "/crypto", subs: [
-    { label: "Overview", href: "/crypto" },
-    { label: "Deposit", href: "/crypto?action=deposit" },
-    { label: "Withdraw", href: "/crypto?action=withdraw" },
-    { label: "Swap", href: "/crypto?action=swap" },
-    { label: "Buy", href: "/crypto?action=buy" },
+  { key: "crypto", href: "/crypto", subs: [
+    { key: "overview", href: "/crypto" },
+    { key: "deposit", href: "/crypto?action=deposit" },
+    { key: "withdraw", href: "/crypto?action=withdraw" },
+    { key: "swap", href: "/crypto?action=swap" },
+    { key: "buy", href: "/crypto?action=buy" },
   ]},
-  { label: "Cards", href: "/cards", subs: [
-    { label: "My Cards", href: "/cards" },
-    { label: "Order Card", href: "/cards/order" },
-    { label: "Card Setup", href: "/cards/setup" },
-    { label: "Fee Schedule", href: "/cards/fees" },
+  { key: "cards", href: "/cards", subs: [
+    { key: "myCards", href: "/cards" },
+    { key: "orderCard", href: "/cards/order" },
+    { key: "cardSetup", href: "/cards/setup" },
+    { key: "feeSchedule", href: "/cards/fees" },
   ]},
-  { label: "Orders", href: "/orders" },
-  { label: "Transactions", href: "/transactions" },
-  { label: "Subscriptions", href: "/subscriptions" },
-  { label: "More", href: "#", subs: [
-    { label: "Reports", href: "/reports" },
-    { label: "Notifications", href: "/notifications" },
-    { label: "Help / FAQs", href: "/help" },
-    { label: "Ecosystem", href: "/ecosystem" },
-    { label: "Payouts", href: "/payouts" },
-    { label: "Recurring Payments", href: "/recurring-payments" },
-    { label: "Rewards", href: "/rewards" },
+  { key: "orders", href: "/orders" },
+  { key: "transactions", href: "/transactions" },
+  { key: "subscriptions", href: "/subscriptions" },
+  { key: "more", href: "#", subs: [
+    { key: "reports", href: "/reports" },
+    { key: "notifications", href: "/notifications" },
+    { key: "help", href: "/help" },
+    { key: "ecosystem", href: "/ecosystem" },
+    { key: "payouts", href: "/payouts" },
+    { key: "recurringPayments", href: "/recurring-payments" },
+    { key: "rewards", href: "/rewards" },
   ]},
 ];
 
 function TabPill({ tab }: { tab: TabItem }) {
   const pathname = usePathname();
+  const { t } = useLanguage();
   const triggerRef = useRef<HTMLLIElement | null>(null);
   const [open, setOpen] = useState(false);
   const [coords, setCoords] = useState<{ top: number; left: number } | null>(null);
@@ -56,7 +58,7 @@ function TabPill({ tab }: { tab: TabItem }) {
   if (!tab.subs) {
     return (
       <Link href={tab.href} className={`tt-tab ${isActive ? "active" : ""}`}>
-        {tab.label}
+        {t(`app.nav.${tab.key}`)}
       </Link>
     );
   }
@@ -98,7 +100,7 @@ function TabPill({ tab }: { tab: TabItem }) {
           onClick={(e) => { if (tab.href === "#") e.preventDefault(); }}
           className={`tt-tab ${isActive ? "active" : ""} ${open ? "tt-tab-open" : ""}`}
         >
-          {tab.label}
+          {t(`app.nav.${tab.key}`)}
           <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" style={{ transition: "transform 0.2s", transform: open ? "rotate(180deg)" : "none" }}><polyline points="6 9 12 15 18 9" /></svg>
         </Link>
       </li>
@@ -120,7 +122,7 @@ function TabPill({ tab }: { tab: TabItem }) {
               return (
                 <li key={sub.href} className="tt-link">
                   <Link href={sub.href} onClick={() => setOpen(false)} className={subActive ? "tt-active" : ""}>
-                    {sub.label}
+                    {t(`app.nav.${sub.key}`)}
                   </Link>
                 </li>
               );
@@ -300,7 +302,7 @@ export function TabBar() {
 
       <ul className="tt-bar">
         {TABS.map((tab) => (
-          <TabPill key={tab.label} tab={tab} />
+          <TabPill key={tab.key} tab={tab} />
         ))}
       </ul>
     </>

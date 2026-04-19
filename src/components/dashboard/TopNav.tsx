@@ -5,20 +5,23 @@ import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { useUser } from "@/components/providers/UserProvider";
 import ProfileModal from "@/components/modals/ProfileModal";
+import { LanguageSwitcher } from "@/components/dashboard/LanguageSwitcher";
+import { useLanguage } from "@/i18n/LanguageContext";
 
 const NAV_ITEMS = [
-  { label: "Dashboard", href: "/dashboard" },
-  { label: "E-Wallet", href: "/e-wallet" },
-  { label: "Crypto", href: "/crypto" },
-  { label: "Cards", href: "/cards" },
-  { label: "Orders", href: "/orders" },
-  { label: "Transactions", href: "/transactions" },
-  { label: "Reports", href: "/reports" },
-];
+  { key: "dashboard", href: "/dashboard" },
+  { key: "ewallet", href: "/e-wallet" },
+  { key: "crypto", href: "/crypto" },
+  { key: "cards", href: "/cards" },
+  { key: "orders", href: "/orders" },
+  { key: "transactions", href: "/transactions" },
+  { key: "reports", href: "/reports" },
+] as const;
 
 export function TopNav() {
   const pathname = usePathname();
   const { user, initials } = useUser();
+  const { t } = useLanguage();
   const [isDark, setIsDark] = useState(true);
   const [unread, setUnread] = useState(0);
   const [profileOpen, setProfileOpen] = useState(false);
@@ -64,11 +67,12 @@ export function TopNav() {
                 : ""
             }`}
           >
-            {item.label}
+            {t(`app.nav.${item.key}`)}
           </Link>
         ))}
       </div>
       <div className="nav-profile">
+        <LanguageSwitcher compact />
         <button
           className="mode-toggle"
           onClick={toggleMode}

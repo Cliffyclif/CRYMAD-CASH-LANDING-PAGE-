@@ -3,6 +3,7 @@
 import { Suspense, useState } from "react";
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
+import { useLanguage } from "@/i18n/LanguageContext";
 
 type Mode = "password" | "otp";
 
@@ -17,6 +18,7 @@ export default function LoginPage() {
 function LoginPageInner() {
   const router = useRouter();
   const params = useSearchParams();
+  const { t } = useLanguage();
   const nextUrl = params?.get("next") || "/dashboard";
 
   const [mode, setMode] = useState<Mode>("password");
@@ -51,7 +53,7 @@ function LoginPageInner() {
   async function submitPassword(e: React.FormEvent) {
     e.preventDefault();
     setError("");
-    if (!email || !password) { setError("Please fill in all fields."); return; }
+    if (!email || !password) { setError(t("app.auth.login.fillAllFields")); return; }
     setLoading(true);
     try {
       const res = await fetch("/api/auth/login", {
@@ -61,13 +63,13 @@ function LoginPageInner() {
       });
       const j = await res.json();
       if (!res.ok) {
-        setError(j.error === "invalid_credentials" ? "Incorrect email or password." : "Login failed. Try again.");
+        setError(j.error === "invalid_credentials" ? t("app.auth.login.invalidCredentials") : t("app.auth.login.loginFailed"));
         return;
       }
       router.push(nextUrl);
       router.refresh();
     } catch {
-      setError("Network error. Try again.");
+      setError(t("app.auth.login.networkError"));
     } finally {
       setLoading(false);
     }
@@ -75,7 +77,7 @@ function LoginPageInner() {
 
   async function sendCode() {
     setError("");
-    if (!email) { setError("Enter your email first."); return; }
+    if (!email) { setError(t("app.auth.login.enterEmailFirst")); return; }
     setLoading(true);
     try {
       const res = await fetch("/api/auth/send-otp", {
@@ -84,11 +86,11 @@ function LoginPageInner() {
         body: JSON.stringify({ email, purpose: "login" }),
       });
       const j = await res.json();
-      if (!res.ok) { setError("Could not send code."); return; }
+      if (!res.ok) { setError(t("app.auth.login.couldNotSendCode")); return; }
       setCodeSent(true);
       if (j.devCode) setDevCode(j.devCode);
     } catch {
-      setError("Network error. Try again.");
+      setError(t("app.auth.login.networkError"));
     } finally {
       setLoading(false);
     }
@@ -97,7 +99,7 @@ function LoginPageInner() {
   async function submitOtp(e: React.FormEvent) {
     e.preventDefault();
     setError("");
-    if (!email || !code || code.length !== 6) { setError("Enter the 6-digit code."); return; }
+    if (!email || !code || code.length !== 6) { setError(t("app.auth.login.enterSixDigit")); return; }
     setLoading(true);
     try {
       const res = await fetch("/api/auth/verify-otp", {
@@ -107,13 +109,13 @@ function LoginPageInner() {
       });
       const j = await res.json();
       if (!res.ok) {
-        setError(j.error === "invalid_code" ? "Invalid or expired code." : "Verification failed.");
+        setError(j.error === "invalid_code" ? t("app.auth.login.codeInvalid") : t("app.auth.login.verifyFailed"));
         return;
       }
       router.push(nextUrl);
       router.refresh();
     } catch {
-      setError("Network error. Try again.");
+      setError(t("app.auth.login.networkError"));
     } finally {
       setLoading(false);
     }
@@ -121,8 +123,8 @@ function LoginPageInner() {
 
   return (
     <div style={{ animation: "fadeIn 0.5s ease" }}>
-      <h1 style={{ fontSize: 26, fontWeight: 800, color: "var(--text)", marginBottom: 4 }}>Welcome Back</h1>
-      <p style={{ fontSize: 14, color: "var(--text-secondary)", marginBottom: 22 }}>Sign in to your account</p>
+      <h1 style={{ fontSize: 26, fontWeight: 800, color: "var(--text)", marginBottom: 4 }}>{t("app.auth.login.title")}</h1>
+      <p style={{ fontSize: 14, color: "var(--text-secondary)", marginBottom: 22 }}>{t("app.auth.login.subtitle")}</p>
 
       {/* Mode Toggle */}
       <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 4, padding: 4, background: "var(--surface)", borderRadius: 12, marginBottom: 22 }}>
@@ -142,7 +144,7 @@ function LoginPageInner() {
               transition: "all 0.2s",
             }}
           >
-            {m === "password" ? "Password" : "Email Code"}
+            {m === "password" ? t("app.auth.login.tabPassword") : t("app.auth.login.tabEmailCode")}
           </button>
         ))}
       </div>
@@ -150,15 +152,15 @@ function LoginPageInner() {
       {mode === "password" && (
         <form onSubmit={submitPassword}>
           <div style={{ marginBottom: 18 }}>
-            <label style={labelStyle}>Email Address</label>
+            <label style={labelStyle}>{t("app.common.emailAddress")}</label>
             <input type="email" placeholder="you@example.com" value={email}
               onChange={(e) => setEmail(e.target.value)} style={inputStyle} autoComplete="email" required />
           </div>
 
           <div style={{ marginBottom: 10 }}>
-            <label style={labelStyle}>Password</label>
+            <label style={labelStyle}>{t("app.auth.login.passwordLabel")}</label>
             <div style={{ position: "relative" }}>
-              <input type={showPassword ? "text" : "password"} placeholder="Enter your password"
+              <input type={showPassword ? "text" : "password"} placeholder={t("app.auth.login.passwordPlaceholder")}
                 value={password} onChange={(e) => setPassword(e.target.value)}
                 style={{ ...inputStyle, paddingRight: 48 }} autoComplete="current-password" required />
               <button type="button" onClick={() => setShowPassword(!showPassword)}
@@ -182,19 +184,19 @@ function LoginPageInner() {
           </div>
 
           <div style={{ textAlign: "right", marginBottom: 20 }}>
-            <Link href="/forgot-password" style={{ color: "var(--primary)", textDecoration: "none", fontSize: 13, fontWeight: 500 }}>Forgot Password?</Link>
+            <Link href="/forgot-password" style={{ color: "var(--primary)", textDecoration: "none", fontSize: 13, fontWeight: 500 }}>{t("app.auth.login.forgotPassword")}</Link>
           </div>
 
           {error && <ErrorBox text={error} />}
 
-          <PrimaryBtn loading={loading} label="Sign In" />
+          <PrimaryBtn loading={loading} label={t("app.auth.login.signInCta")} loadingLabel={t("app.common.loading")} />
         </form>
       )}
 
       {mode === "otp" && (
         <form onSubmit={codeSent ? submitOtp : (e) => { e.preventDefault(); sendCode(); }}>
           <div style={{ marginBottom: 18 }}>
-            <label style={labelStyle}>Email Address</label>
+            <label style={labelStyle}>{t("app.common.emailAddress")}</label>
             <input type="email" placeholder="you@example.com" value={email}
               onChange={(e) => setEmail(e.target.value)} style={inputStyle} autoComplete="email"
               disabled={codeSent} required />
@@ -202,7 +204,7 @@ function LoginPageInner() {
 
           {codeSent && (
             <div style={{ marginBottom: 18 }}>
-              <label style={labelStyle}>6-Digit Code</label>
+              <label style={labelStyle}>{t("app.auth.login.enterCode")}</label>
               <input
                 inputMode="numeric" pattern="\d{6}" maxLength={6}
                 placeholder="000000"
@@ -219,28 +221,28 @@ function LoginPageInner() {
                 type="button"
                 onClick={() => { setCodeSent(false); setCode(""); setDevCode(null); }}
                 style={{ background: "none", border: "none", color: "var(--primary)", fontSize: 13, cursor: "pointer", padding: 0, marginTop: 8 }}>
-                Use different email
+                {t("app.auth.login.useDifferentEmail")}
               </button>
             </div>
           )}
 
           {error && <ErrorBox text={error} />}
 
-          <PrimaryBtn loading={loading} label={codeSent ? "Verify & Sign In" : "Send Code to Email"} />
+          <PrimaryBtn loading={loading} label={codeSent ? t("app.auth.login.verifyCode") : t("app.auth.login.sendCode")} loadingLabel={t("app.common.loading")} />
         </form>
       )}
 
       <div style={{ textAlign: "center", marginTop: 24, fontSize: 14, color: "var(--text-secondary)" }}>
-        New to our platform?{" "}
+        {t("app.auth.login.newHere")}{" "}
         <Link href="/register" style={{ color: "var(--primary)", textDecoration: "none", fontWeight: 600 }}>
-          Create Account
+          {t("app.auth.login.createAccount")}
         </Link>
       </div>
     </div>
   );
 }
 
-function PrimaryBtn({ loading, label }: { loading: boolean; label: string }) {
+function PrimaryBtn({ loading, label, loadingLabel }: { loading: boolean; label: string; loadingLabel: string }) {
   return (
     <button type="submit" disabled={loading}
       style={{
@@ -256,7 +258,7 @@ function PrimaryBtn({ loading, label }: { loading: boolean; label: string }) {
           <circle cx="12" cy="12" r="10" stroke="var(--bg)" strokeWidth="3" strokeDasharray="32" strokeLinecap="round" />
         </svg>
       )}
-      {loading ? "Please wait..." : label}
+      {loading ? loadingLabel : label}
     </button>
   );
 }

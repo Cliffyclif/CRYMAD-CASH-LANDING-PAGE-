@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { formatMoney } from "@/components/providers/UserProvider";
+import { useLanguage } from "@/i18n/LanguageContext";
 
 type Tx = {
   id: string;
@@ -23,6 +24,7 @@ type Tx = {
 export function ActivityFeed({ walletType, limit = 6 }: { walletType?: string; limit?: number }) {
   const [txs, setTxs] = useState<Tx[] | null>(null);
   const [error, setError] = useState<string | null>(null);
+  const { t } = useLanguage();
 
   useEffect(() => {
     const qs = new URLSearchParams();
@@ -41,7 +43,7 @@ export function ActivityFeed({ walletType, limit = 6 }: { walletType?: string; l
     return (
       <div className="activity-section">
         <div className="section-header">
-          <h2>Recent Activity</h2>
+          <h2>{t("app.activity.title")}</h2>
         </div>
         <div style={{ padding: 20, opacity: 0.6, fontSize: 14 }}>Could not load activity. ({error})</div>
       </div>
@@ -52,7 +54,7 @@ export function ActivityFeed({ walletType, limit = 6 }: { walletType?: string; l
     return (
       <div className="activity-section">
         <div className="section-header">
-          <h2>Recent Activity</h2>
+          <h2>{t("app.activity.title")}</h2>
         </div>
         <div className="timeline">
           {Array.from({ length: 3 }).map((_, i) => (
@@ -73,7 +75,7 @@ export function ActivityFeed({ walletType, limit = 6 }: { walletType?: string; l
     return (
       <div className="activity-section">
         <div className="section-header">
-          <h2>Recent Activity</h2>
+          <h2>{t("app.activity.title")}</h2>
         </div>
         <div style={{ padding: "40px 20px", textAlign: "center" }}>
           <img
@@ -98,7 +100,7 @@ export function ActivityFeed({ walletType, limit = 6 }: { walletType?: string; l
   return (
     <div className="activity-section">
       <div className="section-header">
-        <h2>Recent Activity</h2>
+        <h2>{t("app.activity.title")}</h2>
         <Link href="/transactions">View All →</Link>
       </div>
       <div className="timeline">
