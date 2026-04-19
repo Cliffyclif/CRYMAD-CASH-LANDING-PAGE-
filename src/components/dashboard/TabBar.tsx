@@ -16,10 +16,10 @@ const TABS: TabItem[] = [
   ]},
   { label: "Crypto", href: "/crypto", subs: [
     { label: "Overview", href: "/crypto" },
-    { label: "Deposit", href: "/crypto/deposit" },
-    { label: "Withdraw", href: "/crypto/withdraw" },
-    { label: "Swap", href: "/crypto/swap" },
-    { label: "Buy", href: "/crypto/buy" },
+    { label: "Deposit", href: "/crypto?action=deposit" },
+    { label: "Withdraw", href: "/crypto?action=withdraw" },
+    { label: "Swap", href: "/crypto?action=swap" },
+    { label: "Buy", href: "/crypto?action=buy" },
   ]},
   { label: "Cards", href: "/cards", subs: [
     { label: "My Cards", href: "/cards" },
@@ -146,7 +146,7 @@ export function TabBar() {
           gap: 4px;
           list-style: none;
           padding: 6px;
-          margin: 0;
+          margin: 0 0 20px;
           border-radius: 14px;
           background: var(--glass-bg);
           backdrop-filter: blur(16px);

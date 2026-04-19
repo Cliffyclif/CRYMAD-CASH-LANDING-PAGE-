@@ -45,7 +45,7 @@ export function WalletCapsules() {
             </div>
           </div>
           <div className="capsule-subtitle">
-            <span>{ewallet?.name ?? "Primary Wallet"}</span><br />
+            <span>{ewallet?.name ?? "Primary Wallet"}</span>
             <span className="capsule-link">View →</span>
           </div>
         </Link>
@@ -70,7 +70,7 @@ export function WalletCapsules() {
             </div>
           </div>
           <div className="capsule-subtitle">
-            <span>{crypto ? crypto.name : "Not yet created"}</span><br />
+            <span>{crypto ? crypto.name : "Not yet created"}</span>
             <span className="capsule-link">{crypto ? "View →" : "Create →"}</span>
           </div>
         </Link>
@@ -93,7 +93,7 @@ export function WalletCapsules() {
             </div>
           </div>
           <div className="capsule-subtitle">
-            <span>{card ? card.name : "No card yet"}</span><br />
+            <span>{card ? card.name : "No card yet"}</span>
             <span className="capsule-link">{card ? "View →" : "Order →"}</span>
           </div>
         </Link>

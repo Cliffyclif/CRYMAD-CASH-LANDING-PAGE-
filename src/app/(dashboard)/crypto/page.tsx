@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useMemo, useState } from "react";
+import { useSearchParams } from "next/navigation";
 import QRCode from "qrcode";
 import { useUser, formatMoney } from "@/components/providers/UserProvider";
 import { tokenIcon } from "@/lib/tokens/icons";
@@ -1716,6 +1717,15 @@ export default function CryptoPage() {
   const [showBankWithdraw, setShowBankWithdraw] = useState(false);
   const [showClaim, setShowClaim] = useState(false);
   const [showCreateWallet, setShowCreateWallet] = useState(false);
+
+  const searchParams = useSearchParams();
+  useEffect(() => {
+    const action = searchParams?.get("action");
+    if (action === "deposit") setShowDeposit(true);
+    else if (action === "withdraw") setShowWithdraw(true);
+    else if (action === "swap") setShowSwap(true);
+    else if (action === "buy") setShowBuy(true);
+  }, [searchParams]);
 
   const loadWallets = useCallback(async () => {
     try {

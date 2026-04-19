@@ -4,36 +4,38 @@ import { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 
-function getPasswordStrength(pw: string): { label: string; color: string; percent: number } {
-  if (!pw) return { label: "", color: "transparent", percent: 0 };
+function getStrengthScore(pw: string): 0 | 1 | 2 | 3 {
+  if (!pw) return 0;
   let score = 0;
   if (pw.length >= 8) score++;
   if (pw.length >= 12) score++;
   if (/[A-Z]/.test(pw)) score++;
   if (/[0-9]/.test(pw)) score++;
   if (/[^A-Za-z0-9]/.test(pw)) score++;
-  if (score <= 1) return { label: "Weak", color: "var(--danger)", percent: 25 };
-  if (score <= 3) return { label: "Medium", color: "var(--warning)", percent: 55 };
-  return { label: "Strong", color: "var(--success)", percent: 100 };
+  if (score <= 1) return 1;
+  if (score <= 3) return 2;
+  return 3;
+}
+
+function strengthLabel(score: 0 | 1 | 2 | 3): string {
+  return ["", "Weak", "Medium", "Strong"][score];
 }
 
 export default function RegisterPage() {
   const router = useRouter();
   const [accountType, setAccountType] = useState<"personal" | "business">("personal");
   const [email, setEmail] = useState("");
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [agreeTerms, setAgreeTerms] = useState(false);
   const [agreePrivacy, setAgreePrivacy] = useState(false);
-  const [companyName, setCompanyName] = useState("");
-  const [regNumber, setRegNumber] = useState("");
-  const [businessType, setBusinessType] = useState("");
+  const [corpId, setCorpId] = useState("");
+  const [taxRef, setTaxRef] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
-  const strength = getPasswordStrength(password);
+  const score = getStrengthScore(password);
+  const passwordsMatch = confirmPassword.length > 0 && password === confirmPassword;
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -54,8 +56,8 @@ export default function RegisterPage() {
       setError("You must agree to the Terms and Privacy Policy.");
       return;
     }
-    if (accountType === "business" && (!companyName || !businessType)) {
-      setError("Please fill in all business fields.");
+    if (accountType === "business" && !corpId) {
+      setError("Please provide your Corp ID.");
       return;
     }
     setLoading(true);
@@ -66,8 +68,6 @@ export default function RegisterPage() {
         body: JSON.stringify({
           email,
           password,
-          firstName: firstName || undefined,
-          lastName: lastName || undefined,
           accountType: accountType === "personal" ? "individual" : "business",
         }),
       });
@@ -82,7 +82,6 @@ export default function RegisterPage() {
         );
         return;
       }
-      // Redirect to email verification, passing email + dev code (if present)
       const url = `/register/verify-email?email=${encodeURIComponent(email)}${j.devCode ? `&devCode=${j.devCode}` : ""}`;
       router.push(url);
     } catch {
@@ -92,255 +91,308 @@ export default function RegisterPage() {
     }
   };
 
-  const inputStyle: React.CSSProperties = {
+  const underlineInput: React.CSSProperties = {
     width: "100%",
-    padding: "12px 16px",
-    borderRadius: 12,
-    background: "var(--surface)",
-    border: "1px solid var(--glass-border)",
+    padding: "10px 0 10px 2px",
+    background: "transparent",
+    border: "none",
+    borderBottom: "1px solid var(--glass-border)",
     color: "var(--text)",
     fontSize: 14,
     outline: "none",
     fontFamily: "Inter, sans-serif",
-    transition: "border-color 0.3s",
+    transition: "border-color 0.25s",
+    borderRadius: 0,
   };
 
   const labelStyle: React.CSSProperties = {
-    fontSize: 11,
-    fontWeight: 600,
+    fontSize: 10,
+    fontWeight: 700,
     textTransform: "uppercase",
-    letterSpacing: 1.5,
-    color: "var(--text-muted)",
+    letterSpacing: 2,
+    color: "var(--primary)",
     marginBottom: 6,
     display: "block",
+    opacity: 0.85,
+  };
+
+  const lockedInput: React.CSSProperties = {
+    ...underlineInput,
+    paddingRight: 28,
+    color: accountType === "business" ? "var(--text)" : "var(--text-muted)",
+    borderRadius: 10,
+    border: "1px solid var(--glass-border)",
+    padding: "12px 36px 12px 14px",
+    background: "var(--surface)",
+    opacity: accountType === "business" ? 1 : 0.6,
   };
 
   return (
     <div style={{ animation: "fadeIn 0.5s ease" }}>
-      <h1 style={{ fontSize: 26, fontWeight: 800, color: "var(--text)", marginBottom: 4 }}>
-        Create Account
-      </h1>
-      <p style={{ fontSize: 14, color: "var(--text-secondary)", marginBottom: 24 }}>
-        Join our digital finance platform
-      </p>
-
-      {/* Account Type Toggle */}
-      <div
+      {/* Title */}
+      <h1
         style={{
-          display: "flex",
-          background: "var(--surface)",
-          borderRadius: 12,
-          padding: 4,
-          marginBottom: 24,
-          border: "1px solid var(--glass-border)",
+          fontSize: 30,
+          fontWeight: 800,
+          color: "var(--primary)",
+          margin: "0 0 4px",
+          textAlign: "center",
+          letterSpacing: -0.3,
+          textShadow: "0 0 30px rgba(var(--primary-rgb), 0.35)",
         }}
       >
-        {(["personal", "business"] as const).map((type) => (
-          <button
-            key={type}
-            type="button"
-            onClick={() => setAccountType(type)}
-            style={{
-              flex: 1,
-              padding: "10px 16px",
-              borderRadius: 10,
-              border: "none",
-              cursor: "pointer",
-              fontSize: 13,
-              fontWeight: 600,
-              fontFamily: "Inter, sans-serif",
-              transition: "all 0.3s",
-              background: accountType === type ? "var(--primary)" : "transparent",
-              color: accountType === type ? "var(--bg)" : "var(--text-secondary)",
-            }}
-          >
-            {type === "personal" ? "Personal" : "Business"}
-          </button>
-        ))}
+        Create Account
+      </h1>
+      <p
+        style={{
+          fontSize: 13,
+          color: "var(--text-secondary)",
+          margin: "0 0 26px",
+          textAlign: "center",
+        }}
+      >
+        Join the digital finance platform
+      </p>
+
+      {/* PERSONAL / BUSINESS tabs */}
+      <div
+        style={{
+          display: "grid",
+          gridTemplateColumns: "1fr 1fr",
+          gap: 4,
+          background: "var(--surface)",
+          border: "1px solid var(--glass-border)",
+          borderRadius: 999,
+          padding: 4,
+          marginBottom: 28,
+        }}
+      >
+        {(["personal", "business"] as const).map((type) => {
+          const disabled = type === "business";
+          return (
+            <button
+              key={type}
+              type="button"
+              disabled={disabled}
+              onClick={() => !disabled && setAccountType(type)}
+              style={{
+                position: "relative",
+                padding: "10px 16px",
+                borderRadius: 999,
+                border: "none",
+                cursor: disabled ? "not-allowed" : "pointer",
+                fontSize: 11,
+                fontWeight: 700,
+                letterSpacing: 2,
+                textTransform: "uppercase",
+                fontFamily: "Inter, sans-serif",
+                transition: "all 0.25s",
+                background: accountType === type ? "var(--primary)" : "transparent",
+                color: accountType === type ? "var(--bg)" : disabled ? "var(--text-muted)" : "var(--text-secondary)",
+                boxShadow: accountType === type ? "0 4px 20px rgba(var(--primary-rgb), 0.35)" : "none",
+                opacity: disabled ? 0.6 : 1,
+                display: "inline-flex",
+                alignItems: "center",
+                justifyContent: "center",
+                gap: 8,
+              }}
+            >
+              {type}
+              {disabled && (
+                <span
+                  style={{
+                    fontSize: 8,
+                    fontWeight: 800,
+                    letterSpacing: 1.5,
+                    padding: "2px 6px",
+                    borderRadius: 999,
+                    background: "rgba(var(--primary-rgb), 0.15)",
+                    border: "1px solid rgba(var(--primary-rgb), 0.4)",
+                    color: "var(--primary)",
+                  }}
+                >
+                  SOON
+                </span>
+              )}
+            </button>
+          );
+        })}
       </div>
 
       <form onSubmit={handleSubmit}>
-        {/* Name */}
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12, marginBottom: 18 }}>
-          <div>
-            <label style={labelStyle}>First Name</label>
-            <input type="text" placeholder="First name" value={firstName}
-              onChange={(e) => setFirstName(e.target.value)} style={inputStyle} autoComplete="given-name" />
-          </div>
-          <div>
-            <label style={labelStyle}>Last Name</label>
-            <input type="text" placeholder="Last name" value={lastName}
-              onChange={(e) => setLastName(e.target.value)} style={inputStyle} autoComplete="family-name" />
-          </div>
-        </div>
-
         {/* Email */}
-        <div style={{ marginBottom: 18 }}>
+        <div style={{ marginBottom: 22 }}>
           <label style={labelStyle}>Email Address</label>
           <input
             type="email"
-            placeholder="you@example.com"
+            placeholder="operator@crymad.cash"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            style={inputStyle}
+            style={underlineInput}
             autoComplete="email"
             required
           />
         </div>
 
-        {/* Password */}
-        <div style={{ marginBottom: 4 }}>
+        {/* Access Key */}
+        <div style={{ marginBottom: 6 }}>
           <label style={labelStyle}>Password</label>
           <input
             type="password"
-            placeholder="Create a strong password"
+            placeholder="••••••••••••"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            style={inputStyle}
+            style={underlineInput}
+            autoComplete="new-password"
           />
         </div>
-
-        {/* Strength Indicator */}
-        {password && (
-          <div style={{ marginBottom: 18 }}>
+        {/* Strength segments */}
+        <div style={{ display: "flex", gap: 6, marginTop: 8, marginBottom: 6 }}>
+          {[1, 2, 3].map((i) => (
             <div
+              key={i}
               style={{
-                height: 4,
+                flex: 1,
+                height: 3,
                 borderRadius: 2,
-                background: "var(--surface)",
-                marginTop: 8,
-                marginBottom: 4,
-                overflow: "hidden",
+                background: score >= i ? "var(--primary)" : "rgba(var(--primary-rgb), 0.15)",
+                boxShadow: score >= i ? "0 0 8px rgba(var(--primary-rgb), 0.5)" : "none",
+                transition: "all 0.25s",
               }}
-            >
+            />
+          ))}
+        </div>
+        <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 22, minHeight: 16 }}>
+          <span style={{ fontSize: 10, letterSpacing: 2, color: "var(--text-muted)", textTransform: "uppercase" }}>
+            {password ? `Strength: ${strengthLabel(score)}` : ""}
+          </span>
+          {score === 3 && (
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+              <polyline points="9 12 11 14 15 10" />
+            </svg>
+          )}
+        </div>
+
+        {/* Re-Entry Key */}
+        <div style={{ marginBottom: 22 }}>
+          <label style={labelStyle}>Confirm Password</label>
+          <div style={{ position: "relative" }}>
+            <input
+              type="password"
+              placeholder="••••••••••••"
+              value={confirmPassword}
+              onChange={(e) => setConfirmPassword(e.target.value)}
+              style={{ ...underlineInput, paddingRight: 30 }}
+              autoComplete="new-password"
+            />
+            {passwordsMatch && (
               <div
                 style={{
-                  height: "100%",
-                  width: `${strength.percent}%`,
-                  background: strength.color,
-                  borderRadius: 2,
-                  transition: "width 0.3s, background 0.3s",
-                }}
-              />
-            </div>
-            <span style={{ fontSize: 11, color: strength.color, fontWeight: 500 }}>
-              {strength.label}
-            </span>
-          </div>
-        )}
-        {!password && <div style={{ marginBottom: 18 }} />}
-
-        {/* Confirm Password */}
-        <div style={{ marginBottom: 18 }}>
-          <label style={labelStyle}>Confirm Password</label>
-          <input
-            type="password"
-            placeholder="Confirm your password"
-            value={confirmPassword}
-            onChange={(e) => setConfirmPassword(e.target.value)}
-            style={inputStyle}
-          />
-        </div>
-
-        {/* Business Fields */}
-        {accountType === "business" && (
-          <div style={{ animation: "fadeIn 0.3s ease" }}>
-            <div style={{ marginBottom: 18 }}>
-              <label style={labelStyle}>Company Name</label>
-              <input
-                type="text"
-                placeholder="Enter company name"
-                value={companyName}
-                onChange={(e) => setCompanyName(e.target.value)}
-                style={inputStyle}
-              />
-            </div>
-            <div style={{ marginBottom: 18 }}>
-              <label style={labelStyle}>Registration Number</label>
-              <input
-                type="text"
-                placeholder="Company registration number"
-                value={regNumber}
-                onChange={(e) => setRegNumber(e.target.value)}
-                style={inputStyle}
-              />
-            </div>
-            <div style={{ marginBottom: 18 }}>
-              <label style={labelStyle}>Business Type</label>
-              <select
-                value={businessType}
-                onChange={(e) => setBusinessType(e.target.value)}
-                style={{
-                  ...inputStyle,
-                  appearance: "none",
-                  backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%2394a3b8' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E")`,
-                  backgroundRepeat: "no-repeat",
-                  backgroundPosition: "right 16px center",
+                  position: "absolute",
+                  right: 4,
+                  top: "50%",
+                  transform: "translateY(-50%)",
+                  width: 20,
+                  height: 20,
+                  borderRadius: "50%",
+                  background: "rgba(var(--primary-rgb), 0.15)",
+                  border: "1px solid var(--primary)",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
                 }}
               >
-                <option value="" style={{ background: "var(--bg)" }}>Select business type</option>
-                <option value="sole" style={{ background: "var(--bg)" }}>Sole Proprietorship</option>
-                <option value="llc" style={{ background: "var(--bg)" }}>LLC</option>
-                <option value="corp" style={{ background: "var(--bg)" }}>Corporation</option>
-                <option value="partnership" style={{ background: "var(--bg)" }}>Partnership</option>
-                <option value="nonprofit" style={{ background: "var(--bg)" }}>Non-Profit</option>
-              </select>
-            </div>
+                <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
+                  <polyline points="20 6 9 17 4 12" />
+                </svg>
+              </div>
+            )}
+          </div>
+        </div>
+
+        {/* CORP_ID / TAX_REF grid — business only */}
+        {accountType === "business" && (
+          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12, marginBottom: 22, animation: "fadeIn 0.3s ease" }}>
+            {[
+              { label: "CORP_ID", value: corpId, set: setCorpId },
+              { label: "TAX_REF", value: taxRef, set: setTaxRef },
+            ].map((f) => (
+              <div key={f.label} style={{ position: "relative" }}>
+                <input
+                  type="text"
+                  placeholder={f.label}
+                  value={f.value}
+                  onChange={(e) => f.set(e.target.value)}
+                  style={lockedInput}
+                />
+                <svg
+                  width="12"
+                  height="12"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="var(--primary)"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  style={{ position: "absolute", right: 12, top: "50%", transform: "translateY(-50%)", opacity: 0.8 }}
+                >
+                  <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
+                  <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+                </svg>
+              </div>
+            ))}
           </div>
         )}
 
-        {/* Checkboxes */}
-        <div style={{ marginBottom: 10 }}>
-          <label
-            style={{
-              display: "flex",
-              alignItems: "flex-start",
-              gap: 10,
-              cursor: "pointer",
-              fontSize: 13,
-              color: "var(--text-secondary)",
-              lineHeight: 1.4,
-            }}
-          >
-            <input
-              type="checkbox"
-              checked={agreeTerms}
-              onChange={(e) => setAgreeTerms(e.target.checked)}
-              style={{ marginTop: 2, accentColor: "var(--primary)" }}
-            />
-            <span>
-              I agree to the{" "}
-              <Link href="#" style={{ color: "var(--primary)", textDecoration: "none" }}>
-                Terms of Service
-              </Link>
-            </span>
-          </label>
-        </div>
-        <div style={{ marginBottom: 24 }}>
-          <label
-            style={{
-              display: "flex",
-              alignItems: "flex-start",
-              gap: 10,
-              cursor: "pointer",
-              fontSize: 13,
-              color: "var(--text-secondary)",
-              lineHeight: 1.4,
-            }}
-          >
-            <input
-              type="checkbox"
-              checked={agreePrivacy}
-              onChange={(e) => setAgreePrivacy(e.target.checked)}
-              style={{ marginTop: 2, accentColor: "var(--primary)" }}
-            />
-            <span>
-              I agree to the{" "}
-              <Link href="#" style={{ color: "var(--primary)", textDecoration: "none" }}>
-                Privacy Policy
-              </Link>
-            </span>
-          </label>
+        {/* Agreement pills */}
+        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 10, marginBottom: 22 }}>
+          {[
+            { label: "Terms of Service", checked: agreeTerms, set: setAgreeTerms },
+            { label: "Privacy Policy", checked: agreePrivacy, set: setAgreePrivacy },
+          ].map((opt) => (
+            <button
+              key={opt.label}
+              type="button"
+              onClick={() => opt.set(!opt.checked)}
+              style={{
+                display: "inline-flex",
+                alignItems: "center",
+                gap: 8,
+                padding: "8px 14px",
+                borderRadius: 999,
+                border: `1px solid ${opt.checked ? "var(--primary)" : "var(--glass-border)"}`,
+                background: opt.checked ? "rgba(var(--primary-rgb), 0.08)" : "transparent",
+                color: opt.checked ? "var(--primary)" : "var(--text-secondary)",
+                fontSize: 11,
+                fontWeight: 600,
+                cursor: "pointer",
+                fontFamily: "Inter, sans-serif",
+                transition: "all 0.2s",
+                justifyContent: "center",
+              }}
+            >
+              <span
+                style={{
+                  width: 14,
+                  height: 14,
+                  borderRadius: "50%",
+                  border: `1.5px solid ${opt.checked ? "var(--primary)" : "var(--text-muted)"}`,
+                  background: opt.checked ? "var(--primary)" : "transparent",
+                  display: "inline-flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                }}
+              >
+                {opt.checked && (
+                  <svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="var(--bg)" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round">
+                    <polyline points="20 6 9 17 4 12" />
+                  </svg>
+                )}
+              </span>
+              {opt.label}
+            </button>
+          ))}
         </div>
 
         {/* Error */}
@@ -348,7 +400,7 @@ export default function RegisterPage() {
           <div
             style={{
               color: "var(--danger)",
-              fontSize: 13,
+              fontSize: 12,
               marginBottom: 16,
               padding: "10px 14px",
               borderRadius: 10,
@@ -366,60 +418,62 @@ export default function RegisterPage() {
           disabled={loading}
           style={{
             width: "100%",
-            padding: 14,
-            borderRadius: 12,
-            background: loading ? "var(--text-muted)" : "var(--primary)",
-            color: "var(--bg)",
+            padding: "14px 20px",
+            borderRadius: 999,
+            background: "transparent",
+            color: "var(--primary)",
             fontWeight: 700,
-            fontSize: 14,
-            border: "none",
+            fontSize: 11,
+            letterSpacing: 3,
+            textTransform: "uppercase",
+            border: "1px solid var(--primary)",
             cursor: loading ? "not-allowed" : "pointer",
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
-            gap: 8,
-            transition: "background 0.3s",
+            gap: 10,
+            transition: "all 0.25s",
             fontFamily: "Inter, sans-serif",
+            boxShadow: "0 0 20px rgba(var(--primary-rgb), 0.15)",
+          }}
+          onMouseEnter={(e) => {
+            if (!loading) {
+              e.currentTarget.style.background = "rgba(var(--primary-rgb), 0.1)";
+              e.currentTarget.style.boxShadow = "0 0 30px rgba(var(--primary-rgb), 0.3)";
+            }
+          }}
+          onMouseLeave={(e) => {
+            e.currentTarget.style.background = "transparent";
+            e.currentTarget.style.boxShadow = "0 0 20px rgba(var(--primary-rgb), 0.15)";
           }}
         >
-          {loading && (
-            <svg
-              width="18"
-              height="18"
-              viewBox="0 0 24 24"
-              fill="none"
-              style={{ animation: "orbitSpin 1s linear infinite" }}
-            >
-              <circle
-                cx="12"
-                cy="12"
-                r="10"
-                stroke="var(--bg)"
-                strokeWidth="3"
-                strokeDasharray="32"
-                strokeLinecap="round"
-              />
+          {loading ? "Creating Account…" : "Create Account"}
+          {!loading && (
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+              <line x1="5" y1="12" x2="19" y2="12" />
+              <polyline points="12 5 19 12 12 19" />
             </svg>
           )}
-          {loading ? "Creating Account..." : "Sign Up"}
         </button>
       </form>
 
-      {/* Login Link */}
+      {/* Sign-in link */}
       <div
         style={{
           textAlign: "center",
-          marginTop: 24,
-          fontSize: 14,
-          color: "var(--text-secondary)",
+          marginTop: 20,
+          fontSize: 10,
+          letterSpacing: 2,
+          textTransform: "uppercase",
+          color: "var(--text-muted)",
         }}
       >
         Already have an account?{" "}
         <Link
           href="/login"
-          style={{ color: "var(--primary)", textDecoration: "none", fontWeight: 600 }}
+          style={{ color: "var(--primary)", textDecoration: "none", fontWeight: 700, marginLeft: 6 }}
         >
-          Sign In
+          Sign In →
         </Link>
       </div>
     </div>
