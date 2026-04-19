@@ -41,6 +41,41 @@ const LanguageContext = createContext<LanguageContextType | null>(null);
 // Cache loaded translations
 const translationCache: Partial<Record<LocaleCode, Translations>> = {};
 
+/** Cookie-based locale persistence. Scope to .crymadcash.com so landing and
+ *  app.crymadcash.com share the same locale. Falls back to host-only on other
+ *  domains (local dev, staging, vercel previews). */
+const LOCALE_COOKIE = "crymad-locale";
+
+function rootDomainForCookie(): string | null {
+  if (typeof window === "undefined") return null;
+  const host = window.location.hostname;
+  if (host.endsWith("crymadcash.com")) return ".crymadcash.com";
+  return null; // host-only — browser uses current origin
+}
+
+function readLocaleCookie(): LocaleCode | null {
+  if (typeof document === "undefined") return null;
+  const m = document.cookie.match(new RegExp(`(?:^|; )${LOCALE_COOKIE}=([^;]+)`));
+  if (!m) return null;
+  const v = decodeURIComponent(m[1]) as LocaleCode;
+  return LOCALES.some((l) => l.code === v) ? v : null;
+}
+
+function writeLocaleCookie(code: LocaleCode) {
+  if (typeof document === "undefined") return;
+  const domain = rootDomainForCookie();
+  const oneYear = 60 * 60 * 24 * 365;
+  const parts = [
+    `${LOCALE_COOKIE}=${encodeURIComponent(code)}`,
+    "path=/",
+    `max-age=${oneYear}`,
+    "samesite=lax",
+  ];
+  if (domain) parts.push(`domain=${domain}`);
+  if (window.location.protocol === "https:") parts.push("secure");
+  document.cookie = parts.join("; ");
+}
+
 function getNestedValue(obj: unknown, path: string): unknown {
   return path.split(".").reduce((current: unknown, key: string) => {
     if (current && typeof current === "object" && key in (current as Record<string, unknown>)) {
@@ -80,20 +115,22 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
     setIsLoading(false);
   }, []);
 
-  // Load initial locale from localStorage
+  // Load initial locale from cookie (cross-subdomain) with localStorage fallback
   useEffect(() => {
-    const saved = localStorage.getItem("crymad-locale") as LocaleCode | null;
+    const saved = readLocaleCookie() ?? (localStorage.getItem("crymad-locale") as LocaleCode | null);
     const initial = saved && LOCALES.some((l) => l.code === saved) ? saved : "en";
     setLocaleState(initial);
     loadTranslations(initial);
+    document.documentElement.dir = initial === "ar" ? "rtl" : "ltr";
+    document.documentElement.lang = initial;
   }, [loadTranslations]);
 
   const setLocale = useCallback(
     (code: LocaleCode) => {
       setLocaleState(code);
-      localStorage.setItem("crymad-locale", code);
+      writeLocaleCookie(code);
+      localStorage.setItem("crymad-locale", code); // also mirror for same-origin fast reads
       loadTranslations(code);
-      // Set HTML dir for RTL languages
       document.documentElement.dir = code === "ar" ? "rtl" : "ltr";
       document.documentElement.lang = code;
     },
