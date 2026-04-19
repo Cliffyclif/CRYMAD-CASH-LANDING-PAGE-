@@ -79,8 +79,9 @@ const mode = env.TYGAPAY_MODE;
 const suffix = mode === "prod" ? "_PROD" : "_SANDBOX";
 
 function pick(base: string): string {
-  const modeVal = (env as Record<string, string | undefined>)[base + suffix];
-  const legacyVal = (env as Record<string, string | undefined>)[base];
+  const envAny = env as unknown as Record<string, string | undefined>;
+  const modeVal = envAny[base + suffix];
+  const legacyVal = envAny[base];
   const val = modeVal || legacyVal;
   if (!val) {
     throw new Error(
