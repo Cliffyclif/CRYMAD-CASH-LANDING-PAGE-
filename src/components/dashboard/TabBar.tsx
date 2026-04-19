@@ -38,7 +38,6 @@ const TABS: TabItem[] = [
     { label: "Payouts", href: "/payouts" },
     { label: "Recurring Payments", href: "/recurring-payments" },
     { label: "Rewards", href: "/rewards" },
-    { label: "API Settings", href: "/settings/api" },
   ]},
 ];
 

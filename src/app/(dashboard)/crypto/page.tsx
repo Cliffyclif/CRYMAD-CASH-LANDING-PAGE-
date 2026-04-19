@@ -1397,6 +1397,25 @@ function SwapCard({
 
 /* ─── Receive Assets Panel (2 cols) ─── */
 function ReceiveAssetsPanel({ addresses, onClaim }: { addresses: DepositAddress[]; onClaim: () => void }) {
+  const activateButton = (
+    <button
+      onClick={onClaim}
+      style={{
+        display: "inline-flex", alignItems: "center", gap: 6,
+        padding: "7px 14px", borderRadius: 999,
+        background: "rgba(var(--primary-rgb), 0.1)",
+        border: "1px solid var(--primary)",
+        color: "var(--primary)",
+        fontSize: 10, fontWeight: 700, letterSpacing: 1.5, textTransform: "uppercase",
+        cursor: "pointer", fontFamily: "inherit",
+      }}
+    >
+      <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+        <line x1="12" y1="5" x2="12" y2="19" /><line x1="5" y1="12" x2="19" y2="12" />
+      </svg>
+      Activate Assets
+    </button>
+  );
   const [idx, setIdx] = useState(0);
   const [qr, setQr] = useState("");
   const [copied, setCopied] = useState(false);
@@ -1427,10 +1446,7 @@ function ReceiveAssetsPanel({ addresses, onClaim }: { addresses: DepositAddress[
           <div style={{
             fontSize: 13, fontWeight: 800, color: "var(--text)", letterSpacing: 1.5, textTransform: "uppercase",
           }}>Receive Assets</div>
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-            <rect x="3" y="3" width="7" height="7" rx="1" /><rect x="14" y="3" width="7" height="7" rx="1" />
-            <rect x="3" y="14" width="7" height="7" rx="1" /><rect x="14" y="14" width="7" height="7" rx="1" />
-          </svg>
+          {activateButton}
         </div>
 
         {addresses.length === 0 ? (
@@ -1438,7 +1454,7 @@ function ReceiveAssetsPanel({ addresses, onClaim }: { addresses: DepositAddress[
             <div style={{ color: "var(--text-muted)", fontSize: 13, marginBottom: 14 }}>
               No deposit addresses claimed yet.
             </div>
-            <button onClick={onClaim} style={primaryBtn}>Claim First Address</button>
+            <button onClick={onClaim} style={primaryBtn}>Activate Your First Asset</button>
           </div>
         ) : (
           <>
@@ -1946,6 +1962,7 @@ function CryptoPageInner() {
   const cryptoWallet = walletsByType.crypto;
 
   const [wallets, setWallets] = useState<CustodialWallet[] | null>(null);
+  const [walletsSandbox, setWalletsSandbox] = useState(false);
   const [addresses, setAddresses] = useState<DepositAddress[] | null>(null);
   const [prices, setPrices] = useState<Record<string, MarketPrice>>({});
   const [err, setErr] = useState<string | null>(null);
@@ -1976,6 +1993,7 @@ function CryptoPageInner() {
       const j = await r.json();
       if (!r.ok) throw new Error(j.error || String(r.status));
       setWallets(j.wallets ?? []);
+      setWalletsSandbox(Boolean(j.sandbox));
     } catch (e) { setErr((e as Error).message); }
   }, []);
 
@@ -2072,6 +2090,24 @@ function CryptoPageInner() {
 
   return (
     <>
+      {walletsSandbox && (
+        <div style={{
+          padding: "10px 16px", borderRadius: 12, marginBottom: 16,
+          background: "rgba(245, 158, 11, 0.08)",
+          border: "1px solid rgba(245, 158, 11, 0.3)",
+          display: "flex", alignItems: "center", gap: 10,
+          fontSize: 12, color: "var(--text)",
+        }}>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--warning)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ flexShrink: 0 }}>
+            <circle cx="12" cy="12" r="10" /><line x1="12" y1="8" x2="12" y2="12" /><line x1="12" y1="16" x2="12.01" y2="16" />
+          </svg>
+          <span>
+            <strong style={{ color: "var(--warning)" }}>Sandbox mode.</strong>{" "}
+            Custodial wallets are read-only in TygaBank sandbox. Create/send operations will work in production.
+          </span>
+        </div>
+      )}
+
       {/* ─── Hero Portfolio Card ─── */}
       <div style={{
         position: "relative", overflow: "hidden",

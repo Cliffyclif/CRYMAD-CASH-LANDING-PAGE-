@@ -3,6 +3,7 @@
 import { ProfileCard } from "@/components/dashboard/ProfileCard";
 import { WalletCapsules } from "@/components/dashboard/WalletCapsules";
 import { ActivityFeed } from "@/components/dashboard/ActivityFeed";
+import { useUser } from "@/components/providers/UserProvider";
 import Link from "next/link";
 
 export default function DashboardPage() {
@@ -243,7 +244,15 @@ function WelcomeCard() {
 }
 
 function SecurityScoreCard() {
-  const score = 85;
+  const { user } = useUser();
+  // Derived from observable security signals: email verified, KYC, registration,
+  // account presence. 2FA/hardware keys can add more when wired.
+  let score = 0;
+  if (user) score += 15;
+  if (user?.emailVerified) score += 25;
+  if (user?.completedRegistration) score += 25;
+  if (user?.kycStatus === "approved") score += 35;
+  else if (user?.kycStatus === "pending") score += 10;
   return (
     <div
       style={{

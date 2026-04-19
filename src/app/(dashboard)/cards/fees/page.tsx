@@ -83,6 +83,7 @@ export default function CardFeesPage() {
   const [apiData, setApiData] = useState<FeeRow[] | null>(null);
   const [active, setActive] = useState<CategoryKey | "ALL">("ALL");
   const [loading, setLoading] = useState(true);
+  const [isFallback, setIsFallback] = useState(false);
 
   useEffect(() => {
     fetch("/api/cards/fees")
@@ -96,9 +97,18 @@ export default function CardFeesPage() {
                 Array.isArray(v) ? v.map((r) => ({ ...(r as FeeRow), category: k })) : []
               )
             : [];
-        setApiData(flat.length > 0 ? flat : null);
+        if (flat.length > 0) {
+          setApiData(flat);
+          setIsFallback(false);
+        } else {
+          setApiData(null);
+          setIsFallback(true);
+        }
       })
-      .catch(() => setApiData(null))
+      .catch(() => {
+        setApiData(null);
+        setIsFallback(true);
+      })
       .finally(() => setLoading(false));
   }, []);
 
@@ -125,8 +135,32 @@ export default function CardFeesPage() {
         letterSpacing: -0.5, textShadow: "0 0 30px rgba(var(--primary-rgb), 0.35)",
       }}>Fee Schedule</h1>
       <p style={{ color: "var(--text-secondary)", fontSize: 14, margin: "0 0 20px", maxWidth: 480, lineHeight: 1.5 }}>
-        Transparent pricing — no hidden bioluminescent surprises. Engineered for high-frequency financial fluidity.
+        Transparent pricing. Engineered for high-frequency financial fluidity.
       </p>
+
+      {isFallback && !loading && (
+        <div style={{
+          padding: "12px 16px",
+          borderRadius: 12,
+          background: "rgba(245, 158, 11, 0.08)",
+          border: "1px solid rgba(245, 158, 11, 0.3)",
+          marginBottom: 20,
+          display: "flex",
+          alignItems: "flex-start",
+          gap: 10,
+        }}>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--warning)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ flexShrink: 0, marginTop: 1 }}>
+            <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z" />
+            <line x1="12" y1="9" x2="12" y2="13" />
+            <line x1="12" y1="17" x2="12.01" y2="17" />
+          </svg>
+          <div style={{ fontSize: 12, color: "var(--text)", lineHeight: 1.5 }}>
+            <strong style={{ color: "var(--warning)" }}>Sample fees shown.</strong>{" "}
+            Your tenant&apos;s fee schedule hasn&apos;t been provisioned by TygaBank yet.
+            The numbers below are illustrative — contact support for actual pricing.
+          </div>
+        </div>
+      )}
 
       {/* Filter pills */}
       <div style={{ display: "flex", gap: 8, marginBottom: 28, flexWrap: "wrap" }}>
