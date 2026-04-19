@@ -397,6 +397,7 @@ export default function EcosystemPage() {
 }
 
 function Tooltip({ s }: { s: Segment }) {
+  const { t } = useLanguage();
   return (
     <div className="seg-tooltip">
       <div
