@@ -47,6 +47,38 @@ export async function POST(req: NextRequest) {
       const r = await tyga.users.exists({ email: String((body as { email?: string }).email || "probe@test.com") });
       return NextResponse.json({ ok: true, stage: 2, tygaExists: r });
     }
+    if (stage === "3") {
+      const body = await req.json().catch(() => ({})) as { email?: string };
+      const email = String(body.email || "").toLowerCase();
+      const row = await queryOne<{ id: string }>(`SELECT id FROM users WHERE email = $1`, [email]);
+      return NextResponse.json({ ok: true, stage: 3, dbRow: row });
+    }
+    if (stage === "4") {
+      const body = await req.json().catch(() => ({})) as { email?: string };
+      const email = String(body.email || "").toLowerCase();
+      const externalId = `crmdx_${email.replace(/[^a-z0-9]/g, "_")}`;
+      const created = await tyga.users.create({
+        email, externalUserId: externalId, createdBy: "crmdx-bisect",
+        sendWelcomeEmail: false, autoVerifyEmail: true,
+      });
+      return NextResponse.json({ ok: true, stage: 4, created });
+    }
+    if (stage === "5") {
+      const hash = await bcrypt.hash("probepass", 12);
+      return NextResponse.json({ ok: true, stage: 5, hashLen: hash.length });
+    }
+    if (stage === "6") {
+      const body = await req.json().catch(() => ({})) as { email?: string };
+      const email = String(body.email || "").toLowerCase();
+      const code = await createOtp(email, "register");
+      return NextResponse.json({ ok: true, stage: 6, code });
+    }
+    if (stage === "7") {
+      const body = await req.json().catch(() => ({})) as { email?: string };
+      const email = String(body.email || "").toLowerCase();
+      const sent = await sendOtpEmail({ to: email, code: "000000", purpose: "register" });
+      return NextResponse.json({ ok: true, stage: 7, sent });
+    }
     return await handlePOST(req);
   } catch (err) {
     console.error("[register][top-catch]", err);
