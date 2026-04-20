@@ -59,10 +59,10 @@ function VerifyEmailInner() {
     if (resendIn > 0) return;
     if (!email) return;
     try {
-      const res = await fetch("/api/auth/send-otp", {
+      const res = await fetch("/api/auth/resend-verify", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, purpose: "register" }),
+        body: JSON.stringify({ email }),
       });
       const j = await res.json();
       if (j.devCode) setDevCode(j.devCode);
