@@ -216,6 +216,21 @@ export async function POST(req: NextRequest) {
         { status: err.status >= 400 && err.status < 500 ? 400 : 500 },
       );
     }
+    // "Email-verify recovery exhausted" means our OTP succeeded but TygaBank
+    // still refuses. This is the known 450-rejection scenario. Surface a
+    // specific error so the client can show a useful message ("awaiting
+    // TygaBank manual verification") instead of a generic 500.
+    const em = (err as Error)?.message || "";
+    if (em.startsWith("Email-verify recovery exhausted")) {
+      return NextResponse.json(
+        {
+          error: "tygabank_verify_pending",
+          message:
+            "Your email is verified on our side but TygaBank hasn't flipped their flag yet. Support has been notified; you'll be able to finish setup shortly.",
+        },
+        { status: 503 },
+      );
+    }
     console.error("[complete-registration]", err);
     const e = err as { message?: string; stack?: string };
     return NextResponse.json({

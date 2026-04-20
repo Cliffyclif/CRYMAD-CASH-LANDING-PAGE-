@@ -22,10 +22,17 @@ CREATE TABLE IF NOT EXISTS users (
   tygapay_user_id TEXT        UNIQUE NOT NULL,              -- TygaBank user.id
   external_id     TEXT        UNIQUE NOT NULL,              -- TygaBank externalUserId
   account_type    TEXT        NOT NULL DEFAULT 'individual' CHECK (account_type IN ('individual','business')),
+  -- Local email-verification flag. Primary source of truth — we own our own
+  -- OTP lifecycle via Infomaniak because TygaBank's verify emails are unreliable.
+  -- complete-registration will still fail at TygaBank until their flag is also flipped
+  -- (pending admin-verify endpoint from their side).
+  email_verified_at TIMESTAMPTZ,
   created_at      TIMESTAMPTZ NOT NULL DEFAULT NOW(),
   updated_at      TIMESTAMPTZ NOT NULL DEFAULT NOW(),
   last_login_at   TIMESTAMPTZ
 );
+-- Additive migration for existing deployments:
+ALTER TABLE users ADD COLUMN IF NOT EXISTS email_verified_at TIMESTAMPTZ;
 CREATE INDEX IF NOT EXISTS idx_users_tygapay ON users(tygapay_user_id);
 
 -- CITEXT requires extension

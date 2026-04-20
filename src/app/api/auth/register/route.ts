@@ -108,26 +108,34 @@ export async function POST(req: NextRequest) {
       [email, passwordHash, tygaId, externalId, data.accountType],
     );
 
-    // TygaBank's `autoVerifyEmail: true` on create is not honored by prod —
-    // emailIsVerified stays false and blocks complete-registration. Use their
-    // own verify round-trip: trigger sendVerifyEmail so TygaBank mails a
-    // code, then verify-otp calls confirmVerifyEmail with that code.
-    // Only one email is sent (TygaBank's) to avoid user confusion about
-    // which code to enter.
+    // Send our OWN OTP email via Infomaniak (proven reliable to Gmail + majors).
+    // TygaBank's verify emails are blocked at the 450 sender-domain layer, so
+    // their pipeline is unreliable. Our OTP is the source of truth for
+    // email verification; when admin-verify support lands, verify-otp will
+    // flip the TygaBank flag once our code is validated.
+    const code = await createOtp(email, "register");
+    const sent = await sendOtpEmail({
+      to: email,
+      code,
+      purpose: "register",
+      firstName: data.firstName,
+    });
+    if (!sent.ok) console.warn("[register][email]", sent.error);
+
+    // Best-effort: ask TygaBank to also send (fine if it fails, we don't depend on it).
     let tygaVerifySent = false;
     try {
       await tyga.users.sendVerifyEmail(tygaId);
       tygaVerifySent = true;
     } catch (e) {
-      console.warn("[register] tyga sendVerifyEmail failed — falling back to local OTP", e);
-      const code = await createOtp(email, "register");
-      const sent = await sendOtpEmail({ to: email, code, purpose: "register", firstName: data.firstName });
-      if (!sent.ok) console.warn("[register][email]", sent.error);
+      console.warn("[register] tyga sendVerifyEmail failed (non-blocking)", e);
     }
+
     return NextResponse.json({
       ok: true,
       userId: tygaId,
       email,
+      localOtpSent: sent.ok,
       tygaVerifySent,
     });
   } catch (err) {

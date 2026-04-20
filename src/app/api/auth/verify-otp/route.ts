@@ -1,10 +1,11 @@
 /**
  * POST /api/auth/verify-otp
- * Body: { email, code, purpose: "login" | "register" }
+ * Body: { email, code, purpose: "login" | "register" | "email_verify" }
  *
- * On success:
- *   • "login": issues session cookie and returns user
- *   • "register": marks email verified in our DB + calls TygaBank confirm-verify-email
+ * Our OTP is the canonical verifier. TygaBank's confirm-verify-email is called
+ * best-effort so their flag flips when possible; a failure is logged but does
+ * NOT block the user. Local `users.email_verified_at` is set on successful
+ * register/email_verify so downstream code treats the user as verified.
  */
 
 import { NextRequest, NextResponse } from "next/server";
@@ -26,6 +27,11 @@ export async function POST(req: NextRequest) {
     const data = Schema.parse(await req.json());
     const email = data.email.toLowerCase();
 
+    const ok = await verifyOtp(email, data.code, data.purpose);
+    if (!ok) {
+      return NextResponse.json({ error: "invalid_code" }, { status: 401 });
+    }
+
     const user = await queryOne<{
       id: string;
       email: string;
@@ -39,40 +45,32 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: "user_not_found" }, { status: 404 });
     }
 
-    // For register/email_verify: TygaBank's code is the ONLY acceptable
-    // credential — it's what flips their emailIsVerified flag. Local OTP
-    // fallback would succeed without flipping the flag, making
-    // complete-registration fail later with a confusing error.
+    let tygaFlipped = false;
+    let tygaReason: string | undefined;
+
     if (data.purpose === "register" || data.purpose === "email_verify") {
+      // Mark locally verified — our OTP succeeded.
+      await query(
+        `UPDATE users SET email_verified_at = NOW(), updated_at = NOW() WHERE id = $1`,
+        [user.id],
+      );
+
+      // Best-effort: flip TygaBank's flag too. Most of the time this will fail
+      // until they expose an admin-verify endpoint, but keep attempting in case
+      // their pipeline self-heals or a tenant-level fix lands.
       try {
         await tyga.users.confirmVerifyEmail(user.tygapay_user_id, data.code);
+        tygaFlipped = true;
       } catch (e) {
-        const tb =
-          e instanceof TygaBankError && typeof e.body === "object" && e.body !== null
-            ? (e.body as { details?: string; status?: string; message?: string })
-            : null;
-        console.error("[verify-otp] TygaBank confirm failed", {
-          tid: user.tygapay_user_id,
-          status: e instanceof TygaBankError ? e.status : undefined,
-          body: tb,
-        });
-        const details = tb?.details || "";
-        if (/timeout|expired/i.test(details)) {
-          return NextResponse.json({ error: "code_expired", tygabank: tb }, { status: 401 });
-        }
-        return NextResponse.json({ error: "invalid_code", tygabank: tb }, { status: 401 });
-      }
-      // Also consume any matching local OTP so it can't be replayed, but don't
-      // require it to match.
-      await verifyOtp(email, data.code, data.purpose).catch(() => false);
-    } else {
-      const ok = await verifyOtp(email, data.code, data.purpose);
-      if (!ok) {
-        return NextResponse.json({ error: "invalid_code" }, { status: 401 });
+        tygaReason =
+          e instanceof TygaBankError
+            ? `${e.status}: ${typeof e.body === "object" && e.body !== null && "details" in e.body ? String((e.body as { details: unknown }).details) : e.status}`
+            : (e as Error)?.message || "unknown";
+        console.warn("[verify-otp] TygaBank confirm failed (non-blocking)", tygaReason);
       }
     }
 
-    // If logging in, issue session
+    // Issue session on login OR register (register flow ends with user logged in).
     if (data.purpose === "login" || data.purpose === "register") {
       const jti = crypto.randomUUID();
       const maxAgeDays = Number(process.env.SESSION_MAX_AGE_DAYS || 7);
@@ -99,6 +97,9 @@ export async function POST(req: NextRequest) {
         tygapayUserId: user.tygapay_user_id,
         accountType: user.account_type,
       },
+      emailVerifiedLocally: data.purpose !== "login",
+      tygaFlipped,
+      tygaReason,
     });
   } catch (err) {
     if (err instanceof z.ZodError) {

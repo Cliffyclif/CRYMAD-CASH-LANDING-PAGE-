@@ -19,10 +19,11 @@ export async function GET() {
       email: string;
       account_type: string;
       tygapay_user_id: string;
+      email_verified_at: Date | null;
       created_at: Date;
       last_login_at: Date | null;
     }>(
-      `SELECT id, email, account_type, tygapay_user_id, created_at, last_login_at
+      `SELECT id, email, account_type, tygapay_user_id, email_verified_at, created_at, last_login_at
          FROM users WHERE id = $1`,
       [s.uid],
     );
@@ -48,7 +49,11 @@ export async function GET() {
         firstName: tygaUser?.firstName,
         lastName: tygaUser?.lastName,
         kycStatus: tygaUser?.kycStatus ?? "not_started",
-        emailVerified: tygaUser?.emailIsVerified ?? false,
+        // Local verification wins — we own the OTP lifecycle. TygaBank's flag is
+        // secondary and often lags due to their email-delivery issues.
+        emailVerified: !!local.email_verified_at || (tygaUser?.emailIsVerified ?? false),
+        emailVerifiedLocally: !!local.email_verified_at,
+        emailVerifiedOnTygabank: tygaUser?.emailIsVerified ?? false,
         completedRegistration: tygaUser?.completedRegistration ?? false,
         phoneNumber: tygaUser?.phoneNumber,
         dateOfBirth: tygaUser?.dateOfBirth,
