@@ -104,13 +104,34 @@ export async function POST(req: NextRequest) {
             ? (e.body as { details?: string })
             : null;
         if (body?.details === "Email not verified") {
+          // Try every documented path to flip the TygaBank verified flag.
+          const attempts: Array<{ name: string; err?: unknown }> = [];
+          const attempt = async (name: string, fn: () => Promise<unknown>) => {
+            try {
+              await fn();
+              attempts.push({ name });
+            } catch (ae) {
+              const b =
+                ae instanceof TygaBankError
+                  ? { status: ae.status, body: ae.body }
+                  : { message: (ae as Error)?.message };
+              attempts.push({ name, err: b });
+            }
+          };
+          await attempt("confirm-no-code", () => tyga.users.confirmVerifyEmail(id));
+          await attempt("confirm-empty-code", () => tyga.users.confirmVerifyEmail(id, ""));
+          await attempt("confirm-000000", () => tyga.users.confirmVerifyEmail(id, "000000"));
+          await attempt("send-verify", () => tyga.users.sendVerifyEmail(id));
           try {
-            await tyga.users.confirmVerifyEmail(id);
-          } catch {
-            /* best-effort */
+            await tyga.users.update(id, data);
+            return true;
+          } catch (retryErr) {
+            const ne = new Error(
+              `Email-verify recovery exhausted. attempts=${JSON.stringify(attempts)}`,
+            );
+            (ne as Error & { cause?: unknown }).cause = retryErr;
+            throw ne;
           }
-          await tyga.users.update(id, data);
-          return true;
         }
         throw e;
       }
