@@ -26,7 +26,23 @@ const Schema = z.object({
   accountType: z.enum(["individual", "business"]).default("individual"),
 });
 
+// Health probe so we can verify which build is actually live.
+export function GET() {
+  return NextResponse.json({ route: "register", version: "v4-normalize-id-and-trap" });
+}
+
 export async function POST(req: NextRequest) {
+  try {
+    // Defensive wrapper: capture any synchronous throw too.
+    return await handlePOST(req);
+  } catch (err) {
+    console.error("[register][top-catch]", err);
+    const e = err as { message?: string };
+    return NextResponse.json({ error: "internal", reason: e?.message || "unknown" }, { status: 500 });
+  }
+}
+
+async function handlePOST(req: NextRequest) {
   try {
     const json = await req.json();
     const data = Schema.parse(json);
