@@ -49,14 +49,18 @@ export async function POST(req: NextRequest) {
       } catch (e) {
         const tb =
           e instanceof TygaBankError && typeof e.body === "object" && e.body !== null
-            ? (e.body as { details?: string })
+            ? (e.body as { details?: string; status?: string; message?: string })
             : null;
-        // Distinguish "wrong code" from "no pending session" for the UI.
+        console.error("[verify-otp] TygaBank confirm failed", {
+          tid: user.tygapay_user_id,
+          status: e instanceof TygaBankError ? e.status : undefined,
+          body: tb,
+        });
         const details = tb?.details || "";
         if (/timeout|expired/i.test(details)) {
-          return NextResponse.json({ error: "code_expired" }, { status: 401 });
+          return NextResponse.json({ error: "code_expired", tygabank: tb }, { status: 401 });
         }
-        return NextResponse.json({ error: "invalid_code" }, { status: 401 });
+        return NextResponse.json({ error: "invalid_code", tygabank: tb }, { status: 401 });
       }
       // Also consume any matching local OTP so it can't be replayed, but don't
       // require it to match.
