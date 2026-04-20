@@ -105,7 +105,13 @@ export function CompleteProfileModal() {
       });
       const j = await res.json();
       if (!res.ok) {
-        setError(j.error === "invalid_code" ? "Invalid or expired code." : "Verification failed. Try again.");
+        setError(
+          j.error === "code_expired"
+            ? "Code expired. Click Resend to get a new one."
+            : j.error === "invalid_code"
+              ? "Invalid code. Double-check you're using the most recent email from Crymad/TygaBank."
+              : "Verification failed. Try again.",
+        );
         return;
       }
       setEmailVerifiedLocal(true);

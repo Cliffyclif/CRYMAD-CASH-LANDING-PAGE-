@@ -13,7 +13,7 @@ import { z } from "zod";
 import { query, queryOne } from "@/lib/db";
 import { verifyOtp } from "@/lib/auth/otp";
 import { createSession, setSessionCookie } from "@/lib/auth/session";
-import { tyga } from "@/lib/tygabank/client";
+import { tyga, TygaBankError } from "@/lib/tygabank/client";
 
 const Schema = z.object({
   email: z.string().email(),
@@ -39,22 +39,28 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: "user_not_found" }, { status: 404 });
     }
 
-    // For register/email_verify: the canonical gate is TygaBank's own code.
-    // Without flipping their emailIsVerified flag, complete-registration fails.
-    // Accept either (a) TygaBank's code (flips their flag) or (b) our fallback
-    // OTP. Try TygaBank first — on success consume our OTP as well if matching.
+    // For register/email_verify: TygaBank's code is the ONLY acceptable
+    // credential — it's what flips their emailIsVerified flag. Local OTP
+    // fallback would succeed without flipping the flag, making
+    // complete-registration fail later with a confusing error.
     if (data.purpose === "register" || data.purpose === "email_verify") {
-      let tygaOk = false;
       try {
         await tyga.users.confirmVerifyEmail(user.tygapay_user_id, data.code);
-        tygaOk = true;
-      } catch {
-        /* fall through to our OTP */
-      }
-      const localOk = await verifyOtp(email, data.code, data.purpose);
-      if (!tygaOk && !localOk) {
+      } catch (e) {
+        const tb =
+          e instanceof TygaBankError && typeof e.body === "object" && e.body !== null
+            ? (e.body as { details?: string })
+            : null;
+        // Distinguish "wrong code" from "no pending session" for the UI.
+        const details = tb?.details || "";
+        if (/timeout|expired/i.test(details)) {
+          return NextResponse.json({ error: "code_expired" }, { status: 401 });
+        }
         return NextResponse.json({ error: "invalid_code" }, { status: 401 });
       }
+      // Also consume any matching local OTP so it can't be replayed, but don't
+      // require it to match.
+      await verifyOtp(email, data.code, data.purpose).catch(() => false);
     } else {
       const ok = await verifyOtp(email, data.code, data.purpose);
       if (!ok) {
