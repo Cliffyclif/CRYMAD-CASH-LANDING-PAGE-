@@ -7,6 +7,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { z } from "zod";
 import { requireSession } from "@/lib/auth/session";
 import { tyga, TygaBankError } from "@/lib/tygabank/client";
+import { query, queryOne } from "@/lib/db";
 
 const Schema = z.object({
   firstName: z.string().min(1),
@@ -28,8 +29,64 @@ export async function POST(req: NextRequest) {
   try {
     const s = await requireSession();
     const data = Schema.parse(await req.json());
-    const result = await tyga.users.update(s.tid, data);
-    return NextResponse.json({ ok: true, user: result });
+
+    let tid = s.tid;
+    try {
+      const result = await tyga.users.update(tid, data);
+      return NextResponse.json({ ok: true, user: result });
+    } catch (err) {
+      // Self-heal stale TygaBank IDs: if prod TygaBank doesn't know this user
+      // (e.g. they were created on sandbox earlier), re-provision on the
+      // current environment and retry the update.
+      const is404 =
+        err instanceof TygaBankError &&
+        (err.status === 404 ||
+          (typeof err.body === "object" && err.body !== null &&
+            (err.body as { status?: string }).status === "user_not_found"));
+      if (!is404) throw err;
+
+      const localUser = await queryOne<{ id: string; email: string; external_id: string }>(
+        `SELECT id, email, external_id FROM users WHERE id = $1`,
+        [s.uid],
+      );
+      if (!localUser) throw err;
+
+      // Try link-by-email first (user may already exist on current env)
+      let newTid: string | null = null;
+      try {
+        const byEmail = await tyga.users.getByEmail(localUser.email);
+        const u = Array.isArray((byEmail as { users?: unknown[] }).users)
+          ? (byEmail as { users: Array<{ id: string }> }).users[0]
+          : (byEmail as { id: string });
+        if (u?.id) newTid = u.id;
+      } catch {
+        /* fall through to create */
+      }
+
+      if (!newTid) {
+        const created = await tyga.users.create({
+          email: localUser.email,
+          externalUserId: localUser.external_id,
+          firstName: data.firstName,
+          lastName: data.lastName,
+          createdBy: "crmdx-heal",
+          autoVerifyEmail: true,
+          sendWelcomeEmail: false,
+        });
+        newTid = created.id;
+      }
+
+      // Persist the corrected TygaBank ID
+      await query(
+        `UPDATE users SET tygapay_user_id = $1, updated_at = NOW() WHERE id = $2`,
+        [newTid, localUser.id],
+      );
+      tid = newTid;
+
+      // Retry the update with the fresh ID
+      const result = await tyga.users.update(tid, data);
+      return NextResponse.json({ ok: true, user: result, healed: true });
+    }
   } catch (err) {
     if ((err as { status?: number })?.status === 401) {
       return NextResponse.json({ error: "unauthenticated" }, { status: 401 });
