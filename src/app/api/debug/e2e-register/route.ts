@@ -33,7 +33,7 @@ async function readCodeFromInbox(
   email: string,
   sinceMs: number,
   timeoutMs = 60000,
-): Promise<{ code: string | null; probed: number; subjects: string[] }> {
+): Promise<{ code: string | null; probed: number; subjects: string[]; folders: string[]; usedFolder: string }> {
   const host = process.env.IMAP_HOST || "mail.infomaniak.com";
   const port = Number(process.env.IMAP_PORT || 993);
   const user = process.env.IMAP_USER || process.env.SMTP_USER;
@@ -47,6 +47,17 @@ async function readCodeFromInbox(
   const deadline = Date.now() + timeoutMs;
   let probed = 0;
   const subjects: string[] = [];
+  let folderList: string[] = [];
+  let usedFolder = "INBOX";
+
+  // Inspect folder layout once at start.
+  try {
+    const c0 = new ImapFlow({ host, port, secure: true, auth: { user, pass }, logger: false });
+    await c0.connect();
+    const list = await c0.list();
+    folderList = list.map((m) => m.path);
+    await c0.logout();
+  } catch { /* noop */ }
 
   while (Date.now() < deadline) {
     const client = new ImapFlow({
@@ -54,14 +65,23 @@ async function readCodeFromInbox(
     });
     try {
       await client.connect();
-      const lock = await client.getMailboxLock("INBOX");
-      try {
-        const since = new Date(sinceMs - 120_000);
-        // Broad fetch: all messages since test started, filter in memory
-        for await (const msg of client.fetch(
-          { since },
-          { envelope: true, source: true },
-        )) {
+      // Prefer INBOX; some servers route plus-addressed to Junk/Spam.
+      const candidates = ["INBOX", ...folderList.filter((f) => /junk|spam|all/i.test(f))];
+      for (const folder of candidates) {
+        usedFolder = folder;
+        let lock;
+        try { lock = await client.getMailboxLock(folder); } catch { continue; }
+        try {
+          // Search the LAST 50 messages regardless of time, so we see truly
+          // what's in the inbox (avoids missed-window issues).
+          const box = client.mailbox;
+          const exists = typeof box === "object" && box ? (box as { exists?: number }).exists ?? 0 : 0;
+          const from = Math.max(1, exists - 50);
+          if (exists === 0) continue;
+          for await (const msg of client.fetch(
+            `${from}:*`,
+            { envelope: true, source: true },
+          )) {
           probed += 1;
           if (!msg.source) continue;
           const parsed = await simpleParser(msg.source);
@@ -75,18 +95,19 @@ async function readCodeFromInbox(
           const hay = `${parsed.text || ""}\n${(parsed.html as string) || ""}\n${subj}`;
           const m = hay.match(/\b(\d{6})\b/);
           if (m) {
-            return { code: m[1], probed, subjects };
+            return { code: m[1], probed, subjects, folders: folderList, usedFolder };
           }
         }
-      } finally {
-        lock.release();
+        } finally {
+          lock.release();
+        }
       }
     } finally {
       try { await client.logout(); } catch { /* noop */ }
     }
     await new Promise((r) => setTimeout(r, 2500));
   }
-  return { code: null, probed, subjects };
+  return { code: null, probed, subjects, folders: folderList, usedFolder };
 }
 
 // Hardcoded gate key for a one-shot diagnostic run. The route will be
