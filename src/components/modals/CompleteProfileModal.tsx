@@ -38,7 +38,6 @@ export function CompleteProfileModal() {
   // Email verification gate: if TygaBank hasn't flipped emailIsVerified,
   // we block profile save and collect the verification code first.
   const [emailVerifiedLocal, setEmailVerifiedLocal] = useState<boolean>(!!user?.emailVerified);
-  const [verifyCode, setVerifyCode] = useState("");
   const [verifyLoading, setVerifyLoading] = useState(false);
   const [verifyInfo, setVerifyInfo] = useState<string>("");
   const [resendCooldown, setResendCooldown] = useState(0);
@@ -95,28 +94,23 @@ export function CompleteProfileModal() {
 
   async function verifyEmail() {
     setError("");
-    if (verifyCode.length !== 6) { setError("Enter the 6-digit code from your email."); return; }
     setVerifyLoading(true);
     try {
-      const res = await fetch("/api/auth/verify-otp", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email: user?.email, code: verifyCode, purpose: "register" }),
-      });
+      // Re-fetch /api/auth/me which reads TygaBank's emailIsVerified flag.
+      // The flag only flips after the user clicks the link in their email.
+      const res = await fetch("/api/auth/me", { credentials: "include" });
       const j = await res.json();
       if (!res.ok) {
-        setError(
-          j.error === "code_expired"
-            ? "Code expired. Click Resend to get a new one."
-            : j.error === "invalid_code"
-              ? "Invalid code. Double-check you're using the most recent email from Crymad/TygaBank."
-              : "Verification failed. Try again.",
-        );
+        setError("Couldn't verify status. Try again.");
         return;
       }
-      setEmailVerifiedLocal(true);
-      setVerifyInfo("Email verified. Continue with your profile.");
-      await refresh();
+      if (j.user?.emailVerified) {
+        setEmailVerifiedLocal(true);
+        setVerifyInfo("Email verified. Continue with your profile.");
+        await refresh();
+      } else {
+        setError("We don't see a verified status yet. Open the email and click the verification link, then try again.");
+      }
     } catch {
       setError("Network error. Try again.");
     } finally {
@@ -206,7 +200,7 @@ export function CompleteProfileModal() {
         <p style={{ fontSize: 13, color: "var(--text-secondary)", marginBottom: 20, textAlign: "center" }}>
           {emailVerifiedLocal
             ? <>We need a few details before you can use your wallet. Step {step} of 3.</>
-            : <>We sent a 6-digit code to <strong>{user?.email}</strong>. Enter it below to continue.</>}
+            : <>We sent a verification link to <strong>{user?.email}</strong>. Click the link in that email to continue.</>}
         </p>
 
         {emailVerifiedLocal && (
@@ -234,17 +228,19 @@ export function CompleteProfileModal() {
 
         {!emailVerifiedLocal && (
           <div style={{ animation: "fadeIn 0.3s ease" }}>
-            <input
-              inputMode="numeric" pattern="\d{6}" maxLength={6}
-              placeholder="000000"
-              value={verifyCode}
-              onChange={(e) => setVerifyCode(e.target.value.replace(/\D/g, "").slice(0, 6))}
-              autoFocus
-              style={{
-                ...inputStyle, letterSpacing: 8, textAlign: "center",
-                fontFamily: "JetBrains Mono, monospace", fontSize: 22, marginBottom: 12,
-              }}
-            />
+            <div style={{
+              background: "var(--surface)", border: "1px solid var(--glass-border)",
+              borderRadius: 14, padding: 16, marginBottom: 14, fontSize: 13,
+              color: "var(--text)", lineHeight: 1.6,
+            }}>
+              <div style={{ fontWeight: 700, marginBottom: 6 }}>How to verify:</div>
+              <ol style={{ paddingLeft: 20, margin: 0, color: "var(--text-secondary)" }}>
+                <li>Open your email inbox (and check Spam).</li>
+                <li>Find the message with a verification link.</li>
+                <li>Click the link — you&apos;ll land on a confirmation page.</li>
+                <li>Come back here and click <strong>I&apos;ve verified my email</strong>.</li>
+              </ol>
+            </div>
             {verifyInfo && (
               <div style={{ fontSize: 12, color: "var(--text-secondary)", textAlign: "center", marginBottom: 12 }}>
                 {verifyInfo}
@@ -257,7 +253,7 @@ export function CompleteProfileModal() {
               ) : (
                 <button type="button" onClick={resendCode}
                   style={{ background: "none", border: "none", color: "var(--primary)", fontWeight: 600, cursor: "pointer", padding: 0 }}>
-                  Resend code
+                  Resend email
                 </button>
               )}
             </div>
@@ -382,7 +378,7 @@ export function CompleteProfileModal() {
               cursor: (loading || verifyLoading) ? "not-allowed" : "pointer", fontFamily: "Inter, sans-serif",
             }}>
             {!emailVerifiedLocal
-              ? (verifyLoading ? "Verifying…" : "Verify Email")
+              ? (verifyLoading ? "Checking…" : "I've verified my email")
               : loading ? "Saving…" : step === 3 ? "Complete Profile" : "Continue"}
           </button>
         </div>
