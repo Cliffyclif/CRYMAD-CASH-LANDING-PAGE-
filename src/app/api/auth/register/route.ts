@@ -28,7 +28,7 @@ const Schema = z.object({
 
 // Health probe so we can verify which build is actually live.
 export function GET() {
-  return NextResponse.json({ route: "register", version: "v4-normalize-id-and-trap" });
+  return NextResponse.json({ route: "register", version: "v5-bisect-3-7" });
 }
 
 export async function POST(req: NextRequest) {
