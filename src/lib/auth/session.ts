@@ -62,24 +62,30 @@ export async function clearSessionCookie() {
   jar.delete(COOKIE_NAME);
 }
 
-/** Read session from cookie — for use in API routes + server components. */
+/** Read session from cookie — for use in API routes + server components.
+ *  Side-effect: refreshes `tid` from Postgres so stale JWT IDs (e.g. from a
+ *  sandbox→prod migration) don't poison downstream TygaBank calls. */
 export async function getSession(): Promise<SessionPayload | null> {
   const jar = await cookies();
   const token = jar.get(COOKIE_NAME)?.value;
   if (!token) return null;
   const session = await verifySession(token);
   if (!session) return null;
-  // Optional: check if session is revoked in DB
-  if (session.jti) {
-    try {
-      const row = await queryOne<{ revoked_at: Date | null }>(
-        "SELECT revoked_at FROM sessions WHERE jti = $1",
-        [session.jti],
-      );
-      if (row && row.revoked_at) return null;
-    } catch {
-      // If DB is unreachable, let the JWT alone gate access.
+  // Optional: check if session is revoked in DB + resolve current TygaBank ID.
+  try {
+    const row = await queryOne<{ revoked_at: Date | null; tygapay_user_id: string | null }>(
+      `SELECT s.revoked_at, u.tygapay_user_id
+         FROM users u
+         LEFT JOIN sessions s ON s.jti = $1
+        WHERE u.id = $2`,
+      [session.jti || "", session.uid],
+    );
+    if (row?.revoked_at) return null;
+    if (row?.tygapay_user_id && row.tygapay_user_id !== session.tid) {
+      session.tid = row.tygapay_user_id;
     }
+  } catch {
+    // If DB is unreachable, let the JWT alone gate access.
   }
   return session;
 }
