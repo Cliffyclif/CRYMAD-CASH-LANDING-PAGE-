@@ -36,7 +36,7 @@ export async function GET(req: NextRequest) {
     }
     if (err instanceof TygaBankError) {
       console.error("[transactions][TygaBank]", err.status, err.body);
-      return NextResponse.json({ error: "tygabank_error", status: err.status, details: err.body }, { status: 502 });
+      return NextResponse.json({ error: "tygabank_error", status: err.status, details: err.body }, { status: 500 });
     }
     console.error("[transactions]", err);
     return NextResponse.json({ error: "internal" }, { status: 500 });

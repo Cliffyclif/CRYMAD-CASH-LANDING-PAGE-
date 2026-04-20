@@ -11,7 +11,7 @@ export async function POST() {
     if ((err as { status?: number })?.status === 401) return NextResponse.json({ error: "unauthenticated" }, { status: 401 });
     if (err instanceof TygaBankError) {
       console.error("[create-crypto-wallet][TygaBank]", err.status, err.body);
-      return NextResponse.json({ error: "tygabank_error", status: err.status, details: err.body }, { status: 502 });
+      return NextResponse.json({ error: "tygabank_error", status: err.status, details: err.body }, { status: 500 });
     }
     console.error("[users/create-crypto-wallet]", err);
     return NextResponse.json({ error: "internal" }, { status: 500 });

@@ -54,6 +54,6 @@ export async function GET() {
     return NextResponse.json(data);
   } catch (e) {
     if (CACHE.current) return NextResponse.json(CACHE.current.data);
-    return NextResponse.json({ error: (e as Error).message, prices: {} }, { status: 502 });
+    return NextResponse.json({ error: (e as Error).message, prices: {} }, { status: 500 });
   }
 }

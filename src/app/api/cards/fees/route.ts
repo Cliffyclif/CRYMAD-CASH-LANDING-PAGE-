@@ -16,7 +16,7 @@ export async function GET() {
         return NextResponse.json({ fees: [], unavailable: true });
       }
       console.error("[cards/fees][TygaBank]", err.status, JSON.stringify(err.body, null, 2));
-      return NextResponse.json({ error: "tygabank_error", status: err.status, details: err.body }, { status: 502 });
+      return NextResponse.json({ error: "tygabank_error", status: err.status, details: err.body }, { status: 500 });
     }
     console.error("[cards/fees]", err);
     return NextResponse.json({ error: "internal" }, { status: 500 });

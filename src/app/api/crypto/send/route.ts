@@ -25,7 +25,7 @@ export async function POST(req: NextRequest) {
   } catch (err) {
     if ((err as { status?: number })?.status === 401) return NextResponse.json({ error: "unauthenticated" }, { status: 401 });
     if (err instanceof z.ZodError) return NextResponse.json({ error: "invalid_input" }, { status: 400 });
-    if (err instanceof TygaBankError) return NextResponse.json({ error: "tygabank_error", details: err.body }, { status: 502 });
+    if (err instanceof TygaBankError) return NextResponse.json({ error: "tygabank_error", details: err.body }, { status: 500 });
     console.error("[crypto/send]", err);
     return NextResponse.json({ error: "internal" }, { status: 500 });
   }

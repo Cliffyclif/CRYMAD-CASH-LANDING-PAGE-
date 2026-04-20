@@ -11,7 +11,7 @@ export async function GET() {
     if ((err as { status?: number })?.status === 401) return NextResponse.json({ error: "unauthenticated" }, { status: 401 });
     if (err instanceof TygaBankError) {
       if (err.status === 404) return NextResponse.json({ kyc: null }, { status: 200 });
-      return NextResponse.json({ error: "tygabank_error", details: err.body }, { status: 502 });
+      return NextResponse.json({ error: "tygabank_error", details: err.body }, { status: 500 });
     }
     console.error("[cards/kyc-status]", err);
     return NextResponse.json({ error: "internal" }, { status: 500 });

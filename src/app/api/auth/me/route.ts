@@ -59,7 +59,7 @@ export async function GET() {
     });
   } catch (err) {
     if (err instanceof TygaBankError) {
-      return NextResponse.json({ error: "tygabank_error" }, { status: 502 });
+      return NextResponse.json({ error: "tygabank_error" }, { status: 500 });
     }
     console.error("[me]", err);
     return NextResponse.json({ error: "internal" }, { status: 500 });

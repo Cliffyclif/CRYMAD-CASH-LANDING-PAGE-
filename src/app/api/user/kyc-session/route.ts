@@ -12,7 +12,7 @@ export async function POST() {
       return NextResponse.json({ error: "unauthenticated" }, { status: 401 });
     }
     if (err instanceof TygaBankError) {
-      return NextResponse.json({ error: "tygabank_error", details: err.body }, { status: 502 });
+      return NextResponse.json({ error: "tygabank_error", details: err.body }, { status: 500 });
     }
     console.error("[kyc-session]", err);
     return NextResponse.json({ error: "internal" }, { status: 500 });

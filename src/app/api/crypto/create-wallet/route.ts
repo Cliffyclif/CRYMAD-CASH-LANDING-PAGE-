@@ -23,7 +23,7 @@ export async function POST(req: NextRequest) {
         );
       }
       console.error("[crypto/create-wallet][TygaBank]", err.status, JSON.stringify(err.body, null, 2));
-      return NextResponse.json({ error: "tygabank_error", status: err.status, details: err.body }, { status: 502 });
+      return NextResponse.json({ error: "tygabank_error", status: err.status, details: err.body }, { status: 500 });
     }
     console.error("[crypto/create-wallet]", err);
     return NextResponse.json({ error: "internal" }, { status: 500 });

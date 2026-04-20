@@ -17,7 +17,7 @@ export async function GET() {
         return NextResponse.json({ wallets: [], sandbox: true });
       }
       console.error("[crypto/wallets][TygaBank]", err.status, err.body);
-      return NextResponse.json({ error: "tygabank_error", status: err.status, details: err.body }, { status: 502 });
+      return NextResponse.json({ error: "tygabank_error", status: err.status, details: err.body }, { status: 500 });
     }
     console.error("[crypto/wallets]", err);
     return NextResponse.json({ error: "internal" }, { status: 500 });

@@ -20,78 +20,13 @@ import { sendOtpEmail } from "@/lib/email/send";
 
 const Schema = z.object({
   email: z.string().email(),
-  password: z.string().min(8).max(128).optional(), // optional: OTP-only users
+  password: z.string().min(8).max(128).optional(),
   firstName: z.string().min(1).max(100).optional(),
   lastName: z.string().min(1).max(100).optional(),
   accountType: z.enum(["individual", "business"]).default("individual"),
 });
 
-// Health probe so we can verify which build is actually live.
-export function GET() {
-  return NextResponse.json({ route: "register", version: "v5-bisect-3-7" });
-}
-
 export async function POST(req: NextRequest) {
-  // TEMP: bisect the crash — bypass handlePOST entirely for stage=0.
-  const stage = req.nextUrl.searchParams.get("stage") || "full";
-  try {
-    if (stage === "0") {
-      return NextResponse.json({ ok: true, stage: 0, note: "bare POST" });
-    }
-    if (stage === "1") {
-      const body = await req.json().catch(() => ({}));
-      return NextResponse.json({ ok: true, stage: 1, echoed: body });
-    }
-    if (stage === "2") {
-      const body = await req.json().catch(() => ({}));
-      const r = await tyga.users.exists({ email: String((body as { email?: string }).email || "probe@test.com") });
-      return NextResponse.json({ ok: true, stage: 2, tygaExists: r });
-    }
-    if (stage === "3") {
-      const body = await req.json().catch(() => ({})) as { email?: string };
-      const email = String(body.email || "").toLowerCase();
-      const row = await queryOne<{ id: string }>(`SELECT id FROM users WHERE email = $1`, [email]);
-      return NextResponse.json({ ok: true, stage: 3, dbRow: row });
-    }
-    if (stage === "4") {
-      const body = await req.json().catch(() => ({})) as { email?: string };
-      const email = String(body.email || "").toLowerCase();
-      const externalId = `crmdx_${email.replace(/[^a-z0-9]/g, "_")}`;
-      const created = await tyga.users.create({
-        email, externalUserId: externalId, createdBy: "crmdx-bisect",
-        sendWelcomeEmail: false, autoVerifyEmail: true,
-      });
-      return NextResponse.json({ ok: true, stage: 4, created });
-    }
-    if (stage === "5") {
-      const hash = await bcrypt.hash("probepass", 12);
-      return NextResponse.json({ ok: true, stage: 5, hashLen: hash.length });
-    }
-    if (stage === "6") {
-      const body = await req.json().catch(() => ({})) as { email?: string };
-      const email = String(body.email || "").toLowerCase();
-      const code = await createOtp(email, "register");
-      return NextResponse.json({ ok: true, stage: 6, code });
-    }
-    if (stage === "7") {
-      const body = await req.json().catch(() => ({})) as { email?: string };
-      const email = String(body.email || "").toLowerCase();
-      const sent = await sendOtpEmail({ to: email, code: "000000", purpose: "register" });
-      return NextResponse.json({ ok: true, stage: 7, sent });
-    }
-    return await handlePOST(req);
-  } catch (err) {
-    console.error("[register][top-catch]", err);
-    const e = err as { message?: string; stack?: string };
-    return NextResponse.json({
-      error: "internal",
-      reason: e?.message || "unknown",
-      stackTop: typeof e?.stack === "string" ? e.stack.split("\n").slice(0, 4).join("\n") : undefined,
-    }, { status: 500 });
-  }
-}
-
-async function handlePOST(req: NextRequest) {
   try {
     const json = await req.json();
     const data = Schema.parse(json);
@@ -99,7 +34,6 @@ async function handlePOST(req: NextRequest) {
     const email = data.email.toLowerCase();
     const externalId = `crmdx_${email.replace(/[^a-z0-9]/g, "_")}`;
 
-    // 1. Uniqueness
     const existing = await queryOne<{ id: string }>(
       `SELECT id FROM users WHERE email = $1`,
       [email],
@@ -108,12 +42,10 @@ async function handlePOST(req: NextRequest) {
       return NextResponse.json({ error: "Email already registered" }, { status: 409 });
     }
 
-    // 2. Check TygaBank
     let tygaUser;
     try {
       const exists = await tyga.users.exists({ email });
       if ((exists as { exists: boolean })?.exists) {
-        // User exists in TygaBank but not in our DB — try to fetch & link
         const byEmail = await tyga.users.getByEmail(email);
         const u = Array.isArray((byEmail as { users?: unknown[] }).users)
           ? (byEmail as { users: Array<{ id: string }> }).users[0]
@@ -124,7 +56,6 @@ async function handlePOST(req: NextRequest) {
       // fall through — create fresh
     }
 
-    // 3. Create in TygaBank
     if (!tygaUser) {
       try {
         tygaUser = await tyga.users.create({
@@ -135,9 +66,6 @@ async function handlePOST(req: NextRequest) {
           createdBy: "crmdx-signup",
           type: data.accountType,
           sendWelcomeEmail: false,
-          // Mark verified on TygaBank's side immediately — they won't email
-          // the user. Our own OTP (sent via Resend) is the real proof-of-email
-          // gate before we issue a session.
           autoVerifyEmail: true,
         });
       } catch (e) {
@@ -156,7 +84,7 @@ async function handlePOST(req: NextRequest) {
       }
     }
 
-    // TygaBank's response field name varies: /user (create) returns `userId`,
+    // TygaBank response field name varies: /user (create) returns `userId`,
     // /user?email=… (lookup) returns `id`. Normalize.
     const tygaId = String(
       (tygaUser as { id?: string; userId?: string }).id ??
@@ -164,11 +92,9 @@ async function handlePOST(req: NextRequest) {
         "",
     );
     if (!tygaId) {
-      console.error("[register] TygaBank returned user without id/userId:", tygaUser);
-      return NextResponse.json({ error: "tygabank_error", status: 502 }, { status: 502 });
+      return NextResponse.json({ error: "tygabank_error" }, { status: 500 });
     }
 
-    // 4. Insert local user
     const passwordHash = data.password ? await bcrypt.hash(data.password, 12) : null;
     await query(
       `INSERT INTO users (email, password_hash, tygapay_user_id, external_id, account_type)
@@ -176,7 +102,6 @@ async function handlePOST(req: NextRequest) {
       [email, passwordHash, tygaId, externalId, data.accountType],
     );
 
-    // 5. Issue email OTP for verification
     const code = await createOtp(email, "register");
     if (process.env.NODE_ENV !== "production") {
       console.log(`[OTP][register] ${email} → ${code}`);
@@ -195,7 +120,14 @@ async function handlePOST(req: NextRequest) {
     }
     if (err instanceof TygaBankError) {
       console.error("[register][TygaBank]", err.status, err.body);
-      return NextResponse.json({ error: "tygabank_error", status: err.status, details: err.body }, { status: 502 });
+      // Don't return HTTP 502 — Cloudflare replaces 502 responses from the
+      // origin with its own plaintext error page, swallowing the JSON body.
+      // Map TygaBank 4xx (client) to 400, 5xx to 500 so the client sees JSON.
+      const status = err.status >= 400 && err.status < 500 ? 400 : 500;
+      return NextResponse.json(
+        { error: "tygabank_error", tygabankStatus: err.status, details: err.body },
+        { status },
+      );
     }
     console.error("[register]", err);
     return NextResponse.json({ error: "internal" }, { status: 500 });

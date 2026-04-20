@@ -9,7 +9,7 @@ export async function POST() {
     return NextResponse.json({ ok: true, data });
   } catch (err) {
     if ((err as { status?: number })?.status === 401) return NextResponse.json({ error: "unauthenticated" }, { status: 401 });
-    if (err instanceof TygaBankError) return NextResponse.json({ error: "tygabank_error", details: err.body }, { status: 502 });
+    if (err instanceof TygaBankError) return NextResponse.json({ error: "tygabank_error", details: err.body }, { status: 500 });
     console.error("[crypto/sync]", err);
     return NextResponse.json({ error: "internal" }, { status: 500 });
   }

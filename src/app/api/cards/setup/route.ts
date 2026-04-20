@@ -38,7 +38,7 @@ export async function POST(req: NextRequest) {
     if (err instanceof z.ZodError) return NextResponse.json({ error: "invalid_input", details: err.issues }, { status: 400 });
     if (err instanceof TygaBankError) {
       console.error("[cards/setup][TygaBank]", err.status, JSON.stringify(err.body, null, 2));
-      return NextResponse.json({ error: "tygabank_error", status: err.status, details: err.body }, { status: 502 });
+      return NextResponse.json({ error: "tygabank_error", status: err.status, details: err.body }, { status: 500 });
     }
     console.error("[cards/setup]", err);
     return NextResponse.json({ error: "internal" }, { status: 500 });
