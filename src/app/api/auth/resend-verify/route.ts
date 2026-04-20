@@ -30,11 +30,16 @@ export async function POST(req: NextRequest) {
     }
 
     let tygaSent = false;
+    let tygaError: unknown = undefined;
     try {
       await tyga.users.sendVerifyEmail(user.tygapay_user_id);
       tygaSent = true;
     } catch (e) {
       console.warn("[resend-verify] tyga sendVerifyEmail failed", e);
+      tygaError =
+        e instanceof TygaBankError
+          ? { status: e.status, body: e.body }
+          : { message: (e as Error)?.message };
     }
 
     // Also re-issue our own OTP so the user always has a usable code path.
@@ -45,6 +50,8 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({
       ok: true,
       tygaSent,
+      tygaError,
+      tygaId: user.tygapay_user_id,
       devCode: process.env.NODE_ENV !== "production" ? code : undefined,
     });
   } catch (err) {
