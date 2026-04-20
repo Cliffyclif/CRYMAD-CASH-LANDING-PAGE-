@@ -14,8 +14,12 @@ export function LoginScreen() {
   async function onSubmit(e: React.FormEvent) {
     e.preventDefault();
     try {
-      await login.mutateAsync({ email });
-      nav("/");
+      const r = await login.mutateAsync({ email, password });
+      if (r && typeof r === "object" && "requires2fa" in r && r.requires2fa) {
+        nav(`/login/verify-2fa?email=${encodeURIComponent(email)}`);
+        return;
+      }
+      nav("/dashboard");
     } catch {
       /* via mutation.error */
     }

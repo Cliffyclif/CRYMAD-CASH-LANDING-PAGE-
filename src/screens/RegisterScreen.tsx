@@ -1,20 +1,7 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { Logo } from "../lib/ui";
-import { api } from "../lib/api";
-
-function useRegister() {
-  const qc = useQueryClient();
-  return useMutation({
-    mutationFn: (body: { email: string; firstName: string; lastName: string }) =>
-      api<{ ok: boolean; user: Record<string, unknown> }>("/auth/register", {
-        method: "POST",
-        body: JSON.stringify(body),
-      }),
-    onSuccess: () => qc.invalidateQueries({ queryKey: ["me"] }),
-  });
-}
+import { useRegister } from "../lib/hooks";
 
 export function RegisterScreen() {
   const nav = useNavigate();
@@ -35,9 +22,15 @@ export function RegisterScreen() {
   async function onSubmit(e: React.FormEvent) {
     e.preventDefault();
     if (!tos || !privacy) return;
+    if (password !== confirm) return;
+    if (password.length < 8) return;
     try {
-      await register.mutateAsync({ email, firstName, lastName });
-      nav("/");
+      await register.mutateAsync({
+        email: email.toLowerCase(),
+        password,
+        accountType: tab === "business" ? "business" : "individual",
+      });
+      nav(`/register/verify-email?email=${encodeURIComponent(email)}`);
     } catch {
       /* handled */
     }

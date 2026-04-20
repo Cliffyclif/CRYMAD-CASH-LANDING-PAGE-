@@ -5,13 +5,12 @@ interface PhoneShellProps {
 }
 
 /**
- * Pure iPhone 14 Pro chrome — notch, rounded corners, shadow.
- * All status bars, tab bars, headers live inside the stitch HTML content.
+ * Full-viewport shell. No phone chrome — the app fills the whole screen so
+ * it ships cleanly as an APK/IPA via Capacitor/WebView.
  */
 export function PhoneShell({ children }: PhoneShellProps) {
   return (
     <div className="phone-shell">
-      <div className="phone-notch" />
       <div className="phone-viewport">{children}</div>
     </div>
   );

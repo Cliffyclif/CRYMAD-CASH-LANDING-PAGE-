@@ -1,48 +1,28 @@
-/* Phone-frame layout for viewing mobile UX in browser */
-body {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 32px 16px;
-  min-height: 100vh;
+/* Full-viewport layout — no phone chrome. Ready to ship as a native shell. */
+html, body, #root {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background: #040d0a;
 }
 
-#root {
-  width: 100%;
-  max-width: 420px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: auto;
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overscroll-behavior: none;
 }
 
 .phone-shell {
   position: relative;
-  width: 390px;
-  height: 844px;
+  width: 100vw;
+  height: 100dvh;
   background: #040d0a;
-  border-radius: 56px;
-  border: 2px solid rgba(16, 185, 129, 0.24);
-  box-shadow:
-    0 0 0 10px rgba(8, 16, 14, 0.85),
-    0 0 80px rgba(16, 185, 129, 0.15),
-    0 40px 80px rgba(0, 0, 0, 0.5);
   overflow: hidden;
   isolation: isolate;
 }
 
-.phone-notch {
-  position: absolute;
-  top: 12px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 120px;
-  height: 28px;
-  background: #040d0a;
-  border-radius: 999px;
-  border: 1px solid rgba(16, 185, 129, 0.24);
-  z-index: 20;
-}
+.phone-notch { display: none; }
 
 .phone-viewport {
   position: relative;
@@ -50,6 +30,7 @@ body {
   height: 100%;
   overflow: hidden;
   overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
 }
 .phone-viewport::-webkit-scrollbar { display: none; }
 
@@ -59,7 +40,7 @@ body {
   align-items: center;
   justify-content: space-between;
   padding: 0 24px;
-  padding-top: 12px;
+  padding-top: env(safe-area-inset-top, 12px);
   font-family: "JetBrains Mono", monospace;
   font-size: 11px;
   font-weight: 700;
@@ -74,8 +55,8 @@ body {
 .tab-bar {
   position: sticky;
   bottom: 0;
-  height: 83px;
-  padding: 8px 16px 28px;
+  height: calc(83px + env(safe-area-inset-bottom, 0px));
+  padding: 8px 16px calc(28px + env(safe-area-inset-bottom, 0px));
   display: flex;
   align-items: flex-start;
   justify-content: space-around;
@@ -107,16 +88,4 @@ body {
   border-radius: 6px;
   background: currentColor;
   opacity: 0.85;
-}
-
-@media (max-width: 440px) {
-  body { padding: 0; }
-  .phone-shell {
-    width: 100vw;
-    height: 100vh;
-    border-radius: 0;
-    border: 0;
-    box-shadow: none;
-  }
-  .phone-notch { display: none; }
 }
