@@ -91,12 +91,24 @@ export async function POST(req: NextRequest) {
       }
     }
 
+    // TygaBank's response field name varies: /user (create) returns `userId`,
+    // /user?email=… (lookup) returns `id`. Normalize.
+    const tygaId = String(
+      (tygaUser as { id?: string; userId?: string }).id ??
+        (tygaUser as { userId?: string }).userId ??
+        "",
+    );
+    if (!tygaId) {
+      console.error("[register] TygaBank returned user without id/userId:", tygaUser);
+      return NextResponse.json({ error: "tygabank_error", status: 502 }, { status: 502 });
+    }
+
     // 4. Insert local user
     const passwordHash = data.password ? await bcrypt.hash(data.password, 12) : null;
     await query(
       `INSERT INTO users (email, password_hash, tygapay_user_id, external_id, account_type)
          VALUES ($1, $2, $3, $4, $5)`,
-      [email, passwordHash, tygaUser.id, externalId, data.accountType],
+      [email, passwordHash, tygaId, externalId, data.accountType],
     );
 
     // 5. Issue email OTP for verification
@@ -108,7 +120,7 @@ export async function POST(req: NextRequest) {
     if (!sent.ok) console.warn("[register][email]", sent.error);
     return NextResponse.json({
       ok: true,
-      userId: tygaUser.id,
+      userId: tygaId,
       email,
       devCode: process.env.NODE_ENV !== "production" ? code : undefined,
     });

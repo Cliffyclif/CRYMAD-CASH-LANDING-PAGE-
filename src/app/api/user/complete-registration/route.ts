@@ -131,8 +131,14 @@ export async function POST(req: NextRequest) {
           autoVerifyEmail: true,
           sendWelcomeEmail: false,
         });
-        newTid = created.id;
+        // Handle both { id } (lookup) and { userId } (create) response shapes.
+        newTid = String(
+          (created as { id?: string; userId?: string }).id ??
+            (created as { userId?: string }).userId ??
+            "",
+        ) || null;
       }
+      if (!newTid) throw new Error("TygaBank create returned no id");
 
       await query(
         `UPDATE users SET tygapay_user_id = $1, updated_at = NOW() WHERE id = $2`,
