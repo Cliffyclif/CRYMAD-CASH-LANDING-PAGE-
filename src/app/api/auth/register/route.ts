@@ -108,6 +108,16 @@ export async function POST(req: NextRequest) {
       [email, passwordHash, tygaId, externalId, data.accountType],
     );
 
+    // TygaBank's `autoVerifyEmail: true` on create is not honored by prod —
+    // emailIsVerified stays false and blocks complete-registration. Use their
+    // own verify round-trip instead: trigger sendVerifyEmail so TygaBank mails
+    // a code, then verify-otp calls confirmVerifyEmail with that code.
+    try {
+      await tyga.users.sendVerifyEmail(tygaId);
+    } catch (e) {
+      console.warn("[register] tyga sendVerifyEmail failed", e);
+    }
+    // Also issue our own OTP as a fallback channel (dev logs, reset, etc).
     const code = await createOtp(email, "register");
     if (process.env.NODE_ENV !== "production") {
       console.log(`[OTP][register] ${email} → ${code}`);
