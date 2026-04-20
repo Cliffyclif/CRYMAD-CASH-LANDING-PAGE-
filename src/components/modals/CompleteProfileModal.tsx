@@ -35,8 +35,24 @@ export function CompleteProfileModal() {
   const [step, setStep] = useState(1);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
-  const [firstName, setFirstName] = useState(user?.firstName ?? "");
-  const [lastName, setLastName] = useState(user?.lastName ?? "");
+  // Email verification gate: if TygaBank hasn't flipped emailIsVerified,
+  // we block profile save and collect the verification code first.
+  const [emailVerifiedLocal, setEmailVerifiedLocal] = useState<boolean>(!!user?.emailVerified);
+  const [verifyCode, setVerifyCode] = useState("");
+  const [verifyLoading, setVerifyLoading] = useState(false);
+  const [verifyInfo, setVerifyInfo] = useState<string>("");
+  const [resendCooldown, setResendCooldown] = useState(0);
+  const [firstName, setFirstName] = useState(() => {
+    const f = user?.firstName;
+    // "Pending" and email-local placeholders shouldn't pre-fill.
+    if (!f || f === "Pending" || f === user?.email?.split("@")[0]) return "";
+    return f;
+  });
+  const [lastName, setLastName] = useState(() => {
+    const l = user?.lastName;
+    if (!l || l === "Pending") return "";
+    return l;
+  });
   const [dob, setDob] = useState(user?.dateOfBirth ?? "");
   const [phoneCode, setPhoneCode] = useState("+1");
   const [phone, setPhone] = useState("");
@@ -46,6 +62,61 @@ export function CompleteProfileModal() {
   const [zip, setZip] = useState("");
   const [country, setCountry] = useState("");
   const [language, setLanguage] = useState("en");
+
+  async function resendCode() {
+    if (resendCooldown > 0) return;
+    setVerifyInfo("");
+    setError("");
+    try {
+      const res = await fetch("/api/auth/resend-verify", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email: user?.email }),
+      });
+      const j = await res.json();
+      if (j.tygaSent) {
+        setVerifyInfo("A new code was sent. Check your inbox and spam folder.");
+      } else if (j.tygaError?.body?.details === "email_verification_timeout") {
+        setVerifyInfo("A code was already sent recently — check your inbox. You can resend again in a few minutes.");
+      } else {
+        setVerifyInfo("Resend attempted. Check your inbox.");
+      }
+      setResendCooldown(60);
+      const tick = setInterval(() => {
+        setResendCooldown((s) => {
+          if (s <= 1) { clearInterval(tick); return 0; }
+          return s - 1;
+        });
+      }, 1000);
+    } catch {
+      setError("Couldn't resend code. Try again shortly.");
+    }
+  }
+
+  async function verifyEmail() {
+    setError("");
+    if (verifyCode.length !== 6) { setError("Enter the 6-digit code from your email."); return; }
+    setVerifyLoading(true);
+    try {
+      const res = await fetch("/api/auth/verify-otp", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email: user?.email, code: verifyCode, purpose: "register" }),
+      });
+      const j = await res.json();
+      if (!res.ok) {
+        setError(j.error === "invalid_code" ? "Invalid or expired code." : "Verification failed. Try again.");
+        return;
+      }
+      setEmailVerifiedLocal(true);
+      setVerifyInfo("Email verified. Continue with your profile.");
+      await refresh();
+    } catch {
+      setError("Network error. Try again.");
+    } finally {
+      setVerifyLoading(false);
+    }
+  }
 
   async function submit() {
     setError("");
@@ -124,12 +195,15 @@ export function CompleteProfileModal() {
           </div>
         </div>
         <h1 style={{ fontSize: 22, fontWeight: 800, color: "var(--text)", marginBottom: 4, textAlign: "center" }}>
-          Complete Your Profile
+          {emailVerifiedLocal ? "Complete Your Profile" : "Verify Your Email"}
         </h1>
         <p style={{ fontSize: 13, color: "var(--text-secondary)", marginBottom: 20, textAlign: "center" }}>
-          We need a few details before you can use your wallet. Step {step} of 3.
+          {emailVerifiedLocal
+            ? <>We need a few details before you can use your wallet. Step {step} of 3.</>
+            : <>We sent a 6-digit code to <strong>{user?.email}</strong>. Enter it below to continue.</>}
         </p>
 
+        {emailVerifiedLocal && (
         <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 12, marginBottom: 28 }}>
           {[1, 2, 3].map((s) => (
             <div
@@ -150,8 +224,41 @@ export function CompleteProfileModal() {
             </div>
           ))}
         </div>
+        )}
 
-        {step === 1 && (
+        {!emailVerifiedLocal && (
+          <div style={{ animation: "fadeIn 0.3s ease" }}>
+            <input
+              inputMode="numeric" pattern="\d{6}" maxLength={6}
+              placeholder="000000"
+              value={verifyCode}
+              onChange={(e) => setVerifyCode(e.target.value.replace(/\D/g, "").slice(0, 6))}
+              autoFocus
+              style={{
+                ...inputStyle, letterSpacing: 8, textAlign: "center",
+                fontFamily: "JetBrains Mono, monospace", fontSize: 22, marginBottom: 12,
+              }}
+            />
+            {verifyInfo && (
+              <div style={{ fontSize: 12, color: "var(--text-secondary)", textAlign: "center", marginBottom: 12 }}>
+                {verifyInfo}
+              </div>
+            )}
+            <div style={{ textAlign: "center", fontSize: 13, color: "var(--text-secondary)", marginBottom: 12 }}>
+              Didn&apos;t receive it?{" "}
+              {resendCooldown > 0 ? (
+                <span>Resend in {resendCooldown}s</span>
+              ) : (
+                <button type="button" onClick={resendCode}
+                  style={{ background: "none", border: "none", color: "var(--primary)", fontWeight: 600, cursor: "pointer", padding: 0 }}>
+                  Resend code
+                </button>
+              )}
+            </div>
+          </div>
+        )}
+
+        {emailVerifiedLocal && step === 1 && (
           <div style={{ animation: "fadeIn 0.3s ease" }}>
             <div style={{ display: "flex", gap: 12, marginBottom: 16 }}>
               <div style={{ flex: 1 }}>
@@ -170,7 +277,7 @@ export function CompleteProfileModal() {
           </div>
         )}
 
-        {step === 2 && (
+        {emailVerifiedLocal && step === 2 && (
           <div style={{ animation: "fadeIn 0.3s ease" }}>
             <div style={{ marginBottom: 16 }}>
               <label style={labelStyle}>Phone Number</label>
@@ -211,7 +318,7 @@ export function CompleteProfileModal() {
           </div>
         )}
 
-        {step === 3 && (
+        {emailVerifiedLocal && step === 3 && (
           <div style={{ animation: "fadeIn 0.3s ease" }}>
             <div style={{ marginBottom: 20 }}>
               <label style={labelStyle}>Preferred Language</label>
@@ -247,7 +354,7 @@ export function CompleteProfileModal() {
         )}
 
         <div style={{ display: "flex", gap: 12, marginTop: 8 }}>
-          {step > 1 && (
+          {emailVerifiedLocal && step > 1 && (
             <button type="button" onClick={() => setStep((s) => s - 1)} disabled={loading}
               style={{
                 flex: 1, padding: 13, borderRadius: 12,
@@ -257,15 +364,20 @@ export function CompleteProfileModal() {
                 fontFamily: "Inter, sans-serif", opacity: loading ? 0.6 : 1,
               }}>Back</button>
           )}
-          <button type="button" disabled={loading}
-            onClick={() => { if (step < 3) setStep((s) => s + 1); else submit(); }}
+          <button type="button" disabled={loading || verifyLoading}
+            onClick={() => {
+              if (!emailVerifiedLocal) { verifyEmail(); return; }
+              if (step < 3) setStep((s) => s + 1); else submit();
+            }}
             style={{
               flex: 1, padding: 13, borderRadius: 12,
-              background: loading ? "var(--text-muted)" : "var(--primary)",
+              background: loading || verifyLoading ? "var(--text-muted)" : "var(--primary)",
               color: "var(--bg)", fontWeight: 700, fontSize: 14, border: "none",
-              cursor: loading ? "not-allowed" : "pointer", fontFamily: "Inter, sans-serif",
+              cursor: (loading || verifyLoading) ? "not-allowed" : "pointer", fontFamily: "Inter, sans-serif",
             }}>
-            {loading ? "Saving…" : step === 3 ? "Complete Profile" : "Continue"}
+            {!emailVerifiedLocal
+              ? (verifyLoading ? "Verifying…" : "Verify Email")
+              : loading ? "Saving…" : step === 3 ? "Complete Profile" : "Continue"}
           </button>
         </div>
       </div>
