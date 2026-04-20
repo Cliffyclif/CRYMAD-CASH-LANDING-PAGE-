@@ -86,12 +86,16 @@ async function readCodeFromInbox(
           if (!msg.source) continue;
           const parsed = await simpleParser(msg.source);
           const subj = (parsed.subject || "").slice(0, 120);
-          subjects.push(subj);
+          const fromText = parsed.from ? JSON.stringify(parsed.from).toLowerCase() : "";
+          subjects.push(`[${folder}] ${fromText.slice(0, 60)} :: ${subj}`);
           const toText = (parsed.to ? (Array.isArray(parsed.to) ? parsed.to : [parsed.to]).map((a) => JSON.stringify(a)).join(",") : "").toLowerCase();
           const matchesRecipient =
             toText.includes(email.toLowerCase()) || toText.includes(localPart);
-          const looksLikeVerify = /verif|confirm|code/i.test(subj);
-          if (!matchesRecipient && !looksLikeVerify) continue;
+          const subjectHit = /verif|confirm|crymad|tyga|crmdx|activation|one[- ]?time|otp/i.test(subj);
+          const fromHit = /tyga|crmdx|no[- ]?reply/i.test(fromText);
+          // Require BOTH: recipient match AND verify-like signature — avoids
+          // picking up random 6-digit numbers from marketing mail.
+          if (!matchesRecipient || !(subjectHit || fromHit)) continue;
           const hay = `${parsed.text || ""}\n${(parsed.html as string) || ""}\n${subj}`;
           const m = hay.match(/\b(\d{6})\b/);
           if (m) {
