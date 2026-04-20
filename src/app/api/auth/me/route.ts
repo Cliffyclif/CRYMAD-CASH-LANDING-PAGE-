@@ -28,10 +28,15 @@ export async function GET() {
     );
     if (!local) return NextResponse.json({ error: "user_not_found" }, { status: 404 });
 
+    // Prefer the Postgres-stored TygaBank ID over the session JWT one. The JWT
+    // is issued at login and won't reflect any in-flight healing (e.g. when a
+    // sandbox-era TID gets migrated to prod on complete-registration).
+    const tid = local.tygapay_user_id || s.tid;
+
     // Parallel fetch of TygaBank user + wallets
     const [tygaUser, wallets] = await Promise.all([
-      tyga.users.getById(s.tid).catch(() => null),
-      tyga.users.getWallets(s.tid).catch(() => []),
+      tyga.users.getById(tid).catch(() => null),
+      tyga.users.getWallets(tid).catch(() => []),
     ]);
 
     return NextResponse.json({
