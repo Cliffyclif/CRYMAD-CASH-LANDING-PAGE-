@@ -46,10 +46,17 @@ export async function POST(req: NextRequest) {
 
     // For register/email_verify: mark verified in TygaBank
     if (data.purpose === "register" || data.purpose === "email_verify") {
+      // Our OTP is the source of truth. TygaBank's confirm-verify-email
+      // won't accept our code (they didn't issue it), so try without the
+      // code — the server-side call with our admin key is trusted.
       try {
-        await tyga.users.confirmVerifyEmail(user.tygapay_user_id, data.code);
-      } catch {
-        // some tenants may not require the code — the OTP we matched is ours
+        await tyga.users.confirmVerifyEmail(user.tygapay_user_id);
+      } catch (e1) {
+        try {
+          await tyga.users.confirmVerifyEmail(user.tygapay_user_id, data.code);
+        } catch (e2) {
+          console.warn("[verify-otp] TygaBank confirm-verify-email failed", e1, e2);
+        }
       }
     }
 

@@ -91,12 +91,34 @@ export async function POST(req: NextRequest) {
     let tid = s.tid;
     let healed = false;
 
+    const tryUpdate = async (id: string) => {
+      try {
+        await tyga.users.update(id, data);
+        return true;
+      } catch (e) {
+        // Recover from "Email not verified" — our /api/auth/verify-otp
+        // already validated the user's email via our own OTP; force the
+        // flag on TygaBank and retry once.
+        const body =
+          e instanceof TygaBankError && typeof e.body === "object" && e.body !== null
+            ? (e.body as { details?: string })
+            : null;
+        if (body?.details === "Email not verified") {
+          try {
+            await tyga.users.confirmVerifyEmail(id);
+          } catch {
+            /* best-effort */
+          }
+          await tyga.users.update(id, data);
+          return true;
+        }
+        throw e;
+      }
+    };
+
     try {
-      await tyga.users.update(tid, data);
+      await tryUpdate(tid);
     } catch (err) {
-      // Self-heal stale TygaBank IDs: if TygaBank doesn't know this user
-      // (e.g. they were created on sandbox earlier), re-provision on the
-      // current environment and retry the update.
       const is404 =
         err instanceof TygaBankError &&
         (err.status === 404 ||
@@ -148,7 +170,7 @@ export async function POST(req: NextRequest) {
       healed = true;
 
       // Retry the update with the fresh ID
-      await tyga.users.update(tid, data);
+      await tryUpdate(tid);
     }
 
     // Fire-and-forget-ish auto-provisioning. We await it so the response
