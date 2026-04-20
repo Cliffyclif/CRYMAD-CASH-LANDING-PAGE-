@@ -110,25 +110,25 @@ export async function POST(req: NextRequest) {
 
     // TygaBank's `autoVerifyEmail: true` on create is not honored by prod —
     // emailIsVerified stays false and blocks complete-registration. Use their
-    // own verify round-trip instead: trigger sendVerifyEmail so TygaBank mails
-    // a code, then verify-otp calls confirmVerifyEmail with that code.
+    // own verify round-trip: trigger sendVerifyEmail so TygaBank mails a
+    // code, then verify-otp calls confirmVerifyEmail with that code.
+    // Only one email is sent (TygaBank's) to avoid user confusion about
+    // which code to enter.
+    let tygaVerifySent = false;
     try {
       await tyga.users.sendVerifyEmail(tygaId);
+      tygaVerifySent = true;
     } catch (e) {
-      console.warn("[register] tyga sendVerifyEmail failed", e);
+      console.warn("[register] tyga sendVerifyEmail failed — falling back to local OTP", e);
+      const code = await createOtp(email, "register");
+      const sent = await sendOtpEmail({ to: email, code, purpose: "register", firstName: data.firstName });
+      if (!sent.ok) console.warn("[register][email]", sent.error);
     }
-    // Also issue our own OTP as a fallback channel (dev logs, reset, etc).
-    const code = await createOtp(email, "register");
-    if (process.env.NODE_ENV !== "production") {
-      console.log(`[OTP][register] ${email} → ${code}`);
-    }
-    const sent = await sendOtpEmail({ to: email, code, purpose: "register", firstName: data.firstName });
-    if (!sent.ok) console.warn("[register][email]", sent.error);
     return NextResponse.json({
       ok: true,
       userId: tygaId,
       email,
-      devCode: process.env.NODE_ENV !== "production" ? code : undefined,
+      tygaVerifySent,
     });
   } catch (err) {
     if (err instanceof z.ZodError) {

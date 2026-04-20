@@ -91,9 +91,13 @@ function VerifyEmailInner() {
       </div>
 
       <h1 style={{ fontSize: 24, fontWeight: 800, marginBottom: 6 }}>Check Your Email</h1>
-      <p style={{ fontSize: 14, color: "var(--text-secondary)", marginBottom: 20 }}>
-        We sent a 6-digit code to
+      <p style={{ fontSize: 14, color: "var(--text-secondary)", marginBottom: 8 }}>
+        We sent a 6-digit verification code to
         {email ? <><br /><code style={{ fontFamily: "JetBrains Mono, monospace", color: "var(--primary)" }}>{email}</code></> : " your email"}
+      </p>
+      <p style={{ fontSize: 12, color: "var(--text-muted)", marginBottom: 20, lineHeight: 1.5 }}>
+        Look for an email from <strong>TygaBank / Crymad Cash</strong>.<br />
+        Check your spam folder if you don&apos;t see it within a minute.
       </p>
 
       <form onSubmit={verify}>
