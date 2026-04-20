@@ -32,13 +32,30 @@ export function GET() {
 }
 
 export async function POST(req: NextRequest) {
+  // TEMP: bisect the crash — bypass handlePOST entirely for stage=0.
+  const stage = req.nextUrl.searchParams.get("stage") || "full";
   try {
-    // Defensive wrapper: capture any synchronous throw too.
+    if (stage === "0") {
+      return NextResponse.json({ ok: true, stage: 0, note: "bare POST" });
+    }
+    if (stage === "1") {
+      const body = await req.json().catch(() => ({}));
+      return NextResponse.json({ ok: true, stage: 1, echoed: body });
+    }
+    if (stage === "2") {
+      const body = await req.json().catch(() => ({}));
+      const r = await tyga.users.exists({ email: String((body as { email?: string }).email || "probe@test.com") });
+      return NextResponse.json({ ok: true, stage: 2, tygaExists: r });
+    }
     return await handlePOST(req);
   } catch (err) {
     console.error("[register][top-catch]", err);
-    const e = err as { message?: string };
-    return NextResponse.json({ error: "internal", reason: e?.message || "unknown" }, { status: 500 });
+    const e = err as { message?: string; stack?: string };
+    return NextResponse.json({
+      error: "internal",
+      reason: e?.message || "unknown",
+      stackTop: typeof e?.stack === "string" ? e.stack.split("\n").slice(0, 4).join("\n") : undefined,
+    }, { status: 500 });
   }
 }
 
