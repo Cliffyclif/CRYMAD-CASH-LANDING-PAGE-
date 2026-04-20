@@ -166,9 +166,18 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: "invalid_input", details: err.flatten() }, { status: 400 });
     }
     if (err instanceof TygaBankError) {
-      return NextResponse.json({ error: "tygabank_error", details: err.body }, { status: 500 });
+      console.error("[complete-registration][TygaBank]", err.status, err.body);
+      return NextResponse.json(
+        { error: "tygabank_error", tygabankStatus: err.status, details: err.body },
+        { status: err.status >= 400 && err.status < 500 ? 400 : 500 },
+      );
     }
     console.error("[complete-registration]", err);
-    return NextResponse.json({ error: "internal" }, { status: 500 });
+    const e = err as { message?: string; stack?: string };
+    return NextResponse.json({
+      error: "internal",
+      reason: e?.message || "unknown",
+      stackTop: typeof e?.stack === "string" ? e.stack.split("\n").slice(0, 4).join("\n") : undefined,
+    }, { status: 500 });
   }
 }
