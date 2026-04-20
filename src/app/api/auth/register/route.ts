@@ -57,12 +57,18 @@ export async function POST(req: NextRequest) {
     }
 
     if (!tygaUser) {
+      // TygaBank requires firstName/lastName on create. Our signup form only
+      // collects email+password; real names are set later in complete-registration.
+      // Derive sane placeholders from the email local-part so TygaBank accepts.
+      const localPart = email.split("@")[0] || "user";
+      const placeholderFirst = data.firstName || localPart.slice(0, 50) || "User";
+      const placeholderLast = data.lastName || "Pending";
       try {
         tygaUser = await tyga.users.create({
           email,
           externalUserId: externalId,
-          firstName: data.firstName,
-          lastName: data.lastName,
+          firstName: placeholderFirst,
+          lastName: placeholderLast,
           createdBy: "crmdx-signup",
           type: data.accountType,
           sendWelcomeEmail: false,
