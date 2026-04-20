@@ -29,39 +29,54 @@ function add(trace: Trace, step: string, ok: boolean, data?: unknown, err?: unkn
   trace.push(entry);
 }
 
-async function readCodeFromInbox(email: string, sinceMs: number, timeoutMs = 60000): Promise<string | null> {
+async function readCodeFromInbox(
+  email: string,
+  sinceMs: number,
+  timeoutMs = 60000,
+): Promise<{ code: string | null; probed: number; subjects: string[] }> {
   const host = process.env.IMAP_HOST || "mail.infomaniak.com";
   const port = Number(process.env.IMAP_PORT || 993);
   const user = process.env.IMAP_USER || process.env.SMTP_USER;
   const pass = process.env.IMAP_PASS || process.env.SMTP_PASS;
   if (!user || !pass) throw new Error("IMAP credentials not configured");
 
+  // Plus-addressing: everything after '+' is routing hint; envelope.to may or
+  // may not preserve it depending on the mail server. Match loosely.
+  const localPart = email.split("@")[0].split("+")[0].toLowerCase();
+
   const deadline = Date.now() + timeoutMs;
+  let probed = 0;
+  const subjects: string[] = [];
+
   while (Date.now() < deadline) {
     const client = new ImapFlow({
-      host,
-      port,
-      secure: true,
-      auth: { user, pass },
-      logger: false,
+      host, port, secure: true, auth: { user, pass }, logger: false,
     });
     try {
       await client.connect();
       const lock = await client.getMailboxLock("INBOX");
       try {
-        // Search recent messages to this address since we started the test
-        const since = new Date(sinceMs - 60_000);
+        const since = new Date(sinceMs - 120_000);
+        // Broad fetch: all messages since test started, filter in memory
         for await (const msg of client.fetch(
-          { since, to: email },
+          { since },
           { envelope: true, source: true },
         )) {
+          probed += 1;
           if (!msg.source) continue;
           const parsed = await simpleParser(msg.source);
-          const hay = `${parsed.text || ""}\n${parsed.html || ""}\n${parsed.subject || ""}`;
-          // Look for a 6-digit code; TygaBank emails typically present it
-          // prominently. Pick the first standalone 6-digit match.
+          const subj = (parsed.subject || "").slice(0, 120);
+          subjects.push(subj);
+          const toText = (parsed.to ? (Array.isArray(parsed.to) ? parsed.to : [parsed.to]).map((a) => JSON.stringify(a)).join(",") : "").toLowerCase();
+          const matchesRecipient =
+            toText.includes(email.toLowerCase()) || toText.includes(localPart);
+          const looksLikeVerify = /verif|confirm|code/i.test(subj);
+          if (!matchesRecipient && !looksLikeVerify) continue;
+          const hay = `${parsed.text || ""}\n${(parsed.html as string) || ""}\n${subj}`;
           const m = hay.match(/\b(\d{6})\b/);
-          if (m) return m[1];
+          if (m) {
+            return { code: m[1], probed, subjects };
+          }
         }
       } finally {
         lock.release();
@@ -69,9 +84,9 @@ async function readCodeFromInbox(email: string, sinceMs: number, timeoutMs = 600
     } finally {
       try { await client.logout(); } catch { /* noop */ }
     }
-    await new Promise((r) => setTimeout(r, 3000));
+    await new Promise((r) => setTimeout(r, 2500));
   }
-  return null;
+  return { code: null, probed, subjects };
 }
 
 // Hardcoded gate key for a one-shot diagnostic run. The route will be
@@ -155,8 +170,9 @@ export async function POST(req: NextRequest) {
     // 5. Poll IMAP for code
     let code: string | null = null;
     try {
-      code = await readCodeFromInbox(testEmail, startedAt, 90_000);
-      add(trace, "imap.readCode", !!code, { code });
+      const result = await readCodeFromInbox(testEmail, startedAt, 90_000);
+      code = result.code;
+      add(trace, "imap.readCode", !!code, result);
     } catch (e) {
       add(trace, "imap.readCode", false, undefined, e);
     }
