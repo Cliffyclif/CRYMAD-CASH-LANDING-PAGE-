@@ -1,24 +1,20 @@
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { routeByPath } from "./routes.generated";
 import {
   useMe, useTransactions, useCryptoWallets, useMarketPrices,
-  formatMoney, type User, type Wallet, type Transaction, type CryptoWallet,
-  type MarketPrice,
+  useEwalletTransfer, useCryptoSwap, useCryptoSend, useCryptoSendOtp,
+  useCardOrder, useCardLoad, useCardLock, useCardUnlock, useCardSendOtp,
+  useAddBeneficiary, useDeleteBeneficiary, useCompleteRegistration,
+  formatMoney, type User, type Wallet, type CryptoWallet, type MarketPrice,
 } from "./lib/hooks";
+import type { FormHandler, FormPayload } from "./lib/form-router";
 
 interface StitchScreenProps {
   src: string;
   title: string;
 }
 
-/**
- * Injected into each stitch iframe. Intercepts:
- *  - internal <a> clicks -> postMessage("stitch-navigate")
- *  - form submits -> postMessage("stitch-form-submit") with serialized fields,
- *    or blocked if no handler registered on parent
- *  - handles text replacements and data-slot filling from parent messages
- */
 const NAV_INTERCEPTOR = `
 (function() {
   function isInternal(href) {
@@ -47,13 +43,28 @@ const NAV_INTERCEPTOR = `
     var form = e.target;
     if (!form || form.tagName !== 'FORM') return;
     var fields = {};
-    var inputs = form.querySelectorAll('input, select, textarea');
-    inputs.forEach(function(el) {
-      if (el.name) fields[el.name] = el.value;
-      else if (el.id) fields[el.id] = el.value;
-      else if (el.getAttribute('data-field')) fields[el.getAttribute('data-field')] = el.value;
+    form.querySelectorAll('input, select, textarea').forEach(function(el) {
+      var key = el.name || el.id || el.getAttribute('data-field');
+      if (key) fields[key] = el.value;
     });
     var action = form.getAttribute('action') || form.getAttribute('data-action') || '';
+    parent.postMessage({ type: 'stitch-form-submit', action: action, fields: fields }, '*');
+  }, true);
+
+  // Buttons with data-action outside a form still need to trigger mutations
+  document.addEventListener('click', function(e) {
+    var btn = e.target.closest ? e.target.closest('[data-action]') : null;
+    if (!btn || btn.tagName === 'A') return;
+    var action = btn.getAttribute('data-action');
+    if (!action) return;
+    e.preventDefault();
+    // Gather inputs from the nearest panel / sheet container
+    var scope = btn.closest('.sheet, [data-sheet], section, form') || document.body;
+    var fields = {};
+    scope.querySelectorAll('input, select, textarea').forEach(function(el) {
+      var key = el.name || el.id || el.getAttribute('data-field');
+      if (key) fields[key] = el.value;
+    });
     parent.postMessage({ type: 'stitch-form-submit', action: action, fields: fields }, '*');
   }, true);
 
@@ -138,8 +149,6 @@ function buildSlots(
     balanceRewards: rewardsBal.toLocaleString(),
   };
 
-  // Text replacements: swap common demo strings so legacy HTMLs display real data
-  // even when they don't have data-slot markers.
   const replacements: Record<string, string> = {
     "Good evening, Joseph": `Good evening${first ? ", " + first : ""}`,
     "Good morning, Joseph": `Good morning${first ? ", " + first : ""}`,
@@ -163,17 +172,143 @@ export function StitchScreen({ src, title }: StitchScreenProps) {
 
   const meQuery = useMe();
   const me = meQuery.data && "user" in meQuery.data ? meQuery.data : undefined;
-
-  const txQuery = useTransactions({ limit: 5 });
   const cryptoQuery = useCryptoWallets();
   const pricesQuery = useMarketPrices();
+  useTransactions({ limit: 5 });
 
-  void txQuery; // reserved for transaction lists in slots later
+  // Mutations — all hooks must be called unconditionally
+  const transfer = useEwalletTransfer();
+  const swap = useCryptoSwap();
+  const cryptoSend = useCryptoSend();
+  const cryptoOtp = useCryptoSendOtp();
+  const cardOrder = useCardOrder();
+  const cardLoad = useCardLoad();
+  const cardLock = useCardLock();
+  const cardUnlock = useCardUnlock();
+  const cardOtp = useCardSendOtp();
+  const addBene = useAddBeneficiary();
+  const delBene = useDeleteBeneficiary();
+  const completeReg = useCompleteRegistration();
 
   const payload = useMemo(
     () => buildSlots(me?.user, me?.wallets, cryptoQuery.data, pricesQuery.data),
     [me, cryptoQuery.data, pricesQuery.data],
   );
+
+  // Per-route form handler dispatch
+  const getHandler = useCallback((): FormHandler | undefined => {
+    const path = location.pathname;
+
+    const handlers: Record<string, FormHandler> = {
+      "/e-wallet/transfer": async (f: FormPayload) => {
+        const amount = parseFloat(f.amount || "0");
+        if (!(amount > 0)) return { error: "Invalid amount" };
+        const recipient = f.recipient || f.email || f.to || "";
+        await transfer.mutateAsync({
+          toEmail: recipient.includes("@") ? recipient : undefined,
+          toPhone: recipient.includes("@") ? undefined : recipient,
+          amount,
+          description: f.description,
+        });
+        return { success: true, navigateTo: "/e-wallet" };
+      },
+
+      "/crypto/buy": async (f: FormPayload) => {
+        await cryptoOtp.mutateAsync();
+        return { success: true };
+      },
+      "/crypto/swap": async (f: FormPayload) => {
+        const amount = parseFloat(f.amount || f.fromAmount || "0");
+        const toCurrency = (f.toCurrency || f.to || "").toUpperCase();
+        const toAddress = f.toAddress || "";
+        const otp = f.otp || f.code || "";
+        if (!(amount > 0) || !toCurrency || !toAddress || !otp) return { error: "Missing fields" };
+        await swap.mutateAsync({ amount, toCurrency, toAddress, otp });
+        return { success: true, navigateTo: "/crypto" };
+      },
+      "/crypto/withdraw": async (f: FormPayload) => {
+        const amount = parseFloat(f.amount || "0");
+        const token = (f.token || f.asset || "").toUpperCase();
+        const toAddress = f.toAddress || f.address || "";
+        const otp = f.otp || f.code || "";
+        if (!(amount > 0) || !token || !toAddress || !otp) return { error: "Missing fields" };
+        await cryptoSend.mutateAsync({ token, amount, toAddress, otp });
+        return { success: true, navigateTo: "/crypto" };
+      },
+
+      "/cards/order": async (f: FormPayload) => {
+        const cardType = f.cardType || "virtual_card";
+        const walletType = f.walletType || f.source || "ewallet";
+        const otp = f.otp || f.code || "";
+        if (!otp) {
+          await cardOtp.mutateAsync({ type: "order", walletType });
+          return { success: true };
+        }
+        await cardOrder.mutateAsync({ cardType, walletType, otp });
+        return { success: true, navigateTo: "/cards" };
+      },
+      "/cards/load": async (f: FormPayload) => {
+        const cardId = f.cardId || "";
+        const amount = parseFloat(f.amount || "0");
+        const walletType = f.walletType || f.source || "ewallet";
+        const otp = f.otp || f.code || "";
+        if (!cardId || !(amount > 0) || !otp) return { error: "Missing fields" };
+        await cardLoad.mutateAsync({ cardId, amount, walletType, otp });
+        return { success: true, navigateTo: "/cards" };
+      },
+      "/cards/lock": async (f: FormPayload) => {
+        const cardId = f.cardId || "";
+        if (!cardId) return { error: "Missing cardId" };
+        await cardLock.mutateAsync({ cardId, reason: f.reason });
+        return { success: true, navigateTo: "/cards" };
+      },
+      "/cards/activate": async (f: FormPayload) => {
+        const cardId = f.cardId || "";
+        if (!cardId) return { error: "Missing cardId" };
+        await cardUnlock.mutateAsync({ cardId });
+        return { success: true, navigateTo: "/cards" };
+      },
+
+      "/e-wallet/beneficiaries/add": async (f: FormPayload) => {
+        if (!f.fullName || !f.bankName || !f.accountNumber || !f.country) return { error: "Missing fields" };
+        await addBene.mutateAsync({
+          fullName: f.fullName, bankName: f.bankName, accountNumber: f.accountNumber,
+          swiftBic: f.swiftBic, currency: f.currency || "USD",
+          country: f.country.toUpperCase(), nickname: f.nickname,
+        });
+        return { success: true, navigateTo: "/e-wallet/beneficiaries" };
+      },
+      "/e-wallet/beneficiaries/delete": async (f: FormPayload) => {
+        if (!f.id) return { error: "Missing id" };
+        await delBene.mutateAsync(f.id);
+        return { success: true, navigateTo: "/e-wallet/beneficiaries" };
+      },
+
+      "/register/complete": async (f: FormPayload) => {
+        if (!f.firstName || !f.lastName || !f.dateOfBirth || !f.phoneNumber || !f.addressLine1) {
+          return { error: "Missing fields" };
+        }
+        await completeReg.mutateAsync({
+          firstName: f.firstName, lastName: f.lastName,
+          dateOfBirth: f.dateOfBirth, phoneNumber: f.phoneNumber,
+          languageCode: f.languageCode || "en",
+          address: {
+            addressLine1: f.addressLine1, addressLine2: f.addressLine2,
+            city: f.city || "", subdivision: f.subdivision || f.state || "",
+            postalCode: f.postalCode || f.zip || "",
+            country: (f.country || "US").toUpperCase().slice(0, 2),
+          },
+        });
+        return { success: true, navigateTo: "/dashboard" };
+      },
+    };
+
+    return handlers[path];
+  }, [
+    location.pathname, transfer, swap, cryptoSend, cryptoOtp,
+    cardOrder, cardLoad, cardLock, cardUnlock, cardOtp,
+    addBene, delBene, completeReg,
+  ]);
 
   useEffect(() => { setLoaded(false); }, [src]);
   useEffect(() => { document.title = `${title} — CRYMAD CA$H Mobile`; }, [title]);
@@ -199,13 +334,22 @@ export function StitchScreen({ src, title }: StitchScreenProps) {
       } else if (e.data.type === "stitch-ready") {
         setLoaded(true);
       } else if (e.data.type === "stitch-form-submit") {
-        // Placeholder hook — individual sheet wiring will be added per-route.
-        console.warn("[stitch] form submit intercepted (no handler)", e.data);
+        const handler = getHandler();
+        if (!handler) {
+          console.warn("[stitch] form submit — no handler for", location.pathname, e.data);
+          return;
+        }
+        Promise.resolve(handler(e.data.fields || {}))
+          .then((r) => {
+            if (r.navigateTo) navigate(r.navigateTo);
+            if (r.error) console.warn("[stitch] form error:", r.error);
+          })
+          .catch((err) => console.error("[stitch] form handler threw", err));
       }
     }
     window.addEventListener("message", handleMessage);
     return () => window.removeEventListener("message", handleMessage);
-  }, [navigate, location.pathname]);
+  }, [navigate, location.pathname, getHandler]);
 
   function onIframeLoad() {
     const iframe = iframeRef.current;
