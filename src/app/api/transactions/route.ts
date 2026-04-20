@@ -39,6 +39,10 @@ export async function GET(req: NextRequest) {
       return NextResponse.json({ error: "tygabank_error", status: err.status, details: err.body }, { status: 502 });
     }
     console.error("[transactions]", err);
-    return NextResponse.json({ error: "internal" }, { status: 500 });
+    const e = err as { message?: string; code?: string; stack?: string };
+    return NextResponse.json({
+      error: "internal",
+      debug: { message: e?.message, code: e?.code, stackTop: typeof e?.stack === "string" ? e.stack.split("\n").slice(0, 4).join("\n") : undefined },
+    }, { status: 500 });
   }
 }
