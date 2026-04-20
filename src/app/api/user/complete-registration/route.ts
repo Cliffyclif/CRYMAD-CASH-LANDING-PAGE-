@@ -104,7 +104,10 @@ export async function POST(req: NextRequest) {
             ? (e.body as { details?: string })
             : null;
         if (body?.details === "Email not verified") {
-          // Try every documented path to flip the TygaBank verified flag.
+          // TygaBank's confirm-verify-email expects a pending verification
+          // session (created by send-verify-email). Without one, the handler
+          // 500s with "Email not verified" even for admin-trusted calls.
+          // Establish the pending state first, then try admin-confirm.
           const attempts: Array<{ name: string; err?: unknown }> = [];
           const attempt = async (name: string, fn: () => Promise<unknown>) => {
             try {
@@ -118,10 +121,8 @@ export async function POST(req: NextRequest) {
               attempts.push({ name, err: b });
             }
           };
-          await attempt("confirm-no-code", () => tyga.users.confirmVerifyEmail(id));
-          await attempt("confirm-empty-code", () => tyga.users.confirmVerifyEmail(id, ""));
-          await attempt("confirm-000000", () => tyga.users.confirmVerifyEmail(id, "000000"));
           await attempt("send-verify", () => tyga.users.sendVerifyEmail(id));
+          await attempt("confirm-no-code", () => tyga.users.confirmVerifyEmail(id));
           try {
             await tyga.users.update(id, data);
             return true;
