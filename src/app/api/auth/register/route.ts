@@ -108,34 +108,32 @@ export async function POST(req: NextRequest) {
       [email, passwordHash, tygaId, externalId, data.accountType],
     );
 
-    // Send our OWN OTP email via Infomaniak (proven reliable to Gmail + majors).
-    // TygaBank's verify emails are blocked at the 450 sender-domain layer, so
-    // their pipeline is unreliable. Our OTP is the source of truth for
-    // email verification; when admin-verify support lands, verify-otp will
-    // flip the TygaBank flag once our code is validated.
-    const code = await createOtp(email, "register");
-    const sent = await sendOtpEmail({
-      to: email,
-      code,
-      purpose: "register",
-      firstName: data.firstName,
-    });
-    if (!sent.ok) console.warn("[register][email]", sent.error);
-
-    // Best-effort: ask TygaBank to also send (fine if it fails, we don't depend on it).
+    // TygaBank's verify email is the canonical path: their email contains
+    // the link that flips emailIsVerified on their side, which unblocks
+    // complete-registration downstream. Send ONLY that one email to avoid
+    // confusing the user with two codes.
     let tygaVerifySent = false;
     try {
       await tyga.users.sendVerifyEmail(tygaId);
       tygaVerifySent = true;
     } catch (e) {
-      console.warn("[register] tyga sendVerifyEmail failed (non-blocking)", e);
+      // Fallback: if TygaBank's send fails (e.g. their mailer is down),
+      // send our own Infomaniak OTP so the user isn't blocked on signup.
+      console.warn("[register] tyga sendVerifyEmail failed — falling back to local OTP", e);
+      const code = await createOtp(email, "register");
+      const sent = await sendOtpEmail({
+        to: email,
+        code,
+        purpose: "register",
+        firstName: data.firstName,
+      });
+      if (!sent.ok) console.warn("[register][email]", sent.error);
     }
 
     return NextResponse.json({
       ok: true,
       userId: tygaId,
       email,
-      localOtpSent: sent.ok,
       tygaVerifySent,
     });
   } catch (err) {

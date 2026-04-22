@@ -49,11 +49,32 @@ export async function POST(req: NextRequest) {
     let tygaReason: string | undefined;
 
     if (data.purpose === "register" || data.purpose === "email_verify") {
-      // Mark locally verified — our OTP succeeded.
-      await query(
-        `UPDATE users SET email_verified_at = NOW(), updated_at = NOW() WHERE id = $1`,
-        [user.id],
-      );
+      // Mark locally verified — our OTP succeeded. Defensive: if the
+      // email_verified_at column hasn't been added to the DB yet, don't
+      // crash. The update is best-effort — verify-otp's primary job is to
+      // confirm the code, not persist a flag.
+      try {
+        await query(
+          `UPDATE users SET email_verified_at = NOW(), updated_at = NOW() WHERE id = $1`,
+          [user.id],
+        );
+      } catch (e) {
+        const msg = (e as Error)?.message || "";
+        if (/email_verified_at/.test(msg)) {
+          // Column missing — try to add it on the fly, then retry.
+          try {
+            await query(`ALTER TABLE users ADD COLUMN IF NOT EXISTS email_verified_at TIMESTAMPTZ`);
+            await query(
+              `UPDATE users SET email_verified_at = NOW(), updated_at = NOW() WHERE id = $1`,
+              [user.id],
+            );
+          } catch (e2) {
+            console.warn("[verify-otp] could not persist email_verified_at", e2);
+          }
+        } else {
+          console.warn("[verify-otp] UPDATE failed", e);
+        }
+      }
 
       // Best-effort: flip TygaBank's flag too. Most of the time this will fail
       // until they expose an admin-verify endpoint, but keep attempting in case
