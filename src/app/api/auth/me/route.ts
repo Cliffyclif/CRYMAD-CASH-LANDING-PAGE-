@@ -14,6 +14,7 @@ export async function GET() {
   if (!s) return NextResponse.json({ error: "unauthenticated" }, { status: 401 });
 
   try {
+    const uid = s.uid;
     // Defensive: select email_verified_at; if the column is missing on a
     // production DB that hasn't run the latest migration, add it and retry.
     async function fetchLocal() {
@@ -28,7 +29,7 @@ export async function GET() {
       }>(
         `SELECT id, email, account_type, tygapay_user_id, email_verified_at, created_at, last_login_at
            FROM users WHERE id = $1`,
-        [s.uid],
+        [uid],
       );
     }
 
