@@ -14,19 +14,36 @@ export async function GET() {
   if (!s) return NextResponse.json({ error: "unauthenticated" }, { status: 401 });
 
   try {
-    const local = await queryOne<{
-      id: string;
-      email: string;
-      account_type: string;
-      tygapay_user_id: string;
-      email_verified_at: Date | null;
-      created_at: Date;
-      last_login_at: Date | null;
-    }>(
-      `SELECT id, email, account_type, tygapay_user_id, email_verified_at, created_at, last_login_at
-         FROM users WHERE id = $1`,
-      [s.uid],
-    );
+    // Defensive: select email_verified_at; if the column is missing on a
+    // production DB that hasn't run the latest migration, add it and retry.
+    async function fetchLocal() {
+      return await queryOne<{
+        id: string;
+        email: string;
+        account_type: string;
+        tygapay_user_id: string;
+        email_verified_at: Date | null;
+        created_at: Date;
+        last_login_at: Date | null;
+      }>(
+        `SELECT id, email, account_type, tygapay_user_id, email_verified_at, created_at, last_login_at
+           FROM users WHERE id = $1`,
+        [s.uid],
+      );
+    }
+
+    let local;
+    try {
+      local = await fetchLocal();
+    } catch (e) {
+      if (/email_verified_at/.test((e as Error)?.message || "")) {
+        const { query } = await import("@/lib/db");
+        await query(`ALTER TABLE users ADD COLUMN IF NOT EXISTS email_verified_at TIMESTAMPTZ`);
+        local = await fetchLocal();
+      } else {
+        throw e;
+      }
+    }
     if (!local) return NextResponse.json({ error: "user_not_found" }, { status: 404 });
 
     // Prefer the Postgres-stored TygaBank ID over the session JWT one. The JWT

@@ -16,14 +16,12 @@ function VerifyEmailInner() {
   const router = useRouter();
   const params = useSearchParams();
   const qEmail = params?.get("email") || "";
-  const qDevCode = params?.get("devCode") || "";
 
   const [email, setEmail] = useState(qEmail);
-  const [code, setCode] = useState("");
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState("");
+  const [checking, setChecking] = useState(false);
   const [resendIn, setResendIn] = useState(60);
-  const [devCode, setDevCode] = useState<string | null>(qDevCode || null);
+  const [info, setInfo] = useState("");
+  const [error, setError] = useState("");
 
   useEffect(() => {
     if (resendIn <= 0) return;
@@ -31,33 +29,33 @@ function VerifyEmailInner() {
     return () => clearTimeout(t);
   }, [resendIn]);
 
-  async function verify(e: React.FormEvent) {
-    e.preventDefault();
+  async function checkVerified() {
     setError("");
-    if (!email || code.length !== 6) { setError("Enter the 6-digit code from your email."); return; }
-    setLoading(true);
+    setInfo("");
+    setChecking(true);
     try {
-      const res = await fetch("/api/auth/verify-otp", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, code, purpose: "register" }),
-      });
-      const j = await res.json();
-      if (!res.ok) {
-        setError(j.error === "invalid_code" ? "Invalid or expired code." : "Verification failed.");
+      const res = await fetch("/api/auth/me", { credentials: "include" });
+      if (res.status === 401) {
+        router.push(`/login?email=${encodeURIComponent(email)}`);
         return;
       }
-      router.push("/dashboard");
+      const j = await res.json();
+      if (j.user?.emailVerified) {
+        router.push("/dashboard");
+        return;
+      }
+      setInfo("Not verified yet. Open the email and click the verification link, then try again.");
     } catch {
       setError("Network error. Try again.");
     } finally {
-      setLoading(false);
+      setChecking(false);
     }
   }
 
   async function resend() {
-    if (resendIn > 0) return;
-    if (!email) return;
+    if (resendIn > 0 || !email) return;
+    setError("");
+    setInfo("");
     try {
       const res = await fetch("/api/auth/resend-verify", {
         method: "POST",
@@ -65,9 +63,13 @@ function VerifyEmailInner() {
         body: JSON.stringify({ email }),
       });
       const j = await res.json();
-      if (j.devCode) setDevCode(j.devCode);
+      if (j.tygaSent) setInfo("New verification email sent. Check your inbox.");
+      else if (j.tygaError?.body?.details === "email_verification_timeout") setInfo("A verification email was already sent recently. Check your inbox and spam folder.");
+      else setInfo("Resend attempted. Check your inbox.");
       setResendIn(60);
-    } catch { /* noop */ }
+    } catch {
+      setError("Couldn't resend. Try again shortly.");
+    }
   }
 
   const inputStyle: React.CSSProperties = {
@@ -92,56 +94,52 @@ function VerifyEmailInner() {
 
       <h1 style={{ fontSize: 24, fontWeight: 800, marginBottom: 6 }}>Check Your Email</h1>
       <p style={{ fontSize: 14, color: "var(--text-secondary)", marginBottom: 8 }}>
-        We sent a 6-digit verification code to
+        We sent a verification link to
         {email ? <><br /><code style={{ fontFamily: "JetBrains Mono, monospace", color: "var(--primary)" }}>{email}</code></> : " your email"}
       </p>
-      <p style={{ fontSize: 12, color: "var(--text-muted)", marginBottom: 20, lineHeight: 1.5 }}>
-        Look for an email from <strong>Crymad Cash</strong>.<br />
-        Check your spam folder if you don&apos;t see it within a minute.
+      <p style={{ fontSize: 13, color: "var(--text-muted)", marginBottom: 20, lineHeight: 1.6 }}>
+        Open the email from <strong>Crymad Cash</strong>, click the <strong>verification link</strong> inside,
+        then return here and tap the button below.
       </p>
 
-      <form onSubmit={verify}>
-        {!qEmail && (
-          <div style={{ marginBottom: 14, textAlign: "left" }}>
-            <input type="email" placeholder="Enter your email" value={email}
-              onChange={(e) => setEmail(e.target.value)} style={inputStyle} required />
-          </div>
-        )}
-        <input inputMode="numeric" pattern="\d{6}" maxLength={6}
-          placeholder="000000"
-          value={code}
-          onChange={(e) => setCode(e.target.value.replace(/\D/g, "").slice(0, 6))}
-          style={{ ...inputStyle, letterSpacing: 8, textAlign: "center", fontFamily: "JetBrains Mono, monospace", fontSize: 22, marginBottom: 16 }}
-          autoFocus required />
-        {devCode && (
-          <div style={{ fontSize: 11, color: "var(--text-muted)", marginBottom: 10 }}>
-            Dev mode: <code style={{ fontFamily: "JetBrains Mono, monospace" }}>{devCode}</code>
-          </div>
-        )}
+      {!qEmail && (
+        <div style={{ marginBottom: 14, textAlign: "left" }}>
+          <input type="email" placeholder="Enter your email" value={email}
+            onChange={(e) => setEmail(e.target.value)} style={inputStyle} required />
+        </div>
+      )}
 
-        {error && (
-          <div style={{
-            color: "var(--danger)", fontSize: 13, marginBottom: 14,
-            padding: "10px 14px", borderRadius: 10,
-            background: "rgba(239, 68, 68, 0.1)",
-            border: "1px solid rgba(239, 68, 68, 0.2)",
-          }}>{error}</div>
-        )}
+      {info && (
+        <div style={{
+          color: "var(--primary)", fontSize: 12, marginBottom: 14, lineHeight: 1.5,
+          padding: "10px 14px", borderRadius: 10,
+          background: "rgba(var(--primary-rgb), 0.08)",
+          border: "1px solid rgba(var(--primary-rgb), 0.2)",
+        }}>{info}</div>
+      )}
 
-        <button type="submit" disabled={loading}
-          style={{
-            width: "100%", padding: 14, borderRadius: 12,
-            background: loading ? "var(--text-muted)" : "var(--primary)",
-            color: "var(--bg)", fontWeight: 700, fontSize: 14, border: "none",
-            cursor: loading ? "not-allowed" : "pointer",
-            fontFamily: "Inter, sans-serif",
-          }}>
-          {loading ? "Verifying..." : "Verify Email"}
-        </button>
-      </form>
+      {error && (
+        <div style={{
+          color: "var(--danger)", fontSize: 13, marginBottom: 14,
+          padding: "10px 14px", borderRadius: 10,
+          background: "rgba(239, 68, 68, 0.1)",
+          border: "1px solid rgba(239, 68, 68, 0.2)",
+        }}>{error}</div>
+      )}
 
-      <div style={{ marginTop: 20, fontSize: 13, color: "var(--text-secondary)" }}>
-        Didn&apos;t receive the code?{" "}
+      <button type="button" onClick={checkVerified} disabled={checking}
+        style={{
+          width: "100%", padding: 14, borderRadius: 12,
+          background: checking ? "var(--text-muted)" : "var(--primary)",
+          color: "var(--bg)", fontWeight: 700, fontSize: 14, border: "none",
+          cursor: checking ? "not-allowed" : "pointer",
+          fontFamily: "Inter, sans-serif", marginBottom: 10,
+        }}>
+        {checking ? "Checking..." : "I've verified my email"}
+      </button>
+
+      <div style={{ marginTop: 14, fontSize: 13, color: "var(--text-secondary)" }}>
+        Didn&apos;t receive it?{" "}
         {resendIn > 0 ? (
           <span>Resend in {resendIn}s</span>
         ) : (
