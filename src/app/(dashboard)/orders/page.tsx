@@ -165,7 +165,7 @@ export default function OrdersPage() {
       <div style={{ ...glass, padding: 20, marginBottom: 20 }}>
         <div style={{ fontSize: 13, fontWeight: 700, color: "var(--text)", marginBottom: 10 }}>Order Lookup</div>
         <div style={{ fontSize: 12, color: "var(--text-muted)", marginBottom: 14 }}>
-          Enter an order ID to fetch its full details from TygaBank.
+          Enter an order ID to fetch its full details.
         </div>
         <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
           <input

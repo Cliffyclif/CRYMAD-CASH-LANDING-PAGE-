@@ -156,7 +156,7 @@ export default function CardFeesPage() {
           </svg>
           <div style={{ fontSize: 12, color: "var(--text)", lineHeight: 1.5 }}>
             <strong style={{ color: "var(--warning)" }}>Sample fees shown.</strong>{" "}
-            Your tenant&apos;s fee schedule hasn&apos;t been provisioned by TygaBank yet.
+            Your fee schedule hasn&apos;t been provisioned yet.
             The numbers below are illustrative — contact support for actual pricing.
           </div>
         </div>

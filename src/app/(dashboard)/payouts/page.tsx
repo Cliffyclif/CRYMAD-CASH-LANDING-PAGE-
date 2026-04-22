@@ -287,7 +287,7 @@ function NewPayoutModal({ onClose, onSuccess }: { onClose: () => void; onSuccess
     <Modal onClose={onClose} title="New Payout">
       <form onSubmit={submit} style={{ display: "flex", flexDirection: "column", gap: 14 }}>
         <Field label="Recipient User ID">
-          <input required style={inputStyle} value={form.recipientUserId} onChange={(e) => setForm({ ...form, recipientUserId: e.target.value })} placeholder="TygaBank user ID" />
+          <input required style={inputStyle} value={form.recipientUserId} onChange={(e) => setForm({ ...form, recipientUserId: e.target.value })} placeholder="Recipient user ID" />
         </Field>
         <div style={{ display: "grid", gridTemplateColumns: "2fr 1fr", gap: 12 }}>
           <Field label="Amount">

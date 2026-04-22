@@ -96,7 +96,7 @@ function VerifyEmailInner() {
         {email ? <><br /><code style={{ fontFamily: "JetBrains Mono, monospace", color: "var(--primary)" }}>{email}</code></> : " your email"}
       </p>
       <p style={{ fontSize: 12, color: "var(--text-muted)", marginBottom: 20, lineHeight: 1.5 }}>
-        Look for an email from <strong>TygaBank / Crymad Cash</strong>.<br />
+        Look for an email from <strong>Crymad Cash</strong>.<br />
         Check your spam folder if you don&apos;t see it within a minute.
       </p>
 
