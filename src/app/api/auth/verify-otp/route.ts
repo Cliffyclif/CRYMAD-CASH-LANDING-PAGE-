@@ -127,6 +127,12 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: "invalid_input" }, { status: 400 });
     }
     console.error("[verify-otp]", err);
-    return NextResponse.json({ error: "internal" }, { status: 500 });
+    const e = err as { message?: string; stack?: string };
+    return NextResponse.json({
+      error: "internal",
+      reason: e?.message || "unknown",
+      stackTop: typeof e?.stack === "string" ? e.stack.split("\n").slice(0, 4).join("\n") : undefined,
+    }, { status: 500 });
   }
 }
+
