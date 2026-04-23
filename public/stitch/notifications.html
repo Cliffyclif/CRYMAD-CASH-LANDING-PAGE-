@@ -182,103 +182,35 @@
                 READ
             </button>
 </div>
-<!-- Notification List -->
-<div class="space-y-4">
-<!-- 1. PAYOUT (Expanded) -->
-<div class="glass-card rounded-lg overflow-hidden relative border-l-4 border-jade-500" style="border-left-color: #4edea3;">
-<div class="p-6">
-<div class="flex justify-between items-start mb-2">
+<!-- Notification List — fed from /api/notifications. The template below is
+     cloned per item by StitchScreen's renderList(); data-slot-empty shows
+     when the list is empty. -->
+<div class="space-y-4" data-slot-list="notifications">
+<!-- TEMPLATE — this node is kept hidden, cloned per API item -->
+<div class="glass-card rounded-lg p-5 relative border-l-4" style="border-left-color: #34d399;" data-slot-template>
+<div class="flex justify-between items-start">
 <div class="flex items-center gap-4">
-<div class="w-10 h-10 rounded-full bg-emerald-500/10 flex items-center justify-center text-emerald-400">
-<span class="material-symbols-outlined" data-icon="check_circle">check_circle</span>
+<div class="w-10 h-10 rounded-full bg-emerald-500/10 flex items-center justify-center text-emerald-400 shrink-0">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
 </div>
-<div>
-<h3 class="font-bold text-on-background">Payout Received</h3>
-<p class="text-sm text-on-surface-variant">$1,500 deposited</p>
-</div>
-</div>
-<div class="flex flex-col items-end gap-2">
-<span class="font-mono text-[10px] text-emerald-500/40">2 min ago</span>
-<div class="w-2 h-2 rounded-full bg-emerald-400 shadow-[0_0_8px_#4edea3]"></div>
+<div class="min-w-0">
+<h3 class="font-semibold text-on-background" data-slot-field="title">Notification</h3>
+<p class="text-sm text-on-surface-variant mt-0.5" data-slot-field="body"></p>
 </div>
 </div>
-<div class="mt-4 pt-4 border-t border-emerald-500/5 space-y-3">
-<div class="flex justify-between text-xs font-mono">
-<span class="text-emerald-500/40">SOURCE</span>
-<span class="text-emerald-400">EXTERNAL_NODE_0x44</span>
-</div>
-<div class="flex justify-between text-xs font-mono">
-<span class="text-emerald-500/40">STATUS</span>
-<span class="text-emerald-400 uppercase">Settled</span>
-</div>
-<a class="inline-flex items-center gap-2 text-emerald-400 font-bold text-xs tracking-widest mt-2 hover:gap-3 transition-all" href="#">
-                            OPEN TRANSACTION <span class="material-symbols-outlined text-sm" data-icon="arrow_forward">arrow_forward</span>
-</a>
+<div class="flex flex-col items-end gap-2 shrink-0">
+<span class="font-mono text-[10px] text-emerald-500/40" data-slot-field="date"></span>
+<span class="font-mono text-[10px] text-emerald-400" data-slot-field="unread"></span>
 </div>
 </div>
 </div>
-<!-- 2. CARD -->
-<div class="glass-card rounded-lg p-5 relative border-l-4" style="border-left-color: #34d399;">
-<div class="flex justify-between items-center">
-<div class="flex items-center gap-4">
-<div class="w-10 h-10 rounded-full bg-surface-variant flex items-center justify-center text-secondary">
-<span class="material-symbols-outlined" data-icon="credit_card">credit_card</span>
+<!-- EMPTY STATE — shown when the list is empty -->
+<div class="glass-card rounded-lg p-8 text-center" data-slot-empty>
+<div class="w-12 h-12 rounded-full bg-emerald-500/10 flex items-center justify-center text-emerald-400 mx-auto mb-3">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
 </div>
-<h3 class="font-semibold text-on-background">Virtual Card Active</h3>
-</div>
-<span class="font-mono text-[10px] text-emerald-500/40">15 min ago</span>
-</div>
-</div>
-<!-- 3. KYC -->
-<div class="glass-card rounded-lg p-5 relative border-l-4 border-amber-500" style="border-left-color: #f59e0b;">
-<div class="flex justify-between items-center">
-<div class="flex items-center gap-4">
-<div class="w-10 h-10 rounded-full bg-tertiary/10 flex items-center justify-center text-tertiary">
-<span class="material-symbols-outlined" data-icon="shield">shield</span>
-</div>
-<h3 class="font-semibold text-on-background">KYC Review Pending</h3>
-</div>
-<span class="font-mono text-[10px] text-emerald-500/40">1 hour ago</span>
-</div>
-</div>
-<!-- 4. SECURITY -->
-<div class="glass-card rounded-lg p-5 relative border-l-4 border-error" style="border-left-color: #ffb4ab;">
-<div class="flex justify-between items-center">
-<div class="flex items-center gap-4">
-<div class="w-10 h-10 rounded-full bg-error/10 flex items-center justify-center text-error">
-<span class="material-symbols-outlined" data-icon="warning">warning</span>
-</div>
-<h3 class="font-semibold text-on-background">New Login Detected</h3>
-</div>
-<span class="font-mono text-[10px] text-emerald-500/40">3 hours ago</span>
-</div>
-</div>
-<!-- 5. SYSTEM -->
-<div class="glass-card rounded-lg p-5 relative border-l-4 border-outline" style="border-left-color: #86948a;">
-<div class="flex justify-between items-center">
-<div class="flex items-center gap-4">
-<div class="w-10 h-10 rounded-full bg-surface-variant flex items-center justify-center text-outline">
-<span class="material-symbols-outlined" data-icon="info">info</span>
-</div>
-<h3 class="font-semibold text-on-background">Scheduled Maintenance</h3>
-</div>
-<span class="font-mono text-[10px] text-emerald-500/40">Yesterday</span>
-</div>
-</div>
-<!-- 6. CRYPTO -->
-<div class="glass-card rounded-lg p-5 relative border-l-4 border-jade-500" style="border-left-color: #4edea3;">
-<div class="flex justify-between items-center">
-<div class="flex items-center gap-4">
-<div class="w-10 h-10 rounded-full bg-emerald-500/10 flex items-center justify-center text-emerald-400">
-<span class="material-symbols-outlined" data-icon="link">link</span>
-</div>
-<div>
-<h3 class="font-semibold text-on-background text-sm">USDT Deposit Confirmed</h3>
-<p class="font-mono text-[10px] text-emerald-500/60 truncate w-32 md:w-full">0x7a2e...99fA</p>
-</div>
-</div>
-<span class="font-mono text-[10px] text-emerald-500/40">2 days ago</span>
-</div>
+<h3 class="font-semibold text-on-background mb-1">You're all caught up</h3>
+<p class="text-sm text-on-surface-variant">Account activity and system messages will appear here.</p>
 </div>
 </div>
 </main>
