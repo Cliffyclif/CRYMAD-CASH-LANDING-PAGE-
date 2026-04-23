@@ -15,6 +15,7 @@ import { query, queryOne } from "@/lib/db";
 import { verifyOtp } from "@/lib/auth/otp";
 import { createSession, setSessionCookie } from "@/lib/auth/session";
 import { tyga, TygaBankError } from "@/lib/tygabank/client";
+import { invalidate } from "@/lib/cache/memory";
 
 const Schema = z.object({
   email: z.string().email(),
@@ -79,6 +80,10 @@ export async function POST(req: NextRequest) {
       // Best-effort: flip TygaBank's flag too. Most of the time this will fail
       // until they expose an admin-verify endpoint, but keep attempting in case
       // their pipeline self-heals or a tenant-level fix lands.
+      // Bust /api/auth/me cache so the dashboard sees emailVerified=true immediately.
+      invalidate(`tyga:user:${user.tygapay_user_id}`);
+      invalidate(`tyga:wallets:${user.tygapay_user_id}`);
+
       try {
         await tyga.users.confirmVerifyEmail(user.tygapay_user_id, data.code);
         tygaFlipped = true;

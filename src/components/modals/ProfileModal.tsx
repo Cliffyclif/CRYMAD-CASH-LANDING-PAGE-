@@ -41,7 +41,7 @@ export default function ProfileModal({ isOpen, onClose }: ProfileModalProps) {
     }
   }
 
-  const kyc = KYC_STYLES[user?.kycStatus || "not_started"];
+  const kyc = KYC_STYLES[user?.kycStatus || "not_started"] ?? KYC_STYLES.not_started;
   const row: React.CSSProperties = {
     display: "flex",
     justifyContent: "space-between",

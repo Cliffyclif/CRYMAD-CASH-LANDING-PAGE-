@@ -10,6 +10,7 @@ import { z } from "zod";
 import { requireSession } from "@/lib/auth/session";
 import { tyga, TygaBankError } from "@/lib/tygabank/client";
 import { query, queryOne } from "@/lib/db";
+import { invalidate } from "@/lib/cache/memory";
 
 const Schema = z.object({
   firstName: z.string().min(1),
@@ -200,6 +201,13 @@ export async function POST(req: NextRequest) {
     // attempt is wrapped in try/catch. Users can re-activate any missing
     // wallets from the Crypto page.
     const provisioned = await autoProvisionCrypto(tid);
+
+    // Clear cached user + wallets so the dashboard reflects updated status
+    // (completedRegistration, firstName/lastName, etc.) immediately.
+    invalidate(`tyga:user:${tid}`);
+    invalidate(`tyga:wallets:${tid}`);
+    invalidate(`tyga:custodial:${tid}`);
+    invalidate(`tyga:deposits:${tid}`);
 
     return NextResponse.json({ ok: true, healed, provisioned });
   } catch (err) {
