@@ -31,6 +31,10 @@ const NAV_INTERCEPTOR = `
   // Stitch HTMLs use href="#" pervasively — designers treated them as static
   // mocks. Map common link intents to real routes by icon + text content.
   var ICON_ROUTES = {
+    arrow_back: '__BACK__',
+    arrow_back_ios: '__BACK__',
+    chevron_left: '__BACK__',
+    close: '__BACK__',
     home: '/dashboard',
     account_balance_wallet: '/e-wallet',
     credit_card: '/cards',
@@ -56,6 +60,8 @@ const NAV_INTERCEPTOR = `
     corporate_fare: '/institutional/dashboard',
   };
   var LABEL_ROUTES = {
+    BACK: '__BACK__',
+    '← BACK': '__BACK__',
     HOME: '/dashboard',
     WALLETS: '/e-wallet',
     WALLET: '/e-wallet',
@@ -120,7 +126,11 @@ const NAV_INTERCEPTOR = `
     var inferred = inferRoute(a);
     if (inferred) {
       e.preventDefault();
-      parent.postMessage({ type: 'stitch-navigate', href: inferred }, '*');
+      if (inferred === '__BACK__') {
+        parent.postMessage({ type: 'stitch-back' }, '*');
+      } else {
+        parent.postMessage({ type: 'stitch-navigate', href: inferred }, '*');
+      }
     }
   }, true);
 
@@ -688,6 +698,8 @@ export function StitchScreen({ src, title }: StitchScreenProps) {
         if (routeByPath.has(target) || target !== location.pathname) navigate(target);
       } else if (e.data.type === "stitch-navigate-raw" && typeof e.data.href === "string") {
         navigate(e.data.href);
+      } else if (e.data.type === "stitch-back") {
+        navigate(-1);
       } else if (e.data.type === "stitch-ready") {
         setLoaded(true);
       } else if (e.data.type === "stitch-form-submit") {
