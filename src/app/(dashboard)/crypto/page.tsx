@@ -2248,7 +2248,17 @@ function CryptoPageInner() {
       </div>
 
       {/* ─── Receive Assets + QR (2 cols) ─── */}
-      <ReceiveAssetsPanel addresses={addresses || []} onClaim={() => setShowClaim(true)} />
+      <ReceiveAssetsPanel
+        addresses={[
+          ...(addresses || []),
+          // Merge custodial wallets (BTC, SOL, XRP, BNB, LTT) into the picker.
+          // TygaBank returns each as {id, address, network, token} — fits DepositAddress shape.
+          ...((wallets || [])
+            .filter((w) => w.address && w.token)
+            .map((w) => ({ address: w.address as string, network: w.token as string }))),
+        ]}
+        onClaim={() => setShowClaim(true)}
+      />
 
       {/* ─── Latest Activity Table ─── */}
       <LatestActivityTable />

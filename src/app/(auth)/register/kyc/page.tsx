@@ -15,14 +15,19 @@ export default function KYCPage() {
       const res = await fetch("/api/user/kyc-session", { method: "POST" });
       const j = await res.json();
       if (!res.ok) {
-        setError("Could not start verification. Please try again.");
+        const detail = j?.details?.message || j?.details?.details || j?.error;
+        setError(detail ? `Could not start verification: ${detail}` : "Could not start verification. Please try again.");
         return;
       }
-      const session = j.session;
-      setSessionInfo(session);
-      if (session?.sessionUrl) {
-        // Open TygaBank's KYC session in a new tab
-        window.open(session.sessionUrl, "_blank", "noopener,noreferrer");
+      const session = j.session || {};
+      const url = session.sessionUrl || session.url;
+      setSessionInfo({ sessionUrl: url, sessionToken: session.sessionToken || session.token });
+      if (url) {
+        window.location.href = url;
+      } else if (session.status === "verified") {
+        setError("Your identity is already verified.");
+      } else {
+        setError("Verification session returned no URL. Please contact support.");
       }
     } catch {
       setError("Network error. Try again.");

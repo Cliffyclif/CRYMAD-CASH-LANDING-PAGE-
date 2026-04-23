@@ -109,6 +109,17 @@ async function request<T = unknown>(
   if (!res.ok) {
     throw new TygaBankError(res.status, data, `${method} ${path} failed: ${res.status}`);
   }
+  // Unwrap TygaBank's {status: "success", data: ...} envelope so every route
+  // sees the bare payload. Matches the BFF-mode behavior above.
+  if (
+    data &&
+    typeof data === "object" &&
+    !Array.isArray(data) &&
+    (data as { status?: string }).status === "success" &&
+    "data" in (data as object)
+  ) {
+    return (data as { data: T }).data;
+  }
   return data as T;
 }
 
@@ -152,7 +163,20 @@ async function requestViaBff<T>(
     const raw = typeof envelope === "object" ? envelope.raw : envelope;
     throw new TygaBankError(upstreamStatus, raw, `${method} ${path} via BFF failed: ${upstreamStatus}`);
   }
-  return (typeof envelope === "object" ? (envelope.data as T) : (envelope as T));
+  // Unwrap BFF envelope: {ok, data: <upstream>}
+  const upstream = typeof envelope === "object" ? envelope.data : envelope;
+  // Unwrap TygaBank's own envelope: {status: "success", data: <actual>}.
+  // Done here so every route sees the bare payload (array/object) consistently.
+  if (
+    upstream &&
+    typeof upstream === "object" &&
+    !Array.isArray(upstream) &&
+    (upstream as { status?: string }).status === "success" &&
+    "data" in upstream
+  ) {
+    return (upstream as { data: T }).data;
+  }
+  return upstream as T;
 }
 
 // ─── Types (partial, from real API responses) ──────────────────────────────

@@ -8,6 +8,7 @@ import { NextResponse } from "next/server";
 import { getSession } from "@/lib/auth/session";
 import { queryOne } from "@/lib/db";
 import { tyga, TygaBankError } from "@/lib/tygabank/client";
+import { cached } from "@/lib/cache/memory";
 
 export async function GET() {
   const s = await getSession();
@@ -52,10 +53,11 @@ export async function GET() {
     // sandbox-era TID gets migrated to prod on complete-registration).
     const tid = local.tygapay_user_id || s.tid;
 
-    // Parallel fetch of TygaBank user + wallets
+    // Parallel fetch of TygaBank user + wallets — both cached 20s to survive
+    // rapid page navigations. KYC/wallet updates stay visible within a cycle.
     const [tygaUser, wallets] = await Promise.all([
-      tyga.users.getById(tid).catch(() => null),
-      tyga.users.getWallets(tid).catch(() => []),
+      cached(`tyga:user:${tid}`, 20_000, () => tyga.users.getById(tid)).catch(() => null),
+      cached(`tyga:wallets:${tid}`, 20_000, () => tyga.users.getWallets(tid)).catch(() => []),
     ]);
 
     return NextResponse.json({

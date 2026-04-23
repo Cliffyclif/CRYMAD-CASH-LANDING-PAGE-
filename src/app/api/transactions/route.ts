@@ -6,6 +6,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { requireSession } from "@/lib/auth/session";
 import { tyga, TygaBankError } from "@/lib/tygabank/client";
+import { cached } from "@/lib/cache/memory";
 
 export async function GET(req: NextRequest) {
   try {
@@ -28,7 +29,9 @@ export async function GET(req: NextRequest) {
       query.endDate = to.toISOString().slice(0, 10);
     }
 
-    const data = await tyga.reporting.userTransactions(query);
+    // TygaBank reporting is slow (~15s). Cache 30s per unique query.
+    const cacheKey = `tyga:tx:${s.tid}:${JSON.stringify(query)}`;
+    const data = await cached(cacheKey, 30_000, () => tyga.reporting.userTransactions(query));
     return NextResponse.json({ transactions: Array.isArray(data) ? data : [] });
   } catch (err) {
     if ((err as { status?: number })?.status === 401) {

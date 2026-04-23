@@ -26,6 +26,9 @@ const PROTECTED = [
 /** Routes that should bounce to dashboard if already logged in. */
 const AUTH_ROUTES = ["/login", "/register", "/forgot-password"];
 
+/** Sub-paths of AUTH_ROUTES that ARE accessible while logged in (onboarding steps). */
+const AUTH_ALLOW_WHEN_LOGGED_IN = ["/register/kyc", "/register/verify-email"];
+
 async function isAuthed(req: NextRequest): Promise<boolean> {
   const token = req.cookies.get(COOKIE_NAME)?.value;
   if (!token) return false;
@@ -43,7 +46,8 @@ export async function middleware(req: NextRequest) {
   const { pathname } = req.nextUrl;
 
   const isProtected = PROTECTED.some((p) => pathname === p || pathname.startsWith(p + "/"));
-  const isAuth = AUTH_ROUTES.some((p) => pathname === p || pathname.startsWith(p + "/"));
+  const isAuthAllowed = AUTH_ALLOW_WHEN_LOGGED_IN.some((p) => pathname === p || pathname.startsWith(p + "/"));
+  const isAuth = !isAuthAllowed && AUTH_ROUTES.some((p) => pathname === p || pathname.startsWith(p + "/"));
 
   if (!isProtected && !isAuth) return NextResponse.next();
 

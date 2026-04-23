@@ -2,13 +2,14 @@
 
 import { useUser } from "@/components/providers/UserProvider";
 import { useLanguage } from "@/i18n/LanguageContext";
-import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 const MONTHS = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
 
 export function ProfileCard() {
   const { user, initials, fullName, loading } = useUser();
   const { t } = useLanguage();
+  const router = useRouter();
 
   if (loading) {
     return (
@@ -71,10 +72,14 @@ export function ProfileCard() {
           {user.kycStatus === "approved" ? (
             <span className="kyc-label">{kycLabel}</span>
           ) : (
-            <Link
-              href="/register/kyc"
+            <button
+              type="button"
+              onClick={(e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                router.push("/register/kyc");
+              }}
               style={{
-                textDecoration: "none",
                 cursor: "pointer",
                 display: "inline-flex",
                 alignItems: "center",
@@ -88,6 +93,7 @@ export function ProfileCard() {
                 fontWeight: 700,
                 letterSpacing: 0.5,
                 transition: "all 0.15s",
+                fontFamily: "inherit",
               }}
               onMouseEnter={(e) => {
                 e.currentTarget.style.background = "rgba(var(--primary-rgb), 0.18)";
@@ -101,7 +107,7 @@ export function ProfileCard() {
               {kycLabel}
               {user.kycStatus !== "pending" ? " — Start" : ""}
               <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round"><polyline points="9 18 15 12 9 6" /></svg>
-            </Link>
+            </button>
           )}
         </div>
       </div>
