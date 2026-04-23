@@ -121,6 +121,51 @@ const NAV_INTERCEPTOR = `
     });
   }
 
+  function applySparklines(sparklines) {
+    Object.entries(sparklines || {}).forEach(function(entry) {
+      var key = entry[0];
+      var vals = Array.isArray(entry[1]) ? entry[1] : [];
+      document.querySelectorAll('[data-slot-sparkline="' + key + '"]').forEach(function(poly) {
+        if (vals.length < 2) {
+          poly.setAttribute('points', '0,20 100,20');
+          return;
+        }
+        var min = Math.min.apply(null, vals);
+        var max = Math.max.apply(null, vals);
+        var range = max - min || 1;
+        var w = 100, h = 20;
+        var step = vals.length === 1 ? 0 : w / (vals.length - 1);
+        var pts = vals.map(function(v, i) {
+          var y = h - ((v - min) / range) * h;
+          return (i * step).toFixed(1) + ',' + y.toFixed(1);
+        }).join(' ');
+        poly.setAttribute('points', pts);
+      });
+    });
+  }
+
+  function applyRings(rings) {
+    Object.entries(rings || {}).forEach(function(entry) {
+      var key = entry[0];
+      var pct = Math.max(0, Math.min(100, Number(entry[1]) || 0));
+      document.querySelectorAll('[data-slot-ring="' + key + '"]').forEach(function(el) {
+        var r = Number(el.getAttribute('r')) || 40;
+        var circ = 2 * Math.PI * r;
+        var filled = circ * (pct / 100);
+        el.setAttribute('stroke-dasharray', filled.toFixed(1) + ' ' + circ.toFixed(1));
+      });
+    });
+  }
+
+  function applyHideIfEmpty(slots) {
+    document.querySelectorAll('[data-slot-hide-if-empty]').forEach(function(el) {
+      var key = el.getAttribute('data-slot-hide-if-empty');
+      var v = slots && slots[key];
+      if (v == null || v === '') el.style.display = 'none';
+      else el.style.display = '';
+    });
+  }
+
   window.addEventListener('message', function(e) {
     if (!e.data || e.data.type !== 'stitch-data') return;
     if (e.data.slots) {
@@ -130,7 +175,10 @@ const NAV_INTERCEPTOR = `
           el.textContent = String(entry[1]);
         });
       });
+      applyHideIfEmpty(e.data.slots);
     }
+    if (e.data.sparklines) applySparklines(e.data.sparklines);
+    if (e.data.rings) applyRings(e.data.rings);
     if (e.data.lists) {
       Object.entries(e.data.lists).forEach(function(entry) {
         renderList(entry[0], entry[1]);
@@ -160,6 +208,7 @@ interface StitchSlots {
   accountType?: string;
   joinedDate?: string;
   walletCount?: string;
+  todayDelta?: string;
 }
 
 function buildSlots(
@@ -168,7 +217,12 @@ function buildSlots(
   cryptoWallets: CryptoWallet[] | undefined,
   prices: Record<string, MarketPrice> | undefined,
   txs: Transaction[] | undefined,
-): { slots: StitchSlots; replacements: Record<string, string> } {
+): {
+  slots: StitchSlots;
+  replacements: Record<string, string>;
+  sparklines: Record<string, number[]>;
+  rings: Record<string, number>;
+} {
   const first = (user?.firstName && user.firstName !== "Pending") ? user.firstName : "";
   const last = (user?.lastName && user.lastName !== "Pending") ? user.lastName : "";
   const fullName = `${first} ${last}`.trim() || user?.email?.split("@")[0] || "";
@@ -190,15 +244,40 @@ function buildSlots(
 
   const total = ewalletBal + cryptoValue + cardBal;
 
-  const weekAgo = Date.now() - 7 * 24 * 60 * 60 * 1000;
-  const spentThisWeek = (txs ?? []).reduce((sum, t) => {
+  const now = Date.now();
+  const DAY_MS = 24 * 60 * 60 * 1000;
+  const weekAgo = now - 7 * DAY_MS;
+  const startOfToday = new Date(); startOfToday.setHours(0, 0, 0, 0);
+  const startOfTodayMs = startOfToday.getTime();
+
+  // Bucket transactions by day (last 7 days), separated by side + walletType.
+  const dayBuckets: Array<{ debit: number; net: number; ewallet: number; crypto: number }> =
+    Array.from({ length: 7 }, () => ({ debit: 0, net: 0, ewallet: 0, crypto: 0 }));
+  let spentThisWeek = 0;
+  let todayNet = 0;
+
+  (txs ?? []).forEach((t) => {
     const dateStr = (t as { createdDate?: string }).createdDate;
-    if (!dateStr) return sum;
+    if (!dateStr) return;
     const ts = new Date(dateStr).getTime();
-    if (Number.isNaN(ts) || ts < weekAgo) return sum;
-    if (t.side !== "debit") return sum;
-    return sum + safe(t.amount);
-  }, 0);
+    if (!Number.isFinite(ts) || ts < weekAgo) return;
+    const amt = safe(t.amount);
+    const signed = t.side === "debit" ? -amt : amt;
+    const daysAgo = Math.min(6, Math.floor((now - ts) / DAY_MS));
+    const bucketIdx = 6 - daysAgo; // oldest first
+    const bucket = dayBuckets[bucketIdx];
+    bucket.net += signed;
+    if (t.side === "debit") { bucket.debit += amt; spentThisWeek += amt; }
+    if (t.walletType === "ewallet") bucket.ewallet += signed;
+    if (t.walletType === "crypto") bucket.crypto += signed;
+    if (ts >= startOfTodayMs) todayNet += signed;
+  });
+
+  const sparklines: Record<string, number[]> = {
+    weekSpend: dayBuckets.map((b) => b.debit),
+    ewalletActivity: dayBuckets.map((b) => b.ewallet),
+    cryptoActivity: dayBuckets.map((b) => b.crypto),
+  };
 
   const kycMap: Record<string, { score: number; label: string }> = {
     approved: { score: 100, label: "VERIFIED" },
@@ -207,6 +286,7 @@ function buildSlots(
     not_started: { score: 0, label: "NOT STARTED" },
   };
   const kycInfo = kycMap[user?.kycStatus || "not_started"] ?? kycMap.not_started;
+  const rings: Record<string, number> = { kycScore: kycInfo.score };
 
   const joinedIso = user?.createdAt;
   let joined = "";
@@ -233,6 +313,7 @@ function buildSlots(
     accountType: user?.accountType === "business" ? "BUSINESS" : "PERSONAL",
     joinedDate: joined,
     walletCount: String((cryptoWallets ?? []).length),
+    todayDelta: todayNet === 0 ? "" : `${todayNet >= 0 ? "+" : "-"}${formatMoney(Math.abs(todayNet))} TODAY`,
   };
 
   const replacements: Record<string, string> = {
@@ -247,7 +328,7 @@ function buildSlots(
     "$48,291.55": slots.balanceCrypto || "$0.00",
   };
 
-  return { slots, replacements };
+  return { slots, replacements, sparklines, rings };
 }
 
 export function StitchScreen({ src, title }: StitchScreenProps) {
@@ -496,7 +577,14 @@ export function StitchScreen({ src, title }: StitchScreenProps) {
     const iframe = iframeRef.current;
     if (!iframe?.contentWindow) return;
     iframe.contentWindow.postMessage(
-      { type: "stitch-data", slots: payload.slots, replacements: payload.replacements, lists },
+      {
+        type: "stitch-data",
+        slots: payload.slots,
+        replacements: payload.replacements,
+        sparklines: payload.sparklines,
+        rings: payload.rings,
+        lists,
+      },
       "*",
     );
   }, [loaded, payload, lists]);
