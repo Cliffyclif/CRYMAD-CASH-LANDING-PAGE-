@@ -4,13 +4,13 @@
  * 401 if not logged in.
  */
 
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 import { getSession } from "@/lib/auth/session";
 import { queryOne } from "@/lib/db";
 import { tyga, TygaBankError } from "@/lib/tygabank/client";
-import { cached } from "@/lib/cache/memory";
+import { cached, invalidate } from "@/lib/cache/memory";
 
-export async function GET() {
+export async function GET(req: NextRequest) {
   const s = await getSession();
   if (!s) return NextResponse.json({ error: "unauthenticated" }, { status: 401 });
 
@@ -53,12 +53,21 @@ export async function GET() {
     // sandbox-era TID gets migrated to prod on complete-registration).
     const tid = local.tygapay_user_id || s.tid;
 
-    // Parallel fetch of TygaBank user + wallets — both cached 20s to survive
-    // rapid page navigations. KYC/wallet updates stay visible within a cycle.
+    // Callers can pass ?fresh=1 to bypass the 20s cache — used after KYC/profile
+    // flows return so the dashboard picks up TygaBank's new status immediately.
+    const fresh = req.nextUrl.searchParams.get("fresh") === "1";
+    if (fresh) {
+      invalidate(`tyga:user:${tid}`);
+      invalidate(`tyga:wallets:${tid}`);
+    }
     const [tygaUser, wallets] = await Promise.all([
-      cached(`tyga:user:${tid}`, 20_000, () => tyga.users.getById(tid)).catch(() => null),
+      cached(`tyga:user:${tid}`, 20_000, () => tyga.users.getById(tid)).catch((e) => {
+        console.warn("[me] tyga.users.getById failed", (e as Error)?.message);
+        return null;
+      }),
       cached(`tyga:wallets:${tid}`, 20_000, () => tyga.users.getWallets(tid)).catch(() => []),
     ]);
+    console.log("[me] tid=", tid, "kycStatus=", (tygaUser as { kycStatus?: string } | null)?.kycStatus, "emailVerified=", (tygaUser as { emailIsVerified?: boolean } | null)?.emailIsVerified);
 
     return NextResponse.json({
       user: {

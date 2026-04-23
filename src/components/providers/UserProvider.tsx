@@ -51,7 +51,7 @@ interface Ctx {
   wallets: Wallet[];
   loading: boolean;
   error: string | null;
-  refresh: () => Promise<void>;
+  refresh: (opts?: { fresh?: boolean }) => Promise<void>;
   fullName: string;
   initials: string;
   primaryWallet: Wallet | null;
@@ -72,10 +72,11 @@ export function UserProvider({ children }: { children: ReactNode }) {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
-  const refresh = useCallback(async () => {
+  const refresh = useCallback(async (opts?: { fresh?: boolean }) => {
     try {
       setError(null);
-      const res = await fetch("/api/auth/me", { credentials: "include" });
+      const url = opts?.fresh ? "/api/auth/me?fresh=1" : "/api/auth/me";
+      const res = await fetch(url, { credentials: "include" });
       if (res.status === 401) {
         setUser(null);
         setWallets([]);
@@ -94,6 +95,12 @@ export function UserProvider({ children }: { children: ReactNode }) {
 
   useEffect(() => {
     refresh();
+    // Re-fetch with cache bypass when the tab regains focus — catches users
+    // returning from TygaBank's KYC flow in another tab so their new status
+    // (approved/pending) replaces the stale not_started on the dashboard.
+    const onFocus = () => refresh({ fresh: true });
+    window.addEventListener("focus", onFocus);
+    return () => window.removeEventListener("focus", onFocus);
   }, [refresh]);
 
   const value = useMemo<Ctx>(() => {
