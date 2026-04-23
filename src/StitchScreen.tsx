@@ -28,16 +28,100 @@ const NAV_INTERCEPTOR = `
     if (!m) return null;
     return '/' + m[1].replace(/-/g, '/');
   }
+  // Stitch HTMLs use href="#" pervasively — designers treated them as static
+  // mocks. Map common link intents to real routes by icon + text content.
+  var ICON_ROUTES = {
+    home: '/dashboard',
+    account_balance_wallet: '/e-wallet',
+    credit_card: '/cards',
+    receipt_long: '/transactions',
+    notifications: '/notifications',
+    currency_exchange: '/crypto/swap',
+    send: '/e-wallet/transfer',
+    'call_split': '/payouts',
+    payments: '/payouts/create',
+    savings: '/rewards',
+    storefront: '/orders',
+    event_repeat: '/recurring-payments',
+    subscriptions: '/subscriptions',
+    group: '/team',
+    account_circle: '/profile',
+    settings: '/profile',
+    help: '/help',
+    support: '/help',
+    apps: '/ecosystem',
+    analytics: '/reports',
+    bar_chart: '/reports',
+    account_balance: '/banking',
+    corporate_fare: '/institutional/dashboard',
+  };
+  var LABEL_ROUTES = {
+    HOME: '/dashboard',
+    WALLETS: '/e-wallet',
+    WALLET: '/e-wallet',
+    'E-WALLET': '/e-wallet',
+    CARDS: '/cards',
+    ACTIVITY: '/transactions',
+    TRANSACTIONS: '/transactions',
+    NOTIFICATIONS: '/notifications',
+    CRYPTO: '/crypto',
+    SEND: '/e-wallet/transfer',
+    RECEIVE: '/crypto/deposit',
+    SWAP: '/crypto/swap',
+    PAY: '/payouts/create',
+    PAYOUTS: '/payouts',
+    ORDERS: '/orders',
+    SUBSCRIPTIONS: '/subscriptions',
+    RECURRING: '/recurring-payments',
+    REWARDS: '/rewards',
+    REPORTS: '/reports',
+    BANKING: '/banking',
+    TEAM: '/team',
+    HELP: '/help',
+    PROFILE: '/profile',
+    SETTINGS: '/profile',
+    'VIEW ALL': '/transactions',
+    'VIEW ALL →': '/transactions',
+    MORE: '/profile',
+  };
+  function inferRoute(anchor) {
+    // Scan inner elements for data-icon + text label.
+    var iconEl = anchor.querySelector ? anchor.querySelector('[data-icon]') : null;
+    if (iconEl) {
+      var icon = iconEl.getAttribute('data-icon');
+      if (icon && ICON_ROUTES[icon]) return ICON_ROUTES[icon];
+    }
+    var text = (anchor.textContent || '').trim().toUpperCase();
+    if (LABEL_ROUTES[text]) return LABEL_ROUTES[text];
+    // Partial match: ACTIVITY may live inside "Activity" span plus icon.
+    for (var key in LABEL_ROUTES) {
+      if (text.indexOf(key) !== -1) return LABEL_ROUTES[key];
+    }
+    return null;
+  }
+
   document.addEventListener('click', function(e) {
-    var a = e.target.closest ? e.target.closest('a') : null;
+    var a = e.target.closest ? e.target.closest('a, button') : null;
     if (!a) return;
-    var href = a.getAttribute('href');
-    if (!href || !isInternal(href)) return;
-    e.preventDefault();
-    var url = new URL(href, location.href);
-    var r = htmlToRoute(url.pathname);
-    if (r) parent.postMessage({ type: 'stitch-navigate', href: r }, '*');
-    else if (url.pathname !== location.pathname) parent.postMessage({ type: 'stitch-navigate-raw', href: url.pathname }, '*');
+    // Anchors with a real href that points somewhere sensible use that first.
+    if (a.tagName === 'A') {
+      var href = a.getAttribute('href');
+      if (href && href !== '#' && isInternal(href)) {
+        e.preventDefault();
+        var url = new URL(href, location.href);
+        var r = htmlToRoute(url.pathname);
+        if (r) { parent.postMessage({ type: 'stitch-navigate', href: r }, '*'); return; }
+        if (url.pathname !== location.pathname) { parent.postMessage({ type: 'stitch-navigate-raw', href: url.pathname }, '*'); return; }
+      }
+    }
+    // Buttons or "#" anchors: infer route from icon / label. Skip data-action
+    // buttons — those belong to the submit flow, not navigation.
+    if (a.hasAttribute('data-action')) return;
+    var inferred = inferRoute(a);
+    if (inferred) {
+      e.preventDefault();
+      parent.postMessage({ type: 'stitch-navigate', href: inferred }, '*');
+    }
   }, true);
 
   document.addEventListener('submit', function(e) {
