@@ -38,9 +38,15 @@ export async function POST(req: NextRequest) {
     if (err instanceof z.ZodError) return NextResponse.json({ error: "invalid_input", details: err.issues }, { status: 400 });
     if (err instanceof TygaBankError) {
       console.error("[cards/setup][TygaBank]", err.status, JSON.stringify(err.body, null, 2));
-      return NextResponse.json({ error: "tygabank_error", status: err.status, details: err.body }, { status: 500 });
+      const body = err.body as { message?: string; details?: string } | undefined;
+      const message = body?.message || body?.details || "Card setup failed at our provider.";
+      // Map TygaBank 4xx (client-correctable) to 400 so Cloudflare doesn't
+      // swallow the JSON body; keep 5xx as 500.
+      const status = err.status >= 400 && err.status < 500 ? 400 : 500;
+      return NextResponse.json({ error: "tygabank_error", message, tygaStatus: err.status, details: err.body }, { status });
     }
     console.error("[cards/setup]", err);
-    return NextResponse.json({ error: "internal" }, { status: 500 });
+    const e = err as { message?: string };
+    return NextResponse.json({ error: "internal", reason: e?.message || "unknown" }, { status: 500 });
   }
 }

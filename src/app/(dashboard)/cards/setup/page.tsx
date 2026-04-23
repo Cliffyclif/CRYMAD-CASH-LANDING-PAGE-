@@ -96,7 +96,7 @@ export default function CardSetupPage() {
       const r = await fetch("/api/cards/setup", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(body) });
       if (!r.ok) {
         const j = await r.json().catch(() => ({}));
-        throw new Error(j.error || String(r.status));
+        throw new Error(j.message || j.details?.message || j.error || String(r.status));
       }
       setSuccess(true);
     } catch (e) { setErr((e as Error).message); }
