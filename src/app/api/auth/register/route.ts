@@ -108,26 +108,24 @@ export async function POST(req: NextRequest) {
       [email, passwordHash, tygaId, externalId, data.accountType],
     );
 
-    // TygaBank's verify email is the canonical path: their email contains
-    // the link that flips emailIsVerified on their side, which unblocks
-    // complete-registration downstream. Send ONLY that one email to avoid
-    // confusing the user with two codes.
+    // Send our own 6-digit activation code via Infomaniak (instant, reliable)
+    // AND trigger TygaBank's verify email (carries the link that flips their
+    // emailIsVerified flag). The user can use whichever arrives and works.
+    const code = await createOtp(email, "register");
+    const sent = await sendOtpEmail({
+      to: email,
+      code,
+      purpose: "register",
+      firstName: data.firstName,
+    });
+    if (!sent.ok) console.warn("[register][email]", sent.error);
+
     let tygaVerifySent = false;
     try {
       await tyga.users.sendVerifyEmail(tygaId);
       tygaVerifySent = true;
     } catch (e) {
-      // Fallback: if TygaBank's send fails (e.g. their mailer is down),
-      // send our own Infomaniak OTP so the user isn't blocked on signup.
-      console.warn("[register] tyga sendVerifyEmail failed — falling back to local OTP", e);
-      const code = await createOtp(email, "register");
-      const sent = await sendOtpEmail({
-        to: email,
-        code,
-        purpose: "register",
-        firstName: data.firstName,
-      });
-      if (!sent.ok) console.warn("[register][email]", sent.error);
+      console.warn("[register] tyga sendVerifyEmail failed (non-blocking)", e);
     }
 
     return NextResponse.json({

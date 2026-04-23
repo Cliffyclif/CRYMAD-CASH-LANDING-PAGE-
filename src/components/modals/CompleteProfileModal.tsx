@@ -40,6 +40,7 @@ export function CompleteProfileModal() {
   const [emailVerifiedLocal, setEmailVerifiedLocal] = useState<boolean>(!!user?.emailVerified);
   const [verifyLoading, setVerifyLoading] = useState(false);
   const [verifyInfo, setVerifyInfo] = useState<string>("");
+  const [activationCode, setActivationCode] = useState<string>("");
   const [resendCooldown, setResendCooldown] = useState(0);
   const [firstName, setFirstName] = useState(() => {
     const f = user?.firstName;
@@ -96,8 +97,24 @@ export function CompleteProfileModal() {
     setError("");
     setVerifyLoading(true);
     try {
-      // Re-fetch /api/auth/me which reads TygaBank's emailIsVerified flag.
-      // The flag only flips after the user clicks the link in their email.
+      // Preferred path: user typed the 6-digit activation code from their email.
+      if (activationCode.length === 6 && user?.email) {
+        const res = await fetch("/api/auth/verify-otp", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ email: user.email, code: activationCode, purpose: "register" }),
+        });
+        const j = await res.json();
+        if (!res.ok) {
+          setError(j.error === "invalid_code" ? "Invalid or expired code." : "Verification failed. Try again.");
+          return;
+        }
+        setEmailVerifiedLocal(true);
+        setVerifyInfo("Email verified. Continue with your profile.");
+        await refresh();
+        return;
+      }
+      // Fallback path: user clicked the magic link — poll /api/auth/me for flipped flag.
       const res = await fetch("/api/auth/me", { credentials: "include" });
       const j = await res.json();
       if (!res.ok) {
@@ -109,7 +126,7 @@ export function CompleteProfileModal() {
         setVerifyInfo("Email verified. Continue with your profile.");
         await refresh();
       } else {
-        setError("We don't see a verified status yet. Open the email and click the verification link, then try again.");
+        setError("Enter the 6-digit code from your email, or click the verification link in the email.");
       }
     } catch {
       setError("Network error. Try again.");
@@ -195,12 +212,12 @@ export function CompleteProfileModal() {
           </div>
         </div>
         <h1 style={{ fontSize: 22, fontWeight: 800, color: "var(--text)", marginBottom: 4, textAlign: "center" }}>
-          {emailVerifiedLocal ? "Complete Your Profile" : "Verify Your Email"}
+          {emailVerifiedLocal ? "Complete Your Profile" : "Activate Your Account"}
         </h1>
         <p style={{ fontSize: 13, color: "var(--text-secondary)", marginBottom: 20, textAlign: "center" }}>
           {emailVerifiedLocal
             ? <>We need a few details before you can use your wallet. Step {step} of 3.</>
-            : <>We sent a verification link to <strong>{user?.email}</strong>. Click the link in that email to continue.</>}
+            : <>We sent an activation code to <strong>{user?.email}</strong>.</>}
         </p>
 
         {emailVerifiedLocal && (
@@ -233,14 +250,30 @@ export function CompleteProfileModal() {
               borderRadius: 14, padding: 16, marginBottom: 14, fontSize: 13,
               color: "var(--text)", lineHeight: 1.6,
             }}>
-              <div style={{ fontWeight: 700, marginBottom: 6 }}>How to verify:</div>
+              <div style={{ fontWeight: 700, marginBottom: 6 }}>Activate your account:</div>
               <ol style={{ paddingLeft: 20, margin: 0, color: "var(--text-secondary)" }}>
-                <li>Open your email inbox (and check Spam).</li>
-                <li>Find the message with a verification link.</li>
-                <li>Click the link — you&apos;ll land on a confirmation page.</li>
-                <li>Come back here and click <strong>I&apos;ve verified my email</strong>.</li>
+                <li>Check your email inbox (and Spam folder).</li>
+                <li>Enter the 6-digit activation code below, <em>or</em> click the activation link in the email.</li>
               </ol>
             </div>
+            <input
+              inputMode="numeric"
+              pattern="\d{6}"
+              maxLength={6}
+              placeholder="000000"
+              value={activationCode}
+              onChange={(e) => setActivationCode(e.target.value.replace(/\D/g, "").slice(0, 6))}
+              style={{
+                width: "100%", boxSizing: "border-box",
+                padding: "14px 16px", borderRadius: 12,
+                background: "var(--surface)", border: "1px solid var(--glass-border)",
+                color: "var(--text)", outline: "none",
+                letterSpacing: 8, textAlign: "center",
+                fontFamily: "'JetBrains Mono', monospace",
+                fontSize: 22, fontWeight: 700, marginBottom: 12,
+              }}
+              autoFocus
+            />
             {verifyInfo && (
               <div style={{ fontSize: 12, color: "var(--text-secondary)", textAlign: "center", marginBottom: 12 }}>
                 {verifyInfo}
@@ -378,7 +411,7 @@ export function CompleteProfileModal() {
               cursor: (loading || verifyLoading) ? "not-allowed" : "pointer", fontFamily: "Inter, sans-serif",
             }}>
             {!emailVerifiedLocal
-              ? (verifyLoading ? "Checking…" : "I've verified my email")
+              ? (verifyLoading ? "Activating…" : activationCode.length === 6 ? "Activate" : "I've verified my email")
               : loading ? "Saving…" : step === 3 ? "Complete Profile" : "Continue"}
           </button>
         </div>
