@@ -73,11 +73,34 @@ export function ProfileCard() {
           ) : (
             <Link
               href="/register/kyc"
-              className="kyc-label"
-              style={{ textDecoration: "none", cursor: "pointer" }}
+              style={{
+                textDecoration: "none",
+                cursor: "pointer",
+                display: "inline-flex",
+                alignItems: "center",
+                gap: 6,
+                padding: "6px 12px",
+                borderRadius: 999,
+                border: "1px solid rgba(var(--primary-rgb), 0.4)",
+                background: "rgba(var(--primary-rgb), 0.08)",
+                color: "var(--primary)",
+                fontSize: 11,
+                fontWeight: 700,
+                letterSpacing: 0.5,
+                transition: "all 0.15s",
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.background = "rgba(var(--primary-rgb), 0.18)";
+                e.currentTarget.style.borderColor = "rgba(var(--primary-rgb), 0.7)";
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.background = "rgba(var(--primary-rgb), 0.08)";
+                e.currentTarget.style.borderColor = "rgba(var(--primary-rgb), 0.4)";
+              }}
             >
               {kycLabel}
               {user.kycStatus !== "pending" ? " — Start" : ""}
+              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round"><polyline points="9 18 15 12 9 6" /></svg>
             </Link>
           )}
         </div>
