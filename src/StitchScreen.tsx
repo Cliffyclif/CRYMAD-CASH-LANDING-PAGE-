@@ -209,6 +209,7 @@ interface StitchSlots {
   joinedDate?: string;
   walletCount?: string;
   todayDelta?: string;
+  initials?: string;
 }
 
 function buildSlots(
@@ -314,6 +315,12 @@ function buildSlots(
     joinedDate: joined,
     walletCount: String((cryptoWallets ?? []).length),
     todayDelta: todayNet === 0 ? "" : `${todayNet >= 0 ? "+" : "-"}${formatMoney(Math.abs(todayNet))} TODAY`,
+    initials: (() => {
+      const a = (first || "").charAt(0).toUpperCase();
+      const b = (last || "").charAt(0).toUpperCase();
+      const ini = `${a}${b}`.trim();
+      return ini || (user?.email?.charAt(0).toUpperCase() ?? "");
+    })(),
   };
 
   const replacements: Record<string, string> = {
