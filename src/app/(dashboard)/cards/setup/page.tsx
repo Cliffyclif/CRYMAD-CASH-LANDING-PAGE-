@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 
@@ -66,6 +66,20 @@ export default function CardSetupPage() {
   const [busy, setBusy] = useState(false);
   const [err, setErr] = useState<string | null>(null);
   const [success, setSuccess] = useState(false);
+  const [kycCheck, setKycCheck] = useState<{ loading: boolean; status?: string; reviewLink?: string }>({ loading: true });
+
+  // Cards has its own KYC gate (runs on DIDIT) separate from the user-level KYC.
+  // POST /account returns 503 until this passes, so we probe first and route
+  // the user to DIDIT if needed instead of letting them fill the whole form.
+  useEffect(() => {
+    fetch("/api/cards/kyc-status", { credentials: "include" })
+      .then((r) => r.json())
+      .then((j) => {
+        const k = j?.kyc ?? {};
+        setKycCheck({ loading: false, status: k.status, reviewLink: k.reviewLink });
+      })
+      .catch(() => setKycCheck({ loading: false }));
+  }, []);
 
   const update = (k: keyof typeof form, v: string) => setForm((f) => ({ ...f, [k]: v }));
 
@@ -120,6 +134,41 @@ export default function CardSetupPage() {
           Your card account is being set up. You can now order cards once KYC is approved.
         </p>
         <Link href="/cards" style={{ ...btnPrimary, display: "inline-block", textDecoration: "none" }}>Go to Cards</Link>
+      </div>
+    );
+  }
+
+  // Card KYC is pending on DIDIT — send the user there first, the rest of the
+  // form is unusable until that session is complete.
+  if (!kycCheck.loading && kycCheck.status === "pending" && kycCheck.reviewLink) {
+    return (
+      <div style={{ ...glass, padding: "60px 40px", textAlign: "center", maxWidth: 520, margin: "60px auto" }}>
+        <svg width="64" height="64" viewBox="0 0 56 56" style={{ marginBottom: 16 }}>
+          <circle cx="28" cy="28" r="28" fill="var(--warning)" opacity={0.15} />
+          <path d="M28 16v14M28 38v.01" stroke="var(--warning)" strokeWidth="3" strokeLinecap="round" fill="none" />
+        </svg>
+        <h2 style={{ color: "var(--text)", fontSize: 22, fontWeight: 700, margin: "0 0 12px" }}>Verify your identity first</h2>
+        <p style={{ color: "var(--text-secondary)", fontSize: 14, margin: "0 0 28px", lineHeight: 1.6 }}>
+          Before we can create your card account, our card issuer needs to verify your identity.
+          This takes a couple of minutes and uses your ID + a selfie.
+        </p>
+        <a
+          href={kycCheck.reviewLink}
+          target="_blank"
+          rel="noreferrer"
+          style={{ ...btnPrimary, display: "inline-block", textDecoration: "none", padding: "14px 32px" }}
+        >
+          Start Verification
+        </a>
+        <div style={{ marginTop: 16 }}>
+          <button
+            type="button"
+            onClick={() => { setKycCheck({ loading: true }); fetch("/api/cards/kyc-status").then((r) => r.json()).then((j) => { const k = j?.kyc ?? {}; setKycCheck({ loading: false, status: k.status, reviewLink: k.reviewLink }); }); }}
+            style={{ background: "transparent", color: "var(--text-muted)", border: "none", fontSize: 13, cursor: "pointer" }}
+          >
+            I&apos;ve completed verification — refresh status
+          </button>
+        </div>
       </div>
     );
   }
