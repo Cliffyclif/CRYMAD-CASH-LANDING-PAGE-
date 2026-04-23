@@ -77,12 +77,13 @@ export async function GET(req: NextRequest) {
         tygapayUserId: local.tygapay_user_id,
         firstName: tygaUser?.firstName,
         lastName: tygaUser?.lastName,
-        // TygaBank returns "verified" for a passed KYC. Our UI + types expect
-        // "approved" (canonical). Normalize so the badge flips to the green state.
+        // TygaBank returns "verified" for a passed KYC (their actual wire
+        // value — docs claim "approved", type thinks so too, but prod returns
+        // "verified"). Cast to string for the compare, then normalize.
         kycStatus:
-          tygaUser?.kycStatus === "verified"
+          ((tygaUser?.kycStatus as string | undefined) === "verified"
             ? "approved"
-            : (tygaUser?.kycStatus ?? "not_started"),
+            : (tygaUser?.kycStatus ?? "not_started")),
         // Local verification wins — we own the OTP lifecycle. TygaBank's flag is
         // secondary and often lags due to their email-delivery issues.
         emailVerified: !!local.email_verified_at || (tygaUser?.emailIsVerified ?? false),
