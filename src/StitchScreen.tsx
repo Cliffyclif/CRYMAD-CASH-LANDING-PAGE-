@@ -6,7 +6,9 @@ import {
   useEwalletTransfer, useCryptoSwap, useCryptoSend, useCryptoSendOtp,
   useCardOrder, useCardLoad, useCardLock, useCardUnlock, useCardSendOtp,
   useAddBeneficiary, useDeleteBeneficiary, useCompleteRegistration,
+  useNotifications, useBeneficiaries, usePayouts, useRecurringPayments,
   formatMoney, type User, type Wallet, type CryptoWallet, type MarketPrice,
+  type Transaction,
 } from "./lib/hooks";
 import type { FormHandler, FormPayload } from "./lib/form-router";
 
@@ -86,6 +88,39 @@ const NAV_INTERCEPTOR = `
     edits.forEach(function(e) { e[0].nodeValue = e[1]; });
   }
 
+  function renderList(listKey, items) {
+    var containers = document.querySelectorAll('[data-slot-list="' + listKey + '"]');
+    if (containers.length === 0) return;
+    containers.forEach(function(container) {
+      var tpl = container.querySelector('[data-slot-template]');
+      var emptyEl = container.querySelector('[data-slot-empty]');
+      if (!tpl) return;
+      // Stash the template so repeated renders don't compound.
+      if (!tpl.__stitchTpl) tpl.__stitchTpl = tpl.outerHTML;
+      var list = Array.isArray(items) ? items : [];
+      // Clear previous rendered children but keep template + empty state nodes hidden.
+      Array.prototype.slice.call(container.children).forEach(function(child) {
+        if (child === tpl || child === emptyEl) return;
+        container.removeChild(child);
+      });
+      tpl.style.display = 'none';
+      if (emptyEl) emptyEl.style.display = list.length === 0 ? '' : 'none';
+      list.forEach(function(item) {
+        var wrapper = document.createElement('div');
+        wrapper.innerHTML = tpl.__stitchTpl;
+        var node = wrapper.firstElementChild;
+        if (!node) return;
+        node.removeAttribute('data-slot-template');
+        node.style.display = '';
+        node.querySelectorAll('[data-slot-field]').forEach(function(el) {
+          var field = el.getAttribute('data-slot-field');
+          if (field && item[field] != null) el.textContent = String(item[field]);
+        });
+        container.appendChild(node);
+      });
+    });
+  }
+
   window.addEventListener('message', function(e) {
     if (!e.data || e.data.type !== 'stitch-data') return;
     if (e.data.slots) {
@@ -94,6 +129,11 @@ const NAV_INTERCEPTOR = `
         document.querySelectorAll('[data-slot="' + entry[0] + '"]').forEach(function(el) {
           el.textContent = String(entry[1]);
         });
+      });
+    }
+    if (e.data.lists) {
+      Object.entries(e.data.lists).forEach(function(entry) {
+        renderList(entry[0], entry[1]);
       });
     }
     if (e.data.replacements) replaceText(e.data.replacements);
@@ -174,7 +214,11 @@ export function StitchScreen({ src, title }: StitchScreenProps) {
   const me = meQuery.data && "user" in meQuery.data ? meQuery.data : undefined;
   const cryptoQuery = useCryptoWallets();
   const pricesQuery = useMarketPrices();
-  useTransactions({ limit: 5 });
+  const txQuery = useTransactions({ limit: 20 });
+  const notifQuery = useNotifications();
+  const beneQuery = useBeneficiaries();
+  const payoutsQuery = usePayouts();
+  const recurringQuery = useRecurringPayments();
 
   // Mutations — all hooks must be called unconditionally
   const transfer = useEwalletTransfer();
@@ -194,6 +238,64 @@ export function StitchScreen({ src, title }: StitchScreenProps) {
     () => buildSlots(me?.user, me?.wallets, cryptoQuery.data, pricesQuery.data),
     [me, cryptoQuery.data, pricesQuery.data],
   );
+
+  // Lists piped into the iframe for any screen that uses [data-slot-list]
+  // containers — templates are cloned per item, fields filled via [data-slot-field].
+  const lists = useMemo(() => {
+    const txs = (txQuery.data as { transactions?: Transaction[] } | undefined)?.transactions ?? [];
+    const notifs = (notifQuery.data as { notifications?: Array<Record<string, unknown>> } | undefined)?.notifications ?? [];
+    const bene = (beneQuery.data as { beneficiaries?: Array<Record<string, unknown>> } | undefined)?.beneficiaries ?? [];
+    const payouts = (payoutsQuery.data as { transactions?: Array<Record<string, unknown>> } | undefined)?.transactions ?? [];
+    const recurring = (recurringQuery.data as { payments?: Array<Record<string, unknown>> } | undefined)?.payments ?? [];
+
+    const fmtDate = (iso?: string) => {
+      if (!iso) return "";
+      try { return new Date(iso).toLocaleDateString(undefined, { month: "short", day: "numeric" }); }
+      catch { return ""; }
+    };
+
+    return {
+      transactions: txs.map((t) => ({
+        id: t.id,
+        type: t.type,
+        amount: formatMoney(t.amount, t.currency || "USD"),
+        status: t.status,
+        currency: t.currency || "USD",
+        date: fmtDate((t as { createdDate?: string }).createdDate),
+        walletType: t.walletType || "",
+        side: t.side || "",
+      })),
+      notifications: notifs.map((n) => ({
+        id: String(n.id || ""),
+        title: String(n.title || ""),
+        body: String(n.body || ""),
+        kind: String(n.kind || ""),
+        date: fmtDate(n.createdAt as string),
+        unread: n.readAt ? "" : "•",
+      })),
+      beneficiaries: bene.map((b) => ({
+        id: String(b.id || ""),
+        fullName: String(b.fullName || ""),
+        bankName: String(b.bankName || ""),
+        accountNumberMasked: String(b.accountNumberMasked || ""),
+        currency: String(b.currency || "USD"),
+        country: String(b.country || ""),
+      })),
+      payouts: payouts.map((p) => ({
+        id: String(p.id || ""),
+        amount: formatMoney(Number(p.amount || 0), String(p.currency || "USD")),
+        status: String(p.status || ""),
+        date: fmtDate(p.createdDate as string),
+      })),
+      "recurring-payments": recurring.map((r) => ({
+        id: String(r.id || ""),
+        amount: formatMoney(Number(r.amount || 0), String(r.currency || "USD")),
+        status: String(r.status || ""),
+        interval: String(r.interval || ""),
+        nextRun: fmtDate(r.nextRunAt as string),
+      })),
+    };
+  }, [txQuery.data, notifQuery.data, beneQuery.data, payoutsQuery.data, recurringQuery.data]);
 
   // Per-route form handler dispatch
   const getHandler = useCallback((): FormHandler | undefined => {
@@ -318,10 +420,10 @@ export function StitchScreen({ src, title }: StitchScreenProps) {
     const iframe = iframeRef.current;
     if (!iframe?.contentWindow) return;
     iframe.contentWindow.postMessage(
-      { type: "stitch-data", slots: payload.slots, replacements: payload.replacements },
+      { type: "stitch-data", slots: payload.slots, replacements: payload.replacements, lists },
       "*",
     );
-  }, [loaded, payload]);
+  }, [loaded, payload, lists]);
 
   useEffect(() => {
     function handleMessage(e: MessageEvent) {

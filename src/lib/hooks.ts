@@ -391,6 +391,64 @@ export function useNotifications() {
   });
 }
 
+/* ---------- Payouts + Subscriptions + Recurring ---------- */
+
+export interface Payout {
+  id: string;
+  status: string;
+  amount: number;
+  fee?: number;
+  currency?: string;
+  createdDate?: string;
+  beneficiary?: { fullName?: string; bankName?: string };
+  [key: string]: unknown;
+}
+
+export function usePayouts() {
+  return useQuery({
+    queryKey: ["payouts"],
+    queryFn: () => api<{ transactions: Payout[] }>("/api/payouts"),
+    staleTime: 30_000,
+  });
+}
+
+export interface Subscription {
+  id: string;
+  status: string;
+  amount: number;
+  currency?: string;
+  interval?: string;
+  nextBillingDate?: string;
+  [key: string]: unknown;
+}
+
+// No list endpoint on dashboard yet — keep the hook shape ready for when one lands.
+export function useSubscriptions() {
+  return useQuery({
+    queryKey: ["subscriptions"],
+    queryFn: async () => ({ subscriptions: [] as Subscription[] }),
+    staleTime: 60_000,
+  });
+}
+
+export interface RecurringPayment {
+  id: string;
+  status: string;
+  amount: number;
+  currency?: string;
+  interval?: string;
+  nextRunAt?: string;
+  [key: string]: unknown;
+}
+
+export function useRecurringPayments() {
+  return useQuery({
+    queryKey: ["recurring-payments"],
+    queryFn: () => api<{ payments: RecurringPayment[] }>("/api/recurring-payments"),
+    staleTime: 60_000,
+  });
+}
+
 /* ---------- Profile completion + KYC ---------- */
 
 export interface CompleteRegistrationInput {
