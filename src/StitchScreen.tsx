@@ -316,25 +316,31 @@ export function StitchScreen({ src, title }: StitchScreenProps) {
         side: t.side || "",
       })),
       cryptoWallets: cryptoW.map((w) => {
-        const p = prices[w.token];
-        const usd = p ? w.balance * p.price : 0;
+        const token = w.token || "";
+        const bal = typeof w.balance === "number" && Number.isFinite(w.balance) ? w.balance : 0;
+        const p = token ? prices[token] : undefined;
+        const usd = p ? bal * (typeof p.price === "number" ? p.price : 0) : 0;
+        const change = p && typeof p.change24h === "number" ? p.change24h : 0;
         return {
-          token: w.token,
-          symbol: w.token,
-          balance: w.balance.toLocaleString(undefined, { maximumFractionDigits: 8 }),
+          token,
+          symbol: token,
+          balance: bal.toLocaleString(undefined, { maximumFractionDigits: 8 }),
           usdValue: formatMoney(usd),
           address: w.address || "",
-          network: w.network || w.token,
-          price: p ? formatMoney(p.price) : "",
-          change24h: p ? `${p.change24h >= 0 ? "+" : ""}${p.change24h.toFixed(2)}%` : "",
+          network: w.network || token,
+          price: p && typeof p.price === "number" ? formatMoney(p.price) : "",
+          change24h: p ? `${change >= 0 ? "+" : ""}${change.toFixed(2)}%` : "",
         };
       }),
-      marketPrices: Object.values(prices).map((p) => ({
-        symbol: p.symbol,
-        name: p.name,
-        price: formatMoney(p.price),
-        change24h: `${p.change24h >= 0 ? "+" : ""}${p.change24h.toFixed(2)}%`,
-      })),
+      marketPrices: Object.values(prices).map((p) => {
+        const change = typeof p.change24h === "number" ? p.change24h : 0;
+        return {
+          symbol: p.symbol || "",
+          name: p.name || "",
+          price: typeof p.price === "number" ? formatMoney(p.price) : "",
+          change24h: `${change >= 0 ? "+" : ""}${change.toFixed(2)}%`,
+        };
+      }),
       notifications: notifs.map((n) => ({
         id: String(n.id || ""),
         title: String(n.title || ""),
