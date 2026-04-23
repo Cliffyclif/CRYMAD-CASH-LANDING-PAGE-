@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 
-type Beneficiary = {
+type BankAccount = {
   id: string;
   nickname?: string;
   fullName: string;
@@ -15,8 +15,8 @@ type Beneficiary = {
   createdAt: string;
 };
 
-export default function BeneficiariesPage() {
-  const [list, setList] = useState<Beneficiary[] | null>(null);
+export default function BankAccountsPage() {
+  const [list, setList] = useState<BankAccount[] | null>(null);
   const [showAdd, setShowAdd] = useState(false);
   const [search, setSearch] = useState("");
 
@@ -44,13 +44,13 @@ export default function BeneficiariesPage() {
     <>
       <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 20 }}>
         <div>
-          <h1 style={{ fontSize: 24, fontWeight: 800 }}>Beneficiaries</h1>
+          <h1 style={{ fontSize: 24, fontWeight: 800 }}>Bank Accounts</h1>
           <p style={{ fontSize: 13, color: "var(--text-muted)" }}>Saved bank accounts for quick withdrawals</p>
         </div>
         <button onClick={() => setShowAdd(true)} style={{
           padding: "10px 18px", borderRadius: 12, border: "none",
           background: "var(--primary)", color: "var(--bg)", fontWeight: 700, fontSize: 13, cursor: "pointer",
-        }}>+ Add Beneficiary</button>
+        }}>+ Add Bank Account</button>
       </div>
 
       <div style={{ marginBottom: 16 }}>
@@ -76,7 +76,7 @@ export default function BeneficiariesPage() {
           <button onClick={() => setShowAdd(true)} style={{
             padding: "10px 20px", borderRadius: 12, border: "none",
             background: "var(--primary)", color: "var(--bg)", fontWeight: 700, fontSize: 13, cursor: "pointer",
-          }}>Add Your First Beneficiary</button>
+          }}>Add Your First Bank Account</button>
         </div>
       )}
 
@@ -157,7 +157,7 @@ function AddModal({ onClose, onDone }: { onClose: () => void; onDone: () => void
     <div style={{ position: "fixed", inset: 0, background: "rgba(0,0,0,0.5)", backdropFilter: "blur(4px)", display: "flex", alignItems: "center", justifyContent: "center", padding: 20, zIndex: 100 }} onClick={onClose}>
       <div onClick={(e) => e.stopPropagation()} style={{ width: "100%", maxWidth: 480, background: "var(--bg-elevated, #0b1c16)", border: "1px solid var(--glass-border)", borderRadius: 20, padding: 24 }}>
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 18 }}>
-          <h3 style={{ fontSize: 18, fontWeight: 700 }}>Add Beneficiary</h3>
+          <h3 style={{ fontSize: 18, fontWeight: 700 }}>Add Bank Account</h3>
           <button onClick={onClose} style={{ background: "transparent", border: "1px solid var(--glass-border)", width: 32, height: 32, borderRadius: 8, cursor: "pointer", color: "var(--text-muted)" }}>×</button>
         </div>
         <form onSubmit={submit}>
@@ -182,7 +182,7 @@ function AddModal({ onClose, onDone }: { onClose: () => void; onDone: () => void
           <div style={{ display: "flex", gap: 10 }}>
             <button type="button" onClick={onClose} style={{ flex: 1, padding: 12, borderRadius: 10, border: "1px solid var(--glass-border)", background: "transparent", color: "var(--text-secondary)", fontWeight: 600, cursor: "pointer" }}>Cancel</button>
             <button type="submit" disabled={loading} style={{ flex: 1, padding: 12, borderRadius: 10, border: "none", background: loading ? "var(--text-muted)" : "var(--primary)", color: "var(--bg)", fontWeight: 700, cursor: loading ? "not-allowed" : "pointer" }}>
-              {loading ? "Saving..." : "Save Beneficiary"}
+              {loading ? "Saving..." : "Save Bank Account"}
             </button>
           </div>
         </form>
