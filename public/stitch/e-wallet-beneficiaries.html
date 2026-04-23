@@ -137,126 +137,34 @@
 </div>
 </section>
 <!-- Beneficiary Cards List -->
-<div class="space-y-3">
-<!-- Card 1: Alex Morgan -->
-<div class="glass-panel p-4 rounded-[20px] flex items-center gap-4 group active:scale-[0.98] transition-all">
+<div class="space-y-3" data-slot-list="beneficiaries">
+<!-- TEMPLATE — cloned per API item -->
+<div class="glass-panel p-4 rounded-[20px] flex items-center gap-4 group active:scale-[0.98] transition-all" data-slot-template>
 <div class="relative">
 <div class="w-12 h-12 rounded-full bg-surface-container-highest flex items-center justify-center text-primary font-extrabold border border-primary/20 shadow-[0_0_15px_rgba(16,185,129,0.1)]">
-                        AM
-                    </div>
+<span class="material-symbols-outlined" data-icon="person">person</span>
+</div>
 </div>
 <div class="flex-1 min-w-0">
-<h3 class="font-semibold text-on-surface truncate">Alex Morgan</h3>
+<h3 class="font-semibold text-on-surface truncate" data-slot-field="fullName">Beneficiary</h3>
 <div class="flex items-center gap-2 mt-1">
-<span class="font-mono text-[11px] text-on-surface-variant/60 uppercase">Chase</span>
+<span class="font-mono text-[11px] text-on-surface-variant/60 uppercase" data-slot-field="bankName"></span>
 <span class="w-1 h-1 rounded-full bg-emerald-500/30"></span>
-<span class="font-mono text-[11px] text-on-surface-variant/60 tracking-tighter">•••• 4421</span>
+<span class="font-mono text-[11px] text-on-surface-variant/60 tracking-tighter" data-slot-field="accountNumberMasked"></span>
 </div>
 </div>
 <div class="flex flex-col items-end gap-1">
-<span class="px-2 py-0.5 rounded-full bg-secondary/10 text-[#4edea3] font-mono text-[9px] tracking-wider border border-secondary/20">VERIFIED</span>
+<span class="px-2 py-0.5 rounded-full bg-secondary/10 text-[#4edea3] font-mono text-[9px] tracking-wider border border-secondary/20" data-slot-field="currency"></span>
 <span class="material-symbols-outlined text-on-surface-variant/40" data-icon="chevron_right">chevron_right</span>
 </div>
 </div>
-<!-- Card 2: Sarah Chen -->
-<div class="glass-panel p-4 rounded-[20px] flex items-center gap-4 group active:scale-[0.98] transition-all">
-<div class="relative">
-<div class="w-12 h-12 rounded-full bg-surface-container-highest flex items-center justify-center text-primary font-extrabold border border-primary/20 shadow-[0_0_15px_rgba(16,185,129,0.1)]">
-                        SC
-                    </div>
+<!-- EMPTY STATE -->
+<div class="glass-panel rounded-[20px] p-8 text-center" data-slot-empty>
+<div class="w-12 h-12 rounded-full bg-emerald-500/10 flex items-center justify-center text-emerald-400 mx-auto mb-3">
+<span class="material-symbols-outlined">group_add</span>
 </div>
-<div class="flex-1 min-w-0">
-<h3 class="font-semibold text-on-surface truncate">Sarah Chen</h3>
-<div class="flex items-center gap-2 mt-1">
-<span class="font-mono text-[11px] text-on-surface-variant/60 uppercase">HSBC</span>
-<span class="w-1 h-1 rounded-full bg-emerald-500/30"></span>
-<span class="font-mono text-[11px] text-on-surface-variant/60 tracking-tighter">•••• 8829</span>
-</div>
-</div>
-<div class="flex flex-col items-end gap-1">
-<span class="px-2 py-0.5 rounded-full bg-secondary/10 text-[#4edea3] font-mono text-[9px] tracking-wider border border-secondary/20">VERIFIED</span>
-<span class="material-symbols-outlined text-on-surface-variant/40" data-icon="chevron_right">chevron_right</span>
-</div>
-</div>
-<!-- Card 3: Marcus Klein -->
-<div class="glass-panel p-4 rounded-[20px] flex items-center gap-4 group active:scale-[0.98] transition-all">
-<div class="relative">
-<div class="w-12 h-12 rounded-full bg-surface-container-highest flex items-center justify-center text-primary font-extrabold border border-primary/20 shadow-[0_0_15px_rgba(16,185,129,0.1)]">
-                        MK
-                    </div>
-</div>
-<div class="flex-1 min-w-0">
-<h3 class="font-semibold text-on-surface truncate">Marcus Klein</h3>
-<div class="flex items-center gap-2 mt-1">
-<span class="font-mono text-[11px] text-on-surface-variant/60 uppercase">Deutsche</span>
-<span class="w-1 h-1 rounded-full bg-emerald-500/30"></span>
-<span class="font-mono text-[11px] text-on-surface-variant/60 tracking-tighter">•••• 1102</span>
-</div>
-</div>
-<div class="flex flex-col items-end gap-1">
-<span class="px-2 py-0.5 rounded-full bg-tertiary/10 text-[#ffb95f] font-mono text-[9px] tracking-wider border border-tertiary/20">PENDING</span>
-<span class="material-symbols-outlined text-on-surface-variant/40" data-icon="chevron_right">chevron_right</span>
-</div>
-</div>
-<!-- Card 4: Priya Patel -->
-<div class="glass-panel p-4 rounded-[20px] flex items-center gap-4 group active:scale-[0.98] transition-all">
-<div class="relative">
-<div class="w-12 h-12 rounded-full bg-surface-container-highest flex items-center justify-center text-primary font-extrabold border border-primary/20 shadow-[0_0_15px_rgba(16,185,129,0.1)]">
-                        PP
-                    </div>
-</div>
-<div class="flex-1 min-w-0">
-<h3 class="font-semibold text-on-surface truncate">Priya Patel</h3>
-<div class="flex items-center gap-2 mt-1">
-<span class="font-mono text-[11px] text-on-surface-variant/60 uppercase">BankOfIndia</span>
-<span class="w-1 h-1 rounded-full bg-emerald-500/30"></span>
-<span class="font-mono text-[11px] text-on-surface-variant/60 tracking-tighter">•••• 5543</span>
-</div>
-</div>
-<div class="flex flex-col items-end gap-1">
-<span class="px-2 py-0.5 rounded-full bg-secondary/10 text-[#4edea3] font-mono text-[9px] tracking-wider border border-secondary/20">VERIFIED</span>
-<span class="material-symbols-outlined text-on-surface-variant/40" data-icon="chevron_right">chevron_right</span>
-</div>
-</div>
-<!-- Card 5: David Osei -->
-<div class="glass-panel p-4 rounded-[20px] flex items-center gap-4 group active:scale-[0.98] transition-all">
-<div class="relative">
-<div class="w-12 h-12 rounded-full bg-surface-container-highest flex items-center justify-center text-primary font-extrabold border border-primary/20 shadow-[0_0_15px_rgba(16,185,129,0.1)]">
-                        DO
-                    </div>
-</div>
-<div class="flex-1 min-w-0">
-<h3 class="font-semibold text-on-surface truncate">David Osei</h3>
-<div class="flex items-center gap-2 mt-1">
-<span class="font-mono text-[11px] text-on-surface-variant/60 uppercase">GTBank</span>
-<span class="w-1 h-1 rounded-full bg-emerald-500/30"></span>
-<span class="font-mono text-[11px] text-on-surface-variant/60 tracking-tighter">•••• 9912</span>
-</div>
-</div>
-<div class="flex flex-col items-end gap-1">
-<span class="px-2 py-0.5 rounded-full bg-secondary/10 text-[#4edea3] font-mono text-[9px] tracking-wider border border-secondary/20">VERIFIED</span>
-<span class="material-symbols-outlined text-on-surface-variant/40" data-icon="chevron_right">chevron_right</span>
-</div>
-</div>
-<!-- Card 6: Elena Rossi -->
-<div class="glass-panel p-4 rounded-[20px] flex items-center gap-4 group active:scale-[0.98] transition-all">
-<div class="relative">
-<div class="w-12 h-12 rounded-full bg-surface-container-highest flex items-center justify-center text-primary font-extrabold border border-primary/20 shadow-[0_0_15px_rgba(16,185,129,0.1)]">
-                        ER
-                    </div>
-</div>
-<div class="flex-1 min-w-0">
-<h3 class="font-semibold text-on-surface truncate">Elena Rossi</h3>
-<div class="flex items-center gap-2 mt-1">
-<span class="font-mono text-[11px] text-on-surface-variant/60 uppercase">UniCredit</span>
-<span class="w-1 h-1 rounded-full bg-emerald-500/30"></span>
-<span class="font-mono text-[11px] text-on-surface-variant/60 tracking-tighter">•••• 3371</span>
-</div>
-</div>
-<div class="flex flex-col items-end gap-1">
-<span class="px-2 py-0.5 rounded-full bg-tertiary/10 text-[#ffb95f] font-mono text-[9px] tracking-wider border border-tertiary/20">PENDING</span>
-<span class="material-symbols-outlined text-on-surface-variant/40" data-icon="chevron_right">chevron_right</span>
-</div>
+<h3 class="font-semibold text-on-background mb-1">No beneficiaries yet</h3>
+<p class="text-sm text-on-surface-variant">Add a recipient to quickly send payments.</p>
 </div>
 </div>
 </main>

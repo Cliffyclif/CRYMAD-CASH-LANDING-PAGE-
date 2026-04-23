@@ -174,104 +174,28 @@
 <h2 class="text-lg font-extrabold text-on-surface">Recent</h2>
 <button class="font-mono text-[10px] text-emerald-500/70 hover:text-emerald-400 tracking-tighter">SORT ↓</button>
 </div>
-<div class="space-y-3">
-<!-- Tx 1: Wallet to Wallet -->
-<div class="glass-panel h-[72px] rounded-lg px-4 flex items-center gap-4 hover:bg-emerald-500/10 transition-all cursor-pointer">
+<div class="space-y-3" data-slot-list="transactions">
+<!-- TEMPLATE — cloned per API item -->
+<div class="glass-panel h-[72px] rounded-lg px-4 flex items-center gap-4 hover:bg-emerald-500/10 transition-all cursor-pointer" data-slot-template>
 <div class="w-10 h-10 rounded-full bg-primary/20 border border-primary/30 flex items-center justify-center shrink-0">
 <span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">account_balance_wallet</span>
 </div>
 <div class="flex-1 min-w-0">
-<p class="font-semibold text-sm truncate">External Relay</p>
-<p class="font-mono text-[9px] text-emerald-500/40 truncate">0x82f...a12c</p>
+<p class="font-semibold text-sm truncate" data-slot-field="type">Transaction</p>
+<p class="font-mono text-[9px] text-emerald-500/40 truncate" data-slot-field="walletType"></p>
 </div>
 <div class="text-right shrink-0">
-<p class="font-mono text-sm font-bold text-primary">+$850.00</p>
-<p class="font-mono text-[9px] text-emerald-500/40 uppercase">14:22 UTC</p>
+<p class="font-mono text-sm font-bold text-primary" data-slot-field="amount"></p>
+<p class="font-mono text-[9px] text-emerald-500/40 uppercase" data-slot-field="date"></p>
 </div>
 </div>
-<!-- Tx 2: P2P -->
-<div class="glass-panel h-[72px] rounded-lg px-4 flex items-center gap-4 hover:bg-emerald-500/10 transition-all cursor-pointer">
-<div class="w-10 h-10 rounded-full bg-secondary/20 border border-secondary/30 flex items-center justify-center shrink-0 overflow-hidden">
-<img class="w-full h-full object-cover" data-alt="close-up portrait of a digital avatar with green aesthetic lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAwGY2KNFkIo9aa2aSsP4T2ohiCcAuFCxBiVK3lTjqiEqlY34Gkh9wBpq9h6pwjzp2XtBkXn_Oj43CxI32lBOxcCkTyLRL7mp8VvHNK9ccuEkGq64eTr75S-Sxgm3VnAssotcT9yv9Bu_iuPBS1W988y5S1BEgGZdLmscF6nYK2mQkUD7RlOUItP4QG5cJye3nsvPWjvs56dMtHxp-qygxtcghuEmEYGXW-iY7wI4nMcbj2eSeGl2cjrlwmvMo1J8lewIjZc8hd2MA7"/>
+<!-- EMPTY STATE -->
+<div class="glass-panel rounded-lg p-8 text-center" data-slot-empty>
+<div class="w-12 h-12 rounded-full bg-emerald-500/10 flex items-center justify-center text-emerald-400 mx-auto mb-3">
+<span class="material-symbols-outlined">receipt_long</span>
 </div>
-<div class="flex-1 min-w-0">
-<p class="font-semibold text-sm truncate">Lumina Vance</p>
-<p class="font-mono text-[9px] text-emerald-500/40 truncate">P2P TRANSFER • 0x3d1...89ee</p>
-</div>
-<div class="text-right shrink-0">
-<p class="font-mono text-sm font-bold text-error">-$120.00</p>
-<p class="font-mono text-[9px] text-emerald-500/40 uppercase">12:05 UTC</p>
-</div>
-</div>
-<!-- Tx 3: Split Payment -->
-<div class="glass-panel h-[72px] rounded-lg px-4 flex items-center gap-4 hover:bg-emerald-500/10 transition-all cursor-pointer">
-<div class="w-10 h-10 rounded-full bg-tertiary/20 border border-tertiary/30 flex items-center justify-center shrink-0">
-<span class="material-symbols-outlined text-tertiary" style="font-variation-settings: 'FILL' 1;">call_split</span>
-</div>
-<div class="flex-1 min-w-0">
-<p class="font-semibold text-sm truncate">Synapse Dinner</p>
-<p class="font-mono text-[9px] text-emerald-500/40 truncate">SPLIT • GROUP ID: 9942</p>
-</div>
-<div class="text-right shrink-0">
-<p class="font-mono text-sm font-bold text-tertiary">-$42.15</p>
-<p class="font-mono text-[9px] text-emerald-500/40 uppercase">YESTERDAY</p>
-</div>
-</div>
-<!-- Tx 4: Wallet to Wallet -->
-<div class="glass-panel h-[72px] rounded-lg px-4 flex items-center gap-4 hover:bg-emerald-500/10 transition-all cursor-pointer">
-<div class="w-10 h-10 rounded-full bg-primary/20 border border-primary/30 flex items-center justify-center shrink-0">
-<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">token</span>
-</div>
-<div class="flex-1 min-w-0">
-<p class="font-semibold text-sm truncate">DAO Rewards</p>
-<p class="font-mono text-[9px] text-emerald-500/40 truncate">STAKING YIELD • BLOCK #4492</p>
-</div>
-<div class="text-right shrink-0">
-<p class="font-mono text-sm font-bold text-primary">+$12.44</p>
-<p class="font-mono text-[9px] text-emerald-500/40 uppercase">YESTERDAY</p>
-</div>
-</div>
-<!-- Tx 5: Crypto Swap -->
-<div class="glass-panel h-[72px] rounded-lg px-4 flex items-center gap-4 hover:bg-emerald-500/10 transition-all cursor-pointer">
-<div class="w-10 h-10 rounded-full bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center shrink-0">
-<span class="material-symbols-outlined text-emerald-400" style="font-variation-settings: 'FILL' 1;">swap_horiz</span>
-</div>
-<div class="flex-1 min-w-0">
-<p class="font-semibold text-sm truncate">Liquidity Swap</p>
-<p class="font-mono text-[9px] text-emerald-500/40 truncate">SOL → EMERALD</p>
-</div>
-<div class="text-right shrink-0">
-<p class="font-mono text-sm font-bold text-on-surface">2.44 ETH</p>
-<p class="font-mono text-[9px] text-emerald-500/40 uppercase">MAY 22</p>
-</div>
-</div>
-<!-- Tx 6: P2P -->
-<div class="glass-panel h-[72px] rounded-lg px-4 flex items-center gap-4 hover:bg-emerald-500/10 transition-all cursor-pointer">
-<div class="w-10 h-10 rounded-full bg-secondary/20 border border-secondary/30 flex items-center justify-center shrink-0 overflow-hidden">
-<img class="w-full h-full object-cover" data-alt="digital portrait of a man with minimalist futuristic green light accents" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAqwf86eyLTt4q8UBqbXia6hCFxXWAYxkHcG4DXaoEs-8mURZqovxQXoQ5DfifxtqArG4-K8ZqV-c468z7ZwThsF5n1tNjkWjj0hGAIXXDjgw9Oat_Al7hWr28O0CWnlttj0XG3JURg0STZI1dI0zdcxrnZNegkV0Nitfv-z_MTcmBReIDaUFM3-txPUJJzcYI96hTXAA-D3EAdhezxLdB6xa7EDAMIcvuQGCY6U8rzF-HgJwypGb1lRT0eHQ-rbVt1NWnSFCS_WN0Q"/>
-</div>
-<div class="flex-1 min-w-0">
-<p class="font-semibold text-sm truncate">Kaelen Moore</p>
-<p class="font-mono text-[9px] text-emerald-500/40 truncate">MERCHANDISE • 0x4f2...c3a1</p>
-</div>
-<div class="text-right shrink-0">
-<p class="font-mono text-sm font-bold text-error">-$299.00</p>
-<p class="font-mono text-[9px] text-emerald-500/40 uppercase">MAY 21</p>
-</div>
-</div>
-<!-- Tx 7: Inbound -->
-<div class="glass-panel h-[72px] rounded-lg px-4 flex items-center gap-4 hover:bg-emerald-500/10 transition-all cursor-pointer">
-<div class="w-10 h-10 rounded-full bg-primary/20 border border-primary/30 flex items-center justify-center shrink-0">
-<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">add_circle</span>
-</div>
-<div class="flex-1 min-w-0">
-<p class="font-semibold text-sm truncate">Treasury Mint</p>
-<p class="font-mono text-[9px] text-emerald-500/40 truncate">SYSTEM PROTOCOL 0.1</p>
-</div>
-<div class="text-right shrink-0">
-<p class="font-mono text-sm font-bold text-primary">+$1,500.00</p>
-<p class="font-mono text-[9px] text-emerald-500/40 uppercase">MAY 20</p>
-</div>
+<h3 class="font-semibold text-on-background mb-1">No transactions yet</h3>
+<p class="text-sm text-on-surface-variant">Your movement of value will appear here once you transact.</p>
 </div>
 </div>
 </main>

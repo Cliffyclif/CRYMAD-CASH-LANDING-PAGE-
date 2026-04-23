@@ -153,6 +153,13 @@ interface StitchSlots {
   balanceCrypto?: string;
   balanceCards?: string;
   balanceRewards?: string;
+  spentThisWeek?: string;
+  kycScoreNum?: string;
+  kycScoreLabel?: string;
+  kycStatusLabel?: string;
+  accountType?: string;
+  joinedDate?: string;
+  walletCount?: string;
 }
 
 function buildSlots(
@@ -160,22 +167,54 @@ function buildSlots(
   wallets: Wallet[] | undefined,
   cryptoWallets: CryptoWallet[] | undefined,
   prices: Record<string, MarketPrice> | undefined,
+  txs: Transaction[] | undefined,
 ): { slots: StitchSlots; replacements: Record<string, string> } {
   const first = (user?.firstName && user.firstName !== "Pending") ? user.firstName : "";
   const last = (user?.lastName && user.lastName !== "Pending") ? user.lastName : "";
   const fullName = `${first} ${last}`.trim() || user?.email?.split("@")[0] || "";
 
+  const safe = (n: unknown): number => {
+    const v = typeof n === "number" ? n : Number(n);
+    return Number.isFinite(v) ? v : 0;
+  };
   const wByType = Object.fromEntries((wallets ?? []).map((w) => [w.type, w]));
-  const ewalletBal = wByType.ewallet?.balance ?? 0;
-  const cardBal = wByType.card?.balance ?? 0;
-  const rewardsBal = wByType.rewards?.balance ?? 0;
+  const ewalletBal = safe(wByType.ewallet?.balance);
+  const cardBal = safe(wByType.card?.balance);
+  const rewardsBal = safe(wByType.rewards?.balance);
 
   const cryptoValue = (cryptoWallets ?? []).reduce((sum, cw) => {
     const p = prices?.[cw.token];
-    return sum + (p ? cw.balance * p.price : 0);
+    if (!p) return sum;
+    return sum + safe(cw.balance) * safe(p.price);
   }, 0);
 
   const total = ewalletBal + cryptoValue + cardBal;
+
+  const weekAgo = Date.now() - 7 * 24 * 60 * 60 * 1000;
+  const spentThisWeek = (txs ?? []).reduce((sum, t) => {
+    const dateStr = (t as { createdDate?: string }).createdDate;
+    if (!dateStr) return sum;
+    const ts = new Date(dateStr).getTime();
+    if (Number.isNaN(ts) || ts < weekAgo) return sum;
+    if (t.side !== "debit") return sum;
+    return sum + safe(t.amount);
+  }, 0);
+
+  const kycMap: Record<string, { score: number; label: string }> = {
+    approved: { score: 100, label: "VERIFIED" },
+    pending: { score: 50, label: "PENDING REVIEW" },
+    rejected: { score: 10, label: "REJECTED" },
+    not_started: { score: 0, label: "NOT STARTED" },
+  };
+  const kycInfo = kycMap[user?.kycStatus || "not_started"] ?? kycMap.not_started;
+
+  const joinedIso = user?.createdAt;
+  let joined = "";
+  if (joinedIso) {
+    try {
+      joined = new Date(joinedIso).toLocaleDateString(undefined, { month: "short", year: "numeric" });
+    } catch { joined = ""; }
+  }
 
   const slots: StitchSlots = {
     firstName: first,
@@ -187,6 +226,13 @@ function buildSlots(
     balanceCrypto: formatMoney(cryptoValue),
     balanceCards: formatMoney(cardBal),
     balanceRewards: rewardsBal.toLocaleString(),
+    spentThisWeek: formatMoney(spentThisWeek),
+    kycScoreNum: String(kycInfo.score),
+    kycScoreLabel: "VERIFICATION\nSTATUS",
+    kycStatusLabel: kycInfo.label,
+    accountType: user?.accountType === "business" ? "BUSINESS" : "PERSONAL",
+    joinedDate: joined,
+    walletCount: String((cryptoWallets ?? []).length),
   };
 
   const replacements: Record<string, string> = {
@@ -234,9 +280,10 @@ export function StitchScreen({ src, title }: StitchScreenProps) {
   const delBene = useDeleteBeneficiary();
   const completeReg = useCompleteRegistration();
 
+  const txList = (txQuery.data as { transactions?: Transaction[] } | undefined)?.transactions;
   const payload = useMemo(
-    () => buildSlots(me?.user, me?.wallets, cryptoQuery.data, pricesQuery.data),
-    [me, cryptoQuery.data, pricesQuery.data],
+    () => buildSlots(me?.user, me?.wallets, cryptoQuery.data, pricesQuery.data, txList),
+    [me, cryptoQuery.data, pricesQuery.data, txList],
   );
 
   // Lists piped into the iframe for any screen that uses [data-slot-list]
@@ -254,6 +301,9 @@ export function StitchScreen({ src, title }: StitchScreenProps) {
       catch { return ""; }
     };
 
+    const cryptoW = cryptoQuery.data ?? [];
+    const prices = pricesQuery.data ?? {};
+
     return {
       transactions: txs.map((t) => ({
         id: t.id,
@@ -264,6 +314,26 @@ export function StitchScreen({ src, title }: StitchScreenProps) {
         date: fmtDate((t as { createdDate?: string }).createdDate),
         walletType: t.walletType || "",
         side: t.side || "",
+      })),
+      cryptoWallets: cryptoW.map((w) => {
+        const p = prices[w.token];
+        const usd = p ? w.balance * p.price : 0;
+        return {
+          token: w.token,
+          symbol: w.token,
+          balance: w.balance.toLocaleString(undefined, { maximumFractionDigits: 8 }),
+          usdValue: formatMoney(usd),
+          address: w.address || "",
+          network: w.network || w.token,
+          price: p ? formatMoney(p.price) : "",
+          change24h: p ? `${p.change24h >= 0 ? "+" : ""}${p.change24h.toFixed(2)}%` : "",
+        };
+      }),
+      marketPrices: Object.values(prices).map((p) => ({
+        symbol: p.symbol,
+        name: p.name,
+        price: formatMoney(p.price),
+        change24h: `${p.change24h >= 0 ? "+" : ""}${p.change24h.toFixed(2)}%`,
       })),
       notifications: notifs.map((n) => ({
         id: String(n.id || ""),

@@ -230,62 +230,25 @@
 <h3 class="text-gradient-emerald font-headline font-extrabold text-lg">Recent Activity</h3>
 <span class="font-mono text-[10px] text-primary/60 tracking-wider">VIEW ALL →</span>
 </div>
-<div class="space-y-2">
-<!-- Activity Item 1 -->
-<div class="glass h-[72px] rounded-full flex items-center px-4 gap-4">
+<div class="space-y-2" data-slot-list="transactions">
+<!-- TEMPLATE — cloned per transaction -->
+<div class="glass h-[72px] rounded-full flex items-center px-4 gap-4" data-slot-template>
 <div class="w-10 h-10 rounded-full bg-surface-container-highest flex items-center justify-center">
-<span class="material-symbols-outlined text-primary text-xl" data-icon="person">person</span>
+<span class="material-symbols-outlined text-primary text-xl" data-icon="payments">payments</span>
 </div>
 <div class="flex-1 overflow-hidden">
-<p class="font-headline font-semibold text-sm truncate">Sarah</p>
-<p class="font-mono text-[10px] text-on-surface-variant/50 truncate">ID: 8849201</p>
+<p class="font-headline font-semibold text-sm truncate" data-slot-field="type">Transaction</p>
+<p class="font-mono text-[10px] text-on-surface-variant/50 truncate" data-slot-field="walletType"></p>
 </div>
 <div class="text-right">
-<p class="font-mono text-sm font-bold text-primary">+$1,500.00</p>
-<p class="font-mono text-[10px] text-on-surface-variant/50 uppercase">12:45 PM</p>
+<p class="font-mono text-sm font-bold text-primary" data-slot-field="amount"></p>
+<p class="font-mono text-[10px] text-on-surface-variant/50 uppercase" data-slot-field="date"></p>
 </div>
 </div>
-<!-- Activity Item 2 -->
-<div class="glass h-[72px] rounded-full flex items-center px-4 gap-4">
-<div class="w-10 h-10 rounded-full bg-surface-container-highest flex items-center justify-center">
-<span class="material-symbols-outlined text-error text-xl" data-icon="alternate_email">alternate_email</span>
-</div>
-<div class="flex-1 overflow-hidden">
-<p class="font-headline font-semibold text-sm truncate">@alex.crypto</p>
-<p class="font-mono text-[10px] text-on-surface-variant/50 truncate">ID: 9022341</p>
-</div>
-<div class="text-right">
-<p class="font-mono text-sm font-bold text-error">-$420.00</p>
-<p class="font-mono text-[10px] text-on-surface-variant/50 uppercase">10:12 AM</p>
-</div>
-</div>
-<!-- Activity Item 3 -->
-<div class="glass h-[72px] rounded-full flex items-center px-4 gap-4">
-<div class="w-10 h-10 rounded-full bg-surface-container-highest flex items-center justify-center">
-<span class="material-symbols-outlined text-tertiary text-xl" data-icon="currency_exchange">currency_exchange</span>
-</div>
-<div class="flex-1 overflow-hidden">
-<p class="font-headline font-semibold text-sm truncate">Swap BTC</p>
-<p class="font-mono text-[10px] text-on-surface-variant/50 truncate">0.12 ETH</p>
-</div>
-<div class="text-right">
-<p class="font-mono text-sm font-bold text-tertiary">~0.04 BTC</p>
-<p class="font-mono text-[10px] text-on-surface-variant/50 uppercase">Yesterday</p>
-</div>
-</div>
-<!-- Activity Item 4 -->
-<div class="glass h-[72px] rounded-full flex items-center px-4 gap-4">
-<div class="w-10 h-10 rounded-full bg-surface-container-highest flex items-center justify-center">
-<span class="material-symbols-outlined text-error text-xl" data-icon="music_note">music_note</span>
-</div>
-<div class="flex-1 overflow-hidden">
-<p class="font-headline font-semibold text-sm truncate">Spotify</p>
-<p class="font-mono text-[10px] text-on-surface-variant/50 truncate">ID: P-99120</p>
-</div>
-<div class="text-right">
-<p class="font-mono text-sm font-bold text-error">-$9.99</p>
-<p class="font-mono text-[10px] text-on-surface-variant/50 uppercase">2 DAYS AGO</p>
-</div>
+<!-- EMPTY STATE -->
+<div class="glass rounded-2xl p-6 text-center" data-slot-empty>
+<p class="font-headline font-semibold text-sm text-on-background mb-1">No activity yet</p>
+<p class="font-mono text-[10px] text-on-surface-variant/60">Transfers, payments, and swaps will show here.</p>
 </div>
 </div>
 </section>
@@ -293,7 +256,7 @@
 <section class="grid grid-cols-2 gap-4 pb-4">
 <div class="glass p-5 rounded-[28px] flex flex-col justify-between gap-3 h-[140px]">
 <h4 class="font-mono text-[9px] text-on-surface-variant/60 uppercase">SPENT THIS WEEK</h4>
-<p class="font-mono text-lg font-bold text-on-background">$842.38</p>
+<p class="font-mono text-lg font-bold text-on-background" data-slot="spentThisWeek">$0.00</p>
 <div class="h-6 w-full opacity-40">
 <svg class="w-full h-full text-error" viewbox="0 0 100 20">
 <polyline fill="none" points="0,15 20,18 40,10 60,15 80,5 100,12" stroke="currentColor" stroke-linecap="round" stroke-width="2"></polyline>
@@ -306,9 +269,9 @@
 <circle class="text-primary/10" cx="50" cy="50" fill="none" r="40" stroke="currentColor" stroke-width="8"></circle>
 <circle class="text-primary" cx="50" cy="50" fill="none" r="40" stroke="currentColor" stroke-dasharray="210 251.2" stroke-linecap="round" stroke-width="8" transform="rotate(-90 50 50)"></circle>
 </svg>
-<span class="font-mono text-xs font-bold">85</span>
+<span class="font-mono text-xs font-bold" data-slot="kycScoreNum">0</span>
 </div>
-<h4 class="font-mono text-[8px] text-on-surface-variant/60 leading-tight uppercase">BIOLUMINESCENT<br/>SCORE</h4>
+<h4 class="font-mono text-[8px] text-on-surface-variant/60 leading-tight uppercase" data-slot="kycScoreLabel">VERIFICATION<br/>STATUS</h4>
 </div>
 </section>
 </main>
