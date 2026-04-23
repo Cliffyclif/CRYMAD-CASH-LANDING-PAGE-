@@ -162,9 +162,9 @@
 <div class="text-center mt-4">
 <h2 class="text-sm font-headline font-extrabold uppercase tracking-[0.2em] text-transparent bg-clip-text bg-gradient-to-r from-primary-container to-secondary">Transaction Details</h2>
 <div class="mt-8 flex flex-col items-center">
-<span class="text-5xl font-mono font-bold text-primary tracking-tighter">+$1,500.00</span>
+<span class="text-5xl font-mono font-bold text-primary tracking-tighter" data-slot="txAmount">+$1,500.00</span>
 <div class="mt-4 px-3 py-1 glass-sheet rounded-full border-primary/20">
-<span class="text-[10px] font-mono font-bold tracking-widest text-primary uppercase">Bank Deposit</span>
+<span class="text-[10px] font-mono font-bold tracking-widest text-primary uppercase" data-slot="txType">Bank Deposit</span>
 </div>
 </div>
 </div>
@@ -223,9 +223,9 @@
 </div>
 <div class="flex-1 flex justify-between items-center">
 <div class="px-4 py-1.5 bg-primary/20 rounded-full border border-primary/40">
-<span class="text-[11px] font-mono font-bold text-primary">COMPLETED</span>
+<span class="text-[11px] font-mono font-bold text-primary" data-slot="txStatus">COMPLETED</span>
 </div>
-<span class="text-[10px] font-mono opacity-50 italic">01:02:44 PM</span>
+<span class="text-[10px] font-mono opacity-50 italic" data-slot="txCompletedAt">01:02:44 PM</span>
 </div>
 </div>
 </div>
@@ -237,39 +237,39 @@
 <div class="flex justify-between items-center text-xs">
 <span class="font-body font-semibold opacity-60">TX Hash</span>
 <div class="flex items-center gap-2">
-<span class="font-mono text-primary truncate max-w-[120px]">0x7a2e...99fA</span>
+<span class="font-mono text-primary truncate max-w-[120px]" data-slot="txHash">0x7a2e...99fA</span>
 <button class="material-symbols-outlined text-sm text-primary/60 hover:text-primary transition-colors">content_copy</button>
 </div>
 </div>
 <!-- Ref -->
 <div class="flex justify-between items-center text-xs">
 <span class="font-body font-semibold opacity-60">Reference</span>
-<span class="font-mono text-on-surface">EW-8820</span>
+<span class="font-mono text-on-surface" data-slot="txReference">EW-8820</span>
 </div>
 <!-- From -->
 <div class="flex justify-between items-center text-xs">
 <span class="font-body font-semibold opacity-60">From</span>
-<span class="font-mono text-on-surface">Chase Bank •••• 4421</span>
+<span class="font-mono text-on-surface" data-slot="txFrom">Chase Bank •••• 4421</span>
 </div>
 <!-- To -->
 <div class="flex justify-between items-center text-xs">
 <span class="font-body font-semibold opacity-60">To</span>
-<span class="font-mono text-on-surface">E-Wallet</span>
+<span class="font-mono text-on-surface" data-slot="txTo">E-Wallet</span>
 </div>
 <!-- Network -->
 <div class="flex justify-between items-center text-xs">
 <span class="font-body font-semibold opacity-60">Network</span>
-<span class="font-mono text-secondary">ACH</span>
+<span class="font-mono text-secondary" data-slot="txNetwork">ACH</span>
 </div>
 <!-- Fee -->
 <div class="flex justify-between items-center text-xs">
 <span class="font-body font-semibold opacity-60">Fee</span>
-<span class="font-mono text-error">-$2.00</span>
+<span class="font-mono text-error" data-slot="txFee">-$2.00</span>
 </div>
 <!-- Time -->
 <div class="flex justify-between items-center text-xs">
 <span class="font-body font-semibold opacity-60">Processing Time</span>
-<span class="font-mono text-on-surface">1h 24m</span>
+<span class="font-mono text-on-surface" data-slot="txProcessingTime">1h 24m</span>
 </div>
 </div>
 </div>

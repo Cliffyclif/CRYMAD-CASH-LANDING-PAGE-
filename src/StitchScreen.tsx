@@ -33,31 +33,60 @@ const NAV_INTERCEPTOR = `
   var ICON_ROUTES = {
     arrow_back: '__BACK__',
     arrow_back_ios: '__BACK__',
+    arrow_back_ios_new: '__BACK__',
     chevron_left: '__BACK__',
     close: '__BACK__',
     home: '/dashboard',
+    dashboard: '/dashboard',
+    grid_view: '/dashboard',
     account_balance_wallet: '/e-wallet',
+    wallet: '/e-wallet',
+    savings: '/e-wallet',
     credit_card: '/cards',
+    cards: '/cards',
     receipt_long: '/transactions',
-    notifications: '/notifications',
+    receipt: '/transactions',
+    history: '/transactions',
+    swap_horiz: '/crypto/swap',
+    swap_vert: '/crypto/swap',
     currency_exchange: '/crypto/swap',
+    currency_bitcoin: '/crypto',
+    toll: '/crypto',
     send: '/e-wallet/transfer',
-    'call_split': '/payouts',
+    north_east: '/e-wallet/transfer',
+    south_west: '/crypto/deposit',
+    download: '/crypto/deposit',
+    upload: '/crypto/withdraw',
+    call_split: '/payouts',
     payments: '/payouts/create',
-    savings: '/rewards',
+    redeem: '/rewards',
+    card_giftcard: '/rewards',
     storefront: '/orders',
+    shopping_bag: '/orders',
     event_repeat: '/recurring-payments',
     subscriptions: '/subscriptions',
+    loyalty: '/rewards',
     group: '/team',
+    people: '/team',
     account_circle: '/profile',
+    person: '/profile',
     settings: '/profile',
     help: '/help',
+    help_outline: '/help',
     support: '/help',
+    support_agent: '/help',
     apps: '/ecosystem',
     analytics: '/reports',
     bar_chart: '/reports',
+    insights: '/reports',
     account_balance: '/banking',
     corporate_fare: '/institutional/dashboard',
+    notifications: '/notifications',
+    'notifications_active': '/notifications',
+    'notifications_none': '/notifications',
+    menu: '/profile',
+    more_horiz: '/profile',
+    more_vert: '/profile',
   };
   var LABEL_ROUTES = {
     BACK: '__BACK__',
@@ -91,6 +120,9 @@ const NAV_INTERCEPTOR = `
     MORE: '/profile',
   };
   function inferRoute(anchor) {
+    // Explicit override: data-nav="/some/route" wins over everything.
+    var explicit = anchor.getAttribute && (anchor.getAttribute('data-nav') || anchor.getAttribute('data-link'));
+    if (explicit) return explicit;
     // Scan inner elements for data-icon + text label.
     var iconEl = anchor.querySelector ? anchor.querySelector('[data-icon]') : null;
     if (iconEl) {
@@ -107,7 +139,7 @@ const NAV_INTERCEPTOR = `
   }
 
   document.addEventListener('click', function(e) {
-    var a = e.target.closest ? e.target.closest('a, button') : null;
+    var a = e.target.closest ? e.target.closest('a, button, [role="button"], [data-nav], [data-link], .cursor-pointer') : null;
     if (!a) return;
     // Anchors with a real href that points somewhere sensible use that first.
     if (a.tagName === 'A') {
