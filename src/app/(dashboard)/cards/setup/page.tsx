@@ -96,6 +96,11 @@ export default function CardSetupPage() {
       const r = await fetch("/api/cards/setup", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(body) });
       if (!r.ok) {
         const j = await r.json().catch(() => ({}));
+        if (j.details?.status === "service_unavailable" || j.tygaStatus === 503) {
+          throw new Error(
+            "Cards aren't enabled for your account yet — we're finalizing activation with our banking partner. Check back shortly.",
+          );
+        }
         throw new Error(j.message || j.details?.message || j.error || String(r.status));
       }
       setSuccess(true);
