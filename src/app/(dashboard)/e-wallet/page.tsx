@@ -1040,6 +1040,107 @@ function ComingSoonModal({ title, onClose }: { title: string; onClose: () => voi
   );
 }
 
+// ───────────────────────── Top up with card ─────────────────────────
+
+/**
+ * Card top-up via TygaBank's hosted-checkout Orders API.
+ * POST /api/orders → returns { order: { paymentUrl, orderId, ... } }.
+ * We open paymentUrl in a new tab so the parent stays put; the funds settle
+ * via webhook on TygaBank's side.
+ */
+function TopUpModal({ onClose, onDone }: { onClose: () => void; onDone: () => void }) {
+  const [amount, setAmount] = useState("");
+  const [currency, setCurrency] = useState("USD");
+  const [loading, setLoading] = useState(false);
+  const [err, setErr] = useState<string | null>(null);
+  const [paymentUrl, setPaymentUrl] = useState<string | null>(null);
+
+  const amt = Number(amount) || 0;
+  const canSubmit = amt > 0;
+
+  async function submit() {
+    setErr(null);
+    if (!canSubmit) { setErr("Enter an amount."); return; }
+    setLoading(true);
+    try {
+      const res = await fetch("/api/orders", {
+        method: "POST", headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          amount: amt, currency, type: "deposit", walletType: "ewallet",
+          description: `Top up ${currency} ${amt}`,
+          returnUrl: typeof window !== "undefined" ? `${window.location.origin}/e-wallet?topup=ok` : undefined,
+        }),
+      });
+      const j = await res.json();
+      if (!res.ok) { setErr(j.message || j.error || "Couldn't start top-up."); return; }
+      const url = j.order?.paymentUrl || j.order?.paymentDeepLinkUrl;
+      if (!url) { setErr("Top-up created but no checkout URL was returned. Contact support."); return; }
+      setPaymentUrl(url);
+      window.open(url, "_blank", "noopener,noreferrer");
+    } catch { setErr("Network error."); }
+    finally { setLoading(false); }
+  }
+
+  return (
+    <FancyModalShell title="Top Up With Card" subtitle="Add funds via debit or credit card" onClose={onClose}>
+      {paymentUrl ? (
+        <div style={{ padding: "10px 0", textAlign: "center" }}>
+          <p style={{ fontSize: 14, color: "var(--text)", marginBottom: 16, lineHeight: 1.5 }}>
+            We opened a secure checkout window. Complete the payment there;
+            funds appear in your e-wallet within a minute of card confirmation.
+          </p>
+          <a href={paymentUrl} target="_blank" rel="noreferrer"
+            style={{ color: "var(--primary)", fontSize: 13, textDecoration: "underline" }}>
+            Reopen checkout
+          </a>
+          <div style={{ marginTop: 18 }}>
+            <button type="button" onClick={() => { onDone(); onClose(); }}
+              style={{
+                padding: "10px 24px", borderRadius: 12, border: "1px solid var(--primary)",
+                background: "transparent", color: "var(--primary)", cursor: "pointer",
+                fontFamily: "inherit", fontWeight: 700, fontSize: 12, letterSpacing: 1, textTransform: "uppercase",
+              }}>
+              Done
+            </button>
+          </div>
+        </div>
+      ) : (
+        <>
+          <label style={fancyLabel}>Amount</label>
+          <div style={{ display: "flex", gap: 10, marginBottom: 14 }}>
+            <input type="number" inputMode="decimal" min="0" step="0.01" value={amount}
+              onChange={(e) => setAmount(e.target.value)} placeholder="0.00"
+              style={{
+                flex: 1, padding: "14px 18px", borderRadius: 14,
+                background: "var(--surface)", border: "1px solid var(--glass-border)",
+                color: "var(--text)", fontSize: 18, fontWeight: 700, outline: "none",
+                fontFamily: "var(--font-mono, monospace)",
+              }} />
+            <select value={currency} onChange={(e) => setCurrency(e.target.value)}
+              style={{
+                padding: "14px 16px", borderRadius: 14,
+                background: "var(--surface)", border: "1px solid var(--glass-border)",
+                color: "var(--text)", fontSize: 14, fontWeight: 700, outline: "none",
+                fontFamily: "inherit", cursor: "pointer",
+              }}>
+              <option value="USD">USD</option>
+              <option value="EUR">EUR</option>
+              <option value="GBP">GBP</option>
+            </select>
+          </div>
+          <p style={{ fontSize: 11, color: "var(--text-muted)", lineHeight: 1.5, marginBottom: 4 }}>
+            You&apos;ll be redirected to a secure card-payment page provided by our processor.
+            Funds land in your e-wallet after the card is authorized.
+          </p>
+          <SubmitError msg={err} />
+          <ModalActions onClose={onClose} loading={loading} submitLabel="Continue to Checkout"
+            onSubmit={submit} />
+        </>
+      )}
+    </FancyModalShell>
+  );
+}
+
 // ───────────────────────── Page ─────────────────────────
 
 export default function EWalletPage() {
@@ -1051,6 +1152,7 @@ export default function EWalletPage() {
   const [showBank, setShowBank] = useState(false);
   const [showCrypto, setShowCrypto] = useState(false);
   const [showCard, setShowCard] = useState(false);
+  const [showTopUp, setShowTopUp] = useState(false);
 
   const [txs, setTxs] = useState<Tx[] | null>(null);
   const [search, setSearch] = useState("");
@@ -1201,8 +1303,9 @@ export default function EWalletPage() {
       </div>
 
       {/* ─── Action Grid ─── */}
-      <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 12, marginBottom: 24 }}>
+      <div style={{ display: "grid", gridTemplateColumns: "repeat(5, 1fr)", gap: 12, marginBottom: 24 }}>
         {[
+          { label: "Top Up", onClick: () => setShowTopUp(true), icon: <><circle cx="12" cy="12" r="10" /><line x1="12" y1="8" x2="12" y2="16" /><line x1="8" y1="12" x2="16" y2="12" /></> },
           { label: t("app.ewallet.actions.transfer"), onClick: () => setShowTransfer(true), icon: <><line x1="22" y1="2" x2="11" y2="13" /><polygon points="22 2 15 22 11 13 2 9 22 2" /></> },
           { label: t("app.ewallet.actions.bankWithdraw"), onClick: () => setShowBank(true), icon: <><path d="M3 21h18M3 10h18M5 6l7-3 7 3M4 10v11M20 10v11M8 14v3M12 14v3M16 14v3" /></> },
           { label: t("app.ewallet.actions.cryptoSwap"), onClick: () => setShowCrypto(true), icon: <><polyline points="17 1 21 5 17 9" /><path d="M3 11V9a4 4 0 0 1 4-4h14" /><polyline points="7 23 3 19 7 15" /><path d="M21 13v2a4 4 0 0 1-4 4H3" /></> },
@@ -1426,6 +1529,7 @@ export default function EWalletPage() {
       {showBank && <BankWithdrawModal onClose={() => setShowBank(false)} onDone={loadTxs} availableBalance={w?.balance ?? 0} currency={w?.currency ?? "USD"} />}
       {showCrypto && <BuyCryptoModal onClose={() => setShowCrypto(false)} availableBalance={w?.balance ?? 0} currency={w?.currency ?? "USD"} />}
       {showCard && <SyncToCardModal onClose={() => setShowCard(false)} onDone={loadTxs} availableBalance={w?.balance ?? 0} />}
+      {showTopUp && <TopUpModal onClose={() => setShowTopUp(false)} onDone={loadTxs} />}
     </>
   );
 }
