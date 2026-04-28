@@ -55,8 +55,13 @@ const NAV_INTERCEPTOR = `
     send: '/e-wallet/transfer',
     north_east: '/e-wallet/transfer',
     south_west: '/crypto/deposit',
+    call_received: '/crypto/deposit',
     download: '/crypto/deposit',
     upload: '/crypto/withdraw',
+    contactless: '/payouts/create',
+    qr_code: '/crypto/deposit',
+    qr_code_2: '/crypto/deposit',
+    qr_code_scanner: '/payouts/create',
     call_split: '/payouts',
     payments: '/payouts/create',
     redeem: '/rewards',
@@ -138,8 +143,30 @@ const NAV_INTERCEPTOR = `
     return null;
   }
 
+  // Walk up from the click target to find an actionable element. Stitch designs
+  // mostly use plain <div>s for action tiles, so we accept anything that has an
+  // icon or a label we can map to a route.
+  function findActionable(target) {
+    if (!target || !target.closest) return null;
+    var direct = target.closest('a, button, [role="button"], [data-nav], [data-link], .cursor-pointer, [data-action]');
+    if (direct) return direct;
+    // Look for the nearest ancestor that contains both a data-icon span and a
+    // text label inside the same small box (typical action-tile layout).
+    var node = target;
+    for (var i = 0; node && i < 6; i++) {
+      if (node.querySelector && node.querySelector('[data-icon]')) {
+        // Avoid the entire <body> matching everything — require the box to be
+        // reasonably small (a tile / nav item) by capping descendant count.
+        var descCount = node.querySelectorAll('*').length;
+        if (descCount > 0 && descCount < 25) return node;
+      }
+      node = node.parentElement;
+    }
+    return null;
+  }
+
   document.addEventListener('click', function(e) {
-    var a = e.target.closest ? e.target.closest('a, button, [role="button"], [data-nav], [data-link], .cursor-pointer') : null;
+    var a = findActionable(e.target);
     if (!a) return;
     // Anchors with a real href that points somewhere sensible use that first.
     if (a.tagName === 'A') {
