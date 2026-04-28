@@ -128,24 +128,17 @@
 </header>
 <div class="space-y-4">
 <div class="glass-panel p-5 rounded-lg flex items-center gap-4">
-<div class="w-12 h-12 rounded-full bg-primary-container flex items-center justify-center font-bold text-on-primary-container">AM</div>
+<div class="w-12 h-12 rounded-full bg-surface-container-highest flex items-center justify-center font-bold text-on-surface">—</div>
 <div class="flex-1">
-<p class="font-semibold">Alex Morgan</p>
-<p class="text-xs text-on-surface-variant font-mono">CHASE •••• 4421</p>
+<p class="font-semibold">&nbsp;</p>
+<p class="text-xs text-on-surface-variant font-mono">&nbsp;</p>
 </div>
 </div>
 <div class="glass-panel p-5 rounded-lg flex items-center gap-4">
-<div class="w-12 h-12 rounded-full bg-surface-container-highest flex items-center justify-center font-bold text-on-surface">JS</div>
+<div class="w-12 h-12 rounded-full bg-surface-container-highest flex items-center justify-center font-bold text-on-surface">—</div>
 <div class="flex-1">
-<p class="font-semibold">Jordan Smith</p>
-<p class="text-xs text-on-surface-variant font-mono">WELLS •••• 9802</p>
-</div>
-</div>
-<div class="glass-panel p-5 rounded-lg flex items-center gap-4">
-<div class="w-12 h-12 rounded-full bg-surface-container-highest flex items-center justify-center font-bold text-on-surface">RK</div>
-<div class="flex-1">
-<p class="font-semibold">Riley King</p>
-<p class="text-xs text-on-surface-variant font-mono">BOFA •••• 1156</p>
+<p class="font-semibold">&nbsp;</p>
+<p class="text-xs text-on-surface-variant font-mono">&nbsp;</p>
 </div>
 </div>
 </div>
@@ -177,21 +170,21 @@
 <div class="space-y-2">
 <label class="text-[11px] font-bold uppercase tracking-widest text-on-surface-variant ml-1">Full Name</label>
 <div class="relative">
-<input class="w-full h-14 glass-panel rounded-lg px-5 text-on-surface focus:outline-none focus:ring-1 focus:ring-primary/50 transition-all" type="text" value="Alex Morgan"/>
+<input class="w-full h-14 glass-panel rounded-lg px-5 text-on-surface focus:outline-none focus:ring-1 focus:ring-primary/50 transition-all" type="text" data-slot-input="beneficiaryName" placeholder="Full name"/>
 </div>
 </div>
 <!-- Email -->
 <div class="space-y-2">
 <label class="text-[11px] font-bold uppercase tracking-widest text-on-surface-variant ml-1">Email</label>
 <div class="relative">
-<input class="w-full h-14 glass-panel rounded-lg px-5 text-on-surface focus:outline-none focus:ring-1 focus:ring-primary/50 transition-all" type="email" value="alex@email.com"/>
+<input class="w-full h-14 glass-panel rounded-lg px-5 text-on-surface focus:outline-none focus:ring-1 focus:ring-primary/50 transition-all" type="email" data-slot-input="beneficiaryEmail" placeholder="email@example.com"/>
 </div>
 </div>
 <!-- Bank Name -->
 <div class="space-y-2">
 <label class="text-[11px] font-bold uppercase tracking-widest text-on-surface-variant ml-1">Bank Name</label>
 <div class="relative">
-<input class="w-full h-14 glass-panel rounded-lg px-5 text-on-surface focus:outline-none focus:ring-1 focus:ring-primary/50 transition-all" type="text" value="Chase Bank"/>
+<input class="w-full h-14 glass-panel rounded-lg px-5 text-on-surface focus:outline-none focus:ring-1 focus:ring-primary/50 transition-all" type="text" data-slot-input="beneficiaryBank" placeholder="Bank name"/>
 <span class="material-symbols-outlined absolute right-5 top-4 text-on-surface-variant">account_balance</span>
 </div>
 </div>
@@ -200,8 +193,8 @@
 <label class="text-[11px] font-bold uppercase tracking-widest text-on-surface-variant ml-1">Account Number</label>
 <div class="relative">
 <div class="w-full h-14 bg-surface-container-lowest/50 border border-emerald-500/5 rounded-lg flex items-center px-5 font-mono text-on-surface tracking-wider">
-                            •••• 4421
-                            <span class="material-symbols-outlined absolute right-5 text-sm" style="font-variation-settings: 'FILL' 1;">lock</span>
+<span data-slot="beneficiaryAccountMask">—</span>
+<span class="material-symbols-outlined absolute right-5 text-sm" style="font-variation-settings: 'FILL' 1;">lock</span>
 </div>
 </div>
 <p class="text-[10px] font-mono text-tertiary/80 ml-1 flex items-center gap-1">

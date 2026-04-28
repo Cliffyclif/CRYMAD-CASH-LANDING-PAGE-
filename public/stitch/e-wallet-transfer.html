@@ -117,7 +117,7 @@
 </header>
 <main class="p-6 space-y-8">
 <div class="glass-panel h-48 rounded-xl p-6 flex flex-col justify-end">
-<div class="font-mono text-4xl font-bold">$12,450.00</div>
+<div class="font-mono text-4xl font-bold" data-slot="balanceEWallet">$0.00</div>
 <div class="font-mono text-xs text-emerald-500/60 uppercase">Current Liquidity</div>
 </div>
 <div class="grid grid-cols-2 gap-4">
@@ -150,37 +150,22 @@
 </div>
 </div>
 <!-- Recent Recipients -->
-<div class="flex justify-between px-2">
-<div class="flex flex-col items-center gap-2 group">
-<div class="w-14 h-14 rounded-full p-[2px] bg-gradient-to-tr from-emerald-500 to-teal-400">
-<span class="w-full h-full rounded-full flex items-center justify-center bg-surface-container-highest text-on-surface-variant"><span class="material-symbols-outlined text-sm" data-icon="person">person</span></span>
-</div>
-<span class="text-[10px] font-mono text-emerald-500/80">FELIX</span>
-</div>
-<div class="flex flex-col items-center gap-2">
+<div class="space-y-2" data-slot-list="beneficiaries">
+<div class="flex flex-col items-center gap-2 group" data-slot-template>
 <div class="w-14 h-14 rounded-full p-[2px] bg-emerald-500/10">
 <span class="w-full h-full rounded-full flex items-center justify-center bg-surface-container-highest text-on-surface-variant"><span class="material-symbols-outlined text-sm" data-icon="person">person</span></span>
 </div>
-<span class="text-[10px] font-mono text-emerald-500/80">LUNA</span>
+<span class="text-[10px] font-mono text-emerald-500/80" data-slot-field="name">—</span>
 </div>
-<div class="flex flex-col items-center gap-2">
-<div class="w-14 h-14 rounded-full p-[2px] bg-emerald-500/10">
-<span class="w-full h-full rounded-full flex items-center justify-center bg-surface-container-highest text-on-surface-variant"><span class="material-symbols-outlined text-sm" data-icon="person">person</span></span>
-</div>
-<span class="text-[10px] font-mono text-emerald-500/80">ATLAS</span>
-</div>
-<div class="flex flex-col items-center gap-2">
-<div class="w-14 h-14 rounded-full p-[2px] bg-emerald-500/10">
-<span class="w-full h-full rounded-full flex items-center justify-center bg-surface-container-highest text-on-surface-variant"><span class="material-symbols-outlined text-sm" data-icon="person">person</span></span>
-</div>
-<span class="text-[10px] font-mono text-emerald-500/80">NOVA</span>
+<div class="text-center py-2" data-slot-empty>
+<p class="font-mono text-[10px] text-on-surface-variant/60">No saved recipients yet.</p>
 </div>
 </div>
 <!-- Amount Section -->
 <div class="space-y-4 py-4">
 <div class="flex flex-col items-center justify-center space-y-2">
 <div class="flex items-baseline gap-2">
-<span class="text-5xl font-mono font-bold text-gradient">$100.00</span>
+<span class="text-5xl font-mono font-bold text-gradient" data-slot="transferAmount">$0.00</span>
 </div>
 <div class="bg-emerald-500/10 px-3 py-1 rounded-full ghost-border">
 <span class="font-mono text-[10px] text-emerald-400 tracking-tighter">USD</span>
@@ -205,11 +190,11 @@
 <div class="glass-panel p-4 rounded-xl ghost-border space-y-2">
 <div class="flex justify-between items-center font-mono text-[10px] uppercase tracking-wider text-emerald-500/50">
 <span>Network Protocol Fee</span>
-<span class="text-emerald-400">$0.24</span>
+<span class="text-emerald-400" data-slot="transferFee">—</span>
 </div>
 <div class="flex justify-between items-center font-mono text-[10px] uppercase tracking-wider text-emerald-500/50">
 <span>Arrival Estimate</span>
-<span class="text-emerald-400">INSTANT</span>
+<span class="text-emerald-400" data-slot="transferEta">—</span>
 </div>
 </div>
 <!-- Action Buttons -->

@@ -116,8 +116,8 @@
 <!-- Mock Content of Parent -->
 <div class="p-6 space-y-6">
 <div class="h-32 rounded-lg bg-surface-container-low border border-emerald-500/5 p-4 flex flex-col justify-end">
-<div class="font-mono text-3xl font-bold">$142,500.62</div>
-<div class="text-xs text-primary font-mono">+4.2% LAST 24H</div>
+<div class="font-mono text-3xl font-bold" data-slot="balanceTotal">$0.00</div>
+<div class="text-xs text-primary font-mono" data-slot="todayDelta"></div>
 </div>
 <div class="grid grid-cols-2 gap-4">
 <div class="h-24 rounded-lg bg-surface-container-low border border-emerald-500/5"></div>
@@ -156,9 +156,9 @@
 <span class="material-symbols-outlined text-primary">expand_more</span>
 </div>
 <div class="text-center py-4">
-<div class="font-mono text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-b from-white to-on-surface-variant">0.0500 BTC</div>
+<div class="font-mono text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-b from-white to-on-surface-variant" data-slot="withdrawAmountToken">0.00 BTC</div>
 <div class="mt-2 inline-flex items-center px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20">
-<span class="font-mono text-xs text-primary">~ $3,362.05 USD</span>
+<span class="font-mono text-xs text-primary" data-slot="withdrawAmountUsd">~ —</span>
 </div>
 </div>
 </div>
@@ -177,14 +177,14 @@
 <div class="grid grid-cols-2 gap-4">
 <div class="bg-surface-container-low/40 rounded-lg p-3 border border-emerald-500/5">
 <div class="text-[10px] font-mono text-on-surface-variant uppercase mb-1">Network Fee</div>
-<div class="font-mono text-[12px] text-on-surface">0.0002 BTC</div>
-<div class="font-mono text-[10px] text-primary/60">~ $13.45</div>
+<div class="font-mono text-[12px] text-on-surface" data-slot="withdrawNetworkFeeToken">—</div>
+<div class="font-mono text-[10px] text-primary/60" data-slot="withdrawNetworkFeeUsd">—</div>
 </div>
 <div class="bg-surface-container-low/40 rounded-lg p-3 border border-emerald-500/5">
 <div class="text-[10px] font-mono text-on-surface-variant uppercase mb-1">Estimated Arrival</div>
 <div class="flex items-center gap-1.5 mt-1">
 <span class="w-2 h-2 rounded-full bg-primary shadow-[0_0_8px_rgba(78,222,163,0.5)]"></span>
-<span class="font-mono text-[12px] text-primary">~10 minutes</span>
+<span class="font-mono text-[12px] text-primary" data-slot="withdrawEta">—</span>
 </div>
 </div>
 </div>
@@ -195,10 +195,10 @@
 <span class="text-[10px] font-mono text-primary cursor-pointer">RESEND</span>
 </div>
 <div class="flex justify-between gap-2">
-<div class="w-12 h-14 bg-surface-container-highest/40 rounded-lg border border-emerald-500/10 flex items-center justify-center font-mono text-xl text-primary">6</div>
-<div class="w-12 h-14 bg-surface-container-highest/40 rounded-lg border border-emerald-500/10 flex items-center justify-center font-mono text-xl text-primary">2</div>
-<div class="w-12 h-14 bg-surface-container-highest/40 rounded-lg border border-emerald-500/10 flex items-center justify-center font-mono text-xl text-primary">0</div>
-<div class="w-12 h-14 bg-surface-container-highest/40 rounded-lg border border-emerald-500/10 flex items-center justify-center font-mono text-xl text-on-surface-variant/20">|</div>
+<div class="w-12 h-14 bg-surface-container-highest/40 rounded-lg border border-emerald-500/10 flex items-center justify-center font-mono text-xl text-on-surface-variant/20"></div>
+<div class="w-12 h-14 bg-surface-container-highest/40 rounded-lg border border-emerald-500/10 flex items-center justify-center font-mono text-xl text-on-surface-variant/20"></div>
+<div class="w-12 h-14 bg-surface-container-highest/40 rounded-lg border border-emerald-500/10 flex items-center justify-center font-mono text-xl text-on-surface-variant/20"></div>
+<div class="w-12 h-14 bg-surface-container-highest/40 rounded-lg border border-emerald-500/10 flex items-center justify-center font-mono text-xl text-on-surface-variant/20"></div>
 <div class="w-12 h-14 bg-surface-container-highest/40 rounded-lg border border-emerald-500/10 flex items-center justify-center font-mono text-xl text-on-surface-variant/20"></div>
 <div class="w-12 h-14 bg-surface-container-highest/40 rounded-lg border border-emerald-500/10 flex items-center justify-center font-mono text-xl text-on-surface-variant/20"></div>
 </div>

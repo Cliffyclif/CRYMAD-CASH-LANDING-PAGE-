@@ -132,10 +132,10 @@
 <!-- Header Section -->
 <div class="px-6 pb-6 pt-2 flex items-center justify-between">
 <h2 class="text-2xl font-['Inter'] font-extrabold tracking-tight bg-gradient-to-r from-[#10b981] to-[#34d399] bg-clip-text text-transparent">
-                    Payout PO-8821
-                </h2>
-<div class="bg-primary/20 text-primary border border-primary/20 px-3 py-1 rounded-full text-[10px] font-bold tracking-widest uppercase">
-                    COMPLETED
+                    Payout <span data-slot="payoutId">—</span>
+</h2>
+<div class="bg-primary/20 text-primary border border-primary/20 px-3 py-1 rounded-full text-[10px] font-bold tracking-widest uppercase" data-slot="payoutStatus">
+                    PENDING
                 </div>
 </div>
 <!-- Scrollable Content -->
@@ -144,13 +144,13 @@
 <div class="glass-sheet p-5 rounded-lg flex items-center gap-4">
 <span class="w-16 h-16 rounded-full flex items-center justify-center border-2 border-emerald-500/20 bg-surface-container-highest text-on-surface-variant"><span class="material-symbols-outlined text-sm" data-icon="person">person</span></span>
 <div>
-<div class="text-lg font-bold text-on-surface">Alex Morgan</div>
-<div class="font-mono text-xs text-emerald-500/60 uppercase tracking-tighter mt-0.5">CHASE BANK •••• 4492</div>
+<div class="text-lg font-bold text-on-surface" data-slot="payoutRecipient">Recipient</div>
+<div class="font-mono text-xs text-emerald-500/60 uppercase tracking-tighter mt-0.5" data-slot="payoutBankDetail">—</div>
 </div>
 </div>
 <!-- Amount Display -->
 <div class="flex flex-col items-center justify-center py-6">
-<div class="font-mono text-5xl font-bold text-[#F87171] tracking-tighter">-$1,200.00</div>
+<div class="font-mono text-5xl font-bold text-[#F87171] tracking-tighter" data-slot="payoutAmount">$0.00</div>
 <div class="font-mono text-[10px] text-emerald-500/40 uppercase tracking-[0.2em] mt-2">USD CURRENCY</div>
 </div>
 <!-- Status Timeline -->
@@ -158,50 +158,50 @@
 <div class="relative flex items-center gap-6">
 <div class="absolute -left-[21px] w-2.5 h-2.5 rounded-full glass-sheet bg-emerald-500/20 border border-emerald-500/30"></div>
 <div class="text-xs font-bold text-on-surface/60">CREATED</div>
-<div class="font-mono text-[11px] text-emerald-500/40">10:12 AM</div>
+<div class="font-mono text-[11px] text-emerald-500/40" data-slot="payoutCreatedAt">—</div>
 </div>
 <div class="relative flex items-center gap-6">
 <div class="absolute -left-[21px] w-2.5 h-2.5 rounded-full glass-sheet bg-emerald-500/20 border border-emerald-500/30"></div>
 <div class="text-xs font-bold text-on-surface/60">APPROVED</div>
-<div class="font-mono text-[11px] text-emerald-500/40">10:15 AM</div>
+<div class="font-mono text-[11px] text-emerald-500/40" data-slot="payoutApprovedAt">—</div>
 </div>
 <div class="relative flex items-center gap-6">
 <div class="absolute -left-[21px] w-2.5 h-2.5 rounded-full glass-sheet bg-emerald-500/20 border border-emerald-500/30"></div>
 <div class="text-xs font-bold text-on-surface/60">PROCESSING</div>
-<div class="font-mono text-[11px] text-emerald-500/40">10:20 AM</div>
+<div class="font-mono text-[11px] text-emerald-500/40" data-slot="payoutProcessingAt">—</div>
 </div>
 <div class="relative flex items-center gap-6">
 <div class="absolute -left-[21px] w-2.5 h-2.5 rounded-full glass-sheet bg-emerald-500/20 border border-emerald-500/30"></div>
 <div class="text-xs font-bold text-on-surface/60">SENT</div>
-<div class="font-mono text-[11px] text-emerald-500/40">12:44 PM</div>
+<div class="font-mono text-[11px] text-emerald-500/40" data-slot="payoutSentAt">—</div>
 </div>
 <div class="relative flex items-center gap-6">
 <div class="absolute -left-[21px] w-2.5 h-2.5 rounded-full bg-emerald-400 shadow-[0_0_12px_rgba(78,222,163,0.5)]"></div>
 <div class="text-xs font-bold text-emerald-400">CONFIRMED</div>
-<div class="font-mono text-[11px] text-emerald-400">12:45 PM</div>
+<div class="font-mono text-[11px] text-emerald-400" data-slot="payoutConfirmedAt">—</div>
 </div>
 </div>
 <!-- Metadata Section -->
 <div class="glass-sheet p-5 rounded-lg space-y-4">
 <div class="flex justify-between items-center">
 <span class="text-[10px] font-bold text-emerald-500/40 uppercase tracking-widest">TX ID</span>
-<span class="font-mono text-xs text-on-surface">0x82f...a12c</span>
+<span class="font-mono text-xs text-on-surface" data-slot="payoutTxId">—</span>
 </div>
 <div class="flex justify-between items-center">
 <span class="text-[10px] font-bold text-emerald-500/40 uppercase tracking-widest">Method</span>
-<span class="font-mono text-xs text-on-surface">ACH</span>
+<span class="font-mono text-xs text-on-surface" data-slot="payoutMethod">—</span>
 </div>
 <div class="flex justify-between items-center">
 <span class="text-[10px] font-bold text-emerald-500/40 uppercase tracking-widest">Fee</span>
-<span class="font-mono text-xs text-on-surface">$2.50</span>
+<span class="font-mono text-xs text-on-surface" data-slot="payoutFee">—</span>
 </div>
 <div class="flex justify-between items-center">
 <span class="text-[10px] font-bold text-emerald-500/40 uppercase tracking-widest">Processing Time</span>
-<span class="font-mono text-xs text-on-surface">2h 33m</span>
+<span class="font-mono text-xs text-on-surface" data-slot="payoutProcessingTime">—</span>
 </div>
 <div class="flex justify-between items-center">
 <span class="text-[10px] font-bold text-emerald-500/40 uppercase tracking-widest">Authorized By</span>
-<span class="font-mono text-xs text-on-surface">System (Auto)</span>
+<span class="font-mono text-xs text-on-surface" data-slot="payoutAuthorizedBy">—</span>
 </div>
 </div>
 <!-- Small Dispute Link -->

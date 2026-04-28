@@ -124,7 +124,7 @@
 <div class="flex justify-between items-end mb-4">
 <div>
 <p class="text-xs uppercase tracking-widest text-on-surface-variant font-semibold">Total Balance</p>
-<h2 class="text-3xl font-mono font-bold text-primary">$124,500.00</h2>
+<h2 class="text-3xl font-mono font-bold text-primary" data-slot="balanceTotal">$0.00</h2>
 </div>
 </div>
 <div class="h-32 bg-surface-container-highest rounded-lg flex items-center justify-center">
@@ -161,33 +161,18 @@
 <input class="w-full bg-surface-container-lowest/50 border border-emerald-500/10 rounded-lg py-4 pl-12 pr-4 text-on-surface placeholder:text-on-surface-variant focus:outline-none focus:border-primary/40 transition-all font-semibold" placeholder="Search recipients..." type="text"/>
 </div>
 <!-- Dropdown Preview -->
-<div class="space-y-2">
-<div class="flex items-center gap-3 p-3 bg-surface-container-highest/30 rounded-lg border border-emerald-500/5 hover:bg-emerald-500/10 transition-colors cursor-pointer">
+<div class="space-y-2" data-slot-list="beneficiaries">
+<div class="flex items-center gap-3 p-3 bg-surface-container-highest/30 rounded-lg border border-emerald-500/5 hover:bg-emerald-500/10 transition-colors cursor-pointer" data-slot-template>
 <div class="w-10 h-10 rounded-full border border-primary/20 bg-emerald-950 overflow-hidden">
 <span class="w-full h-full rounded-full flex items-center justify-center bg-surface-container-highest text-on-surface-variant"><span class="material-symbols-outlined text-sm" data-icon="person">person</span></span>
 </div>
 <div>
-<p class="text-sm font-semibold">Alex Morgan</p>
-<p class="text-[10px] font-mono text-on-surface-variant">CHASE â€¢â€¢â€¢â€¢ 9921</p>
+<p class="text-sm font-semibold" data-slot-field="name">—</p>
+<p class="text-[10px] font-mono text-on-surface-variant" data-slot-field="bankDetail">—</p>
 </div>
 </div>
-<div class="flex items-center gap-3 p-3 bg-surface-container-highest/30 rounded-lg border border-emerald-500/5 hover:bg-emerald-500/10 transition-colors cursor-pointer">
-<div class="w-10 h-10 rounded-full border border-primary/20 bg-emerald-950 overflow-hidden">
-<span class="w-full h-full rounded-full flex items-center justify-center bg-surface-container-highest text-on-surface-variant"><span class="material-symbols-outlined text-sm" data-icon="person">person</span></span>
-</div>
-<div>
-<p class="text-sm font-semibold">Sarah Chen</p>
-<p class="text-[10px] font-mono text-on-surface-variant">WELLS FARGO â€¢â€¢â€¢â€¢ 4402</p>
-</div>
-</div>
-<div class="flex items-center gap-3 p-3 bg-surface-container-highest/30 rounded-lg border border-emerald-500/5 hover:bg-emerald-500/10 transition-colors cursor-pointer">
-<div class="w-10 h-10 rounded-full border border-primary/20 bg-emerald-950 overflow-hidden">
-<span class="w-full h-full rounded-full flex items-center justify-center bg-surface-container-highest text-on-surface-variant"><span class="material-symbols-outlined text-sm" data-icon="person">person</span></span>
-</div>
-<div>
-<p class="text-sm font-semibold">Marcus Klein</p>
-<p class="text-[10px] font-mono text-on-surface-variant">BOA â€¢â€¢â€¢â€¢ 7710</p>
-</div>
+<div class="text-center py-3" data-slot-empty>
+<p class="font-mono text-[10px] text-on-surface-variant/60">No saved recipients yet.</p>
 </div>
 </div>
 </div>
@@ -225,16 +210,16 @@
 <div class="p-5 rounded-lg bg-surface-container-lowest/80 border border-emerald-500/10 mb-8 space-y-3">
 <div class="flex justify-between items-center font-mono text-[11px]">
 <span class="text-on-surface-variant">Amount</span>
-<span class="text-on-surface">$0.00</span>
+<span class="text-on-surface" data-slot="payoutCreateAmount">$0.00</span>
 </div>
 <div class="flex justify-between items-center font-mono text-[11px]">
 <span class="text-on-surface-variant">ACH Fee</span>
-<span class="text-error">-$0.50</span>
+<span class="text-error" data-slot="payoutCreateFee">—</span>
 </div>
 <div class="h-px bg-emerald-500/10"></div>
 <div class="flex justify-between items-center font-mono text-sm font-bold">
 <span class="text-primary">Total</span>
-<span class="text-primary">$0.00</span>
+<span class="text-primary" data-slot="payoutCreateTotal">—</span>
 </div>
 </div>
 <!-- 8. 2FA Chip -->

@@ -179,10 +179,9 @@
 <span class="w-12 h-12 rounded-full flex items-center justify-center border border-primary/20 bg-surface-container-highest text-on-surface-variant"><span class="material-symbols-outlined text-sm" data-icon="person">person</span></span>
 <div class="ml-4 flex-1">
 <div class="flex items-center gap-2">
-<span class="font-bold text-on-surface">Sarah Chen</span>
-<span class="px-2 py-0.5 bg-primary/10 text-primary text-[9px] font-black rounded-full border border-primary/20 uppercase tracking-tighter">PLUS</span>
+<span class="font-bold text-on-surface" data-slot="rewardsTargetName">Select user</span>
 </div>
-<span class="font-mono text-xs text-primary/60 tracking-tight">sarah@email.io</span>
+<span class="font-mono text-xs text-primary/60 tracking-tight" data-slot="rewardsTargetEmail">—</span>
 </div>
 <span class="material-symbols-outlined text-primary">check_circle</span>
 </div>
@@ -191,8 +190,8 @@
 <div class="mb-8 text-center">
 <label class="text-[10px] font-bold text-primary tracking-widest uppercase block mb-4">Reward Amount</label>
 <div class="inline-flex items-center justify-center">
-<span class="font-mono text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-b from-[#10b981] to-[#34d399] tracking-tighter">
-                        $50.00
+<span class="font-mono text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-b from-[#10b981] to-[#34d399] tracking-tighter" data-slot="rewardsAmount">
+                        $0.00
                     </span>
 <div class="w-1 h-8 bg-primary/40 ml-1 rounded-full animate-pulse"></div>
 </div>
@@ -230,7 +229,7 @@
 </div>
 <div class="flex-1">
 <p class="text-xs font-bold text-on-surface">Reward Received!</p>
-<p class="text-[10px] text-on-surface-variant mt-0.5 leading-relaxed">You just received a $50.00 BONUS reward from the treasury.</p>
+<p class="text-[10px] text-on-surface-variant mt-0.5 leading-relaxed">You just received a <span data-slot="rewardsAmount">—</span> reward.</p>
 </div>
 </div>
 </div>

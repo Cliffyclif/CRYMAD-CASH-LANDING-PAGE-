@@ -137,17 +137,17 @@
 <h2 class="text-3xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-[#10b981] to-[#34d399] leading-tight">
                     Request Refund
                 </h2>
-<div class="font-mono text-emerald-500/60 text-xs tracking-widest mt-1">ORDER #ORD-9821</div>
+<div class="font-mono text-emerald-500/60 text-xs tracking-widest mt-1">ORDER <span data-slot="orderId">—</span></div>
 </div>
 <!-- Order Summary Strip -->
 <div class="flex items-center justify-between p-4 mb-8 bg-emerald-500/5 rounded-2xl border border-emerald-500/10">
 <div class="flex items-center gap-3">
-<div class="w-10 h-10 bg-white rounded-lg flex items-center justify-center p-1.5">
-<img alt="Amazon Logo" class="w-full h-full object-contain" data-alt="amazon marketplace official logo icon in high resolution on white background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBqy4HMP3XdPycYQUVZfEa7k58gmylKwIFVZj2gHjwNNjcTfwpmXOu2cP19IzoREhy-6a7MFLe02Ufg1nrshJJO6fN8QlLqiKDvGBiv1_a4tfowdJKzKPdz2IKql6j7YtKDqnjBhAVX1tsR_xy8yYcQCOL1_b0FhXPXcZCcwT1FwEf2jkeUS1v6-adWeOqjprJHN93MdOVK26ypAL0V44FABK4GLO7Tmn4DtDK8IvFPxWNj4brWNHrcHfP2xOySOFETWJm9c3aHeBZ2"/>
+<div class="w-10 h-10 bg-surface-container-highest rounded-lg flex items-center justify-center border border-primary/10">
+<span class="material-symbols-outlined text-primary text-base">storefront</span>
 </div>
-<span class="font-semibold text-on-surface">Amazon</span>
+<span class="font-semibold text-on-surface" data-slot="orderMerchant">Merchant</span>
 </div>
-<span class="font-mono text-primary text-lg">$45.20</span>
+<span class="font-mono text-primary text-lg" data-slot="orderTotal">—</span>
 </div>
 <!-- Form Fields -->
 <div class="space-y-6">
@@ -184,7 +184,7 @@
 <div class="flex-1 space-y-2">
 <label class="text-[10px] uppercase tracking-widest text-emerald-500/50 font-bold ml-1 text-nowrap">Refund Amount</label>
 <div class="relative">
-<input class="w-full font-mono bg-surface-container-highest/40 border border-emerald-500/10 rounded-2xl px-5 py-4 text-primary focus:outline-none" type="text" value="$45.20"/>
+<input class="w-full font-mono bg-surface-container-highest/40 border border-emerald-500/10 rounded-2xl px-5 py-4 text-primary focus:outline-none" type="text" placeholder="$0.00" data-slot-input="refundAmount"/>
 <span class="material-symbols-outlined absolute right-4 top-1/2 -translate-y-1/2 text-emerald-500/30 text-sm">lock</span>
 </div>
 </div>

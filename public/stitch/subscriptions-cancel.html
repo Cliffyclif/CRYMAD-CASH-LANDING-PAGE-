@@ -141,23 +141,23 @@
 <div class="mb-6">
 <span class="material-symbols-outlined text-[80px] text-error leading-none" style="font-variation-settings: 'FILL' 1;">warning</span>
 </div>
-<h2 class="text-3xl font-headline font-extrabold text-gradient mb-2">Cancel Spotify Premium?</h2>
-<p class="font-mono text-xs tracking-wider text-error font-bold uppercase">YOU LOSE ACCESS ON APR 22, 2026</p>
+<h2 class="text-3xl font-headline font-extrabold text-gradient mb-2">Cancel <span data-slot="subscriptionName">subscription</span>?</h2>
+<p class="font-mono text-xs tracking-wider text-error font-bold uppercase">YOU LOSE ACCESS ON <span data-slot="subscriptionAccessUntil">—</span></p>
 </div>
 <!-- Explanation Body -->
 <div class="mt-8 space-y-4">
 <p class="text-on-surface text-base leading-relaxed text-center">
-                    You'll lose access to 40M+ ad-free songs, offline downloads, and your high-fidelity audio quality settings.
+                    Cancelling will end your access at the close of the current billing period.
                 </p>
 <!-- Subscription Preview Card -->
 <div class="bg-surface-container-highest/40 border border-primary/10 rounded-lg p-4 flex items-center justify-between">
 <div class="flex items-center gap-4">
-<div class="w-10 h-10 rounded-full bg-black flex items-center justify-center p-2 border border-primary/20">
-<img alt="Minimalist Spotify logo with neon green sound waves on a dark circular background" class="w-full h-full object-contain" data-alt="Minimalist Spotify logo with neon green sound waves on a dark circular background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAP9HsWxM4pmIWMYiDr8NdEA_rAgzm4l68nHbFizriCVTcBq643y3WLKLfrOr_6NiEWTqmaM_0DTQ83o0mNN-sxn1w1oXF34BPMPVIpy5Dh6_8GFa4BNOqk15DSgtvVoxr8mMnSWI8CG1VpFuOu7zdpY1h774vbtU_aCybp0ZosgTbEdI9Xn5-7jfVzq7s_A4-YRiclCk2eUQaG2HPB1XseZdHGFGODA_bkqsWmQ_lunmJAYwB36rML_gE4xunLYINwwk9WqmxBRL_b"/>
+<div class="w-10 h-10 rounded-full bg-surface-container-highest flex items-center justify-center border border-primary/20">
+<span class="material-symbols-outlined text-primary">subscriptions</span>
 </div>
 <div>
-<p class="font-headline font-bold text-sm">Spotify Individual</p>
-<p class="font-mono text-[10px] text-on-surface-variant uppercase tracking-tighter">Next billing: Apr 22</p>
+<p class="font-headline font-bold text-sm" data-slot="subscriptionName">Subscription</p>
+<p class="font-mono text-[10px] text-on-surface-variant uppercase tracking-tighter">Next billing: <span data-slot="subscriptionNextDate">—</span></p>
 </div>
 </div>
 <span class="material-symbols-outlined text-primary/40">chevron_right</span>

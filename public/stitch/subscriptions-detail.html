@@ -140,25 +140,27 @@
 <!-- Header Section -->
 <div class="flex justify-between items-start mb-6">
 <div>
-<h1 class="text-3xl font-extrabold premium-gradient leading-tight">Spotify Premium</h1>
-<span class="inline-flex items-center px-3 py-0.5 rounded-full bg-primary/10 border border-primary/20 text-primary text-[10px] font-bold tracking-widest uppercase mt-2">
-                        Active
+<h1 class="text-3xl font-extrabold premium-gradient leading-tight" data-slot="subscriptionName">Subscription</h1>
+<span class="inline-flex items-center px-3 py-0.5 rounded-full bg-primary/10 border border-primary/20 text-primary text-[10px] font-bold tracking-widest uppercase mt-2" data-slot="subscriptionStatus">
+                        —
                     </span>
 </div>
 <div class="relative">
 <div class="absolute -inset-2 bg-primary/20 blur-xl rounded-full"></div>
-<img alt="Spotify" class="w-14 h-14 relative z-10" data-alt="official spotify icon circular green and black minimalist logo" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCXZWtdFTNafIn3dUSF_cCBSPwH5KJV42e1Ef15YDQsxGywOvJMIoFNEQLmWJeyrtK-nJlGxdKLr5PGqIUNSWX1U4oG6BChHP_Cts2W_fL-QO2Y0Gpg0T9AVufSm_d7UXEZSM9LySrcQRNCMR_6_NGvqqEEjO9KBgGXGrUcyodmf3c27KCS4znJPYeprrj_l07Xdc0ygS4Yr4vrk_oKozvUED9zkmJixZrI9uk2mQjCvnwKYbaNsKXNNKEhkwCYx6uswS5FgUjP31Ar"/>
+<div class="w-14 h-14 relative z-10 rounded-full bg-surface-container-highest border border-primary/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary">subscriptions</span>
+</div>
 </div>
 </div>
 <!-- Pricing & Next Date -->
 <div class="mb-8">
 <div class="flex items-baseline gap-2 font-mono">
-<span class="text-2xl font-bold text-on-surface">$9.99</span>
-<span class="text-on-surface-variant text-sm uppercase">/Month</span>
+<span class="text-2xl font-bold text-on-surface" data-slot="subscriptionAmount">—</span>
+<span class="text-on-surface-variant text-sm uppercase" data-slot="subscriptionInterval">/—</span>
 </div>
 <div class="flex items-center gap-2 mt-1">
 <span class="material-symbols-outlined text-primary text-sm">calendar_today</span>
-<span class="text-primary font-mono text-xs tracking-wider uppercase">Next Apr 22, 2024</span>
+<span class="text-primary font-mono text-xs tracking-wider uppercase" data-slot="subscriptionNextDate">Next —</span>
 </div>
 </div>
 <!-- Metadata Card -->
@@ -166,89 +168,39 @@
 <div class="bg-surface-container-low/60 rounded-lg p-5 border border-primary/5 space-y-4">
 <div class="flex justify-between items-center">
 <span class="text-on-surface-variant text-xs uppercase tracking-widest">Started</span>
-<span class="text-on-surface font-mono text-sm">JAN 12, 2024</span>
+<span class="text-on-surface font-mono text-sm" data-slot="subscriptionStartedAt">—</span>
 </div>
 <div class="flex justify-between items-center">
 <span class="text-on-surface-variant text-xs uppercase tracking-widest">Card Used</span>
 <div class="bg-surface-container-highest px-3 py-1 rounded-full border border-primary/10">
-<span class="text-on-surface font-mono text-[10px] tracking-tight">PHYSICAL •••2049</span>
+<span class="text-on-surface font-mono text-[10px] tracking-tight" data-slot="subscriptionCard">—</span>
 </div>
 </div>
 <div class="flex justify-between items-center pt-2 border-t border-primary/5">
 <span class="text-on-surface-variant text-xs uppercase tracking-widest">Total Paid</span>
-<span class="text-primary font-mono font-bold text-lg">$29.97</span>
+<span class="text-primary font-mono font-bold text-lg" data-slot="subscriptionTotalPaid">—</span>
 </div>
 </div>
 </section>
 <!-- Payment History Timeline -->
 <section class="mb-6">
 <h2 class="text-on-surface-variant text-xs font-bold uppercase tracking-[0.2em] mb-4 pl-1">Payment History</h2>
-<div class="space-y-3">
-<!-- Invoice 1 -->
-<div class="flex items-center justify-between p-4 glass-sheet rounded-lg">
+<div class="space-y-3" data-slot-list="subscriptionInvoices">
+<div class="flex items-center justify-between p-4 glass-sheet rounded-lg" data-slot-template>
 <div class="flex items-center gap-4">
 <span class="material-symbols-outlined text-secondary text-lg" style="font-variation-settings: 'FILL' 1;">check_circle</span>
 <div class="flex flex-col">
-<span class="text-xs font-mono text-on-surface">MAR 22, 2024</span>
-<span class="text-[10px] text-secondary font-bold uppercase tracking-tighter">Paid</span>
+<span class="text-xs font-mono text-on-surface" data-slot-field="date">—</span>
+<span class="text-[10px] text-secondary font-bold uppercase tracking-tighter" data-slot-field="status">—</span>
 </div>
 </div>
 <div class="flex items-center gap-3">
-<span class="text-on-surface font-mono font-bold">$9.99</span>
+<span class="text-on-surface font-mono font-bold" data-slot-field="amount">—</span>
 <span class="material-symbols-outlined text-on-surface/30 text-lg">receipt_long</span>
 </div>
 </div>
-<!-- Invoice 2 -->
-<div class="flex items-center justify-between p-4 glass-sheet rounded-lg">
-<div class="flex items-center gap-4">
-<span class="material-symbols-outlined text-secondary text-lg" style="font-variation-settings: 'FILL' 1;">check_circle</span>
-<div class="flex flex-col">
-<span class="text-xs font-mono text-on-surface">FEB 22, 2024</span>
-<span class="text-[10px] text-secondary font-bold uppercase tracking-tighter">Paid</span>
-</div>
-</div>
-<div class="flex items-center gap-3">
-<span class="text-on-surface font-mono font-bold">$9.99</span>
-<span class="material-symbols-outlined text-on-surface/30 text-lg">receipt_long</span>
-</div>
-</div>
-<!-- Invoice 3 -->
-<div class="flex items-center justify-between p-4 glass-sheet rounded-lg">
-<div class="flex items-center gap-4">
-<span class="material-symbols-outlined text-secondary text-lg" style="font-variation-settings: 'FILL' 1;">check_circle</span>
-<div class="flex flex-col">
-<span class="text-xs font-mono text-on-surface">JAN 22, 2024</span>
-<span class="text-[10px] text-secondary font-bold uppercase tracking-tighter">Paid</span>
-</div>
-</div>
-<div class="flex items-center gap-3">
-<span class="text-on-surface font-mono font-bold">$9.99</span>
-<span class="material-symbols-outlined text-on-surface/30 text-lg">receipt_long</span>
-</div>
-</div>
-<!-- Invoice 4-6 Simplified for visual variety -->
-<div class="opacity-60 space-y-3">
-<div class="flex items-center justify-between p-4 glass-sheet rounded-lg">
-<div class="flex items-center gap-4">
-<span class="material-symbols-outlined text-on-surface/40 text-lg">check_circle</span>
-<span class="text-xs font-mono text-on-surface">DEC 22, 2023</span>
-</div>
-<span class="text-on-surface font-mono">$9.99</span>
-</div>
-<div class="flex items-center justify-between p-4 glass-sheet rounded-lg">
-<div class="flex items-center gap-4">
-<span class="material-symbols-outlined text-on-surface/40 text-lg">check_circle</span>
-<span class="text-xs font-mono text-on-surface">NOV 22, 2023</span>
-</div>
-<span class="text-on-surface font-mono">$9.99</span>
-</div>
-<div class="flex items-center justify-between p-4 glass-sheet rounded-lg">
-<div class="flex items-center gap-4">
-<span class="material-symbols-outlined text-on-surface/40 text-lg">check_circle</span>
-<span class="text-xs font-mono text-on-surface">OCT 22, 2023</span>
-</div>
-<span class="text-on-surface font-mono">$9.99</span>
-</div>
+<div class="text-center py-4 glass-sheet rounded-lg" data-slot-empty>
+<p class="font-mono text-[10px] text-on-surface-variant/60">No invoices yet.</p>
 </div>
 </div>
 </section>

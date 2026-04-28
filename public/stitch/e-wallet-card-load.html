@@ -157,7 +157,7 @@
 </div>
 <div class="space-y-0.5">
 <p class="text-[10px] font-bold text-primary/80 uppercase">PHYSICAL</p>
-<p class="font-mono text-sm text-on-surface">...2049</p>
+<p class="font-mono text-sm text-on-surface" data-slot="cardLoadPhysicalMask">—</p>
 </div>
 </button>
 <!-- Virtual Card (Muted) -->
@@ -167,14 +167,14 @@
 </div>
 <div class="space-y-0.5">
 <p class="text-[10px] font-bold text-on-surface-variant uppercase">VIRTUAL</p>
-<p class="font-mono text-sm text-on-surface-variant">...9921</p>
+<p class="font-mono text-sm text-on-surface-variant" data-slot="cardLoadVirtualMask">—</p>
 </div>
 </button>
 </div>
 <!-- Amount Display -->
 <div class="flex flex-col items-center py-4 bg-surface-container-lowest/40 rounded-lg ghost-border">
 <div class="flex items-baseline gap-2">
-<span class="text-5xl font-mono font-bold text-gradient">$500.00</span>
+<span class="text-5xl font-mono font-bold text-gradient" data-slot="cardLoadAmount">$0.00</span>
 <span class="font-mono text-lg text-primary/60">USD</span>
 </div>
 </div>
@@ -190,7 +190,7 @@
 <div class="flex flex-col items-center gap-3">
 <div class="px-4 py-2 bg-surface-container-high rounded-full ghost-border inline-flex items-center gap-3">
 <span class="font-mono text-[10px] text-on-surface-variant">From</span>
-<span class="font-mono text-xs font-bold text-primary">E-Wallet $12,458.32</span>
+<span class="font-mono text-xs font-bold text-primary">E-Wallet <span data-slot="balanceEWallet">$0.00</span></span>
 </div>
 <div class="flex flex-col items-center">
 <div class="h-8 w-px bg-gradient-to-b from-primary/40 to-transparent"></div>

@@ -110,7 +110,7 @@
 <div class="w-10 h-10 rounded-full border border-primary/20 overflow-hidden">
 <span class="w-full h-full rounded-full flex items-center justify-center font-headline font-bold text-xs text-primary bg-primary/10" data-slot="initials">--</span>
 </div>
-<h1 class="font-['Inter'] font-extrabold text-transparent bg-clip-text bg-gradient-to-b from-[#10b981] to-[#34d399] tracking-tight text-xl">Emerald Pulse</h1>
+<h1 class="font-['Inter'] font-extrabold text-transparent bg-clip-text bg-gradient-to-b from-[#10b981] to-[#34d399] tracking-tight text-xl">CRYMAD CA$H</h1>
 </div>
 <span class="material-symbols-outlined text-emerald-500">settings_cinematic_blur</span>
 </header>
@@ -154,29 +154,19 @@
 </div>
 <span class="text-[10px] font-mono uppercase tracking-widest text-primary">New</span>
 </div>
-<!-- Recent Avatars -->
-<div class="flex flex-col items-center gap-2 flex-shrink-0">
+<div class="flex gap-4" data-slot-list="beneficiaries">
+<div class="flex flex-col items-center gap-2 flex-shrink-0" data-slot-template>
 <span class="w-14 h-14 rounded-full flex items-center justify-center glass-panel p-0.5 bg-surface-container-highest text-on-surface-variant"><span class="material-symbols-outlined text-sm" data-icon="person">person</span></span>
-<span class="text-[10px] font-mono text-on-surface-variant">J. SMITH</span>
+<span class="text-[10px] font-mono text-on-surface-variant" data-slot-field="initials">—</span>
 </div>
-<div class="flex flex-col items-center gap-2 flex-shrink-0">
-<span class="w-14 h-14 rounded-full flex items-center justify-center glass-panel p-0.5 bg-surface-container-highest text-on-surface-variant"><span class="material-symbols-outlined text-sm" data-icon="person">person</span></span>
-<span class="text-[10px] font-mono text-on-surface-variant">A. MAYA</span>
-</div>
-<div class="flex flex-col items-center gap-2 flex-shrink-0">
-<span class="w-14 h-14 rounded-full flex items-center justify-center glass-panel p-0.5 bg-surface-container-highest text-on-surface-variant"><span class="material-symbols-outlined text-sm" data-icon="person">person</span></span>
-<span class="text-[10px] font-mono text-on-surface-variant">T. KERN</span>
-</div>
-<div class="flex flex-col items-center gap-2 flex-shrink-0">
-<span class="w-14 h-14 rounded-full flex items-center justify-center glass-panel p-0.5 bg-surface-container-highest text-on-surface-variant"><span class="material-symbols-outlined text-sm" data-icon="person">person</span></span>
-<span class="text-[10px] font-mono text-on-surface-variant">R. LIMA</span>
+<div class="text-[10px] font-mono text-on-surface-variant/60 self-center" data-slot-empty>No saved recipients.</div>
 </div>
 </div>
 </section>
 <!-- Amount Input -->
 <section class="text-center space-y-2 mb-8">
 <label class="text-[10px] font-mono uppercase tracking-[0.2em] text-primary/60">Amount per cycle</label>
-<div class="text-5xl font-mono font-bold gradient-text py-2">$500.00</div>
+<div class="text-5xl font-mono font-bold gradient-text py-2" data-slot="recurringCreateAmount">$0.00</div>
 </section>
 <!-- Frequency Row -->
 <section class="space-y-3 mb-8">
@@ -194,14 +184,14 @@
 <div class="space-y-3">
 <h3 class="text-xs font-mono uppercase tracking-widest text-on-surface-variant">Start Date</h3>
 <div class="inset-glass flex items-center justify-between px-4 py-3">
-<span class="text-sm font-mono">12 OCT 24</span>
+<span class="text-sm font-mono" data-slot="recurringCreateStartDate">Pick date</span>
 <span class="material-symbols-outlined text-primary text-sm">calendar_today</span>
 </div>
 </div>
 <div class="space-y-3">
 <h3 class="text-xs font-mono uppercase tracking-widest text-on-surface-variant">End After</h3>
 <div class="inset-glass flex items-center justify-between px-4 py-3">
-<span class="text-sm font-mono">12 CYCLES</span>
+<span class="text-sm font-mono" data-slot="recurringCreateEndAfter">Pick condition</span>
 <span class="material-symbols-outlined text-primary text-sm">expand_more</span>
 </div>
 </div>
@@ -216,7 +206,7 @@
 </div>
 <div class="flex flex-col">
 <span class="text-xs font-bold">E-Wallet</span>
-<span class="text-[10px] font-mono text-primary">$12,458.32 Available</span>
+<span class="text-[10px] font-mono text-primary"><span data-slot="balanceEWallet">$0.00</span> Available</span>
 </div>
 </div>
 <span class="material-symbols-outlined text-on-surface-variant">chevron_right</span>
@@ -237,11 +227,11 @@
 <div class="relative z-10 flex flex-col items-center justify-center text-center">
 <p class="text-[10px] font-mono uppercase tracking-widest text-primary/80 mb-2">Transaction Projection</p>
 <div class="font-mono text-sm space-x-1">
-<span class="text-on-surface">$500.00</span>
-<span class="text-on-surface-variant">Ã—</span>
-<span class="text-on-surface">12 MONTHS</span>
+<span class="text-on-surface" data-slot="recurringCreateAmount">$0.00</span>
+<span class="text-on-surface-variant">×</span>
+<span class="text-on-surface" data-slot="recurringCreateCycles">— cycles</span>
 <span class="text-on-surface-variant">=</span>
-<span class="font-bold gradient-text">$6,000.00 TOTAL</span>
+<span class="font-bold gradient-text" data-slot="recurringCreateTotal">— TOTAL</span>
 </div>
 </div>
 </section>

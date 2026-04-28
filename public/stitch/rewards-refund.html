@@ -139,7 +139,7 @@
 <div class="mb-6">
 <label class="block text-xs font-mono uppercase tracking-widest text-primary/60 mb-2 px-1">Lookup Reward</label>
 <div class="relative group">
-<input class="w-full h-14 bg-[#06100d] inset-glass border-none rounded-lg font-mono text-primary px-4 focus:ring-1 focus:ring-primary/40 transition-all" spellcheck="false" type="text" value="RWD-8842"/>
+<input class="w-full h-14 bg-[#06100d] inset-glass border-none rounded-lg font-mono text-primary px-4 focus:ring-1 focus:ring-primary/40 transition-all" spellcheck="false" type="text" placeholder="Enter reward ID"/>
 <button class="absolute right-2 top-2 h-10 w-10 flex items-center justify-center bg-primary rounded-md text-on-primary active:scale-95 transition-transform shadow-[0_0_15px_rgba(16,185,129,0.3)]">
 <span class="material-symbols-outlined">search</span>
 </button>
@@ -150,32 +150,32 @@
 <div class="flex items-center gap-4 mb-4">
 <span class="w-12 h-12 rounded-full flex items-center justify-center border border-primary/30 bg-surface-container-highest text-on-surface-variant"><span class="material-symbols-outlined text-sm" data-icon="person">person</span></span>
 <div>
-<p class="font-bold text-on-surface">Sarah Chen</p>
-<p class="text-xs font-mono text-on-surface-variant">ID: 992-001-X</p>
+<p class="font-bold text-on-surface" data-slot="rewardsRefundUserName">—</p>
+<p class="text-xs font-mono text-on-surface-variant" data-slot="rewardsRefundUserId">—</p>
 </div>
 <div class="ml-auto">
-<span class="px-3 py-1 rounded-full bg-secondary/10 border border-secondary/20 text-[10px] font-mono text-secondary uppercase">Marketplace</span>
+<span class="px-3 py-1 rounded-full bg-secondary/10 border border-secondary/20 text-[10px] font-mono text-secondary uppercase" data-slot="rewardsRefundCategory">—</span>
 </div>
 </div>
 <div class="flex justify-between items-end">
 <div>
 <p class="text-[10px] font-mono text-on-surface-variant uppercase mb-1">Issue Date</p>
-<p class="font-mono text-sm">2023.10.14</p>
+<p class="font-mono text-sm" data-slot="rewardsRefundIssueDate">—</p>
 </div>
 <div class="text-right">
 <p class="text-[10px] font-mono text-on-surface-variant uppercase mb-1">Original Amount</p>
-<p class="font-mono text-xl font-bold text-primary">$50.00</p>
+<p class="font-mono text-xl font-bold text-primary" data-slot="rewardsRefundOriginalAmount">—</p>
 </div>
 </div>
 <div class="mt-4 pt-4 border-t border-primary/5">
-<p class="text-xs italic text-on-surface-variant leading-relaxed">Reason: Accidental double issuance during loyalty migration event.</p>
+<p class="text-xs italic text-on-surface-variant leading-relaxed" data-slot="rewardsRefundOriginalReason">Reason: —</p>
 </div>
 </div>
 <!-- Refund Amount -->
 <div class="mb-8 text-center">
 <label class="block text-xs font-mono uppercase tracking-widest text-primary/60 mb-4">Set Refund Amount</label>
 <div class="inline-block relative">
-<input class="bg-transparent border-none text-center font-mono text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-b from-primary to-secondary focus:ring-0 w-full" spellcheck="false" type="text" value="$50.00"/>
+<input class="bg-transparent border-none text-center font-mono text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-b from-primary to-secondary focus:ring-0 w-full" spellcheck="false" type="text" placeholder="$0.00" data-slot-input="rewardsRefundAmount"/>
 <div class="h-[2px] w-full bg-gradient-to-r from-transparent via-primary/30 to-transparent mt-2"></div>
 </div>
 </div>

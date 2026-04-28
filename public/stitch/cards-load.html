@@ -151,7 +151,7 @@
 </header>
 <div class="glass-panel p-6 rounded-lg h-48 flex flex-col justify-between">
 <div class="font-mono text-xs text-on-surface-variant">TOTAL ASSETS</div>
-<div class="font-mono text-3xl font-bold">$24,850.00</div>
+<div class="font-mono text-3xl font-bold" data-slot="balanceTotal">$0.00</div>
 <div class="flex gap-2">
 <div class="h-1 flex-1 bg-primary/20 rounded-full overflow-hidden">
 <div class="h-full bg-primary w-2/3"></div>
@@ -179,17 +179,17 @@
 <div class="flex gap-2 mb-8">
 <button class="flex-1 py-3 px-4 rounded-full glass-panel border-primary/40 flex items-center justify-center gap-2 transition-all">
 <div class="w-2 h-2 bg-primary rounded-full shadow-[0_0_8px_#10b981]"></div>
-<span class="font-label font-semibold text-[11px] tracking-widest uppercase text-on-surface">PHYSICAL •••2049</span>
+<span class="font-label font-semibold text-[11px] tracking-widest uppercase text-on-surface">PHYSICAL <span data-slot="cardLoadPhysicalMask">—</span></span>
 </button>
 <button class="flex-1 py-3 px-4 rounded-full glass-panel border-transparent flex items-center justify-center gap-2 opacity-40">
 <div class="w-2 h-2 bg-on-surface-variant rounded-full"></div>
-<span class="font-label font-semibold text-[11px] tracking-widest uppercase text-on-surface-variant">VIRTUAL •••9921</span>
+<span class="font-label font-semibold text-[11px] tracking-widest uppercase text-on-surface-variant">VIRTUAL <span data-slot="cardLoadVirtualMask">—</span></span>
 </button>
 </div>
 <!-- Amount Input -->
 <div class="flex flex-col items-center gap-2 mb-8">
 <div class="flex items-baseline gap-2">
-<span class="font-mono text-5xl font-bold text-gradient">$500.00</span>
+<span class="font-mono text-5xl font-bold text-gradient" data-slot="cardLoadAmount">$0.00</span>
 <span class="font-mono text-xl text-primary/60 font-semibold uppercase tracking-tighter">USD</span>
 </div>
 <div class="bg-surface-container py-1 px-4 rounded-full">
@@ -211,7 +211,7 @@
 </div>
 <div>
 <div class="text-[10px] font-bold text-primary tracking-widest uppercase mb-0.5">SOURCE</div>
-<div class="font-mono text-sm">E-Wallet <span class="text-on-surface-variant font-normal ml-1">$12,458.32</span></div>
+<div class="font-mono text-sm">E-Wallet <span class="text-on-surface-variant font-normal ml-1" data-slot="balanceEWallet">$0.00</span></div>
 </div>
 </div>
 <span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors">expand_more</span>
@@ -219,15 +219,15 @@
 <!-- OTP Verification Section -->
 <div class="mb-10">
 <div class="text-center mb-6">
-<div class="font-mono text-[10px] text-on-surface-variant tracking-widest uppercase mb-2">ENTER OTP SENT TO +1 555 •••• 0123</div>
+<div class="font-mono text-[10px] text-on-surface-variant tracking-widest uppercase mb-2">ENTER OTP SENT TO <span data-slot="phoneMask">your phone</span></div>
 </div>
 <div class="flex justify-between gap-2 mb-6">
-<div class="otp-input glass-panel border-primary/30 text-primary">4</div>
-<div class="otp-input glass-panel border-primary/30 text-primary">7</div>
-<div class="otp-input glass-panel border-primary/30 text-primary">2</div>
 <div class="otp-input glass-panel border-primary/60 shadow-[0_0_15px_rgba(16,185,129,0.1)]">
 <div class="cursor-pulse"></div>
 </div>
+<div class="otp-input glass-panel"></div>
+<div class="otp-input glass-panel"></div>
+<div class="otp-input glass-panel"></div>
 <div class="otp-input glass-panel"></div>
 <div class="otp-input glass-panel"></div>
 </div>

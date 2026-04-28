@@ -144,86 +144,26 @@
 <div class="space-y-2">
 <div class="flex justify-between items-center mb-3">
 <h3 class="text-xs font-mono text-on-surface-variant uppercase tracking-widest">Parsed Preview</h3>
-<span class="text-[10px] font-mono bg-primary/20 text-primary px-2 py-0.5 rounded-full">5 ITEMS READY</span>
+<span class="text-[10px] font-mono bg-primary/20 text-primary px-2 py-0.5 rounded-full"><span data-slot="payoutBatchCount">0</span> ITEMS READY</span>
 </div>
-<!-- Row 1 -->
-<div class="flex items-center justify-between p-4 bg-surface-container-highest/40 rounded-full border border-primary/5">
+<div class="space-y-2" data-slot-list="payouts">
+<div class="flex items-center justify-between p-4 bg-surface-container-highest/40 rounded-full border border-primary/5" data-slot-template>
 <div class="flex items-center space-x-3">
 <div class="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center overflow-hidden">
 <span class="w-full h-full rounded-full flex items-center justify-center bg-surface-container-highest text-on-surface-variant"><span class="material-symbols-outlined text-sm" data-icon="person">person</span></span>
 </div>
 <div>
-<p class="text-sm font-semibold text-on-surface leading-none">Alex Rivera</p>
-<p class="text-[10px] text-on-surface-variant mt-0.5">Chase Bank â€¢ â€¢â€¢â€¢â€¢ 4492</p>
+<p class="text-sm font-semibold text-on-surface leading-none" data-slot-field="recipient">—</p>
+<p class="text-[10px] text-on-surface-variant mt-0.5" data-slot-field="bankDetail">—</p>
 </div>
 </div>
 <div class="flex items-center space-x-3">
-<span class="font-mono text-sm font-bold text-primary">$4,200.00</span>
+<span class="font-mono text-sm font-bold text-primary" data-slot-field="amount">—</span>
 <span class="material-symbols-outlined text-primary text-lg" data-icon="check_circle" style="font-variation-settings: 'FILL' 1;">check_circle</span>
 </div>
 </div>
-<!-- Row 2 -->
-<div class="flex items-center justify-between p-4 bg-surface-container-highest/40 rounded-full border border-primary/5">
-<div class="flex items-center space-x-3">
-<div class="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center overflow-hidden">
-<span class="w-full h-full rounded-full flex items-center justify-center bg-surface-container-highest text-on-surface-variant"><span class="material-symbols-outlined text-sm" data-icon="person">person</span></span>
-</div>
-<div>
-<p class="text-sm font-semibold text-on-surface leading-none">Jordan Smith</p>
-<p class="text-[10px] text-on-surface-variant mt-0.5">Wells Fargo â€¢ â€¢â€¢â€¢â€¢ 1102</p>
-</div>
-</div>
-<div class="flex items-center space-x-3">
-<span class="font-mono text-sm font-bold text-tertiary">$1,150.00</span>
-<span class="material-symbols-outlined text-tertiary text-lg" data-icon="warning" style="font-variation-settings: 'FILL' 1;">warning</span>
-</div>
-</div>
-<!-- Row 3 -->
-<div class="flex items-center justify-between p-4 bg-surface-container-highest/40 rounded-full border border-primary/5">
-<div class="flex items-center space-x-3">
-<div class="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center overflow-hidden">
-<span class="w-full h-full rounded-full flex items-center justify-center bg-surface-container-highest text-on-surface-variant"><span class="material-symbols-outlined text-sm" data-icon="person">person</span></span>
-</div>
-<div>
-<p class="text-sm font-semibold text-on-surface leading-none">Casey Chen</p>
-<p class="text-[10px] text-on-surface-variant mt-0.5">Bank of America â€¢ â€¢â€¢â€¢â€¢ 8821</p>
-</div>
-</div>
-<div class="flex items-center space-x-3">
-<span class="font-mono text-sm font-bold text-primary">$8,940.00</span>
-<span class="material-symbols-outlined text-primary text-lg" data-icon="check_circle" style="font-variation-settings: 'FILL' 1;">check_circle</span>
-</div>
-</div>
-<!-- Row 4 -->
-<div class="flex items-center justify-between p-4 bg-surface-container-highest/40 rounded-full border border-primary/5">
-<div class="flex items-center space-x-3">
-<div class="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center overflow-hidden">
-<span class="w-full h-full rounded-full flex items-center justify-center bg-surface-container-highest text-on-surface-variant"><span class="material-symbols-outlined text-sm" data-icon="person">person</span></span>
-</div>
-<div>
-<p class="text-sm font-semibold text-on-surface leading-none">Morgan Lee</p>
-<p class="text-[10px] text-on-surface-variant mt-0.5">Citibank â€¢ â€¢â€¢â€¢â€¢ 3341</p>
-</div>
-</div>
-<div class="flex items-center space-x-3">
-<span class="font-mono text-sm font-bold text-primary">$2,500.00</span>
-<span class="material-symbols-outlined text-primary text-lg" data-icon="check_circle" style="font-variation-settings: 'FILL' 1;">check_circle</span>
-</div>
-</div>
-<!-- Row 5 -->
-<div class="flex items-center justify-between p-4 bg-surface-container-highest/40 rounded-full border border-primary/5">
-<div class="flex items-center space-x-3">
-<div class="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center overflow-hidden">
-<span class="w-full h-full rounded-full flex items-center justify-center bg-surface-container-highest text-on-surface-variant"><span class="material-symbols-outlined text-sm" data-icon="person">person</span></span>
-</div>
-<div>
-<p class="text-sm font-semibold text-on-surface leading-none">Sam Taylor</p>
-<p class="text-[10px] text-on-surface-variant mt-0.5">PNC Bank â€¢ â€¢â€¢â€¢â€¢ 9002</p>
-</div>
-</div>
-<div class="flex items-center space-x-3">
-<span class="font-mono text-sm font-bold text-primary">$1,450.00</span>
-<span class="material-symbols-outlined text-primary text-lg" data-icon="check_circle" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<div class="text-center py-4 border border-dashed border-primary/10 rounded-lg" data-slot-empty>
+<p class="font-mono text-[10px] text-on-surface-variant/60">Upload a CSV to preview recipients.</p>
 </div>
 </div>
 </div>
@@ -231,15 +171,15 @@
 <div class="glass-panel p-5 rounded-lg space-y-4 biolume-glow">
 <div class="flex justify-between items-end">
 <span class="text-[10px] font-mono text-on-surface-variant tracking-wider uppercase">Total Recipients</span>
-<span class="text-xl font-mono font-bold text-primary">24</span>
+<span class="text-xl font-mono font-bold text-primary" data-slot="payoutBatchRecipients">0</span>
 </div>
 <div class="flex justify-between items-end border-t border-primary/5 pt-3">
 <span class="text-[10px] font-mono text-on-surface-variant tracking-wider uppercase">Subtotal Amount</span>
-<span class="text-xl font-mono font-bold text-on-surface">$18,240.00</span>
+<span class="text-xl font-mono font-bold text-on-surface" data-slot="payoutBatchSubtotal">—</span>
 </div>
 <div class="flex justify-between items-end border-t border-primary/5 pt-3">
 <span class="text-[10px] font-mono text-on-surface-variant tracking-wider uppercase">Transaction Fees</span>
-<span class="text-sm font-mono font-bold text-tertiary">$12.00</span>
+<span class="text-sm font-mono font-bold text-tertiary" data-slot="payoutBatchFees">—</span>
 </div>
 </div>
 <!-- Authorization Row -->
@@ -248,7 +188,7 @@
 <input class="w-6 h-6 rounded bg-surface border-primary/40 text-primary focus:ring-primary/20 transition-all checked:bg-primary" id="authorize" type="checkbox"/>
 </div>
 <label class="text-sm text-primary font-semibold leading-tight" for="authorize">
-                    I authorize this payout of <span class="font-mono">$18,252.00</span>
+                    I authorize this payout of <span class="font-mono" data-slot="payoutBatchTotal">—</span>
 </label>
 </div>
 </div>
